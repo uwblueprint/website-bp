@@ -10,7 +10,7 @@ import { theme } from "@styles/Theme";
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     React.useEffect(() => {
         const jssStyles = document.querySelector("#jss-server-side");
-        if (jssStyles) {
+        if (jssStyles && jssStyles.parentElement) {
             jssStyles.parentElement.removeChild(jssStyles);
         }
     }, []);
