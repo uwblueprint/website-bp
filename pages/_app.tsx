@@ -1,9 +1,29 @@
 import React from "react";
 import { AppProps } from "next/app";
-import "@styles/global.css";
+
+import { ThemeProvider } from "styled-components";
+import CssBaseline from "@material-ui/core/CssBaseline";
+
+import GlobalStyle from "@styles/GlobalStyle";
+import { theme } from "@styles/Theme";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
-    return <Component {...pageProps} />;
+    React.useEffect(() => {
+        const jssStyles = document.querySelector("#jss-server-side");
+        if (jssStyles) {
+            jssStyles.parentElement.removeChild(jssStyles);
+        }
+    }, []);
+
+    return (
+        <>
+            <GlobalStyle />
+            <ThemeProvider theme={theme}>
+                <CssBaseline />
+                <Component {...pageProps} />
+            </ThemeProvider>
+        </>
+    );
 }
 
 export default MyApp;
