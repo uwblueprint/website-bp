@@ -75,7 +75,15 @@ const Home: React.FC = () => {
                 </Section>
                 <Section>
                     {/* TODO: Can't seem to make layout responsive */}
-                    {/* <Image src={landingWave} layout="responsive" /> */}
+                    <div>
+                        <Image
+                            src={landingWave}
+                            layout="responsive"
+                            width="100%"
+                            height="100%"
+                            margin="0"
+                        />
+                    </div>
                     <p>
                         Blueprint strives to make technology accessible and
                         useful for those who create communities and promote
