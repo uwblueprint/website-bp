@@ -108,13 +108,13 @@ const NavbarDesktop = () => {
                 {/* Special Custom Linked Buttons for "Join Our Team" and "For Non-profits" */}
                 <LinkButton>
                     <Link href="/join">
-                        <Special>{"resource.NAVBAR_JOIN_US"}</Special>
+                        <Special>{"Join Us"}</Special>
                     </Link>
                     <Divider />
                 </LinkButton>
                 <LinkButton>
                     <Link href="/nonprofits">
-                        <Special>{"resource.NAVBAR_NON_PROFITS"}</Special>
+                        <Special>{"Non Profits"}</Special>
                     </Link>
                     <Divider />
                 </LinkButton>
