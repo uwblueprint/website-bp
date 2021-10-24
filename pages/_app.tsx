@@ -25,6 +25,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
                 <GlobalStyle />
                 <NavBar />
                 <CssBaseline />
+                <NavBar />
                 <Component {...pageProps} />
                 <Footer />
             </ThemeProvider>
