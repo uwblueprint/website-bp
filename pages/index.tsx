@@ -23,22 +23,49 @@ const Section = styled.div`
     width: 100%;
 `;
 
+const LandingSection = styled(Section)`
+    height: 1200px;
+
+    & > div.imageWrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1024px;
+        background-color: ${(props) => props.theme.colors.B10};
+        z-index: -1;
+    }
+
+    & > div.missionSection {
+        // height: 270px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+
+        & > div.imageWrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            z-index: -1;
+        }
+    }
+`;
+
 const LandingContent = styled.div`
     height: 100vh;
-    min-height: 1200px;
+    min-height: 1024px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: ${(props) => props.theme.colors.B10};
 `;
 
 const LandingTitle = styled.h2`
-    text-align: center;
     color: ${(props) => props.theme.colors.C00};
 `;
 const LandingText = styled.p`
-    text-align: center;
     color: ${(props) => props.theme.colors.C00};
 `;
 
@@ -54,9 +81,13 @@ const Home: React.FC = () => {
                 {/* <link rel="icon" href="/favicon.ico" /> */}
             </Head>
             <Container>
-                <Section>
-                    <div>
-                        <Image src={landingSplash} layout="fill" />
+                <LandingSection>
+                    <div className="imageWrapper">
+                        <Image
+                            src={landingSplash}
+                            layout="fill"
+                            objectFit="cover"
+                        />
                     </div>
                     <LandingContent>
                         <LandingTitle>uw blueprint</LandingTitle>
@@ -69,27 +100,25 @@ const Home: React.FC = () => {
                             </Button>
                             <Button type="secondaryLight" to="/join">
                                 Join our team
-                            </Button> */}
+                            </Button> * /}
                         {/* </HStack> */}
                     </LandingContent>
-                </Section>
-                <Section>
-                    {/* TODO: Can't seem to make layout responsive */}
-                    <div>
-                        <Image
-                            src={landingWave}
-                            layout="responsive"
-                            width="100%"
-                            height="100%"
-                            margin="0"
-                        />
+                    <div className="missionSection">
+                        <div className="imageWrapper">
+                            <Image
+                                src={landingWave}
+                                layout="fill"
+                                objectFit="cover"
+                            />
+                        </div>
+                        <p>
+                            Blueprint strives to make technology accessible and
+                            useful for those who create communities and promote
+                            social good.{" "}
+                        </p>
                     </div>
-                    <p>
-                        Blueprint strives to make technology accessible and
-                        useful for those who create communities and promote
-                        social good.{" "}
-                    </p>
-                </Section>
+                </LandingSection>
+                <Section></Section>
             </Container>
         </div>
 

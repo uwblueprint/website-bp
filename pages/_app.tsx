@@ -20,9 +20,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     return (
         <>
             <GlobalStyle />
-            <NavBar />
             <ThemeProvider theme={theme}>
                 <CssBaseline />
+                <NavBar />
                 <Component {...pageProps} />
             </ThemeProvider>
         </>

@@ -4,7 +4,7 @@ import Button from "../button/Button";
 // import resource from '../../common/resource';
 import styled from "styled-components";
 
-// import { Logo, Name } from '../common/blueprint-logo/BlueprintLogo';
+import { Logo, Name } from "../common/blueprint-logo/BlueprintLogo";
 
 const Desktop = styled.div`
     position: absolute;
@@ -92,9 +92,8 @@ const NavbarDesktop = () => {
             <Wordmark>
                 <Link href="/">
                     <div>
-                        {/* <Logo />
-            <Name /> */}
-                        UW Blueprint
+                        <Logo />
+                        <Name />
                     </div>
                 </Link>
             </Wordmark>
