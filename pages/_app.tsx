@@ -8,6 +8,8 @@ import GlobalStyle from "@styles/GlobalStyle";
 import { theme } from "@styles/Theme";
 
 import NavBar from "../components/navbar/NavBar";
+import Footer from "../components/footer/footer";
+import "typeface-poppins";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     React.useEffect(() => {
@@ -19,11 +21,12 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 
     return (
         <>
-            <GlobalStyle />
-            <NavBar />
             <ThemeProvider theme={theme}>
+                <GlobalStyle />
+                <NavBar />
                 <CssBaseline />
                 <Component {...pageProps} />
+                <Footer />
             </ThemeProvider>
         </>
     );

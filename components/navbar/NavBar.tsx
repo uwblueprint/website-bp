@@ -4,7 +4,7 @@ import Button from "../button/Button";
 // import resource from '../../common/resource';
 import styled from "styled-components";
 
-// import { Logo, Name } from '../common/blueprint-logo/BlueprintLogo';
+import { Logo, Name } from "../common/blueprint-logo/BlueprintLogo";
 
 const Desktop = styled.div`
     position: absolute;
@@ -45,6 +45,7 @@ const Links = styled.div`
     a {
         color: white;
         font-weight: 500;
+        font-family: Poppins;
     }
     :hover {
         text-decoration: underline;
@@ -54,12 +55,14 @@ const Links = styled.div`
         opacity: 80%;
     }
 `;
+
 const Special = styled(Button)`
-    padding-top: 6px; //Join our team and for nonprofits button spacing
-    padding-bottom: 6px;
-    padding-left: 15px;
-    padding-right: 15px;
-    font-size: 14px !important;
+    padding-top: 10px; //Join our team and for nonprofits button spacing
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 14px;
+    font-weight: 500;
 
     :hover {
         text-decoration: underline;
@@ -84,6 +87,7 @@ const NavbarDesktop = () => {
     const navOptions = [
         { name: "About Us", link: "/about" },
         { name: "Projects", link: "/projects" },
+        { name: "Students", link: "/" },
         { name: "Contact", link: "/contact" },
     ];
 
@@ -92,9 +96,8 @@ const NavbarDesktop = () => {
             <Wordmark>
                 <Link href="/">
                     <div>
-                        {/* <Logo />
-            <Name /> */}
-                        UW Blueprint
+                        <Logo />
+                        <Name />
                     </div>
                 </Link>
             </Wordmark>
@@ -108,13 +111,17 @@ const NavbarDesktop = () => {
                 {/* Special Custom Linked Buttons for "Join Our Team" and "For Non-profits" */}
                 <LinkButton>
                     <Link href="/join">
-                        <Special>{"Join Us"}</Special>
+                        <Special type="secondaryLight">
+                            {"Join Our Team!"}
+                        </Special>
                     </Link>
                     <Divider />
                 </LinkButton>
                 <LinkButton>
                     <Link href="/nonprofits">
-                        <Special>{"Non Profits"}</Special>
+                        <Special type="secondaryDark">
+                            {"For Nonprofits"}
+                        </Special>
                     </Link>
                     <Divider />
                 </LinkButton>
