@@ -21,6 +21,7 @@ const Section = styled.div`
     // box-sizing: border-box;
     // overflow-x: hidden;
     width: 100%;
+    height: 100vh;
 `;
 
 const LandingContent = styled.div`
@@ -158,6 +159,40 @@ export default function Nonprofits() {
                                         </p>
                                     </div>
                                 </HStack>
+                            </VStack>
+                        </HStack>
+                    </SectionContent>
+                </Section>
+                <Section>
+                    <SectionContent>
+                        <LandingTitle>Our Process</LandingTitle>
+                        <HStack>
+                            {/* I should have used javascript map or smth here, will fix it ... */}
+                            <VStack>
+                                <div style={{ padding: "0" }}>
+                                    <h4>PHASE ONE</h4>
+                                    <h6>
+                                        Nonprofit/team lead project discussion
+                                    </h6>
+                                </div>
+                                <div style={{ padding: "0" }}>
+                                    <h4>PHASE TWO</h4>
+                                    <h6>
+                                        Nonprofit/team lead project discussion
+                                    </h6>
+                                </div>
+                                <div style={{ padding: "0" }}>
+                                    <h4>PHASE THREE</h4>
+                                    <h6>
+                                        Nonprofit/team lead project discussion
+                                    </h6>
+                                </div>
+                                <div style={{ padding: "0" }}>
+                                    <h4>PHASE FOUR</h4>
+                                    <h6>
+                                        Nonprofit/team lead project discussion
+                                    </h6>
+                                </div>
                             </VStack>
                         </HStack>
                     </SectionContent>
