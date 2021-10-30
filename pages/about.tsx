@@ -57,7 +57,7 @@ const SectionHeaderContainer = styled.div`
 const SectionHeader = styled.p`
     font-size: 44px;
     weight: 600;
-    color: ${(p) => p.theme.colors.B10};
+    //color: ${(p) => p.theme.colors.B10};
     padding: 15px 0;
 `;
 
