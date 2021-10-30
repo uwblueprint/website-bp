@@ -5,11 +5,11 @@ import styled from "styled-components";
 import resource from "../common/resource";
 
 /* Assets */
-import instagram from "../public/social/instagram.svg";
-import facebook from "../public/social/facebook.svg";
-import linkedin from "../public/social/linkedin.svg";
-import medium from "../public/social/medium.svg";
-import wavingGraphic from "../public/contact/contact-landing-hi.svg";
+const instagram = "/social/instagram.svg";
+const facebook = "/social/facebook.svg";
+const linkedin = "/social/linkedin.svg";
+const medium = "/social/medium.svg";
+const wavingGraphic = "/contact/contact-landing-hi.svg";
 
 /* Styling */
 const ContainerWrapper = styled.div`

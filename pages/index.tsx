@@ -5,8 +5,8 @@ import Image from "next/image";
 import styled from "styled-components";
 
 // import { Header, Main, Cards, Footer } from "@components/css";
-import landingSplash from "@public/home/home-landing-graphic.svg";
-import landingWave from "@public/home/home-landing-wave.svg";
+const landingSplash = "/home/home-landing-graphic.svg";
+const landingWave = "/home/home-landing-wave.svg";
 
 /* Styling */
 const Container = styled.div`

@@ -8,11 +8,11 @@ import Image from "next/image";
 
 import styled from "styled-components";
 
-import landingSplash from "@public/nonprofits/nonprofits-landing-bg.svg";
-import criteriaGraphic from "@public/nonprofits/nonprofits-criteria-graphic.svg";
-import landingHeroes from "@public/nonprofits/nonprofits-landing-graphic.svg";
-import contactsGraphic from "@public/nonprofits/nonprofits-contact-graphic.svg";
-// import processHandoff from "@public/nonprofits/nonprofits-process-handoff.png";
+const landingSplash = "/nonprofits/nonprofits-landing-bg.svg";
+const criteriaGraphic = "/nonprofits/nonprofits-criteria-graphic.svg";
+const landingHeroes = "/nonprofits/nonprofits-landing-graphic.svg";
+const contactsGraphic = "/nonprofits/nonprofits-contact-graphic.svg";
+// import processHandoff from "nonprofits/nonprofits-process-handoff.png";
 
 const faq = [
     {

@@ -6,11 +6,11 @@ import resource from "../../common/resource";
 
 // Assets
 import { Logo, Name } from "../common/blueprint-logo/BlueprintLogo";
-import wavingGraphic from "../../public/footer/footer-hi.svg";
-import instagram from "../../public/social/instagram.svg";
-import facebook from "../../public/social/facebook.svg";
-import linkedin from "../../public/social/linkedin.svg";
-import medium from "../../public/social/medium.svg";
+const wavingGraphic = "/footer/footer-hi.svg";
+const instagram = "/social/instagram.svg";
+const facebook = "/social/facebook.svg";
+const linkedin = "/social/linkedin.svg";
+const medium = "/social/medium.svg";
 
 const Desktop = styled.div`
     position: absolute;
