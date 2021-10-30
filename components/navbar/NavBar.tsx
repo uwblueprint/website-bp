@@ -3,7 +3,9 @@ import Link from "next/link";
 import Button from "../button/Button";
 // import resource from '../../common/resource';
 import styled from "styled-components";
+import resource from "common/resource";
 
+// Assets
 import { Logo, Name } from "../common/blueprint-logo/BlueprintLogo";
 
 const Desktop = styled.div`
@@ -85,10 +87,10 @@ const LinkButton = styled.div`
 
 const NavbarDesktop = () => {
     const navOptions = [
-        { name: "About Us", link: "/about" },
-        { name: "Projects", link: "/projects" },
-        { name: "Students", link: "/" },
-        { name: "Contact", link: "/contact" },
+        { name: resource.NAVBAR_ABOUT_US, link: "/about" },
+        { name: resource.NAVBAR_PROJECTS, link: "/projects" },
+        { name: resource.NAVBAR_STUDENTS, link: "/" },
+        { name: resource.NAVBAR_CONTACT, link: "/contact" },
     ];
 
     return (
@@ -112,7 +114,7 @@ const NavbarDesktop = () => {
                 <LinkButton>
                     <Link href="/join">
                         <Special type="secondaryLight">
-                            {"Join Our Team!"}
+                            {resource.NAVBAR_JOIN_US + "!"}
                         </Special>
                     </Link>
                     <Divider />
@@ -120,7 +122,7 @@ const NavbarDesktop = () => {
                 <LinkButton>
                     <Link href="/nonprofits">
                         <Special type="secondaryDark">
-                            {"For Nonprofits"}
+                            {resource.NAVBAR_NON_PROFITS}
                         </Special>
                     </Link>
                     <Divider />

@@ -23,9 +23,7 @@ const resource: Resource = {
         "Making technology accessible and useful for those who create communities.",
     JOIN_US_APPLY_BUTTON: "Apply Now",
 
-    // footer text
-    FOOTER_WHO_WE_ARE: "Who We Are",
-    FOOTER_WHAT_WE_DO: "What We Do",
+    COPYRIGHT: "© UW Blueprint 2020",
 };
 
 export default resource;
