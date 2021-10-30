@@ -3,7 +3,9 @@ import Link from "next/link";
 import Button from "../button/Button";
 // import resource from '../../common/resource';
 import styled from "styled-components";
+import resource from "common/resource";
 
+// Assets
 import { Logo, Name } from "../common/blueprint-logo/BlueprintLogo";
 
 const Desktop = styled.div`
@@ -45,6 +47,7 @@ const Links = styled.div`
     a {
         color: white;
         font-weight: 500;
+        font-family: Poppins;
     }
     :hover {
         text-decoration: underline;
@@ -54,12 +57,14 @@ const Links = styled.div`
         opacity: 80%;
     }
 `;
+
 const Special = styled(Button)`
-    padding-top: 6px; //Join our team and for nonprofits button spacing
-    padding-bottom: 6px;
-    padding-left: 15px;
-    padding-right: 15px;
-    font-size: 14px !important;
+    padding-top: 10px; //Join our team and for nonprofits button spacing
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 14px;
+    font-weight: 500;
 
     :hover {
         text-decoration: underline;
@@ -82,9 +87,10 @@ const LinkButton = styled.div`
 
 const NavbarDesktop = () => {
     const navOptions = [
-        { name: "About Us", link: "/about" },
-        { name: "Projects", link: "/projects" },
-        { name: "Contact", link: "/contact" },
+        { name: resource.NAVBAR_ABOUT_US, link: "/about" },
+        { name: resource.NAVBAR_PROJECTS, link: "/projects" },
+        { name: resource.NAVBAR_STUDENTS, link: "/" },
+        { name: resource.NAVBAR_CONTACT, link: "/contact" },
     ];
 
     return (
@@ -107,13 +113,17 @@ const NavbarDesktop = () => {
                 {/* Special Custom Linked Buttons for "Join Our Team" and "For Non-profits" */}
                 <LinkButton>
                     <Link href="/join">
-                        <Special>{"Join Us"}</Special>
+                        <Special type="secondaryLight">
+                            {resource.NAVBAR_JOIN_US + "!"}
+                        </Special>
                     </Link>
                     <Divider />
                 </LinkButton>
                 <LinkButton>
                     <Link href="/nonprofits">
-                        <Special>{"Non Profits"}</Special>
+                        <Special type="secondaryDark">
+                            {resource.NAVBAR_NON_PROFITS}
+                        </Special>
                     </Link>
                     <Divider />
                 </LinkButton>

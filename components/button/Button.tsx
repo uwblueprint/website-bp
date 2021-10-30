@@ -12,8 +12,6 @@ interface ButtonProps {
 
 const _Button = styled.a`
     font-family: Poppins;
-    font-size: 14px;
-
     font-size: 16px;
     line-height: 20.11px;
     font-weight: 600;
@@ -24,15 +22,13 @@ const _Button = styled.a`
     transition: transform 0.3s ease;
     cursor: pointer;
 
-    //   border-color: ${(p) =>
-        p.theme.button[p.type ?? "primaryDark"].outline};
-    //   background-color: ${(p) =>
-        p.theme.button[p.type ?? "primaryDark"].fill};
-    //   color: ${(p) => p.theme.button[p.type ?? "primaryDark"].text};
+    border-color: ${(p) => p.theme.button[p.type ?? "primaryDark"].outline};
+    background-color: ${(p) => p.theme.button[p.type ?? "primaryDark"].fill};
+    color: ${(p) => p.theme.button[p.type ?? "primaryDark"].text};
 
-    //   a {
-    //     color: ${(p) => p.theme.button[p.type ?? "primaryDark"].text};
-    //   }
+    a {
+        color: ${(p) => p.theme.button[p.type ?? "primaryDark"].text};
+    }
 
     //Button hover movement animation
     :hover {
@@ -46,9 +42,15 @@ const _Button = styled.a`
     }
 `;
 
-export default function Button({ onClick, children, type, to }: ButtonProps) {
+export default function Button({
+    onClick,
+    children,
+    type,
+    to,
+    className,
+}: ButtonProps) {
     return (
-        <_Button onClick={onClick} type={type} href={to}>
+        <_Button className={className} onClick={onClick} type={type} href={to}>
             {children}
         </_Button>
     );

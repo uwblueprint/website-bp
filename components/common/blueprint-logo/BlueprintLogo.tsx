@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const _Logo = styled.svg`
-    fill: #ffffff;
+    fill: ${(p) => p.theme.colors.C00};
     margin-right: 10px;
 `;
 // SVGs for the Blueprint logo and Name. Adding the SVGs in a tsx file allows one to edit the properties more easily than in the svg format (using the adjacent scss file).
@@ -25,7 +25,7 @@ export const Logo = () => {
 };
 
 const _Name = styled.svg`
-    fill: #ffffff;
+    fill: ${(p) => p.theme.colors.C00};
     margin-right: 10px;
 `;
 

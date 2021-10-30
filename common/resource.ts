@@ -22,6 +22,8 @@ const resource: Resource = {
     JOIN_US_INTRO_DESCRIPTION:
         "Making technology accessible and useful for those who create communities.",
     JOIN_US_APPLY_BUTTON: "Apply Now",
+
+    COPYRIGHT: "© UW Blueprint 2020",
 };
 
 export default resource;
