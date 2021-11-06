@@ -11,7 +11,7 @@ import styled from "styled-components";
 const landingSplash = "/join/join-landing-background.svg";
 const criteriaGraphic = "/nonprofits/nonprofits-criteria-graphic.svg";
 const lookGraphic = "/join/join-look-graphic.svg";
-const landingHeroes = "/join/join-landing-graphic.svg";
+const landingGraphic = "/join/join-landing-graphic.svg";
 const contactsGraphic = "/nonprofits/nonprofits-contact-graphic.svg";
 const joinCarousel = "/join/join-carousel-photo-2.png";
 
@@ -213,7 +213,7 @@ export default function Nonprofits() {
                             </div>
                         </LandingContent>
                         <Image
-                            src={landingHeroes}
+                            src={landingGraphic}
                             width="1000vw"
                             height="750vh"
                         />
