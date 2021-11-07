@@ -33,7 +33,7 @@ interface AppProps {
     data: { question: string; ans: string }[];
 }
 
-export default function ControlledAccordions(props: AppProps) {
+export default function ControlledAccordions(props: AppProps): JSX.Element {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState<string | boolean>(false);
 
