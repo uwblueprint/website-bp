@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import Button from "../button/Button";
-// import resource from '../../common/resource';
 import styled from "styled-components";
 import resource from "common/resource";
 
