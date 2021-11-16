@@ -20,12 +20,12 @@ const applicationFaq = [
     },
     {
         question: "CAN I BE A PART OF BLUEPRINT WHILE ON A WORK TERM?",
-        ans: "...",
+        ans: "Yes, we are happy to take students on both academic and work terms.",
     },
     {
         question:
             "I DON’T HAVE A LOT OF DEV OR DESIGN EXPERIENCE, SHOULD I STILL APPLY?",
-        ans: "...",
+        ans: "Yes! Blueprint is a great way to gain more experience as you will be surrounded by a community of peers with varying expertise in different fields, who can support you with mentorship. We care more about your drive to learn, and your passion for social good.",
     },
     {
         question: "CAN I BE A PART OF BLUEPRINT IF I’M NOT IN WATERLOO?",
@@ -413,7 +413,7 @@ export default function Nonprofits() {
                         <HStack>
                             <FaqHeader>ABOUT OUR TEAM</FaqHeader>
                             <FaqAccordion>
-                                <ControlledAccordions data={applicationFaq} />
+                                <ControlledAccordions data={aboutOurTeam} />
                             </FaqAccordion>
                         </HStack>
                     </SectionContent>

@@ -8,7 +8,7 @@ const _Divider = styled.span`
     margin: 1.5rem;
 `;
 
-const Divider = ({ className, color }: any) => {
+const Divider = ({ className, color }: any): JSX.Element => {
     return <_Divider className={className} color={color} />;
 };
 

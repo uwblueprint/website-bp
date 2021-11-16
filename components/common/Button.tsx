@@ -44,7 +44,12 @@ const _Button = styled.a`
     }
 `;
 
-export default function Button({ onClick, children, type, to }: ButtonProps) {
+export default function Button({
+    onClick,
+    children,
+    type,
+    to,
+}: ButtonProps): JSX.Element {
     return (
         <_Button onClick={onClick} type={type} href={to}>
             {children}
