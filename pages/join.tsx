@@ -33,6 +33,25 @@ const applicationFaq = [
     },
 ];
 
+const aboutOurTeam = [
+    {
+        question: "HOW DO YOU CHOOSE PROJECTS?",
+        ans: "We have an application portal on our website for nonprofits, and in addition, we also reach out to nonprofits chosen by our members. We set up calls with nonprofits and figure out whether their proposed project is a good fit for our team. Read more on our nonprofit page",
+    },
+    {
+        question: "DO I GET TO CHOOSE WHAT PROJECT I WORK ON?",
+        ans: "Before the term begins, our designers and developers have a chance to get to know the upcoming projects. They then fill out information about their skill set and preferences in our selection form so that Project Leads and Project Managers will choose their team accordingly. We try to make sure that most people get their first choice, but no guarantees can be made.",
+    },
+    {
+        question: "HOW DOES MENTORSHIP WORK IN BLUEPRINT?",
+        ans: "In our project teams, we look to ensure there is a good distribution in development experience. If you’re just starting out, you’ll always have someone you can turn to for help! We also have design meetings where designers can ask each other and the VP Design for feedback.",
+    },
+    {
+        question: "WHAT'S THE TIME COMMITMENT? HOW MANY HOURS PER WEEK?",
+        ans: "We would like Blueprint members to contribute around 10 hours per week. This is to ensure that we can deliver high-quality products to the organizations we partner with. We understand that it’s a big time commitment, and we would like you to make sure that your course load and extracurriculars allow for this type of commitment.",
+    },
+];
+
 const links = {
     Facebook: (
         <a href="https://www.facebook.com/uwblueprint/" target="_blank">
@@ -62,7 +81,7 @@ const dates = {
     decision: <ColoredDate>Mar 19 2021 23:59:59 EDT.</ColoredDate>,
 };
 
-const aboutOurTeam = [
+const processData = [
     {
         title: "LEARN ABOUT BLUEPRINT",
         descripton: (
@@ -374,7 +393,7 @@ export default function Nonprofits() {
                     <SectionContent>
                         <SectionTitle>What we can do for you</SectionTitle>
                         <HStack>
-                            {aboutOurTeam.map((e, idx) => {
+                            {processData.map((e, idx) => {
                                 return (
                                     <div
                                         style={{
