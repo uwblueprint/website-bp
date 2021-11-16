@@ -62,7 +62,7 @@ const dates = {
     decision: <ColoredDate>Mar 19 2021 23:59:59 EDT.</ColoredDate>,
 };
 
-const processData = [
+const aboutOurTeam = [
     {
         title: "LEARN ABOUT BLUEPRINT",
         descripton: (
@@ -374,7 +374,7 @@ export default function Nonprofits() {
                     <SectionContent>
                         <SectionTitle>What we can do for you</SectionTitle>
                         <HStack>
-                            {processData.map((e, idx) => {
+                            {aboutOurTeam.map((e, idx) => {
                                 return (
                                     <div
                                         style={{
