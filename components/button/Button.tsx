@@ -48,7 +48,7 @@ export default function Button({
     type,
     to,
     className,
-}: ButtonProps) {
+}: ButtonProps): JSX.Element {
     return (
         <_Button className={className} onClick={onClick} type={type} href={to}>
             {children}
