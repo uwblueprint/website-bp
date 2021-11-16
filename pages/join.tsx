@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/pages/Nonprofits.module.scss";
+
 import { HStack, VStack } from "../components/common/Layout";
 import Button from "../components/common/Button";
 import ControlledAccordions from "../components/common/Accordion";
@@ -9,13 +9,9 @@ import Image from "next/image";
 import styled from "styled-components";
 
 const landingSplash = "/join/join-landing-background.svg";
-const criteriaGraphic = "/nonprofits/nonprofits-criteria-graphic.svg";
 const lookGraphic = "/join/join-look-graphic.svg";
 const landingGraphic = "/join/join-landing-graphic.svg";
-const contactsGraphic = "/nonprofits/nonprofits-contact-graphic.svg";
 const joinCarousel = "/join/join-carousel-photo-2.png";
-
-// import processHandoff from "nonprofits/nonprofits-process-handoff.png";
 
 const applicationFaq = [
     {
@@ -37,27 +33,82 @@ const applicationFaq = [
     },
 ];
 
+const links = {
+    Facebook: (
+        <a href="https://www.facebook.com/uwblueprint/" target="_blank">
+            Facebook
+        </a>
+    ),
+    Instagram: (
+        <a href="https://www.instagram.com/uwblueprint/" target="_blank">
+            Instagram
+        </a>
+    ),
+    Medium: (
+        <a href="https://uwblueprint.medium.com/" target="_blank">
+            Medium
+        </a>
+    ),
+};
+
+const ColoredDate = styled.span`
+    color: ${(props) => props.theme.colors.B10};
+`;
+
+const dates = {
+    applicationOpen: <ColoredDate>Mar 6 2021 00:00:00 EST</ColoredDate>,
+    applicationClose: <ColoredDate>Mar 19 2021 23:59:59 EDT.</ColoredDate>,
+    invite: <ColoredDate>Mar 23</ColoredDate>,
+    decision: <ColoredDate>Mar 19 2021 23:59:59 EDT.</ColoredDate>,
+};
+
 const processData = [
     {
         title: "LEARN ABOUT BLUEPRINT",
-        descripton:
-            "Check out our current projects and team on our Facebook, Instagram and Medium.",
+        descripton: (
+            <p>
+                Check out our current projects and team on our{" "}
+                {links["Facebook"]}, {links["Instagram"]} and {links["Medium"]}
+                .",
+            </p>
+        ),
     },
-
     {
         title: "SUBMIT YOUR APPLICATION",
-        descripton:
-            "Tell us a little bit about yourself and why you're interested in joining Blueprint. We make sure to go through every application thoroughly. If we think you might be a good fit, we will extend you an invite to a coffee chat! Applications open Mar 6 2021 00:00:00 EST and close Mar 19 2021 23:59:59 EDT.",
+        descripton: (
+            <p>
+                Tell us a little bit about yourself and why you're interested in
+                joining Blueprint. We make sure to go through every application
+                thoroughly. If we think you might be a good fit, we will extend
+                you an invite to a coffee chat! Applications open{" "}
+                {dates["applicationOpen"]} and close {dates["applicationClose"]}
+            </p>
+        ),
     },
     {
         title: "CHAT WITH US",
-        descripton:
-            "Let's chat! We'll send out invites on Mar 23, to schedule a time for us to connect. These chats will take place over the upcoming week, and will be a casual conversation between you and a couple of our members. We want to learn more about you, and you can also use this time to ask us any questions you might have!",
+        descripton: (
+            <p>
+                Let's chat! We'll send out invites on {dates["invite"]}, to
+                schedule a time for us to connect. These chats will take place
+                over the upcoming week, and will be a casual conversation
+                between you and a couple of our members. We want to learn more
+                about you, and you can also use this time to ask us any
+                questions you might have!
+            </p>
+        ),
     },
     {
         title: "FINAL DECISION",
-        descripton:
-            "We will get back to you by Apr 12 to let you know our final decision. If we feel you’d be a good fit for the team, we would love for you to join! Get back to us as soon as possible regarding whether you would like to be part of our team next term, so we can get started with onboarding.",
+        descripton: (
+            <p>
+                We will get back to you by {dates["decision"]} to let you know
+                our final decision. If we feel you’d be a good fit for the team,
+                we would love for you to join! Get back to us as soon as
+                possible regarding whether you would like to be part of our team
+                next term, so we can get started with onboarding.
+            </p>
+        ),
     },
 ];
 

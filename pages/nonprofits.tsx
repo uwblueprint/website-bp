@@ -3,6 +3,7 @@ import styles from "../styles/pages/Nonprofits.module.scss";
 import { HStack, VStack } from "../components/common/Layout";
 import Button from "../components/common/Button";
 import ControlledAccordions from "../components/common/Accordion";
+import resource from "../common/resource";
 
 import Image from "next/image";
 
@@ -133,7 +134,9 @@ export default function Nonprofits() {
                     </div>
                     <HStack>
                         <LandingContent>
-                            <LandingTitle>For Nonprofits</LandingTitle>
+                            <LandingTitle>
+                                {resource.NAVBAR_NON_PROFITS}
+                            </LandingTitle>
                             <LandingText>
                                 We're a group of University of Waterloo students
                                 that solve technical problems for nonprofit
@@ -142,7 +145,7 @@ export default function Nonprofits() {
                             {/* TODO: Seems to be used more than once this page */}
                             <div style={{ padding: "25px 0" }}>
                                 <Button type="primaryDark" to="/contact">
-                                    Contact Us
+                                    {resource.CONTACT_TITLE}
                                 </Button>
                             </div>
                         </LandingContent>
