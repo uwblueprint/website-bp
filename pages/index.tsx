@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
-import Button from "../components/button/Button";
+import Button from "components/common/Button";
 import ReactPlayer from "react-player";
 import { VStack, HStack } from "../components/Layout";
 import resource from "common/resource";
