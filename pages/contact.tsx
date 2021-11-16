@@ -79,7 +79,7 @@ export default function Contact() {
     return (
         <div>
             <Head>
-                <title>UW Blueprint | Contact Us</title>
+                <title>{resource.TITLE_CONTACT}</title>
             </Head>
 
             <ContainerWrapper>
@@ -115,7 +115,7 @@ export default function Contact() {
                                 alt="medium"
                             />
                         </ImageContainer>
-                        <Description>info@uwblueprint.org</Description>
+                        <Description>{resource.CONTACT_EMAIL}</Description>
                     </LeftContainer>
                     <RightContainer>
                         <div>
@@ -123,7 +123,7 @@ export default function Contact() {
                                 src={wavingGraphic}
                                 width={400}
                                 height={400}
-                                alt=" illustration"
+                                alt="illustration"
                             />
                         </div>
                     </RightContainer>
