@@ -7,6 +7,10 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import GlobalStyle from "@styles/GlobalStyle";
 import { theme } from "@styles/Theme";
 
+import NavBar from "../components/navbar/NavBar";
+import Footer from "../components/footer/footer";
+import "typeface-poppins";
+
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     React.useEffect(() => {
         const jssStyles = document.querySelector("#jss-server-side");
@@ -17,10 +21,12 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 
     return (
         <>
-            <GlobalStyle />
             <ThemeProvider theme={theme}>
+                <GlobalStyle />
+                <NavBar />
                 <CssBaseline />
                 <Component {...pageProps} />
+                <Footer />
             </ThemeProvider>
         </>
     );
