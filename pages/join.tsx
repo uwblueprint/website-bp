@@ -187,11 +187,11 @@ const SectionContent = styled.div`
 `;
 
 const LandingTitle = styled.h2`
-    color: #ffffff;
+    color: ${(props) => props.theme.colors.C00};
 `;
 
-const LandingText = styled.h6`
-    color: #ffffff;
+const LandingText = styled.h5`
+    color: ${(props) => props.theme.colors.C00};
     width: 25vw;
 `;
 

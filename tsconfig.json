@@ -36,17 +36,16 @@
       ],
       "@public": [
         "public"
-      ],
-      "@styled-components": [
-        "types/styled-components"
-      ],
-      "@styled-components/*": [
-        "types/styled-components/*"
+    //   ],
+    //   "@styled-components": [
+    //     "types/styled-components"
+    //   ],
+    //   "@styled-components/*": [
+    //     "types/styled-components/*"
       ]
     }
   },
   "include": [
-    // "node_modules",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"

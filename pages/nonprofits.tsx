@@ -125,7 +125,7 @@ const ProcessContent = styled.div`
 const LandingTitle = styled.h2`
     color: ${(props) => props.theme.colors.B10};
 `;
-const LandingText = styled.p`
+const LandingText = styled.h5`
     color: ${(props) => props.theme.colors.B10};
     width: 25vw;
 `;
