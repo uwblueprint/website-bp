@@ -17,30 +17,82 @@ const contactsGraphic = "/nonprofits/nonprofits-contact-graphic.svg";
 
 const faq = [
     {
-        question: "HOW OFTEN DO PROJECT TEAMS AND NONPROFITS MEET?",
-        ans: "We plan to have our project lead and the nonprofit meet on a weekly or biweekly basis, depending on the flexibility of both parties, to sync up and discuss progress.",
+        question: resource.NONPROFIT_FAQ_Q1,
+        ans: resource.NONPROFIT_FAQ_A1,
     },
     {
-        question: "WHAT IS THE CLIENT-TEAM INTERACTION LIKE?",
-        ans: "The team works alongside the client's vision for the organization. We hope that our project has significant impact on the organization's efficiency and reach, so the alignment of goals is crucial. At our meetings, we discuss updates on project features, check the timeline, and have discussion on the progress of the project and the nonprofit itself.",
+        question: resource.NONPROFIT_FAQ_Q2,
+        ans: resource.NONPROFIT_FAQ_A2,
     },
     {
-        question: "HOW DOES BLUEPRINT ENSURE SUCCESS?",
-        ans: "We recruit the brightest and most hard-working students at the University of Waterloo to work with nonprofits and deliver high quality products. Everyone is dedicated to helping nonprofit organizations and motivated by the impact of their work. We make a commitment to excellence and deliver our best work when it comes to working with nonprofits and their projects. We are supported by Techyon and Cal Blueprint.",
+        question: resource.NONPROFIT_FAQ_Q3,
+        ans: resource.NONPROFIT_FAQ_A3,
     },
 ];
 
+const criterion = [
+    {
+        title: resource.NONPROFIT_CRITERION_T1,
+        explanation: resource.NONPROFIT_CRITERION_D1,
+    },
+    {
+        title: resource.NONPROFIT_CRITERION_T2,
+        explanation: resource.NONPROFIT_CRITERION_D2,
+    },
+    {
+        title: resource.NONPROFIT_CRITERION_T3,
+        explanation: resource.NONPROFIT_CRITERION_D3,
+    },
+    {
+        title: resource.NONPROFIT_CRITERION_T4,
+        explanation: resource.NONPROFIT_CRITERION_D4,
+    },
+    {
+        title: resource.NONPROFIT_CRITERION_T5,
+        explanation: resource.NONPROFIT_CRITERION_D5,
+    },
+];
+
+const processData = [
+    {
+        title: resource.NONPROFIT_PROCESS_P1,
+        explanation: resource.NONPROFIT_PROCESS_T1,
+    },
+    {
+        title: resource.NONPROFIT_PROCESS_P2,
+        explanation: resource.NONPROFIT_PROCESS_T2,
+    },
+    {
+        title: resource.NONPROFIT_PROCESS_P3,
+        explanation: resource.NONPROFIT_PROCESS_T3,
+    },
+    {
+        title: resource.NONPROFIT_PROCESS_P4,
+        explanation: resource.NONPROFIT_PROCESS_T4,
+    },
+];
+
+const whatWeCanDoData = [
+    {
+        title: resource.NONPROFIT_WHAT_WE_CAN_DO_T1,
+        explanation: resource.NONPROFIT_WHAT_WE_CAN_DO_D1,
+    },
+    {
+        title: resource.NONPROFIT_WHAT_WE_CAN_DO_T2,
+        explanation: resource.NONPROFIT_WHAT_WE_CAN_DO_D2,
+    },
+    {
+        title: resource.NONPROFIT_WHAT_WE_CAN_DO_T3,
+        explanation: resource.NONPROFIT_WHAT_WE_CAN_DO_D3,
+    },
+];
+
+// TODO: make rsponsive
 const Container = styled.div`
     width: 100vw;
-    // display: flex;
-    // flex-direction: column;
 `;
 
 const Section = styled.div`
-    // position: relative;
-    // margin: auto;
-    // box-sizing: border-box;
-    // overflow-x: hidden;
     width: 100%;
     height: 100vh;
 `;
@@ -62,10 +114,18 @@ const SectionContent = styled.div`
     padding: 0px 225px;
 `;
 
+const ProcessContent = styled.div`
+    backgroundcolor: #e0f0ff;
+    borderradius: 20px;
+    padding: 50px;
+    margin: 10px;
+    width: 35vw;
+`;
+
 const LandingTitle = styled.h2`
     color: ${(props) => props.theme.colors.B10};
 `;
-const LandingText = styled.p`
+const LandingText = styled.h5`
     color: ${(props) => props.theme.colors.B10};
     width: 25vw;
 `;
@@ -104,16 +164,14 @@ const ActivePhaseDiv = styled.div`
     color: ${(props) => props.theme.colors.B10};
 `;
 
-// const ProcessHandoffBlock = styled.div`
-//     color: "black";
-// `;
-
 export default function Nonprofits() {
     //Temporary inline styling. Should be changed when real code is added
     return (
         <div>
+            <title>{resource.TITLE_NON_PROFITS}</title>
             <Container>
                 <Section>
+                    {/*  Unable to use styled component as it removes the image being wrapped */}
                     <div
                         style={{
                             position: "absolute",
@@ -135,12 +193,10 @@ export default function Nonprofits() {
                     <HStack>
                         <LandingContent>
                             <LandingTitle>
-                                {resource.NAVBAR_NON_PROFITS}
+                                {resource.NONPROFIT_LANDING_TITLE}
                             </LandingTitle>
                             <LandingText>
-                                We're a group of University of Waterloo students
-                                that solve technical problems for nonprofit
-                                organizations - all free of charge.
+                                {resource.NONPROFIT_LANDING_TEXT}
                             </LandingText>
                             {/* TODO: Seems to be used more than once this page */}
                             <div style={{ padding: "25px 0" }}>
@@ -158,120 +214,58 @@ export default function Nonprofits() {
                 </Section>
                 <Section>
                     <SectionContent>
-                        <LandingTitle>What we can do for you</LandingTitle>
+                        <LandingTitle>
+                            {resource.NONPROFIT_WHAT_WE_CAN_DO_TITLE}
+                        </LandingTitle>
                         <HStack>
                             <VStack>
-                                <HStack>
-                                    <div style={{ padding: "25px" }}>
-                                        <LandingTitle>1</LandingTitle>
-                                    </div>
-                                    <div style={{ padding: "25px" }}>
-                                        <h6 style={{ fontWeight: 600 }}>
-                                            HELP YOU DETERMINE WHERE YOU CAN USE
-                                            OUR SERVICES
-                                        </h6>
-                                        <p style={{ width: "75%" }}>
-                                            We understand that sometimes it’s
-                                            challenging to identify where you
-                                            can make the best use of a
-                                            technology solution. Our process
-                                            begins with several scoping calls to
-                                            determine what the best solution for
-                                            your organization.
-                                        </p>
-                                    </div>
-                                </HStack>
-                                <HStack>
-                                    <div style={{ padding: "25px" }}>
-                                        <LandingTitle>2</LandingTitle>
-                                    </div>
-                                    <div style={{ padding: "25px" }}>
-                                        <h6 style={{ fontWeight: 600 }}>
-                                            SPEARHEAD THE PROJECT WITH CLEAR
-                                            COMMUNICATION
-                                        </h6>
-                                        <p style={{ width: "75%" }}>
-                                            Our skillful students have
-                                            experience as Product Managers,
-                                            developers, designers, and technical
-                                            leaders at companies including
-                                            Facebook, Google and Shopify. Our
-                                            team will get the job done with
-                                            minimal hand holding, so you can
-                                            focus on doing what you do best:
-                                            serving your clients.
-                                        </p>
-                                    </div>
-                                </HStack>
-                                <HStack>
-                                    <div style={{ padding: "25px" }}>
-                                        <LandingTitle>3</LandingTitle>
-                                    </div>
-                                    <div style={{ padding: "25px" }}>
-                                        <h6 style={{ fontWeight: 600 }}>
-                                            DELIVER HIGH QUALITY SOFTWARE
-                                            SOLUTIONS
-                                        </h6>
-                                        <p style={{ width: "75%" }}>
-                                            Whether an application, website
-                                            redesign or designing a more
-                                            efficient system, our team delivers
-                                            innovative and high quality
-                                            products. We also ensure that your
-                                            team is provided with the necessary
-                                            training to maintain the solutions
-                                            we build with you.
-                                        </p>
-                                    </div>
-                                </HStack>
+                                {whatWeCanDoData.map((data, idx) => {
+                                    return (
+                                        <HStack>
+                                            <div style={{ padding: "25px" }}>
+                                                <LandingTitle>
+                                                    {idx + 1}
+                                                </LandingTitle>
+                                            </div>
+                                            <div style={{ padding: "25px" }}>
+                                                <h6 style={{ fontWeight: 600 }}>
+                                                    {data.title}
+                                                </h6>
+                                                <p style={{ width: "75%" }}>
+                                                    {data.explanation}
+                                                </p>
+                                            </div>
+                                        </HStack>
+                                    );
+                                })}
                             </VStack>
                         </HStack>
                     </SectionContent>
                 </Section>
                 <Section>
                     <SectionContent>
-                        <LandingTitle>Our Process</LandingTitle>
+                        <LandingTitle>
+                            {resource.NONPROFIT_PROCESS_TITLE}
+                        </LandingTitle>
                         <HStack>
                             <div style={{ width: "100%" }}>
                                 <VStack>
-                                    {[
-                                        [
-                                            "PHASE ONE",
-                                            "Nonprofit/team lead project discussion",
-                                        ],
-                                        [
-                                            "PHASE TWO",
-                                            "Building the Minimum Viable Product (MVP)",
-                                        ],
-                                        ["PHASE THREE", "User Testing"],
-                                        [
-                                            "PHASE FOUR",
-                                            "Product polish and hand-off",
-                                        ],
-                                    ].map((e, idx) => {
+                                    {processData.map((data, idx) => {
                                         return idx < 3 ? (
                                             <InactivePhaseDiv>
-                                                <h4>{e[0]}</h4>
-                                                <h6>{e[1]}</h6>
+                                                <h4>{data.title}</h4>
+                                                <h6>{data.explanation}</h6>
                                             </InactivePhaseDiv>
                                         ) : (
                                             <ActivePhaseDiv>
-                                                <h4>{e[0]}</h4>
-                                                <h6>{e[1]}</h6>
+                                                <h4>{data.title}</h4>
+                                                <h6>{data.explanation}</h6>
                                             </ActivePhaseDiv>
                                         );
                                     })}
                                 </VStack>
                             </div>
-                            <div
-                                style={{
-                                    backgroundColor: "#E0F0FF",
-                                    borderRadius: "20px",
-                                    padding: "50px",
-                                    margin: "10px",
-                                    width: "35vw",
-                                }}
-                            >
+                            <ProcessContent>
                                 <HStack>
                                     <div style={{ width: "250px" }}>
                                         <h5
@@ -280,22 +274,9 @@ export default function Nonprofits() {
                                                 fontWeight: "bold",
                                             }}
                                         >
-                                            Product polish and hand-off
+                                            {resource.NONPROFIT_PROCESS_T4}
                                         </h5>
-                                        <p>
-                                            The last phase involves intensive
-                                            development. We make improvements on
-                                            the product based on the feedback
-                                            received from user testing. This
-                                            phase is designed to completely
-                                            finish the product so that it is
-                                            ready to be delivered to the
-                                            nonprofit. Upon completion, we meet
-                                            with the nonprofit to hand off the
-                                            product and to figure out how
-                                            maintenance of the product is to be
-                                            handled.
-                                        </p>
+                                        <p>{resource.NONPROFIT_PROCESS_D4}</p>
                                     </div>
                                     <Image
                                         src={criteriaGraphic}
@@ -304,13 +285,15 @@ export default function Nonprofits() {
                                         layout="fixed"
                                     />
                                 </HStack>
-                            </div>
+                            </ProcessContent>
                         </HStack>
                     </SectionContent>
                 </Section>
                 <Section>
                     <SectionContent>
-                        <LandingTitle>Decision Criteria</LandingTitle>
+                        <LandingTitle>
+                            {resource.NONPROFIT_DECISION_CRITERIA_TITLE}
+                        </LandingTitle>
                         <HStack>
                             {/* <div style={{position: "relative"}}> Figure out how to do this image */}
                             <Image
@@ -322,67 +305,20 @@ export default function Nonprofits() {
                             {/* </div> */}
                             <VStack>
                                 <DecisionCriteriaDescription>
-                                    These are the primary criteria we use to
-                                    determine project fit:
+                                    {resource.NONPROFIT_DECISION_CRITERIA_DESC}
                                 </DecisionCriteriaDescription>
-                                <div>
-                                    <DecisionCriteriaTitle>
-                                        1. IMPACT
-                                    </DecisionCriteriaTitle>
-                                    <DecisionCriteriaExplanation>
-                                        How much will the project impact the
-                                        community? We prefer projects that will
-                                        provide the maximal benefit to the
-                                        target community.
-                                    </DecisionCriteriaExplanation>
-                                </div>
-                                <div>
-                                    <DecisionCriteriaTitle>
-                                        2. NECESSITY
-                                    </DecisionCriteriaTitle>
-                                    <DecisionCriteriaExplanation>
-                                        How vital is the project to the
-                                        non-profit organization, and does the
-                                        organization have other means to
-                                        complete the project? We want to ensure
-                                        that we are helping organizations that
-                                        truly need our services.
-                                    </DecisionCriteriaExplanation>
-                                </div>
-                                <div>
-                                    <DecisionCriteriaTitle>
-                                        3. SCOPE
-                                    </DecisionCriteriaTitle>
-                                    <DecisionCriteriaExplanation>
-                                        Is completing the project feasible
-                                        within our timeline? We want to ensure
-                                        that we can finish the project and
-                                        deliver quality results within a
-                                        reasonable time.
-                                    </DecisionCriteriaExplanation>
-                                </div>
-                                <div>
-                                    <DecisionCriteriaTitle>
-                                        4. TECHNICAL FIT
-                                    </DecisionCriteriaTitle>
-                                    <DecisionCriteriaExplanation>
-                                        Does your project use the capabilities
-                                        of technology? Does it fit well with our
-                                        team's areas of expertise?
-                                    </DecisionCriteriaExplanation>
-                                </div>
-                                <div>
-                                    <DecisionCriteriaTitle>
-                                        5. CREDIBILITY
-                                    </DecisionCriteriaTitle>
-                                    <DecisionCriteriaExplanation>
-                                        Is it clear that the project will have
-                                        an impact? We like to see evidence that
-                                        supports this! We also prefer to work
-                                        with non-profits that have a proven
-                                        track record of doing good.
-                                    </DecisionCriteriaExplanation>
-                                </div>
+                                {criterion.map((data) => {
+                                    return (
+                                        <div>
+                                            <DecisionCriteriaTitle>
+                                                {data.title}
+                                            </DecisionCriteriaTitle>
+                                            <DecisionCriteriaExplanation>
+                                                {data.explanation}
+                                            </DecisionCriteriaExplanation>
+                                        </div>
+                                    );
+                                })}
                             </VStack>
                         </HStack>
                     </SectionContent>
@@ -392,12 +328,11 @@ export default function Nonprofits() {
                         <HStack>
                             <VStack>
                                 <ContactUsDescription>
-                                    NEED HELP WITH YOUR NON PROFIT AND DO NOT
-                                    KNOW WHERE TO START?
+                                    {resource.NONPROFIT_CONTACT_US_DESC}
                                 </ContactUsDescription>
                                 <div style={{ padding: "25px 0" }}>
                                     <Button type="primaryDark" to="/contact">
-                                        Contact Us
+                                        {resource.NONPROFIT_CONTACT_US_BUTTON}
                                     </Button>
                                 </div>
                             </VStack>
@@ -411,7 +346,9 @@ export default function Nonprofits() {
                 </Section>
                 <Section>
                     <SectionContent>
-                        <LandingTitle>FAQ</LandingTitle>
+                        <LandingTitle>
+                            {resource.NONPROFIT_FAQ_TITLE}
+                        </LandingTitle>
                         <ControlledAccordions data={faq} />
                     </SectionContent>
                 </Section>
