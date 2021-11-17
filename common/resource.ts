@@ -11,7 +11,33 @@ const resource: Resource = {
     NAVBAR_NON_PROFITS: "For Nonprofits",
 
     // home page text
-    HOME_TITLE: "This is BP",
+    HOME_TITLE: "UW Blueprint",
+    HOME_LANDING_TITLE: "blueprint",
+    HOME_LANDING_TEXT: "tech for social good. built by students.",
+    HOME_LANDING_SEE_OUR_WORK: "See our work",
+    HOME_LANDING_JOIN_OUR_TEAM: "Join our team",
+
+    HOME_MISSION_DESCRIPTION:
+        "Blueprint strives to make technology accessible and useful for those who create communities and promote social good.",
+
+    HOME_IMPACT_TITLE: "Here's how we measure our impact",
+    HOME_IMPACT_NON_PROFIT_PROJECTS_TITLE: "NON-PROFIT PROJECTS",
+    HOME_IMPACT_NON_PROFIT_PROJECTS_NUMBER: "22",
+    HOME_IMPACT_VOLUNTEER_HOURS_TITLE: "ACCUMULATED VOLUNTEER HOURS",
+    HOME_IMPACT_VOLUNTEER_HOURS_NUMBER: "70,000",
+    HOME_IMPACT_STUDENT_VOLUNTEERS_TITLE: "STUDENT VOLUNTEERS",
+    HOME_IMPACT_STUDENT_VOLUNTEERS_NUMBER: "468",
+
+    HOME_HOW_IT_WORKS_TITLE: "How It Works",
+    HOME_HOW_IT_WORKS_LEARN_MORE: "Learn More >",
+    HOME_HOW_IT_WORKS_TEAM_TITLE: "Student Volunteers",
+    HOME_HOW_IT_WORKS_TEAM_SUBTITLE: "HAVE A PASSION FOR SOCIAL GOOD?",
+    HOME_HOW_IT_WORKS_TEAM_PARAGRAPH:
+        "Volunteer and grow your skills at UW Blueprint! Join a talented and vibrant community while creating technological solutions that make a real world impact. Student applications open at the end of each term.",
+    HOME_HOW_IT_WORKS_NON_PROFIT_TITLE: "Non Profit Partners",
+    HOME_HOW_IT_WORKS_NON_PROFIT_SUBTITLE: "LET'S BUILD SOMETHING GREAT",
+    HOME_HOW_IT_WORKS_NON_PROFIT_PARAGRAPH:
+        "Whether you have a project idea or you don’t know where to start, our team of experienced Product Mangers, Designers, and Developers will be there every step of the way. Contact us to chat!",
 
     // Page titles
     TITLE_JOIN: "UW Blueprint | Join",
