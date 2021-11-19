@@ -2,7 +2,6 @@ import React from "react";
 import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
-import resource from "../common/resource";
 
 /* Assets */
 const instagram = "/social/instagram.svg";
@@ -79,15 +78,17 @@ export default function Contact() {
     return (
         <div>
             <Head>
-                <title>{resource.TITLE_CONTACT}</title>
+                <title>UW Blueprint {"|"} Contact Us</title>
             </Head>
 
             <ContainerWrapper>
                 <Container>
                     <LeftContainer>
-                        <Header>{resource.CONTACT_TITLE}</Header>
+                        <Header>Contact us!</Header>
                         <Description>
-                            {resource.CONTACT_DESCRIPTION}
+                            Have a question? Interested in a potential project
+                            but unsure what our team can help you with? Send us
+                            an email or connect with us on our social media!
                         </Description>
                         <ImageContainer>
                             <Image
@@ -115,7 +116,7 @@ export default function Contact() {
                                 alt="medium"
                             />
                         </ImageContainer>
-                        <Description>{resource.CONTACT_EMAIL}</Description>
+                        <Description>info@uwblueprint.org</Description>
                     </LeftContainer>
                     <RightContainer>
                         <div>

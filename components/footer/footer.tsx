@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
-import resource from "../../common/resource";
 
 // Assets
 import { Logo, Name } from "../common/blueprint-logo/BlueprintLogo";
@@ -111,52 +110,52 @@ const BottomContainer = styled.div`
 const Footer = () => {
     const navOptions = [
         {
-            name: resource.FOOTER_ABOUT_US,
+            name: "About Us",
             children: [
-                { name: resource.FOOTER_WHO_WE_ARE, link: "/" },
-                { name: resource.FOOTER_WHAT_WE_DO, link: "/" },
-                { name: resource.FOOTER_HISTORY, link: "/" },
-                { name: resource.FOOTER_COMMUNITY, link: "/" },
-                { name: resource.FOOTER_OUR_PROCESS, link: "/" },
+                { name: "Who We Are", link: "/" },
+                { name: "What We Do", link: "/" },
+                { name: "History", link: "/" },
+                { name: "Community", link: "/" },
+                { name: "Our Process", link: "/" },
             ],
             link: "/about",
         },
         {
-            name: resource.FOOTER_PROJECTS,
+            name: "Projects",
             children: [
-                { name: resource.FOOTER_FEATURED, link: "/" },
-                { name: resource.FOOTER_CURRENT, link: "/" },
-                { name: resource.FOOTER_ARCHIVE, link: "/" },
+                { name: "Featured", link: "/" },
+                { name: "Current", link: "/" },
+                { name: "Archive", link: "/" },
             ],
             link: "/projects",
         },
         {
-            name: resource.FOOTER_STUDENTS,
+            name: "Students",
             children: [
-                { name: resource.FOOTER_MEET_THE_TEAM, link: "/" },
-                { name: resource.FOOTER_ALUMNI, link: "/" },
+                { name: "Meet the Team", link: "/" },
+                { name: "Alumni", link: "/" },
             ],
             link: "/students",
         },
         {
-            name: resource.FOOTER_JOIN_US,
+            name: "Join Our Team",
             children: [
-                { name: resource.FOOTER_WHY_JOIN, link: "/" },
-                { name: resource.FOOTER_WHAT_WE_LOOK_FOR, link: "/" },
-                { name: resource.FOOTER_APP_PROCESS, link: "/" },
-                { name: resource.FOOTER_TEAM_FAQ, link: "/" },
-                { name: resource.FOOTER_TEAM_APPLY, link: "/" },
+                { name: "Why Join", link: "/" },
+                { name: "What We Look For", link: "/" },
+                { name: "Application Process", link: "/" },
+                { name: "FAQ", link: "/" },
+                { name: "Apply", link: "/" },
             ],
             link: "/join",
         },
         {
-            name: resource.FOOTER_NON_PROFITS,
+            name: "For Nonprofits",
             children: [
-                { name: resource.FOOTER_OUR_SERVICES, link: "/" },
-                { name: resource.FOOTER_DECISION_CRITERIA, link: "/" },
-                { name: resource.FOOTER_TIMELINE, link: "/" },
-                { name: resource.FOOTER_NON_PROFITS_FAQ, link: "/" },
-                { name: resource.FOOTER_NON_PROFITS_APPLY, link: "/" },
+                { name: "Our Services", link: "/" },
+                { name: "Decision Criteria", link: "/" },
+                { name: "Timeline", link: "/" },
+                { name: "FAQ", link: "/" },
+                { name: "Apply", link: "/" },
             ],
             link: "/nonprofits",
         },
@@ -243,7 +242,7 @@ const Footer = () => {
                 ))}
             </LinkContainer>
 
-            <BottomContainer>{resource.COPYRIGHT}</BottomContainer>
+            <BottomContainer>© UW Blueprint 2021</BottomContainer>
         </Desktop>
     );
 };
