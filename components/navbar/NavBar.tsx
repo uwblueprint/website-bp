@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import Button from "components/common/Button";
 import styled from "styled-components";
-import resource from "common/resource";
 
 // Assets
 import { Logo, Name } from "../common/blueprint-logo/BlueprintLogo";
@@ -86,10 +85,10 @@ const LinkButton = styled.div`
 
 const NavbarDesktop = () => {
   const navOptions = [
-    { name: resource.NAVBAR_ABOUT_US, link: "/about" },
-    { name: resource.NAVBAR_PROJECTS, link: "/projects" },
-    { name: resource.NAVBAR_STUDENTS, link: "/" },
-    { name: resource.NAVBAR_CONTACT, link: "/contact" },
+    { name: "About Us", link: "/about" },
+    { name: "Projects", link: "/projects" },
+    { name: "Students", link: "/" },
+    { name: "Contact", link: "/contact" },
   ];
 
   return (
@@ -112,17 +111,13 @@ const NavbarDesktop = () => {
         {/* Special Custom Linked Buttons for "Join Our Team" and "For Non-profits" */}
         <LinkButton>
           <Link href="/join">
-            <Special type="secondaryLight">
-              {resource.NAVBAR_JOIN_US + "!"}
-            </Special>
+            <Special type="secondaryLight">Join Our Team!</Special>
           </Link>
           <Divider />
         </LinkButton>
         <LinkButton>
           <Link href="/nonprofits">
-            <Special type="secondaryDark">
-              {resource.NAVBAR_NON_PROFITS}
-            </Special>
+            <Special type="secondaryDark">For Nonprofits</Special>
           </Link>
           <Divider />
         </LinkButton>
