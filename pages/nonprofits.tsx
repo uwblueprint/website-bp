@@ -1,9 +1,9 @@
 import React from "react";
+import Head from "next/head";
 import styles from "../styles/pages/Nonprofits.module.scss";
 import { HStack, VStack } from "../components/common/Layout";
 import Button from "../components/common/Button";
 import ControlledAccordions from "../components/common/Accordion";
-import resource from "../common/resource";
 
 import Image from "next/image";
 
@@ -17,73 +17,81 @@ const contactsGraphic = "/nonprofits/nonprofits-contact-graphic.svg";
 
 const faq = [
     {
-        question: resource.NONPROFIT_FAQ_Q1,
-        ans: resource.NONPROFIT_FAQ_A1,
+        question: "HOW OFTEN DO PROJECT TEAMS AND NONPROFITS MEET?",
+        ans: "We plan to have our project lead and the nonprofit meet on a weekly or biweekly basis, depending on the flexibility of both parties, to sync up and discuss progress.",
     },
     {
-        question: resource.NONPROFIT_FAQ_Q2,
-        ans: resource.NONPROFIT_FAQ_A2,
+        question: "WHAT IS THE CLIENT-TEAM INTERACTION LIKE?",
+        ans: "The team works alongside the client's vision for the organization. We hope that our project has significant impact on the organization's efficiency and reach, so the alignment of goals is crucial. At our meetings, we discuss updates on project features, check the timeline, and have discussion on the progress of the project and the nonprofit itself.",
     },
     {
-        question: resource.NONPROFIT_FAQ_Q3,
-        ans: resource.NONPROFIT_FAQ_A3,
+        question: "HOW DOES BLUEPRINT ENSURE SUCCESS?",
+        ans: "We recruit the brightest and most hard-working students at the University of Waterloo to work with nonprofits and deliver high quality products. Everyone is dedicated to helping nonprofit organizations and motivated by the impact of their work. We make a commitment to excellence and deliver our best work when it comes to working with nonprofits and their projects. We are supported by Techyon and Cal Blueprint.",
     },
 ];
 
 const criterion = [
     {
-        title: resource.NONPROFIT_CRITERION_T1,
-        explanation: resource.NONPROFIT_CRITERION_D1,
+        title: "1. IMPACT",
+        explanation:
+            "How much will the project impact the community? We prefer projects that will provide the maximal benefit to the target community.",
     },
     {
-        title: resource.NONPROFIT_CRITERION_T2,
-        explanation: resource.NONPROFIT_CRITERION_D2,
+        title: "2. NECESSITY",
+        explanation:
+            "How vital is the project to the non-profit organization, and does the organization have other means to complete the project? We want to ensure that we are helping organizations that truly need our services.",
     },
     {
-        title: resource.NONPROFIT_CRITERION_T3,
-        explanation: resource.NONPROFIT_CRITERION_D3,
+        title: "3. SCOPE",
+        explanation:
+            "Is completing the project feasible within our timeline? We want to ensure that we can finish the project and deliver quality results within a reasonable time.",
     },
     {
-        title: resource.NONPROFIT_CRITERION_T4,
-        explanation: resource.NONPROFIT_CRITERION_D4,
+        title: "4. TECHNICAL FIT",
+        explanation:
+            "Does your project use the capabilities of technology? Does it fit well with our team's areas of expertise?",
     },
     {
-        title: resource.NONPROFIT_CRITERION_T5,
-        explanation: resource.NONPROFIT_CRITERION_D5,
+        title: "5. CREDIBILITY",
+        explanation:
+            "Is it clear that the project will have an impact? We like to see evidence that supports this! We also prefer to work with non-profits that have a proven track record of doing good.",
     },
 ];
 
 const processData = [
     {
-        title: resource.NONPROFIT_PROCESS_P1,
-        explanation: resource.NONPROFIT_PROCESS_T1,
+        title: "PHASE ONE",
+        explanation: "Nonprofit/team lead project discussion",
     },
     {
-        title: resource.NONPROFIT_PROCESS_P2,
-        explanation: resource.NONPROFIT_PROCESS_T2,
+        title: "PHASE TWO",
+        explanation: "Building the Minimum Viable Product (MVP)",
     },
     {
-        title: resource.NONPROFIT_PROCESS_P3,
-        explanation: resource.NONPROFIT_PROCESS_T3,
+        title: "PHASE THREE",
+        explanation: "User Testing",
     },
     {
-        title: resource.NONPROFIT_PROCESS_P4,
-        explanation: resource.NONPROFIT_PROCESS_T4,
+        title: "PHASE THREE",
+        explanation: "Product polish and hand-off",
     },
 ];
 
 const whatWeCanDoData = [
     {
-        title: resource.NONPROFIT_WHAT_WE_CAN_DO_T1,
-        explanation: resource.NONPROFIT_WHAT_WE_CAN_DO_D1,
+        title: "HELP YOU DETERMINE WHERE YOU CAN USE OUR SERVICES",
+        explanation:
+            "We understand that sometimes it’s challenging to identify where you can make the best use of a technology solution. Our process begins with several scoping calls to determine what the best solution for your organization.",
     },
     {
-        title: resource.NONPROFIT_WHAT_WE_CAN_DO_T2,
-        explanation: resource.NONPROFIT_WHAT_WE_CAN_DO_D2,
+        title: "SPEARHEAD THE PROJECT WITH CLEAR COMMUNICATION",
+        explanation:
+            "Our skillful students have experience as Product Managers, developers, designers, and technical leaders at companies including Facebook, Google and Shopify. Our team will get the job done with minimal hand holding, so you can focus on doing what you do best: serving your clients.",
     },
     {
-        title: resource.NONPROFIT_WHAT_WE_CAN_DO_T3,
-        explanation: resource.NONPROFIT_WHAT_WE_CAN_DO_D3,
+        title: "DELIVER HIGH QUALITY SOFTWARE SOLUTIONS",
+        explanation:
+            "Whether an application, website redesign or designing a more efficient system, our team delivers innovative and high quality products. We also ensure that your team is provided with the necessary training to maintain the solutions we build with you.",
     },
 ];
 
@@ -168,7 +176,9 @@ export default function Nonprofits() {
     //Temporary inline styling. Should be changed when real code is added
     return (
         <div>
-            <title>{resource.TITLE_NON_PROFITS}</title>
+            <Head>
+                <title>UW Blueprint {"|"} Non-profits</title>
+            </Head>
             <Container>
                 <Section>
                     {/*  Unable to use styled component as it removes the image being wrapped */}
@@ -192,16 +202,16 @@ export default function Nonprofits() {
                     </div>
                     <HStack>
                         <LandingContent>
-                            <LandingTitle>
-                                {resource.NONPROFIT_LANDING_TITLE}
-                            </LandingTitle>
+                            <LandingTitle>For Nonprofits</LandingTitle>
                             <LandingText>
-                                {resource.NONPROFIT_LANDING_TEXT}
+                                We're a group of University of Waterloo students
+                                that solve technical problems for nonprofit
+                                organizations - all free of charge.
                             </LandingText>
                             {/* TODO: Seems to be used more than once this page */}
                             <div style={{ padding: "25px 0" }}>
                                 <Button type="primaryDark" to="/contact">
-                                    {resource.CONTACT_TITLE}
+                                    Contact us!
                                 </Button>
                             </div>
                         </LandingContent>
@@ -214,9 +224,7 @@ export default function Nonprofits() {
                 </Section>
                 <Section>
                     <SectionContent>
-                        <LandingTitle>
-                            {resource.NONPROFIT_WHAT_WE_CAN_DO_TITLE}
-                        </LandingTitle>
+                        <LandingTitle>What we can do for you</LandingTitle>
                         <HStack>
                             <VStack>
                                 {whatWeCanDoData.map((data, idx) => {
@@ -244,9 +252,7 @@ export default function Nonprofits() {
                 </Section>
                 <Section>
                     <SectionContent>
-                        <LandingTitle>
-                            {resource.NONPROFIT_PROCESS_TITLE}
-                        </LandingTitle>
+                        <LandingTitle>Our Process</LandingTitle>
                         <HStack>
                             <div style={{ width: "100%" }}>
                                 <VStack>
@@ -274,9 +280,22 @@ export default function Nonprofits() {
                                                 fontWeight: "bold",
                                             }}
                                         >
-                                            {resource.NONPROFIT_PROCESS_T4}
+                                            Product polish and hand-off
                                         </h5>
-                                        <p>{resource.NONPROFIT_PROCESS_D4}</p>
+                                        <p>
+                                            The last phase involves intensive
+                                            development. We make improvements on
+                                            the product based on the feedback
+                                            received from user testing. This
+                                            phase is designed to completely
+                                            finish the product so that it is
+                                            ready to be delivered to the
+                                            nonprofit. Upon completion, we meet
+                                            with the nonprofit to hand off the
+                                            product and to figure out how
+                                            maintenance of the product is to be
+                                            handled.
+                                        </p>
                                     </div>
                                     <Image
                                         src={criteriaGraphic}
@@ -291,9 +310,7 @@ export default function Nonprofits() {
                 </Section>
                 <Section>
                     <SectionContent>
-                        <LandingTitle>
-                            {resource.NONPROFIT_DECISION_CRITERIA_TITLE}
-                        </LandingTitle>
+                        <LandingTitle>Decision Criteria</LandingTitle>
                         <HStack>
                             {/* <div style={{position: "relative"}}> Figure out how to do this image */}
                             <Image
@@ -305,7 +322,8 @@ export default function Nonprofits() {
                             {/* </div> */}
                             <VStack>
                                 <DecisionCriteriaDescription>
-                                    {resource.NONPROFIT_DECISION_CRITERIA_DESC}
+                                    These are the primary criteria we use to
+                                    determine project fit:
                                 </DecisionCriteriaDescription>
                                 {criterion.map((data) => {
                                     return (
@@ -328,11 +346,13 @@ export default function Nonprofits() {
                         <HStack>
                             <VStack>
                                 <ContactUsDescription>
-                                    {resource.NONPROFIT_CONTACT_US_DESC}
+                                    {
+                                        "NEED HELP WITH YOUR NON PROFIT AND DO NOT KNOW WHERE TO START?"
+                                    }
                                 </ContactUsDescription>
                                 <div style={{ padding: "25px 0" }}>
                                     <Button type="primaryDark" to="/contact">
-                                        {resource.NONPROFIT_CONTACT_US_BUTTON}
+                                        {"Contact Us"}
                                     </Button>
                                 </div>
                             </VStack>
@@ -346,9 +366,7 @@ export default function Nonprofits() {
                 </Section>
                 <Section>
                     <SectionContent>
-                        <LandingTitle>
-                            {resource.NONPROFIT_FAQ_TITLE}
-                        </LandingTitle>
+                        <LandingTitle>{"FAQ"}</LandingTitle>
                         <ControlledAccordions data={faq} />
                     </SectionContent>
                 </Section>
