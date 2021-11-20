@@ -34,7 +34,7 @@ h2 {
   font-family: 'Poppins', sans-serif;
   font-size: 44px;
   line-height: 66px;
-  font-weight: 500;
+  font-weight: 600;
 }
 h3 {
   font-family: 'Poppins', sans-serif;
