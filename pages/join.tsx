@@ -1,10 +1,10 @@
 import React from "react";
 import Head from "next/head";
-import { JoinOurTeam } from "@components/Join/JoinOurTeam";
-import { WhyJoin } from "@components/Join/WhyJoin";
-import { WhatWeLookFor } from "@components/Join/WhatWeLookFor";
-import { DoForYou } from "@components/Join/DoForYou";
-import { FAQ } from "@components/Join/FAQ";
+import { JoinOurTeam } from "@components/JoinPage/JoinOurTeam";
+import { WhyJoin } from "@components/JoinPage/WhyJoin";
+import { WhatWeLookFor } from "@components/JoinPage/WhatWeLookFor";
+import { DoForYou } from "@components/JoinPage/DoForYou";
+import { FAQ } from "@components/JoinPage/FAQ";
 
 import Image from "next/image";
 import styled from "styled-components";
