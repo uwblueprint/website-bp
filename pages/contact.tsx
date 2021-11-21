@@ -26,27 +26,11 @@ const Container = styled.div`
   flex-direction: row;
   margin-left: 15%;
   margin-right: 15%;
-  // @include respond(tab-port) {
-  //   flex-direction: column;
-  //   margin-left: 10px;
-  //   margin-right: 10px;
-  // }
-  // @include respond(phone) {
-  //   flex-direction: column;
-  //   margin-left: 10px;
-  //   margin-right: 10px;
-  // }
 `;
 
 const LeftContainer = styled.div`
   margin-right: 15%;
   width: 50%;
-  // @include respond(tab-port) {
-  //   width: 100%;
-  // }
-  // @include respond(phone) {
-  //   width: 100%;
-  // }
 `;
 
 const RightContainer = styled.div`
