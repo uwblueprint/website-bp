@@ -12,13 +12,13 @@ This project was generated with [superplate](https://github.com/pankod/superplat
    framework
 2. Service: [Netlify](https://www.netlify.com/) for deployment
 
+Please see [Blueprint Notion](https://www.notion.so/uwblueprintexecs/Website-Revamp-894519a7c3a34a419644df8b06e0e30e) for complete list of documentation.
+
 ## Local Dependencies
 
 1. [Yarn](https://classic.yarnpkg.com/en/docs/install)
 
 ## Run Locally
-
-Reset your database on Heroku and then deploy your database schema run (one-time):
 
 ### Running the development server.
 
@@ -51,4 +51,4 @@ Deployments occur automatically on push to main branch and any PRs through [Netl
 
 ## License
 
-MIT
+[MIT](LICENSE)
