@@ -1,15 +1,15 @@
 import React from "react";
 import Head from "next/head";
-import { JoinOurTeam } from "@components/JoinPage/JoinOurTeam";
-import { WhyJoin } from "@components/JoinPage/WhyJoin";
-import { WhatWeLookFor } from "@components/JoinPage/WhatWeLookFor";
-import { DoForYou } from "@components/JoinPage/DoForYou";
-import { FAQ } from "@components/JoinPage/FAQ";
+import { AlumniLanding } from "@components/AlumniPage/AlumniLanding";
+import { AlumniBlurb } from "@components/AlumniPage/AlumniBlurb";
 
 import Image from "next/image";
-import styled from "styled-components";
 
-const joinCarousel = "/join/join-carousel-photo-2.png";
+import styled from "styled-components";
+import { TeamButton } from "@components/AlumniPage/TeamButton";
+
+const teamLeftGear = "/alumni/alumni-team-bgleft.svg";
+const teamRightLines = "/alumni/alumni-team-bgright.svg";
 
 const CenterImage = styled.div`
   // width: 50%;
@@ -40,42 +40,37 @@ const SectionContent = styled.div`
   padding: 0px 225px;
 `;
 
-export default function Join(): JSX.Element {
+export default function Alumni(): JSX.Element {
   //Temporary inline styling. Should be changed when real code is added
   return (
     <div>
       <Head>
-        <title>UW Blueprint {"|"} Join</title>
+        <title>UW Blueprint {"|"} Alumni</title>
       </Head>
       <Container>
         <Section>
-          <JoinOurTeam />
+          <AlumniLanding />
         </Section>
         <Section>
           <SectionContent>
-            <WhyJoin />
-          </SectionContent>
-        </Section>
-        <Section>
-          <CenterImage>
-            <Image src={joinCarousel} width="1081vw" height="443vh" />
-          </CenterImage>
-        </Section>
-        <Section>
-          <SectionContent>
-            <WhatWeLookFor />
+            <AlumniBlurb />
           </SectionContent>
         </Section>
         <Section>
           <SectionContent>
-            <DoForYou />
+            <TeamButton />
           </SectionContent>
         </Section>
-        <Section>
-          <SectionContent>
-            <FAQ />
-          </SectionContent>
-        </Section>
+        {/*<Section>
+            <CenterImage>
+              <Image src={joinCarousel} width="1081vw" height="443vh" />
+            </CenterImage>
+          </Section>
+          <Section>
+            <SectionContent>
+              <FAQ />
+            </SectionContent>
+          </Section> */}
       </Container>
     </div>
   );

@@ -36,14 +36,15 @@
       ],
       "@public": [
         "public"
-    //   ],
-    //   "@styled-components": [
-    //     "types/styled-components"
-    //   ],
-    //   "@styled-components/*": [
-    //     "types/styled-components/*"
+        //   ],
+        //   "@styled-components": [
+        //     "types/styled-components"
+        //   ],
+        //   "@styled-components/*": [
+        //     "types/styled-components/*"
       ]
-    }
+    },
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",

@@ -132,8 +132,8 @@ const Footer = () => {
     {
       name: "Students",
       children: [
-        { name: "Meet the Team", link: "/" },
-        { name: "Alumni", link: "/" },
+        { name: "Meet the Team", link: "/students" },
+        { name: "Alumni", link: "/alumni" },
       ],
       link: "/students",
     },
