@@ -5,6 +5,9 @@ import styled from "styled-components";
 
 import { HStack } from "components/Layout";
 
+const landingSplash = "/join/join-landing-background.svg";
+const landingGraphic = "/join/join-landing-graphic.svg";
+
 const LandingContent = styled.div`
   width: 50%;
   height: 100vh;
@@ -26,9 +29,6 @@ const LandingText = styled.h5`
 const ButtonContainer = styled.div`
   padding: 25px 0;
 `;
-
-const landingSplash = "/join/join-landing-background.svg";
-const landingGraphic = "/join/join-landing-graphic.svg";
 
 export const JoinOurTeam: React.FC = () => {
   return (

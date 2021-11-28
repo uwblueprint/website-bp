@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { HStack, VStack } from "components/Layout";
 import { SectionTitle } from "components/common/Typography";
 
+const lookGraphic = "/join/join-look-graphic.svg";
+
 const Description = styled.p`
   padding: 10px 0px;
 `;
@@ -13,8 +15,6 @@ const Title = styled.h6`
   color: ${(props) => props.theme.colors.B10};
   font-weight: 600;
 `;
-
-const lookGraphic = "/join/join-look-graphic.svg";
 
 const teamFitData = [
   {
