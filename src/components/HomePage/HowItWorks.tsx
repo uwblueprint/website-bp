@@ -1,9 +1,11 @@
 import React from "react";
+import Image from "next/image";
 import styled from "styled-components";
 
-import { HowItWorksGraphic } from "components/common/landing-page/HowItWorksGraphics";
 import { SectionTitle } from "components/common/Typography";
 import { VStack, HStack } from "components/Layout";
+
+const howItWorksGraphic = "/home/home-how-it-works-graphic.svg";
 
 const SectionLine = styled.hr`
   width: 15%;
@@ -59,6 +61,7 @@ const HowItWorksLearnMore = styled.p`
 
 const HowItWorksGraphicContainer = styled.div`
   margin-top: 30px;
+  margin-bottom: 40px;
 `;
 
 export const HowItWorks: React.FC = () => {
@@ -68,7 +71,7 @@ export const HowItWorks: React.FC = () => {
         <SectionTitle>How It Works</SectionTitle>
         <SectionLine />
         <HowItWorksGraphicContainer>
-          <HowItWorksGraphic />
+          <Image src={howItWorksGraphic} width="590" height="287" />
         </HowItWorksGraphicContainer>
         <HowItWorksHStack>
           <VStack>

@@ -10,19 +10,13 @@ import { Demo } from "@components/HomePage/Demo";
 
 import styled from "styled-components";
 
-import {
-  ImpactLeftGear,
-  ImpactRightGear,
-} from "components/common/landing-page/ImpactGraphics";
-import {
-  HowItWorksBg1,
-  HowItWorksBg2,
-} from "components/common/landing-page/HowItWorksGraphics";
-import {
-  DemoLeftGear,
-  DemoRightGear,
-} from "../components/common/landing-page/DemoGraphics";
 const landingSplash = "/home/home-landing-graphic.svg";
+const impactLeftGear = "/home/home-impact-left-gear.svg";
+const impactRightGear = "/home/home-impact-right-gear.svg";
+const howItWorksBg1 = "/home/home-how-it-works-bg1.svg";
+const howItWorksBg2 = "/home/home-how-it-works-bg2.svg";
+const demoLeftGear = "/home/home-demo-left-gear.svg";
+const demoRightGear = "/home/home-demo-right-gear.svg";
 
 /* Styling */
 const Container = styled.div`
@@ -52,15 +46,19 @@ const Container = styled.div`
 
   & > div.howItWorksBg1Wrapper {
     position: absolute;
-    top: 1800px;
+    top: 1850px;
     left: 0;
     right: 0;
+    height: 75%;
     z-index: -1;
   }
 
   & > div.howItWorksBg2Wrapper {
     position: absolute;
     top: 2180px;
+    left: 0;
+    right: 0;
+    height: 35%;
     z-index: -1;
   }
 
@@ -92,25 +90,25 @@ const Home: React.FC = () => {
         </div>
         <Landing />
         <div className="impactLeftGearWrapper">
-          <ImpactLeftGear />
+          <Image src={impactLeftGear} height={1000} width={1381} />
         </div>
         <div className="impactRightGearWrapper">
-          <ImpactRightGear />
+          <Image src={impactRightGear} height={524} width={331} />
         </div>
         <Mission />
         <Impact />
         <div className="howItWorksBg1Wrapper">
-          <HowItWorksBg1 />
+          <Image src={howItWorksBg1} layout="fill" objectFit="cover" />
         </div>
         <div className="howItWorksBg2Wrapper">
-          <HowItWorksBg2 />
+          <Image src={howItWorksBg2} layout="fill" objectFit="cover" />
         </div>
         <HowItWorks />
         <div className="demoLeftGearWrapper">
-          <DemoLeftGear />
+          <Image src={demoLeftGear} height={167} width={574} />
         </div>
         <div className="demoRightGearWrapper">
-          <DemoRightGear />
+          <Image src={demoRightGear} height={1000} width={1440} />
         </div>
         <Demo />
       </Container>

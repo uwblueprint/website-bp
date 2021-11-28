@@ -12,7 +12,7 @@ const SectionLine = styled.hr`
 `;
 
 const ImpactContainer = styled.div`
-  margin-top: 95px;
+  margin-top: 27%;
 `;
 
 const ImpactStatContainer = styled(HStack)`
