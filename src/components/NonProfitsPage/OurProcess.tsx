@@ -11,29 +11,49 @@ const processData = [
   {
     title: "PHASE ONE",
     explanation: "Nonprofit/team lead project discussion",
+    expansion:
+      "We work with the nonprofit tos understand the project in great depth and scope out the minimum viable product (MVP). Once we agree on the MVP, the project lead will write up a statement of work to be shared with the nonprofit.",
   },
   {
     title: "PHASE TWO",
     explanation: "Building the Minimum Viable Product (MVP)",
+    expansion:
+      "During this phase, we work hard to get the MVP up and running. We will consistently stay in touch with the nonprofit to ensure that the development phase goes smoothly and to also make sure that we are always in sync with the nonprofit.",
   },
   {
     title: "PHASE THREE",
     explanation: "User Testing",
+    expansion:
+      "During this phase, we release the MVP to see how the product is received. Any critical problems that break the product are fixed immediately. Additionally, we will take note of any bugs, UX issues, and feature requests during this time.",
   },
   {
     title: "PHASE THREE",
     explanation: "Product polish and hand-off",
+    expansion:
+      "The last phase involves intensive development. We make improvements on the product based on the feedback received from user testing. This phase is designed to completely finish the product so that it is ready to be delivered to the nonprofit. Upon completion, we meet with the nonprofit to hand off the product and to figure out how maintenance of the product is to be handled.",
   },
 ];
 
-const InactivePhaseDiv = styled.div`
+const PhaseDiv = styled.div`
   padding: 20px 0 15px 0;
+
+  transition: transform 0.3s ease;
+
+  :hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+    transform: translateY(-5px);
+    cursor: pointer;
+  }
+`;
+
+const InactivePhaseDiv = styled(PhaseDiv)`
   color: ${(props) => props.theme.colors.B50};
 `;
 
-const ActivePhaseDiv = styled.div`
+const ActivePhaseDiv = styled(PhaseDiv)`
   backgroundcolor: "black";
-  padding: 20px 0 15px 0;
   color: ${(props) => props.theme.colors.B10};
 `;
 
@@ -59,6 +79,8 @@ const ProcessLeftSection = styled.div`
 `;
 
 export const OurProcess: React.FC = () => {
+  const [focus, setFocus] = React.useState(0);
+
   return (
     <>
       <SectionTitle>Our Process</SectionTitle>
@@ -66,16 +88,16 @@ export const OurProcess: React.FC = () => {
         <ProcessLeftSection>
           <VStack>
             {processData.map((data, idx) => {
-              return idx < 3 ? (
-                <InactivePhaseDiv>
-                  <h4>{data.title}</h4>
-                  <h6>{data.explanation}</h6>
-                </InactivePhaseDiv>
-              ) : (
-                <ActivePhaseDiv>
+              return idx == focus ? (
+                <ActivePhaseDiv onClick={() => setFocus(idx)}>
                   <h4>{data.title}</h4>
                   <h6>{data.explanation}</h6>
                 </ActivePhaseDiv>
+              ) : (
+                <InactivePhaseDiv onClick={() => setFocus(idx)}>
+                  <h4>{data.title}</h4>
+                  <h6>{data.explanation}</h6>
+                </InactivePhaseDiv>
               );
             })}
           </VStack>
@@ -84,17 +106,9 @@ export const OurProcess: React.FC = () => {
           <HStack>
             <ProcessContentSection>
               <ProcessContentTitle>
-                Product polish and hand-off
+                {processData[focus].explanation}
               </ProcessContentTitle>
-              <p>
-                The last phase involves intensive development. We make
-                improvements on the product based on the feedback received from
-                user testing. This phase is designed to completely finish the
-                product so that it is ready to be delivered to the nonprofit.
-                Upon completion, we meet with the nonprofit to hand off the
-                product and to figure out how maintenance of the product is to
-                be handled.
-              </p>
+              <p>{processData[focus].expansion}</p>
             </ProcessContentSection>
             <Image
               src={criteriaGraphic}
