@@ -9,6 +9,7 @@ const ColoredDate = styled.span`
   color: ${(props) => props.theme.colors.B10};
 `;
 
+// TODO: Move the dates to a global level, maybe throw these objects into the resource file
 const dates = {
   applicationOpen: <ColoredDate>Mar 6 2021 00:00:00 EST</ColoredDate>,
   applicationClose: <ColoredDate>Mar 19 2021 23:59:59 EDT.</ColoredDate>,

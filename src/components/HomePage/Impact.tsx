@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import { HStack } from "components/Layout";
-import { SectionTitle } from "components/common/Typography";
 
 const SectionLine = styled.hr`
   width: 15%;
@@ -42,6 +41,11 @@ const ImpactStatSmallNum = styled.h2`
 
 const ImpactStatDescription = styled.h6`
   font-weight: 600;
+`;
+
+const SectionTitle = styled.h2`
+  color: ${(props) => props.theme.colors.B10};
+  text-align: center;
 `;
 
 export const Impact: React.FC = () => {
