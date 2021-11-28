@@ -79,7 +79,7 @@ const ProcessLeftSection = styled.div`
 `;
 
 export const OurProcess: React.FC = () => {
-  const [focus, setFocus] = React.useState(0);
+  const [focused, setFocused] = React.useState(0);
 
   return (
     <>
@@ -88,13 +88,13 @@ export const OurProcess: React.FC = () => {
         <ProcessLeftSection>
           <VStack>
             {processData.map((data, idx) => {
-              return idx == focus ? (
-                <ActivePhaseDiv onClick={() => setFocus(idx)}>
+              return idx == focused ? (
+                <ActivePhaseDiv onClick={() => setFocused(idx)}>
                   <h4>{data.title}</h4>
                   <h6>{data.explanation}</h6>
                 </ActivePhaseDiv>
               ) : (
-                <InactivePhaseDiv onClick={() => setFocus(idx)}>
+                <InactivePhaseDiv onClick={() => setFocused(idx)}>
                   <h4>{data.title}</h4>
                   <h6>{data.explanation}</h6>
                 </InactivePhaseDiv>
@@ -106,9 +106,9 @@ export const OurProcess: React.FC = () => {
           <HStack>
             <ProcessContentSection>
               <ProcessContentTitle>
-                {processData[focus].explanation}
+                {processData[focused].explanation}
               </ProcessContentTitle>
-              <p>{processData[focus].expansion}</p>
+              <p>{processData[focused].expansion}</p>
             </ProcessContentSection>
             <Image
               src={criteriaGraphic}
