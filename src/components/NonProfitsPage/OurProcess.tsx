@@ -12,7 +12,7 @@ const processData = [
     title: "PHASE ONE",
     explanation: "Nonprofit/team lead project discussion",
     expansion:
-      "We work with the nonprofit tos understand the project in great depth and scope out the minimum viable product (MVP). Once we agree on the MVP, the project lead will write up a statement of work to be shared with the nonprofit.",
+      "We work with the nonprofit to understand the project in great depth and scope out the minimum viable product (MVP). Once we agree on the MVP, the project lead will write up a statement of work to be shared with the nonprofit.",
   },
   {
     title: "PHASE TWO",
