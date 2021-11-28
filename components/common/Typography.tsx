@@ -58,3 +58,7 @@ export const Body = styled.p`
     font-weight: 400;
   }
 `;
+
+export const SectionTitle = styled.h2`
+  color: ${(props) => props.theme.colors.B10};
+`;
