@@ -54,7 +54,7 @@ export const Landing: React.FC = () => {
             technical problems for nonprofit organizations - all free of charge.
           </LandingText>
           <ButtonContainer>
-            <Button type="primaryDark" to="/contact">
+            <Button type="primaryDark" to="/nonprofits">
               Contact us!
             </Button>
           </ButtonContainer>
