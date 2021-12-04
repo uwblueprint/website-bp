@@ -17,12 +17,12 @@ const dates = {
   decision: <ColoredDate>Mar 19 2021 23:59:59 EDT.</ColoredDate>,
 };
 
-const DoForYouSection = styled.div`
+const ProcessSection = styled.div`
   width: 25%;
   padding: 25px;
 `;
 
-const DoForYouTitle = styled.h6`
+const ProcessTitle = styled.h6`
   fontweight: 600;
 `;
 
@@ -75,20 +75,20 @@ const processData = [
   },
 ];
 
-export const DoForYou: React.FC = () => {
+export const OurProcess: React.FC = () => {
   return (
     <>
-      <SectionTitle>What we can do for you</SectionTitle>
+      <SectionTitle>Our Process</SectionTitle>
       <HStack>
         {processData.map((e, idx) => {
           return (
-            <DoForYouSection>
+            <ProcessSection>
               <VStack>
                 <SectionTitle>{idx + 1}</SectionTitle>
-                <DoForYouTitle>{e.title}</DoForYouTitle>
+                <ProcessTitle>{e.title}</ProcessTitle>
                 <p>{e.descripton}</p>
               </VStack>
-            </DoForYouSection>
+            </ProcessSection>
           );
         })}
       </HStack>

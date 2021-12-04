@@ -3,7 +3,7 @@ import Head from "next/head";
 import { JoinOurTeam } from "@components/JoinPage/JoinOurTeam";
 import { WhyJoin } from "@components/JoinPage/WhyJoin";
 import { WhatWeLookFor } from "@components/JoinPage/WhatWeLookFor";
-import { DoForYou } from "@components/JoinPage/DoForYou";
+import { OurProcess } from "@components/JoinPage/OurProcess";
 import { FAQ } from "@components/JoinPage/FAQ";
 
 import Image from "next/image";
@@ -68,7 +68,7 @@ export default function Nonprofits(): JSX.Element {
         </Section>
         <Section>
           <SectionContent>
-            <DoForYou />
+            <OurProcess />
           </SectionContent>
         </Section>
         <Section>
