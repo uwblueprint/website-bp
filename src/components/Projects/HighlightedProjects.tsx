@@ -123,17 +123,7 @@ export const HighlightedProjects: React.FC = () => {
         <Title>Highlighted Projects</Title>
         <Cards>
           {featuredProjects.map((project) => (
-            <Project
-              {...project}
-              // name={project.name}
-              // timeline={project.timeline}
-              // about={project.about}
-              // solution={project.solution}
-              // quoteText={project.quoteText}
-              // quoteSpeaker={project.quoteSpeaker}
-              // thumbnail={project.thumbnail}
-              // image={project.image}
-            />
+            <Project {...project} />
           ))}
         </Cards>
       </ProjectSection>
