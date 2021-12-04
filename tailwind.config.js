@@ -1,16 +1,22 @@
 module.exports = {
+  mode: "jit",
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     colors: {
       transparent: "transparent",
       current: "currentColor",
+
       // Defined here: https://www.figma.com/file/xOu73pWJgkrezff9FKrD5E/Small-Projects?node-id=345%3A43
-      // Postfixed with an extra 0
-      // PRIMARY
+      // Colour variants are postfixed with an extra "0"
+
+      // PRIMARY COLOURS
       black: "#000000", // alias for charcoal-700
       white: "#FFFFFF", // alias for charcoal-0
+
+      // PRIMARY VARIANTS
       charcoal: {
+        DEFAULT: "#000000",
         0: "#FFFFFF",
         100: "#FAFAFA",
         200: "#EAEAEA",
@@ -87,7 +93,7 @@ module.exports = {
       },
 
       // RESPONSE
-      success: "#650A11",
+      success: "#A6D669",
       error: "#EF5D5D",
     },
   },
