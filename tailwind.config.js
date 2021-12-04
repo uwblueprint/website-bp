@@ -96,6 +96,10 @@ module.exports = {
       success: "#A6D669",
       error: "#EF5D5D",
     },
+    fontFamily: {
+      poppins: "Poppins, sans-serif",
+      source: "'Source Sans Pro', sans-serif",
+    },
   },
   variants: {
     extend: {},
