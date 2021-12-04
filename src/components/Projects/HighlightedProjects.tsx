@@ -4,13 +4,7 @@ import Modal from "react-modal";
 import Image from "next/image";
 import Button from "components/common/Button";
 
-import {
-  CenteredHStack,
-  CenteredVStack,
-  HStack,
-  VStack,
-} from "components/common/Layout";
-import { Console } from "console";
+import { CenteredVStack, HStack } from "components/common/Layout";
 
 const dancefestThumbnail = "/projects/projects-dancefest-thumbnail.png";
 const svpThumbnail = "/projects/projects-svp-thumbnail.png";
@@ -130,14 +124,15 @@ export const HighlightedProjects: React.FC = () => {
         <Cards>
           {featuredProjects.map((project) => (
             <Project
-              name={project.name}
-              timeline={project.timeline}
-              about={project.about}
-              solution={project.solution}
-              quoteText={project.quoteText}
-              quoteSpeaker={project.quoteSpeaker}
-              thumbnail={project.thumbnail}
-              image={project.image}
+              {...project}
+              // name={project.name}
+              // timeline={project.timeline}
+              // about={project.about}
+              // solution={project.solution}
+              // quoteText={project.quoteText}
+              // quoteSpeaker={project.quoteSpeaker}
+              // thumbnail={project.thumbnail}
+              // image={project.image}
             />
           ))}
         </Cards>
@@ -157,7 +152,19 @@ const customStyles = {
   },
 };
 
-const Project: React.FC = (props) => {
+// TODO: Move this to separate component
+interface ProjectProps {
+  name: string;
+  timeline: string;
+  about: string;
+  solution: string;
+  quoteText: string;
+  quoteSpeaker: string;
+  thumbnail: string;
+  image: string;
+}
+
+const Project: React.FC<ProjectProps> = (props) => {
   const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
@@ -193,10 +200,12 @@ const Project: React.FC = (props) => {
       <Modal isOpen={isOpen} style={customStyles}>
         <HStack>
           <Title>{props.name}</Title>
+          {/* TODO: Temporary button just to close modal*/}
           <Button
             onClick={() => {
               setOpen(false);
             }}
+            type="primaryLight"
           >
             X
           </Button>

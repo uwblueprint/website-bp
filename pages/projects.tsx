@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 import { Landing } from "@components/Projects/Landing";
 import { HighlightedProjects } from "@components/Projects/HighlightedProjects";
-import { OurProcess } from "@components/Projects/OurProcess";
 
 const Container = styled.div`
   width: 100vw;
@@ -41,11 +40,6 @@ export default function Nonprofits(): JSX.Element {
         </LandingSection>
         <Section>
           <HighlightedProjects />
-        </Section>
-        <Section>
-          <SectionContent>
-            <OurProcess />
-          </SectionContent>
         </Section>
       </Container>
     </div>
