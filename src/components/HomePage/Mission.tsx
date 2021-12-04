@@ -5,8 +5,8 @@ import styled from "styled-components";
 const landingWave = "/home/home-landing-wave.svg";
 
 const MissionContainer = styled.div`
-  height: 270px;
-  position: relative;
+  height: 35%;
+  position: absolute;
   display: flex;
   justify-content: center;
   & > div.landingWaveWrapper {
