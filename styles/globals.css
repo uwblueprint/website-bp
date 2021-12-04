@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Typography */
+  h1 {
+    @apply text-[58px] leading-[87px] font-medium font-poppins;
+  }
+
+  h2 {
+    @apply text-[44px] leading-[66px] font-semibold font-poppins;
+  }
+
+  h3 {
+    @apply text-[30px] leading-[45px] font-medium font-poppins;
+  }
+
+  h4 {
+    @apply text-[22px] leading-[33px] font-semibold font-poppins;
+  }
+
+  h5 {
+    @apply text-[18px] leading-[27px] font-medium font-poppins;
+  }
+
+  h6 {
+    @apply text-[16px] leading-[24px] font-semibold uppercase font-poppins;
+  }
+
+  button {
+    @apply text-[16px] leading-[20px] font-semibold font-source;
+  }
+
+  body,
+  p {
+    @apply text-[16px] leading-[20px] font-normal font-source;
+  }
+
+  /* TODO: Add Caption typography? */
+}

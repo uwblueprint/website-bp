@@ -5,9 +5,10 @@ import { ThemeProvider } from "styled-components";
 
 import GlobalStyle from "@styles/GlobalStyle";
 import { theme } from "@styles/Theme";
-
 import NavBar from "../components/navbar/NavBar";
 import Footer from "../components/footer/footer";
+
+import "@styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   React.useEffect(() => {
