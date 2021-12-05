@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { HStack } from "components/common/Layout";
+import { HStack } from "components/Layout";
 import styled from "styled-components";
 import Button from "@components/common/Button";
 

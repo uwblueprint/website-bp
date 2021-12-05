@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
 
-import { HStack, VStack } from "components/common/Layout";
+import { HStack, VStack } from "components/Layout";
 import { SectionTitle } from "components/common/Typography";
 
 const criteriaGraphic = "/nonprofits/nonprofits-criteria-graphic.svg";

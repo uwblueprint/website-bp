@@ -1,5 +1,5 @@
 import React from "react";
-import { HStack, VStack } from "components/common/Layout";
+import { HStack, VStack } from "components/Layout";
 import styled from "styled-components";
 import Button from "@components/common/Button";
 import Image from "next/image";
