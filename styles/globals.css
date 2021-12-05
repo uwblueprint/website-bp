@@ -28,10 +28,6 @@
     @apply text-[16px] leading-[24px] font-semibold uppercase font-poppins;
   }
 
-  button {
-    @apply text-[16px] leading-[20px] font-semibold font-source;
-  }
-
   body,
   p {
     @apply text-[16px] leading-[20px] font-normal font-source;

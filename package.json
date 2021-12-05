@@ -6,7 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint **/*.{js,jsx,ts,tsx}",
+    "lint": "yarn lint:prettier && yarn lint:eslint && yarn lint:tsc",
+    "lint:prettier": "prettier --check '**/*.{js,jsx,ts,tsx}'",
+    "lint:eslint": "eslint '**/*.{js,jsx,ts,tsx}' --cache --format stylish",
+    "lint:tsc": "tsc --noemit",
+    "fix": "yarn fix:eslint && yarn fix:prettier",
+    "fix:prettier": "prettier --write '**/*.{js,jsx,ts,tsx}'",
+    "fix:eslint": "eslint '**/*.{js,jsx,ts,tsx}' --format stylish --fix",
     "prettier": "prettier --write '**/*.{js,jsx,ts,tsx}'"
   },
   "dependencies": {
@@ -39,9 +45,8 @@
     "typescript": "^4.1.3"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "npm run lint -- --quiet --fix"
-    ]
+    "*.{ts,tsx}": "eslint --cache --fix",
+    "*.{ts,tsx,md}": "prettier --write"
   },
   "husky": {
     "hooks": {

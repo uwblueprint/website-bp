@@ -56,31 +56,11 @@ const Links = styled.div`
   }
 `;
 
-const Special = styled(Button)`
-  padding-top: 10px; //Join our team and for nonprofits button spacing
-  padding-bottom: 10px;
-  padding-left: 25px;
-  padding-right: 25px;
-  font-size: 14px;
-  font-weight: 500;
-
-  :hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    text-decoration-thickness: 2px;
-  }
-`;
-
 const Divider = styled.div`
   // Need special divider to prevent space buttons whitle preventing button area to increase (by changing padding or margin).
   width: 30px;
   height: auto;
   display: inline-block;
-`;
-
-const LinkButton = styled.div`
-  float: left;
-  padding-top: 10px;
 `;
 
 const NavbarDesktop = () => {
@@ -108,19 +88,14 @@ const NavbarDesktop = () => {
             <Link href={item.link}>{item.name}</Link>
           </Links>
         ))}
-        {/* Special Custom Linked Buttons for "Join Our Team" and "For Non-profits" */}
-        <LinkButton>
-          <Link href="/join">
-            <Special type="secondaryLight">Join Our Team!</Special>
-          </Link>
-          <Divider />
-        </LinkButton>
-        <LinkButton>
-          <Link href="/nonprofits">
-            <Special type="secondaryDark">For Nonprofits</Special>
-          </Link>
-          <Divider />
-        </LinkButton>
+        <Button size="md" variant="secondary" invert href="/join">
+          Join Our Team!
+        </Button>
+        <Divider />
+        <Button size="md" invert href="/nonprofits">
+          For Nonprofits
+        </Button>
+        <Divider />
       </LinkContainer>
     </Desktop>
   );

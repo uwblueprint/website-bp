@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "components/common/Button";
+import Button from "@components/common/Button";
 import styled from "styled-components";
 
 import { HStack } from "components/Layout";
@@ -11,23 +11,6 @@ const LandingContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
-
-const LandingButton = styled(Button)`
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 25px;
-  padding-right: 25px;
-  margin-right: 10px;
-  margin-left: 10px;
-  font-size: 14px;
-  font-weight: 500;
-
-  :hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    text-decoration-thickness: 2px;
-  }
 `;
 
 const LandingLogo = styled(Logo)`
@@ -58,12 +41,12 @@ export const Landing: React.FC = () => {
         </LandingTitle>
         <LandingText>tech for social good. built by students.</LandingText>
         <HStack>
-          <LandingButton type="secondaryLight" to="/join">
+          <Button variant="secondary" invert>
             See our work
-          </LandingButton>
-          <LandingButton type="secondaryLight" to="/join">
+          </Button>
+          <Button variant="secondary" invert href="/join">
             Join our team
-          </LandingButton>
+          </Button>
         </HStack>
       </LandingContainer>
     </>
