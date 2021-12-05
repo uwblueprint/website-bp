@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { HStack } from "components/common/Layout";
 import styled from "styled-components";
-import Button from "components/common/Button";
+import Button from "@components/common/Button";
 
 const landingSplash = "/nonprofits/nonprofits-landing-bg.svg";
 const landingHeroes = "/nonprofits/nonprofits-landing-graphic.svg";
@@ -54,9 +54,7 @@ export const Landing: React.FC = () => {
             technical problems for nonprofit organizations - all free of charge.
           </LandingText>
           <ButtonContainer>
-            <Button type="primaryDark" to="/contact">
-              Contact us!
-            </Button>
+            <Button href="/contact">Contact us!</Button>
           </ButtonContainer>
         </LandingContent>
         <Image src={landingHeroes} width="2000vw" height="1000vh" />

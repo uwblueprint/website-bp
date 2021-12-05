@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Button from "components/common/Button";
+import Button from "@components/common/Button";
 import styled from "styled-components";
 
 import { HStack } from "components/Layout";
@@ -53,7 +53,7 @@ export const JoinOurTeam: React.FC = () => {
             dedicated to building technology for social good.
           </LandingText>
           <ButtonContainer>
-            <Button type="secondaryLight" to="/contact">
+            <Button variant="secondary" invert href="/contact">
               Apply Now
             </Button>
           </ButtonContainer>

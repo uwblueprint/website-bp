@@ -1,57 +1,75 @@
-import React from "react";
-import styled from "styled-components";
+import { FC, ButtonHTMLAttributes } from "react";
+import Link from "next/link";
 
-//Need to provide type for tsx component properties specifically
-interface ButtonProps {
-  onClick?: () => void;
-  className?: string;
-  children: string;
-  type: string;
-  to?: string;
-}
+type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
+  readonly size?: "md" | "lg";
+  readonly variant?: "primary" | "secondary";
+  /** Whether to invert the background and text/border colors, use depending on surrounding elements */
+  readonly invert?: boolean;
+  readonly href?: string;
+};
 
-const _Button = styled.a`
-  font-family: Poppins;
-  font-size: 16px;
-  line-height: 20.11px;
-  font-weight: 600;
-  padding: 10px 25px 10px 25px;
-
-  border-radius: 20px;
-  border: 2px solid;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-
-  border-color: ${(p) => p.theme.button[p.type ?? "primaryDark"].outline};
-  background-color: ${(p) => p.theme.button[p.type ?? "primaryDark"].fill};
-  color: ${(p) => p.theme.button[p.type ?? "primaryDark"].text};
-
-  a {
-    color: ${(p) => p.theme.button[p.type ?? "primaryDark"].text};
-  }
-
-  //Button hover movement animation
-  :hover {
-    transform: translateY(-1px);
-    opacity: 80%;
-  }
-
-  :focus {
-    outline: none;
-    box-shadow: none;
-  }
-`;
-
-export default function Button({
-  onClick,
+/** Button component */
+const Button: FC<Props> = ({
   children,
-  type,
-  to,
   className,
-}: ButtonProps): JSX.Element {
-  return (
-    <_Button className={className} onClick={onClick} type={type} href={to}>
+  size = "lg",
+  variant = "primary",
+  invert = false,
+  href,
+  ...props
+}) => {
+  // Classnames for border, background, text styles
+  let classes: string;
+
+  if (invert) {
+    switch (variant) {
+      case "primary":
+        // White border, white background, blue text
+        classes = `border-white bg-white text-blue`;
+        break;
+      case "secondary":
+        // White border, blue background, white text
+        classes = `border-white bg-blue text-white`;
+        break;
+    }
+  } else {
+    switch (variant) {
+      case "primary":
+        // Blue border, blue background, white text
+        classes = `border-blue bg-blue text-white`;
+        break;
+      case "secondary":
+        // Blue border, white background, blue text
+        classes = `border-blue bg-white text-blue`;
+        break;
+    }
+  }
+
+  const buttonClasses = `
+    ${classes}
+    ${
+      size === "lg"
+        ? "h-[50px] text-base font-semibold"
+        : "h-10 text-sm font-normal"
+    }
+    font-poppins px-8 border-2 border-solid rounded-full text-base hover:opacity-80 disabled:opacity-80
+    ${className}
+  `;
+
+  return href ? (
+    <Link href={href}>
+      <a>
+        <button className={buttonClasses} {...props}>
+          {children}
+        </button>
+      </a>
+    </Link>
+  ) : (
+    <button className={buttonClasses} {...props}>
       {children}
-    </_Button>
+    </button>
   );
-}
+};
+
+export default Button;
