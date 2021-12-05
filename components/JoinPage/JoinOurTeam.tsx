@@ -3,7 +3,7 @@ import Image from "next/image";
 import Button from "@components/common/Button";
 import styled from "styled-components";
 
-import { HStack } from "components/Layout";
+import { HStack } from "@components/Layout";
 
 const landingSplash = "/join/join-landing-background.svg";
 const landingGraphic = "/join/join-landing-graphic.svg";

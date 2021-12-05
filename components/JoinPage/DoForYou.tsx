@@ -2,7 +2,7 @@ import React from "react";
 import Links from "components/common/Links";
 import styled from "styled-components";
 
-import { HStack, VStack } from "components/Layout";
+import { HStack, VStack } from "@components/Layout";
 import { SectionTitle } from "components/common/Typography";
 
 const ColoredDate = styled.span`

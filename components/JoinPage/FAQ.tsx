@@ -2,7 +2,7 @@ import React from "react";
 import ControlledAccordions from "components/common/Accordion";
 import styled from "styled-components";
 
-import { HStack } from "components/Layout";
+import { HStack } from "@components/Layout";
 import { SectionTitle } from "components/common/Typography";
 
 const FaqAccordion = styled.div`
