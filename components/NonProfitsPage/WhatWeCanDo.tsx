@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { HStack, VStack } from "components/common/Layout";
+import { HStack, VStack } from "components/Layout";
 import { SectionTitle } from "components/common/Typography";
 
 const whatWeCanDoData = [

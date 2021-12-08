@@ -28,10 +28,19 @@
     @apply text-[16px] leading-[24px] font-semibold uppercase font-poppins;
   }
 
-  body,
   p {
     @apply text-[16px] leading-[20px] font-normal font-source;
   }
 
   /* TODO: Add Caption typography? */
+
+  /* Layout */
+  body {
+    /*
+      Use position: relative so that width: 100% on
+      absolutely positioned elements causes them to
+      span the viewport width
+    */
+    @apply relative;
+  }
 }

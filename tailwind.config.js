@@ -36,9 +36,9 @@ module.exports = {
       sky: {
         DEFAULT: "#E0F0FF",
         100: "#E0F0FF",
-        200: "BDDEFF",
-        300: "99CEFF",
-        400: "7EB9F0",
+        200: "#BDDEFF",
+        300: "#99CEFF",
+        400: "#7EB9F0",
       },
 
       // SECONDARY

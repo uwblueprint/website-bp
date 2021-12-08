@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { HStack, VStack } from "components/Layout";
+import { HStack, VStack } from "@components/Layout";
 import { SectionTitle } from "components/common/Typography";
 
 const Description = styled.p`
