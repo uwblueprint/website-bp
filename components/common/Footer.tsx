@@ -1,4 +1,10 @@
 import { FC } from "react";
+import {
+  INSTAGRAM_URL,
+  FACEBOOK_URL,
+  LINKEDIN_URL,
+  MEDIUM_URL,
+} from "@constants/social-media";
 
 const LINKS = [
   {
@@ -67,32 +73,32 @@ const Footer: FC = () => {
               <h5 className="text-white">info@uwblueprint.org</h5>
             </a>
             <div className="flex items-center gap-2">
-              <a href="/">
+              <a href={INSTAGRAM_URL} target="_blank">
                 <img
                   className="h-6 w-6"
                   src="/common/instagram-logo.svg"
-                  alt="instagram"
+                  alt="Instagram logo"
                 />
               </a>
-              <a href="/">
+              <a href={MEDIUM_URL} target="_blank">
                 <img
                   className="h-6 w-6"
                   src="/common/medium-logo.svg"
-                  alt="medium"
+                  alt="Medium logo"
                 />
               </a>
-              <a href="/">
+              <a href={FACEBOOK_URL} target="_blank">
                 <img
                   className="h-6 w-6"
                   src="/common/facebook-logo.svg"
-                  alt="facebook"
+                  alt="Facebook logo"
                 />
               </a>
-              <a href="/">
+              <a href={LINKEDIN_URL} target="_blank">
                 <img
                   className="h-6 w-6"
                   src="/common/linkedin-logo.svg"
-                  alt="linkedin"
+                  alt="LinkedIn logo"
                 />
               </a>
             </div>

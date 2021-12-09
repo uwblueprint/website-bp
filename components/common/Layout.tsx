@@ -5,10 +5,15 @@ import Footer from "@components/common/Footer";
 
 type Props = {
   readonly title?: string;
+  readonly hideFooter?: boolean;
 };
 
 /** Layout component */
-const Layout: FC<Props> = ({ children, title = "UW Blueprint" }) => {
+const Layout: FC<Props> = ({
+  children,
+  title = "UW Blueprint",
+  hideFooter = false,
+}) => {
   return (
     <>
       <Head>
@@ -16,7 +21,7 @@ const Layout: FC<Props> = ({ children, title = "UW Blueprint" }) => {
       </Head>
       <Navbar />
       <div className="min-h-screen">{children}</div>
-      <Footer />
+      {!hideFooter && <Footer />}
     </>
   );
 };
