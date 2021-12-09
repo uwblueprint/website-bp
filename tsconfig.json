@@ -16,9 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["components/*"],
+      "@constants/*": ["constants/*"],
       "@styles/*": ["styles/*"],
-      "@tools/*": ["tools/*"],
-      "@public/*": ["public/*"] // TODO: Remove
+      "@tools/*": ["tools/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
