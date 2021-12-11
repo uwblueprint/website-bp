@@ -16,7 +16,7 @@ const Navbar: FC = () => {
       <div className="flex flex-col justify-center">
         <Link href="/">
           <a>
-            <img src="/common/logo.svg" alt="UW Blueprint logo" />
+            <img src="/common/logo-with-text.svg" alt="UW Blueprint logo" />
           </a>
         </Link>
       </div>

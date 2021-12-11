@@ -66,7 +66,11 @@ const Footer: FC = () => {
       <div className="flex justify-center items-stretch gap-24">
         {/* Logo, social media links */}
         <div className="relative flex flex-col justify-between items-start">
-          <img className="h-7" src="/common/logo.svg" alt="UW Blueprint logo" />
+          <img
+            className="h-7"
+            src="/common/logo-with-text.svg"
+            alt="UW Blueprint logo"
+          />
           <img src="/footer/say-hello.svg" alt="Don't be shy, say hello" />
           <div className="absolute bottom-0 right-0 flex flex-col gap-4">
             <a href="mailto:info@uwblueprint.org">
