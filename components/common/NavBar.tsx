@@ -12,7 +12,7 @@ const ROUTES = [
 /** Navbar */
 const Navbar: FC = () => {
   return (
-    <nav className="w-full absolute z-50 flex justify-between p-6 box-border">
+    <nav className="w-full absolute z-20 flex justify-between p-6 box-border">
       <div className="flex flex-col justify-center">
         <Link href="/">
           <a>
