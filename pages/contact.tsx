@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { NextPage } from "next";
 import Layout from "@components/common/Layout";
 import {
   INSTAGRAM_URL,
@@ -8,7 +8,7 @@ import {
 } from "@constants/social-media";
 
 /** Contact us page */
-const Contact: FC = () => {
+const Contact: NextPage = () => {
   return (
     <Layout hideFooter>
       <div className="h-screen w-full flex justify-center items-center gap-6 px-4 bg-gradient-to-tr from-blue to-[#1D8AFF]">
