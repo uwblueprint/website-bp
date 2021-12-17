@@ -12,10 +12,13 @@ const About: NextPage = () => {
       <main className="flex justify-center">
         <div className="max-w-6xl flex flex-col items-center">
           {/* Our Mission section */}
-          <section className="h-80 max-w-xl flex flex-col items-center mb-8 pt-10">
+          <section
+            className="h-80 w-full flex flex-col items-center mb-8 pt-10 bg-no-repeat bg-top"
+            style={{ backgroundImage: "url('/about/mission-background.svg')" }}
+          >
             <h2 className="text-blue">Our Mission</h2>
             <hr className="w-20 mt-3 mb-8 text-blue" />
-            <p className="text-lg font-light font-poppins italic">
+            <p className="max-w-xl text-lg font-light font-poppins italic">
               Blueprint strives to make technology accessible and useful for
               those who create communities and promote public welfare.
             </p>
