@@ -1,15 +1,6 @@
 import React from "react";
-import { Student } from "common/Student";
-
-const StudentProfile = ({ name, position, profile }: Student): JSX.Element => {
-  return (
-    <figure key={`${name}:${position}`} className="flex flex-col items-center">
-      <img className="rounded-full w-32" src={profile.toString()} />
-      <p>{name}</p>
-      <p>{position}</p>
-    </figure>
-  );
-};
+import { Student } from "@components/members/students/types";
+import { Avatar } from "@components/members/Avatar";
 
 export const List: React.FC<{ students: Student[] }> = ({ students }) => {
   return (
@@ -27,7 +18,7 @@ export const List: React.FC<{ students: Student[] }> = ({ students }) => {
           <h4 className="text-blue mb-8">Executive Team</h4>
           <div className="grid grid-cols-6 gap-y-12">
             {students.map((student) => (
-              <StudentProfile {...student} />
+              <Avatar {...student} />
             ))}
           </div>
         </div>

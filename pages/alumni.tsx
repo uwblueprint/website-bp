@@ -1,12 +1,12 @@
 import React from "react";
 
-import { Hero } from "@components/alumni/Hero";
-import { List } from "@components/alumni/List";
-import { ToStudents } from "@components/alumni/ToStudents";
+import { Hero } from "@components/members/alumni/Hero";
+import { List } from "@components/members/alumni/List";
+import { ToStudents } from "@components/members/alumni/ToStudents";
 
 import Layout from "@components/common/Layout";
 import { GetStaticProps } from "next";
-import { Student } from "common/Student";
+import { Student } from "@components/members/students/types";
 
 const teamLeftLines = "/students/students-team-bgleft.svg";
 const teamLeftGear = "/alumni/alumni-team-bgleft.svg";
