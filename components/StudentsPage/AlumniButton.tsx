@@ -1,35 +1,20 @@
 import React from "react";
-import { HStack, VStack } from "components/common/Layout";
-import styled from "styled-components";
 import Button from "components/common/Button";
-import { SectionTitle } from "components/common/Typography";
-
-const Description = styled.p`
-  font-size: 22px;
-  padding: 12px 0px;
-  line-height: 27.65px;
-`;
-
-const ButtonContainer = styled.div`
-  padding: 25px 0;
-`;
 
 export const AlumniButton: React.FC = () => {
   return (
-    <HStack>
-      <VStack>
-        <SectionTitle>Alumni</SectionTitle>
-        <Description>
+    <section className="container mx-auto">
+      <div className="flex flex-col gap-2">
+        <h2 className="text-blue">Alumni</h2>
+        <p className="text-lg">
           Special thanks to all of our alumni who have given their time and
           effort to our cause for social good. We couldn't have done it without
           you!
-        </Description>
-        <ButtonContainer>
-          <Button type="primaryDark" to="/alumni">
-            View Blueprint Alumni
-          </Button>
-        </ButtonContainer>
-      </VStack>
-    </HStack>
+        </p>
+        <Button className="mt-4" href="/alumni">
+          View Blueprint Alumni
+        </Button>
+      </div>
+    </section>
   );
 };

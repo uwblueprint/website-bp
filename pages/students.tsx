@@ -1,73 +1,48 @@
 import React from "react";
-import Head from "next/head";
 import { StudentsLanding } from "@components/StudentsPage/StudentsLanding";
 import { MeetTheTeam } from "@components/StudentsPage/MeetTheTeam";
+import Layout from "@components/common/Layout";
 
-import Image from "next/image";
-
-import styled from "styled-components";
 import { AlumniButton } from "@components/StudentsPage/AlumniButton";
+import { GetStaticProps } from "next";
+import { Student } from "common/Student";
 
 const teamLeftLines = "/students/students-team-bgleft.svg";
 const teamLeftLightBulb = "/students/students-team-bgleftlow.svg";
 const teamRightCircle = "/students/students-team-bgright.svg";
 
-const CenterImage = styled.div`
-  // width: 50%;
-  text-align: center;
-  margin: 0 auto;
-`;
+type PageProps = {
+  students: Student[];
+};
 
-const Container = styled.div`
-  width: 100vw;
-  // display: flex;
-  // flex-direction: column;
-`;
-
-const Section = styled.div`
-  // position: relative;
-  // margin: auto;
-  // box-sizing: border-box;
-  // overflow-x: hidden;
-  width: 100%;
-  height: 100vh;
-`;
-
-const SectionContent = styled.div`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0px 225px;
-`;
-
-export default function Students(): JSX.Element {
-  //Temporary inline styling. Should be changed when real code is added
+export default function Students({ students }: PageProps): JSX.Element {
   return (
-    <div>
-      <Head>
-        <title>UW Blueprint {"|"} Students</title>
-      </Head>
-      <Container>
-        <Section>
-          <StudentsLanding />
-        </Section>
-        <Section>
-          <SectionContent>
-            <MeetTheTeam />
-          </SectionContent>
-        </Section>
-        <Section>
-          <SectionContent>
-            <AlumniButton />
-          </SectionContent>
-        </Section>
-        {/* <Section>
-            <CenterImage>
-              <Image src={joinCarousel} width="1081vw" height="443vh" />
-            </CenterImage>
-          </Section> */}
-      </Container>
-    </div>
+    <Layout title={`UW Blueprint | Students`}>
+      <div className="flex flex-col w-full gap-24 pb-24 relative">
+        <StudentsLanding />
+        <MeetTheTeam students={students} />
+        <AlumniButton />
+
+        {/* Background decals */}
+        <img src={teamLeftLines} className="absolute left-0 top-80" />
+        <img src={teamLeftLightBulb} className="absolute right-0 top-1/4" />
+        <img src={teamRightCircle} className="absolute right-0 top-2/4" />
+      </div>
+    </Layout>
   );
 }
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  // TODO: get data from firebase
+
+  return {
+    props: {
+      students: Array.from(Array(170).keys()).map((x) => ({
+        name: `Oustan Ding ${x}`,
+        position: "Developer",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2021headshots%2FOustan_Ding.jpg?alt=media&token=56ecfc35-3313-4add-b57c-3359c3b669c6",
+      })),
+    },
+  };
+};
