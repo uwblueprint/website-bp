@@ -21,7 +21,7 @@ export default function Alumni({ alumni }: PageProps): JSX.Element {
     <Layout title={`UW Blueprint | Alumni`}>
       <div className="flex flex-col w-full gap-24 pb-24 relative">
         <Hero />
-        <List members={alumni} />
+        <List alumni={alumni} />
         <ToStudents />
 
         {/* Background decals */}
