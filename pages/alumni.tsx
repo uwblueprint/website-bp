@@ -6,22 +6,22 @@ import { ToStudents } from "@components/members/alumni/ToStudents";
 
 import Layout from "@components/common/Layout";
 import { GetStaticProps } from "next";
-import { Student } from "@components/members/students/types";
+import { Member } from "@components/members/types";
 
 const teamLeftLines = "/students/students-team-bgleft.svg";
 const teamLeftGear = "/alumni/alumni-team-bgleft.svg";
 const teamRightLines = "/alumni/alumni-team-bgright.svg";
 
 type PageProps = {
-  students: Student[];
+  alumni: Member[];
 };
 
-export default function Alumni({ students }: PageProps): JSX.Element {
+export default function Alumni({ alumni }: PageProps): JSX.Element {
   return (
     <Layout title={`UW Blueprint | Alumni`}>
       <div className="flex flex-col w-full gap-24 pb-24 relative">
         <Hero />
-        <List students={students} />
+        <List members={alumni} />
         <ToStudents />
 
         {/* Background decals */}
@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      students: Array.from(Array(170).keys()).map((x) => ({
+      alumni: Array.from(Array(170).keys()).map((x) => ({
         name: `Oustan Ding ${x}`,
         position: "Developer",
         profile:

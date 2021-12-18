@@ -1,8 +1,8 @@
 import React from "react";
-import { Student } from "@components/members/students/types";
+import { Member } from "@components/members/types";
 import { Avatar } from "@components/members/Avatar";
 
-export const List: React.FC<{ students: Student[] }> = ({ students }) => {
+export const List: React.FC<{ alumni: Member[] }> = ({ alumni }) => {
   return (
     <>
       <section className="container mx-auto">
@@ -17,8 +17,8 @@ export const List: React.FC<{ students: Student[] }> = ({ students }) => {
           </div>
           <h4 className="text-blue mb-8">Executive Team</h4>
           <div className="grid grid-cols-6 gap-y-12">
-            {students.map((student) => (
-              <Avatar {...student} />
+            {alumni.map((alum) => (
+              <Avatar key={alum.name} {...alum} />
             ))}
           </div>
         </div>

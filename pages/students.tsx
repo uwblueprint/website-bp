@@ -5,14 +5,14 @@ import Layout from "@components/common/Layout";
 
 import { ToAlumni } from "@components/members/students/ToAlumni";
 import { GetStaticProps } from "next";
-import { Student } from "@components/members/students/types";
+import { Member } from "@components/members/types";
 
 const teamLeftLines = "/students/students-team-bgleft.svg";
 const teamLeftLightBulb = "/students/students-team-bgleftlow.svg";
 const teamRightCircle = "/students/students-team-bgright.svg";
 
 type PageProps = {
-  students: Student[];
+  students: Member[];
 };
 
 export default function Students({ students }: PageProps): JSX.Element {
@@ -46,8 +46,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
       students: Array.from(Array(170).keys()).map((x) => ({
         name: `Oustan Ding ${x}`,
         position: "Developer",
-        profile:
-          "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2021headshots%2FOustan_Ding.jpg?alt=media&token=56ecfc35-3313-4add-b57c-3359c3b669c6",
       })),
     },
   };
