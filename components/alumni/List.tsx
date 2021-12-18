@@ -1,26 +1,37 @@
 import React from "react";
+import { Student } from "common/Student";
 
-const landingSplashBackground = "/alumni/alumni-landing-bg.svg";
-const landingGraphic = "/alumni/alumni-landing-graphic.svg";
-
-export const AlumniLanding: React.FC = () => {
+const StudentProfile = ({ name, position, profile }: Student): JSX.Element => {
   return (
-    <section
-      className="relative flex w-full bg-bottom bg-cover py-48"
-      style={{
-        backgroundImage: `url(${landingSplashBackground})`,
-      }}
-    >
-      <section className="container mx-auto z-20">
-        <div className="flex flex-col justify-center text-white">
-          <h1>Alumni</h1>
-          <h4 className="w-1/2">
-            Meet Blueprint - we're a diverse group of friendly folks at the
-            University of Waterloo dedicated to building tech for social good.
-          </h4>
+    <figure key={`${name}:${position}`} className="flex flex-col items-center">
+      <img className="rounded-full w-32" src={profile.toString()} />
+      <p>{name}</p>
+      <p>{position}</p>
+    </figure>
+  );
+};
+
+export const List: React.FC<{ students: Student[] }> = ({ students }) => {
+  return (
+    <>
+      <section className="container mx-auto">
+        <div className="flex flex-col gap-2">
+          <div className="mb-40">
+            <h2 className="text-blue">Alumni</h2>
+            <p className="text-lg">
+              Special thanks to all of our alumni who have given their time and
+              effort to our cause for social good. We couldn't have done it
+              without you!
+            </p>
+          </div>
+          <h4 className="text-blue mb-8">Executive Team</h4>
+          <div className="grid grid-cols-6 gap-y-12">
+            {students.map((student) => (
+              <StudentProfile {...student} />
+            ))}
+          </div>
         </div>
-        <img src={landingGraphic} className="absolute bottom-0 right-[15%]" />
       </section>
-    </section>
+    </>
   );
 };

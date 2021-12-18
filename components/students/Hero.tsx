@@ -3,7 +3,7 @@ import React from "react";
 const landingSplashBackground = "/students/students-landing-bg.svg";
 const landingGraphic = "/students/students-landing-graphic.svg";
 
-export const StudentsLanding: React.FC = () => {
+export const Hero: React.FC = () => {
   return (
     <section
       className="relative flex w-full bg-bottom bg-cover py-48"

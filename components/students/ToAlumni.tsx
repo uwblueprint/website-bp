@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "components/common/Button";
 
-export const AlumniButton: React.FC = () => {
+export const ToAlumni: React.FC = () => {
   return (
     <section className="container mx-auto">
       <div className="flex flex-col gap-2">

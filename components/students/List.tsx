@@ -11,9 +11,7 @@ const StudentProfile = ({ name, position, profile }: Student): JSX.Element => {
   );
 };
 
-export const MeetTheTeam: React.FC<{ students: Student[] }> = ({
-  students,
-}) => {
+export const List: React.FC<{ students: Student[] }> = ({ students }) => {
   return (
     <section className="container mx-auto">
       <div className="flex flex-col gap-2">

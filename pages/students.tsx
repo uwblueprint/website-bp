@@ -1,9 +1,9 @@
 import React from "react";
-import { StudentsLanding } from "@components/StudentsPage/StudentsLanding";
-import { MeetTheTeam } from "@components/StudentsPage/MeetTheTeam";
+import { Hero } from "@components/students/Hero";
+import { List } from "@components/students/List";
 import Layout from "@components/common/Layout";
 
-import { AlumniButton } from "@components/StudentsPage/AlumniButton";
+import { ToAlumni } from "@components/students/ToAlumni";
 import { GetStaticProps } from "next";
 import { Student } from "common/Student";
 
@@ -19,9 +19,9 @@ export default function Students({ students }: PageProps): JSX.Element {
   return (
     <Layout title={`UW Blueprint | Students`}>
       <div className="flex flex-col w-full gap-24 pb-24 relative">
-        <StudentsLanding />
-        <MeetTheTeam students={students} />
-        <AlumniButton />
+        <Hero />
+        <List students={students} />
+        <ToAlumni />
 
         {/* Background decals */}
         <img src={teamLeftLines} className="absolute left-0 top-80" />
