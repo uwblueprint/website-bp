@@ -5,7 +5,7 @@ import Button from "@components/common/Button";
 const ROUTES = [
   { name: "About Us", link: "/about" },
   { name: "Projects", link: "/projects" },
-  { name: "Students", link: "#" },
+  { name: "Students", link: "/students" },
   { name: "Contact", link: "/contact" },
 ];
 
