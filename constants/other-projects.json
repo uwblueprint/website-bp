@@ -1,0 +1,43 @@
+[
+  {
+    "name": "Project READ Literacy Network",
+    "type": "Website Redesign",
+    "githubUrl": "https://github.com/uwblueprint/project-read-frontend",
+    "description": [
+      "is an organization that empowers families in the Waterloo region with access to literacy and essential skills training.",
+      "Our team is building a system streamline their outreach and operations by tracking interactions with families, allowing staff to efficiently make decisions to drive their organization’s growth."
+    ],
+    "image": "/projects/project-read.svg"
+  },
+  {
+    "name": "The Shoe Project",
+    "type": "Website Redesign",
+    "githubUrl": "https://github.com/uwblueprint/shoe-project",
+    "description": [
+      "provides educational and leadership opportunities to immigrant and refugee women. They have created a platform for women to showcase their moving stories using a shoe as a metaphor.",
+      "To celebrate their 10th anniversary, our team is developing an interactive visualization of stories and content created throughout the organization’s history."
+    ],
+    "image": "/projects/the-shoe-project.svg"
+  },
+  {
+    "name": "The Pregnancy Centre",
+    "type": "Website Redesign",
+    "githubUrl": "https://github.com/uwblueprint/pregnancy-centre",
+    "linkText": "The Pregnancy Centre (TPC)",
+    "description": [
+      "supports mothers and families in Waterloo Region in making healthy and informed relationship and pregnancy decisions.",
+      "Our team is building a web portal that allows TPC to facilitate the donation of high quality essential items between local donors and clients in need."
+    ],
+    "image": "/projects/the-pregnancy-centre.svg"
+  },
+  {
+    "name": "Building Up",
+    "type": "Website Redesign",
+    "githubUrl": "https://github.com/uwblueprint/building-up-client",
+    "description": [
+      "is a non-profit construction contractor that provides long term career pathways for individuals facing barriers to employment. One of their main fundraising efforts in partnership with Raising the Roof is the Toque Campaign.",
+      "Our team is building an online platform to streamline toque ordering and engage third party sellers."
+    ],
+    "image": "/projects/building-up.svg"
+  }
+]

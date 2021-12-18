@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Social Venture Partners",
+    "type": "Decision-making Platform",
+    "terms": "Fall 2019 - Fall 2020",
+    "caseStudyUrl": "",
+    "githubUrl": "",
+    "about": "SVP is an organization focused on bringing together community members to invest time, money, and professional expertise to local nonprofits.",
+    "solution": "Our team helped SVP streamline their nonprofit selection process with a platform that allows SVP to manage their nonprofit applications. We redesigned the user experience and created a more flexible and scalable web application.",
+    "quote": {
+      "text": "Each step of the way, Blueprint’s team asked lots of questions to ensure what they were developing matched expectations, and were transparent around their processes.",
+      "signature": "Taryn Graham, Operations & Communications Manager at SVPWR"
+    },
+    "image": "/projects/social-venture-partners.png"
+  },
+  {
+    "name": "Paramedics",
+    "type": "Web & iPad App",
+    "terms": "Winter 2020 - Fall 2020",
+    "caseStudyUrl": "",
+    "githubUrl": "https://github.com/uwblueprint/paramedics-react",
+    "about": "The Region of Waterloo Paramedic Services is an emergency medical service provider for the Regional Municipality of Waterloo.",
+    "solution": "Our team built a web and iPad solution for mass-casualty incidents. The iPad component is used by paramedics in the field for patient tracking and triaging while the web component is used to view patient statuses from the command centre.",
+    "quote": {
+      "text": "We are extremely extremely proud of the project the team has made and super happy to have the team as a part of the project.",
+      "signature": "Stephen Yang, Project Lead and Howard Yu, Project Manager"
+    },
+    "image": "/projects/paramedics.png"
+  },
+  {
+    "name": "Dancefest",
+    "type": "Adjudication Platform",
+    "terms": "Winter 2018 - Winter 2021",
+    "caseStudyUrl": "",
+    "githubUrl": "https://github.com/uwblueprint/dancefest-web",
+    "about": "The Ontario Secondary School Dancefest is a free dance program encouraging students from grades 1 - 12 to participate in a creative  extracurricular. They host a major 3-day event every year - filled with talks, workshops, and a competition.",
+    "solution": "Our team is focusing on streamlining the judging process of the competition by moving manual tasks like collecting scoresheets and ranking into digital means - saving time and energy. We’re tweaking the product experience, building software fit for any judge’s device, and ensuring their data is safe.",
+    "quote": {
+      "text": "It was a very satisfying experience for our board to have Blueprint working to make our provincial event for high school students much better.",
+      "signature": "Laurel Brown, President at OSSDF"
+    },
+    "image": "/projects/dancefest.png"
+  },
+  {
+    "name": "Plastics for Change",
+    "type": "Web Platform",
+    "terms": "Summer 2018 - Winter 2019",
+    "caseStudyUrl": "",
+    "githubUrl": "",
+    "about": "PFC uses mobile technology to reduce plastic pollution and create resilient neighbourhoods for the urban poor in developing countries by convincing brands to switch to a more ethical supply chain that uses recycled plastic.",
+    "solution": "Our team focused on providing a single source of truth for all data and transactions between stakeholders within the recycled plastic ecosystem. Through interaction design, development, and data engineering, we built a product that helps PFC monitor vital metrics about pricing, quality, and wages.",
+    "quote": {
+      "text": "Working on the project was a very rewarding experience in every facet for me. From being able to have real world impact to learning about new technologies, I had an amazing time. On top of this, I’ve made some lifelong friends who worked on the project with me, and for that I am very grateful.",
+      "signature": "Ahmed Hamodi, Project Developer"
+    },
+    "image": "/projects/plastics-for-change.png"
+  }
+]
