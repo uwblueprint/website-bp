@@ -25,8 +25,14 @@ export default function Students({ students }: PageProps): JSX.Element {
 
         {/* Background decals */}
         <img src={teamLeftLines} className="absolute left-0 top-80" />
-        <img src={teamLeftLightBulb} className="absolute right-0 top-1/4" />
-        <img src={teamRightCircle} className="absolute right-0 top-2/4" />
+        <img
+          src={teamLeftLightBulb}
+          className="absolute right-0 top-1/4 z-[-10]"
+        />
+        <img
+          src={teamRightCircle}
+          className="absolute right-0 top-2/4 z-[-10]"
+        />
       </div>
     </Layout>
   );

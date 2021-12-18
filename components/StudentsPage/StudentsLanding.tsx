@@ -19,7 +19,7 @@ export const StudentsLanding: React.FC = () => {
             University of Waterloo dedicated to building tech for social good.
           </h4>
         </div>
-        <img src={landingGraphic} className="absolute bottom-0 right-[10%]" />
+        <img src={landingGraphic} className="absolute bottom-0 right-[15%]" />
       </section>
     </section>
   );
