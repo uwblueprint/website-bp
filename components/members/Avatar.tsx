@@ -7,8 +7,8 @@ export const Avatar = ({ name, position, profile }: Member): JSX.Element => {
         className="rounded-full w-32"
         src={profile || "/members/default.jpg"}
       />
-      <p>{name}</p>
-      <p>{position}</p>
+      <p className="font-bold">{name}</p>
+      <p className="text-charcoal-500">{position}</p>
     </figure>
   );
 };

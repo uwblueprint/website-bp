@@ -18,7 +18,7 @@ type PageProps = {
 export default function Students({ students }: PageProps): JSX.Element {
   return (
     <Layout title={`UW Blueprint | Students`}>
-      <div className="flex flex-col w-full gap-24 pb-24 relative">
+      <div className="flex flex-col w-full gap-24 relative pb-24">
         <Hero />
         <List students={students} />
         <ToAlumni />
