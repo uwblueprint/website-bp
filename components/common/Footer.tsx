@@ -62,74 +62,80 @@ const LINKS = [
 /** Footer */
 const Footer: FC = () => {
   return (
-    <footer className="w-full relative z-10 flex flex-col items-center gap-20 pt-14 pb-6 bg-gradient-to-r from-blue to-sky-400">
-      <div className="flex justify-center items-stretch gap-24">
-        {/* Logo, social media links */}
-        <div className="relative flex flex-col justify-between items-start">
-          <img
-            className="h-7"
-            src="/common/logo-with-text.svg"
-            alt="UW Blueprint logo"
-          />
-          <img src="/footer/say-hello.svg" alt="Don't be shy, say hello" />
-          <div className="absolute bottom-0 right-0 flex flex-col gap-4">
-            <a href="mailto:info@uwblueprint.org">
-              <h5 className="text-white">info@uwblueprint.org</h5>
-            </a>
-            <div className="flex items-center gap-2">
-              <a href={INSTAGRAM_URL} target="_blank">
-                <img
-                  className="h-6 w-6"
-                  src="/common/instagram-logo.svg"
-                  alt="Instagram logo"
-                />
+    <footer className="w-full bg-gradient-to-r from-blue to-sky-400">
+      <div className="content relative z-10 flex flex-col items-center gap-20 mx-auto pt-14 pb-6">
+        <div className="flex justify-center items-stretch gap-20">
+          {/* Logo, social media links */}
+          <div className="relative flex flex-col justify-between items-start">
+            <img
+              className="h-7"
+              src="/common/logo-with-text.svg"
+              alt="UW Blueprint logo"
+            />
+            <img src="/footer/say-hello.svg" alt="Don't be shy, say hello" />
+            <div className="absolute bottom-0 right-0 flex flex-col gap-4">
+              <a href="mailto:info@uwblueprint.org">
+                <h5 className="text-white">info@uwblueprint.org</h5>
               </a>
-              <a href={MEDIUM_URL} target="_blank">
-                <img
-                  className="h-6 w-6"
-                  src="/common/medium-logo.svg"
-                  alt="Medium logo"
-                />
-              </a>
-              <a href={FACEBOOK_URL} target="_blank">
-                <img
-                  className="h-6 w-6"
-                  src="/common/facebook-logo.svg"
-                  alt="Facebook logo"
-                />
-              </a>
-              <a href={LINKEDIN_URL} target="_blank">
-                <img
-                  className="h-6 w-6"
-                  src="/common/linkedin-logo.svg"
-                  alt="LinkedIn logo"
-                />
-              </a>
+              <div className="flex items-center gap-2">
+                <a href={INSTAGRAM_URL} target="_blank">
+                  <img
+                    className="h-6 w-6"
+                    src="/common/instagram-logo.svg"
+                    alt="Instagram logo"
+                  />
+                </a>
+                <a href={MEDIUM_URL} target="_blank">
+                  <img
+                    className="h-6 w-6"
+                    src="/common/medium-logo.svg"
+                    alt="Medium logo"
+                  />
+                </a>
+                <a href={FACEBOOK_URL} target="_blank">
+                  <img
+                    className="h-6 w-6"
+                    src="/common/facebook-logo.svg"
+                    alt="Facebook logo"
+                  />
+                </a>
+                <a href={LINKEDIN_URL} target="_blank">
+                  <img
+                    className="h-6 w-6"
+                    src="/common/linkedin-logo.svg"
+                    alt="LinkedIn logo"
+                  />
+                </a>
+              </div>
             </div>
+          </div>
+
+          {/* Links */}
+          <div className="flex gap-12">
+            {LINKS.map((linkGroup) => (
+              <div key={linkGroup.name}>
+                <a href={linkGroup.link}>
+                  <h5 className="text-white mb-5">{linkGroup.name}</h5>
+                </a>
+                <div className="flex flex-col gap-3">
+                  {linkGroup.children.map((child) => (
+                    <a
+                      key={child.name}
+                      className="text-white"
+                      href={child.link}
+                    >
+                      <p>{child.name}</p>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Links */}
-        <div className="flex gap-16">
-          {LINKS.map((linkGroup) => (
-            <div key={linkGroup.name}>
-              <a href={linkGroup.link}>
-                <h5 className="text-white mb-5">{linkGroup.name}</h5>
-              </a>
-              <div className="flex flex-col gap-3">
-                {linkGroup.children.map((child) => (
-                  <a key={child.name} className="text-white" href={child.link}>
-                    <p>{child.name}</p>
-                  </a>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Copyright */}
+        <h5 className="text-white font-semibold">© UW Blueprint 2021</h5>
       </div>
-
-      {/* Copyright */}
-      <h5 className="text-white font-semibold">© UW Blueprint 2021</h5>
     </footer>
   );
 };
