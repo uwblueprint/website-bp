@@ -40,7 +40,7 @@ const SectionContent = styled.div`
   padding: 0px 225px;
 `;
 
-export default function Join(): JSX.Element {
+export default function Nonprofits(): JSX.Element {
   //Temporary inline styling. Should be changed when real code is added
   return (
     <div>
