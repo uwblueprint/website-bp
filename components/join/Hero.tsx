@@ -13,7 +13,7 @@ const Hero: FC = () => {
           We are a group of friendly folks at the University of Waterloo
           dedicated to building technology for social good.
         </p>
-        {/* Apply now button */}
+        {/* TODO: Apply now button */}
       </div>
       <div>
         <img src="/join/people-cheering.svg" alt="People cheering" />

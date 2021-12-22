@@ -18,8 +18,8 @@ const OurProcess: FC = () => {
         <h2 className="text-blue">Our Process</h2>
         <hr className="w-20 mt-4 mb-10 text-blue" />
       </div>
-      <div className="flex divide-x divide-charcoal-300">
-        <div className="flex-1 flex flex-col gap-4 pr-6">
+      <ol className="flex divide-x divide-charcoal-300">
+        <li className="flex-1 flex flex-col gap-4 pr-6">
           <div className="h-20 w-20 relative">
             <img
               className="absolute -left-5"
@@ -44,8 +44,8 @@ const OurProcess: FC = () => {
             </a>
             .
           </p>
-        </div>
-        <div className="flex-1 flex flex-col gap-4 px-6">
+        </li>
+        <li className="flex-1 flex flex-col gap-4 px-6">
           <div className="h-20 w-20 relative">
             <img
               className="absolute -left-4"
@@ -64,8 +64,8 @@ const OurProcess: FC = () => {
             close{" "}
             <span className="text-blue">{APPLICATION_CLOSE_DATETIME}</span>.
           </p>
-        </div>
-        <div className="flex-1 flex flex-col gap-4 px-6">
+        </li>
+        <li className="flex-1 flex flex-col gap-4 px-6">
           <div className="h-20 w-20 relative">
             <img
               className="absolute -left-5"
@@ -83,8 +83,8 @@ const OurProcess: FC = () => {
             our members. We want to learn more about you, and you can also use
             this time to ask us any questions you might have!
           </p>
-        </div>
-        <div className="flex-1 flex flex-col gap-4 pl-6">
+        </li>
+        <li className="flex-1 flex flex-col gap-4 pl-6">
           <div className="h-20 w-20 relative">
             <img
               className="absolute -left-4"
@@ -102,8 +102,8 @@ const OurProcess: FC = () => {
             possible regarding whether you would like to be part of our team
             next term, so we can get started with onboarding.
           </p>
-        </div>
-      </div>
+        </li>
+      </ol>
     </section>
   );
 };
