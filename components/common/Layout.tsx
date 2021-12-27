@@ -20,7 +20,7 @@ const Layout: FC<Props> = ({
         <title>{title}</title>
       </Head>
       <Navbar />
-      <div className="min-h-screen">{children}</div>
+      <div className="min-h-screen overflow-x-hidden">{children}</div>
       {!hideFooter && <Footer />}
     </>
   );
