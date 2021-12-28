@@ -1,6 +1,9 @@
 import React from "react";
-import Button from "components/common/Button";
+import Button from "@components/common/Button";
 
+/**
+ * Displays link to go to the current students page from the alumni page
+ */
 export const ToStudents: React.FC = () => {
   return (
     <section className="container mx-auto">

@@ -1,6 +1,7 @@
 import { Member } from "@components/members/types";
+import { FC } from "react";
 
-export const Avatar = ({ name, position, profile }: Member): JSX.Element => {
+export const Avatar: FC<Member> = ({ name, position, profile }) => {
   return (
     <figure className="flex flex-col items-center">
       <img
