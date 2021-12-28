@@ -5,7 +5,7 @@ import PROJECTS from "@constants/highlighted-projects.json";
 /** Highlighted Projects section of Projects page */
 const HighlightedProjects: FC = () => {
   return (
-    <section className="flex flex-col items-center px-4 py-24">
+    <section className="content flex flex-col items-center py-24">
       <h2 className="text-blue">Highlighted Projects</h2>
       <hr className="w-20 mt-4 mb-24 text-blue" />
       <div className="grid grid-cols-2 grid-rows-2 gap-10">
