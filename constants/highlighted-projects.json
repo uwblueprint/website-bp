@@ -4,7 +4,7 @@
     "type": "Decision-making Platform",
     "terms": "Fall 2019 - Fall 2020",
     "caseStudyUrl": "",
-    "githubUrl": "",
+    "githubUrl": "https://github.com/uwblueprint/arbitrium",
     "about": "SVP is an organization focused on bringing together community members to invest time, money, and professional expertise to local nonprofits.",
     "solution": "Our team helped SVP streamline their nonprofit selection process with a platform that allows SVP to manage their nonprofit applications. We redesigned the user experience and created a more flexible and scalable web application.",
     "quote": {
@@ -46,7 +46,7 @@
     "type": "Web Platform",
     "terms": "Summer 2018 - Winter 2019",
     "caseStudyUrl": "",
-    "githubUrl": "",
+    "githubUrl": "https://github.com/uwblueprint/plasta",
     "about": "PFC uses mobile technology to reduce plastic pollution and create resilient neighbourhoods for the urban poor in developing countries by convincing brands to switch to a more ethical supply chain that uses recycled plastic.",
     "solution": "Our team focused on providing a single source of truth for all data and transactions between stakeholders within the recycled plastic ecosystem. Through interaction design, development, and data engineering, we built a product that helps PFC monitor vital metrics about pricing, quality, and wages.",
     "quote": {
