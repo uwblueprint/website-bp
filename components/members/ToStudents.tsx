@@ -6,7 +6,7 @@ import Button from "@components/common/Button";
  */
 export const ToStudents: React.FC = () => {
   return (
-    <section className="container mx-auto">
+    <section className="content container">
       <div className="flex flex-col gap-2">
         <h2 className="text-blue">Team</h2>
         <p className="text-lg">Go back to our current members page.</p>

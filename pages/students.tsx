@@ -1,26 +1,48 @@
 import React from "react";
-import { Hero } from "@components/members/students/Hero";
-import { List } from "@components/members/students/List";
+import { Hero } from "@components/members/Hero";
+import { List } from "@components/members/List";
 import Layout from "@components/common/Layout";
 
-import { ToAlumni } from "@components/members/students/ToAlumni";
+import { ToAlumni } from "@components/members/ToAlumni";
 import { GetStaticProps } from "next";
-import { Member } from "@components/members/types";
+import { Team } from "@components/members/types";
+
+import data from "constants/members.json";
+import { roleType } from "@components/members/utils";
 
 const teamLeftLines = "/students/students-team-bgleft.svg";
 const teamLeftLightBulb = "/students/students-team-bgleftlow.svg";
 const teamRightCircle = "/students/students-team-bgright.svg";
+const landingSplashBackground = "/students/students-landing-bg.svg";
+const landingGraphic = "/students/students-landing-graphic.svg";
 
 type PageProps = {
-  students: Member[];
+  teams: Team[];
 };
 
-export default function Students({ students }: PageProps): JSX.Element {
+export default function Students({ teams }: PageProps): JSX.Element {
   return (
     <Layout title={`UW Blueprint | Students`}>
       <div className="flex flex-col w-full gap-24 relative pb-24">
-        <Hero />
-        <List students={students} />
+        <section
+          className="relative flex w-full bg-bottom bg-cover py-48"
+          style={{
+            backgroundImage: `url(${landingSplashBackground})`,
+          }}
+        >
+          <Hero
+            title={`Students`}
+            description={`Meet Blueprint - we're a diverse group of friendly folks at the University of Waterloo dedicated to building tech for social good.`}
+          />
+          <img src={landingGraphic} className="absolute bottom-0 right-[15%]" />
+        </section>
+        <List
+          title="Meet the Team"
+          description="We are a diverse group of students specializing in a variety of
+          disciplines, brought together by a common ambition to help
+          non-profits with their technology needs."
+          teams={teams}
+        />
         <ToAlumni />
 
         {/* Background decals */}
@@ -39,14 +61,19 @@ export default function Students({ students }: PageProps): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  // TODO: get data from firebase
+  const term = data.term;
+  const members = data.members.filter((member) => member.term === term);
+  const teams = data.teams.map((team) => ({
+    id: team.id,
+    name: team.name,
+    members: members
+      .filter((member) => (member.teams as string[]).includes(team.id))
+      .sort((a, b) => roleType(a.role) - roleType(b.role)),
+  }));
 
   return {
     props: {
-      students: Array.from(Array(170).keys()).map((x) => ({
-        name: `Oustan Ding ${x}`,
-        position: "Developer",
-      })),
+      teams,
     },
   };
 };
