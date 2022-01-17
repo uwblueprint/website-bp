@@ -3,7 +3,7 @@ import { FC } from "react";
 
 export const Avatar: FC<Member> = ({ name, role, img }) => {
   return (
-    <figure className="flex flex-col items-center">
+    <figure className="flex flex-col items-center gap-y-1">
       <img
         className="rounded-full object-cover h-32 w-32"
         src={img || "/members/default.jpg"}
