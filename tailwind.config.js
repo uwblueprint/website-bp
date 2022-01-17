@@ -39,6 +39,7 @@ module.exports = {
         200: "#BDDEFF",
         300: "#99CEFF",
         400: "#7EB9F0",
+        500: "#4498ED"
       },
 
       // SECONDARY
