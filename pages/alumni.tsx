@@ -1,27 +1,48 @@
 import React from "react";
 
-import { Hero } from "@components/members/alumni/Hero";
-import { List } from "@components/members/alumni/List";
-import { ToStudents } from "@components/members/alumni/ToStudents";
+import { Hero } from "@components/members/Hero";
+import { List } from "@components/members/List";
+import { ToStudents } from "@components/members/ToStudents";
 
 import Layout from "@components/common/Layout";
 import { GetStaticProps } from "next";
-import { Member } from "@components/members/types";
+import { Team } from "@components/members/types";
+
+import data from "constants/members.json";
+import { roleType } from "@components/members/utils";
 
 const teamLeftLines = "/students/students-team-bgleft.svg";
 const teamLeftGear = "/alumni/alumni-team-bgleft.svg";
 const teamRightLines = "/alumni/alumni-team-bgright.svg";
+const landingSplashBackground = "/alumni/alumni-landing-bg.svg";
+const landingGraphic = "/alumni/alumni-landing-graphic.svg";
 
 type PageProps = {
-  alumni: Member[];
+  alumni: Team[];
 };
 
 export default function Alumni({ alumni }: PageProps): JSX.Element {
   return (
     <Layout title={`UW Blueprint | Alumni`}>
       <div className="flex flex-col w-full gap-24 pb-24 relative">
-        <Hero />
-        <List alumni={alumni} />
+        <section
+          className="relative flex w-full bg-bottom bg-cover py-48"
+          style={{
+            backgroundImage: `url(${landingSplashBackground})`,
+          }}
+        >
+          <Hero
+            title="Alumni"
+            description="Meet Blueprint - we're a diverse group of Students and Waterloo graduates who care about building tech for social good."
+          />
+          <img src={landingGraphic} className="absolute bottom-0 right-[15%]" />
+        </section>
+
+        <List
+          title="Alumni"
+          description="Special thanks to all of our alumni who have given their time and effort to our cause for social good. We couldn't have done it without you!"
+          teams={alumni}
+        />
         <ToStudents />
 
         {/* Background decals */}
@@ -37,16 +58,19 @@ export default function Alumni({ alumni }: PageProps): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  // TODO: get data from firebase
-
+  const term = data.term;
+  const members = data.members
+    .filter((member) => member.term !== term)
+    .sort((a, b) => a.name.localeCompare(b.name));
   return {
     props: {
-      alumni: Array.from(Array(170).keys()).map((x) => ({
-        name: `Oustan Ding ${x}`,
-        position: "Developer",
-        profile:
-          "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2021headshots%2FOustan_Ding.jpg?alt=media&token=56ecfc35-3313-4add-b57c-3359c3b669c6",
-      })),
+      alumni: [
+        {
+          id: "alumni",
+          name: "",
+          members,
+        },
+      ],
     },
   };
 };

@@ -1,5 +1,11 @@
 export type Member = {
   name: string;
-  position?: string;
-  profile?: string;
+  role?: string;
+  img?: string;
+};
+
+export type Team = {
+  id: string;
+  name: string;
+  members: Member[];
 };

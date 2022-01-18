@@ -101,10 +101,14 @@ module.exports = {
       poppins: "Poppins, sans-serif",
       source: "'Source Sans Pro', sans-serif",
     },
+    extend: {
+      gridTemplateColumns: {
+        "auto-fit": "repeat(auto-fit, minmax(8rem, 1fr))",
+        "auto-fill": "repeat(auto-fill, minmax(8rem, 1fr))",
+      },
+    },
   },
-  variants: {
-    extend: {},
-  },
+  variants: {},
   plugins: [
     require("@tailwindcss/line-clamp"), // Multi-line text truncation
   ],
