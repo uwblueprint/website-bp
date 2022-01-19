@@ -41,7 +41,7 @@ const HowItWorks: FC = () => {
           </h6>
           <p className="mb-4 md:text-center">
             Whether you have a project idea or you don’t know where to start,
-            our team of experienced Product Mangers, Designers, and Developers
+            our team of experienced Product Managers, Designers, and Developers
             will be there every step of the way. Contact us to chat!
           </p>
           <a className="flex space-x-2 text-blue text-base font-extrabold">
