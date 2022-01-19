@@ -39,7 +39,7 @@ const ProjectModal: FC<Props> = ({ project, open, onClose }) => {
               <h3>{name}</h3>
               <p className="text-charcoal-500">{terms}</p>
             </div>
-            <div className="flex items-center gap-8 pr-12">
+            <div className="flex items-center space-x-8 pr-12">
               <Button variant="secondary">View Case Study</Button>
               <a href={githubUrl} target="_blank">
                 <img src="/common/github-logo-blue.svg" alt="GitHub logo" />
@@ -50,7 +50,7 @@ const ProjectModal: FC<Props> = ({ project, open, onClose }) => {
           <hr className="w-full mt-3 mb-6 text-charcoal-300" />
 
           {/* Modal content */}
-          <div className="flex justify-between gap-8">
+          <div className="flex justify-between space-x-8">
             {/* NPO description */}
             <div className="flex-1 flex flex-col justify-between">
               <div>

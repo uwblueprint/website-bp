@@ -14,26 +14,26 @@ const Impact: FC = () => {
           />
         </div>
 
-        <div className="relative z-10 flex flex-col items-center gap-4">
+        <div className="relative z-10 flex flex-col items-center space-y-4">
           {/* Section header */}
           <h2 className="text-blue">Here's how we measure our impact</h2>
           <hr className="w-48 text-blue" />
 
           {/* Impact metrics */}
           <div className="w-full flex items-center justify-around py-12 px-32">
-            <div className="flex flex-col items-center gap-4">
+            <div className="flex flex-col items-center space-y-4">
               <p className="text-7xl text-sky-400 font-semibold font-poppins">
                 22
               </p>
               <h6>Non-profit projects</h6>
             </div>
-            <div className="flex flex-col items-center gap-4">
+            <div className="flex flex-col items-center space-y-4">
               <p className="text-8xl text-blue font-semibold font-poppins">
                 70,000
               </p>
               <h6>Accumulated volunteer hours</h6>
             </div>
-            <div className="flex flex-col items-center gap-4">
+            <div className="flex flex-col items-center space-y-4">
               <p className="text-7xl text-sky-400 font-semibold font-poppins">
                 468
               </p>

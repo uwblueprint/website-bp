@@ -7,7 +7,7 @@ import Button from "@components/common/Button";
 export const ToAlumni: React.FC = () => {
   return (
     <section className="content container">
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col space-y-2">
         <h2 className="text-blue">Alumni</h2>
         <p className="text-lg">
           Special thanks to all of our alumni who have given their time and

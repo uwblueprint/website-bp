@@ -25,7 +25,7 @@ const ProjectCard: FC<Props> = ({ project }) => {
         </div>
 
         {/* Project name and description */}
-        <div className="flex-1 relative flex flex-col items-center gap-4 pt-5 px-8 pb-12">
+        <div className="flex-1 relative flex flex-col items-center space-y-4 pt-5 px-8 pb-12">
           <h5>{name}</h5>
           <hr className="w-12" />
           <p className="text-center line-clamp-2">{solution}</p>

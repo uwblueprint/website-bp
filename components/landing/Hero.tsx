@@ -5,7 +5,7 @@ import Button from "@components/common/Button";
 const Hero: FC = () => {
   return (
     <header
-      className="min-h-screen w-full relative z-10 flex flex-col items-center gap-10"
+      className="min-h-screen w-full relative z-10 flex flex-col items-center space-y-10"
       // style={{ backgroundImage: "url(/landing/hero-background.svg)" }}
     >
       {/* Background image (need section height to be defined by background dimensions) */}
@@ -19,7 +19,7 @@ const Hero: FC = () => {
         <div className="flex-[4]">
           {/* Hero section */}
           <div
-            className="w-full flex flex-col justify-center items-center gap-5"
+            className="w-full flex flex-col justify-center items-center space-y-5"
             // Workaround to always keep hero text in centre of page or graphic
             style={{ height: "min(100vh, 100%)" }}
           >
@@ -29,7 +29,7 @@ const Hero: FC = () => {
                 tech for social good. built by students.
               </h4>
             </div>
-            <div className="flex gap-4">
+            <div className="flex space-x-4">
               <Button variant="secondary" invert>
                 See our work
               </Button>

@@ -24,7 +24,7 @@ const About: NextPage = () => {
       </section>
 
       {/* Who we are, What we do, Our story */}
-      <section className="content flex gap-20 mb-20">
+      <section className="content flex space-x-20 mb-20">
         <div>
           <img
             className="max-w-lg"
@@ -32,7 +32,7 @@ const About: NextPage = () => {
             alt="UW Blueprint members"
           />
         </div>
-        <div className="flex-1 flex flex-col gap-12">
+        <div className="flex-1 flex flex-col space-y-12">
           <div className="flex flex-col">
             <h2 className="text-blue">Who we are</h2>
             <hr className="w-20 mt-3 mb-10 text-blue" />
@@ -45,7 +45,7 @@ const About: NextPage = () => {
             </p>
             {/* TODO: Link to students page */}
             <Link href="#">
-              <a className="flex gap-2 text-blue text-base font-extrabold">
+              <a className="flex space-x-2 text-blue text-base font-extrabold">
                 Meet the team{" "}
                 <img
                   className="relative top-[1px]"
@@ -66,7 +66,7 @@ const About: NextPage = () => {
               websites, mobile applications and analysis tools - free of charge.
             </p>
             <Link href="/projects">
-              <a className="flex gap-2 text-blue text-base font-extrabold">
+              <a className="flex space-x-2 text-blue text-base font-extrabold">
                 See our work{" "}
                 <img
                   className="relative top-[1px]"
@@ -88,7 +88,7 @@ const About: NextPage = () => {
             </p>
             {/* TODO: Link to other Blueprint chapters */}
             <Link href="#">
-              <a className="flex gap-2 text-blue text-base font-extrabold">
+              <a className="flex space-x-2 text-blue text-base font-extrabold">
                 Check out other Blueprint chapters!{" "}
                 <img
                   className="relative top-[1px]"
@@ -106,7 +106,7 @@ const About: NextPage = () => {
         <h2 className="text-blue">Our Values</h2>
         <hr className="w-20 mt-3 mb-10 text-blue" />
         <div className="grid grid-cols-4 gap-14">
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col space-y-4">
             <img
               src="/about/amplifying-impact.svg"
               alt="Woman holding laptop"
@@ -117,7 +117,7 @@ const About: NextPage = () => {
               solution makes sense.
             </p>
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col space-y-4">
             <img src="/about/do-good-for-good.svg" alt="Man projecting Earth" />
             <h6>Do good for good</h6>
             <p className="text-charcoal-500">
@@ -125,7 +125,7 @@ const About: NextPage = () => {
               of our projects with the utmost care and integrity.
             </p>
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col space-y-4">
             <img
               src="/about/learning-is-a-team-sport.svg"
               alt="People at table"
@@ -136,7 +136,7 @@ const About: NextPage = () => {
               on their technical craft in a team environment.
             </p>
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col space-y-4">
             <img src="/about/culture-is-key.svg" alt="People holding flag" />
             <h6>Culture is key</h6>
             <p className="text-charcoal-500">
@@ -148,7 +148,7 @@ const About: NextPage = () => {
       </section>
 
       {/* Interested in the work we do? */}
-      <section className="content flex flex-col items-center gap-8 py-32">
+      <section className="content flex flex-col items-center space-y-8 py-32">
         <h2 className="text-blue text-4xl uppercase">
           Interested in the work we do?
         </h2>

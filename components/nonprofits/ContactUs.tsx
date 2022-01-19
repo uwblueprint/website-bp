@@ -4,7 +4,7 @@ import Button from "@components/common/Button";
 
 const ContactUs: FC = () => {
   return (
-    <section className="content flex items-center gap-4">
+    <section className="content flex items-center space-x-4">
       <div className="flex-1">
         <h4 className="text-blue uppercase">
           Need help with your non profit and do not know where to start?

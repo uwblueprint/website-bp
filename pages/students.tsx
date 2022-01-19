@@ -23,7 +23,7 @@ type PageProps = {
 export default function Students({ teams }: PageProps): JSX.Element {
   return (
     <Layout title={`UW Blueprint | Students`}>
-      <div className="flex flex-col w-full gap-24 relative pb-24">
+      <div className="flex flex-col w-full space-y-24 relative pb-24">
         <section
           className="relative flex w-full bg-bottom bg-cover py-48"
           style={{

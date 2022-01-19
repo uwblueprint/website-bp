@@ -5,14 +5,14 @@ const OurProcess: FC = () => {
   const [selectedPhase, setSelectedPhase] = useState(0);
 
   return (
-    <section className="content flex flex-col gap-18 mb-32">
+    <section className="content flex flex-col space-y-18 mb-32">
       <div>
         <h2 className="text-blue">Our Process</h2>
         <hr className="w-20 mt-4 mb-10 text-blue" />
       </div>
       <div className="flex items-stretch divide-x divide-blue">
         {/* List of phases */}
-        <ol className="flex flex-col gap-7 pr-8">
+        <ol className="flex flex-col space-y-7 pr-8">
           {PHASES.map(({ step, name }, i) => (
             <li key={step}>
               <button onClick={() => setSelectedPhase(i)}>
@@ -37,8 +37,8 @@ const OurProcess: FC = () => {
 
         {/* Description for selected phase */}
         <div className="flex-1 pl-8">
-          <div className="h-full flex gap-5 p-8 rounded-3xl bg-sky-100">
-            <div className="flex-1 flex flex-col gap-2">
+          <div className="h-full flex space-x-5 p-8 rounded-3xl bg-sky-100">
+            <div className="flex-1 flex flex-col space-y-2">
               <h6 className="text-blue normal-case">
                 {PHASES[selectedPhase].name}
               </h6>
