@@ -9,11 +9,11 @@
   }
 
   h2 {
-    @apply text-[44px] leading-[66px] font-semibold font-poppins;
+    @apply text-[22px] leading-[33px] md:text-[44px] md:leading-[66px] font-semibold font-poppins;
   }
 
   h3 {
-    @apply text-[30px] leading-[45px] font-medium font-poppins;
+    @apply text-[22px] leading-[28px] md:text-[30px] md:leading-[45px] font-medium font-poppins;
   }
 
   h4 {
