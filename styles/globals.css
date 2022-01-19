@@ -47,7 +47,7 @@
 
 @layer components {
   .content {
-    /* 
+    /*
       Set a max-width with automatic centering on the page for sections
       and content that do not have a background that spans the screen width
     */

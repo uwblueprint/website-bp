@@ -12,7 +12,7 @@ const ROUTES = [
 /** Navbar */
 const Navbar: FC = () => {
   return (
-    <nav className="w-full absolute z-20 flex justify-between p-6 box-border">
+    <nav className="w-full absolute z-20 flex flex-wrap justify-between p-6 box-border">
       <div className="flex flex-col justify-center">
         <Link href="/">
           <a>
@@ -20,7 +20,7 @@ const Navbar: FC = () => {
           </a>
         </Link>
       </div>
-      <div className="flex space-x-7">
+      <div className="flex flex-wrap space-x-7">
         <div className="flex items-center space-x-6">
           {ROUTES.map((route) => (
             <Link key={route.name} href={route.link}>
