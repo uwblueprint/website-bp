@@ -12,7 +12,7 @@ const HowItWorks: FC = () => {
         alt="People giving a high five"
       />
       <div className="max-w-5xl flex flex-col mt-10 md:mt-16 space-y-16 md:space-y-0 md:flex-row md:divide-x md:divide-blue">
-        <div className="flex flex-col items-start md:items-center md:pr-24">
+        <div className="flex flex-col items-start md:text-center md:items-center md:pr-8 lg:pr-24">
           <h3 className="text-blue mb-3 md:mb-0">Student Volunteers</h3>
           <hr className="w-48 mt-3 mb-6 text-blue hidden md:block" />
           <h6 className="text-blue uppercase mb-2">
@@ -33,7 +33,7 @@ const HowItWorks: FC = () => {
             />
           </a>
         </div>
-        <div className="flex flex-col items-start md:items-center md:pl-24">
+        <div className="flex flex-col items-start md:text-center md:items-center md:pl-8 lg:pl-24">
           <h3 className="text-blue mb-3 md:mb-0">Non Profit Partners</h3>
           <hr className="w-48 mt-3 mb-6 text-blue hidden md:block" />
           <h6 className="text-blue uppercase mb-2">
