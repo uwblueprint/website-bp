@@ -63,8 +63,8 @@ const LINKS = [
 const Footer: FC = () => {
   return (
     <footer className="w-full bg-gradient-to-r from-blue to-sky-500">
-      <div className="content relative z-10 flex flex-col items-center gap-20 mx-auto pt-14 pb-6">
-        <div className="flex justify-center items-stretch gap-20">
+      <div className="content relative z-10 flex flex-col items-center space-y-20 mx-auto pt-14 pb-6">
+        <div className="flex justify-center items-stretch space-x-20">
           {/* Logo, social media links */}
           <div className="relative flex flex-col justify-between items-start">
             <img
@@ -73,11 +73,11 @@ const Footer: FC = () => {
               alt="UW Blueprint logo"
             />
             <img src="/footer/say-hello.svg" alt="Don't be shy, say hello" />
-            <div className="absolute bottom-0 right-0 flex flex-col gap-4">
+            <div className="absolute bottom-0 right-0 flex flex-col space-y-4">
               <a href="mailto:info@uwblueprint.org">
                 <h5 className="text-white">info@uwblueprint.org</h5>
               </a>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center space-x-2">
                 <a href={INSTAGRAM_URL} target="_blank">
                   <img
                     className="h-6 w-6"
@@ -111,13 +111,13 @@ const Footer: FC = () => {
           </div>
 
           {/* Links */}
-          <div className="flex gap-12">
+          <div className="flex space-x-12">
             {LINKS.map((linkGroup) => (
               <div key={linkGroup.name}>
                 <a href={linkGroup.link}>
                   <h5 className="text-white mb-5">{linkGroup.name}</h5>
                 </a>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col space-y-3">
                   {linkGroup.children.map((child) => (
                     <a
                       key={child.name}

@@ -16,7 +16,7 @@ const FAQList: FC<Props> = ({ questions }) => {
       {questions.map(({ question, answer }, i) => (
         <li key={question}>
           <button
-            className="w-full flex flex-col gap-4 py-4"
+            className="w-full flex flex-col space-y-4 py-4"
             onClick={() => setOpenQuestion(i === openQuestion ? null : i)}
           >
             <div className="w-full flex justify-between">

@@ -20,8 +20,8 @@ const Navbar: FC = () => {
           </a>
         </Link>
       </div>
-      <div className="flex gap-7">
-        <div className="flex items-center gap-6">
+      <div className="flex space-x-7">
+        <div className="flex items-center space-x-6">
           {ROUTES.map((route) => (
             <Link key={route.name} href={route.link}>
               <a className="text-sm font-poppins font-normal text-white">
@@ -30,7 +30,7 @@ const Navbar: FC = () => {
             </Link>
           ))}
         </div>
-        <div className="flex gap-4">
+        <div className="flex space-x-4">
           <Button
             className="bg-transparent"
             size="md"

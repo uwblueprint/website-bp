@@ -25,7 +25,7 @@ const HowItWorks: FC = () => {
             real world impact. Student applications open at the end of each
             term.
           </p>
-          <a className="flex gap-2 text-blue text-base font-extrabold">
+          <a className="flex space-x-2 text-blue text-base font-extrabold">
             Learn More{" "}
             <img
               className="relative top-[1px]"
@@ -43,7 +43,7 @@ const HowItWorks: FC = () => {
             our team of experienced Product Mangers, Designers, and Developers
             will be there every step of the way. Contact us to chat!
           </p>
-          <a className="flex gap-2 text-blue text-base font-extrabold">
+          <a className="flex space-x-2 text-blue text-base font-extrabold">
             Learn More{" "}
             <img
               className="relative top-[1px]"

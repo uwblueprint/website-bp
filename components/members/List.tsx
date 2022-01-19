@@ -9,12 +9,12 @@ export const List: React.FC<{
 }> = ({ title, description, teams }) => {
   return (
     <section className="content container">
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col space-y-2">
         <div className="mb-20">
           <h2 className="text-blue">{title}</h2>
           <p className="text-lg">{description}</p>
         </div>
-        <div className="flex flex-col gap-y-24">
+        <div className="flex flex-col space-y-y-24">
           {teams.map((team) => (
             <TeamSection team={team} />
           ))}

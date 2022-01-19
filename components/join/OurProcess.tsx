@@ -13,13 +13,13 @@ import {
 
 const OurProcess: FC = () => {
   return (
-    <section className="content flex flex-col gap-18">
+    <section className="content flex flex-col space-y-18">
       <div>
         <h2 className="text-blue">Our Process</h2>
         <hr className="w-20 mt-4 mb-10 text-blue" />
       </div>
       <ol className="flex divide-x divide-charcoal-300">
-        <li className="flex-1 flex flex-col gap-4 pr-6">
+        <li className="flex-1 flex flex-col space-y-4 pr-6">
           <div className="h-20 w-20 relative">
             <img
               className="absolute -left-5"
@@ -45,7 +45,7 @@ const OurProcess: FC = () => {
             .
           </p>
         </li>
-        <li className="flex-1 flex flex-col gap-4 px-6">
+        <li className="flex-1 flex flex-col space-y-4 px-6">
           <div className="h-20 w-20 relative">
             <img
               className="absolute -left-4"
@@ -65,7 +65,7 @@ const OurProcess: FC = () => {
             <span className="text-blue">{APPLICATION_CLOSE_DATETIME}</span>.
           </p>
         </li>
-        <li className="flex-1 flex flex-col gap-4 px-6">
+        <li className="flex-1 flex flex-col space-y-4 px-6">
           <div className="h-20 w-20 relative">
             <img
               className="absolute -left-5"
@@ -84,7 +84,7 @@ const OurProcess: FC = () => {
             this time to ask us any questions you might have!
           </p>
         </li>
-        <li className="flex-1 flex flex-col gap-4 pl-6">
+        <li className="flex-1 flex flex-col space-y-4 pl-6">
           <div className="h-20 w-20 relative">
             <img
               className="absolute -left-4"

@@ -24,7 +24,7 @@ type PageProps = {
 export default function Alumni({ alumni }: PageProps): JSX.Element {
   return (
     <Layout title={`UW Blueprint | Alumni`}>
-      <div className="flex flex-col w-full gap-24 pb-24 relative">
+      <div className="flex flex-col w-full space-y-24 pb-24 relative">
         <section
           className="relative flex w-full bg-bottom bg-cover py-48"
           style={{

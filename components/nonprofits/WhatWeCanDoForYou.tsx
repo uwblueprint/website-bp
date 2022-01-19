@@ -5,9 +5,9 @@ const WhatWeCanDoForYou: FC = () => {
     <section className="content mb-28">
       <h2 className="text-blue">What we can do for you</h2>
       <hr className="w-20 mt-4 mb-10 text-blue" />
-      <div className="flex gap-20">
+      <div className="flex space-x-20">
         {/* 3 points */}
-        <ol className="flex-1 flex flex-col gap-9 pl-6">
+        <ol className="flex-1 flex flex-col space-y-9 pl-6">
           <li className="flex">
             <div className="h-24 w-20 relative">
               <img
@@ -19,7 +19,7 @@ const WhatWeCanDoForYou: FC = () => {
                 1
               </h1>
             </div>
-            <div className="flex-1 flex flex-col gap-2">
+            <div className="flex-1 flex flex-col space-y-2">
               <h6>Help you determine where you can use our services</h6>
               <p>
                 We understand that sometimes it’s challenging to identify where
@@ -40,7 +40,7 @@ const WhatWeCanDoForYou: FC = () => {
                 2
               </h1>
             </div>
-            <div className="flex-1 flex flex-col gap-2">
+            <div className="flex-1 flex flex-col space-y-2">
               <h6>Spearhead the project with clear communication</h6>
               <p>
                 Our skillful students have experience as Product Managers,
@@ -62,7 +62,7 @@ const WhatWeCanDoForYou: FC = () => {
                 3
               </h1>
             </div>
-            <div className="flex-1 flex flex-col gap-2">
+            <div className="flex-1 flex flex-col space-y-2">
               <h6>Deliver high quality software solutions</h6>
               <p>
                 Whether an application, website redesign or designing a more

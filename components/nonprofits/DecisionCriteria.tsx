@@ -2,7 +2,7 @@ import { FC } from "react";
 
 const DecisionCriteria: FC = () => {
   return (
-    <section className="content flex gap-4 mb-4">
+    <section className="content flex space-x-4 mb-4">
       {/* Image */}
       <div className="flex-1">
         <img
@@ -18,7 +18,7 @@ const DecisionCriteria: FC = () => {
         <p className="mb-5">
           These are the primary criteria we use to determine project fit:
         </p>
-        <ol className="flex flex-col gap-6">
+        <ol className="flex flex-col space-y-6">
           <li>
             <h6 className="text-blue">1. Impact</h6>
             <p>

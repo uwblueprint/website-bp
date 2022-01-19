@@ -11,15 +11,15 @@ import {
 const Contact: NextPage = () => {
   return (
     <Layout hideFooter>
-      <div className="h-screen w-full flex justify-center items-center gap-6 px-4 bg-gradient-to-tr from-blue to-[#1D8AFF]">
-        <div className="flex flex-col gap-6">
+      <div className="h-screen w-full flex justify-center items-center space-x-6 px-4 bg-gradient-to-tr from-blue to-[#1D8AFF]">
+        <div className="flex flex-col space-y-6">
           <h1 className="text-white">Contact us!</h1>
           <h4 className="max-w-xl text-white font-normal">
             Have a question? Interested in a potential project but unsure what
             our team can help you with? Send us an email or connect with us on
             our social media!
           </h4>
-          <div className="flex items-center gap-16">
+          <div className="flex items-center space-x-16">
             <a href={INSTAGRAM_URL} target="_blank">
               <img
                 className="h-12 w-12"
