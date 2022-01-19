@@ -117,7 +117,7 @@ const Footer: FC = () => {
           </div>
 
           {/* Links */}
-          <div className="grid grid-cols-2 gap-x-4 gap-y-12 md:grid-cols-5 md:gap-x-12">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-12 md:grid-cols-3 md:gap-x-6 lg:grid-cols-5 lg:gap-x-12">
             {LINKS.map((linkGroup) => (
               <div key={linkGroup.name}>
                 <a href={linkGroup.link}>
