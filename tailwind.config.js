@@ -106,6 +106,9 @@ module.exports = {
         "auto-fit": "repeat(auto-fit, minmax(8rem, 1fr))",
         "auto-fill": "repeat(auto-fill, minmax(8rem, 1fr))",
       },
+      backgroundImage: {
+        'how-it-works': "url('/landing/how-it-works-background.svg')",
+      }
     },
   },
   variants: {},
