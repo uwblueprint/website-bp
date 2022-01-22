@@ -3,7 +3,7 @@ import { FC } from "react";
 /** UW Blueprint introduction video section */
 const IntroVideo: FC = () => {
   return (
-    <div className="h-[880px] w-full relative flex justify-center items-center">
+    <div className="py-24 px-4 w-full relative flex justify-center items-center">
       {/* Background image */}
       <div className="max-h-full w-full absolute flex overflow-hidden">
         <img
@@ -13,15 +13,16 @@ const IntroVideo: FC = () => {
         />
       </div>
 
-      <div className="relative z-10">
-        <iframe
-          width="946"
-          height="508"
-          src="https://www.youtube.com/embed/Dunh20k7gYA"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
+      <div className="w-full md:w-160 lg:w-240">
+        <div className="relative w-full" style={{ paddingTop: "56%" }}>
+          <iframe
+            className="w-full h-full absolute top-0 left-0"
+            src="https://www.youtube.com/embed/Dunh20k7gYA"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
       </div>
     </div>
   );
