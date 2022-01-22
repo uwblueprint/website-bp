@@ -12,40 +12,48 @@ const ROUTES = [
 /** Navbar */
 const Navbar: FC = () => {
   return (
-    <nav className="w-full absolute z-20 flex flex-wrap justify-between p-6 box-border">
-      <div className="flex flex-col justify-center">
-        <Link href="/">
-          <a>
-            <img src="/common/logo-with-text.svg" alt="UW Blueprint logo" />
-          </a>
-        </Link>
-      </div>
-      <div className="flex flex-wrap space-x-7">
-        <div className="flex items-center space-x-6">
-          {ROUTES.map((route) => (
-            <Link key={route.name} href={route.link}>
-              <a className="text-sm font-poppins font-normal text-white">
-                {route.name}
+    <div className="w-full fixed z-20">
+      <div className="bg-blue">
+        <nav className="content flex flex-wrap justify-between pb-5 p-6 md:pb-6 box-border">
+          <div className="flex flex-col justify-center">
+            <Link href="/">
+              <a>
+                <img src="/common/logo-with-text.svg" alt="UW Blueprint logo" />
               </a>
             </Link>
-          ))}
-        </div>
-        <div className="flex space-x-4">
-          <Button
-            className="bg-transparent"
-            size="md"
-            variant="secondary"
-            invert
-            href="/join"
-          >
-            Join Our Team!
-          </Button>
-          <Button size="md" invert href="/nonprofits">
-            For Nonprofits
-          </Button>
-        </div>
+          </div>
+          <button className="lg:hidden">
+            <img className="" src="/common/menu.svg" alt="Menu" />
+          </button>
+          <div className="hidden lg:flex flex-wrap space-x-7">
+            <div className="flex items-center space-x-6">
+              {ROUTES.map((route) => (
+                <Link key={route.name} href={route.link}>
+                  <a className="text-sm font-poppins font-normal text-white">
+                    {route.name}
+                  </a>
+                </Link>
+              ))}
+            </div>
+            <div className="flex space-x-4">
+              <Button
+                className="bg-transparent"
+                size="md"
+                variant="secondary"
+                invert
+                href="/join"
+              >
+                Join Our Team!
+              </Button>
+              <Button size="md" invert href="/nonprofits">
+                For Nonprofits
+              </Button>
+            </div>
+          </div>
+        </nav>
       </div>
-    </nav>
+      <img className="w-full md:hidden" src="common/navbar-wave-sm.svg" />
+    </div>
   );
 };
 
