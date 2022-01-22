@@ -112,6 +112,9 @@ module.exports = {
       width: {
         '160': '40rem',
         '240': '60rem',
+      },
+      height: {
+        '144': '36rem',
       }
     },
   },

@@ -62,7 +62,7 @@ const LINKS = [
 /** Footer */
 const Footer: FC = () => {
   return (
-    <footer className="w-full bg-gradient-to-r from-blue to-sky-500">
+    <footer className="w-full bg-blue-100 md:bg-gradient-to-r md:from-blue md:to-sky-500">
       <div className="content relative z-10 flex flex-col items-center space-y-20 mx-auto pt-14 pb-6">
         <div className="w-full flex flex-col md:flex-row justify-center items-stretch space-y-24 md:space-y-0 md:space-x-20 mt-4">
           {/* Logo, social media links */}
