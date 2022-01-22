@@ -108,11 +108,8 @@ module.exports = {
       },
       backgroundImage: {
         'how-it-works': "url('/landing/how-it-works-background.svg')",
-        'nonprofits-md': "url('/nonprofits/hero-background-md.svg')",
-        'nonprofits-lg': "url('/nonprofits/hero-background-lg.svg')",
       },
       width: {
-        '120': '30rem',
         '160': '40rem',
         '240': '60rem',
       },
