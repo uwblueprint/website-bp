@@ -108,6 +108,9 @@ module.exports = {
       },
       backgroundImage: {
         'how-it-works': "url('/landing/how-it-works-background.svg')",
+      },
+      height: {
+        '144': '36rem',
       }
     },
   },

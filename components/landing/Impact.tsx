@@ -6,7 +6,7 @@ const Impact: FC = () => {
     <>
       <section className="w-full relative pt-24 pb-24 md:pb-20 px-4 md:px-0 bg-top bg-cover bg-origin-border">
         {/* Background image */}
-        <div className="absolute -top-16 inset-x-0 bottom-0 overflow-hidden">
+        <div className="absolute -top-8 inset-x-0 bottom-0 overflow-hidden">
           <img
             className="w-full absolute -top-80"
             src="/landing/impact-background.svg"
