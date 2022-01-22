@@ -5,17 +5,17 @@ const WhatWeCanDoForYou: FC = () => {
     <section className="content mb-28">
       <h2 className="text-blue">What we can do for you</h2>
       <hr className="w-20 mt-4 mb-10 text-blue" />
-      <div className="flex space-x-20">
+      <div className="flex flex-col space-y-12 lg:flex-row lg:space-x-20">
         {/* 3 points */}
-        <ol className="flex-1 flex flex-col space-y-9 pl-6">
-          <li className="flex">
-            <div className="h-24 w-20 relative">
+        <ol className="flex-1 flex flex-col space-y-9">
+          <li className="flex items-start space-x-5">
+            <div className="relative">
               <img
-                className="absolute top-2 -left-6"
+                className="w-16"
                 src="/nonprofits/process-blob-1.svg"
                 alt="Process step 1 blob"
               />
-              <h1 className="relative z-10 row-start-1 text-blue text-[64px] font-medium">
+              <h1 className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-10 row-start-1 text-blue text-[48px] font-medium">
                 1
               </h1>
             </div>
@@ -29,14 +29,14 @@ const WhatWeCanDoForYou: FC = () => {
               </p>
             </div>
           </li>
-          <li className="flex">
-            <div className="h-24 w-20 relative">
+          <li className="flex items-start space-x-5">
+            <div className="relative">
               <img
-                className="absolute top-2 -left-4"
+                className="w-16"
                 src="/nonprofits/process-blob-2.svg"
                 alt="Process step 2 blob"
               />
-              <h1 className="relative z-10 row-start-1 text-blue text-[64px] font-medium">
+              <h1 className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-10 row-start-1 text-blue text-[48px] font-medium">
                 2
               </h1>
             </div>
@@ -51,14 +51,14 @@ const WhatWeCanDoForYou: FC = () => {
               </p>
             </div>
           </li>
-          <li className="flex">
-            <div className="h-24 w-20 relative">
+          <li className="flex items-start space-x-5">
+            <div className="relative">
               <img
-                className="absolute top-2 -left-5"
+                className="w-16"
                 src="/nonprofits/process-blob-3.svg"
                 alt="Process step 3 blob"
               />
-              <h1 className="relative z-10 row-start-1 text-blue text-[64px] font-medium">
+              <h1 className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-10 row-start-1 text-blue text-[48px] font-medium">
                 3
               </h1>
             </div>
@@ -75,8 +75,8 @@ const WhatWeCanDoForYou: FC = () => {
         </ol>
 
         {/* Quote */}
-        <div className="w-[432px] flex flex-col items-end">
-          <div className="relative z-10 px-8 py-10 rounded-3xl bg-sky-100">
+        <div className="mx-auto md:max-w-2xl lg:w-[432px] flex flex-col items-end">
+          <div className="relative z-10 px-8 py-8 rounded-3xl bg-sky-100">
             <p>
               “Each step of the way, Blueprint’s team asked lots of questions to
               ensure what they were developing matched expectations, and were
@@ -86,7 +86,7 @@ const WhatWeCanDoForYou: FC = () => {
               with.”
             </p>
           </div>
-          <div className="h-52 w-80 relative -top-20 -right-6 flex flex-col justify-end -mt-8 px-8 pt-10 pb-5 rounded-3xl bg-charcoal-100">
+          <div className="h-56 lg:w-80 relative -top-20 md:-right-12 lg:-right-6 flex flex-col justify-end -mt-8 px-8 pt-10 pb-8 rounded-3xl bg-charcoal-100">
             <div className="flex">
               <div className="mr-1">
                 <p className="font-semibold">- </p>
