@@ -108,6 +108,10 @@ module.exports = {
       },
       backgroundImage: {
         'how-it-works': "url('/landing/how-it-works-background.svg')",
+      },
+      width: {
+        '160': '40rem',
+        '240': '60rem',
       }
     },
   },
