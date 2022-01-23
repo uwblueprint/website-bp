@@ -5,7 +5,7 @@
 @layer base {
   /* Typography */
   h1 {
-    @apply text-[58px] leading-[87px] font-medium font-poppins;
+    @apply text-[24px] leading-[28px] md:text-[58px] md:leading-[87px] font-medium font-poppins;
   }
 
   h2 {
@@ -21,7 +21,7 @@
   }
 
   h5 {
-    @apply text-[18px] leading-[27px] font-medium font-poppins;
+    @apply text-[16px] leading-[20px] font-source md:text-[18px] md:leading-[27px] font-medium md:font-poppins;
   }
 
   h6 {
