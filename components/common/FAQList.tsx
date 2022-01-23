@@ -20,7 +20,9 @@ const FAQList: FC<Props> = ({ questions }) => {
             onClick={() => setOpenQuestion(i === openQuestion ? null : i)}
           >
             <div className="w-full flex justify-between">
-              <h6 className="text-xs uppercase">{question}</h6>
+              <h6 className="text-left normal-case font-normal md:font-semibold">
+                {question}
+              </h6>
               {i === openQuestion ? (
                 <img src="/common/up-carat-sky.svg" alt="Up carat" />
               ) : (
