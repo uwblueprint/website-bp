@@ -52,7 +52,10 @@ const Navbar: FC = () => {
           </div>
         </nav>
       </div>
-      <img className="w-full md:hidden" src="common/navbar-wave-sm.svg" />
+      <img
+        className="w-full -mt-0.5 md:hidden"
+        src="common/navbar-wave-sm.svg"
+      />
     </div>
   );
 };
