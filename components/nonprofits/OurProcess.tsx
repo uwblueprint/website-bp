@@ -11,7 +11,7 @@ const OurProcess: FC = () => {
         <hr className="hidden md:block w-20 mt-4 mb-10 text-blue" />
       </div>
       {/* Mobile */}
-      <ol className="flex md:hidden space-x-4 overflow-x-auto snap-mandatory snap-x">
+      <ol className="flex md:hidden space-x-4 overflow-x-auto snap-mandatory snap-x snap-always">
         {PHASES.map(({ step, name, description }, i) => (
           <li
             key={step}
