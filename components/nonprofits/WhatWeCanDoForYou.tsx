@@ -2,7 +2,7 @@ import { FC } from "react";
 
 const WhatWeCanDoForYou: FC = () => {
   return (
-    <section className="content mb-28">
+    <section className="content mb-0 lg:mb-16">
       <h2 className="text-blue">What we can do for you</h2>
       <hr className="w-20 mt-4 mb-10 text-blue" />
       <div className="flex flex-col space-y-12 lg:flex-row lg:space-x-20">
