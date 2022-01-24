@@ -2,9 +2,9 @@ import { FC } from "react";
 
 const DecisionCriteria: FC = () => {
   return (
-    <section className="content flex space-x-4 mb-4">
+    <section className="content flex lg:space-x-12 mb-32 md:mb-20">
       {/* Image */}
-      <div className="flex-1">
+      <div className="flex-1 hidden lg:block">
         <img
           src="/nonprofits/people-on-phone.svg"
           alt="People sitting on a phone"
@@ -12,7 +12,7 @@ const DecisionCriteria: FC = () => {
       </div>
 
       {/* Criteria list */}
-      <div className="flex-1">
+      <div className="md:w-5/6 lg:flex-1">
         <h2 className="text-blue">Decision Criteria</h2>
         <hr className="w-20 mt-4 mb-8 text-blue" />
         <p className="mb-5">
