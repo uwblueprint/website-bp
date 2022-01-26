@@ -14,11 +14,11 @@ const Hero: FC = () => {
           </p>
           <div className="w-full flex md:items-end">
             <Button
-              className="md:ml-auto bg-transparent"
+              className="md:ml-auto h-auto py-4 bg-transparent"
               size="md"
               variant="secondary"
               invert
-              href="/join"
+              href="/nonprofits"
             >
               Apply to be our next nonprofit partner!
             </Button>
