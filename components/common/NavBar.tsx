@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import Link from "next/link";
 import Button from "@components/common/Button";
+import { cpuUsage } from "process";
 
 const ROUTES = [
   { name: "About Us", link: "/about" },
@@ -39,8 +40,13 @@ const Navbar: FC = () => {
       </div>
       {menuOpen && (
         <div className="fixed h-screen w-screen z-40 flex lg:hidden">
-          <div className="h-full bg-blue-200 w-64 pl-8 pr-12 py-14 space-y-12">
-            <Logo />
+          <div className="h-full bg-blue-200 w-64 md:w-80 pl-8 pr-8 py-14 space-y-12">
+            <div className="flex justify-between">
+              <Logo />
+              <button onClick={() => setMenuOpen(false)}>
+                <img src={"common/close.svg"} />
+              </button>
+            </div>
             <div className="flex flex-col space-y-6 text-lg">
               <Links />
             </div>
@@ -49,7 +55,7 @@ const Navbar: FC = () => {
             </div>
           </div>
           <div
-            className="w-full bg-black bg-opacity-40"
+            className="flex-1 bg-black bg-opacity-40"
             onClick={() => setMenuOpen(false)}
           />
         </div>
