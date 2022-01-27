@@ -16,27 +16,25 @@ const ProjectModal: FC<Props> = ({ project, open, onClose }) => {
     <>
       {/* Overlay */}
       <div
-        className="fixed inset-0 flex justify-center items-center p-4 bg-black bg-opacity-20 z-40"
+        className="fixed inset-0 flex justify-center items-end md:items-center md:p-4 bg-black bg-opacity-20 z-40"
+        style={{ margin: "0" }}
         onClick={onClose}
       >
         {/* Modal */}
         <div
-          className="max-w-[1200px] relative flex flex-col px-12 py-11 rounded-3xl bg-white shadow-lg"
+          className="md:max-w-[1200px] relative flex flex-col px-4 md:px-12 pt-10 pb-16 rounded-t-3xl md:rounded-3xl bg-white shadow-lg"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Close button */}
-          <button onClick={onClose}>
-            <img
-              className="absolute right-8"
-              src="/common/close.svg"
-              alt="Close"
-            />
-          </button>
-
           {/* Modal header (name, terms, links) */}
-          <header className="flex justify-between">
+          <header className="flex flex-col space-y-6 justify-between">
             <div>
-              <h3>{name}</h3>
+              <div className="flex items-center mb-1.5 md:mb-0">
+                <h3 className="w-full">{name}</h3>
+                {/* Close button */}
+                <button onClick={onClose}>
+                  <img src="/common/close.svg" alt="Close" />
+                </button>
+              </div>
               <p className="text-charcoal-500">{terms}</p>
             </div>
             <div className="flex items-center space-x-8 pr-12">
@@ -47,12 +45,12 @@ const ProjectModal: FC<Props> = ({ project, open, onClose }) => {
             </div>
           </header>
 
-          <hr className="w-full mt-3 mb-6 text-charcoal-300" />
+          <hr className="w-full mt-6 mb-8 md:mt-3 md:mb-6 text-charcoal-300" />
 
           {/* Modal content */}
           <div className="flex justify-between space-x-8">
             {/* NPO description */}
-            <div className="flex-1 flex flex-col justify-between">
+            <div className="flex-1 flex flex-col justify-between space-y-6 md:space-y-8">
               <div>
                 <h6 className="mb-1 text-blue">About the non-profit</h6>
                 <p>{about}</p>
@@ -61,8 +59,8 @@ const ProjectModal: FC<Props> = ({ project, open, onClose }) => {
                 <h6 className="mb-1 text-blue">Our solution</h6>
                 <p>{solution}</p>
               </div>
-              <div className="flex flex-col">
-                <div className="relative z-10 px-12 py-4 rounded-lg bg-sky">
+              <div className="hidden md:flex flex-col">
+                <div className="relative z-10 px-12 py-6 rounded-lg bg-sky">
                   <img
                     className="absolute top-4 left-4"
                     src="/projects/open-quotes.svg"
@@ -75,13 +73,13 @@ const ProjectModal: FC<Props> = ({ project, open, onClose }) => {
                   />
                   <p className="font-semibold italic">{quote.text}</p>
                 </div>
-                <div className="self-end h-[48px] -mt-2 pt-4 px-4 rounded-b-[20px] bg-charcoal-100">
+                <div className="self-end -mt-2 p-4 rounded-b-[20px] bg-charcoal-100">
                   <p className="inline">- {quote.signature}</p>
                 </div>
               </div>
             </div>
             {/* Image */}
-            <div className="flex-1">
+            <div className="hidden md:block flex-1">
               <img className="h-full object-cover" src={image} alt={name} />
             </div>
           </div>
