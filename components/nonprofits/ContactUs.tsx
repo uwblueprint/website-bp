@@ -9,7 +9,7 @@ const ContactUs: FC = () => {
         <h4 className="text-blue uppercase mb-7 md:mb-0">
           Need help with your nonprofit and do not know where to start?
         </h4>
-        <hr className="w-96 mt-4 mb-10 text-blue hidden md:block" />
+        <hr className="w-96 mt-4 mb-8 text-blue hidden md:block" />
         <Link href="/contact">
           <a>
             <Button>Contact Us</Button>
