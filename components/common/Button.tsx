@@ -59,11 +59,9 @@ const Button: FC<Props> = ({
 
   return href ? (
     <Link href={href}>
-      <a>
-        <button className={buttonClasses} {...props}>
-          {children}
-        </button>
-      </a>
+      <button className={buttonClasses} {...props}>
+        {children}
+      </button>
     </Link>
   ) : (
     <button className={buttonClasses} {...props}>
