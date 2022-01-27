@@ -15,7 +15,6 @@ const HighlightedProjects: FC = () => {
       </div>
     </section>
   );
-  ß;
 };
 
 export default HighlightedProjects;
