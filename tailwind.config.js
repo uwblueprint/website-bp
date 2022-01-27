@@ -115,6 +115,7 @@ module.exports = {
         '120': '30rem',
         '160': '40rem',
         '240': '60rem',
+        'card': 'calc(100% - 2rem)'
       },
       height: {
         '144': '36rem',

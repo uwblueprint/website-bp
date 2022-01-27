@@ -13,11 +13,7 @@ const OurProcess: FC = () => {
       {/* Mobile */}
       <ol className="flex md:hidden space-x-4 overflow-x-auto snap-mandatory snap-x snap-always">
         {PHASES.map(({ step, name, description }) => (
-          <li
-            key={step}
-            className="flex-none snap-start last:pr-4"
-            style={{ width: "calc(100% - 32px)" }}
-          >
+          <li key={step} className="flex-none snap-start last:pr-4 w-card">
             <div className="bg-sky p-6 rounded-lg">
               <h4 className={`text-blue md:uppercase text-left`}>
                 Phase {step}
