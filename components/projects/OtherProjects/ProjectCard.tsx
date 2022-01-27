@@ -10,7 +10,7 @@ const ProjectCard: FC<Props> = ({ project }) => {
   const { name, type, linkText, githubUrl, description, image } = project;
 
   return (
-    <div className="w-80 flex-shrink-0 flex flex-col space-y-9 p-6 rounded-3xl shadow-lg overflow-hidden">
+    <div className="w-card md:w-80 flex-shrink-0 flex flex-col space-y-6 md:space-y-9 p-6 rounded-3xl shadow-lg overflow-hidden snap-start">
       {/* Image and project type */}
       <div className="flex justify-between">
         <img src={image} alt={name} />
@@ -21,11 +21,11 @@ const ProjectCard: FC<Props> = ({ project }) => {
 
       {/* Project name and description */}
       <div className="flex-1 relative flex flex-col space-y-2">
-        <h5>{name}</h5>
+        <h5 className="text-lg font-semibold">{name}</h5>
         <p>
           {description.map((text, i) =>
             i === 0 ? (
-              <p className="mb-4">
+              <p key={i} className="mb-4">
                 <a href={githubUrl} target="_blank" className="text-blue">
                   {linkText || name}
                 </a>{" "}
