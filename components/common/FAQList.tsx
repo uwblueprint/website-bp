@@ -29,7 +29,11 @@ const FAQList: FC<Props> = ({ questions }) => {
                 <img src="/common/down-carat-blue.svg" alt="Down carat" />
               )}
             </div>
-            {i === openQuestion && <p className="text-left">{answer}</p>}
+            {i === openQuestion && (
+              <p className="text-left whitespace-pre-line align-bottom">
+                {answer}
+              </p>
+            )}
           </button>
         </li>
       ))}

@@ -53,12 +53,14 @@ const OurProcess: FC = () => {
         {/* Description for selected phase */}
         <div className="flex-1 pl-8">
           <div className="h-full flex flex-col md:space-y-8 lg:flex-row lg:space-x-5 lg:space-y-0 p-10 rounded-3xl bg-sky-100">
-            <div className="flex-1 flex flex-col space-y-2">
-              <h6 className="text-blue normal-case">
+            <div className="flex-1 flex flex-col">
+              <h6 className="text-blue normal-case mb-3">
                 {PHASES[selectedPhase].name}
               </h6>
-              <hr className="w-16 text-blue" />
-              <p>{PHASES[selectedPhase].description}</p>
+              <hr className="w-16 text-blue mb-5" />
+              <p className="whitespace-pre-line align-bottom">
+                {PHASES[selectedPhase].description}
+              </p>
             </div>
             <div>
               {/* TODO: Replace image dependent on phase */}

@@ -1,22 +1,22 @@
 [
   {
     "step": "One",
-    "name": "Nonprofit/team lead project discussion",
-    "description": "We work with the nonprofit to understand the project in great depth and scope out the minimum viable product (MVP). Once we agree on the MVP, the project lead will write up a statement of work to be shared with the nonprofit."
+    "name": "Project discussion and collaborative scoping",
+    "description": "To kickstart the collaboration process, our teams will work closely with the nonprofit to gain a greater understanding of project needs and priorities as well as scope out the minimum viable product (MVP). From this point, the project lead will curate a statement of work (SOW) that defines project scope capturing the discussion with the nonprofit."
   },
   {
     "step": "Two",
     "name": "Building the Minimum Viable Product (MVP)",
-    "description": "During this phase, we work hard to get the MVP up and running. We will consistently stay in touch with the nonprofit to ensure that the development phase goes smoothly and to also make sure that we are always in sync with the nonprofit."
+    "description": "This second phase is where the magic begins! Our teams work hard to get the MVP up and running. All the while, staying in touch with the nonprofit to ensure smooth development and consistent alignment."
   },
   {
     "step": "Three",
     "name": "User Testing",
-    "description": "During this phase, we release the MVP to see how the product is received. Any critical problems that break the product are fixed immediately. Additionally, we will take note of any bugs, UX issues, and feature requests during this time."
+    "description": "Once the MVP is built and released to an initial group of end users, we conduct rigorous testing to make sure no critical problems remain. Additionally, we will take note of any bugs, UX issues, and feature requests during this time."
   },
   {
     "step": "Four",
     "name": "Product polish and hand-off",
-    "description": "The last phase involves intensive development. We make improvements on the product based on the feedback received from user testing. This phase is designed to completely finish the product so that it is ready to be delivered to the nonprofit. Upon completion, we meet with the nonprofit to hand off the product and to figure out how maintenance of the product is to be handled."
+    "description": "This phase involves intensive development and design work. Our team will execute improvements on the product based on feedback received from the user testing phase.\n\nThe objective of this final phase is to ensure the quality and completeness of the finished product such that it is ready to be delivered. Upon product completion, our team will meet with the nonprofit one last time to walk through solution handling or maintenance best practices before hand off."
   }
 ]
