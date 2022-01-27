@@ -1,7 +1,6 @@
 import { FC, useState } from "react";
 import Link from "next/link";
 import Button from "@components/common/Button";
-import { cpuUsage } from "process";
 
 const ROUTES = [
   { name: "About Us", link: "/about" },
