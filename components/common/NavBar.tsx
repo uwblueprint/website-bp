@@ -44,7 +44,7 @@ const Navbar: FC = () => {
             <div className="flex justify-between">
               <Logo />
               <button onClick={() => setMenuOpen(false)}>
-                <img src={"common/close.svg"} />
+                <img className="stroke-3" src={"common/close-menu.svg"} />
               </button>
             </div>
             <div className="flex flex-col space-y-6 text-lg">
