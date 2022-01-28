@@ -58,7 +58,10 @@ export default function Alumni({ alumni }: PageProps): JSX.Element {
         <ToStudents />
 
         {/* Background decals */}
-        <img src={teamLeftLines} className="absolute left-0 top-80" />
+        <img
+          src={teamLeftLines}
+          className="hidden lg:block absolute left-0 top-80"
+        />
         <img src={teamLeftGear} className="absolute left-0 top-1/2 z-[-10]" />
         <img
           src={teamRightLines}
