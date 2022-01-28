@@ -9,7 +9,7 @@ export const Avatar: FC<Member> = ({ name, role, img }) => {
         src={img || "/members/default.jpg"}
       />
       <p className="font-bold text-center">{name}</p>
-      <p className="text-charcoal-500">{role}</p>
+      <p className="text-charcoal-500 text-center">{role}</p>
     </figure>
   );
 };

@@ -25,7 +25,7 @@ export default function Alumni({ alumni }: PageProps): JSX.Element {
   return (
     <Layout title={`UW Blueprint | Alumni`}>
       <div className="flex flex-col w-full space-y-24 pb-24 relative">
-        <section
+        {/* <section
           className="relative flex w-full bg-bottom bg-cover py-48"
           style={{
             backgroundImage: `url(${landingSplashBackground})`,
@@ -36,6 +36,18 @@ export default function Alumni({ alumni }: PageProps): JSX.Element {
             description="Meet Blueprint - we're a diverse group of Students and Waterloo graduates who care about building tech for social good."
           />
           <img src={landingGraphic} className="absolute bottom-0 right-[15%]" />
+        </section> */}
+        <section className="relative flex w-full bg-bottom bg-cover pt-36 pb-8 md:py-48 md:bg-students-hero">
+          <div className="content relative flex flex-col md:flex-row items-center justify-between md:space-x-12 lg:space-x-16 space-y-8 md:space-y-0">
+            <Hero
+              title={`Students`}
+              description={`Meet Blueprint - we're a diverse group of friendly folks at the University of Waterloo dedicated to building tech for social good.`}
+            />
+            <img
+              className="md:w-5/12 translate-x-1 translate-y-2"
+              src={landingGraphic}
+            />
+          </div>
         </section>
 
         <List

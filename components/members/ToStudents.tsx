@@ -7,10 +7,12 @@ import Button from "@components/common/Button";
 export const ToStudents: React.FC = () => {
   return (
     <section className="content container">
-      <div className="flex flex-col space-y-2">
-        <h2 className="text-blue">Team</h2>
-        <p className="text-lg">Go back to our current members page.</p>
-        <Button className="mt-4" href="/students">
+      <div className="flex flex-col space-y-6">
+        <div className="space-y-2">
+          <h2 className="text-blue">Team</h2>
+          <p className="text-lg">Go back to our current members page.</p>
+        </div>
+        <Button className="w-full md:w-min whitespace-nowrap" href="/students">
           View Blueprint team
         </Button>
       </div>
