@@ -11,12 +11,9 @@ const About: NextPage = () => {
       <Hero />
 
       {/* Our Mission section */}
-      <section
-        className="content h-80 flex flex-col items-center mb-8 pt-10 bg-no-repeat bg-top"
-        style={{ backgroundImage: "url('/about/mission-background.svg')" }}
-      >
-        <h2 className="text-blue">Our Mission</h2>
-        <hr className="w-20 mt-3 mb-8 text-blue" />
+      <section className="content h-80 flex flex-col md:items-center mb-8 pt-20 md:pt-10 bg-no-repeat bg-top md:bg-about-us-mission">
+        <h2 className="text-blue mb-4 md:mb-0">Our Mission</h2>
+        <hr className="hidden md:block w-20 mt-3 mb-8 text-blue" />
         <p className="max-w-xl text-lg font-light font-poppins italic">
           Blueprint strives to make technology accessible and useful for those
           who create communities and promote public welfare.
@@ -24,18 +21,12 @@ const About: NextPage = () => {
       </section>
 
       {/* Who we are, What we do, Our story */}
-      <section className="content flex space-x-20 mb-20">
-        <div>
-          <img
-            className="max-w-lg"
-            src="/about/circle-images.png"
-            alt="UW Blueprint members"
-          />
-        </div>
+      <section className="content flex md:space-x-12 lg:space-x-4 mt-16 mb-20">
+        <div className="hidden md:block w-5/12 lg:w-1/2 md:bg-about-us-circles-md lg:bg-about-us-circles-lg bg-contain bg-no-repeat bg-center" />
         <div className="flex-1 flex flex-col space-y-12">
           <div className="flex flex-col">
-            <h2 className="text-blue">Who we are</h2>
-            <hr className="w-20 mt-3 mb-10 text-blue" />
+            <h2 className="text-blue md:text-4xl mb-3 md:mb-1.5">Who we are</h2>
+            <hr className="hidden md:block w-20 mt-3 mb-6 lg:mb-8 text-blue" />
             <p className="mb-2 text-lg font-semibold">Passionate to help.</p>
             <p className="mb-3">
               We are a group of students at the University of Waterloo dedicated
@@ -43,10 +34,9 @@ const About: NextPage = () => {
               teams of five students work with non-profit organizations on
               projects to help them better serve their communities.
             </p>
-            {/* TODO: Link to students page */}
-            <Link href="#">
-              <a className="flex space-x-2 text-blue text-base font-extrabold">
-                Meet the team{" "}
+            <Link href="/students">
+              <a className="flex space-x-1.5 items-center text-blue text-base font-extrabold">
+                <p className="font-semibold">Meet the team</p>
                 <img
                   className="relative top-[1px]"
                   src="/common/right-carat-blue.svg"
@@ -56,8 +46,8 @@ const About: NextPage = () => {
             </Link>
           </div>
           <div className="flex flex-col">
-            <h2 className="text-blue">What we do</h2>
-            <hr className="w-20 mt-3 mb-10 text-blue" />
+            <h2 className="text-blue md:text-4xl mb-3 md:mb-1.5">What we do</h2>
+            <hr className="hidden md:block w-20 mt-3 mb-6 lg:mb-8 text-blue" />
             <p className="mb-2 text-lg font-semibold">
               Amplifying the impact of solutions that matter.
             </p>
@@ -66,8 +56,8 @@ const About: NextPage = () => {
               websites, mobile applications and analysis tools - free of charge.
             </p>
             <Link href="/projects">
-              <a className="flex space-x-2 text-blue text-base font-extrabold">
-                See our work{" "}
+              <a className="flex space-x-1.5 items-center text-blue text-base font-extrabold">
+                <p className="font-semibold">See our work</p>
                 <img
                   className="relative top-[1px]"
                   src="/common/right-carat-blue.svg"
@@ -77,8 +67,8 @@ const About: NextPage = () => {
             </Link>
           </div>
           <div className="flex flex-col">
-            <h2 className="text-blue">Our Story</h2>
-            <hr className="w-20 mt-3 mb-10 text-blue" />
+            <h2 className="text-blue md:text-4xl mb-3 md:mb-1.5">Our Story</h2>
+            <hr className="hidden md:block w-20 mt-3 mb-6 lg:mb-8 text-blue" />
             <p className="mb-2 text-lg font-semibold">
               A community built across universities.
             </p>
@@ -87,9 +77,11 @@ const About: NextPage = () => {
               Waterloo is Blueprint's first chapter outside of Berkeley.
             </p>
             {/* TODO: Link to other Blueprint chapters */}
-            <Link href="#">
-              <a className="flex space-x-2 text-blue text-base font-extrabold">
-                Check out other Blueprint chapters!{" "}
+            <Link href="https://calblueprint.org/chapters">
+              <a className="flex space-x-1.5 items-center text-blue text-base font-extrabold">
+                <p className="font-semibold">
+                  Check out other Blueprint chapters
+                </p>
                 <img
                   className="relative top-[1px]"
                   src="/common/right-carat-blue.svg"
@@ -103,30 +95,36 @@ const About: NextPage = () => {
 
       {/* Our Values section */}
       <section className="content flex flex-col mb-4">
-        <h2 className="text-blue">Our Values</h2>
-        <hr className="w-20 mt-3 mb-10 text-blue" />
-        <div className="grid grid-cols-4 gap-14">
-          <div className="flex flex-col space-y-4">
+        <h2 className="text-blue mb-8">Our Values</h2>
+        <hr className="hidden md:block w-20 mt-3 md:mb-10 text-blue" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-20 gap-y-14 lg:gap-16">
+          <div className="flex flex-col space-y-2.5">
             <img
+              className="mb-5"
               src="/about/amplifying-impact.svg"
               alt="Woman holding laptop"
             />
-            <h6>Amplifying impact</h6>
+            <h6 className="mb-1">Amplifying impact</h6>
             <p className="text-charcoal-500">
               Projects are chosen to help social causes where technology as a
               solution makes sense.
             </p>
           </div>
-          <div className="flex flex-col space-y-4">
-            <img src="/about/do-good-for-good.svg" alt="Man projecting Earth" />
+          <div className="flex flex-col space-y-2.5">
+            <img
+              className="mb-5"
+              src="/about/do-good-for-good.svg"
+              alt="Man projecting Earth"
+            />
             <h6>Do good for good</h6>
             <p className="text-charcoal-500">
               Pro-bono work doesn't need to mean substandard work. We treat all
               of our projects with the utmost care and integrity.
             </p>
           </div>
-          <div className="flex flex-col space-y-4">
+          <div className="flex flex-col space-y-2.5">
             <img
+              className="mb-5"
               src="/about/learning-is-a-team-sport.svg"
               alt="People at table"
             />
@@ -136,8 +134,12 @@ const About: NextPage = () => {
               on their technical craft in a team environment.
             </p>
           </div>
-          <div className="flex flex-col space-y-4">
-            <img src="/about/culture-is-key.svg" alt="People holding flag" />
+          <div className="flex flex-col space-y-2.5">
+            <img
+              className="mb-5"
+              src="/about/culture-is-key.svg"
+              alt="People holding flag"
+            />
             <h6>Culture is key</h6>
             <p className="text-charcoal-500">
               We're a team that cares about each other as much as we care about
@@ -149,14 +151,16 @@ const About: NextPage = () => {
 
       {/* Interested in the work we do? */}
       <section className="content flex flex-col items-center space-y-8 py-32">
-        <h2 className="text-blue text-4xl uppercase">
+        <h2 className="text-blue text-2xl md:text-4xl uppercase">
           Interested in the work we do?
         </h2>
-        <hr className="w-20 text-blue" />
+        <hr className="hidden md:block w-20 text-blue" />
         {/* TODO: Link to nonprofits page */}
         <Link href="#">
           <a>
-            <Button>Learn about our project selection process</Button>
+            <Button className="leading-relaxed">
+              Learn about our project selection process
+            </Button>
           </a>
         </Link>
       </section>
