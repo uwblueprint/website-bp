@@ -110,6 +110,7 @@ module.exports = {
         'how-it-works': "url('/landing/how-it-works-background.svg')",
         'nonprofits-md': "url('/nonprofits/hero-background-md.svg')",
         'nonprofits-lg': "url('/nonprofits/hero-background-lg.svg')",
+        'students-hero': "url('/students/students-landing-bg.svg')",
       },
       width: {
         '120': '30rem',

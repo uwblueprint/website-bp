@@ -10,8 +10,8 @@ export const List: React.FC<{
   return (
     <section className="content container">
       <div className="flex flex-col space-y-2">
-        <div className="mb-20">
-          <h2 className="text-blue">{title}</h2>
+        <div className="mb-8">
+          <h2 className="text-blue mb-1.5">{title}</h2>
           <p className="text-lg">{description}</p>
         </div>
         <div className="flex flex-col space-y-24">
