@@ -3,11 +3,11 @@ import { FC } from "react";
 /** Why Join section */
 const WhyJoin: FC = () => {
   return (
-    <section className="content flex justify-end mt-8 mb-32">
-      <div>
+    <section className="content flex relative justify-end mt-16 lg:mt-0 mb-24 md:mb-32">
+      <div className="w-full lg:w-2/3">
         <h2 className="text-blue">Why join?</h2>
         <hr className="w-20 mt-4 mb-10 text-blue" />
-        <div className="max-w-xl flex flex-col space-y-10">
+        <div className="flex flex-col space-y-8 md:space-y-10">
           <div className="flex flex-col space-y-2">
             <h6 className="text-blue">Make a meaningful impact</h6>
             <p>

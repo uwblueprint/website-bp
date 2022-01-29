@@ -111,6 +111,7 @@ module.exports = {
         'nonprofits-md': "url('/nonprofits/hero-background-md.svg')",
         'nonprofits-lg': "url('/nonprofits/hero-background-lg.svg')",
         'students-hero': "url('/students/students-landing-bg.svg')",
+        'join-hero': "url('/join/hero-background.svg')"
       },
       width: {
         '120': '30rem',
