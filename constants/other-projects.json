@@ -5,7 +5,7 @@
     "githubUrl": "https://github.com/uwblueprint/project-read-frontend",
     "description": [
       "is an organization that empowers families in the Waterloo region with access to literacy and essential skills training.",
-      "Our team is building a system streamline their outreach and operations by tracking interactions with families, allowing staff to efficiently make decisions to drive their organization’s growth."
+      "Our team built a system to streamline outreach and operations for Project READ by tracking interactions with families. The product ultimately allowed staff to more efficiently make strategic decisions that would drive organizational growth."
     ],
     "image": "/projects/project-read.svg"
   },
@@ -15,7 +15,7 @@
     "githubUrl": "https://github.com/uwblueprint/shoe-project",
     "description": [
       "provides educational and leadership opportunities to immigrant and refugee women. They have created a platform for women to showcase their moving stories using a shoe as a metaphor.",
-      "To celebrate their 10th anniversary, our team is developing an interactive visualization of stories and content created throughout the organization’s history."
+      "To celebrate their 10th anniversary, our team developed an interactive visualization tool leveraging geo-mapping technology to capture the stories of women across the world, collected throughout the organization's 10-year history."
     ],
     "image": "/projects/the-shoe-project.svg"
   },
@@ -26,7 +26,7 @@
     "linkText": "The Pregnancy Centre (TPC)",
     "description": [
       "supports mothers and families in Waterloo Region in making healthy and informed relationship and pregnancy decisions.",
-      "Our team is building a web portal that allows TPC to facilitate the donation of high quality essential items between local donors and clients in need."
+      "Our team built a web portal that would enable TPC to facilitate the collection and distribution of high quality, essential items between local donors and those in need."
     ],
     "image": "/projects/the-pregnancy-centre.svg"
   },
@@ -36,7 +36,7 @@
     "githubUrl": "https://github.com/uwblueprint/building-up-client",
     "description": [
       "is a non-profit construction contractor that provides long term career pathways for individuals facing barriers to employment. One of their main fundraising efforts in partnership with Raising the Roof is the Toque Campaign.",
-      "Our team is building an online platform to streamline toque ordering and engage third party sellers."
+      "Our team built an online platform to streamline toque ordering and better engage third party sellers."
     ],
     "image": "/projects/building-up.svg"
   }

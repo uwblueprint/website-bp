@@ -16,46 +16,51 @@ const DecisionCriteria: FC = () => {
         <h2 className="text-blue">Decision Criteria</h2>
         <hr className="w-20 mt-4 mb-8 text-blue" />
         <p className="mb-5">
-          These are the primary criteria we use to determine project fit:
+          Projects selected to be apart of our next cohort will be determined
+          against the following criteria:
         </p>
         <ol className="flex flex-col space-y-6">
           <li>
-            <h6 className="text-blue">1. Impact</h6>
+            <h6 className="text-blue">1. Impact Potential</h6>
             <p>
-              How much will the project impact the community? We prefer projects
-              that will provide the maximal benefit to the target community.
+              What is the breadth and depth of impact this project will provide
+              toward the community? Projects that generate the greatest levels
+              of social impact will be prioritized for selection by our team.
             </p>
           </li>
           <li>
             <h6 className="text-blue">2. Necessity</h6>
             <p>
-              How vital is the project to the non-profit organization, and does
-              the organization have other means to complete the project? We want
-              to ensure that we are helping organizations that truly need our
-              services.
+              To what extent is project execution crucial to the nonprofit? Are
+              there alternative ways that the organization can overcome their
+              challenges without technology? We want to ensure that we are
+              helping organizations that truly need our services.
             </p>
           </li>
           <li>
             <h6 className="text-blue">3. Scope</h6>
             <p>
-              Is completing the project feasible within our timeline? We want to
-              ensure that we can finish the project and deliver quality results
-              within a reasonable time.
+              Is project completion realistic within our team’s timeline? We
+              want to uphold accountability to completing high calibre projects
+              and delivering results within a reasonable time frame.
             </p>
           </li>
           <li>
             <h6 className="text-blue">4. Technical fit</h6>
             <p>
-              Does your project use the capabilities of technology? Does it fit
-              well with our team's areas of expertise?
+              Is the core of the project rooted in technology and aligned with
+              our core capabilities? In order to ensure best results, we want to
+              make sure only projects that fit well within our team’s area of
+              expertise are selected.
             </p>
           </li>
           <li>
             <h6 className="text-blue">5. Credibility</h6>
             <p>
-              Is it clear that the project will have an impact? We like to see
-              evidence that supports this! We also prefer to work with
-              non-profits that have a proven track record of doing good.
+              Is it clear that the project will generate a measurable and
+              intentional impact? Working with nonprofits that have a proven
+              track record of doing good is highly important for our team, and
+              we love to be able to provide evidence of project impact!
             </p>
           </li>
         </ol>
