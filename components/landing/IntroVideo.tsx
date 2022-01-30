@@ -17,7 +17,7 @@ const IntroVideo: FC = () => {
         <div className="relative w-full" style={{ paddingTop: "56%" }}>
           <iframe
             className="w-full h-full absolute top-0 left-0"
-            src="https://www.youtube.com/embed/Dunh20k7gYA"
+            src="https://www.youtube.com/embed/TBqRiIJpEXo"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
