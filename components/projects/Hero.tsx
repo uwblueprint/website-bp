@@ -9,8 +9,9 @@ const Hero: FC = () => {
         <div className="md:max-w-sm lg:max-w-xl">
           <h1 className="text-white mb-4 md:mb-0">Projects</h1>
           <p className="text-white text-xl mb-8">
-            All of Blueprint's work is open source because we believe in
-            building technology that makes us more open and connected.
+            With transparency and accessibility always top-of-mind, all of
+            Blueprint’s work is open source. We believe in building technology
+            that makes our community more open and connected.
           </p>
           <div className="w-full flex md:items-end">
             <Button
