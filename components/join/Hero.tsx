@@ -1,17 +1,9 @@
 import { FC } from "react";
 import Button from "@components/common/Button";
-import {
-  APPLICATION_OPEN_DATETIME,
-  APPLICATION_CLOSE_DATETIME,
-} from "@constants/applications";
+import { APPLICATION_IS_LIVE, APPLICATION_LINK } from "@constants/applications";
 
 /** Hero section */
 const Hero: FC = () => {
-  const currentDate = new Date();
-  const openDate = new Date(APPLICATION_OPEN_DATETIME);
-  const closeDate = new Date(APPLICATION_CLOSE_DATETIME);
-  const applicationIsLive = openDate < currentDate && currentDate < closeDate;
-
   return (
     <header className="mt-36 md:mt-0 md:h-[660px] w-full flex justify-around items-center bg-no-repeat bg-bottom bg-cover md:bg-join-hero pb-8 md:pb-0">
       <div className="max-w-6xl flex flex-col md:flex-row px-4">
@@ -24,13 +16,12 @@ const Hero: FC = () => {
               We are a group of friendly folks at the University of Waterloo
               dedicated to building technology for social good.
             </p>
-            {applicationIsLive && (
+            {APPLICATION_IS_LIVE && (
               <Button
                 className="bg-transparent border-blue text-blue-100 md:border-white md:text-white"
-                // invert={true}
                 size="lg"
                 variant="secondary"
-                href="/nonprofits"
+                href={APPLICATION_LINK}
               >
                 Apply now
               </Button>
