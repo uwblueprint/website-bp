@@ -20,12 +20,16 @@ const WhatWeCanDoForYou: FC = () => {
               </h1>
             </div>
             <div className="flex-1 flex flex-col space-y-2">
-              <h6>Help you determine where you can use our services</h6>
+              <h6>HELP DETERMINE WHERE OUR SERVICES CAN MAKE AN IMPACT</h6>
               <p>
-                We understand that sometimes it’s challenging to identify where
-                you can make the best use of a technology solution. Our process
-                begins with several scoping calls to determine what the best
-                solution for your organization.
+                We recognize that sometimes it can be challenging to pinpoint
+                exactly how a technology solution can add value to your
+                organization. However, with a proven track-record of delivering
+                tech-enabled impact, we believe in the power of technology to
+                better organizational efforts in the social sector. Which is why
+                our process begins with a series of calls dedicated to
+                project-scoping in order to help us identify what the best
+                solution for your organization looks like.
               </p>
             </div>
           </li>
@@ -41,13 +45,19 @@ const WhatWeCanDoForYou: FC = () => {
               </h1>
             </div>
             <div className="flex-1 flex flex-col space-y-2">
-              <h6>Spearhead the project with clear communication</h6>
+              <h6>
+                SPEARHEAD TECH-ENABLED PROJECTS WITH HIGH-CALIBRE TEAMS AND
+                CLEAR COMMUNICATIONS
+              </h6>
               <p>
-                Our skillful students have experience as Product Managers,
-                developers, designers, and technical leaders at companies
-                including Facebook, Google and Shopify. Our team will get the
-                job done with minimal hand holding, so you can focus on doing
-                what you do best: serving your clients.{" "}
+                UW Blueprint leverages a comprehensive hiring process in order
+                to bring on the most tenacious and passionate student leaders.
+                Our skillful team of developers and designers have in-industry
+                experience as product managers, software developers, designers,
+                and technical leaders at companies including Facebook, Google,
+                and Shopify to name a few. With that said, our committed
+                students will get the job done with minimal hand holding - in
+                order to support you in doing what you do best, <em>better</em>.
               </p>
             </div>
           </li>
@@ -63,12 +73,14 @@ const WhatWeCanDoForYou: FC = () => {
               </h1>
             </div>
             <div className="flex-1 flex flex-col space-y-2">
-              <h6>Deliver high quality software solutions</h6>
+              <h6>DELIVER HIGH QUALITY SOFTWARE SOLUTIONS</h6>
               <p>
-                Whether an application, website redesign or designing a more
-                efficient system, our team delivers innovative and high quality
-                products. We also ensure that your team is provided with the
-                necessary training to maintain the solutions we build with you.
+                From website redesigns and application developments, to system
+                optimization efforts, our team delivers innovative products of
+                the highest quality. With sustainability always top-of-mind, we
+                are also committed to providing your team with the necessary
+                training and resources to maintain the solutions built uniquely
+                for you by your UW Blueprint team.
               </p>
             </div>
           </li>
