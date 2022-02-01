@@ -15,7 +15,7 @@ const Hero: FC = () => {
           </p>
           <div className="w-full flex md:items-end">
             <Button
-              className="md:ml-auto h-auto py-4 bg-transparent"
+              className="md:ml-auto py-4 bg-transparent"
               size="md"
               variant="secondary"
               invert
@@ -26,7 +26,6 @@ const Hero: FC = () => {
           </div>
         </div>
         <div className="w-full">
-          {/* TODO: Fix left whitespace in image */}
           <img src="/projects/people-at-table.svg" />
         </div>
       </div>
