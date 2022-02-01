@@ -155,8 +155,7 @@ const About: NextPage = () => {
           Interested in the work we do?
         </h2>
         <hr className="hidden md:block w-20 text-blue" />
-        {/* TODO: Link to nonprofits page */}
-        <Link href="#">
+        <Link href="/nonprofits">
           <a>
             <Button className="leading-relaxed">
               Learn about our project selection process
