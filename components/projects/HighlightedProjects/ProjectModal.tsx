@@ -10,7 +10,16 @@ type Props = {
 
 /** Highlighted project modal */
 const ProjectModal: FC<Props> = ({ project, open, onClose }) => {
-  const { name, terms, githubUrl, about, solution, quote, image } = project;
+  const {
+    name,
+    terms,
+    caseStudyUrl,
+    githubUrl,
+    about,
+    solution,
+    quote,
+    image,
+  } = project;
 
   return open ? (
     <>
@@ -38,7 +47,9 @@ const ProjectModal: FC<Props> = ({ project, open, onClose }) => {
               <p className="text-charcoal-500">{terms}</p>
             </div>
             <div className="flex items-center space-x-8 pr-12">
-              <Button variant="secondary">View Case Study</Button>
+              <Button variant="secondary" href={caseStudyUrl}>
+                View Case Study
+              </Button>
               <a href={githubUrl} target="_blank">
                 <img src="/common/github-logo-blue.svg" alt="GitHub logo" />
               </a>

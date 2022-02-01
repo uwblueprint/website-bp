@@ -47,7 +47,6 @@ const Button: FC<Props> = ({
   }
 
   const buttonClasses = `
-    
     ${classes}
     ${
       size === "lg"
@@ -59,11 +58,19 @@ const Button: FC<Props> = ({
   `;
 
   return href ? (
-    <Link href={href}>
-      <button className={buttonClasses} {...props}>
-        {children}
-      </button>
-    </Link>
+    href.startsWith("http") ? (
+      <a href={href} target="_blank" rel="noopener noreferrer">
+        <button className={buttonClasses} {...props}>
+          {children}
+        </button>
+      </a>
+    ) : (
+      <Link href={href}>
+        <button className={buttonClasses} {...props}>
+          {children}
+        </button>
+      </Link>
+    )
   ) : (
     <button className={buttonClasses} {...props}>
       {children}
