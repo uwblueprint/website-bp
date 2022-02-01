@@ -76,7 +76,9 @@ const Logo = () => {
   return (
     <div className="flex flex-col justify-center">
       <Link href="/">
-        <img src="/common/logo-with-text.svg" alt="UW Blueprint logo" />
+        <a>
+          <img src="/common/logo-with-text.svg" alt="UW Blueprint logo" />
+        </a>
       </Link>
     </div>
   );

@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Link from "next/link";
 
 /** How It Works section */
 const HowItWorks: FC = () => {
@@ -24,14 +25,16 @@ const HowItWorks: FC = () => {
             real world impact. Student applications open at the end of each
             term.
           </p>
-          <a className="flex space-x-2 text-blue text-base font-extrabold">
-            <span>Learn more</span>
-            <img
-              className="relative top-0.5"
-              src="/common/right-carat-blue.svg"
-              alt="Right carat"
-            />
-          </a>
+          <Link href="/join">
+            <a className="flex space-x-2 text-blue text-base font-extrabold">
+              <span>Learn more</span>
+              <img
+                className="relative top-0.5"
+                src="/common/right-carat-blue.svg"
+                alt="Right carat"
+              />
+            </a>
+          </Link>
         </div>
         <div className="flex flex-col items-start md:text-center md:items-center md:pl-8 lg:pl-24">
           <h3 className="text-blue mb-3 md:mb-0">Non Profit Partners</h3>
@@ -44,14 +47,16 @@ const HowItWorks: FC = () => {
             our team of experienced Product Managers, Designers, and Developers
             will be there every step of the way. Contact us to chat!
           </p>
-          <a className="flex space-x-2 text-blue text-base font-extrabold">
-            <span>Learn more</span>
-            <img
-              className="relative top-0.5"
-              src="/common/right-carat-blue.svg"
-              alt="Right carat"
-            />
-          </a>
+          <Link href="/nonprofits">
+            <a className="flex space-x-2 text-blue text-base font-extrabold">
+              <span>Learn more</span>
+              <img
+                className="relative top-0.5"
+                src="/common/right-carat-blue.svg"
+                alt="Right carat"
+              />
+            </a>
+          </Link>
         </div>
       </div>
     </section>
