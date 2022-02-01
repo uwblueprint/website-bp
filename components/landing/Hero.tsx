@@ -31,7 +31,7 @@ const Hero: FC = () => {
                 </div>
               </div>
               <div className="flex flex-col md:ml-3 lg:ml-0 space-y-2 md:flex-row md:space-x-4 md:space-y-0">
-                <Button variant="secondary" invert>
+                <Button variant="secondary" invert href="/projects">
                   See our work
                 </Button>
                 <Button variant="secondary" invert href="/join">
