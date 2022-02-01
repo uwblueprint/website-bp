@@ -26,7 +26,7 @@ const Navbar: FC = () => {
           </Link>
         )}
         <div className="bg-blue">
-          <nav className="content flex flex-wrap space-x-4 lg:space-x-0 lg:justify-between pb-3 p-6 md:pb-6 box-border">
+          <nav className="content flex flex-wrap space-x-4 lg:space-x-0 lg:justify-between px-4 pt-6 pb-3 md:pb-6 box-border">
             <button className="lg:hidden" onClick={() => setMenuOpen(true)}>
               <img className="" src="/common/menu.svg" alt="Menu" />
             </button>
@@ -59,7 +59,7 @@ const Navbar: FC = () => {
               <Links />
             </div>
             <div className="flex flex-col space-y-5">
-              <Buttons extraClasses={"text-lg h-14 whitespace-nowrap"} />
+              <Buttons extraClasses={"h-14 whitespace-nowrap"} />
             </div>
           </div>
           <div
@@ -87,7 +87,9 @@ const Links = () => {
     <>
       {ROUTES.map((route) => (
         <Link key={route.name} href={route.link}>
-          <a className="font-poppins font-normal text-white">{route.name}</a>
+          <a className="font-poppins font-normal text-white text-base">
+            {route.name}
+          </a>
         </Link>
       ))}
     </>

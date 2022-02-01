@@ -5,56 +5,27 @@ import {
   LINKEDIN_URL,
   MEDIUM_URL,
 } from "@constants/social-media";
+import Link from "next/link";
 
 const LINKS = [
   {
     name: "About Us",
-    children: [
-      { name: "Who We Are", link: "/" },
-      { name: "What We Do", link: "/" },
-      { name: "History", link: "/" },
-      { name: "Community", link: "/" },
-      { name: "Our Process", link: "/" },
-    ],
     link: "/about",
   },
   {
     name: "Projects",
-    children: [
-      { name: "Featured", link: "/" },
-      { name: "Current", link: "/" },
-      { name: "Archive", link: "/" },
-    ],
     link: "/projects",
   },
   {
     name: "Students",
-    children: [
-      { name: "Meet the Team", link: "/" },
-      { name: "Alumni", link: "/" },
-    ],
     link: "/students",
   },
   {
     name: "Join Our Team",
-    children: [
-      { name: "Why Join", link: "/" },
-      { name: "What We Look For", link: "/" },
-      { name: "Application Process", link: "/" },
-      { name: "FAQ", link: "/" },
-      { name: "Apply", link: "/" },
-    ],
     link: "/join",
   },
   {
     name: "For Nonprofits",
-    children: [
-      { name: "Our Services", link: "/" },
-      { name: "Decision Criteria", link: "/" },
-      { name: "Timeline", link: "/" },
-      { name: "FAQ", link: "/" },
-      { name: "Apply", link: "/" },
-    ],
     link: "/nonprofits",
   },
 ];
@@ -64,7 +35,17 @@ const Footer: FC = () => {
   return (
     <footer className="w-full bg-blue-100 md:bg-gradient-to-r md:from-blue md:to-sky-500">
       <div className="content relative z-10 flex flex-col items-center space-y-20 mx-auto pt-14 pb-6">
-        <div className="w-full flex flex-col md:flex-row justify-center items-stretch space-y-24 md:space-y-0 md:space-x-20 mt-4">
+        <div className="w-full flex flex-col md:flex-row justify-between items-stretch space-y-24 md:space-y-0 md:space-x-20 mt-4">
+          {/* Links */}
+          <div className="flex flex-col space-y-5">
+            {LINKS.map((linkGroup) => (
+              <div key={linkGroup.name}>
+                <Link href={linkGroup.link}>
+                  <h5 className="text-white">{linkGroup.name}</h5>
+                </Link>
+              </div>
+            ))}
+          </div>
           {/* Logo, social media links */}
           <div className="relative flex flex-col justify-between items-start space-y-10">
             <img
@@ -114,28 +95,6 @@ const Footer: FC = () => {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Links */}
-          <div className="grid grid-cols-2 gap-x-4 gap-y-12 md:grid-cols-3 md:gap-x-6 lg:grid-cols-5 lg:gap-x-12">
-            {LINKS.map((linkGroup) => (
-              <div key={linkGroup.name}>
-                <a href={linkGroup.link}>
-                  <h5 className="text-white mb-5">{linkGroup.name}</h5>
-                </a>
-                <div className="flex flex-col space-y-3">
-                  {linkGroup.children.map((child) => (
-                    <a
-                      key={child.name}
-                      className="text-white"
-                      href={child.link}
-                    >
-                      <p>{child.name}</p>
-                    </a>
-                  ))}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
 
