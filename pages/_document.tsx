@@ -53,6 +53,11 @@ class CustomDocument extends Document {
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0573e8" />
           <meta name="msapplication-TileColor" content="#2d89ef" />
           <meta name="theme-color" content="#ffffff" />
+          <meta
+            name="description"
+            content="Build technology that improves the world. UW Blueprint pairs motivated teams with local non-profits to create solutions for social good, pro bono."
+          />
+          <meta name="author" content="UW Blueprint" />
         </Head>
         <body>
           <Main />
