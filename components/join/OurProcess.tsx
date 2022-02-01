@@ -13,20 +13,22 @@ import {
 
 const OurProcess: FC = () => {
   return (
-    <section className="content flex flex-col space-y-18">
+    <section className="content flex flex-col space-y-18 mb-24">
       <div>
         <h2 className="text-blue">Our Process</h2>
         <hr className="w-20 mt-4 mb-10 text-blue" />
       </div>
-      <ol className="flex divide-x divide-charcoal-300">
-        <li className="flex-1 flex flex-col space-y-4 pr-6">
-          <div className="h-20 w-20 relative">
+      <ol className="flex flex-col md:flex-row md:divide-x md:divide-charcoal-300 space-y-10 md:space-y-0">
+        <li className="flex-1 flex flex-col space-y-4 md:pr-6">
+          <div className="relative w-16 h-16 mb-3">
             <img
-              className="absolute -left-5"
+              className="w-full h-full"
               src="/join/process-blob-1.svg"
               alt="Process step 1 blob"
             />
-            <h1 className="relative z-10 text-blue text-[64px] font-bold">1</h1>
+            <h1 className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-10 row-start-1 text-blue text-[48px] font-medium">
+              1
+            </h1>
           </div>
           <h6>Learn about Blueprint</h6>
           <p>
@@ -45,14 +47,16 @@ const OurProcess: FC = () => {
             .
           </p>
         </li>
-        <li className="flex-1 flex flex-col space-y-4 px-6">
-          <div className="h-20 w-20 relative">
+        <li className="flex-1 flex flex-col space-y-4 md:px-6">
+          <div className="relative w-16 h-16 mb-3">
             <img
-              className="absolute -left-4"
+              className="w-full h-full"
               src="/join/process-blob-2.svg"
               alt="Process step 1 blob"
             />
-            <h1 className="relative z-10 text-blue text-[64px] font-bold">2</h1>
+            <h1 className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-10 row-start-1 text-blue text-[48px] font-medium">
+              2
+            </h1>
           </div>
           <h6>Submit your application</h6>
           <p>
@@ -65,14 +69,16 @@ const OurProcess: FC = () => {
             <span className="text-blue">{APPLICATION_CLOSE_DATETIME}</span>.
           </p>
         </li>
-        <li className="flex-1 flex flex-col space-y-4 px-6">
-          <div className="h-20 w-20 relative">
+        <li className="flex-1 flex flex-col space-y-4 md:px-6">
+          <div className="relative w-16 h-16 mb-3">
             <img
-              className="absolute -left-5"
+              className="w-full h-full"
               src="/join/process-blob-3.svg"
               alt="Process step 1 blob"
             />
-            <h1 className="relative z-10 text-blue text-[64px] font-bold">3</h1>
+            <h1 className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-10 row-start-1 text-blue text-[48px] font-medium">
+              3
+            </h1>
           </div>
           <h6>Chat with us</h6>
           <p>
@@ -84,14 +90,16 @@ const OurProcess: FC = () => {
             this time to ask us any questions you might have!
           </p>
         </li>
-        <li className="flex-1 flex flex-col space-y-4 pl-6">
-          <div className="h-20 w-20 relative">
+        <li className="flex-1 flex flex-col space-y-4 md:pl-6">
+          <div className="relative w-16 h-16 mb-3">
             <img
-              className="absolute -left-4"
+              className="w-full h-full"
               src="/join/process-blob-4.svg"
               alt="Process step 1 blob"
             />
-            <h1 className="relative z-10 text-blue text-[64px] font-bold">4</h1>
+            <h1 className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-10 row-start-1 text-blue text-[48px] font-medium">
+              4
+            </h1>
           </div>
           <h6>Final decision</h6>
           <p>

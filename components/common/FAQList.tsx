@@ -20,7 +20,7 @@ const FAQList: FC<Props> = ({ questions }) => {
             onClick={() => setOpenQuestion(i === openQuestion ? null : i)}
           >
             <div className="w-full flex justify-between">
-              <h6 className="text-left normal-case font-normal md:font-semibold">
+              <h6 className="text-left normal-case font-semibold font-source">
                 {question}
               </h6>
               {i === openQuestion ? (
@@ -30,7 +30,7 @@ const FAQList: FC<Props> = ({ questions }) => {
               )}
             </div>
             {i === openQuestion && (
-              <p className="text-left whitespace-pre-line align-bottom">
+              <p className="text-left pb-0.5 whitespace-pre-line align-bottom">
                 {answer}
               </p>
             )}
