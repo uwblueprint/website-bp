@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import Link from "next/link";
-import Button from "@components/common/Button";
+import { APPLICATION_IS_LIVE, APPLICATION_LINK } from "@constants/applications";
+import Button from "./Button";
 
 const ROUTES = [
   { name: "About Us", link: "/about" },
@@ -16,6 +17,14 @@ const Navbar: FC = () => {
   return (
     <>
       <div className="w-full fixed z-30">
+        {APPLICATION_IS_LIVE && (
+          <Link href={APPLICATION_LINK}>
+            <p className="w-full text-center py-1 bg-charcoal-0 font-poppins underline">
+              Applications to join the Winter 2022 team are now open, apply
+              here! 🎉
+            </p>
+          </Link>
+        )}
         <div className="bg-blue">
           <nav className="content flex flex-wrap space-x-4 lg:space-x-0 lg:justify-between pb-3 p-6 md:pb-6 box-border">
             <button className="lg:hidden" onClick={() => setMenuOpen(true)}>

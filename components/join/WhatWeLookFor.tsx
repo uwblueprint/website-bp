@@ -2,8 +2,8 @@ import { FC } from "react";
 
 const WhatWeLookFor: FC = () => {
   return (
-    <section className="content flex space-x-24 mb-24">
-      <div>
+    <section className="content flex md:space-x-12 lg:space-x-24 mb-24">
+      <div className="hidden md:block w-5/12 lg:w-auto">
         <img src="/join/people-cheering-2.svg" alt="People cheering" />
       </div>
       <div>
