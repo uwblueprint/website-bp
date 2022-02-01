@@ -59,7 +59,7 @@ const Button: FC<Props> = ({
 
   return href ? (
     href.startsWith("http") ? (
-      <a href={href} target="_blank">
+      <a href={href} target="_blank" rel="noopener noreferrer">
         <button className={buttonClasses} {...props}>
           {children}
         </button>
