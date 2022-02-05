@@ -19,14 +19,14 @@ const Navbar: FC = () => {
       <div className="w-full fixed z-30">
         {APPLICATION_IS_LIVE && (
           <Link href={APPLICATION_LINK}>
-            <p className="w-full text-center py-1 bg-charcoal-0 font-poppins underline">
-              Applications to join the Winter 2022 team are now open, apply
-              here! 🎉
-            </p>
+            <a className="block w-full text-center px-4 py-1 bg-charcoal-0 font-poppins">
+              Applications to join the Winter 2022 team are now open,{" "}
+              <span className="underline">apply here</span>! 🎉
+            </a>
           </Link>
         )}
         <div className="bg-blue">
-          <nav className="content flex flex-wrap space-x-4 lg:space-x-0 lg:justify-between px-4 pt-6 pb-3 md:pb-6 box-border">
+          <nav className="content flex flex-wrap space-x-4 lg:space-x-0 lg:justify-between px-4 pt-5 md:pt-6 pb-2 md:pb-6 box-border">
             <button className="lg:hidden" onClick={() => setMenuOpen(true)}>
               <img className="" src="/common/menu.svg" alt="Menu" />
             </button>
