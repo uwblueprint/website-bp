@@ -32,7 +32,7 @@ const OurProcess: FC = () => {
           </div>
           <h6>Learn about Blueprint</h6>
           <p>
-            Check out our current projects and team on our{" "}
+            Check out our current projects and find us on{" "}
             <a className="text-blue" href={FACEBOOK_URL} target="_blank">
               Facebook
             </a>
@@ -60,10 +60,10 @@ const OurProcess: FC = () => {
           </div>
           <h6>Submit your application</h6>
           <p>
-            Tell us a little bit about yourself and why you're interested in
-            joining Blueprint. We make sure to go through every application
-            thoroughly. If we think you might be a good fit, we will extend you
-            an invite to a coffee chat! Applications open{" "}
+            Tell us about yourself and why you're interested in joining
+            Blueprint. We spend a lot of time on every application, so don’t
+            skimp on the details! If we think you might be a good fit, we will
+            send you an invite to have a coffee chat with us! Applications open{" "}
             <span className="text-blue">{APPLICATION_OPEN_DATETIME}</span> and
             close{" "}
             <span className="text-blue">{APPLICATION_CLOSE_DATETIME}</span>.
@@ -82,12 +82,12 @@ const OurProcess: FC = () => {
           </div>
           <h6>Chat with us</h6>
           <p>
-            Let's chat! We'll send out invites on{" "}
-            <span className="text-blue">{INVITE_DATE}</span>, to schedule a time
+            Let's talk! We'll send out invites on{" "}
+            <span className="text-blue">{INVITE_DATE}</span> to schedule a time
             for us to connect. These chats will take place over the upcoming
-            week, and will be a casual conversation between you and a couple of
-            our members. We want to learn more about you, and you can also use
-            this time to ask us any questions you might have!
+            week, and you’ll have a casual conversation with a couple of our
+            members. You can use this time to ask us any questions you might
+            have, and we can get to know each other better!
           </p>
         </li>
         <li className="flex-1 flex flex-col space-y-4 md:pl-6">
@@ -103,12 +103,11 @@ const OurProcess: FC = () => {
           </div>
           <h6>Final decision</h6>
           <p>
-            We will get back to you by{" "}
-            <span className="text-blue">{FINAL_DECISION_DATE}</span> to let you
-            know our final decision. If we feel you’d be a good fit for the
-            team, we would love for you to join! Get back to us as soon as
-            possible regarding whether you would like to be part of our team
-            next term, so we can get started with onboarding.
+            We’ll let you know our final decision by{" "}
+            <span className="text-blue">{FINAL_DECISION_DATE}</span>. If we feel
+            you’d be a good fit at Blueprint, we’d appreciate it if you replied
+            as soon as possible regarding whether you’ll be joining our team
+            next term or not so we can get started with onboarding.
           </p>
         </li>
       </ol>

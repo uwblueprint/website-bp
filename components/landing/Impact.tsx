@@ -22,24 +22,26 @@ const Impact: FC = () => {
           <hr className="hidden md:block w-48 text-blue" />
 
           {/* Impact metrics */}
-          <div className="w-full flex flex-col items-start md:flex-row md:items-center justify-around space-y-12 md:space-y-0 md:py-12 lg:px-32">
-            <div className="flex flex-col md:items-center space-y-2 md:space-y-4">
+          <div className="w-full md:px-4 flex flex-col items-start md:flex-row md:items-center justify-between space-y-12 md:space-y-0 md:py-12 lg:px-32">
+            <div className="flex flex-col md:items-center space-y-2 md:space-y-4 md:w-1/4">
               <p className="text-7xl text-sky-400 font-semibold font-poppins">
                 22
               </p>
-              <h6 className="md:text-center">Non-profit projects</h6>
+              <h6 className="md:text-center">Completed nonprofit projects</h6>
             </div>
-            <div className="flex flex-col md:items-center space-y-2 md:space-y-4">
+            <div className="flex flex-col md:items-center space-y-2 md:space-y-4 md:-translate-y-3">
               <p className="text-7xl md:text-8xl text-blue font-semibold font-poppins">
                 70,000
               </p>
               <h6 className="md:text-center">Accumulated volunteer hours</h6>
             </div>
-            <div className="flex flex-col md:items-center space-y-2 md:space-y-4">
+            <div className="flex flex-col md:items-center space-y-2 md:space-y-4 md:w-1/4">
               <p className="text-7xl text-sky-400 font-semibold font-poppins">
                 468
               </p>
-              <h6 className="md:text-center">Student volunteers</h6>
+              <h6 className="md:text-center">
+                Past and present student volunteers
+              </h6>
             </div>
           </div>
         </div>

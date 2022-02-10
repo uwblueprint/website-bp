@@ -8,7 +8,7 @@ const WhatWeCanDoForYou: FC = () => {
       <div className="flex flex-col space-y-12 lg:flex-row lg:space-x-20">
         {/* 3 points */}
         <ol className="flex-1 flex flex-col space-y-9">
-          <li className="flex items-start space-x-5">
+          <li className="flex items-start space-x-4 md:space-x-6">
             <div className="relative">
               <img
                 className="w-16"
@@ -33,7 +33,7 @@ const WhatWeCanDoForYou: FC = () => {
               </p>
             </div>
           </li>
-          <li className="flex items-start space-x-5">
+          <li className="flex items-start space-x-4 md:space-x-6">
             <div className="relative">
               <img
                 className="w-16"
@@ -61,7 +61,7 @@ const WhatWeCanDoForYou: FC = () => {
               </p>
             </div>
           </li>
-          <li className="flex items-start space-x-5">
+          <li className="flex items-start space-x-4 md:space-x-6">
             <div className="relative">
               <img
                 className="w-16"

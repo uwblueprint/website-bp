@@ -45,9 +45,9 @@ const Hero: FC = () => {
         {/* Mission statement (overflowed) */}
       </header>
       <div className="bg-sky pt-36 lg:pt-32 pb-24 ld:pb-12">
-        <h3 className="w-full px-4 md:w-5/6 mx-auto text-blue text-left md:text-center font-normal lg:font-semibold">
-          Blueprint strives to make technology accessible and useful for those
-          who create communities and promote social good.
+        <h3 className="w-full px-4 lg:w-3/4 mx-auto text-blue text-left md:text-center font-normal lg:font-semibold">
+          Blueprint is a student-run organization that creates technological
+          solutions for nonprofit organizations.
         </h3>
       </div>
       <img

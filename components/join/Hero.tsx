@@ -12,9 +12,10 @@ const Hero: FC = () => {
             Join our Team
           </h1>
           <div className="space-y-6">
-            <p className="md:text-white text-xl">
-              We are a group of friendly folks at the University of Waterloo
-              dedicated to building technology for social good.
+            <p className="md:text-white text-xl w-full lg:w-11/12">
+              We’re a diverse group of students dedicated to doing social good,
+              improving ourselves, and having fun while we’re at it, and we
+              would love for you to join us!
             </p>
             {APPLICATION_IS_LIVE && (
               <Button

@@ -15,11 +15,11 @@ const DecisionCriteria: FC = () => {
       <div className="md:w-5/6 lg:flex-1">
         <h2 className="text-blue">Decision Criteria</h2>
         <hr className="w-20 mt-4 mb-8 text-blue" />
-        <p className="mb-5">
+        <p className="mb-6">
           Projects selected to be apart of our next cohort will be determined
           against the following criteria:
         </p>
-        <ol className="flex flex-col space-y-6">
+        <ol className="flex flex-col space-y-7">
           <li>
             <h6 className="text-blue">1. Impact Potential</h6>
             <p>

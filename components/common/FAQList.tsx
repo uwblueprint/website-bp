@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import Link from "next/link";
 
 type Props = {
   readonly questions: ReadonlyArray<{
@@ -30,9 +31,12 @@ const FAQList: FC<Props> = ({ questions }) => {
               )}
             </div>
             {i === openQuestion && (
-              <p className="text-left pb-0.5 whitespace-pre-line align-bottom">
-                {answer}
-              </p>
+              <p
+                className="text-left pb-0.5 whitespace-pre-line align-bottom"
+                dangerouslySetInnerHTML={{
+                  __html: `${answer}`,
+                }}
+              />
             )}
           </button>
         </li>

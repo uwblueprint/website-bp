@@ -28,7 +28,7 @@ export default function Students({ teams }: PageProps): JSX.Element {
           <div className="content relative flex flex-col md:flex-row items-center justify-between md:space-x-12 lg:space-x-16 space-y-8 md:space-y-0">
             <Hero
               title={`Students`}
-              description={`Meet Blueprint - we're a diverse group of friendly folks at the University of Waterloo dedicated to building tech for social good.`}
+              description={`A team is only as good as its members. Meet Blueprint, a diverse group of students and alumni with the drive to change the world.`}
             />
             <img
               className="md:w-5/12 translate-x-1 translate-y-2"
@@ -38,9 +38,7 @@ export default function Students({ teams }: PageProps): JSX.Element {
         </section>
         <List
           title="Meet the Team"
-          description="We are a diverse group of students specializing in a variety of
-          disciplines, brought together by a common ambition to help
-          non-profits with their technology needs."
+          description="Our community specializes in a variety of disciplines, but our passion for helping nonprofits and our interest in technology brings us together."
           teams={teams}
         />
         <ToAlumni />
