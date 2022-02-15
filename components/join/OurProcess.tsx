@@ -61,8 +61,8 @@ const OurProcess: FC = () => {
           <h6>Submit your application</h6>
           <p>
             Tell us about yourself and why you're interested in joining
-            Blueprint. We spend a lot of time on every application, so don’t
-            skimp on the details! If we think you might be a good fit, we will
+            Blueprint. We take a great amount of care to review every application,
+            so please be as detailed as possible. If we think you might be a good fit, we will
             send you an invite to have a coffee chat with us! Applications open{" "}
             <span className="text-blue">{APPLICATION_OPEN_DATETIME}</span> and
             close{" "}
