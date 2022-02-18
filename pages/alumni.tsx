@@ -29,7 +29,7 @@ export default function Alumni({ alumni }: PageProps): JSX.Element {
           <div className="content relative flex flex-col md:flex-row items-center justify-between md:space-x-12 lg:space-x-16 space-y-8 md:space-y-0">
             <Hero
               title={`Students`}
-              description={`Meet Blueprint - we're a diverse group of friendly folks at the University of Waterloo dedicated to building tech for social good.`}
+              description={`A team is only as good as its members. Meet Blueprint, a diverse group of students and alumni with the drive to change the world.`}
             />
             <img
               className="md:w-5/12 translate-x-1 translate-y-2"
@@ -40,7 +40,7 @@ export default function Alumni({ alumni }: PageProps): JSX.Element {
 
         <List
           title="Alumni"
-          description="Special thanks to all of our alumni who have given their time and effort to our cause for social good. We couldn't have done it without you!"
+          description="We stand on the shoulders of giants. We appreciate all of our past members who have put in countless hours to help Blueprint become what it is today."
           teams={alumni}
         />
         <ToStudents />

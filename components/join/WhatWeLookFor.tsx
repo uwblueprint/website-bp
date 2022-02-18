@@ -13,32 +13,33 @@ const WhatWeLookFor: FC = () => {
           <li className="flex flex-col space-y-2">
             <h6 className="text-blue">Passion for social good</h6>
             <p>
-              How passionate are you about working for social good? Do you have
-              prior volunteering experience? Is there a specific project for
-              social good that you are particularly interested in?
+              Do you love giving back to the community? Are you particularly
+              passionate about a specific cause? Tell us about any prior
+              volunteering experiences you may have had!
             </p>
           </li>
           <li className="flex flex-col space-y-2">
-            <h6 className="text-blue">Drive to learn</h6>
+            <h6 className="text-blue">The drive to learn</h6>
             <p>
-              Are you willing to learn new things, both technically and in terms
-              of social good? Do you like to challenge yourself with problems
-              that you've never solved before?
+              Are you eager to learn new things, be they technical skills or
+              social issues? Do you love a good challenge, even if it takes you
+              out of your comfort zone?
             </p>
           </li>
           <li className="flex flex-col space-y-2">
-            <h6 className="text-blue">Technical fit</h6>
+            <h6 className="text-blue">A technical fit</h6>
             <p>
-              Do you have experience that is relevant to the type of projects we
-              work on? If not, are you technically capable of learning to make
-              sure you can make significant contributions?
+              Do you have the relevant experience or skills needed to make
+              significant contributions? If not, do you have the technical
+              foundations needed to learn them?
             </p>
           </li>
           <li className="flex flex-col space-y-2">
-            <h6 className="text-blue">Team player</h6>
+            <h6 className="text-blue">A team player</h6>
             <p>
               Do you enjoy collaborating and learning with others? Do you value
-              others' perspectives and experiences?
+              everyone’s perspectives and experiences even when they challenge
+              your own?
             </p>
           </li>
         </ul>

@@ -13,21 +13,18 @@ const HowItWorks: FC = () => {
         alt="People giving a high five"
       />
       <div className="max-w-5xl flex flex-col mt-10 md:mt-16 space-y-16 md:space-y-0 md:flex-row md:divide-x md:divide-blue">
-        <div className="flex flex-col items-start md:text-center md:items-center md:pr-8 lg:pr-24">
+        <div className="flex flex-col items-start md:text-center md:items-center md:pr-8 lg:pr-16 md:w-1/2">
           <h3 className="text-blue mb-3 md:mb-0">Student Volunteers</h3>
           <hr className="w-48 mt-3 mb-6 text-blue hidden md:block" />
-          <h6 className="text-blue uppercase mb-2">
-            Have a passion for social good?
-          </h6>
+          <h6 className="text-blue uppercase mb-2">Help us help you</h6>
           <p className="mb-4 md:text-center">
-            Volunteer and grow your skills at UW Blueprint! Join a talented and
-            vibrant community while creating technological solutions that make a
-            real world impact. Student applications open at the end of each
-            term.
+            Want to make a difference? Want to learn how to create professional
+            products that will make a real world impact? Kickstart your career
+            at UW Blueprint!
           </p>
           <Link href="/join">
             <a className="flex space-x-2 text-blue text-base font-extrabold">
-              <span>Learn more</span>
+              <span>Join our team</span>
               <img
                 className="relative top-0.5"
                 src="/common/right-carat-blue.svg"
@@ -36,20 +33,19 @@ const HowItWorks: FC = () => {
             </a>
           </Link>
         </div>
-        <div className="flex flex-col items-start md:text-center md:items-center md:pl-8 lg:pl-24">
+        <div className="flex flex-col items-start md:text-center md:items-center md:pl-8 lg:pl-16 md:w-1/2">
           <h3 className="text-blue mb-3 md:mb-0">Non Profit Partners</h3>
           <hr className="w-48 mt-3 mb-6 text-blue hidden md:block" />
-          <h6 className="text-blue uppercase mb-2">
-            Let's build something great
-          </h6>
+          <h6 className="text-blue uppercase mb-2">Trust our expertise</h6>
           <p className="mb-4 md:text-center">
-            Whether you have a project idea or you don’t know where to start,
-            our team of experienced Product Managers, Designers, and Developers
-            will be there every step of the way. Contact us to chat!
+            Our team of experienced Product Managers, Designers, and Developers
+            can help you scale your organization with innovative new solutions.
+            Whether you have a project idea already or you’re just curious about
+            how Blueprint can help, we want to be there every step of the way.
           </p>
-          <Link href="/nonprofits">
+          <Link href="/contact">
             <a className="flex space-x-2 text-blue text-base font-extrabold">
-              <span>Learn more</span>
+              <span>Contact us</span>
               <img
                 className="relative top-0.5"
                 src="/common/right-carat-blue.svg"

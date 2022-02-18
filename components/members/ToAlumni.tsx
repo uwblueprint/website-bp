@@ -11,9 +11,8 @@ export const ToAlumni: React.FC = () => {
         <div className="flex flex-col space-y-2">
           <h2 className="text-blue">Alumni</h2>
           <p className="text-lg">
-            Special thanks to all of our alumni who have given their time and
-            effort to our cause for social good. We couldn't have done it
-            without you!
+            None of this would be possible without the hard work and dedication
+            of past Blueprint members.
           </p>
         </div>
         <Button className="w-full md:w-min whitespace-nowrap" href="/alumni">

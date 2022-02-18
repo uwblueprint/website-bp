@@ -5,10 +5,14 @@
   },
   {
     "question": "What does the nonprofit-project team interaction look like?",
-    "answer": "At UW blueprint - we take care to co-create an impactful product, that drives efficiency and reach, with the nonprofit. Appropriately, project teams work alongside the client’s vision for the organization as determined during initial meetings. Subsequent touch points throughout the term are used to discuss progress surrounding feature development, timelines, and anything else top of mind for the nonprofit organization."
+    "answer": "At UW Blueprint - we take care to co-create an impactful product, that drives efficiency and reach, with the nonprofit. Appropriately, project teams work alongside the client’s vision for the organization as determined during initial meetings. Subsequent touch points throughout the term are used to discuss progress surrounding feature development, timelines, and anything else top of mind for the nonprofit organization."
   },
   {
     "question": "How does UW Blueprint ensure success?",
-    "answer": "UW Blueprint defines success as passionate people working on high quality tech-enabled products that catalyze impact. Each term, we leverage a comprehensive hiring process in order to bring on the most hard-working and passionate student leaders with a diversity of experiences.\n\nOur commitment to excellence continues with industry-grade development best practices and testing protocol that enable us to deliver our best work. We are also supported by a robust network of community partners and mentors including Techyon and Cal Blueprint."    
+    "answer": "UW Blueprint defines success as passionate people working on high quality tech-enabled products that catalyze impact. Each term, we leverage a comprehensive hiring process in order to bring on the most hard-working and passionate student leaders with a diversity of experiences.\n\nOur commitment to excellence continues with industry-grade development best practices and testing protocol that enable us to deliver our best work. We are also supported by a robust network of community partners and mentors including Techyon and Cal Blueprint."
+  },
+  {
+    "question": "What type of services does UW Blueprint provide?",
+    "answer": "Our diversity of student leadership and experiences enable us to provide a multitude of tech-enabled services including website development, UI/UX design, process automation / optimization, data engineering, and much more. For more information on the type of projects UW Blueprint has delivered in the past - visit our <a href=\"/projects\" class=\"text-blue-100\">Projects page</a>!"
   }
 ]

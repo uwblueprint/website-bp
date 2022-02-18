@@ -11,28 +11,32 @@ const About: NextPage = () => {
       <Hero />
 
       {/* Our Mission section */}
-      <section className="content h-80 flex flex-col md:items-center mb-8 pt-20 md:pt-10 bg-no-repeat bg-top md:bg-about-us-mission">
+      <section className="content flex flex-col md:items-center mb-8 pt-16 md:pt-10 pb-4 md:pb-0 md:h-80 bg-no-repeat bg-top md:bg-about-us-mission">
         <h2 className="text-blue mb-4 md:mb-0">Our Mission</h2>
         <hr className="hidden md:block w-20 mt-3 mb-8 text-blue" />
-        <p className="max-w-xl text-lg font-light font-poppins italic">
-          Blueprint strives to make technology accessible and useful for those
-          who create communities and promote public welfare.
+        <p className="max-w-lg text-lg md:text-center font-light font-poppins italic">
+          Blueprint strives to make technology more accessible and useful for
+          those who create communities and promote public welfare.
         </p>
       </section>
 
       {/* Who we are, What we do, Our story */}
-      <section className="content flex md:space-x-12 lg:space-x-4 mt-16 mb-20">
+      <section className="content flex md:space-x-12 lg:space-x-8 mt-16 mb-20">
         <div className="hidden md:block w-5/12 lg:w-1/2 md:bg-about-us-circles-md lg:bg-about-us-circles-lg bg-contain bg-no-repeat bg-center" />
         <div className="flex-1 flex flex-col space-y-12">
           <div className="flex flex-col">
             <h2 className="text-blue md:text-4xl mb-3 md:mb-1.5">Who we are</h2>
             <hr className="hidden md:block w-20 mt-3 mb-6 lg:mb-8 text-blue" />
-            <p className="mb-2 text-lg font-semibold">Passionate to help.</p>
-            <p className="mb-3">
+            <p className="mb-2 text-lg font-semibold w-11/12">
+              Passionate about the intersection between technology and social
+              impact.
+            </p>
+            <p className="mb-6">
               We are a group of students at the University of Waterloo dedicated
-              to building and promoting technology for social good. Each term,
-              teams of five students work with non-profit organizations on
-              projects to help them better serve their communities.
+              to building technology for social good and driving meaningful
+              change. Each term our project teams work alongside nonprofits in
+              order to support their efforts toward better serving our
+              communities.
             </p>
             <Link href="/students">
               <a className="flex space-x-1.5 items-center text-blue text-base font-extrabold">
@@ -49,11 +53,13 @@ const About: NextPage = () => {
             <h2 className="text-blue md:text-4xl mb-3 md:mb-1.5">What we do</h2>
             <hr className="hidden md:block w-20 mt-3 mb-6 lg:mb-8 text-blue" />
             <p className="mb-2 text-lg font-semibold">
-              Amplifying the impact of solutions that matter.
+              Amplify the impact of solutions that matter in the social sector.
             </p>
             <p className="mb-3">
-              We partner with non-profits to provide technology services such as
-              websites, mobile applications and analysis tools - free of charge.
+              We partner with local nonprofits, working together to better
+              understand their existing processes and provide technology
+              services such as website and mobile application development, and
+              data analytics to augment them - free of charge.
             </p>
             <Link href="/projects">
               <a className="flex space-x-1.5 items-center text-blue text-base font-extrabold">
@@ -73,8 +79,11 @@ const About: NextPage = () => {
               A community built across universities.
             </p>
             <p className="mb-3">
-              Blueprint was founded in 2012 at UC Berkeley. The University of
-              Waterloo is Blueprint's first chapter outside of Berkeley.
+              Founded in 2012 at UC Berkeley, Blueprint aims to promote
+              technology for social good by developing pro-bono software
+              solutions for nonprofits. The University of Waterloo is
+              Blueprint’s first chapter outside of Berkeley, serving communities
+              in Canada.
             </p>
             {/* TODO: Link to other Blueprint chapters */}
             <Link href="https://calblueprint.org/chapters">
@@ -107,7 +116,8 @@ const About: NextPage = () => {
             <h6 className="mb-1">Amplifying impact</h6>
             <p className="text-charcoal-500">
               Projects are chosen to help social causes where technology as a
-              solution makes sense.
+              solution makes sense and drives greatest levels of change within
+              local communities.
             </p>
           </div>
           <div className="flex flex-col space-y-2.5">
@@ -118,8 +128,9 @@ const About: NextPage = () => {
             />
             <h6>Do good for good</h6>
             <p className="text-charcoal-500">
-              Pro-bono work doesn't need to mean substandard work. We treat all
-              of our projects with the utmost care and integrity.
+              It is our shared philosophy that pro-bono work in no way implies
+              substandard work. Our teams treat all of our projects with the
+              utmost care and integrity.
             </p>
           </div>
           <div className="flex flex-col space-y-2.5">
@@ -130,8 +141,9 @@ const About: NextPage = () => {
             />
             <h6>Learning is a team sport</h6>
             <p className="text-charcoal-500">
-              Blueprint supports students to learn from each other, and hone in
-              on their technical craft in a team environment.
+              Collectively curious, and collaboratively learning from each other
+              and our communities about how we can leverage our skills to drive
+              meaningful change.
             </p>
           </div>
           <div className="flex flex-col space-y-2.5">
@@ -142,8 +154,9 @@ const About: NextPage = () => {
             />
             <h6>Culture is key</h6>
             <p className="text-charcoal-500">
-              We're a team that cares about each other as much as we care about
-              the causes we're building for.
+              We’re a team that cares about each other as much as we care about
+              the causes we’re building for. We thrive to maintain a supportive
+              and welcoming environment, always.
             </p>
           </div>
         </div>

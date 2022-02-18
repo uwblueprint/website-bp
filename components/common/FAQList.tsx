@@ -30,9 +30,12 @@ const FAQList: FC<Props> = ({ questions }) => {
               )}
             </div>
             {i === openQuestion && (
-              <p className="text-left pb-0.5 whitespace-pre-line align-bottom">
-                {answer}
-              </p>
+              <p
+                className="text-left pb-0.5 whitespace-pre-line align-bottom"
+                dangerouslySetInnerHTML={{
+                  __html: `${answer}`,
+                }}
+              />
             )}
           </button>
         </li>

@@ -2,7 +2,7 @@
   "applicationProcess": [
     {
       "question": "Can I apply if I don't go to UWaterloo?",
-      "answer": "If you're a student at a university, and you will be in Waterloo, then you're welcome to apply! However, we do give priority to UW students."
+      "answer": "If you’re a university student who will be residing in the city of Waterloo, you’re welcome to apply! However, we do give priority to UW students."
     },
     {
       "question": "Can I be a part of Blueprint while on a work term?",
@@ -10,29 +10,25 @@
     },
     {
       "question": "I don't have a lot of dev or design experience, should I still apply?",
-      "answer": "Yes! Blueprint is a great way to gain more experience as you will be surrounded by a community of peers with varying expertise in different fields, who can support you with mentorship. We care more about your drive to learn, and your passion for social good."
-    },
-    {
-      "question": "Can I be a part of Blueprint if I'm not in Waterloo?",
-      "answer": "UW Blueprint will be operating on a remote first mindset in Winter 2022 so we're open to students joining our team from anywhere in the world. That being said, our meetings will usually be scheduled to accommodate people based in Waterloo (EST) and we will have occasional in-person events."
+      "answer": "Yes! Blueprint is a great way to gain more experience as you will be surrounded by a community of peers with varying expertise in different fields who can mentor and support you. We care more about your ability to learn and your passion for social good."
     }
   ],
   "aboutOurTeam": [
     {
       "question": "How do you choose projects?",
-      "answer": "We have an application portal on our website for nonprofits, and in addition, we also reach out to nonprofits chosen by our members. We set up calls with nonprofits and figure out whether their proposed project is a good fit for our team. Read more on our nonprofit page."
+      "answer": "Nonprofits can apply to work with us through our website or we reach out to organizations nominated by our members. After consulting with them, we determine whether their proposed project is a good fit for our team. Read more on our <a href=\"/nonprofits\" class=\"text-blue-100\">Nonprofits page</a>."
     },
     {
-      "question": "Do I get to choose what project I work on?",
-      "answer": "Before the term begins, our designers and developers have a chance to get to know the upcoming projects. They then fill out information about their skill set and preferences in our selection form so that Project Leads and Project Managers will choose their team accordingly. We try to make sure that most people get their first choice, but no guarantees can be made."
+      "question": "Do I get to choose which project I work on?",
+      "answer": "Before the term begins, our designers and developers have a chance to get to know the upcoming projects. They then fill out information about their skills and preferences in our selection form so that Project Leads and Project Managers can choose their teams accordingly. We always strive to get everyone their top choices, but no guarantees can be made."
     },
     {
       "question": "How does mentorship work in Blueprint?",
-      "answer": "In our project teams, we look to ensure there is a good distribution in development experience. If you’re just starting out, you’ll always have someone you can turn to for help! We also have design meetings where designers can ask each other and the VP Design for feedback."
+      "answer": "We organize our project teams so they have an even distribution of developer experience. That way, if you’re just starting out, you’ll always have someone you can turn to for help! For designers, there are weekly design meetings where members can ask each other for feedback."
     },
     {
-      "question": "What's the time commitment? How many hours per week?",
-      "answer": "We would like Blueprint members to contribute around 10 hours per week. This is to ensure that we can deliver high-quality products to the organizations we partner with. We understand that it’s a big time commitment, and we would like you to make sure that your course load and extracurriculars allow for this type of commitment."
+      "question": "What's the time commitment? How many hours per week will I spend on Blueprint?",
+      "answer": "We would like our members to contribute around 10 hours per week to ensure that we can deliver high-quality products to the organizations we partner with. We understand it’s a big commitment, so make sure your course load and other extracurriculars will allow for it."
     }
   ]
 }

@@ -5,7 +5,7 @@ const WhyJoin: FC = () => {
   return (
     <section className="content flex relative justify-end mt-16 lg:mt-8 mb-24 md:mb-32">
       <img
-        className="hidden md:block w-1/3 -translate-x-16 scale-125 object-contain"
+        className="hidden md:block w-1/3 -translate-x-20 scale-125 object-contain"
         src="/join/gears.png"
         role="presentation"
       />
@@ -14,26 +14,28 @@ const WhyJoin: FC = () => {
         <hr className="w-20 mt-4 mb-10 text-blue" />
         <div className="flex flex-col space-y-8 md:space-y-10">
           <div className="flex flex-col space-y-2">
-            <h6 className="text-blue">Make a meaningful impact</h6>
+            <h6 className="text-blue">Make an impact</h6>
             <p>
-              We work with NPOs on causes we are passionate about and create
-              solutions that amplify their positive impact in our community.
+              By helping nonprofits better serve our communities through
+              technology, the positive impacts of your hard work and expertise
+              will be amplified.
             </p>
           </div>
           <div className="flex flex-col space-y-2">
-            <h6 className="text-blue">Join our community</h6>
+            <h6 className="text-blue">Make lifelong friends</h6>
             <p>
-              We develop meaningful relationships that extend beyond the scope
-              of the projects we work on. We value time spent together,
-              celebrate our differences, and have a lot of fun.
+              At Blueprint, the relationships we form with each other will long
+              outlast the scope of the projects we work on. Our culture is as
+              important to us as the work we produce, and we value quality time,
+              celebrating our differences, and having fun together.
             </p>
           </div>
           <div className="flex flex-col space-y-2">
-            <h6 className="text-blue">Level up!</h6>
+            <h6 className="text-blue">Make personal change</h6>
             <p>
-              We value the technical, social, and personal growth of our peers.
-              Our strong culture of mentorship perpetuates a cycle of non-stop
-              teaching and learning.
+              We care about your technical, social, and personal growth. With
+              our robust culture of mentorship, we never stop teaching and
+              learning.
             </p>
           </div>
         </div>

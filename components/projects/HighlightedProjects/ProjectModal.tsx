@@ -46,7 +46,7 @@ const ProjectModal: FC<Props> = ({ project, open, onClose }) => {
               </div>
               <p className="text-charcoal-500">{terms}</p>
             </div>
-            <div className="flex items-center space-x-8 pr-12">
+            <div className="flex items-center space-x-8 md:pr-12">
               <Button variant="secondary" href={caseStudyUrl}>
                 View Case Study
               </Button>

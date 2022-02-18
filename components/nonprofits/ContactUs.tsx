@@ -4,11 +4,11 @@ import Button from "@components/common/Button";
 
 const ContactUs: FC = () => {
   return (
-    <section className="content flex items-center space-x-4 mb-24">
+    <section className="content flex items-center space-x-4 mb-32 md:mb-24">
       <div className="flex-1 w-full">
-        <h4 className="text-blue uppercase mb-7 md:mb-0">
-          Need help with your nonprofit and do not know where to start?
-        </h4>
+        <h2 className="text-blue text-2xl md:text-4xl uppercase mb-7 md:mb-6">
+          Need help with your nonprofit?
+        </h2>
         <hr className="w-96 mt-4 mb-8 text-blue hidden md:block" />
         <Link href="/contact">
           <a>
