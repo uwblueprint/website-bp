@@ -109,7 +109,7 @@ const About: NextPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-20 gap-y-14 lg:gap-16">
           <div className="flex flex-col space-y-2.5">
             <img
-              className="mb-5"
+              className="mb-5 w-5/6 mx-auto lg:w-full"
               src="/about/amplifying-impact.svg"
               alt="Woman holding laptop"
             />
@@ -122,7 +122,7 @@ const About: NextPage = () => {
           </div>
           <div className="flex flex-col space-y-2.5">
             <img
-              className="mb-5"
+              className="mb-5 w-5/6 mx-auto lg:w-full"
               src="/about/do-good-for-good.svg"
               alt="Man projecting Earth"
             />
@@ -135,7 +135,7 @@ const About: NextPage = () => {
           </div>
           <div className="flex flex-col space-y-2.5">
             <img
-              className="mb-5"
+              className="mb-5 w-5/6 mx-auto lg:w-full"
               src="/about/learning-is-a-team-sport.svg"
               alt="People at table"
             />
@@ -148,7 +148,7 @@ const About: NextPage = () => {
           </div>
           <div className="flex flex-col space-y-2.5">
             <img
-              className="mb-5"
+              className="mb-5 w-5/6 mx-auto lg:w-full"
               src="/about/culture-is-key.svg"
               alt="People holding flag"
             />

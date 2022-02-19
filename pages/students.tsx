@@ -10,10 +10,8 @@ import { Team } from "@components/members/types";
 import data from "constants/members.json";
 import { roleType } from "@components/members/utils";
 
-const teamLeftLines = "/students/students-team-bgleft.svg";
 const teamLeftLightBulb = "/students/students-team-bgleftlow.svg";
 const teamRightCircle = "/students/students-team-bgright.svg";
-const landingSplashBackground = "/students/students-landing-bg.svg";
 const landingGraphic = "/students/students-landing-graphic.svg";
 
 type PageProps = {
@@ -44,10 +42,6 @@ export default function Students({ teams }: PageProps): JSX.Element {
         <ToAlumni />
 
         {/* Background decals */}
-        <img
-          src={teamLeftLines}
-          className="hidden lg:block absolute left-0 top-80"
-        />
         <img
           src={teamLeftLightBulb}
           className="absolute right-0 top-1/4 z-[-10]"

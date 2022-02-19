@@ -13,9 +13,9 @@ const Hero: FC = () => {
             Blueprint’s work is open source. We believe in building technology
             that makes our community more open and connected.
           </p>
-          <div className="w-full flex md:items-end">
+          <div className="w-full flex">
             <Button
-              className="md:ml-auto py-4 bg-transparent"
+              className="py-4 bg-transparent"
               size="md"
               variant="secondary"
               invert

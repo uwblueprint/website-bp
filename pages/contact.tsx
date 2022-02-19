@@ -23,28 +23,28 @@ const Contact: NextPage = () => {
             <div className="flex items-center space-x-12 md:space-x-16">
               <a href={INSTAGRAM_URL} target="_blank">
                 <img
-                  className="h-12 w-12"
+                  className="h-12"
                   src="/common/instagram-logo.svg"
                   alt="Instagram logo"
                 />
               </a>
               <a href={FACEBOOK_URL} target="_blank">
                 <img
-                  className="h-12 w-12"
+                  className="h-12"
                   src="/common/facebook-logo.svg"
                   alt="Facebook logo"
                 />
               </a>
               <a href={LINKEDIN_URL} target="_blank">
                 <img
-                  className="h-12 w-12"
+                  className="h-12"
                   src="/common/linkedin-logo.svg"
                   alt="LinkedIn logo"
                 />
               </a>
               <a href={MEDIUM_URL} target="_blank">
                 <img
-                  className="h-12 w-12 relative top-1"
+                  className="h-12 relative top-1"
                   src="/common/medium-logo.svg"
                   alt="Medium logo"
                 />

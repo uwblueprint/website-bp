@@ -26,22 +26,22 @@ const Button: FC<Props> = ({
     switch (variant) {
       case "primary":
         // White border, white background, blue text
-        classes = `border-white bg-white text-blue`;
+        classes = `border-white bg-white text-blue hover:border-transparent hover:bg-sky-200 hover:text-blue-100`;
         break;
       case "secondary":
         // White border, blue background, white text
-        classes = `border-white bg-blue text-white`;
+        classes = `border-white bg-blue text-white hover:border-transparent hover:bg-sky-200 hover:text-blue-100`;
         break;
     }
   } else {
     switch (variant) {
       case "primary":
         // Blue border, blue background, white text
-        classes = `border-blue bg-blue text-white`;
+        classes = `border-blue bg-blue text-white hover:border-transparent hover:bg-sky-400 `;
         break;
       case "secondary":
         // Blue border, white background, blue text
-        classes = `border-blue bg-white text-blue`;
+        classes = `border-blue bg-white text-blue hover:border-sky-400 hover:text-sky-400`;
         break;
     }
   }
@@ -53,7 +53,7 @@ const Button: FC<Props> = ({
         ? "h-auto py-2.5 text-sm md:text-base font-semibold"
         : "h-auto py-2.5 text-sm font-normal"
     }
-    font-poppins px-8 border-2 border-solid rounded-full text-base hover:opacity-80 disabled:opacity-80
+    font-poppins px-8 border-2 border-solid rounded-full text-base
     ${className}
   `;
 
