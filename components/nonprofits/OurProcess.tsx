@@ -66,8 +66,8 @@ const OurProcess: FC = () => {
               {/* TODO: Replace image dependent on phase */}
               <img
                 className="h-full w-full lg:w-72 rounded-3xl object-cover"
-                src="/nonprofits/product-polish.png"
-                alt="Blueprint member pointing at whiteboard"
+                src={`/nonprofits/photo-${selectedPhase}.jpg`}
+                alt={`Photo describing ${PHASES[selectedPhase].name}`}
               />
             </div>
           </div>

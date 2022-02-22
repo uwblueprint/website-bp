@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import Link from "next/link";
 
 type Props = {
   readonly questions: ReadonlyArray<{

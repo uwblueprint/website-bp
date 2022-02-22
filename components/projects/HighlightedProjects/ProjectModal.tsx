@@ -35,25 +35,32 @@ const ProjectModal: FC<Props> = ({ project, open, onClose }) => {
           onClick={(e) => e.stopPropagation()}
         >
           {/* Modal header (name, terms, links) */}
-          <header className="flex flex-col space-y-6 justify-between">
-            <div>
-              <div className="flex items-center mb-1.5 md:mb-0">
-                <h3 className="w-full">{name}</h3>
-                {/* Close button */}
-                <button onClick={onClose}>
-                  <img src="/common/close.svg" alt="Close" />
-                </button>
+          <header className="flex flex-col justify-between relative mb-4">
+            <div className="flex flex-col lg:flex-row space-y-5 lg:space-y-0 lg:items-center mb-1.5 md:mb-0">
+              <div className="w-full">
+                <h3>{name}</h3>
+                <p className="text-charcoal-500">{terms}</p>
               </div>
-              <p className="text-charcoal-500">{terms}</p>
+              <div className="flex items-center space-x-4 lg:space-x-6 mr-6">
+                <Button
+                  variant="secondary"
+                  className="whitespace-nowrap"
+                  href={caseStudyUrl}
+                >
+                  View Case Study
+                </Button>
+                <a href={githubUrl} className="w-10 md:w-12" target="_blank">
+                  <img src="/common/github-logo-blue.svg" alt="GitHub logo" />
+                </a>
+              </div>
+              {/* Close button */}
             </div>
-            <div className="flex items-center space-x-8 md:pr-12">
-              <Button variant="secondary" href={caseStudyUrl}>
-                View Case Study
-              </Button>
-              <a href={githubUrl} target="_blank">
-                <img src="/common/github-logo-blue.svg" alt="GitHub logo" />
-              </a>
-            </div>
+            <button
+              className="absolute right-0 top-2 lg:-right-6 lg:-top-2"
+              onClick={onClose}
+            >
+              <img src="/common/close.svg" alt="Close" />
+            </button>
           </header>
 
           <hr className="w-full mt-6 mb-8 md:mt-3 md:mb-6 text-charcoal-300" />

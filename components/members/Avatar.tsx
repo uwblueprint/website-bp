@@ -9,7 +9,9 @@ export const Avatar: FC<Member> = ({ name, role, img }) => {
         src={img || "/members/default.jpg"}
       />
       <p className="font-bold text-center">{name}</p>
-      <p className="text-charcoal-500 text-center">{role}</p>
+      <p className="text-charcoal-500 text-center capitalize">
+        {role?.replace("vp", "VP")}
+      </p>
     </figure>
   );
 };
