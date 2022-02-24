@@ -20,10 +20,10 @@ export const INVITE_DATE = "Mar 15";
  * Final decision date
  * Format: MMM DD
  */
-export const FINAL_DECISION_DATE = "Apr 1";
+export const FINAL_DECISION_DATE = "Apr 4";
 
 // URL of application page
-export const APPLICATION_LINK = "https://uwblueprint.org/apply";
+export const APPLICATION_LINK = "https://apply.uwblueprint.org";
 
 // Calculate if the application is live
 const _currentDate = new Date();
