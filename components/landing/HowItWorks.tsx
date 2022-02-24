@@ -38,10 +38,11 @@ const HowItWorks: FC = () => {
           <hr className="w-20 mt-3 mb-6 text-blue hidden md:block" />
           <h6 className="text-blue uppercase mb-2">Trust our expertise</h6>
           <p className="mb-4 md:text-center">
-            Our team of experienced Product Managers, Designers, and Developers
-            can help you scale your organization with innovative new solutions.
-            Whether you have a project idea already or you’re just curious about
-            how Blueprint can help, we want to be there every step of the way.
+            Our team of experienced product managers, project leads, designers,
+            and developers can help you scale your organization with innovative
+            new solutions. Whether you have a project idea already or you’re
+            just curious about how Blueprint can help, we want to be there every
+            step of the way.
           </p>
           <Link href="/contact">
             <a className="flex space-x-2 text-blue text-base font-extrabold">

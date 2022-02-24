@@ -31,7 +31,7 @@ const ProjectModal: FC<Props> = ({ project, open, onClose }) => {
       >
         {/* Modal */}
         <div
-          className="md:max-w-[1200px] relative flex flex-col px-4 md:px-12 pt-10 pb-16 rounded-t-3xl md:rounded-3xl bg-white shadow-lg"
+          className="md:max-w-[1200px] relative flex flex-col px-4 md:px-12 pt-10 pb-16 rounded-t-3xl md:rounded-3xl bg-white shadow-lg max-h-[calc(100vh-2rem)]"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Modal header (name, terms, links) */}
@@ -66,9 +66,9 @@ const ProjectModal: FC<Props> = ({ project, open, onClose }) => {
           <hr className="w-full mt-6 mb-8 md:mt-3 md:mb-6 text-charcoal-300" />
 
           {/* Modal content */}
-          <div className="flex justify-between space-x-8">
+          <div className="flex justify-between space-x-8 overflow-y-scroll">
             {/* NPO description */}
-            <div className="flex-1 flex flex-col justify-between space-y-6 md:space-y-8">
+            <div className="flex flex-col justify-between space-y-6 md:space-y-8">
               <div>
                 <h6 className="mb-1 text-blue">About the non-profit</h6>
                 <p>{about}</p>
@@ -97,8 +97,12 @@ const ProjectModal: FC<Props> = ({ project, open, onClose }) => {
               </div>
             </div>
             {/* Image */}
-            <div className="hidden md:block flex-1">
-              <img className="h-full object-cover" src={image} alt={name} />
+            <div className="hidden md:block">
+              <img
+                className="w-full h-full object-cover"
+                src={image}
+                alt={name}
+              />
             </div>
           </div>
         </div>
