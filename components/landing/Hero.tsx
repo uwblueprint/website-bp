@@ -12,7 +12,7 @@ const Hero: FC = () => {
         {/* Background image (need section height to be defined by background dimensions) */}
         <div className="w-full relative mt-80 md:mt-48 lg:mt-40 -mb-16">
           <img
-            className="h-72 object-cover md:h-144 lg:w-full lg:h-auto"
+            className="min-h-[18rem] object-cover md:min-h-[36rem] lg:w-full"
             src="/landing/hero-background.svg"
             alt="People supporting social good"
           />

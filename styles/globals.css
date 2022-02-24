@@ -51,6 +51,6 @@
       Set a max-width with automatic centering on the page for sections
       and content that do not have a background that spans the screen width
     */
-    @apply w-full max-w-6xl mx-auto px-4;
+    @apply w-full max-w-6xl mx-auto px-4 md:px-6;
   }
 }

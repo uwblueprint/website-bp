@@ -2,12 +2,12 @@
   {
     "step": "One",
     "name": "Project discussion and collaborative scoping",
-    "description": "To kickstart the collaboration process, our teams will work closely with the nonprofit to gain a greater understanding of project needs and priorities as well as scope out the minimum viable product (MVP). From this point, the project lead will curate a statement of work (SOW) that defines project scope capturing the discussion with the nonprofit."
+    "description": "To kickstart the collaboration process, our teams will work closely with the nonprofit to gain a greater understanding of project needs and priorities as well as scope out the minimum viable product (MVP). From this point, the product manager will curate a statement of work (SOW) that defines project scope capturing the discussion with the nonprofit."
   },
   {
     "step": "Two",
     "name": "Building the Minimum Viable Product (MVP)",
-    "description": "This second phase is where the magic begins! Our teams work hard to get the MVP up and running. All the while, staying in touch with the nonprofit to ensure smooth development and consistent alignment."
+    "description": "This second phase is where the magic begins! Our teams work hard to get the MVP up and running. Throughout this phase, we will stay in touch with the nonprofit to ensure smooth development and consistent alignment."
   },
   {
     "step": "Three",

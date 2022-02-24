@@ -34,7 +34,7 @@ const About: NextPage = () => {
             <p className="mb-6">
               We are a group of students at the University of Waterloo dedicated
               to building technology for social good and driving meaningful
-              change. Each term our project teams work alongside nonprofits in
+              change. Each term, our project teams work alongside nonprofits in
               order to support their efforts toward better serving our
               communities.
             </p>

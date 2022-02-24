@@ -26,7 +26,7 @@ const Navbar: FC = () => {
           </Link>
         )}
         <div className="bg-blue">
-          <nav className="content flex flex-wrap space-x-4 lg:space-x-0 lg:justify-between px-4 pt-5 md:pt-6 pb-2 md:pb-6 box-border">
+          <nav className="content flex flex-wrap space-x-4 lg:space-x-0 lg:justify-between pt-5 md:pt-6 pb-2 md:pb-6 box-border">
             <button className="lg:hidden" onClick={() => setMenuOpen(true)}>
               <img className="" src="/common/menu.svg" alt="Menu" />
             </button>
@@ -48,7 +48,7 @@ const Navbar: FC = () => {
       </div>
       {menuOpen && (
         <div className="fixed h-screen w-screen z-40 flex lg:hidden">
-          <div className="h-full bg-blue-200 w-64 md:w-80 pl-8 pr-8 py-14 space-y-12">
+          <div className="h-full bg-blue-200 w-64 md:w-80 pl-6 pr-6 py-14 space-y-12">
             <div className="flex justify-between">
               <Logo />
               <button onClick={() => setMenuOpen(false)}>
