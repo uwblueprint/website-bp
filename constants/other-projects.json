@@ -1,7 +1,7 @@
 [
   {
     "name": "Project READ Literacy Network",
-    "type": "Website Redesign",
+    "type": "Admin Platform",
     "githubUrl": "https://github.com/uwblueprint/project-read-frontend",
     "description": [
       "is an organization that empowers families in the Waterloo region with access to literacy and essential skills training.",
@@ -11,7 +11,7 @@
   },
   {
     "name": "The Shoe Project",
-    "type": "Website Redesign",
+    "type": "Storytelling Platform",
     "githubUrl": "https://github.com/uwblueprint/shoe-project",
     "description": [
       "provides educational and leadership opportunities to immigrant and refugee women. They have created a platform for women to showcase their moving stories using a shoe as a metaphor.",
@@ -21,7 +21,7 @@
   },
   {
     "name": "The Pregnancy Centre",
-    "type": "Website Redesign",
+    "type": "Donation Platform",
     "githubUrl": "https://github.com/uwblueprint/pregnancy-centre",
     "linkText": "The Pregnancy Centre (TPC)",
     "description": [
