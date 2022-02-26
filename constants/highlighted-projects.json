@@ -1,7 +1,7 @@
 [
   {
     "name": "Social Venture Partners",
-    "type": "Decision-making Platform",
+    "type": "Decision Making",
     "terms": "Fall 2019 - Fall 2020",
     "caseStudyUrl": "https://medium.com/uw-blueprint/featured-project-social-venture-partners-waterloo-region-50b2f06dfcb9",
     "githubUrl": "https://github.com/uwblueprint/arbitrium",
@@ -15,7 +15,7 @@
   },
   {
     "name": "Paramedics",
-    "type": "Patient Management Solution",
+    "type": "Patient Management",
     "terms": "Winter 2020 - Fall 2020",
     "caseStudyUrl": "https://medium.com/uw-blueprint/project-spotlight-2-waterloo-paramedic-services-psv-c90855f95c29",
     "githubUrl": "https://github.com/uwblueprint/paramedics-react",
@@ -29,7 +29,7 @@
   },
   {
     "name": "Dancefest",
-    "type": "Adjudication Platform",
+    "type": "Dance Adjudication",
     "terms": "Winter 2018 - Winter 2021",
     "caseStudyUrl": "https://medium.com/uw-blueprint/featured-project-ontario-secondary-school-dancefest-c7ec0efdf1e2",
     "githubUrl": "https://github.com/uwblueprint/dancefest-web",
@@ -43,7 +43,7 @@
   },
   {
     "name": "Plastics for Change",
-    "type": "Plastic Management Solution",
+    "type": "Plastic Management",
     "terms": "Summer 2018 - Winter 2019",
     "caseStudyUrl": "https://medium.com/uw-blueprint/team-spotlight-plastics-for-change-2b775e2450e3",
     "githubUrl": "https://github.com/uwblueprint/plasta",
