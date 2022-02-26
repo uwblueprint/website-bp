@@ -15,7 +15,7 @@
   },
   {
     "name": "Paramedics",
-    "type": "Web & iPad App",
+    "type": "Patient Management Solution",
     "terms": "Winter 2020 - Fall 2020",
     "caseStudyUrl": "https://medium.com/uw-blueprint/project-spotlight-2-waterloo-paramedic-services-psv-c90855f95c29",
     "githubUrl": "https://github.com/uwblueprint/paramedics-react",
@@ -43,7 +43,7 @@
   },
   {
     "name": "Plastics for Change",
-    "type": "Plastic Management Platform",
+    "type": "Plastic Management Solution",
     "terms": "Summer 2018 - Winter 2019",
     "caseStudyUrl": "https://medium.com/uw-blueprint/team-spotlight-plastics-for-change-2b775e2450e3",
     "githubUrl": "https://github.com/uwblueprint/plasta",
