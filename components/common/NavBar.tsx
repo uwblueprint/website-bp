@@ -20,7 +20,7 @@ const Navbar: FC = () => {
         {APPLICATION_IS_LIVE && (
           <Link href={APPLICATION_LINK}>
             <a className="block w-full text-center px-4 py-1 bg-charcoal-0 font-poppins">
-              Applications to join the Winter 2022 team are now open,{" "}
+              Applications to join the Spring 2022 team are now open,{" "}
               <span className="underline">apply here</span>! 🎉
             </a>
           </Link>
