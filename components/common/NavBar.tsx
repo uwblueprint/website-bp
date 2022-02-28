@@ -46,7 +46,7 @@ const Navbar: FC = () => {
           </nav>
         </div>
         <img
-          className="w-full -mt-0.5 md:hidden scale-100"
+          className="w-full -mt-0.5 md:hidden"
           src="common/navbar-wave-sm.svg"
         />
       </div>
