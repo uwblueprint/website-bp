@@ -2,12 +2,12 @@
   {
     "step": "One",
     "name": "Project discussion and collaborative scoping",
-    "description": "To kickstart the collaboration process, our teams will work closely with the nonprofit to gain a greater understanding of project needs and priorities as well as scope out the minimum viable product (MVP). From this point, the project lead will curate a statement of work (SOW) that defines project scope capturing the discussion with the nonprofit."
+    "description": "To kickstart the collaboration process, our teams will work closely with the nonprofit to gain a greater understanding of project needs and priorities as well as scope out the minimum viable product (MVP). From this point, the product manager will curate a statement of work (SOW) that defines project scope capturing the discussion with the nonprofit."
   },
   {
     "step": "Two",
     "name": "Building the Minimum Viable Product (MVP)",
-    "description": "This second phase is where the magic begins! Our teams work hard to get the MVP up and running. All the while, staying in touch with the nonprofit to ensure smooth development and consistent alignment."
+    "description": "This second phase is where the magic begins! Our teams work hard to get the MVP up and running. Throughout this phase, we will stay in touch with the nonprofit to ensure smooth development and consistent alignment."
   },
   {
     "step": "Three",
@@ -17,6 +17,6 @@
   {
     "step": "Four",
     "name": "Product polish and hand-off",
-    "description": "This phase involves intensive development and design work. Our team will execute improvements on the product based on feedback received from the user testing phase.\n\nThe objective of this final phase is to ensure the quality and completeness of the finished product such that it is ready to be delivered. Upon product completion, our team will meet with the nonprofit one last time to walk through solution handling or maintenance best practices before hand off."
+    "description": "This phase involves intensive development and design work. Our team will execute improvements on the product based on feedback received from the user testing phase.\n\nThe objective of this final phase is to ensure the quality and completeness of the finished product. Upon product completion, our team will meet with the nonprofit to walk through maintenance best practices before hand off."
   }
 ]

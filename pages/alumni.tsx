@@ -28,7 +28,7 @@ export default function Alumni({ alumni }: PageProps): JSX.Element {
         <section className="relative flex w-full bg-bottom bg-cover pt-36 pb-8 md:py-48 md:bg-students-hero">
           <div className="content relative flex flex-col md:flex-row items-center justify-between md:space-x-12 lg:space-x-16 space-y-8 md:space-y-0">
             <Hero
-              title={`Students`}
+              title={`Alumni`}
               description={`A team is only as good as its members. Meet Blueprint, a diverse group of students and alumni with the drive to change the world.`}
             />
             <img
@@ -46,10 +46,6 @@ export default function Alumni({ alumni }: PageProps): JSX.Element {
         <ToStudents />
 
         {/* Background decals */}
-        <img
-          src={teamLeftLines}
-          className="hidden lg:block absolute left-0 top-80"
-        />
         <img src={teamLeftGear} className="absolute left-0 top-1/2 z-[-10]" />
         <img
           src={teamRightLines}

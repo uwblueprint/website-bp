@@ -41,7 +41,9 @@ const Footer: FC = () => {
             {LINKS.map((linkGroup) => (
               <div key={linkGroup.name}>
                 <Link href={linkGroup.link}>
-                  <h5 className="text-white">{linkGroup.name}</h5>
+                  <h5 className="text-white cursor-pointer">
+                    {linkGroup.name}
+                  </h5>
                 </Link>
               </div>
             ))}
@@ -63,31 +65,31 @@ const Footer: FC = () => {
                 <a href="mailto:info@uwblueprint.org">
                   <h5 className="text-white">info@uwblueprint.org</h5>
                 </a>
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-3">
                   <a href={INSTAGRAM_URL} target="_blank">
                     <img
-                      className="h-6 w-6"
+                      className="h-6"
                       src="/common/instagram-logo.svg"
                       alt="Instagram logo"
                     />
                   </a>
                   <a href={MEDIUM_URL} target="_blank">
                     <img
-                      className="h-6 w-6"
+                      className="h-6"
                       src="/common/medium-logo.svg"
                       alt="Medium logo"
                     />
                   </a>
                   <a href={FACEBOOK_URL} target="_blank">
                     <img
-                      className="h-6 w-6"
+                      className="h-6"
                       src="/common/facebook-logo.svg"
                       alt="Facebook logo"
                     />
                   </a>
                   <a href={LINKEDIN_URL} target="_blank">
                     <img
-                      className="h-6 w-6"
+                      className="h-6"
                       src="/common/linkedin-logo.svg"
                       alt="LinkedIn logo"
                     />
