@@ -22,6 +22,9 @@ export const INVITE_DATE = "Mar 15";
  */
 export const FINAL_DECISION_DATE = "Apr 4";
 
+// Term this application is for
+export const APPLICATION_TERM = "Spring 2022";
+
 // URL of application page
 export const APPLICATION_LINK = "https://apply.uwblueprint.org";
 
