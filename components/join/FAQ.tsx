@@ -7,7 +7,7 @@ import {
 
 const FAQ: FC = () => {
   return (
-    <section className="content mb-32">
+    <section className="content mb-32" id="join-faq">
       <div className="mb-10 md:mb-14">
         <h2 className="text-blue">FAQ</h2>
         <hr className="w-20 mt-4 mb-10 text-blue" />
