@@ -1,12 +1,14 @@
 /**
  * Application open datetime
  * Format: MMM DD YYYY HH:MM:SS TZ
+ * Note: be mindful of day light saving time changes!
  */
 export const APPLICATION_OPEN_DATETIME = "Feb 27 2022 00:00:00 EST";
 
 /**
  * Application close datetime
  * Format: MMM DD YYYY HH:MM:SS TZ
+ * Note: be mindful of day light saving time changes!
  */
 export const APPLICATION_CLOSE_DATETIME = "Mar 13 2022 23:59:59 EST";
 
