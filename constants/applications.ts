@@ -16,7 +16,7 @@ export const APPLICATION_CLOSE_DATETIME = "Mar 13 2022 23:59:59 EST";
  * Date that invites are sent out for interviews
  * Format: MMM DD
  */
-export const INVITE_DATE = "Mar 18";
+export const INVITE_DATE = "Mar 21";
 
 /**
  * Final decision date
