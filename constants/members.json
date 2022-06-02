@@ -40,7 +40,7 @@
       "role": "developer",
       "term": 1225,
       "teams": ["rowan-house"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_abubakarbello.png?alt=media&token=d6074d68-f3b8-4f23-9ae2-f05ba4281a14"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_abubakarbello.png?alt=media&token=aa73cf03-ae87-4218-85ea-b3b4b09bf377"
     },
     {
       "name": "Adriana Ceric",
@@ -54,7 +54,7 @@
       "role": "developer",
       "term": 1225,
       "teams": ["casa"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_andrewma.jpeg?alt=media&token=2e50bc56-740f-4543-ace2-55b3e9881d2d"
     },
     {
       "name": "Ansh Sahny",
@@ -103,7 +103,7 @@
       "role": "graphic designer",
       "term": 1225,
       "teams": ["executive"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fgraphicdesigner_graceyang.jpg?alt=media&token=6a1d278d-7320-45ae-8b05-55c60d8c7e9c"
     },
     {
       "name": "Hamza Yusuff",
@@ -1857,7 +1857,7 @@
     {
       "name": "Pamela Wang",
       "role": "vp design",
-      "term": 1221,
+      "term": 1225,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2021headshots%2FPamela_Wang.png?alt=media&token=c5e8829c-3555-44b1-9fac-636877138282"
     },
