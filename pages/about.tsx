@@ -101,10 +101,9 @@ const About: NextPage = () => {
           </div>
         </div>
       </section>
-
       {/* Our Values section */}
       <section className="content flex flex-col mb-4">
-        <h2 className="text-blue mb-8">Our Values</h2>
+        <h2 className="text-blue mb-4 md:mb-0">Our Values</h2>
         <hr className="hidden md:block w-20 mt-3 md:mb-10 text-blue" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-20 gap-y-14 lg:gap-16">
           <div className="flex flex-col space-y-2.5">
@@ -161,9 +160,38 @@ const About: NextPage = () => {
           </div>
         </div>
       </section>
-
+      {/* Our Sponsors section */}
+      <section className="content flex flex-col items-center space-y-8 py-12">
+        <h2 className="text-blue mb-4 md:mb-0">Our Sponsors</h2>
+        <hr className="hidden md:block w-20 text-blue" />
+        <p className="max-w-lg text-lg mb-5 md:text-center font-light font-poppins italic">
+          A huge thank you to our sponsors for supporting our team and our
+          mission!
+        </p>
+        <Link href="mailto:info@uwblueprint.org">
+          <a>
+            <Button className="leading-relaxed mb-5">Become a sponsor</Button>
+          </a>
+        </Link>
+        <div className="grid grid-cols-1 place-content-stretch md:grid-cols-2 lg:grid-cols-2 gap-x-20 gap-y-14 lg:gap-16">
+          <div className="flex flex-col place-self-center space-y-2.5">
+            <img
+              className="mb-5 w-5/6 place-self-center mx-auto"
+              src="/about/mef-logo.png"
+              alt="Math Endowment Fund Logo"
+            />
+          </div>
+          <div className="flex flex-col place-self-center space-y-2.5">
+            <img
+              className="mb-5 w-5/6 place-self-center mx-auto"
+              src="/about/weef-logo.png"
+              alt="Waterloo Engineering Endowment Fund"
+            />
+          </div>
+        </div>
+      </section>
       {/* Interested in the work we do? */}
-      <section className="content flex flex-col items-center space-y-8 py-32">
+      <section className="content flex flex-col items-center space-y-8 py-24">
         <h2 className="text-blue text-2xl md:text-4xl uppercase">
           Interested in the work we do?
         </h2>

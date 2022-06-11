@@ -56,7 +56,7 @@ const resource: Resource = {
     "Making technology accessible and useful for those who create communities.",
   JOIN_US_APPLY_BUTTON: "Apply Now",
 
-  COPYRIGHT: "© UW Blueprint 2021",
+  COPYRIGHT: "© UW Blueprint 2022",
 
   // non profit page text
   NONPROFIT_LANDING_TITLE: "For Nonprofits",
