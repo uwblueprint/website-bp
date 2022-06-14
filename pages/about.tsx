@@ -161,7 +161,7 @@ const About: NextPage = () => {
         </div>
       </section>
       {/* Our Sponsors section */}
-      <section className="content flex flex-col items-center space-y-8 py-12">
+      <section className="content flex flex-col items-center space-y-8 py-8">
         <h2 className="text-blue mb-4 md:mb-0">Our Sponsors</h2>
         <hr className="hidden md:block w-20 text-blue" />
         <p className="max-w-lg text-lg mb-5 md:text-center font-light font-poppins italic">
@@ -173,25 +173,26 @@ const About: NextPage = () => {
             <Button className="leading-relaxed mb-5">Become a sponsor</Button>
           </a>
         </Link>
-        <div className="grid grid-cols-1 place-content-stretch md:grid-cols-2 lg:grid-cols-2 gap-x-20 gap-y-14 lg:gap-16">
-          <div className="flex flex-col place-self-center space-y-2.5">
-            <img
-              className="mb-5 w-5/6 place-self-center mx-auto"
-              src="/about/mef-logo.png"
-              alt="Math Endowment Fund Logo"
-            />
-          </div>
-          <div className="flex flex-col place-self-center space-y-2.5">
-            <img
-              className="mb-5 w-5/6 place-self-center mx-auto"
-              src="/about/weef-logo.png"
-              alt="Waterloo Engineering Endowment Fund"
-            />
-          </div>
+        <div className="grid grid-cols-1 justify-items-center lg:grid-cols-3 gap-x-20 gap-y-14 lg:gap-16 pt-16">
+          <img
+            className="h-32"
+            src="/about/mef-logo.png"
+            alt="Math Endowment Fund Logo"
+          />
+          <img
+            className="h-32"
+            src="/about/techyon-logo.png"
+            alt="Techyon Logo"
+          />
+          <img
+            className="h-32"
+            src="/about/weef-logo.png"
+            alt="Waterloo Engineering Endowment Fund Logo"
+          />
         </div>
       </section>
       {/* Interested in the work we do? */}
-      <section className="content flex flex-col items-center space-y-8 py-24">
+      <section className="content flex flex-col items-center space-y-8 py-24 gap-x-20 gap-y-14">
         <h2 className="text-blue text-2xl md:text-4xl uppercase">
           Interested in the work we do?
         </h2>
