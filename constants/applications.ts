@@ -10,7 +10,7 @@ export const APPLICATION_OPEN_DATETIME = "Jun 25 2022 00:00:00 EST";
  * Format: MMM DD YYYY HH:MM:SS TZ
  * Note: be mindful of day light saving time changes!
  */
-export const APPLICATION_CLOSE_DATETIME = "Jul 6 2022 23:59:59 EST";
+export const APPLICATION_CLOSE_DATETIME = "Jul 8 2022 23:59:59 EST";
 
 /**
  * Date that invites are sent out for interviews
