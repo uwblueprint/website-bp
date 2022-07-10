@@ -153,7 +153,7 @@ const resource: Resource = {
     "Yes! Blueprint is a great way to gain more experience as you will be surrounded by a community of peers with varying expertise in different fields, who can support you with mentorship. We care more about your drive to learn, and your passion for social good.",
   JOIN_APP_PROCESS_Q4: "CAN I BE A PART OF BLUEPRINT IF I’M NOT IN WATERLOO?",
   JOIN_APP_PROCESS_A4:
-    "UW Blueprint will be fully remote in Winter 2021 so we're open to students joining our team from anywhere in the world. That being said, our meetings will usually be scheduled to accommodate people based in Waterloo (EST).",
+    "UW Blueprint will be fully remote in Winter 2021 so we're open to students joining our team from anywhere in the world. That being said, our meetings will usually be scheduled to accommodate people based in Waterloo (ET).",
 
   JOIN_ABOUT_OUR_TEAM_Q1: "HOW DO YOU CHOOSE PROJECTS?",
   JOIN_ABOUT_OUR_TEAM_A1:
