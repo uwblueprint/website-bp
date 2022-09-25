@@ -1,5 +1,5 @@
 {
-  "term": 1225,
+  "term": 1229,
   "teams": [
     {
       "name": "Executive Team",
@@ -115,9 +115,9 @@
     {
       "name": "Helen Guan",
       "role": "developer",
-      "term": 1225,
+      "term": 1229,
       "teams": ["ccbc"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_helenguan.JPG?alt=media&token=51ec2717-72c7-4cff-8965-d31dd5b057ff"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Helen_Guan.JPG?alt=media&token=6f3cb672-f902-4c1e-ac50-d83acd55e617"
     },
     {
       "name": "Iknoor Rawal",
@@ -1476,9 +1476,9 @@
     },
     {
       "name": "Soha Khan",
-      "role": "vp talent",
-      "term": 1225,
-      "teams": ["executive"],
+      "role": "product manager",
+      "term": 1229,
+      "teams": ["ccbc"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ffall2020headshots%2FVpMarketing_SohaKhan.JPG?alt=media&token=3d101c30-ff2a-4c98-99b9-08a2b9128615"
     },
     {
@@ -2292,8 +2292,8 @@
     {
       "name": "Anish Aggarwal",
       "role": "developer",
-      "term": 1221,
-      "teams": ["richmond-centre"],
+      "term": 1229,
+      "teams": ["ccbc"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ffall2021headshots%2Fdev_anish_aggarwal.jpeg?alt=media&token=a173f9d8-eded-44cf-a622-38511d6ad1a8"
     },
     {
@@ -2648,9 +2648,9 @@
     },
     {
       "name": "Shrinjay Mukherjee",
-      "role": "developer",
-      "term": 1221,
-      "teams": ["rowan-house"],
+      "role": "technical lead",
+      "term": 1229,
+      "teams": ["ccbc"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fdev_shrinjay.jpeg?alt=media&token=d8499ae8-ae37-4d08-af6d-205c30eae915"
     },
     {
@@ -2694,6 +2694,48 @@
       "term": 1225,
       "teams": ["focus-on-nature"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fdev_ryanchang.jpg?alt=media&token=f80f5590-47a7-449f-8371-c80c101ed227"
+    },
+    {
+      "name": "Calder White",
+      "role": "developer",
+      "term": 1229,
+      "teams": ["ccbc"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Ethan_Alvizo.jpg?alt=media&token=71c40793-cd96-444e-b347-999899b6a1b5"
+    },
+    {
+      "name": "Arist Xu",
+      "role": "developer",
+      "term": 1229,
+      "teams": ["ccbc"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Khloe Ramdhan",
+      "role": "developer",
+      "term": 1229,
+      "teams": ["ccbc"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Khloe_Ramdhan.JPG?alt=media&token=36336a16-461c-4a2d-a9e2-e85ed14188a8"
+    },
+    {
+      "name": "Ethan Alvizo",
+      "role": "developer",
+      "term": 1229,
+      "teams": ["ccbc"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Ethan_Alvizo.jpg?alt=media&token=71c40793-cd96-444e-b347-999899b6a1b5"
+    },
+    {
+      "name": "Sebastian Mendoza",
+      "role": "developer",
+      "term": 1229,
+      "teams": ["ccbc"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Wais Hundekar",
+      "role": "developer",
+      "term": 1229,
+      "teams": ["ccbc"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     }
   ]
 }
