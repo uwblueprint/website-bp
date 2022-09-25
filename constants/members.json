@@ -1,5 +1,5 @@
 {
-  "term": 1225,
+  "term": 1229,
   "teams": [
     {
       "name": "Executive Team",
@@ -32,6 +32,10 @@
     {
       "name": "Children’s Aid Society of Algoma",
       "id": "casa"
+    },
+    {
+      "name": "Feeding Canadian Kids",
+      "id": "fck"
     }
   ],
   "members": [
@@ -72,9 +76,9 @@
     },
     {
       "name": "Ayaan Hussain",
-      "role": "vp scoping",
-      "term": 1225,
-      "teams": ["executive"],
+      "role": "product manager",
+      "term": 1229,
+      "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fvps_ayaanhussain.jpg?alt=media&token=2334fd60-9e0e-423b-9fb6-b37bb1444c45"
     },
     {
@@ -150,8 +154,8 @@
     {
       "name": "Julian Dominguez-Schatz",
       "role": "technical lead",
-      "term": 1225,
-      "teams": ["rowan-house"],
+      "term": 1229,
+      "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fpl_juliandominguez-schatz.png?alt=media&token=4fafeace-31cf-4a9f-90fa-497509521637"
     },
     {
@@ -227,8 +231,8 @@
     {
       "name": "Yousef Sahawneh",
       "role": "designer",
-      "term": 1225,
-      "teams": ["ccbc"],
+      "term": 1229,
+      "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdesigner_YousefSahawneh.jpg?alt=media&token=81e49bbc-59d1-44c3-88dc-752df58930f8"
     },
 
@@ -2033,8 +2037,8 @@
     {
       "name": "Krystal Truong",
       "role": "designer",
-      "term": 1221,
-      "teams": ["sistering"],
+      "term": 1229,
+      "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fspring2021headshots%2FKrystal_Truong.jpg?alt=media&token=dc1986fd-5cca-41f9-94e3-13c869656bd5"
     },
     {
@@ -2208,8 +2212,8 @@
     {
       "name": "Philips Xu",
       "role": "developer",
-      "term": 1219,
-      "teams": ["planet-read"],
+      "term": 1229,
+      "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ffall2021headshots%2FNEW_philips_xu.jpeg?alt=media&token=69ef6df6-b8cb-4105-a9fc-385d053bc40d"
     },
     {
@@ -2600,8 +2604,8 @@
     {
       "name": "Anya Sarvanandan",
       "role": "designer",
-      "term": 1221,
-      "teams": ["community-fridge"],
+      "term": 1229,
+      "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fpdesigner_anyasarvanandan.jpeg?alt=media&token=1d5e17b0-74a6-4d46-adc2-933e71ff04cf"
     },
     {
@@ -2614,8 +2618,8 @@
     {
       "name": "Jessie Peng",
       "role": "developer",
-      "term": 1225,
-      "teams": ["ccbc"],
+      "term": 1229,
+      "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fdev_jessiepeng.png?alt=media&token=c5fd6d2a-8d9a-44e4-a8d1-6b24beef70f4"
     },
     {
@@ -2694,6 +2698,55 @@
       "term": 1225,
       "teams": ["focus-on-nature"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fdev_ryanchang.jpg?alt=media&token=f80f5590-47a7-449f-8371-c80c101ed227"
+    },
+    {
+      "name": "Christine Duong",
+      "role": "user experience research",
+      "term": 1229,
+      "teams": ["fck"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Aryan Abed-Esfahani",
+      "role": "developer",
+      "term": 1229,
+      "teams": ["fck"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519" 
+    },
+    {
+      "name": "Alyssa Guo",
+      "role": "developer",
+      "term": 1229,
+      "teams": ["fck"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Alyssa_Guo.JPG?alt=media&token=1bfc9d9b-bd57-486c-a5ce-b5036b93d216"
+    },
+    {
+      "name": "Heet Shah",
+      "role": "developer",
+      "term": 1229,
+      "teams": ["fck"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519" 
+    },
+    {
+      "name": "Andrew Zhang",
+      "role": "developer",
+      "term": 1229,
+      "teams": ["fck"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Andrew_Zhang.png?alt=media&token=d725ca8c-78fb-4571-95a9-923218fc35eb"
+    },
+    {
+      "name": "Leo Huang",
+      "role": "developer",
+      "term": 1229,
+      "teams": ["fck"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519" 
+    },
+    {
+      "name": "Aaron Zhang",
+      "role": "developer",
+      "term": 1229,
+      "teams": ["fck"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519" 
     }
   ]
 }
