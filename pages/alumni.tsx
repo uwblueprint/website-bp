@@ -9,12 +9,9 @@ import { GetStaticProps } from "next";
 import { Team } from "@components/members/types";
 
 import data from "constants/members.json";
-import { roleType } from "@components/members/utils";
 
-const teamLeftLines = "/students/students-team-bgleft.svg";
 const teamLeftGear = "/alumni/alumni-team-bgleft.svg";
 const teamRightLines = "/alumni/alumni-team-bgright.svg";
-const landingSplashBackground = "/alumni/alumni-landing-bg.svg";
 const landingGraphic = "/alumni/alumni-landing-graphic.svg";
 
 type PageProps = {
@@ -56,7 +53,7 @@ export default function Alumni({ alumni }: PageProps): JSX.Element {
   );
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const term = data.term;
   const members = data.members
     .filter((member) => member.term !== term)

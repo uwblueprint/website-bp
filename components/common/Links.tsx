@@ -1,5 +1,5 @@
 interface _Links {
-  [key: string]: any;
+  [key: string]: JSX.Element;
 }
 
 const Links: _Links = {

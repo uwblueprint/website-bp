@@ -55,7 +55,7 @@ export default function Students({ teams }: PageProps): JSX.Element {
   );
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const term = data.term;
   const members = data.members.filter((member) => member.term === term);
   const teams = data.teams.map((team) => ({

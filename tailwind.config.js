@@ -1,7 +1,10 @@
 module.exports = {
   mode: "jit",
-  purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
+  darkMode: "media",
   theme: {
     colors: {
       transparent: "transparent",
@@ -39,7 +42,7 @@ module.exports = {
         200: "#BDDEFF",
         300: "#99CEFF",
         400: "#7EB9F0",
-        500: "#4498ED"
+        500: "#4498ED",
       },
 
       // SECONDARY
@@ -107,24 +110,24 @@ module.exports = {
         "auto-fill": "repeat(auto-fill, minmax(8rem, 1fr))",
       },
       backgroundImage: {
-        'how-it-works': "url('/landing/how-it-works-background.svg')",
-        'nonprofits-md': "url('/nonprofits/hero-background-md.svg')",
-        'nonprofits-lg': "url('/nonprofits/hero-background-lg.svg')",
-        'students-hero': "url('/students/students-landing-bg.svg')",
-        'join-hero': "url('/join/hero-background.svg')",
-        'about-us-mission': "url('/about/mission-background.svg')",
-        'about-us-circles-md': "url('/about/circle-images-tablet.png')",
-        'about-us-circles-lg': "url('/about/circle-images.png')",
+        "how-it-works": "url('/landing/how-it-works-background.svg')",
+        "nonprofits-md": "url('/nonprofits/hero-background-md.svg')",
+        "nonprofits-lg": "url('/nonprofits/hero-background-lg.svg')",
+        "students-hero": "url('/students/students-landing-bg.svg')",
+        "join-hero": "url('/join/hero-background.svg')",
+        "about-us-mission": "url('/about/mission-background.svg')",
+        "about-us-circles-md": "url('/about/circle-images-tablet.png')",
+        "about-us-circles-lg": "url('/about/circle-images.png')",
       },
       width: {
-        '120': '30rem',
-        '160': '40rem',
-        '240': '60rem',
-        'card': 'calc(100% - 2rem)'
+        120: "30rem",
+        160: "40rem",
+        240: "60rem",
+        card: "calc(100% - 2rem)",
       },
       height: {
-        '144': '36rem',
-      }
+        144: "36rem",
+      },
     },
   },
   variants: {},
