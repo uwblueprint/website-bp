@@ -1,5 +1,5 @@
 {
-  "term": 1225,
+  "term": 1229,
   "teams": [
     {
       "name": "Executive Team",
@@ -38,8 +38,8 @@
     {
       "name": "Abubakar Bello",
       "role": "developer",
-      "term": 1225,
-      "teams": ["rowan-house"],
+      "term": 1229,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_abubakarbello.png?alt=media&token=aa73cf03-ae87-4218-85ea-b3b4b09bf377"
     },
     {
@@ -87,8 +87,8 @@
     {
       "name": "Evan Wong",
       "role": "developer",
-      "term": 1225,
-      "teams": ["sistering"],
+      "term": 1229,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_evanwong.jpg?alt=media&token=b3ab72a5-2a9a-432d-bff9-30b508d66f1b"
     },
     {
@@ -135,9 +135,9 @@
     },
     {
       "name": "Jessica Yang",
-      "role": "vp external",
-      "term": 1225,
-      "teams": ["executive"],
+      "role": "product manager",
+      "term": 1229,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fvpex_JessicaYang.JPG?alt=media&token=79b9510e-2b4a-434f-8f1f-1806e1e60ef7"
     },
     {
@@ -2137,9 +2137,9 @@
     },
     {
       "name": "Lambert Liu",
-      "role": "developer",
-      "term": 1225,
-      "teams": ["sistering"],
+      "role": "technical lead",
+      "term": 1229,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_lambertliu.JPG?alt=media&token=bf209690-209f-4377-a821-5d6a6ca7a434"
     },
     {
@@ -2355,8 +2355,8 @@
     {
       "name": "Raya Ferdous",
       "role": "developer",
-      "term": 1225,
-      "teams": ["rowan-house"],
+      "term": 1229,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ffall2021headshots%2Fdev_raya_ferdous.jpeg?alt=media&token=dde217ce-9aab-4c0b-a4e1-2fbcadefc9fe"
     },
     {
@@ -2383,8 +2383,8 @@
     {
       "name": "Linna Luo",
       "role": "developer",
-      "term": 1221,
-      "teams": ["community-fridge"],
+      "term": 1229,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fdev_linnaluo.png?alt=media&token=de954aba-bd8c-4ed3-9392-dd72a1ede736"
     },
     {
@@ -2417,9 +2417,9 @@
     },
     {
       "name": "Albert Lai",
-      "role": "developer",
-      "term": 1221,
-      "teams": ["sistering"],
+      "role": "technical lead",
+      "term": 1229,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fdev_albertlai.jpeg?alt=media&token=e27bc90a-332c-4639-bbea-65361cdf5862"
     },
     {
@@ -2432,8 +2432,8 @@
     {
       "name": "Brian Tu",
       "role": "developer",
-      "term": 1225,
-      "teams": ["sistering"],
+      "term": 1229,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fdev_briantu.jpg?alt=media&token=f16110d2-e0d9-44f5-9ea5-d874135bb505"
     },
     {
@@ -2607,8 +2607,8 @@
     {
       "name": "Dora Su",
       "role": "developer",
-      "term": 1225,
-      "teams": ["jump-math"],
+      "term": 1229,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fdev_dorasu.jpeg?alt=media&token=c7cf6322-6800-4fb8-8089-4f4685a55893"
     },
     {
