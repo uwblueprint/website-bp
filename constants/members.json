@@ -53,7 +53,7 @@
       "role": "vp engineering",
       "term": 1229,
       "teams": ["executive"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ffall2021headshots%2Fdev_neel_ismail.jpeg?alt=media&token=ca893711-14b5-4aed-bfb3-9865f153585b"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FVPE_Neel_Ismail.jpg?alt=media&token=43d71299-5b3b-4387-a8fe-d8274c76f634"
     },
     {
       "name": "Pamela Wang",
@@ -95,14 +95,14 @@
       "role": "vp scoping",
       "term": 1229,
       "teams": ["executive"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FAliyah_Warsi.jpg?alt=media&token=279063dc-6a15-4d62-ae73-e5c3025768b2"
     },
     {
       "name": "Rifa Tamanna",
       "role": "vp scoping",
       "term": 1229,
       "teams": ["executive"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FVPScoping_%20Rifa_Tamanna.jpg?alt=media&token=b04c583b-9464-42dc-a0c7-a9c1470ea557"
     },
     {
       "name": "Ena Manjgo",
@@ -116,14 +116,14 @@
       "role": "vp internal",
       "term": 1229,
       "teams": ["executive"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FVPI_Nima_Sheth.jpg?alt=media&token=3ff4b887-b603-4f0e-ab4c-dda3b3f33c11"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FVPI_Nima_Sheth.jpg?alt=media&token=73940d9a-85e6-45da-a7be-2fa2cebb0722"
     },
     {
       "name": "Lauren Fearn",
       "role": "vp external",
       "term": 1229,
       "teams": ["executive"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FVPEX_Lauren_Fearn.jpeg?alt=media&token=36c35ead-56f8-4542-9f39-5fb4db8ee612"
     },
     {
       "name": "Rachel Scott",
@@ -137,7 +137,7 @@
       "role": "vp communications",
       "term": 1229,
       "teams": ["executive"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FVP_Comms_Lema_Ghailan.jpg?alt=media&token=fd5d28c1-572c-4876-8715-d1da12e805ff"
     },
     {
       "name": "Jeff Zhu",
@@ -145,13 +145,6 @@
       "term": 1229,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fvpc_jeffzhu.jpg?alt=media&token=2a54872b-ef31-4ae5-9b87-c43df7344653"
-    },
-    {
-      "name": "Serena Li",
-      "role": "graphic designer",
-      "term": 1229,
-      "teams": ["executive"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2Fdesigner_serena_li.jpeg?alt=media&token=b763e351-2ae2-4dab-b7cd-bed0e3dd208d"
     },
     {
       "name": "Bowen Zhu",
@@ -166,6 +159,13 @@
       "term": 1229,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ffall2021headshots%2Fdev_amy_li.jpeg?alt=media&token=bbc7f29f-0775-40f6-8290-60c2fcc61c11"
+    },
+    {
+      "name": "Serena Li",
+      "role": "graphic designer",
+      "term": 1229,
+      "teams": ["executive"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2Fdesigner_serena_li.jpeg?alt=media&token=b763e351-2ae2-4dab-b7cd-bed0e3dd208d"
     },
     {
       "name": "Jennifer Chen",
@@ -2244,7 +2244,7 @@
       "role": "developer",
       "term": 1225,
       "teams": ["sistering"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_lambertliu.JPG?alt=media&token=bf209690-209f-4377-a821-5d6a6ca7a434"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FPL_Lambert_Liu.jpeg?alt=media&token=80d22db1-4c96-435f-afb4-0b2829c153db"
     },
     {
       "name": "Angela Dietz",
