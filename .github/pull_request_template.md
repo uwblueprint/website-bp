@@ -18,6 +18,6 @@
 
 ### Checklist
 
--   [ ] My PR name is descriptive and in imperative tense
--   [ ] I have run the linter
--   [ ] I have requested a review from other devs who have background knowledge on this PR or who will be building on top of this PR
+- [ ] My PR name is descriptive and in imperative tense
+- [ ] I have run the linter
+- [ ] I have requested a review from other devs who have background knowledge on this PR or who will be building on top of this PR
