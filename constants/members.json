@@ -268,8 +268,8 @@
     {
       "name": "Atharva Gangal",
       "role": "developer",
-      "term": 1225,
-      "teams": ["casa"],
+      "term": 1229,
+      "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_atharvagangal.jpeg?alt=media&token=2a51b053-201f-4ffd-8d42-024249c48530"
     },
     {
@@ -282,7 +282,7 @@
     {
       "name": "Brian Zhang",
       "role": "developer",
-      "term": 1225,
+      "term": 1229,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
@@ -315,6 +315,20 @@
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdesign_IknoorRawal.JPG?alt=media&token=84b92e3a-7d7b-4704-8706-16e2c3c1299c"
     },
     {
+      "name": "Janet Chen",
+      "role": "developer",
+      "term": 1229,
+      "teams": ["jump-math"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Janet_Chen.JPG?alt=media&token=926960bd-df5d-4159-8e26-d3fdbcc66e35"
+    },
+    {
+      "name": "Jeff Zhu",
+      "role": "vp communications",
+      "term": 1225,
+      "teams": ["executive"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fvpc_jeffzhu.jpg?alt=media&token=2a54872b-ef31-4ae5-9b87-c43df7344653"
+    },
+    {
       "name": "Jessica Yang",
       "role": "vp external",
       "term": 1225,
@@ -324,7 +338,7 @@
     {
       "name": "Joyce Shi",
       "role": "technical lead",
-      "term": 1225,
+      "term": 1229,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fpl_joyceshi.jpeg?alt=media&token=70ff8087-72d2-4b8e-96b2-9046a7017655"
     },
@@ -344,9 +358,9 @@
     },
     {
       "name": "Mehak Dhaliwal",
-      "role": "designer",
-      "term": 1225,
-      "teams": ["casa"],
+      "role": "product manager",
+      "term": 1229,
+      "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdesigner_mehak.JPG?alt=media&token=cb89e110-e5da-4a26-97b4-57b5a40eeddb"
     },
     {
@@ -359,7 +373,7 @@
     {
       "name": "Riishi Jeevakumar",
       "role": "designer",
-      "term": 1225,
+      "term": 1229,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdesigner_RiishiJeevakumar.jpg?alt=media&token=ff4615a1-bd85-469c-89fa-0497d163076d"
     },
@@ -369,6 +383,13 @@
       "term": 1225,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2FProductDesigner_Rikin.jpg?alt=media&token=1396a8cb-aac5-45ce-9976-62b9b1623f64"
+    },
+    {
+      "name": "Saransh Duggal",
+      "role": "developer",
+      "term": 1229,
+      "teams": ["jump-math"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Saransh_Duggal.jpg?alt=media&token=2241a44f-0b6f-4886-b54f-9a97713583bb"
     },
     {
       "name": "Tejas Wilkhoo",
@@ -1869,10 +1890,10 @@
     },
     {
       "name": "Vyomesh Iyengar",
-      "role": "developer",
-      "term": 1221,
-      "teams": ["rowan-house"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2021headshots%2FVyomesh_Iyengar.jpg?alt=media&token=7a137486-babc-4eda-994e-0288c969426e"
+      "role": "designer",
+      "term": 1229,
+      "teams": ["jump-math"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDesigner_Vyomesh_Iyengar.jpg?alt=media&token=dce39f20-511c-4a87-ba4d-8ae8a87863c2"
     },
     {
       "name": "Joy Lin",
@@ -2024,9 +2045,9 @@
     {
       "name": "Bonnie Chin",
       "role": "designer",
-      "term": 1225,
+      "term": 1229,
       "teams": ["jump-math"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2021headshots%2FBonnie_Chin.jpg?alt=media&token=7a438c8c-8d40-4917-a59c-9cf399e3449c"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDesigner_Bonnie_Chin.jpeg?alt=media&token=fb7b988e-fcf6-4b18-9c52-5a5761e0a4d6"
     },
     {
       "name": "Chamod Gamage",
@@ -2277,8 +2298,8 @@
     {
       "name": "Victor Yun",
       "role": "developer",
-      "term": 1215,
-      "teams": ["sdc-foundation"],
+      "term": 1229,
+      "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fspring2021headshots%2FVictor%20Yun.JPG?alt=media&token=7102de78-0a56-440a-8a76-28cb8b60e9a2"
     },
     {
@@ -2662,8 +2683,8 @@
     {
       "name": "Boya Zhang",
       "role": "developer",
-      "term": 1225,
-      "teams": ["sistering"],
+      "term": 1229,
+      "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fdev_boyazhang.jpg?alt=media&token=fe5219d1-1dd5-49e4-bfd3-1b98559cb2be"
     },
     {
@@ -2690,7 +2711,7 @@
     {
       "name": "Carissa Tang",
       "role": "developer",
-      "term": 1225,
+      "term": 1229,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_carissatang.jpg?alt=media&token=5e0e7d58-5b98-4d20-85b8-45963e4d5698"
     },
