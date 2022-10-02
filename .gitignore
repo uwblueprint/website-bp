@@ -12,3 +12,7 @@ out
 
 # misc
 .eslintcache
+**/*.log
+**/.DS_Store
+.vscode
+**/*.cache
