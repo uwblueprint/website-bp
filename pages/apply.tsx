@@ -1,4 +1,5 @@
 import AppForm from "@components/apply/AppForm";
+import InfoText from "@components/apply/InfoText";
 import Layout from "@components/common/Layout";
 import { NextPage } from "next";
 
@@ -7,6 +8,7 @@ const Apply: NextPage = () => {
   return (
     <Layout>
       <AppForm />
+      <InfoText />
     </Layout>
   );
 };
