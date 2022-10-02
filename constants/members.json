@@ -251,8 +251,8 @@
     {
       "name": "Abubakar Bello",
       "role": "developer",
-      "term": 1225,
-      "teams": ["rowan-house"],
+      "term": 1229,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_abubakarbello.png?alt=media&token=aa73cf03-ae87-4218-85ea-b3b4b09bf377"
     },
     {
@@ -293,8 +293,8 @@
     {
       "name": "Evan Wong",
       "role": "developer",
-      "term": 1225,
-      "teams": ["sistering"],
+      "term": 1229,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_evanwong.jpg?alt=media&token=b3ab72a5-2a9a-432d-bff9-30b508d66f1b"
     },
     {
@@ -334,10 +334,10 @@
     },
     {
       "name": "Jessica Yang",
-      "role": "vp external",
-      "term": 1225,
-      "teams": ["executive"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fvpex_JessicaYang.JPG?alt=media&token=79b9510e-2b4a-434f-8f1f-1806e1e60ef7"
+      "role": "product manager",
+      "term": 1229,
+      "teams": ["internal-tools"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FPM_Jessica_Yang.jpg?alt=media&token=6a318481-f5ca-49b0-bef1-cd98b43ef917"
     },
     {
       "name": "Joyce Shi",
@@ -2266,10 +2266,10 @@
     },
     {
       "name": "Lambert Liu",
-      "role": "developer",
-      "term": 1225,
-      "teams": ["sistering"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FPL_Lambert_Liu.jpeg?alt=media&token=80d22db1-4c96-435f-afb4-0b2829c153db"
+      "role": "technical lead",
+      "term": 1229,
+      "teams": ["internal-tools"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Lambert_Liu.jpeg?alt=media&token=bb271911-be3e-48d7-b502-4b8700450704"
     },
     {
       "name": "Angela Dietz",
@@ -2463,8 +2463,8 @@
     {
       "name": "Raya Ferdous",
       "role": "developer",
-      "term": 1225,
-      "teams": ["rowan-house"],
+      "term": 1229,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ffall2021headshots%2Fdev_raya_ferdous.jpeg?alt=media&token=dde217ce-9aab-4c0b-a4e1-2fbcadefc9fe"
     },
     {
@@ -2491,9 +2491,9 @@
     {
       "name": "Linna Luo",
       "role": "developer",
-      "term": 1221,
-      "teams": ["community-fridge"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fdev_linnaluo.png?alt=media&token=de954aba-bd8c-4ed3-9392-dd72a1ede736"
+      "term": 1229,
+      "teams": ["internal-tools"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Linna_Luo.png?alt=media&token=e3827021-4ced-485f-a5f8-3f293c4e225d"
     },
     {
       "name": "Amanda Misjuwar",
@@ -2525,9 +2525,9 @@
     },
     {
       "name": "Albert Lai",
-      "role": "developer",
-      "term": 1221,
-      "teams": ["sistering"],
+      "role": "technical lead",
+      "term": 1229,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fdev_albertlai.jpeg?alt=media&token=e27bc90a-332c-4639-bbea-65361cdf5862"
     },
     {
@@ -2540,8 +2540,8 @@
     {
       "name": "Brian Tu",
       "role": "developer",
-      "term": 1225,
-      "teams": ["sistering"],
+      "term": 1229,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fdev_briantu.jpg?alt=media&token=f16110d2-e0d9-44f5-9ea5-d874135bb505"
     },
     {
@@ -2701,8 +2701,8 @@
     {
       "name": "Dora Su",
       "role": "developer",
-      "term": 1225,
-      "teams": ["jump-math"],
+      "term": 1229,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fdev_dorasu.jpeg?alt=media&token=c7cf6322-6800-4fb8-8089-4f4685a55893"
     },
     {
