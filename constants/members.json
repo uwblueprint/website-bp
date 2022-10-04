@@ -145,7 +145,7 @@
     },
     {
       "name": "Jeff Zhu",
-      "role": "vp communications",
+      "role": "vp finance",
       "term": 1229,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fvpc_jeffzhu.jpg?alt=media&token=2a54872b-ef31-4ae5-9b87-c43df7344653"
@@ -324,13 +324,6 @@
       "term": 1229,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Janet_Chen.JPG?alt=media&token=926960bd-df5d-4159-8e26-d3fdbcc66e35"
-    },
-    {
-      "name": "Jeff Zhu",
-      "role": "vp communications",
-      "term": 1225,
-      "teams": ["executive"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fvpc_jeffzhu.jpg?alt=media&token=2a54872b-ef31-4ae5-9b87-c43df7344653"
     },
     {
       "name": "Jessica Yang",
