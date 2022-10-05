@@ -16,7 +16,7 @@ export const List: React.FC<{
         </div>
         <div className="flex flex-col space-y-24">
           {teams.map((team) => (
-            <TeamSection team={team} />
+            <TeamSection key={team.id} team={team} />
           ))}
         </div>
       </div>
