@@ -133,5 +133,6 @@ module.exports = {
   variants: {},
   plugins: [
     require("@tailwindcss/line-clamp"), // Multi-line text truncation
+    require("@tailwindcss/forms"), // Form styling
   ],
 };
