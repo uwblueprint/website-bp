@@ -165,13 +165,6 @@
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ffall2021headshots%2Fdev_amy_li.jpeg?alt=media&token=bbc7f29f-0775-40f6-8290-60c2fcc61c11"
     },
     {
-      "name": "Serena Li",
-      "role": "graphic designer",
-      "term": 1229,
-      "teams": ["executive"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2Fdesigner_serena_li.jpeg?alt=media&token=b763e351-2ae2-4dab-b7cd-bed0e3dd208d"
-    },
-    {
       "name": "Jennifer Chen",
       "role": "technical lead",
       "term": 1229,
@@ -198,6 +191,13 @@
       "term": 1229,
       "teams": ["casa"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdesigner_ginnywang.JPG?alt=media&token=1e751e52-4a1e-4bb3-8f02-c32d9e6bc80e"
+    },
+    {
+      "name": "Serena Li",
+      "role": "designer",
+      "term": 1229,
+      "teams": ["casa"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2Fdesigner_serena_li.jpeg?alt=media&token=b763e351-2ae2-4dab-b7cd-bed0e3dd208d"
     },
     {
       "name": "Juthika Hoque",
@@ -325,6 +325,13 @@
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Janet_Chen.JPG?alt=media&token=926960bd-df5d-4159-8e26-d3fdbcc66e35"
     },
+    {
+      "name": "Wais Hundekar",
+      "role": "developer",
+      "term": 1229,
+      "teams": ["jump-math"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Wais_Hundekar.JPG?alt=media&token=9b5f48dc-a259-46a5-9ac5-29f871de1adb"
+    }, 
     {
       "name": "Jessica Yang",
       "role": "product manager",
@@ -2866,13 +2873,6 @@
       "teams": ["ccbc"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Sebastian_Mendoza.jpg?alt=media&token=c61c50a0-5508-4f08-9ad1-2c19432b76e8"
     },
-    {
-      "name": "Wais Hundekar",
-      "role": "developer",
-      "term": 1229,
-      "teams": ["ccbc"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Wais_Hundekar.JPG?alt=media&token=9b5f48dc-a259-46a5-9ac5-29f871de1adb"
-    }, 
     {
       "name": "Ananya Jaikumar",
       "role": "designer",
