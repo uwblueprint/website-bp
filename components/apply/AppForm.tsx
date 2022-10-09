@@ -12,6 +12,8 @@ const AppForm: FC = () => {
         onFirstChoiceChange={setFirstChoice}
         onSecondChoiceChange={setSecondChoice}
       />
+      {console.log(firstChoice)}
+      {console.log(secondChoice)}
     </section>
   );
 };
