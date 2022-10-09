@@ -22,20 +22,20 @@ const ProjectCard: FC<Props> = ({ project }) => {
       {/* Project name and description */}
       <div className="flex-1 relative flex flex-col space-y-2">
         <h5 className="text-lg font-semibold">{name}</h5>
-        <p>
+        <div>
           {description.map((text, i) =>
             i === 0 ? (
-              <p key={i} className="mb-4">
+              <p key={text} className="mb-4">
                 <a href={githubUrl} target="_blank" className="text-blue">
                   {linkText || name}
                 </a>{" "}
                 {text}
               </p>
             ) : (
-              <p>{text}</p>
+              <p key={text}>{text}</p>
             ),
           )}
-        </p>
+        </div>
       </div>
     </div>
   );
