@@ -7,7 +7,7 @@ type Props = {
   onSecondChoiceChange: (value: string) => void;
 };
 
-const PositionPreference: FC = ({
+const PositionPreference: FC<Props> = ({
   onFirstChoiceChange,
   onSecondChoiceChange,
 }: Props) => {
