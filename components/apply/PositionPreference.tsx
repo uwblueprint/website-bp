@@ -53,6 +53,7 @@ const PositionPreference: FC<Props> = ({
             id="test"
             labelText=""
             options={secondChoiceRoles}
+            required={false}
             onChange={onSecondChoiceChange}
           />
         </div>
