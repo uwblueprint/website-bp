@@ -4,11 +4,11 @@ import TextAreaInput from "@components/common/TextAreaInput";
 const AppForm: FC = () => {
   return (
     <div className="grid grid-cols-1 gap-3">
-      <h4 className="text-blue-100">Short answers</h4>
-      <h5 className="text-charcoal-500 text-base">
+      <h4 className="text-blue-100">Short Answers</h4>
+      <p className="text-charcoal-500 mb-4">
         Please answer the following questions in a few sentences. (max length:
         1000 characters, recommended max: 150 words)
-      </h5>
+      </p>
       <div className="grid grid-cols-1 gap-6">
         <TextAreaInput
           id="timezoneSA"
