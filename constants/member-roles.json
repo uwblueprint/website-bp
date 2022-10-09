@@ -1,0 +1,46 @@
+[{
+    "label": "Project Developer",
+    "value": "1"
+},{
+    "label": "Product Designer",
+    "value": "2"
+},{
+    "label": "Product Manager",
+    "value": "3"
+},{
+    "label": "Project Lead",
+    "value": "4"
+},{
+    "label": "User Experience Researcher",
+    "value": "5"
+},{
+    "label": "Content Strategist",
+    "value": "6"
+},{
+    "label": "Graphic Designer",
+    "value": "7"
+},{
+    "label": "VP Engineering",
+    "value": "8"
+},{
+    "label": "VP Product",
+    "value": "9"
+},{
+    "label": "VP Talent",
+    "value": "10"
+},{
+    "label": "VP Communications",
+    "value": "11"
+},{
+    "label": "VP Finance & Operations",
+    "value": "12"
+},{
+    "label": "VP Project Scoping",
+    "value": "13"
+},{
+    "label": "VP External",
+    "value": "14"
+},{
+    "label": "VP Internal",
+    "value": "15"
+}]

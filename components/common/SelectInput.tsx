@@ -24,7 +24,7 @@ const SelectInput: FC<Props> = ({
     <div className="flex flex-col space-y-2">
       {labelText && (
         <label htmlFor={id}>
-          {labelText}
+          <span className="text-lg font-semibold pb-2">{labelText}</span>
           {required && <span className="text-red-500">*</span>}
         </label>
       )}
