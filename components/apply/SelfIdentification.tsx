@@ -1,31 +1,91 @@
 import { FC, useState } from "react";
+import SelectInput from "@components/common/SelectInput";
+import TextInput from "@components/common/TextAreaInput";
 
 const GENDER_IDENTITIES = [
-  "Select an option...",
-  "Agender",
-  "Cisgender Woman",
-  "Cisgender Man",
-  "Transgender Woman",
-  "Transgender Man",
-  "Two-Spirit",
-  "Non-Binary (gender queer, gender non-conforming)",
-  "I want to self-describe",
+  {
+    label: "Agender",
+    value: "1",
+  },
+  {
+    label: "Cisgender Woman",
+    value: "2",
+  },
+  {
+    label: "Cisgender Man",
+    value: "3",
+  },
+  {
+    label: "Transgender Woman",
+    value: "4",
+  },
+  {
+    label: "Transgender Man",
+    value: "5",
+  },
+  {
+    label: "Two-Spirit",
+    value: "6",
+  },
+  {
+    label: "Non-Binary (gender queer, gender non-conforming)",
+    value: "7",
+  },
+  {
+    label: "I want to self-describe",
+    value: "8",
+  },
 ];
 
 const ETHNICITIES = [
-  "Select an option...",
-  "White/Caucasian",
-  "Middle Eastern",
-  "Black or African American",
-  "Asian - East Asian",
-  "Asian - Central Asian",
-  "Asian - South Asian",
-  "Asian - Southeast Asian",
-  "Asian - West Asian",
-  "Hispanic/Latinx",
-  "Indigenous",
-  "Native Hawaiian/Pacific Islander",
-  "Mixed/Other/I want to self-describe", // should this just be self-describe?
+  {
+    label: "White/Caucasian",
+    value: "1",
+  },
+  {
+    label: "Middle Eastern",
+    value: "2",
+  },
+  {
+    label: "Black or African American",
+    value: "3",
+  },
+  {
+    label: "Asian - East Asian",
+    value: "4",
+  },
+  {
+    label: "Asian - Central Asian",
+    value: "5",
+  },
+  {
+    label: "Asian - South Asian",
+    value: "6",
+  },
+  {
+    label: "Asian - Southeast Asian",
+    value: "7",
+  },
+  {
+    label: "Asian - West Asian",
+    value: "8",
+  },
+  {
+    label: "Hispanic/Latinx",
+    value: "9",
+  },
+  {
+    label: "Indigenous",
+    value: "10",
+  },
+  {
+    label: "Native Hawaiian/Pacific Islander",
+    value: "11",
+  },
+  {
+    label: "Mixed/Other/I want to self-describe",
+    value: "12",
+  },
 ];
 
 const APPLICABLE_COND = [
@@ -38,15 +98,27 @@ const APPLICABLE_COND = [
 ];
 
 const SelfIdentificationForm: FC = () => {
+  // temporary implementation with state, this will likely need to be higher for a full form submission
   const [gender, setGender] = useState("");
   const [ethnicity, setEthnicity] = useState("");
+  const [condSelected, setCondSelected] = useState(
+    new Array(APPLICABLE_COND.length).fill(false),
+  );
 
-  const handleGenderChange = (event: Event) => {
-    setGender(event.target.value);
+  const handleGenderChange = (option: string) => {
+    console.log(option);
+    setGender(option);
   };
 
-  const handleEthnicityChange = (event: Event) => {
-    setEthnicity(event.target.value);
+  const handleEthnicityChange = (option: string) => {
+    console.log(option);
+    setEthnicity(option);
+  };
+
+  const handleCondCheck = (index: number) => {
+    const newCondList = [...condSelected];
+    newCondList[index] = !condSelected[index];
+    setCondSelected(newCondList);
   };
 
   return (
@@ -60,37 +132,60 @@ const SelfIdentificationForm: FC = () => {
         and will be used in aggregate only. Your response will have no effect on
         your application and will not be shared outside the organization.
       </h5>
-      <h5 className="py-1">What is your gender identity?</h5>
-      <select
-        className="mt-1 mb-2"
-        value={gender}
-        onChange={handleGenderChange}
-      >
-        {GENDER_IDENTITIES.map((identity) => (
-          <option value={identity}>{identity}</option>
-        ))}
-      </select>
+      <section className="py-2 mw-400">
+        <SelectInput
+          id="gender"
+          labelText={"What is your gender identity?"}
+          options={GENDER_IDENTITIES}
+          onChange={handleGenderChange}
+          required
+        />
+        {gender === "8" && (
+          <section className="py-2">
+            <TextInput
+              id="gender-specified"
+              labelText="Please Specify"
+              required
+            />
+          </section>
+        )}
+      </section>
 
-      <h5 className="py-1">What ethnicity do you identify with?</h5>
-      <select
-        className="mt-1 mb-2 border-2 rounded border-slate-200"
-        value={ethnicity}
-        onChange={handleEthnicityChange}
-      >
-        {ETHNICITIES.map((ethnicity) => (
-          <option value={ethnicity}>{ethnicity}</option>
-        ))}
-      </select>
+      <section className="py-2">
+        <SelectInput
+          id="ethnicity"
+          labelText="What ethnicity do you identify with?"
+          options={ETHNICITIES}
+          onChange={handleEthnicityChange}
+          required
+        />
+        {ethnicity === "12" && (
+          <section className="py-2">
+            <TextInput
+              id="ethnic-specified"
+              labelText="Please Specify"
+              required
+            />
+          </section>
+        )}
+      </section>
 
-      <h5 className="py-1">
-        Which of the following applies to you? Select all applicable.
-      </h5>
-      <section className="flex flex-col">
-        {APPLICABLE_COND.map((conditions, i) => (
+      <section className="flex flex-col py-2">
+        <label className="py-1" htmlFor="conditions">
+          Which of the following applies to you? Select all applicable.
+        </label>
+        {APPLICABLE_COND.map((condition, i) => (
           <div className="py-1">
-            <label key={i}>
-              <input type="checkbox" name="conditions" value={conditions} />
-              <text className="px-2">{conditions}</text>
+            <input
+              type="checkbox"
+              name={condition}
+              id={condition}
+              value={i}
+              checked={condSelected[i]}
+              onClick={() => handleCondCheck(i)}
+            />
+            <label htmlFor={condition} className="px-2">
+              {condition}
             </label>
           </div>
         ))}
