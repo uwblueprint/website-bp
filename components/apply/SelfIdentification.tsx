@@ -123,16 +123,15 @@ const SelfIdentificationForm: FC = () => {
 
   return (
     <section className="py-4">
-      <h4 className="text-blue-100 mb-4 md:mb-0">
-        Voluntary Self Identification Form
-      </h4>
-      <h5 className="py-2 text-charcoal-500">
+      <h4 className="text-blue-100"> Voluntary Self Identification Form</h4>
+      <p className="text-charcoal-500 mb-4">
+        {" "}
         This section is completely optional. This information will be greatly
         valuable for improving diversity and inclusion efforts within Blueprint
         and will be used in aggregate only. Your response will have no effect on
         your application and will not be shared outside the organization.
-      </h5>
-      <section className="py-2 mw-400">
+      </p>
+      <section className="py-2">
         <SelectInput
           id="gender"
           labelText={"What is your gender identity?"}
