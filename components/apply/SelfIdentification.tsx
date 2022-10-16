@@ -2,7 +2,17 @@ import { FC, useState } from "react";
 import SelectInput from "@components/common/SelectInput";
 import TextInput from "@components/common/TextAreaInput";
 
-const GENDER_IDENTITIES = [
+type GenderIdentity = {
+  readonly label: string;
+  readonly value: string;
+};
+
+type Ethnicity = {
+  readonly label: string;
+  readonly value: string;
+};
+
+const GENDER_IDENTITIES: GenderIdentity[] = [
   {
     label: "Agender",
     value: "1",
@@ -37,7 +47,7 @@ const GENDER_IDENTITIES = [
   },
 ];
 
-const ETHNICITIES = [
+const ETHNICITIES: Ethnicity[] = [
   {
     label: "White/Caucasian",
     value: "1",
@@ -99,8 +109,8 @@ const APPLICABLE_COND = [
 
 const SelfIdentificationForm: FC = () => {
   // temporary implementation with state, this will likely need to be higher for a full form submission
-  const [gender, setGender] = useState("");
-  const [ethnicity, setEthnicity] = useState("");
+  const [gender, setGender] = useState<GenderIdentity["value"]>("");
+  const [ethnicity, setEthnicity] = useState<Ethnicity["value"]>("");
   const [condSelected, setCondSelected] = useState(
     new Array(APPLICABLE_COND.length).fill(false),
   );
