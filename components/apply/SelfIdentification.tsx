@@ -111,9 +111,6 @@ const SelfIdentificationForm: FC = () => {
   // temporary implementation with state, this will likely need to be higher for a full form submission
   const [gender, setGender] = useState<GenderIdentity["value"]>("");
   const [ethnicity, setEthnicity] = useState<Ethnicity["value"]>("");
-  const [condSelected, setCondSelected] = useState(
-    new Array(APPLICABLE_COND.length).fill(false),
-  );
 
   const handleGenderChange = (option: string) => {
     console.log(option);
@@ -123,12 +120,6 @@ const SelfIdentificationForm: FC = () => {
   const handleEthnicityChange = (option: string) => {
     console.log(option);
     setEthnicity(option);
-  };
-
-  const handleCondCheck = (index: number) => {
-    const newCondList = [...condSelected];
-    newCondList[index] = !condSelected[index];
-    setCondSelected(newCondList);
   };
 
   return (
@@ -178,14 +169,7 @@ const SelfIdentificationForm: FC = () => {
       </div>
       {APPLICABLE_COND.map((condition, i) => (
         <div key={condition}>
-          <input
-            type="checkbox"
-            name={condition}
-            id={condition}
-            value={i}
-            checked={condSelected[i]}
-            onChange={() => handleCondCheck(i)}
-          />
+          <input type="checkbox" name={condition} id={condition} value={i} />
           <label htmlFor={condition} className="px-2">
             {condition}
           </label>
