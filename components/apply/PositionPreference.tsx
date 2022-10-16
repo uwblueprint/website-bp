@@ -92,7 +92,7 @@ const PositionPreference: FC<Props> = ({
     );
     setSecondChoiceRoles(SECOND_CHOICE_MEMBER_ROLES);
     if (firstChoice == secondChoice && firstChoice != "") {
-      const newSecondChoice = SECOND_CHOICE_MEMBER_ROLES?.at(0)?.value || "";
+      const newSecondChoice = SECOND_CHOICE_MEMBER_ROLES?.[0]?.value || "";
       onSecondChoiceChange(newSecondChoice);
     }
   }, [firstChoice]);
