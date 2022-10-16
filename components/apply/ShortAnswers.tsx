@@ -3,7 +3,7 @@ import TextAreaInput from "@components/common/TextAreaInput";
 
 const AppForm: FC = () => {
   return (
-    <div className="grid gap-3 my-8">
+    <section className="grid gap-3 my-8">
       <h4 className="text-blue-100">Short Answers</h4>
       <p className="text-charcoal-500 mb-4">
         Please answer the following questions in a few sentences. (max length:
@@ -31,7 +31,7 @@ const AppForm: FC = () => {
           required
         />
       </div>
-    </div>
+    </section>
   );
 };
 

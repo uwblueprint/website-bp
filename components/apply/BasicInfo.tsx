@@ -69,9 +69,9 @@ const BasicInfo: FC = () => {
   ];
 
   return (
-    <>
-      <h4 className="text-blue-100 mb-4">Basic Information</h4>
-      <div className="grid grid-cols-2 gap-8">
+    <section className="grid gap-3 my-8">
+      <h4 className="text-blue-100">Basic Information</h4>
+      <div className="grid grid-cols-2 gap-6">
         <TextInput
           id="firstname"
           labelText="First Name"
@@ -113,7 +113,7 @@ const BasicInfo: FC = () => {
             type="file"
             name="resume"
             required
-            className="mt-4"
+            className="mt-2"
           />
         </div>
         <br />
@@ -157,7 +157,7 @@ const BasicInfo: FC = () => {
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 };
 
