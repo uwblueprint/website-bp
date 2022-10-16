@@ -9,12 +9,12 @@ const BasicInfo: FC = () => {
     email: "",
     program: "",
     academicyear: "",
+    resume: "",
     heardAboutBPFrom: "",
     appAttemptNum: 0,
     pronouns: "",
     termType: "",
   });
-  //   const [resume, setResume] = useState(null);
   const SELECT_SOURCES = [
     {
       label: "Facebook",
@@ -81,8 +81,8 @@ const BasicInfo: FC = () => {
   ];
 
   return (
-    <section className="container max-w-4xl px-4 mx-auto my-36 md:my-40">
-      <h4 className="text-blue-100 mb-8">Basic Information</h4>
+    <>
+      <h4 className="text-blue-100 mb-4">Basic Information</h4>
       <div className="grid grid-cols-2 gap-8">
         <TextInput
           id="firstname"
@@ -135,14 +135,18 @@ const BasicInfo: FC = () => {
             console.log(basicInfo);
           }}
         />
-        {/*TODO: customize choose file input*/}
-        <div className="flex flex-col space-y-2">
+        <div>
           <label id="resume">
             Resume (PDF) <span className="text-red-500">*</span>
           </label>
           <br />
-          {/*TODO: how to save file input?*/}
-          <input id="resume" type="file" name="resume" required />
+          <input
+            id="resume"
+            type="file"
+            name="resume"
+            required
+            className="mt-4"
+          />
         </div>
         <br />
         <SelectInput
@@ -167,13 +171,13 @@ const BasicInfo: FC = () => {
         />
         <br />
         {/* TODO: set radio values in setBasicInfo */}
-        <div className="flex flex-col space-y-2">
+        <div>
           <label htmlFor="termType">
             Will you be in an academic (school) or co-op term?{" "}
             <span className="text-red-500">*</span>
           </label>
           <br />
-          <div className="flex flex-row space-x-24">
+          <div className="flex flex-row space-x-24 mt-4">
             <label>
               <input type="radio" id="academic" name="termType" value="1" />{" "}
               Academic
@@ -186,7 +190,7 @@ const BasicInfo: FC = () => {
           </div>
         </div>
       </div>
-    </section>
+    </>
   );
 };
 
