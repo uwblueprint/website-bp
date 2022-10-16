@@ -25,7 +25,7 @@ const SelectInput: FC<Props> = ({
       {labelText && (
         <label htmlFor={id}>
           {labelText}
-          {required && <span className="text-red-500">*</span>}
+          {required && <span className="text-pink-500">*</span>}
         </label>
       )}
       <select
