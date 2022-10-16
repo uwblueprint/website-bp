@@ -1,11 +1,11 @@
 import { FC } from "react";
 
-export const InfoText: React.FC<{ deadline: string }> = ({ deadline }) => {
+export const InfoText: FC<{ deadline: string }> = ({ deadline }) => {
   return (
     <section>
       <p className="text-lg text-charcoal-500">
         Thanks for your interest in UW Blueprint! We are always looking for UW
-        students to take part in our club activities and join our talented team.{" "}
+        students to take part in our club activities and join our talented team.
       </p>
       <p className="text-lg text-charcoal-500" style={{ marginTop: "10px" }}>
         Important notes:
