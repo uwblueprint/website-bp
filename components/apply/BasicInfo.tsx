@@ -1,20 +1,8 @@
 import SelectInput from "@components/common/SelectInput";
-import { FC, useState } from "react";
+import { FC } from "react";
 import TextInput from "../common/TextInput";
 
 const BasicInfo: FC = () => {
-  const [basicInfo, setBasicInfo] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    program: "",
-    academicyear: "",
-    resume: "",
-    heardAboutBPFrom: "",
-    appAttemptNum: 0,
-    pronouns: "",
-    termType: "",
-  });
   const SELECT_SOURCES = [
     {
       label: "Facebook",
@@ -89,30 +77,18 @@ const BasicInfo: FC = () => {
           labelText="First Name"
           placeholder="e.g. John, Jane"
           required
-          onChange={(e) => {
-            setBasicInfo({ ...basicInfo, firstname: e });
-            console.log(basicInfo);
-          }}
         />
         <TextInput
           id="lastname"
           labelText="Last Name"
           placeholder="e.g. Smith"
           required
-          onChange={(e) => {
-            setBasicInfo({ ...basicInfo, lastname: e });
-            console.log(basicInfo);
-          }}
         />
         <TextInput
           id="email"
           labelText="Email"
           placeholder="e.g. example@domain.com"
           required
-          onChange={(e) => {
-            setBasicInfo({ ...basicInfo, email: e });
-            console.log(basicInfo);
-          }}
         />
         <br />
         <TextInput
@@ -120,24 +96,16 @@ const BasicInfo: FC = () => {
           labelText="Program"
           placeholder="e.g. Computer Science, Biology"
           required
-          onChange={(e) => {
-            setBasicInfo({ ...basicInfo, program: e });
-            console.log(basicInfo);
-          }}
         />
         <TextInput
           id="academicyear"
           labelText="Academic Year"
           placeholder="e.g. 2A, 4B"
           required
-          onChange={(e) => {
-            setBasicInfo({ ...basicInfo, academicyear: e });
-            console.log(basicInfo);
-          }}
         />
         <div>
           <label id="resume">
-            Resume (PDF) <span className="text-red-500">*</span>
+            Resume (PDF) <span className="text-pink-500">*</span>
           </label>
           <br />
           <input
@@ -170,11 +138,10 @@ const BasicInfo: FC = () => {
           required={false}
         />
         <br />
-        {/* TODO: set radio values in setBasicInfo */}
         <div>
           <label htmlFor="termType">
             Will you be in an academic (school) or co-op term?{" "}
-            <span className="text-red-500">*</span>
+            <span className="text-pink-500">*</span>
           </label>
           <br />
           <div className="flex flex-row space-x-24 mt-4">
