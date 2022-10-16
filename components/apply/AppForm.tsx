@@ -9,11 +9,11 @@ const AppForm: FC = () => {
     <section className="container max-w-4xl px-4 mx-auto my-36 md:my-40">
       <h2 className="text-blue-100 mb-8">Student Application</h2>
       <PositionPreference
+        firstChoice={firstChoice}
+        secondChoice={secondChoice}
         onFirstChoiceChange={setFirstChoice}
         onSecondChoiceChange={setSecondChoice}
       />
-      {console.log(firstChoice)}
-      {console.log(secondChoice)}
     </section>
   );
 };

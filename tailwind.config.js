@@ -16,14 +16,6 @@ module.exports = {
       // PRIMARY COLOURS
       black: "#000000", // alias for charcoal-700
       white: "#FFFFFF", // alias for charcoal-0
-      red: {
-        DEFAULT: "#FF0000",
-        100: "#FFF5F5",
-        200: "#FED7D7",
-        300: "#FEB2B2",
-        400: "#FC8181",
-        500: "#F56565",
-      },
 
       // PRIMARY VARIANTS
       charcoal: {
@@ -111,15 +103,6 @@ module.exports = {
     fontFamily: {
       poppins: "Poppins, sans-serif",
       source: "'Source Sans Pro', sans-serif",
-    },
-    letterSpacing: {
-      tightest: "-.075em",
-      tighter: "-.05em",
-      tight: "-.025em",
-      normal: "0",
-      wide: ".025em",
-      wider: ".05em",
-      widest: ".1em",
     },
     extend: {
       gridTemplateColumns: {
