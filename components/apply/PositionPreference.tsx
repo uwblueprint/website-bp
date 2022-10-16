@@ -98,36 +98,28 @@ const PositionPreference: FC<Props> = ({
   }, [firstChoice]);
 
   return (
-    <div>
+    <div className="grid gap-3 my-8">
       <h4 className="text-blue-100">Position Preference</h4>
       <p className="text-charcoal-500 mb-4">
         Please select the position(s) you are interested in.*
       </p>
-      <div className="pb-3">
-        <div className="grid grid-cols-2 gap-8">
+      <div className="grid gap-6">
+        <div className="grid grid-cols-2">
           <SelectInput
-            id="test"
+            id="firstChoicePP"
             labelText="What is your first choice role?"
             options={MEMBER_ROLES}
             required
             onChange={onFirstChoiceChange}
           />
         </div>
-      </div>
-      <div>
-        <p className="text-lg font-semibold pb-2">
-          Optional: What is your second choice role? (only select if you want to
-          be considered for this role)
-        </p>
-        <div className="grid grid-cols-2 gap-8">
-          <SelectInput
-            id="test"
-            labelText=""
-            options={secondChoiceRoles}
-            required={false}
-            onChange={onSecondChoiceChange}
-          />
-        </div>
+        <SelectInput
+          id="secondChoicePP"
+          labelText="Optional: What is your second choice role? (only select if you want to be considered for this role)"
+          options={secondChoiceRoles}
+          required={false}
+          onChange={onSecondChoiceChange}
+        />
       </div>
     </div>
   );
