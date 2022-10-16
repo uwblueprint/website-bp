@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-const InfoText: FC = () => {
+export const InfoText: React.FC<{ deadline: string }> = ({ deadline }) => {
   return (
     <section>
       <p className="text-lg text-charcoal-500">
@@ -23,8 +23,7 @@ const InfoText: FC = () => {
             .
           </li>
           <li>
-            Applications close on{" "}
-            <span className="text-blue">Dec 9 2023 23:59:59 EDT.</span>
+            Applications close on <span className="text-blue">{deadline}</span>
           </li>
           <li>
             <span className="text-blue">
