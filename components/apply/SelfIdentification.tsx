@@ -122,7 +122,7 @@ const SelfIdentificationForm: FC = () => {
   };
 
   return (
-    <section className="py-4">
+    <section className="grid gap-3 my-8">
       <h4 className="text-blue-100"> Voluntary Self Identification Form</h4>
       <p className="text-charcoal-500 mb-4">
         {" "}
@@ -131,7 +131,7 @@ const SelfIdentificationForm: FC = () => {
         and will be used in aggregate only. Your response will have no effect on
         your application and will not be shared outside the organization.
       </p>
-      <section className="py-2">
+      <div className="grid gap-6">
         <SelectInput
           id="gender"
           labelText={"What is your gender identity?"}
@@ -140,17 +140,12 @@ const SelfIdentificationForm: FC = () => {
           required
         />
         {gender === "8" && (
-          <section className="py-2">
-            <TextInput
-              id="gender-specified"
-              labelText="Please Specify"
-              required
-            />
-          </section>
+          <TextInput
+            id="gender-specified"
+            labelText="Please Specify"
+            required
+          />
         )}
-      </section>
-
-      <section className="py-2">
         <SelectInput
           id="ethnicity"
           labelText="What ethnicity do you identify with?"
@@ -159,36 +154,33 @@ const SelfIdentificationForm: FC = () => {
           required
         />
         {ethnicity === "12" && (
-          <section className="py-2">
+          <div>
             <TextInput
               id="ethnic-specified"
               labelText="Please Specify"
               required
             />
-          </section>
+          </div>
         )}
-      </section>
-
-      <section className="flex flex-col py-2">
-        <label className="py-1" htmlFor="conditions">
+        <label htmlFor="conditions">
           Which of the following applies to you? Select all applicable.
         </label>
-        {APPLICABLE_COND.map((condition, i) => (
-          <div className="py-1">
-            <input
-              type="checkbox"
-              name={condition}
-              id={condition}
-              value={i}
-              checked={condSelected[i]}
-              onClick={() => handleCondCheck(i)}
-            />
-            <label htmlFor={condition} className="px-2">
-              {condition}
-            </label>
-          </div>
-        ))}
-      </section>
+      </div>
+      {APPLICABLE_COND.map((condition, i) => (
+        <div key={condition}>
+          <input
+            type="checkbox"
+            name={condition}
+            id={condition}
+            value={i}
+            checked={condSelected[i]}
+            onChange={() => handleCondCheck(i)}
+          />
+          <label htmlFor={condition} className="px-2">
+            {condition}
+          </label>
+        </div>
+      ))}{" "}
     </section>
   );
 };
