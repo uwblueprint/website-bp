@@ -81,7 +81,7 @@ const OurProcess: FC = () => {
               3
             </h1>
           </div>
-          <h6>Chat with us</h6>
+          <h6>Interview with us</h6>
           <p>
             Let's talk! We'll send out invites by{" "}
             <span className="text-blue">{INVITE_DATE}</span> to schedule a time
