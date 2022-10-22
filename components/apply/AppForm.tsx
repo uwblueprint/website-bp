@@ -23,11 +23,11 @@ const AppForm: FC = () => {
         onSecondChoiceChange={setSecondChoice}
       />
       <ShortAnswers />
-      <SelfIdentificationForm />
       <RoleSpecificQuestions
         firstChoice={firstChoice}
         secondChoice={secondChoice}
       />
+      <SelfIdentificationForm />
     </section>
   );
 };

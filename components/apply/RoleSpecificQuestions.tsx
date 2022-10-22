@@ -22,9 +22,6 @@ const RoleSpecificQuestions: FC<Props> = ({
   return (
     <div className="grid gap-3 my-8">
       <h4 className="text-blue-100">Role Specific Questions</h4>
-      <p className="text-charcoal-500 mb-4">
-        todo: what is the text here supposed to be lol
-      </p>
       <div className="grid gap-6">
         {questions.map((question, i) => (
           <TextAreaInput
