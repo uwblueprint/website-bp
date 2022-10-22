@@ -3,6 +3,8 @@ import BasicInfo from "./BasicInfo";
 import PositionPreference from "./PositionPreference";
 import ShortAnswers from "./ShortAnswers";
 import SelfIdentificationForm from "./SelfIdentification";
+import InfoText from "@components/apply/InfoText";
+import { APPLICATION_CLOSE_DATETIME } from "@constants/applications";
 
 const AppForm: FC = () => {
   const [firstChoice, setFirstChoice] = useState("");
@@ -11,6 +13,7 @@ const AppForm: FC = () => {
   return (
     <section className="container max-w-4xl px-4 mx-auto my-36 md:my-40">
       <h2 className="text-blue-100 mb-8">Student Application</h2>
+      <InfoText deadline={APPLICATION_CLOSE_DATETIME} />
       <BasicInfo />
       <PositionPreference
         firstChoice={firstChoice}
