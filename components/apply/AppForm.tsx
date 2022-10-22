@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import BasicInfo from "./BasicInfo";
 import PositionPreference from "./PositionPreference";
 import ShortAnswers from "./ShortAnswers";
+import SelfIdentificationForm from "./SelfIdentification";
 
 const AppForm: FC = () => {
   const [firstChoice, setFirstChoice] = useState("");
@@ -18,6 +19,7 @@ const AppForm: FC = () => {
         onSecondChoiceChange={setSecondChoice}
       />
       <ShortAnswers />
+      <SelfIdentificationForm />
     </section>
   );
 };
