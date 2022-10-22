@@ -173,19 +173,24 @@ const About: NextPage = () => {
             <Button className="leading-relaxed mb-5">Become a sponsor</Button>
           </a>
         </Link>
-        <div className="grid grid-cols-1 justify-items-center lg:grid-cols-3 gap-x-20 gap-y-14 lg:gap-16 pt-16">
+        <div className="grid grid-cols-1 justify-items-center lg:grid-cols-2 gap-x-20 gap-y-14 lg:gap-16 pt-16">
           <img
-            className="h-32"
+            className="h-32 object-contain"
             src="/about/mef-logo.png"
             alt="Math Endowment Fund Logo"
           />
           <img
-            className="h-32"
+            className="h-32 object-contain"
+            src="/about/roblox-logo.png"
+            alt="Roblox Logo"
+          />
+          <img
+            className="h-32 object-contain"
             src="/about/techyon-logo.png"
             alt="Techyon Logo"
           />
           <img
-            className="h-32"
+            className="h-32 object-contain"
             src="/about/weef-logo.png"
             alt="Waterloo Engineering Endowment Fund Logo"
           />
