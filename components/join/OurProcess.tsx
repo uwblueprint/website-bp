@@ -81,9 +81,9 @@ const OurProcess: FC = () => {
               3
             </h1>
           </div>
-          <h6>Chat with us</h6>
+          <h6>Interview with us</h6>
           <p>
-            Let's talk! We'll send out invites on{" "}
+            Let's talk! We'll send out invites by{" "}
             <span className="text-blue">{INVITE_DATE}</span> to schedule a time
             for us to connect. These chats will take place over the upcoming
             week, and you’ll have a casual conversation with a couple of our
@@ -104,7 +104,7 @@ const OurProcess: FC = () => {
           </div>
           <h6>Final decision</h6>
           <p>
-            We’ll let you know our final decision by{" "}
+            We’ll let you know our final decision around{" "}
             <span className="text-blue">{FINAL_DECISION_DATE}</span>. If we feel
             you’d be a good fit at Blueprint, we’d appreciate it if you replied
             as soon as possible regarding whether you’ll be joining our team
