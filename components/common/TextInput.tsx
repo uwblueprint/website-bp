@@ -1,22 +1,21 @@
-import { FC, useState } from "react";
+import { Field } from "formik";
+import { FC } from "react";
 
 type Props = {
   readonly id: string;
   readonly labelText?: string;
+  readonly value?: string;
   readonly placeholder?: string;
   readonly required?: boolean;
-  readonly onChange?: (value: string) => void;
 };
 
 const TextInput: FC<Props> = ({
   id,
   labelText,
+  value,
   placeholder,
   required,
-  onChange,
 }) => {
-  const [inputValue, setInputValue] = useState<string | null>(null);
-
   return (
     <div className="flex flex-col space-y-2">
       {labelText && (
@@ -25,23 +24,20 @@ const TextInput: FC<Props> = ({
           {required && <span className="text-pink-500">*</span>}
         </label>
       )}
-      <input
+      <Field
         id={id}
+        name={id}
         className={
-          (required && inputValue == ""
+          (required && value == ""
             ? "border-l-pink-500 "
             : "border-l-charcoal-300 ") +
           "text-charcoal-600 border border-charcoal-300 rounded-md px-4 py-3 border-l-4 focus:outline-none focus:ring-1 focus:ring-blue-100 focus:border-blue-100"
         }
+        value={value || ""}
         placeholder={placeholder}
         required={required}
-        value={inputValue || ""}
-        onChange={(e) => {
-          setInputValue(e.target.value);
-          onChange && onChange(e.target.value || "");
-        }}
       />
-      {required && inputValue == "" && (
+      {required && value == "" && (
         <span className="text-pink-500 text-sm">* Required</span>
       )}
     </div>

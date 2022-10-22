@@ -1,93 +1,62 @@
 import SelectInput from "@components/common/SelectInput";
+import { Field, useFormikContext } from "formik";
 import { FC } from "react";
 import TextInput from "../common/TextInput";
+import { AppFormValues } from "./AppForm";
 
-const BasicInfo: FC = () => {
+type Props = {
+  values: AppFormValues;
+};
+
+const BasicInfo: FC<Props> = ({ values }: Props) => {
+  const formikProps = useFormikContext();
+
   const SELECT_SOURCES = [
-    {
-      label: "Facebook",
-      value: "1",
-    },
-    {
-      label: "Instagram",
-      value: "2",
-    },
-    {
-      label: "Word of mouth",
-      value: "3",
-    },
-    {
-      label: "Clubs fair",
-      value: "4",
-    },
-    {
-      label: "Events",
-      value: "5",
-    },
-    {
-      label: "Other",
-      value: "6",
-    },
+    "Facebook",
+    "Instagram",
+    "Word of mouth",
+    "Clubs fair",
+    "Events",
+    "Other",
   ];
 
   const SELECT_APPNUM = [
-    {
-      label: "This is my first time!",
-      value: "1",
-    },
-    {
-      label: "Once",
-      value: "2",
-    },
-    {
-      label: "Twice",
-      value: "3",
-    },
-    {
-      label: "3 or more",
-      value: "4",
-    },
+    "This is my first time!",
+    "Once",
+    "Twice",
+    "3 or more",
   ];
 
   const SELECT_PRONOUNS = [
-    {
-      label: "She/Her/Hers",
-      value: "1",
-    },
-    {
-      label: "He/Him/His",
-      value: "2",
-    },
-    {
-      label: "They/Them/Theirs",
-      value: "3",
-    },
-    {
-      label: "Other",
-      value: "4",
-    },
+    "She/Her/Hers",
+    "He/Him/His",
+    "They/Them/Theirs",
+    "Other",
   ];
 
   return (
-    <section className="grid gap-3 my-8">
+    <section className="grid gap-3 mb-12">
       <h4 className="text-blue-100">Basic Information</h4>
       <div className="grid grid-cols-2 gap-6">
         <TextInput
-          id="firstname"
+          id="firstName"
           labelText="First Name"
           placeholder="e.g. John, Jane"
+          value={values.firstName}
           required
         />
         <TextInput
-          id="lastname"
+          id="lastName"
           labelText="Last Name"
           placeholder="e.g. Smith"
+          value={values.lastName}
           required
         />
         <TextInput
           id="email"
           labelText="Email"
           placeholder="e.g. example@domain.com"
+          value={values.email}
           required
         />
         <br />
@@ -95,12 +64,14 @@ const BasicInfo: FC = () => {
           id="program"
           labelText="Program"
           placeholder="e.g. Computer Science, Biology"
+          value={values.program}
           required
         />
         <TextInput
-          id="academicyear"
+          id="academicYear"
           labelText="Academic Year"
           placeholder="e.g. 2A, 4B"
+          value={values.academicYear}
           required
         />
         <div>
@@ -114,18 +85,23 @@ const BasicInfo: FC = () => {
             name="resume"
             required
             className="mt-2"
+            onChange={(e) => {
+              if (e.currentTarget.files) {
+                formikProps.setFieldValue("resume", e.currentTarget.files[0]);
+              }
+            }}
           />
         </div>
         <br />
         <SelectInput
-          id="heardAboutBPFrom"
+          id="heardFrom"
           labelText="Where did you hear about us?"
           required
           options={SELECT_SOURCES}
         />
         <br />
         <SelectInput
-          id="appAttemptNum"
+          id="timesApplied"
           labelText="How many times have you applied to Blueprint in the past?"
           required
           options={SELECT_APPNUM}
@@ -137,22 +113,34 @@ const BasicInfo: FC = () => {
           options={SELECT_PRONOUNS}
           required={false}
         />
+        {values.pronouns === SELECT_PRONOUNS[3] && (
+          <>
+            <br />
+            <div>
+              <TextInput
+                id="pronounsSpecified"
+                labelText="Please Specify"
+                value={values.pronounsSpecified}
+              />
+            </div>
+          </>
+        )}
         <br />
         <div>
-          <label htmlFor="termType">
+          <label htmlFor="academicOrCoop">
             Will you be in an academic (school) or co-op term?{" "}
             <span className="text-pink-500">*</span>
           </label>
           <br />
           <div className="flex flex-row space-x-24 mt-4">
             <label>
-              <input type="radio" id="academic" name="termType" value="1" />{" "}
-              Academic
+              <Field type="radio" name="academicOrCoop" value="Academic" />
+              &nbsp;Academic
             </label>
+            <span></span>
             <label>
-              <input type="radio" id="co-op" name="termType" value="2" />{" "}
-              <span></span>
-              Co-op
+              <Field type="radio" name="academicOrCoop" value="Co-op" />
+              &nbsp;Co-op
             </label>
           </div>
         </div>
