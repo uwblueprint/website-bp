@@ -11,7 +11,12 @@ type Props = {
 const SelectInput: FC<Props> = ({ id, labelText, options, required }) => {
   return (
     <div className="flex flex-col space-y-2">
-      {labelText && <label htmlFor={id}>{labelText}</label>}
+      {labelText && (
+        <label htmlFor={id}>
+          {labelText}
+          {required && <span className="text-pink-500">*</span>}
+        </label>
+      )}
       <Field
         as="select"
         id={id}

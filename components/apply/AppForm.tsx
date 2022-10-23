@@ -1,14 +1,35 @@
-import { FC } from "react";
+import { FC, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { Formik, Form } from "formik";
+import { initializeApp } from "firebase/app";
+import {
+  getDownloadURL,
+  getStorage,
+  ref as storeRef,
+  uploadBytes,
+} from "firebase/storage";
+import { getDatabase, set, ref as dbRef } from "firebase/database";
+
 import BasicInfo from "./BasicInfo";
 import PositionPreference from "./PositionPreference";
 import RoleSpecificQuestions from "./RoleSpecificQuestions";
 import ShortAnswers from "./ShortAnswers";
 import SelfIdentificationForm from "./SelfIdentification";
-import InfoText from "@components/apply/InfoText";
+import InfoText from "./InfoText";
 import { APPLICATION_CLOSE_DATETIME } from "@constants/applications";
 import shortAnswerJson from "@constants/short-answer-questions.json";
 import roleSpecificJson from "@constants/role-specific-questions.json";
+import {
+  API_KEY,
+  APP_ID,
+  AUTH_DOMAIN,
+  DATABASE_URL,
+  MEASUREMENT_ID,
+  MESSAGING_SENDER_ID,
+  PROJECT_ID,
+  STORAGE_BUCKET,
+} from "@utils/secrets";
+import ApplyConfirmation from "./ApplyConfirmation";
 
 export type AppFormValues = {
   firstName?: string;
@@ -16,7 +37,7 @@ export type AppFormValues = {
   email?: string;
   program?: string;
   academicYear?: string;
-  resume: string;
+  resume: File | null;
   resumeUrl: string;
   heardFrom: string;
   timesApplied: string;
@@ -37,11 +58,11 @@ export type AppFormValues = {
       response?: string;
     }[];
   }[];
-  gender: string;
+  gender?: string;
   genderSpecified?: string;
-  ethnicity: string;
+  ethnicity?: string;
   ethnicitySpecified?: string;
-  identities: string[];
+  identities?: string[];
 };
 
 export type ShortAnswerQuestion = {
@@ -74,7 +95,7 @@ const appFormInitialValues: AppFormValues = {
   email: undefined,
   program: undefined,
   academicYear: undefined,
-  resume: "",
+  resume: null,
   resumeUrl: "",
   heardFrom: "",
   timesApplied: "",
@@ -104,25 +125,86 @@ const appFormInitialValues: AppFormValues = {
   identities: [],
 };
 
+const firebaseConfig = {
+  apiKey: API_KEY,
+  authDomain: AUTH_DOMAIN,
+  databaseURL: DATABASE_URL,
+  projectId: PROJECT_ID,
+  storageBucket: STORAGE_BUCKET,
+  messagingSenderId: MESSAGING_SENDER_ID,
+  appId: APP_ID,
+  measurementId: MEASUREMENT_ID,
+};
+
+const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
+const database = getDatabase(app);
+
 const AppForm: FC = () => {
-  return (
+  const [submitted, setSubmitted] = useState(false);
+
+  const uploadResume = async (file: File, uuid: string) => {
+    const storageRef = storeRef(storage, `resumes/${uuid}`);
+    const snapshot = await uploadBytes(storageRef, file);
+    const url = await getDownloadURL(snapshot.ref);
+    return url;
+  };
+
+  return submitted ? (
+    <ApplyConfirmation />
+  ) : (
     <Formik
       initialValues={appFormInitialValues}
-      onSubmit={(values) => {
-        if (values.secondChoiceRole === "") {
-          values.roleSpecificQuestions = values.roleSpecificQuestions.filter(
-            ({ role }) => role === values.firstChoiceRole,
+      onSubmit={async (values) => {
+        const uuid = uuidv4();
+
+        values.roleSpecificQuestions = values.roleSpecificQuestions
+          .filter(({ role }) => role === values.firstChoiceRole)
+          .concat(
+            values.roleSpecificQuestions.filter(
+              ({ role }) => role === values.secondChoiceRole,
+            ),
           );
-        } else {
-          values.roleSpecificQuestions = values.roleSpecificQuestions
-            .filter(({ role }) => role === values.firstChoiceRole)
-            .concat(
-              values.roleSpecificQuestions.filter(
-                ({ role }) => role === values.secondChoiceRole,
-              ),
-            );
+
+        // Upload resume to Firebase storage.
+        if (values.resume) {
+          const url = await uploadResume(values.resume, uuid);
+          values.resumeUrl = url;
         }
-        console.log(values);
+
+        const application = {
+          firstName: values.firstName,
+          lastName: values.lastName,
+          email: values.email,
+          program: values.program,
+          academicYear: values.academicYear,
+          resumeUrl: values.resumeUrl,
+          heardFrom: values.heardFrom,
+          timesApplied: values.timesApplied,
+          pronouns: values.pronouns,
+          pronounsSpecified: values.pronounsSpecified || "",
+          academicOrCoop: values.academicOrCoop,
+          firstChoiceRole: values.firstChoiceRole,
+          secondChoiceRole: values.secondChoiceRole || "",
+          shortAnswerQuestions: values.shortAnswerQuestions,
+          roleSpecificQuestions: values.roleSpecificQuestions,
+          gender: values.gender || "",
+          genderSpecified: values.genderSpecified || "",
+          ethnicity: values.ethnicity || "",
+          ethnicitySpecified: values.ethnicitySpecified || "",
+          identities: values.identities || [],
+          timestamp: Date.now(),
+          status: "pending",
+        };
+
+        console.log(application);
+
+        // Submit form data.
+        set(dbRef(database, "studentApplications/" + uuid), application).then(
+          () => {
+            setSubmitted(true);
+          },
+        );
       }}
     >
       {({ values, handleSubmit }) => (

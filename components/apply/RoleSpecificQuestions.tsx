@@ -33,7 +33,7 @@ const RoleSpecificQuestions: FC<Props> = ({ values, questions }: Props) => {
                   question.question + " (" + roleSpecificQuestion.role + ")"
                 }
                 value={
-                  values.roleSpecificQuestions[index].questions[i].response
+                  values.roleSpecificQuestions[index]?.questions[i]?.response
                 }
                 maxLength={question.maxLength}
                 required
