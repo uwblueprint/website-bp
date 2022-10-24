@@ -34,6 +34,8 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
     "Other",
   ];
 
+  const WORKING_LOCATIONS = ["In-Person (Waterloo)", "Fully Remote", "Hybrid"];
+
   return (
     <section className="grid gap-3 mb-12">
       <h4 className="text-blue-100">Basic Information</h4>
@@ -57,6 +59,8 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
           labelText="Email"
           placeholder="e.g. example@domain.com"
           value={values.email}
+          regexMatch={/^\S+@\S+\.\S+$/}
+          errorMessage="Please enter a valid email address"
           required
         />
         <br />
@@ -72,6 +76,8 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
           labelText="Academic Year"
           placeholder="e.g. 2A, 4B"
           value={values.academicYear}
+          regexMatch={/^[1-5][A-B]$/}
+          errorMessage="Please enter a valid academic year (e.g. 2A, 4B)"
           required
         />
         <div>
@@ -115,7 +121,6 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
         />
         {values.pronouns === SELECT_PRONOUNS[3] && (
           <>
-            <br />
             <div>
               <TextInput
                 id="pronounsSpecified"
@@ -125,7 +130,7 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
             </div>
           </>
         )}
-        <br />
+        {values.pronouns !== SELECT_PRONOUNS[3] && <br />}
         <div>
           <label htmlFor="academicOrCoop">
             Will you be in an academic (school) or co-op term?{" "}
@@ -144,6 +149,13 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
             </label>
           </div>
         </div>
+        <br />
+        <SelectInput
+          id="locationPreference"
+          labelText="What is your preferred working location?"
+          options={WORKING_LOCATIONS}
+          required={true}
+        />
       </div>
     </section>
   );

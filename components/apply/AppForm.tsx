@@ -16,7 +16,10 @@ import RoleSpecificQuestions from "./RoleSpecificQuestions";
 import ShortAnswers from "./ShortAnswers";
 import SelfIdentificationForm from "./SelfIdentification";
 import InfoText from "./InfoText";
-import { APPLICATION_CLOSE_DATETIME } from "@constants/applications";
+import {
+  APPLICATION_CLOSE_DATETIME,
+  APPLICATION_TERM,
+} from "@constants/applications";
 import shortAnswerJson from "@constants/short-answer-questions.json";
 import roleSpecificJson from "@constants/role-specific-questions.json";
 import {
@@ -32,6 +35,7 @@ import {
 import ApplyConfirmation from "./ApplyConfirmation";
 
 export type AppFormValues = {
+  term: string;
   firstName?: string;
   lastName?: string;
   email?: string;
@@ -44,6 +48,7 @@ export type AppFormValues = {
   pronouns: string;
   pronounsSpecified: string;
   academicOrCoop: string;
+  locationPreference: string;
   firstChoiceRole: string;
   secondChoiceRole: string;
   shortAnswerQuestions: {
@@ -90,6 +95,7 @@ const roleSpecificQuestions: RoleSpecificQuestion[] = JSON.parse(
 );
 
 const appFormInitialValues: AppFormValues = {
+  term: APPLICATION_TERM,
   firstName: undefined,
   lastName: undefined,
   email: undefined,
@@ -102,6 +108,7 @@ const appFormInitialValues: AppFormValues = {
   pronouns: "",
   pronounsSpecified: "",
   academicOrCoop: "",
+  locationPreference: "",
   firstChoiceRole: "",
   secondChoiceRole: "",
   shortAnswerQuestions: shortAnswerQuestions.map(({ question }) => ({
@@ -138,7 +145,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
-const database = getDatabase(app);
+const db = getDatabase(app);
 
 const AppForm: FC = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -173,6 +180,7 @@ const AppForm: FC = () => {
         }
 
         const application = {
+          term: values.term,
           firstName: values.firstName,
           lastName: values.lastName,
           email: values.email,
@@ -184,27 +192,28 @@ const AppForm: FC = () => {
           pronouns: values.pronouns,
           pronounsSpecified: values.pronounsSpecified || "",
           academicOrCoop: values.academicOrCoop,
+          locationPreference: values.locationPreference,
           firstChoiceRole: values.firstChoiceRole,
           secondChoiceRole: values.secondChoiceRole || "",
           shortAnswerQuestions: values.shortAnswerQuestions,
           roleSpecificQuestions: values.roleSpecificQuestions,
+          timestamp: Date.now(),
+          status: "pending",
+        };
+
+        const identification = {
+          term: values.term,
           gender: values.gender || "",
           genderSpecified: values.genderSpecified || "",
           ethnicity: values.ethnicity || "",
           ethnicitySpecified: values.ethnicitySpecified || "",
           identities: values.identities || [],
-          timestamp: Date.now(),
-          status: "pending",
         };
 
-        console.log(application);
-
         // Submit form data.
-        set(dbRef(database, "studentApplications/" + uuid), application).then(
-          () => {
-            setSubmitted(true);
-          },
-        );
+        await set(dbRef(db, "studentApplications/" + uuid), application);
+        await set(dbRef(db, "selfIdentification/" + uuidv4()), identification);
+        setSubmitted(true);
       }}
     >
       {({ values, handleSubmit }) => (
