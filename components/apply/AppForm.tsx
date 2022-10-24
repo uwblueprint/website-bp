@@ -214,6 +214,7 @@ const AppForm: FC = () => {
         await set(dbRef(db, "studentApplications/" + uuid), application);
         await set(dbRef(db, "selfIdentification/" + uuidv4()), identification);
         setSubmitted(true);
+        window.scrollTo(0, 0);
       }}
     >
       {({ values, handleSubmit }) => (
