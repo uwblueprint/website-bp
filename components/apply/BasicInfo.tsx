@@ -39,7 +39,7 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
   return (
     <section className="grid gap-3 mb-12">
       <h4 className="text-blue-100">Basic Information</h4>
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-6">
         <TextInput
           id="firstName"
           labelText="First Name"
