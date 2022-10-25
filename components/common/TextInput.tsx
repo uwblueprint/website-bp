@@ -1,21 +1,36 @@
-import { FC, useState } from "react";
+import { Field } from "formik";
+import { FC, useEffect, useState } from "react";
 
 type Props = {
   readonly id: string;
   readonly labelText?: string;
+  readonly value?: string;
   readonly placeholder?: string;
+  readonly regexMatch?: RegExp;
+  readonly errorMessage?: string;
   readonly required?: boolean;
-  readonly onChange?: (value: string) => void;
 };
 
 const TextInput: FC<Props> = ({
   id,
   labelText,
+  value,
   placeholder,
+  regexMatch,
+  errorMessage,
   required,
-  onChange,
 }) => {
-  const [inputValue, setInputValue] = useState<string | null>(null);
+  const [error, setError] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (regexMatch && value && value !== "") {
+      if (!regexMatch.test(value)) {
+        setError(true);
+      } else {
+        setError(false);
+      }
+    }
+  }, [value]);
 
   return (
     <div className="flex flex-col space-y-2">
@@ -25,24 +40,24 @@ const TextInput: FC<Props> = ({
           {required && <span className="text-pink-500">*</span>}
         </label>
       )}
-      <input
+      <Field
         id={id}
+        name={id}
         className={
-          (required && inputValue == ""
+          ((required && value == "") || error
             ? "border-l-pink-500 "
             : "border-l-charcoal-300 ") +
           "text-charcoal-600 border border-charcoal-300 rounded-md px-4 py-3 border-l-4 focus:outline-none focus:ring-1 focus:ring-blue-100 focus:border-blue-100"
         }
+        value={value || ""}
         placeholder={placeholder}
         required={required}
-        value={inputValue || ""}
-        onChange={(e) => {
-          setInputValue(e.target.value);
-          onChange && onChange(e.target.value || "");
-        }}
       />
-      {required && inputValue == "" && (
+      {required && value == "" && (
         <span className="text-pink-500 text-sm">* Required</span>
+      )}
+      {value != "" && error && (
+        <span className="text-pink-500 text-sm">* {errorMessage}</span>
       )}
     </div>
   );

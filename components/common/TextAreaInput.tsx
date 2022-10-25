@@ -1,22 +1,23 @@
-import { FC, useState } from "react";
+import { Field } from "formik";
+import { FC } from "react";
 
 type Props = {
   readonly id: string;
   readonly labelText?: string;
+  readonly value?: string;
   readonly placeholder?: string;
   readonly required?: boolean;
-  readonly onChange?: (value: string) => void;
+  readonly maxLength?: number;
 };
 
-const TextInput: FC<Props> = ({
+const TextAreaInput: FC<Props> = ({
   id,
   labelText,
+  value,
   placeholder,
   required,
-  onChange,
+  maxLength,
 }) => {
-  const [inputValue, setInputValue] = useState<string | null>(null);
-
   return (
     <div className="flex flex-col space-y-2">
       {labelText && (
@@ -25,10 +26,12 @@ const TextInput: FC<Props> = ({
           {required && <span className="text-pink-500">*</span>}
         </label>
       )}
-      <textarea
+      <Field
+        as="textarea"
         id={id}
+        name={id}
         className={
-          (required && inputValue == ""
+          (required && value == ""
             ? "border-l-pink-500 "
             : "border-l-charcoal-300 ") +
           "text-charcoal-600 border border-charcoal-300 rounded-md px-4 py-3 border-l-4 focus:outline-none focus:ring-1 focus:ring-blue-100 focus:border-blue-100"
@@ -36,18 +39,21 @@ const TextInput: FC<Props> = ({
         style={{ resize: "none" }}
         placeholder={placeholder}
         required={required}
-        value={inputValue || ""}
-        onChange={(e) => {
-          setInputValue(e.target.value);
-          onChange && onChange(e.target.value || "");
-        }}
         rows={4}
+        maxLength={maxLength}
       />
-      {required && inputValue == "" && (
+
+      {maxLength && value && (
+        <span className="text-charcoal-500 text-sm">
+          {value.length} / {maxLength} characters
+        </span>
+      )}
+
+      {required && value == "" && (
         <span className="text-pink-500 text-sm">* Required</span>
       )}
     </div>
   );
 };
 
-export default TextInput;
+export default TextAreaInput;

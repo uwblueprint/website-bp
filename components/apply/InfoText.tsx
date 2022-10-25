@@ -2,7 +2,7 @@ import { FC } from "react";
 
 export const InfoText: FC<{ deadline: string }> = ({ deadline }) => {
   return (
-    <section>
+    <section className="mb-12">
       <p className="text-lg text-charcoal-500">
         Thanks for your interest in UW Blueprint! We are always looking for UW
         students to take part in our club activities and join our talented team.
@@ -10,7 +10,10 @@ export const InfoText: FC<{ deadline: string }> = ({ deadline }) => {
       <p className="text-lg text-charcoal-500" style={{ marginTop: "10px" }}>
         Important notes:
       </p>
-      <p style={{ paddingLeft: "20px" }} className="text-lg text-charcoal-500">
+      <div
+        style={{ paddingLeft: "20px" }}
+        className="text-lg text-charcoal-500"
+      >
         <u style={{ textDecoration: "none" }}>
           <li>
             For descriptions of our available roles, please visit our&nbsp;
@@ -29,8 +32,7 @@ export const InfoText: FC<{ deadline: string }> = ({ deadline }) => {
             <span className="text-blue">
               Both students on co-op and in school&nbsp;
             </span>
-            are encouraged to apply! We will have some occasional in-person
-            events though.
+            are encouraged to apply!
           </li>
           <li>
             Please review our application process{" "}
@@ -40,7 +42,7 @@ export const InfoText: FC<{ deadline: string }> = ({ deadline }) => {
             before completing your application.
           </li>
         </u>
-      </p>
+      </div>
     </section>
   );
 };

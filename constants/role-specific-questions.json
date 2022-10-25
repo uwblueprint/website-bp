@@ -1,44 +1,160 @@
-{
-  "1": [
-    "Which areas of a project are you interested in working in (frontend, backend, fullstack, mobile, etc.)?* (Project Developer)",
-    "Tell us about a challenging technical problem that you’ve worked on in the past and how you solved it.* (Project Developer)"
-  ],
-  "2": [
-    "Send us a link to your portfolio or a project you've worked on. If you do not have a link, please tell us about a project below. Describe the process and what you learned from it!* (Product Designer)"
-  ],
-  "3": [
-    "What is your favourite product?* (Product Manager)"
-  ],
-  "4": [
-    "Tell us about a challenging technical problem that you’ve worked on in the past and how you solved it.* (Project Lead)"
-  ],
-  "5": [
-    "Describe the type of research methods you prefer to use. What would you consider to be your main methods of expertise?* (User Experience Researcher)"
-  ],
-  "6": [
-    "What do you see as the purposes of content within the user experience of an app?* (Content Strategist)"
-  ],
-  "7": [
-    "Send us a link to your portfolio or a project you've worked on. If you do not have a link, please tell us about a project below. Describe the process and what you learned from it!* (Graphic Designer)"
-  ],
-  "8": [
-    "Consider this hypothetical scenario: Blueprint is thinking of creating a standardized code repository for new projects to build off of. This idea has both supporters and detractors among the project leads. In bullet points, explain how you would build alignment among developers. Please state any assumptions or details as necessary.* (VP Engineering)"
-  ],
-  "9": [],
-  "10": [],
-  "11": [
-    "What's a cool idea you think Blueprint should do to elevate our current branding and image in the community?* (VP Communications)"
-  ],
-  "12": [
-    "How would you pitch to external organizations for sponsorship?* (VP Finance & Operations)"
-  ],
-  "13": [
-    "How do you know whether a non-profit has a goal that resonates with Blueprint?* (VP Project Scoping)"
-  ],
-  "14": [
-    "What's a cool new event you think Blueprint should do and how does it align with Blueprint's mission?* (VP External)"
-  ],
-  "15": [
-    "What would an ideal member experience look like to you?* (VP Internal)"
-  ]
-}
+[
+  {
+    "id": "1",
+    "role": "Project Developer",
+    "questions": [
+      {
+        "question": "Which areas of a project are you interested in working in (frontend, backend, fullstack, mobile, etc.)?",
+        "maxLength": 1000
+      },
+      {
+        "question": "Tell us about a challenging technical problem that you’ve worked on in the past and how you solved it.",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "role": "Product Designer",
+    "questions": [
+      {
+        "question": "Send us a link to your portfolio or a project you've worked on. If you do not have a link, please tell us about a project below. Describe the process and what you learned from it.",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "role": "Product Manager",
+    "questions": [
+      {
+        "question": "What is your favourite product?",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "role": "Project Lead",
+    "questions": [
+      {
+        "question": "Tell us about a challenging technical problem that you’ve worked on in the past and how you solved it.",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "role": "User Experience Researcher",
+    "questions": [
+      {
+        "question": "Describe the type of research methods you prefer to use. What would you consider to be your main methods of expertise?",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "role": "Content Strategist",
+    "questions": [
+      {
+        "question": "What do you see as the purposes of content within the user experience of an app?",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "role": "Graphic Designer",
+    "questions": [
+      {
+        "question": "Send us a link to your portfolio or a project you've worked on. If you do not have a link, please tell us about a project below. Describe the process and what you learned from it.",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "role": "VP Engineering",
+    "questions": [
+      {
+        "question": "Consider this hypothetical scenario: Blueprint is thinking of creating a standardized code repository for new projects to build off of. This idea has both supporters and detractors among the project leads. In bullet points, explain how you would build alignment among developers. Please state any assumptions or details as necessary.",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "role": "VP Design",
+    "questions": [
+      {
+        "question": "What do you think is most important in supporting a design team? Tell us about what activities you think have the most impact.",
+        "maxLength": 1000
+      },
+      {
+        "question": "Send us a link to your portfolio or a project you've worked on. If you do not have a link, please tell us about a project below. Describe the process and what you learned from it.",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "role": "VP Product",
+    "questions": []
+  },
+  {
+    "id": "11",
+    "role": "VP Talent",
+    "questions": []
+  },
+  {
+    "id": "12",
+    "role": "VP Communications",
+    "questions": [
+      {
+        "question": "What's a cool idea you think Blueprint should do to elevate our current branding and image in the community?",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "13",
+    "role": "VP Finance & Operations",
+    "questions": [
+      {
+        "question": "How would you pitch to external organizations for sponsorship?",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "14",
+    "role": "VP Project Scoping",
+    "questions": [
+      {
+        "question": "How do you know whether a non-profit has a goal that resonates with Blueprint?",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "15",
+    "role": "VP External",
+    "questions": [
+      {
+        "question": "What's a cool new event you think Blueprint should do and how does it align with Blueprint's mission?",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "16",
+    "role": "VP Internal",
+    "questions": [
+      {
+        "question": "What would an ideal member experience look like to you?",
+        "maxLength": 1000
+      }
+    ]
+  }
+]

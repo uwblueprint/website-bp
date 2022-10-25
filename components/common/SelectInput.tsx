@@ -1,25 +1,14 @@
-import { FC, useState } from "react";
+import { Field } from "formik";
+import { FC } from "react";
 
 type Props = {
   readonly id: string;
   readonly labelText?: string;
-  readonly options: ReadonlyArray<{
-    readonly label: string;
-    readonly value: string;
-  }>;
+  readonly options: string[];
   readonly required: boolean;
-  readonly onChange?: (value: string) => void;
 };
 
-const SelectInput: FC<Props> = ({
-  id,
-  labelText,
-  options,
-  required,
-  onChange,
-}) => {
-  const [selectedValue, setSelectedValue] = useState<string | null>(null);
-
+const SelectInput: FC<Props> = ({ id, labelText, options, required }) => {
   return (
     <div className="flex flex-col space-y-2">
       {labelText && (
@@ -28,34 +17,23 @@ const SelectInput: FC<Props> = ({
           {required && <span className="text-pink-500">*</span>}
         </label>
       )}
-      <select
+      <Field
+        as="select"
         id={id}
-        className={
-          (required && selectedValue == ""
-            ? "border-l-pink-500 "
-            : "border-l-charcoal-300 ") +
-          "text-charcoal-600 border border-charcoal-300 rounded-md px-4 py-3 border-l-4 focus:outline-none focus:ring-1 focus:ring-blue-100 focus:border-blue-100"
-        }
+        name={id}
+        className="border-l-charcoal-300 text-charcoal-600 border border-charcoal-300 rounded-md px-4 py-3 border-l-4 focus:outline-none focus:ring-1 focus:ring-blue-100 focus:border-blue-100"
         style={{ minHeight: "50px" }}
         required={required}
-        value={selectedValue || ""}
-        onChange={(e) => {
-          setSelectedValue(e.target.value);
-          onChange && onChange(e.target.value || "");
-        }}
       >
         <option value="" disabled>
           Select an option
         </option>
-        {options.map(({ label, value }) => (
+        {options.map((value) => (
           <option key={value} value={value}>
-            {label}
+            {value}
           </option>
         ))}
-      </select>
-      {required && selectedValue == "" && (
-        <span className="text-pink-500 text-sm">* Required</span>
-      )}
+      </Field>
     </div>
   );
 };

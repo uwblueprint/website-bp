@@ -1,101 +1,37 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import SelectInput from "@components/common/SelectInput";
-import TextInput from "@components/common/TextAreaInput";
+import TextInput from "@components/common/TextInput";
+import { Field } from "formik";
+import { AppFormValues } from "./AppForm";
 
-type GenderIdentity = {
-  readonly label: string;
-  readonly value: string;
+type Props = {
+  values: AppFormValues;
 };
 
-type Ethnicity = {
-  readonly label: string;
-  readonly value: string;
-};
-
-const GENDER_IDENTITIES: GenderIdentity[] = [
-  {
-    label: "Agender",
-    value: "1",
-  },
-  {
-    label: "Cisgender Woman",
-    value: "2",
-  },
-  {
-    label: "Cisgender Man",
-    value: "3",
-  },
-  {
-    label: "Transgender Woman",
-    value: "4",
-  },
-  {
-    label: "Transgender Man",
-    value: "5",
-  },
-  {
-    label: "Two-Spirit",
-    value: "6",
-  },
-  {
-    label: "Non-Binary (gender queer, gender non-conforming)",
-    value: "7",
-  },
-  {
-    label: "I want to self-describe",
-    value: "8",
-  },
+const GENDER_IDENTITIES = [
+  "Agender",
+  "Cisgender Woman",
+  "Cisgender Man",
+  "Transgender Woman",
+  "Transgender Man",
+  "Two-Spirit",
+  "Non-Binary (gender queer, gender non-conforming)",
+  "I want to self-describe",
 ];
 
-const ETHNICITIES: Ethnicity[] = [
-  {
-    label: "White/Caucasian",
-    value: "1",
-  },
-  {
-    label: "Middle Eastern",
-    value: "2",
-  },
-  {
-    label: "Black or African American",
-    value: "3",
-  },
-  {
-    label: "Asian - East Asian",
-    value: "4",
-  },
-  {
-    label: "Asian - Central Asian",
-    value: "5",
-  },
-  {
-    label: "Asian - South Asian",
-    value: "6",
-  },
-  {
-    label: "Asian - Southeast Asian",
-    value: "7",
-  },
-  {
-    label: "Asian - West Asian",
-    value: "8",
-  },
-  {
-    label: "Hispanic/Latinx",
-    value: "9",
-  },
-  {
-    label: "Indigenous",
-    value: "10",
-  },
-  {
-    label: "Native Hawaiian/Pacific Islander",
-    value: "11",
-  },
-  {
-    label: "Mixed/Other/I want to self-describe",
-    value: "12",
-  },
+const ETHNICITIES = [
+  "White/Caucasian",
+  "Middle Eastern",
+  "Black or African American",
+  "Asian - East Asian",
+  "Asian - Central Asian",
+  "Asian - South Asian",
+  "Asian - Southeast Asian",
+  "Asian - West Asian",
+  "Hispanic/Latinx",
+  "Indigenous",
+  "Native Hawaiian/Pacific Islander",
+  "Mixed/Other/I want to self-describe",
 ];
 
 const APPLICABLE_COND = [
@@ -107,23 +43,9 @@ const APPLICABLE_COND = [
   "Served in the Armed Forces",
 ];
 
-const SelfIdentificationForm: FC = () => {
-  // temporary implementation with state, this will likely need to be higher for a full form submission
-  const [gender, setGender] = useState<GenderIdentity["value"]>("");
-  const [ethnicity, setEthnicity] = useState<Ethnicity["value"]>("");
-
-  const handleGenderChange = (option: string) => {
-    console.log(option);
-    setGender(option);
-  };
-
-  const handleEthnicityChange = (option: string) => {
-    console.log(option);
-    setEthnicity(option);
-  };
-
+const SelfIdentificationForm: FC<Props> = ({ values }: Props) => {
   return (
-    <section className="grid gap-3 my-8">
+    <section className="grid gap-3 mb-12">
       <h4 className="text-blue-100"> Voluntary Self Identification Form</h4>
       <p className="text-charcoal-500 mb-4">
         {" "}
@@ -137,29 +59,27 @@ const SelfIdentificationForm: FC = () => {
           id="gender"
           labelText={"What is your gender identity?"}
           options={GENDER_IDENTITIES}
-          onChange={handleGenderChange}
-          required
+          required={false}
         />
-        {gender === "8" && (
+        {values.gender === GENDER_IDENTITIES[7] && (
           <TextInput
-            id="gender-specified"
+            id="genderSpecified"
             labelText="Please Specify"
-            required
+            value={values.genderSpecified}
           />
         )}
         <SelectInput
           id="ethnicity"
           labelText="What ethnicity do you identify with?"
           options={ETHNICITIES}
-          onChange={handleEthnicityChange}
-          required
+          required={false}
         />
-        {ethnicity === "12" && (
+        {values.ethnicity === ETHNICITIES[11] && (
           <div>
             <TextInput
-              id="ethnic-specified"
+              id="ethnicitySpecified"
               labelText="Please Specify"
-              required
+              value={values.ethnicitySpecified}
             />
           </div>
         )}
@@ -167,9 +87,14 @@ const SelfIdentificationForm: FC = () => {
           Which of the following applies to you? Select all applicable.
         </label>
       </div>
-      {APPLICABLE_COND.map((condition, i) => (
+      {APPLICABLE_COND.map((condition) => (
         <div key={condition}>
-          <input type="checkbox" name={condition} id={condition} value={i} />
+          <Field
+            type="checkbox"
+            name="identities"
+            id="identities"
+            value={condition}
+          />
           <label htmlFor={condition} className="px-2">
             {condition}
           </label>
