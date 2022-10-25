@@ -219,7 +219,7 @@ const AppForm: FC = () => {
     >
       {({ values, handleSubmit }) => (
         <Form onSubmit={handleSubmit}>
-          <section className="container max-w-4xl px-4 mx-auto my-36 md:my-40">
+          <section className="container max-w-4xl px-4 mx-auto mt-44 mb-12 md:mt-40 md:mb-16">
             <h2 className="text-blue-100 mb-8">Student Application</h2>
             <InfoText deadline={APPLICATION_CLOSE_DATETIME} />
             <BasicInfo values={values} />
@@ -235,7 +235,7 @@ const AppForm: FC = () => {
             <SelfIdentificationForm values={values} />
             <button
               type="submit"
-              className="bg-blue-100 text-white py-2 px-4 rounded"
+              className="bg-blue-100 text-white py-2 px-4 rounded hover:bg-sky-200 hover:text-blue-100"
             >
               Submit
             </button>

@@ -63,7 +63,7 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
           errorMessage="Please enter a valid email address"
           required
         />
-        <br />
+        <br className="md:block hidden" />
         <TextInput
           id="program"
           labelText="Program"
@@ -84,7 +84,7 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
           <label id="resume">
             Resume (PDF) <span className="text-pink-500">*</span>
           </label>
-          <br />
+          <br className="md:block hidden" />
           <input
             id="resume"
             type="file"
@@ -98,21 +98,21 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
             }}
           />
         </div>
-        <br />
+        <br className="md:block hidden" />
         <SelectInput
           id="heardFrom"
           labelText="Where did you hear about us?"
           required
           options={SELECT_SOURCES}
         />
-        <br />
+        <br className="md:block hidden" />
         <SelectInput
           id="timesApplied"
           labelText="How many times have you applied to Blueprint in the past?"
           required
           options={SELECT_APPNUM}
         />
-        <br />
+        <br className="md:block hidden" />
         <SelectInput
           id="pronouns"
           labelText="What are your preferred pronouns?"
@@ -130,13 +130,15 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
             </div>
           </>
         )}
-        {values.pronouns !== SELECT_PRONOUNS[3] && <br />}
+        {values.pronouns !== SELECT_PRONOUNS[3] && (
+          <br className="md:block hidden" />
+        )}
         <div>
           <label htmlFor="academicOrCoop">
             Will you be in an academic (school) or co-op term?{" "}
             <span className="text-pink-500">*</span>
           </label>
-          <br />
+          <br className="md:block hidden" />
           <div className="flex flex-row space-x-24 mt-4">
             <label>
               <Field type="radio" name="academicOrCoop" value="Academic" />
@@ -149,7 +151,7 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
             </label>
           </div>
         </div>
-        <br />
+        <br className="md:block hidden" />
         <SelectInput
           id="locationPreference"
           labelText="What is your preferred working location?"

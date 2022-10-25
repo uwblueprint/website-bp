@@ -1,9 +1,6 @@
 import { FC } from "react";
 import FAQList from "@components/common/FAQList";
-import {
-  applicationProcess as APPLICATION_PROCESS_QUESTIONS,
-  aboutOurTeam as ABOUT_OUR_TEAM_QUESTIONS,
-} from "@constants/join-faq.json";
+import { applicationProcess, aboutOurTeam } from "@constants/join-faq.json";
 
 const FAQ: FC = () => {
   return (
@@ -17,13 +14,13 @@ const FAQ: FC = () => {
           <div className="w-52 pt-2 border-t-4 border-t-blue mb-8 md:mb-0">
             <h6 className="text-blue">Application process</h6>
           </div>
-          <FAQList questions={APPLICATION_PROCESS_QUESTIONS} />
+          <FAQList questions={applicationProcess} />
         </div>
         <div className="flex flex-col md:flex-row md:space-x-4">
           <div className="w-52 pt-2 border-t-4 border-t-blue mb-8 md:mb-0">
             <h6 className="text-blue">About our team</h6>
           </div>
-          <FAQList questions={ABOUT_OUR_TEAM_QUESTIONS} />
+          <FAQList questions={aboutOurTeam} />
         </div>
       </div>
     </section>

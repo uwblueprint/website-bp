@@ -15,7 +15,7 @@ const GENDER_IDENTITIES = [
   "Transgender Woman",
   "Transgender Man",
   "Two-Spirit",
-  "Non-Binary (gender queer, gender non-conforming)",
+  "Non-Binary (gender non-conforming)",
   "I want to self-describe",
 ];
 
@@ -95,7 +95,7 @@ const SelfIdentificationForm: FC<Props> = ({ values }: Props) => {
             id="identities"
             value={condition}
           />
-          <label htmlFor={condition} className="px-2">
+          <label htmlFor={condition} className="mx-2">
             {condition}
           </label>
         </div>
