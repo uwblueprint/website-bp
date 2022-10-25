@@ -85,16 +85,30 @@
   },
   {
     "id": "9",
+    "role": "VP Design",
+    "questions": [
+      {
+        "question": "What do you think is most important in supporting a design team? Tell us about what activities you think have the most impact.",
+        "maxLength": 1000
+      },
+      {
+        "question": "Send us a link to your portfolio or a project you've worked on. If you do not have a link, please tell us about a project below. Describe the process and what you learned from it.",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "10",
     "role": "VP Product",
     "questions": []
   },
   {
-    "id": "10",
+    "id": "11",
     "role": "VP Talent",
     "questions": []
   },
   {
-    "id": "11",
+    "id": "12",
     "role": "VP Communications",
     "questions": [
       {
@@ -104,7 +118,7 @@
     ]
   },
   {
-    "id": "12",
+    "id": "13",
     "role": "VP Finance & Operations",
     "questions": [
       {
@@ -114,7 +128,7 @@
     ]
   },
   {
-    "id": "13",
+    "id": "14",
     "role": "VP Project Scoping",
     "questions": [
       {
@@ -124,7 +138,7 @@
     ]
   },
   {
-    "id": "14",
+    "id": "15",
     "role": "VP External",
     "questions": [
       {
@@ -134,7 +148,7 @@
     ]
   },
   {
-    "id": "15",
+    "id": "16",
     "role": "VP Internal",
     "questions": [
       {
