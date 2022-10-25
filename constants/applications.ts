@@ -28,7 +28,7 @@ export const FINAL_DECISION_DATE = "Dec 5";
 export const APPLICATION_TERM = "Winter 2023";
 
 // URL of application page
-export const APPLICATION_LINK = "https://apply.uwblueprint.org";
+export const APPLICATION_LINK = "https://www.uwblueprint.org/apply";
 
 // Calculate if the application is live
 const _currentDate = new Date();
