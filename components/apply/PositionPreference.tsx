@@ -5,34 +5,17 @@ import { useFormikContext } from "formik";
 
 type Props = {
   values: AppFormValues;
+  memberRoles: string[];
 };
 
-const MEMBER_ROLES: string[] = [
-  "Project Developer",
-  "Product Designer",
-  "Product Manager",
-  "Project Lead",
-  "User Experience Researcher",
-  "Content Strategist",
-  "Graphic Designer",
-  "VP Engineering",
-  "VP Product",
-  "VP Talent",
-  "VP Communications",
-  "VP Finance & Operations",
-  "VP Project Scoping",
-  "VP External",
-  "VP Internal",
-];
-
-const PositionPreference: FC<Props> = ({ values }: Props) => {
+const PositionPreference: FC<Props> = ({ values, memberRoles }: Props) => {
   const [secondChoiceRoles, setSecondChoiceRoles] = useState(
-    MEMBER_ROLES.filter((roles) => roles !== values.firstChoiceRole),
+    memberRoles.filter((roles) => roles !== values.firstChoiceRole),
   );
   const formikProps = useFormikContext();
 
   useEffect(() => {
-    const SECOND_CHOICE_MEMBER_ROLES = MEMBER_ROLES.filter(
+    const SECOND_CHOICE_MEMBER_ROLES = memberRoles.filter(
       (roles) => roles !== values.firstChoiceRole,
     );
     setSecondChoiceRoles(SECOND_CHOICE_MEMBER_ROLES);
@@ -55,7 +38,7 @@ const PositionPreference: FC<Props> = ({ values }: Props) => {
         <SelectInput
           id="firstChoiceRole"
           labelText="What is your first choice role?"
-          options={MEMBER_ROLES}
+          options={memberRoles}
           required
         />
         <SelectInput

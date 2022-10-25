@@ -12,7 +12,14 @@ const RoleSpecificQuestions: FC<Props> = ({ values, questions }: Props) => {
     return <></>;
   }
 
-  return (
+  const questionsToRender = questions.filter(
+    (question) =>
+      (question.role === values.firstChoiceRole ||
+        question.role === values.secondChoiceRole) &&
+      question.questions.length > 0,
+  );
+
+  return questionsToRender.length > 0 ? (
     <div className="grid gap-3 mb-12">
       <h4 className="text-blue-100">Role Specific Questions</h4>
       <p className="text-charcoal-500 mb-4">
@@ -43,6 +50,8 @@ const RoleSpecificQuestions: FC<Props> = ({ values, questions }: Props) => {
         })}
       </div>
     </div>
+  ) : (
+    <></>
   );
 };
 

@@ -223,7 +223,10 @@ const AppForm: FC = () => {
             <h2 className="text-blue-100 mb-8">Student Application</h2>
             <InfoText deadline={APPLICATION_CLOSE_DATETIME} />
             <BasicInfo values={values} />
-            <PositionPreference values={values} />
+            <PositionPreference
+              values={values}
+              memberRoles={roleSpecificQuestions.map(({ role }) => role)}
+            />
             <ShortAnswers values={values} questions={shortAnswerQuestions} />
             <RoleSpecificQuestions
               values={values}
