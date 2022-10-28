@@ -38,12 +38,14 @@ const PositionPreference: FC<Props> = ({ values, memberRoles }: Props) => {
         <SelectInput
           id="firstChoiceRole"
           labelText="What is your first choice role?"
+          value={values.firstChoiceRole}
           options={memberRoles}
           required
         />
         <SelectInput
           id="secondChoiceRole"
           labelText="Optional: What is your second choice role? (only select if you want to be considered for this role)"
+          value={values.secondChoiceRole}
           options={secondChoiceRoles}
           required={false}
         />

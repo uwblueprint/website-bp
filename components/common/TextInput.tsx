@@ -9,6 +9,7 @@ type Props = {
   readonly regexMatch?: RegExp;
   readonly errorMessage?: string;
   readonly required?: boolean;
+  readonly readOnly?: boolean;
 };
 
 const TextInput: FC<Props> = ({
@@ -19,6 +20,7 @@ const TextInput: FC<Props> = ({
   regexMatch,
   errorMessage,
   required,
+  readOnly,
 }) => {
   const [error, setError] = useState<boolean>(false);
 
@@ -40,19 +42,23 @@ const TextInput: FC<Props> = ({
           {required && <span className="text-pink-500">*</span>}
         </label>
       )}
-      <Field
-        id={id}
-        name={id}
-        className={
-          ((required && value == "") || error
-            ? "border-l-pink-500 "
-            : "border-l-charcoal-300 ") +
-          "text-charcoal-600 border border-charcoal-300 rounded-md px-4 py-3 border-l-4 focus:outline-none focus:ring-1 focus:ring-blue-100 focus:border-blue-100"
-        }
-        value={value || ""}
-        placeholder={placeholder}
-        required={required}
-      />
+      {readOnly ? (
+        <div className="text-charcoal-500">{value}</div>
+      ) : (
+        <Field
+          id={id}
+          name={id}
+          className={
+            ((required && value == "") || error
+              ? "border-l-pink-500 "
+              : "border-l-charcoal-300 ") +
+            "text-charcoal-600 border border-charcoal-300 rounded-md px-4 py-3 border-l-4 focus:outline-none focus:ring-1 focus:ring-blue-100 focus:border-blue-100"
+          }
+          value={value || ""}
+          placeholder={placeholder}
+          required={required}
+        />
+      )}
       {required && value == "" && (
         <span className="text-pink-500 text-sm">* Required</span>
       )}

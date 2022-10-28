@@ -58,6 +58,7 @@ const SelfIdentificationForm: FC<Props> = ({ values }: Props) => {
         <SelectInput
           id="gender"
           labelText={"What is your gender identity?"}
+          value={values.gender}
           options={GENDER_IDENTITIES}
           required={false}
         />
@@ -71,6 +72,7 @@ const SelfIdentificationForm: FC<Props> = ({ values }: Props) => {
         <SelectInput
           id="ethnicity"
           labelText="What ethnicity do you identify with?"
+          value={values.ethnicity}
           options={ETHNICITIES}
           required={false}
         />
