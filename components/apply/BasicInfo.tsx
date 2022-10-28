@@ -102,6 +102,7 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
         <SelectInput
           id="heardFrom"
           labelText="Where did you hear about us?"
+          value={values.heardFrom}
           required
           options={SELECT_SOURCES}
         />
@@ -109,6 +110,7 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
         <SelectInput
           id="timesApplied"
           labelText="How many times have you applied to Blueprint in the past?"
+          value={values.timesApplied}
           required
           options={SELECT_APPNUM}
         />
@@ -116,6 +118,7 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
         <SelectInput
           id="pronouns"
           labelText="What are your preferred pronouns?"
+          value={values.pronouns}
           options={SELECT_PRONOUNS}
           required={false}
         />
@@ -155,6 +158,7 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
         <SelectInput
           id="locationPreference"
           labelText="What is your preferred working location?"
+          value={values.locationPreference}
           options={WORKING_LOCATIONS}
           required={true}
         />
