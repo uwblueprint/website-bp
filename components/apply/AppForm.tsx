@@ -151,9 +151,13 @@ const db = getDatabase(app);
 
 type Props = {
   readOnly?: boolean;
+  values?: AppFormValues;
 };
 
-const AppForm: FC<Props> = ({ readOnly = false }) => {
+const AppForm: FC<Props> = ({
+  readOnly = false,
+  values = appFormInitialValues,
+}) => {
   const [submitted, setSubmitted] = useState(false);
 
   const uploadResume = async (file: File, uuid: string) => {
@@ -167,7 +171,7 @@ const AppForm: FC<Props> = ({ readOnly = false }) => {
     <ApplyConfirmation />
   ) : (
     <Formik
-      initialValues={appFormInitialValues}
+      initialValues={values}
       onSubmit={async (values) => {
         const uuid = uuidv4();
 
