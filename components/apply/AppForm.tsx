@@ -153,7 +153,7 @@ type Props = {
   readOnly?: boolean;
 };
 
-const AppForm: FC<Props> = ({ readOnly = true }) => {
+const AppForm: FC<Props> = ({ readOnly = false }) => {
   const [submitted, setSubmitted] = useState(false);
 
   const uploadResume = async (file: File, uuid: string) => {
