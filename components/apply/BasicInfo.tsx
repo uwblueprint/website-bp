@@ -161,7 +161,9 @@ const BasicInfo: FC<Props> = ({ values, readOnly }: Props) => {
           </label>
           <br className="md:block hidden" />
           {readOnly ? (
-            values.academicOrCoop
+            <div className="text-charcoal-500 mt-2">
+              {values.academicOrCoop}
+            </div>
           ) : (
             <div className="flex flex-row space-x-24 mt-4">
               <label>
