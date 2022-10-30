@@ -68,6 +68,7 @@ export type AppFormValues = {
   ethnicity?: string;
   ethnicitySpecified?: string;
   identities?: string[];
+  timestamp: number;
 };
 
 export type ShortAnswerQuestion = {
@@ -130,6 +131,7 @@ const appFormInitialValues: AppFormValues = {
   ethnicity: "",
   ethnicitySpecified: undefined,
   identities: [],
+  timestamp: 0,
 };
 
 const firebaseConfig = {
@@ -147,7 +149,11 @@ const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 const db = getDatabase(app);
 
-const AppForm: FC = () => {
+type Props = {
+  readOnly?: boolean;
+};
+
+const AppForm: FC<Props> = ({ readOnly = true }) => {
   const [submitted, setSubmitted] = useState(false);
 
   const uploadResume = async (file: File, uuid: string) => {
@@ -232,13 +238,15 @@ const AppForm: FC = () => {
               values={values}
               questions={roleSpecificQuestions}
             />
-            <SelfIdentificationForm values={values} />
-            <button
-              type="submit"
-              className="bg-blue-100 text-white py-2 px-4 rounded hover:bg-sky-200 hover:text-blue-100"
-            >
-              Submit
-            </button>
+            {!readOnly && <SelfIdentificationForm values={values} />}
+            {!readOnly && (
+              <button
+                type="submit"
+                className="bg-blue-100 text-white py-2 px-4 rounded hover:bg-sky-200 hover:text-blue-100"
+              >
+                Submit
+              </button>
+            )}
           </section>
         </Form>
       )}
