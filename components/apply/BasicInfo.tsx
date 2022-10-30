@@ -6,9 +6,10 @@ import { AppFormValues } from "./AppForm";
 
 type Props = {
   values: AppFormValues;
+  readOnly: boolean;
 };
 
-const BasicInfo: FC<Props> = ({ values }: Props) => {
+const BasicInfo: FC<Props> = ({ values, readOnly }: Props) => {
   const formikProps = useFormikContext();
 
   const SELECT_SOURCES = [
@@ -45,6 +46,7 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
           labelText="First Name"
           placeholder="e.g. John, Jane"
           value={values.firstName}
+          readOnly={readOnly}
           required
         />
         <TextInput
@@ -52,6 +54,7 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
           labelText="Last Name"
           placeholder="e.g. Smith"
           value={values.lastName}
+          readOnly={readOnly}
           required
         />
         <TextInput
@@ -61,6 +64,7 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
           value={values.email}
           regexMatch={/^\S+@\S+\.\S+$/}
           errorMessage="Please enter a valid email address"
+          readOnly={readOnly}
           required
         />
         <br className="md:block hidden" />
@@ -69,6 +73,7 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
           labelText="Program"
           placeholder="e.g. Computer Science, Biology"
           value={values.program}
+          readOnly={readOnly}
           required
         />
         <TextInput
@@ -78,32 +83,42 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
           value={values.academicYear}
           regexMatch={/^[1-5][A-B]$/}
           errorMessage="Please enter a valid academic year (e.g. 2A, 4B)"
+          readOnly={readOnly}
           required
         />
-        <div>
-          <label id="resume">
-            Resume (PDF) <span className="text-pink-500">*</span>
-          </label>
-          <br className="md:block hidden" />
-          <input
-            id="resume"
-            type="file"
-            name="resume"
-            required
-            className="mt-2"
-            onChange={(e) => {
-              if (e.currentTarget.files) {
-                formikProps.setFieldValue("resume", e.currentTarget.files[0]);
-              }
-            }}
-          />
-        </div>
-        <br className="md:block hidden" />
+        {!readOnly && (
+          <>
+            <div>
+              <label id="resume">
+                Resume (PDF) <span className="text-pink-500">*</span>
+              </label>
+              <br className="md:block hidden" />
+              <input
+                id="resume"
+                type="file"
+                name="resume"
+                required
+                className="mt-2"
+                onChange={(e) => {
+                  if (e.currentTarget.files) {
+                    formikProps.setFieldValue(
+                      "resume",
+                      e.currentTarget.files[0],
+                    );
+                  }
+                }}
+              />
+            </div>
+
+            <br className="md:block hidden" />
+          </>
+        )}
         <SelectInput
           id="heardFrom"
           labelText="Where did you hear about us?"
           value={values.heardFrom}
           required
+          readOnly={readOnly}
           options={SELECT_SOURCES}
         />
         <br className="md:block hidden" />
@@ -112,6 +127,7 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
           labelText="How many times have you applied to Blueprint in the past?"
           value={values.timesApplied}
           required
+          readOnly={readOnly}
           options={SELECT_APPNUM}
         />
         <br className="md:block hidden" />
@@ -120,6 +136,7 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
           labelText="What are your preferred pronouns?"
           value={values.pronouns}
           options={SELECT_PRONOUNS}
+          readOnly={readOnly}
           required={false}
         />
         {values.pronouns === SELECT_PRONOUNS[3] && (
@@ -129,6 +146,7 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
                 id="pronounsSpecified"
                 labelText="Please Specify"
                 value={values.pronounsSpecified}
+                readOnly={readOnly}
               />
             </div>
           </>
@@ -142,17 +160,33 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
             <span className="text-pink-500">*</span>
           </label>
           <br className="md:block hidden" />
-          <div className="flex flex-row space-x-24 mt-4">
-            <label>
-              <Field type="radio" name="academicOrCoop" value="Academic" />
-              &nbsp;Academic
-            </label>
-            <span></span>
-            <label>
-              <Field type="radio" name="academicOrCoop" value="Co-op" />
-              &nbsp;Co-op
-            </label>
-          </div>
+          {readOnly ? (
+            <div className="text-charcoal-500 mt-2">
+              {values.academicOrCoop}
+            </div>
+          ) : (
+            <div className="flex flex-row space-x-24 mt-4">
+              <label>
+                <Field
+                  type="radio"
+                  name="academicOrCoop"
+                  value="Academic"
+                  id="Academic"
+                />
+                &nbsp;Academic
+              </label>
+              <span></span>
+              <label>
+                <Field
+                  type="radio"
+                  name="academicOrCoop"
+                  value="Co-op"
+                  id="Co-op"
+                />
+                &nbsp;Co-op
+              </label>
+            </div>
+          )}
         </div>
         <br className="md:block hidden" />
         <SelectInput
@@ -160,6 +194,7 @@ const BasicInfo: FC<Props> = ({ values }: Props) => {
           labelText="What is your preferred working location?"
           value={values.locationPreference}
           options={WORKING_LOCATIONS}
+          readOnly={readOnly}
           required={true}
         />
       </div>
