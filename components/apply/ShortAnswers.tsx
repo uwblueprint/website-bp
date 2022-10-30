@@ -5,7 +5,7 @@ import { AppFormValues, ShortAnswerQuestion } from "./AppForm";
 type Props = {
   values: AppFormValues;
   questions: ShortAnswerQuestion[];
-  readOnly?: boolean;
+  readOnly: boolean;
 };
 
 const ShortAnswers: FC<Props> = ({ values, questions, readOnly }: Props) => {

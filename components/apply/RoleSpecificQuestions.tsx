@@ -5,7 +5,7 @@ import { AppFormValues, RoleSpecificQuestion } from "./AppForm";
 type Props = {
   values: AppFormValues;
   questions: RoleSpecificQuestion[];
-  readOnly?: boolean;
+  readOnly: boolean;
 };
 
 const RoleSpecificQuestions: FC<Props> = ({

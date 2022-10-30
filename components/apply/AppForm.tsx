@@ -233,10 +233,15 @@ const AppForm: FC<Props> = ({ readOnly = false }) => {
               values={values}
               memberRoles={roleSpecificQuestions.map(({ role }) => role)}
             />
-            <ShortAnswers values={values} questions={shortAnswerQuestions} />
+            <ShortAnswers
+              values={values}
+              questions={shortAnswerQuestions}
+              readOnly={readOnly}
+            />
             <RoleSpecificQuestions
               values={values}
               questions={roleSpecificQuestions}
+              readOnly={readOnly}
             />
             {!readOnly && <SelfIdentificationForm values={values} />}
             {!readOnly && (
