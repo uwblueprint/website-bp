@@ -1,5 +1,5 @@
 // import nookies from 'nookies';
-import { onAuthStateChanged, User } from "firebase/auth";
+import { User } from "firebase/auth";
 import React, {
   createContext,
   ReactChild,
@@ -14,7 +14,11 @@ type Props = {
   children: ReactChild;
 };
 
-const AuthContext = createContext<{ user: User | null }>({
+type AuthContext = {
+  user: User | null;
+};
+
+const AuthContext = createContext<AuthContext>({
   user: null,
 });
 
@@ -22,16 +26,13 @@ export const AuthProvider = ({ children }: Props): ReactElement => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        console.log("no user");
-        setUser(null);
-        // nookies.set(undefined, 'token', '', { path: '/' });
-      } else {
-        console.log(user);
-        // const token = await user.getIdToken();
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
         setUser(user);
-        // nookies.set(undefined, 'token', token, { path: '/' });
+        const token = await user.getIdToken();
+        localStorage.setItem("token", token);
+      } else {
+        setUser(null);
       }
     });
   }, []);
@@ -39,7 +40,10 @@ export const AuthProvider = ({ children }: Props): ReactElement => {
   useEffect(() => {
     const handle = setInterval(async () => {
       const user = auth.currentUser;
-      if (user) await user.getIdToken(true);
+      if (user) {
+        const token = await user.getIdToken(true);
+        localStorage.setItem("token", token);
+      }
     }, 10 * 60 * 1000);
 
     return () => clearInterval(handle);
