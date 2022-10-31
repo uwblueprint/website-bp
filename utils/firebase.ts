@@ -1,5 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
+import { getApp, initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 import { getStorage } from "firebase/storage";
 import {
@@ -24,10 +24,17 @@ export const firebaseConfig = {
   measurementId: MEASUREMENT_ID,
 };
 
-export const app = initializeApp(firebaseConfig);
+const createFirebaseApp = () => {
+  try {
+    return getApp();
+  } catch {
+    return initializeApp(firebaseConfig);
+  }
+};
+
+const app = createFirebaseApp();
 export const fireabseDb = getDatabase(app);
 export const fireabseStore = getStorage(app);
-
 export const auth = getAuth();
-const provider = new GoogleAuthProvider();
-signInWithRedirect(auth, provider);
+// const provider = new GoogleAuthProvider();
+// signInWithRedirect(auth, provider);
