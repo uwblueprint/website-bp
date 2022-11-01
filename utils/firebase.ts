@@ -36,5 +36,3 @@ const app = createFirebaseApp();
 export const fireabseDb = getDatabase(app);
 export const fireabseStore = getStorage(app);
 export const auth = getAuth();
-// const provider = new GoogleAuthProvider();
-// signInWithRedirect(auth, provider);
