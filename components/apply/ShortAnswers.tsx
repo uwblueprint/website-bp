@@ -5,16 +5,19 @@ import { AppFormValues, ShortAnswerQuestion } from "./AppForm";
 type Props = {
   values: AppFormValues;
   questions: ShortAnswerQuestion[];
+  readOnly: boolean;
 };
 
-const ShortAnswers: FC<Props> = ({ questions, values }: Props) => {
+const ShortAnswers: FC<Props> = ({ values, questions, readOnly }: Props) => {
   return (
     <section className="grid gap-3 mb-12">
       <h4 className="text-blue-100">Short Answers</h4>
-      <p className="text-charcoal-500 mb-4">
-        Please answer the following questions in a few sentences. (max length:
-        1000 characters)
-      </p>
+      {!readOnly && (
+        <p className="text-charcoal-500 mb-4">
+          Please answer the following questions in a few sentences. (max length:
+          1000 characters)
+        </p>
+      )}
       <div className="grid gap-6">
         {questions.map((question, i) => (
           <TextAreaInput
@@ -24,6 +27,7 @@ const ShortAnswers: FC<Props> = ({ questions, values }: Props) => {
             value={values.shortAnswerQuestions[i].response}
             maxLength={question.maxLength}
             required
+            readOnly={readOnly}
           />
         ))}
       </div>

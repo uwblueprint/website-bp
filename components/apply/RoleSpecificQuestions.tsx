@@ -5,9 +5,14 @@ import { AppFormValues, RoleSpecificQuestion } from "./AppForm";
 type Props = {
   values: AppFormValues;
   questions: RoleSpecificQuestion[];
+  readOnly: boolean;
 };
 
-const RoleSpecificQuestions: FC<Props> = ({ values, questions }: Props) => {
+const RoleSpecificQuestions: FC<Props> = ({
+  values,
+  questions,
+  readOnly,
+}: Props) => {
   if (!questions.length) {
     return <></>;
   }
@@ -22,10 +27,12 @@ const RoleSpecificQuestions: FC<Props> = ({ values, questions }: Props) => {
   return questionsToRender.length > 0 ? (
     <div className="grid gap-3 mb-12">
       <h4 className="text-blue-100">Role Specific Questions</h4>
-      <p className="text-charcoal-500 mb-4">
-        Please answer the following questions in a few sentences where
-        applicable. (max length: 1000 characters)
-      </p>
+      {!readOnly && (
+        <p className="text-charcoal-500 mb-4">
+          Please answer the following questions in a few sentences where
+          applicable. (max length: 1000 characters)
+        </p>
+      )}
       <div className="grid gap-6">
         {questions.map((roleSpecificQuestion, index) => {
           if (
@@ -44,6 +51,7 @@ const RoleSpecificQuestions: FC<Props> = ({ values, questions }: Props) => {
                 }
                 maxLength={question.maxLength}
                 required
+                readOnly={readOnly}
               />
             ));
           }
