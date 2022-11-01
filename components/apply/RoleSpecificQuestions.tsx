@@ -34,28 +34,46 @@ const RoleSpecificQuestions: FC<Props> = ({
         </p>
       )}
       <div className="grid gap-6">
-        {questions.map((roleSpecificQuestion, index) => {
-          if (
-            roleSpecificQuestion.role === values.firstChoiceRole ||
-            roleSpecificQuestion.role === values.secondChoiceRole
-          ) {
-            return roleSpecificQuestion.questions.map((question, i) => (
-              <TextAreaInput
-                id={`roleSpecificQuestions[${index}].questions[${i}].response`}
-                key={`roleSpecificQuestion${roleSpecificQuestion.id}${i}`}
-                labelText={
-                  question.question + " (" + roleSpecificQuestion.role + ")"
-                }
-                value={
-                  values.roleSpecificQuestions[index]?.questions[i]?.response
-                }
-                maxLength={question.maxLength}
-                required
-                readOnly={readOnly}
-              />
-            ));
-          }
-        })}
+        {readOnly
+          ? values.roleSpecificQuestions.map((roleQuestions, i) =>
+              roleQuestions.questions.map((question, j) => (
+                <TextAreaInput
+                  id={`roleSpecificQuestions[${i}][${j}]`}
+                  key={`roleSpecificQuestion${i}${j}`}
+                  labelText={
+                    question.question + " (" + roleQuestions.role + ")"
+                  }
+                  value={
+                    values.roleSpecificQuestions[i]?.questions[j]?.response
+                  }
+                  required
+                  readOnly={readOnly}
+                />
+              )),
+            )
+          : questions.map((roleSpecificQuestion, index) => {
+              if (
+                roleSpecificQuestion.role === values.firstChoiceRole ||
+                roleSpecificQuestion.role === values.secondChoiceRole
+              ) {
+                return roleSpecificQuestion.questions.map((question, i) => (
+                  <TextAreaInput
+                    id={`roleSpecificQuestions[${index}].questions[${i}].response`}
+                    key={`roleSpecificQuestion${roleSpecificQuestion.id}${i}`}
+                    labelText={
+                      question.question + " (" + roleSpecificQuestion.role + ")"
+                    }
+                    value={
+                      values.roleSpecificQuestions[index]?.questions[i]
+                        ?.response
+                    }
+                    maxLength={question.maxLength}
+                    required
+                    readOnly={readOnly}
+                  />
+                ));
+              }
+            })}
       </div>
     </div>
   ) : (
