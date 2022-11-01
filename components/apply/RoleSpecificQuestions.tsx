@@ -36,7 +36,7 @@ const RoleSpecificQuestions: FC<Props> = ({
       <div className="grid gap-6">
         {readOnly
           ? values.roleSpecificQuestions.map((roleQuestions, i) =>
-              roleQuestions.questions.map((question, j) => (
+              roleQuestions.questions?.map((question, j) => (
                 <TextAreaInput
                   id={`roleSpecificQuestions[${i}][${j}]`}
                   key={`roleSpecificQuestion${i}${j}`}
