@@ -11,7 +11,9 @@ type Props = {
 const dbRef = ref(fireabseDb);
 
 const AppDetails: FC<Props> = ({ id }: Props) => {
-  const [application, setApplication] = useState<AppFormValues | null>(null);
+  const [application, setApplication] = useState<AppFormValues | undefined>(
+    undefined,
+  );
 
   useEffect(() => {
     console.log("id", id);
@@ -28,7 +30,7 @@ const AppDetails: FC<Props> = ({ id }: Props) => {
 
   console.log(application);
 
-  return <AppForm readOnly initialValues={application || undefined} />;
+  return <AppForm readOnly values={application} />;
 };
 
 export default AppDetails;
