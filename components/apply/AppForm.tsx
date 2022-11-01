@@ -18,7 +18,7 @@ import {
 import shortAnswerJson from "@constants/short-answer-questions.json";
 import roleSpecificJson from "@constants/role-specific-questions.json";
 import ApplyConfirmation from "./ApplyConfirmation";
-import { fireabseDb, fireabseStore } from "@utils/firebase";
+import { firebaseDb, firebaseStore } from "@utils/firebase";
 
 export type AppFormValues = {
   term: string;
@@ -131,7 +131,7 @@ const AppForm: FC<Props> = ({
 }) => {
   const [submitted, setSubmitted] = useState(false);
   const uploadResume = async (file: File, uuid: string) => {
-    const storageRef = storeRef(fireabseStore, `resumes/${uuid}`);
+    const storageRef = storeRef(firebaseStore, `resumes/${uuid}`);
     const snapshot = await uploadBytes(storageRef, file);
     const url = await getDownloadURL(snapshot.ref);
     return url;
@@ -193,11 +193,11 @@ const AppForm: FC<Props> = ({
 
         // Submit form data.
         await set(
-          dbRef(fireabseDb, "studentApplications/" + uuid),
+          dbRef(firebaseDb, "studentApplications/" + uuid),
           application,
         );
         await set(
-          dbRef(fireabseDb, "selfIdentification/" + uuidv4()),
+          dbRef(firebaseDb, "selfIdentification/" + uuidv4()),
           identification,
         );
         setSubmitted(true);

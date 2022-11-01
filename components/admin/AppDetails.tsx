@@ -2,13 +2,13 @@ import { FC, useEffect, useState } from "react";
 import { ref, child, get } from "firebase/database";
 
 import AppForm, { AppFormValues } from "@components/apply/AppForm";
-import { fireabseDb } from "@utils/firebase";
+import { firebaseDb } from "@utils/firebase";
 
 type Props = {
   id: string;
 };
 
-const dbRef = ref(fireabseDb);
+const dbRef = ref(firebaseDb);
 
 const AppDetails: FC<Props> = ({ id }: Props) => {
   const [application, setApplication] = useState<AppFormValues | undefined>(

@@ -33,6 +33,6 @@ const createFirebaseApp = () => {
 };
 
 const app = createFirebaseApp();
-export const fireabseDb = getDatabase(app);
-export const fireabseStore = getStorage(app);
+export const firebaseDb = getDatabase(app);
+export const firebaseStore = getStorage(app);
 export const auth = getAuth();
