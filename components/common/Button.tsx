@@ -41,7 +41,7 @@ const Button: FC<Props> = ({
         break;
       case "secondary":
         // Blue border, white background, blue text
-        classes = `border-blue bg-white text-blue hover:border-sky-400 hover:text-sky-400`;
+        classes = `border-blue bg-white text-blue hover:border-sky-500 hover:text-sky-500 hover:bg-sky-100`;
         break;
     }
   }

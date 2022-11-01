@@ -10,6 +10,7 @@ import RoleSpecificQuestions from "./RoleSpecificQuestions";
 import ShortAnswers from "./ShortAnswers";
 import SelfIdentificationForm from "./SelfIdentification";
 import InfoText from "./InfoText";
+import Button from "@components/common/Button";
 import {
   APPLICATION_CLOSE_DATETIME,
   APPLICATION_TERM,
@@ -231,12 +232,9 @@ const AppForm: FC<Props> = ({
             />
             {!readOnly && <SelfIdentificationForm values={values} />}
             {!readOnly && (
-              <button
-                type="submit"
-                className="bg-blue-100 text-white py-2 px-4 rounded hover:bg-sky-200 hover:text-blue-100"
-              >
+              <Button type="submit" variant="primary">
                 Submit
-              </button>
+              </Button>
             )}
           </section>
         </Form>

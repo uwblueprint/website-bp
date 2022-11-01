@@ -1,6 +1,7 @@
 import { auth } from "@utils/firebase";
 import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
 import { ReactElement } from "react";
+import Button from "./Button";
 
 const Login = (): ReactElement => {
   const signInWithGoogle = async () => {
@@ -15,15 +16,12 @@ const Login = (): ReactElement => {
           <img src="/common/logo-blue.svg" alt="UW Blueprint logo" />
           <div className="flex flex-col items-center">
             <h4 className="my-8 text-blue-100">Sign In</h4>
-            <button
-              className="border-sky-500 border rounded-md px-4 py-2 shadow-md hover:bg-sky-100"
-              onClick={signInWithGoogle}
-            >
+            <Button variant="secondary" onClick={signInWithGoogle}>
               <div className="flex space-around items-center gap-3">
                 <img src="/common/google-logo.svg" alt="Google logo" />
                 <div>Continue with Google</div>
               </div>
-            </button>
+            </Button>
           </div>
         </div>
       </div>
