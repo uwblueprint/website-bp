@@ -1,23 +1,16 @@
-import { ReactChild, ReactElement, useEffect, useState } from "react";
+import { ReactChild, ReactElement } from "react";
 import { useAuth } from "./AuthUserContext";
-import Login from "../common/Login";
 import Loading from "@components/common/Loading";
+import Login from "@components/common/Login";
 
 type Props = {
   children: ReactChild;
 };
 
 const ProtectedRoute = ({ children }: Props): ReactElement => {
-  const [loading, setLoading] = useState(true);
-  const { user } = useAuth();
+  const { user, isLoading } = useAuth();
 
-  useEffect(() => {
-    if (user) {
-      setLoading(false);
-    }
-  }, [user]);
-
-  return loading ? <Loading /> : user ? <>{children}</> : <Login />;
+  return isLoading ? <Loading /> : user ? <>{children}</> : <Login />;
 };
 
 export default ProtectedRoute;

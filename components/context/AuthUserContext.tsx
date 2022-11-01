@@ -16,24 +16,33 @@ type Props = {
 
 type AuthContext = {
   user: User | null;
+  isLoading: boolean;
 };
 
 const AuthContext = createContext<AuthContext>({
   user: null,
+  isLoading: true,
 });
 
 export const AuthProvider = ({ children }: Props): ReactElement => {
   const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
-        setUser(user);
-        const token = await user.getIdToken();
-        localStorage.setItem("token", token);
+        if (user.email && user.email.endsWith("@uwblueprint.org")) {
+          setUser(user);
+          const token = await user.getIdToken();
+          localStorage.setItem("token", token);
+        } else {
+          // TODO: Handle non-UW Blueprint emails
+          await auth.signOut();
+        }
       } else {
         setUser(null);
       }
+      setIsLoading(false);
     });
   }, []);
 
@@ -44,14 +53,18 @@ export const AuthProvider = ({ children }: Props): ReactElement => {
         const token = await user.getIdToken(true);
         localStorage.setItem("token", token);
       }
+      setIsLoading(false);
     }, 10 * 60 * 1000);
 
     return () => clearInterval(handle);
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user, isLoading }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 
-export const useAuth = (): { user: User | null } => useContext(AuthContext);
+export const useAuth = (): { user: User | null; isLoading: boolean } =>
+  useContext(AuthContext);

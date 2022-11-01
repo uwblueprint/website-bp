@@ -18,7 +18,7 @@ const Button: FC<Props> = ({
   invert = false,
   href,
   ...props
-}) => {
+}: Props) => {
   // Classnames for border, background, text styles
   let classes: string;
 
