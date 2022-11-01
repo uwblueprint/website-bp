@@ -122,7 +122,7 @@ const appFormInitialValues: AppFormValues = {
 
 type Props = {
   readOnly?: boolean;
-  values?: AppFormValues;
+  values: AppFormValues | null;
 };
 
 const AppForm: FC<Props> = ({
@@ -142,7 +142,7 @@ const AppForm: FC<Props> = ({
   ) : (
     <Formik
       enableReinitialize
-      initialValues={values}
+      initialValues={values || appFormInitialValues}
       onSubmit={async (values) => {
         const uuid = uuidv4();
 

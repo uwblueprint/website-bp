@@ -11,9 +11,7 @@ type Props = {
 const dbRef = ref(firebaseDb);
 
 const AppDetails: FC<Props> = ({ id }: Props) => {
-  const [application, setApplication] = useState<AppFormValues | undefined>(
-    undefined,
-  );
+  const [application, setApplication] = useState<AppFormValues | null>(null);
 
   useEffect(() => {
     get(child(dbRef, `studentApplications/${id}`))
@@ -27,7 +25,7 @@ const AppDetails: FC<Props> = ({ id }: Props) => {
       });
   }, []);
 
-  return <AppForm readOnly values={application} />;
+  return !application ? <></> : <AppForm readOnly values={application} />;
 };
 
 export default AppDetails;
