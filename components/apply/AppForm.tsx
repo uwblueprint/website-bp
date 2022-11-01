@@ -122,7 +122,7 @@ const appFormInitialValues: AppFormValues = {
 
 type Props = {
   readOnly?: boolean;
-  values: AppFormValues | null;
+  values?: AppFormValues | null;
 };
 
 const AppForm: FC<Props> = ({
