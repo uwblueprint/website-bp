@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { ref, child, get } from "firebase/database";
 
-import { AppFormValues } from "@components/apply/AppForm";
+import AppForm, { AppFormValues } from "@components/apply/AppForm";
 import { fireabseDb } from "@utils/firebase";
 
 type Props = {
@@ -24,11 +24,11 @@ const AppDetails: FC<Props> = ({ id }: Props) => {
       .catch((error) => {
         console.error(error);
       });
-  });
+  }, []);
 
   console.log(application);
 
-  return <></>;
+  return <AppForm readOnly initialValues={application || undefined} />;
 };
 
 export default AppDetails;
