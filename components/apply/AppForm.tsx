@@ -219,6 +219,7 @@ const AppForm: FC<Props> = ({
             <PositionPreference
               values={values}
               memberRoles={roleSpecificQuestions.map(({ role }) => role)}
+              readOnly={readOnly}
             />
             <ShortAnswers
               values={values}
