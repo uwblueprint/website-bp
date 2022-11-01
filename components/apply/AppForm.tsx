@@ -1,14 +1,8 @@
 import { FC, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Formik, Form } from "formik";
-import { initializeApp } from "firebase/app";
-import {
-  getDownloadURL,
-  getStorage,
-  ref as storeRef,
-  uploadBytes,
-} from "firebase/storage";
-import { getDatabase, set, ref as dbRef } from "firebase/database";
+import { getDownloadURL, ref as storeRef, uploadBytes } from "firebase/storage";
+import { set, ref as dbRef } from "firebase/database";
 
 import BasicInfo from "./BasicInfo";
 import PositionPreference from "./PositionPreference";
@@ -16,23 +10,15 @@ import RoleSpecificQuestions from "./RoleSpecificQuestions";
 import ShortAnswers from "./ShortAnswers";
 import SelfIdentificationForm from "./SelfIdentification";
 import InfoText from "./InfoText";
+import Button from "@components/common/Button";
 import {
   APPLICATION_CLOSE_DATETIME,
   APPLICATION_TERM,
 } from "@constants/applications";
 import shortAnswerJson from "@constants/short-answer-questions.json";
 import roleSpecificJson from "@constants/role-specific-questions.json";
-import {
-  API_KEY,
-  APP_ID,
-  AUTH_DOMAIN,
-  DATABASE_URL,
-  MEASUREMENT_ID,
-  MESSAGING_SENDER_ID,
-  PROJECT_ID,
-  STORAGE_BUCKET,
-} from "@utils/secrets";
 import ApplyConfirmation from "./ApplyConfirmation";
+import { firebaseDb, firebaseStore } from "@utils/firebase";
 
 export type AppFormValues = {
   term: string;
@@ -134,24 +120,9 @@ const appFormInitialValues: AppFormValues = {
   timestamp: 0,
 };
 
-const firebaseConfig = {
-  apiKey: API_KEY,
-  authDomain: AUTH_DOMAIN,
-  databaseURL: DATABASE_URL,
-  projectId: PROJECT_ID,
-  storageBucket: STORAGE_BUCKET,
-  messagingSenderId: MESSAGING_SENDER_ID,
-  appId: APP_ID,
-  measurementId: MEASUREMENT_ID,
-};
-
-const app = initializeApp(firebaseConfig);
-const storage = getStorage(app);
-const db = getDatabase(app);
-
 type Props = {
   readOnly?: boolean;
-  values?: AppFormValues;
+  values?: AppFormValues | null;
 };
 
 const AppForm: FC<Props> = ({
@@ -159,9 +130,8 @@ const AppForm: FC<Props> = ({
   values = appFormInitialValues,
 }) => {
   const [submitted, setSubmitted] = useState(false);
-
   const uploadResume = async (file: File, uuid: string) => {
-    const storageRef = storeRef(storage, `resumes/${uuid}`);
+    const storageRef = storeRef(firebaseStore, `resumes/${uuid}`);
     const snapshot = await uploadBytes(storageRef, file);
     const url = await getDownloadURL(snapshot.ref);
     return url;
@@ -171,7 +141,8 @@ const AppForm: FC<Props> = ({
     <ApplyConfirmation />
   ) : (
     <Formik
-      initialValues={values}
+      enableReinitialize
+      initialValues={values || appFormInitialValues}
       onSubmit={async (values) => {
         const uuid = uuidv4();
 
@@ -221,15 +192,27 @@ const AppForm: FC<Props> = ({
         };
 
         // Submit form data.
-        await set(dbRef(db, "studentApplications/" + uuid), application);
-        await set(dbRef(db, "selfIdentification/" + uuidv4()), identification);
+        await set(
+          dbRef(firebaseDb, "studentApplications/" + uuid),
+          application,
+        );
+        await set(
+          dbRef(firebaseDb, "selfIdentification/" + uuidv4()),
+          identification,
+        );
         setSubmitted(true);
         window.scrollTo(0, 0);
       }}
     >
       {({ values, handleSubmit }) => (
         <Form onSubmit={handleSubmit}>
-          <section className="container max-w-4xl px-4 mx-auto mt-44 mb-12 md:mt-40 md:mb-16">
+          <section
+            className={
+              readOnly
+                ? "container max-w-4xl px-4 mx-auto md:my-24 my-8"
+                : "container max-w-4xl px-4 mx-auto mt-44 mb-12 md:mt-40 md:mb-16"
+            }
+          >
             <h2 className="text-blue-100 mb-8">Student Application</h2>
             <InfoText deadline={APPLICATION_CLOSE_DATETIME} />
             <BasicInfo values={values} readOnly={readOnly} />
@@ -249,12 +232,9 @@ const AppForm: FC<Props> = ({
             />
             {!readOnly && <SelfIdentificationForm values={values} />}
             {!readOnly && (
-              <button
-                type="submit"
-                className="bg-blue-100 text-white py-2 px-4 rounded hover:bg-sky-200 hover:text-blue-100"
-              >
+              <Button type="submit" variant="primary">
                 Submit
-              </button>
+              </Button>
             )}
           </section>
         </Form>
