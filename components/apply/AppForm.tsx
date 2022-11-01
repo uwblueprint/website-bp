@@ -129,7 +129,6 @@ const AppForm: FC<Props> = ({
   values = appFormInitialValues,
 }) => {
   const [submitted, setSubmitted] = useState(false);
-
   const uploadResume = async (file: File, uuid: string) => {
     const storageRef = storeRef(fireabseStore, `resumes/${uuid}`);
     const snapshot = await uploadBytes(storageRef, file);
