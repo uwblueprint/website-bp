@@ -16,7 +16,6 @@ const AppDetails: FC<Props> = ({ id }: Props) => {
   );
 
   useEffect(() => {
-    console.log("id", id);
     get(child(dbRef, `studentApplications/${id}`))
       .then((snapshot) => {
         if (snapshot.exists()) {
@@ -27,8 +26,6 @@ const AppDetails: FC<Props> = ({ id }: Props) => {
         console.error(error);
       });
   }, []);
-
-  console.log(application);
 
   return <AppForm readOnly values={application} />;
 };
