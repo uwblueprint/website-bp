@@ -140,6 +140,7 @@ const AppForm: FC<Props> = ({
     <ApplyConfirmation />
   ) : (
     <Formik
+      enableReinitialize
       initialValues={values}
       onSubmit={async (values) => {
         const uuid = uuidv4();
