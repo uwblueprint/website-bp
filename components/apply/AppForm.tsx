@@ -205,7 +205,13 @@ const AppForm: FC<Props> = ({
     >
       {({ values, handleSubmit }) => (
         <Form onSubmit={handleSubmit}>
-          <section className="container max-w-4xl px-4 mx-auto mt-44 mb-12 md:mt-40 md:mb-16">
+          <section
+            className={
+              readOnly
+                ? "container max-w-4xl px-4 mx-auto md:my-24 my-8"
+                : "container max-w-4xl px-4 mx-auto mt-44 mb-12 md:mt-40 md:mb-16"
+            }
+          >
             <h2 className="text-blue-100 mb-8">Student Application</h2>
             <InfoText deadline={APPLICATION_CLOSE_DATETIME} />
             <BasicInfo values={values} readOnly={readOnly} />
