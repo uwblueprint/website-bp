@@ -50,7 +50,7 @@ const PositionPreference: FC<Props> = ({
           required
           readOnly={readOnly}
         />
-        {values.firstChoiceRole != "" && (
+        {(!readOnly || values.secondChoiceRole != "") && (
           <SelectInput
             id="secondChoiceRole"
             labelText="Optional: What is your second choice role? (only select if you want to be considered for this role)"
