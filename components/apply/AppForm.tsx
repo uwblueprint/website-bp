@@ -213,8 +213,16 @@ const AppForm: FC<Props> = ({
                 : "container max-w-4xl px-4 mx-auto mt-44 mb-12 md:mt-40 md:mb-16"
             }
           >
-            <h2 className="text-blue-100 mb-8">Student Application</h2>
-            <InfoText deadline={APPLICATION_CLOSE_DATETIME} />
+            <h2 className="text-blue-100 mb-8">
+              {readOnly
+                ? `${values.firstName} ${values.lastName}`
+                : "Student Application"}
+            </h2>
+            <InfoText
+              deadline={APPLICATION_CLOSE_DATETIME}
+              readOnly={readOnly}
+              timestamp={values.timestamp}
+            />
             <BasicInfo values={values} readOnly={readOnly} />
             <PositionPreference
               values={values}
