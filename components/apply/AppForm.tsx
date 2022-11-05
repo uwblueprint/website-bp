@@ -204,7 +204,7 @@ const AppForm: FC<Props> = ({
         window.scrollTo(0, 0);
       }}
     >
-      {({ values, handleSubmit }) => (
+      {({ values, handleSubmit, isSubmitting }) => (
         <Form onSubmit={handleSubmit}>
           <section
             className={
@@ -233,7 +233,7 @@ const AppForm: FC<Props> = ({
             />
             {!readOnly && <SelfIdentificationForm values={values} />}
             {!readOnly && (
-              <Button type="submit" variant="primary">
+              <Button type="submit" variant="primary" disabled={isSubmitting}>
                 Submit
               </Button>
             )}
