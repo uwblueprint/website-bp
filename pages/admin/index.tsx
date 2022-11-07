@@ -37,7 +37,7 @@ const Admin: NextPage = () => {
     <ProtectedRoute>
       <>
         Admin Page
-        <Table students={TABLE_MOCK_DATA} />
+        <Table Students={TABLE_MOCK_DATA} />
       </>
     </ProtectedRoute>
   );

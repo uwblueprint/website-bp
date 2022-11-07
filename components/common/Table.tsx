@@ -10,10 +10,10 @@ interface Student {
 }
 
 type PageProps = {
-  readonly: Student[];
+  readonly Students: Student[];
 };
 
-const Table: FC<PageProps> = ({ students }) => {
+const Table: FC<PageProps> = ({ Students }) => {
   return (
     <div className="max-w-2xl mx-auto">
       <div className="flex flex-col space-y-2">
@@ -28,7 +28,7 @@ const Table: FC<PageProps> = ({ students }) => {
             </tr>
           </thead>
           <tbody>
-            {students.map((app, i) => (
+            {Students.map((app: Student, i: number) => (
               <tr className="border-b-[1px] border-indigo-500">
                 <td className="pr-4 py-4 w-4">{`${i + 1}`}</td>
                 <td className="pr-4 w-32">{`${
