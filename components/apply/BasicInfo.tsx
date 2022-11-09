@@ -96,6 +96,7 @@ const BasicInfo: FC<Props> = ({ values, readOnly }: Props) => {
               <input
                 id="resume"
                 type="file"
+                accept="application/pdf"
                 name="resume"
                 required
                 className="mt-2"
