@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import ProtectedRoute from "@components/context/ProtectedRoute";
-import Table from "@components/common/Table";
+import ApplicationsTable from "@components/admin/ApplicationsTable";
 
 interface Student {
   id: number;
@@ -37,7 +37,7 @@ const Admin: NextPage = () => {
     <ProtectedRoute>
       <>
         Admin Page
-        <Table Students={TABLE_MOCK_DATA} />
+        <ApplicationsTable Students={TABLE_MOCK_DATA} />
       </>
     </ProtectedRoute>
   );
