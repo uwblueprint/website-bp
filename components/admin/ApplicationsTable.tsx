@@ -1,19 +1,18 @@
 import { FC } from "react";
 
 type Student = {
-  id: number;
+  id: string;
   firstName: string;
   lastName: string;
   email: string;
   resumeLink: string;
-  detailsLink: string;
 };
 
 type PageProps = {
-  readonly Students: Student[];
+  readonly students: Student[];
 };
 
-const ApplicationsTable: FC<PageProps> = ({ Students }) => {
+const ApplicationsTable: FC<PageProps> = ({ students }) => {
   return (
     <div className="flex flex-col space-y-2">
       <table className="table-fixed text-left border-collapse">
@@ -27,7 +26,7 @@ const ApplicationsTable: FC<PageProps> = ({ Students }) => {
           </tr>
         </thead>
         <tbody>
-          {Students.map((app: Student, i: number) => (
+          {students.map((app: Student, i: number) => (
             <tr className="border-b-[1px] border-charcoal-400">
               <td className="pr-4 py-4 w-4">{`${i + 1}`}</td>
               <td className="pr-4 w-32">{`${
@@ -45,7 +44,7 @@ const ApplicationsTable: FC<PageProps> = ({ Students }) => {
               </td>
               <td className="pr-4 w-16 text-blue-100">
                 <a
-                  href={`https://uwblueprint.org/admin/student-details/${app.detailsLink}`}
+                  href={`https://uwblueprint.org/admin/student-details/${app.id}`}
                 >
                   Details
                 </a>

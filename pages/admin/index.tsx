@@ -9,7 +9,6 @@ const Admin: NextPage = () => {
   return (
     <ProtectedRoute>
       <div className="container max-w-4xl px-4 mx-auto my-8">
-        <ApplicationsTable Students={[]} />
         <div className="flex justify-between items-center my-16">
           <img src="/common/logo-with-text-blue.svg" alt="UW Blueprint Logo" />
           <button className="text-blue-100">Logout</button>
@@ -32,6 +31,7 @@ const Admin: NextPage = () => {
             ))}
           </select>
           <button className="text-blue-100">Export CSV</button>
+          <ApplicationsTable students={[]} />
         </div>
       </div>
     </ProtectedRoute>
