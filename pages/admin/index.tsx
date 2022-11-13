@@ -2,7 +2,7 @@ import React from "react";
 import { NextPage } from "next";
 import ProtectedRoute from "@components/context/ProtectedRoute";
 import roleSpecificJson from "@constants/role-specific-questions.json";
-
+import ApplicationsTable from "@components/admin/ApplicationsTable";
 const memberRoles = roleSpecificJson.map(({ role }) => role);
 
 const Admin: NextPage = () => {
@@ -31,6 +31,9 @@ const Admin: NextPage = () => {
             ))}
           </select>
           <button className="text-blue-100">Export CSV</button>
+        </div>
+        <div className="my-8">
+          <ApplicationsTable students={[]} />
         </div>
       </div>
     </ProtectedRoute>
