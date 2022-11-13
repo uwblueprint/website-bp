@@ -6,21 +6,31 @@ import ProtectedRoute from "@components/context/ProtectedRoute";
 import roleSpecificJson from "@constants/role-specific-questions.json";
 import ApplicationsTable from "@components/admin/ApplicationsTable";
 import { APPLICATION_TERM } from "@constants/applications";
-import { AppFormValues } from "@components/apply/AppForm";
+import { Student } from "@components/admin/ApplicationsTable";
 
 const memberRoles = roleSpecificJson.map(({ role }) => role);
 
 const Admin: NextPage = () => {
-  const [applications, setApplications] = useState<AppFormValues[]>([]);
+  const [students, setStudents] = useState<Student[]>([]);
 
   useEffect(() => {
     get(ref(firebaseDb, "studentApplications"))
       .then((snapshot) => {
         if (snapshot.exists()) {
-          const apps: AppFormValues[] = Object.values(snapshot.val());
-          setApplications(
-            apps.filter((app: AppFormValues) => app.term === APPLICATION_TERM),
-          );
+          const allApps = snapshot.val();
+          const filteredApps: Student[] = [];
+          Object.keys(allApps).forEach((id) => {
+            if (allApps[id].term === APPLICATION_TERM) {
+              filteredApps.push({
+                id,
+                firstName: allApps[id].firstName,
+                lastName: allApps[id].lastName,
+                email: allApps[id].email,
+                resumeLink: allApps[id].resumeUrl,
+              });
+            }
+          });
+          setStudents(filteredApps);
         }
       })
       .catch((error) => {
@@ -55,7 +65,7 @@ const Admin: NextPage = () => {
           <button className="text-blue-100">Export CSV</button>
         </div>
         <div className="my-8">
-          <ApplicationsTable students={[]} />
+          <ApplicationsTable students={students} />
         </div>
       </div>
     </ProtectedRoute>
