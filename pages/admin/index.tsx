@@ -1,11 +1,33 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { NextPage } from "next";
+import { ref, get } from "firebase/database";
+import { firebaseDb } from "@utils/firebase";
 import ProtectedRoute from "@components/context/ProtectedRoute";
 import roleSpecificJson from "@constants/role-specific-questions.json";
 import ApplicationsTable from "@components/admin/ApplicationsTable";
+import { APPLICATION_TERM } from "@constants/applications";
+import { AppFormValues } from "@components/apply/AppForm";
+
 const memberRoles = roleSpecificJson.map(({ role }) => role);
 
 const Admin: NextPage = () => {
+  const [applications, setApplications] = useState<AppFormValues[]>([]);
+
+  useEffect(() => {
+    get(ref(firebaseDb, "studentApplications"))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const apps: AppFormValues[] = Object.values(snapshot.val());
+          setApplications(
+            apps.filter((app: AppFormValues) => app.term === APPLICATION_TERM),
+          );
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   return (
     <ProtectedRoute>
       <div className="container max-w-4xl px-4 mx-auto my-8">
