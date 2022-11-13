@@ -1,8 +1,15 @@
 import React from "react";
 import { NextPage } from "next";
+import { auth } from "@utils/firebase";
+import { signOut } from "firebase/auth";
 import ProtectedRoute from "@components/context/ProtectedRoute";
 import roleSpecificJson from "@constants/role-specific-questions.json";
 import ApplicationsTable from "@components/admin/ApplicationsTable";
+
+const signOutWithGoogle = async () => {
+  signOut(auth);
+};
+
 const memberRoles = roleSpecificJson.map(({ role }) => role);
 
 const Admin: NextPage = () => {
@@ -11,7 +18,9 @@ const Admin: NextPage = () => {
       <div className="container max-w-4xl px-4 mx-auto my-8">
         <div className="flex justify-between items-center my-16">
           <img src="/common/logo-with-text-blue.svg" alt="UW Blueprint Logo" />
-          <button className="text-blue-100">Logout</button>
+          <button className="text-blue-100" onClick={signOutWithGoogle}>
+            Logout
+          </button>
         </div>
         <h2 className="text-blue-100 mb-8">Students</h2>
         <div className="flex justify-between">
