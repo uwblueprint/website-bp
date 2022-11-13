@@ -32,7 +32,9 @@ const Admin: NextPage = () => {
           </select>
           <button className="text-blue-100">Export CSV</button>
         </div>
-        <ApplicationsTable students={[]} />
+        <div className="my-8">
+          <ApplicationsTable students={[]} />
+        </div>
       </div>
     </ProtectedRoute>
   );
