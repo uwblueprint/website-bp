@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { NextPage } from "next";
 import { ref, get } from "firebase/database";
-import { firebaseDb } from "@utils/firebase";
+import ApplicationsTable, {
+  Student,
+} from "@components/admin/ApplicationsTable";
 import ProtectedRoute from "@components/context/ProtectedRoute";
-import roleSpecificJson from "@constants/role-specific-questions.json";
-import ApplicationsTable from "@components/admin/ApplicationsTable";
 import { APPLICATION_TERM } from "@constants/applications";
-import { Student } from "@components/admin/ApplicationsTable";
+import roleSpecificJson from "@constants/role-specific-questions.json";
+import { firebaseDb } from "@utils/firebase";
 
 const memberRoles = roleSpecificJson.map(({ role }) => role);
 
