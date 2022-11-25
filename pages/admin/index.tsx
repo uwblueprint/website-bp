@@ -1,18 +1,50 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { NextPage } from "next";
 import { auth } from "@utils/firebase";
 import { signOut } from "firebase/auth";
+import { ref, get } from "firebase/database";
+import ApplicationsTable, {
+  Student,
+} from "@components/admin/ApplicationsTable";
 import ProtectedRoute from "@components/context/ProtectedRoute";
+import { APPLICATION_TERM } from "@constants/applications";
 import roleSpecificJson from "@constants/role-specific-questions.json";
-import ApplicationsTable from "@components/admin/ApplicationsTable";
 
 const signOutWithGoogle = async () => {
   signOut(auth);
 };
+import { firebaseDb } from "@utils/firebase";
 
 const memberRoles = roleSpecificJson.map(({ role }) => role);
 
 const Admin: NextPage = () => {
+  const [students, setStudents] = useState<Student[]>([]);
+
+  useEffect(() => {
+    get(ref(firebaseDb, "studentApplications"))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const allApps = snapshot.val();
+          const filteredApps: Student[] = [];
+          Object.keys(allApps).forEach((id) => {
+            if (allApps[id].term === APPLICATION_TERM) {
+              filteredApps.push({
+                id,
+                firstName: allApps[id].firstName,
+                lastName: allApps[id].lastName,
+                email: allApps[id].email,
+                resumeLink: allApps[id].resumeUrl,
+              });
+            }
+          });
+          setStudents(filteredApps);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   return (
     <ProtectedRoute>
       <div className="container max-w-4xl px-4 mx-auto my-8">
@@ -42,7 +74,7 @@ const Admin: NextPage = () => {
           <button className="text-blue-100">Export CSV</button>
         </div>
         <div className="my-8">
-          <ApplicationsTable students={[]} />
+          <ApplicationsTable students={students} />
         </div>
       </div>
     </ProtectedRoute>

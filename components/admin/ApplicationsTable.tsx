@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-type Student = {
+export type Student = {
   id: string;
   firstName: string;
   lastName: string;
@@ -27,7 +27,7 @@ const ApplicationsTable: FC<PageProps> = ({ students }) => {
         </thead>
         <tbody>
           {students.map((app: Student, i: number) => (
-            <tr className="border-b-[1px] border-charcoal-400">
+            <tr className="border-b-[1px] border-charcoal-400" key={i}>
               <td className="pr-4 py-4 w-4">{`${i + 1}`}</td>
               <td className="pr-4 w-32">{`${
                 app.firstName + " " + app.lastName
