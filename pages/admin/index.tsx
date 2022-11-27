@@ -18,6 +18,7 @@ import { firebaseDb } from "@utils/firebase";
 const memberRoles = roleSpecificJson.map(({ role }) => role);
 
 const Admin: NextPage = () => {
+  const [roleSelected, setRoleSelected] = useState("default");
   const [students, setStudents] = useState<Student[]>([]);
 
   useEffect(() => {
@@ -34,6 +35,8 @@ const Admin: NextPage = () => {
                 lastName: allApps[id].lastName,
                 email: allApps[id].email,
                 resumeLink: allApps[id].resumeUrl,
+                firstChoiceRole: allApps[id].firstChoiceRole,
+                secondChoiceRole: allApps[id].secondChoiceRole,
               });
             }
           });
@@ -61,10 +64,9 @@ const Admin: NextPage = () => {
             name="roles"
             className="border-l-charcoal-300 text-charcoal-600 border border-charcoal-300 rounded-md px-4 py-3 border-l-4 focus:outline-none focus:ring-1 focus:ring-blue-100 focus:border-blue-100"
             style={{ minHeight: "25px" }}
+            onChange={(e) => setRoleSelected(e.target.value)}
           >
-            <option value="" disabled>
-              Select an option
-            </option>
+            <option value="default">Select an option</option>
             {memberRoles.map((value) => (
               <option key={value} value={value}>
                 {value}
@@ -74,7 +76,7 @@ const Admin: NextPage = () => {
           <button className="text-blue-100">Export CSV</button>
         </div>
         <div className="my-8">
-          <ApplicationsTable students={students} />
+          <ApplicationsTable students={students} roleSelected={roleSelected} />
         </div>
       </div>
     </ProtectedRoute>
