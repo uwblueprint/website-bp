@@ -66,9 +66,7 @@ const Admin: NextPage = () => {
             style={{ minHeight: "25px" }}
             onChange={(e) => setRoleSelected(e.target.value)}
           >
-            <option value="" disabled>
-              Select an option
-            </option>
+            <option value="default">Select an option</option>
             {memberRoles.map((value) => (
               <option key={value} value={value}>
                 {value}
