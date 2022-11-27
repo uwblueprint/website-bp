@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-type Student = {
+export type Student = {
   id: string;
   firstName: string;
   lastName: string;
