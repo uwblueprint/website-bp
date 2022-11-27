@@ -48,7 +48,6 @@ const Admin: NextPage = () => {
       });
   }, []);
 
-  console.log(students);
   return (
     <ProtectedRoute>
       <div className="container max-w-4xl px-4 mx-auto my-8">
