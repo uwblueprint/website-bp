@@ -1,21 +1,32 @@
 import { useState, useEffect } from "react";
 import { NextPage } from "next";
-import { auth } from "@utils/firebase";
 import { signOut } from "firebase/auth";
 import { ref, get } from "firebase/database";
+import { CSVLink } from "react-csv";
 import ApplicationsTable, {
   Student,
 } from "@components/admin/ApplicationsTable";
 import ProtectedRoute from "@components/context/ProtectedRoute";
 import { APPLICATION_TERM } from "@constants/applications";
 import roleSpecificJson from "@constants/role-specific-questions.json";
+import { auth, firebaseDb } from "@utils/firebase";
+
+const memberRoles = roleSpecificJson.map(({ role }) => role);
+
+const headers = [
+  { label: "First Name", key: "firstName" },
+  { label: "Last Name", key: "lastName" },
+  { label: "Email", key: "email" },
+  { label: "Resume Link", key: "resumeLink" },
+  {
+    label: "Application Link",
+    key: "id",
+  },
+];
 
 const signOutWithGoogle = async () => {
   signOut(auth);
 };
-import { firebaseDb } from "@utils/firebase";
-
-const memberRoles = roleSpecificJson.map(({ role }) => role);
 
 const Admin: NextPage = () => {
   const [students, setStudents] = useState<Student[]>([]);
@@ -71,7 +82,20 @@ const Admin: NextPage = () => {
               </option>
             ))}
           </select>
-          <button className="text-blue-100">Export CSV</button>
+          <button className="text-blue-100">
+            <CSVLink
+              data={students.map((app) =>
+                Object.assign({}, app, {
+                  id: `https://uwblueprint.org/admin/student-details/${app.id}`,
+                }),
+              )}
+              filename={"export.csv"}
+              headers={headers}
+              target="_blank"
+            >
+              Export CSV
+            </CSVLink>
+          </button>
         </div>
         <div className="my-8">
           <ApplicationsTable students={students} />
