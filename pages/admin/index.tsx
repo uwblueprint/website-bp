@@ -18,7 +18,7 @@ import { firebaseDb } from "@utils/firebase";
 const memberRoles = roleSpecificJson.map(({ role }) => role);
 
 const Admin: NextPage = () => {
-  const [roleSelected, setRoleSelected] = useState("");
+  const [roleSelected, setRoleSelected] = useState("default");
   const [students, setStudents] = useState<Student[]>([]);
 
   useEffect(() => {
@@ -48,6 +48,7 @@ const Admin: NextPage = () => {
       });
   }, []);
 
+  console.log(students);
   return (
     <ProtectedRoute>
       <div className="container max-w-4xl px-4 mx-auto my-8">
