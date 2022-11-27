@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NextPage } from "next";
 import ProtectedRoute from "@components/context/ProtectedRoute";
 import roleSpecificJson from "@constants/role-specific-questions.json";
@@ -6,6 +6,7 @@ import ApplicationsTable from "@components/admin/ApplicationsTable";
 const memberRoles = roleSpecificJson.map(({ role }) => role);
 
 const Admin: NextPage = () => {
+  const [roleSelected, setRoleSelected] = useState("");
   return (
     <ProtectedRoute>
       <div className="container max-w-4xl px-4 mx-auto my-8">
@@ -20,6 +21,7 @@ const Admin: NextPage = () => {
             name="roles"
             className="border-l-charcoal-300 text-charcoal-600 border border-charcoal-300 rounded-md px-4 py-3 border-l-4 focus:outline-none focus:ring-1 focus:ring-blue-100 focus:border-blue-100"
             style={{ minHeight: "25px" }}
+            onChange={(e) => setRoleSelected(e.target.value)}
           >
             <option value="" disabled>
               Select an option
@@ -33,7 +35,7 @@ const Admin: NextPage = () => {
           <button className="text-blue-100">Export CSV</button>
         </div>
         <div className="my-8">
-          <ApplicationsTable students={[]} />
+          <ApplicationsTable students={[]} roleSelected={roleSelected} />
         </div>
       </div>
     </ProtectedRoute>
