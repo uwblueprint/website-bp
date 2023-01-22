@@ -117,9 +117,9 @@
     },
     {
       "name": "Nima Sheth",
-      "role": "vp internal",
-      "term": 1229,
-      "teams": ["executive"],
+      "role": "developer",
+      "term": 1231,
+      "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FVPI_Nima_Sheth.jpg?alt=media&token=73940d9a-85e6-45da-a7be-2fa2cebb0722"
     },
     {
@@ -286,7 +286,7 @@
     {
       "name": "Brian Zhang",
       "role": "developer",
-      "term": 1229,
+      "term": 1231,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
@@ -328,7 +328,7 @@
     {
       "name": "Wais Hundekar",
       "role": "developer",
-      "term": 1229,
+      "term": 1231,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Wais_Hundekar.JPG?alt=media&token=9b5f48dc-a259-46a5-9ac5-29f871de1adb"
     }, 
@@ -341,8 +341,8 @@
     },
     {
       "name": "Joyce Shi",
-      "role": "technical lead",
-      "term": 1229,
+      "role": "project lead",
+      "term": 1231,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fpl_joyceshi.jpeg?alt=media&token=70ff8087-72d2-4b8e-96b2-9046a7017655"
     },
@@ -363,7 +363,7 @@
     {
       "name": "Mehak Dhaliwal",
       "role": "product manager",
-      "term": 1229,
+      "term": 1231,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdesigner_mehak.JPG?alt=media&token=cb89e110-e5da-4a26-97b4-57b5a40eeddb"
     },
@@ -377,7 +377,7 @@
     {
       "name": "Riishi Jeevakumar",
       "role": "designer",
-      "term": 1229,
+      "term": 1231,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdesigner_RiishiJeevakumar.jpg?alt=media&token=ff4615a1-bd85-469c-89fa-0497d163076d"
     },
@@ -1653,6 +1653,13 @@
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fspring2021headshots%2Fjenna%20hirji.png?alt=media&token=ec31687f-19db-4615-96b0-06b650e04563"
     },
     {
+      "name": "Jenna Xiao",
+      "role": "developer",
+      "term": 1231,
+      "teams": ["jump-math"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Jenna_Xiao.jpeg?alt=media&token=4cef69fd-c815-486f-8294-4341d528fe17"
+    },
+    {
       "name": "Soha Khan",
       "role": "product manager",
       "term": 1229,
@@ -2049,9 +2056,9 @@
     {
       "name": "Bonnie Chin",
       "role": "designer",
-      "term": 1229,
+      "term": 1231,
       "teams": ["jump-math"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDesigner_Bonnie_Chin.jpeg?alt=media&token=fb7b988e-fcf6-4b18-9c52-5a5761e0a4d6"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDesigner_Bonnie_Chin.jpeg?alt=media&token=6acc1b6a-d4cf-47b0-9be8-e64bb67476ed"
     },
     {
       "name": "Chamod Gamage",
@@ -2361,6 +2368,13 @@
       "term": 1215,
       "teams": ["sdc-foundation"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fspring2021headshots%2FCindy%20Wang.png?alt=media&token=b78e204f-a2f1-488a-86b5-5577433793ab"
+    },
+    {
+      "name": "Cindy Gu",
+      "role": "developer",
+      "term": 1231,
+      "teams": ["jump-math"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Cindy_Gu.JPG?alt=media&token=eafa9e2f-f3bc-40bf-9b4f-29a7b256e29f"
     },
     {
       "name": "Mahad Zaryab",
@@ -2798,8 +2812,8 @@
     },
     {
       "name": "Carissa Tang",
-      "role": "developer",
-      "term": 1229,
+      "role": "project lead",
+      "term": 1231,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_carissatang.jpg?alt=media&token=5e0e7d58-5b98-4d20-85b8-45963e4d5698"
     },
@@ -3047,6 +3061,13 @@
       "term": 1231,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Dashan Ji",
+      "role": "designer",
+      "term": 1231,
+      "teams": ["jump-math"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDesign_Dashan(Shawn)_Ji.jpg?alt=media&token=dc2cc650-698f-4e4d-8b96-bd6fa0c69227"
     }
   ]
 }
