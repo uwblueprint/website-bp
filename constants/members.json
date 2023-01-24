@@ -14,8 +14,8 @@
       "id": "ccbc"
     },
     {
-      "name": "Focus on Nature",
-      "id": "focus-on-nature"
+      "name": "Caring Partners Global",
+      "id": "caring-partners-global"
     },
     {
       "name": "Jump Math",
@@ -131,9 +131,9 @@
     },
     {
       "name": "Rachel Scott",
-      "role": "vp external",
-      "term": 1229,
-      "teams": ["executive"],
+      "role": "product manager",
+      "term": 1231,
+      "teams": ["caring-partners-global"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fvpi_rachelscott.jpg?alt=media&token=5d953b91-e734-4883-9c1d-51b55811d62b"
     },
     {
@@ -195,15 +195,15 @@
     {
       "name": "Serena Li",
       "role": "designer",
-      "term": 1229,
-      "teams": ["casa"],
+      "term": 1231,
+      "teams": ["caring-partners-global"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2Fdesigner_serena_li.jpeg?alt=media&token=b763e351-2ae2-4dab-b7cd-bed0e3dd208d"
     },
     {
       "name": "Juthika Hoque",
       "role": "developer",
-      "term": 1229,
-      "teams": ["casa"],
+      "term": 1231,
+      "teams": ["caring-partners-global"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Juthika_Hoque.jpg?alt=media&token=dd6c8088-b991-470a-8f94-9dcfca3f11e1"
     },
     {
@@ -307,8 +307,8 @@
     {
       "name": "Helen Guan",
       "role": "developer",
-      "term": 1229,
-      "teams": ["ccbc"],
+      "term": 1231,
+      "teams": ["caring-partners-global"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Helen_Guan.JPG?alt=media&token=6f3cb672-f902-4c1e-ac50-d83acd55e617"
     },
     {
@@ -1887,10 +1887,10 @@
     },
     {
       "name": "Dinu Wijetunga",
-      "role": "product manager",
-      "term": 1221,
-      "teams": ["rowan-house"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fpm_dinuwijetunga.jpg?alt=media&token=fa5156e0-33d3-43bc-957a-0d0c6b176f9a"
+      "role": "technical lead",
+      "term": 1231,
+      "teams": ["caring-partners-global"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FPL_Dinu_Wijetunga.JPG?alt=media&token=5872c147-f116-4d07-8ce7-f0663132622e"
     },
     {
       "name": "Vyomesh Iyengar",
@@ -2977,6 +2977,48 @@
       "term": 1229,
       "teams": ["focus-on-nature"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Jasraj_Dhanoa.jpg?alt=media&token=5bc12643-0202-428f-aeb1-22736e2f992b"
+    },
+    {
+      "name": "Maitry Mistry",
+      "role": "product manager",
+      "term": 1231,
+      "teams": ["caring-partners-global"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Joyce Wangsa",
+      "role": "developer",
+      "term": 1231,
+      "teams": ["caring-partners-global"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Joyce_Wangsa.jpg?alt=media&token=c6764f36-96ff-4786-b232-f16c3ed0d02e"
+    },
+    {
+      "name": "Kelly Pham",
+      "role": "developer",
+      "term": 1231,
+      "teams": ["caring-partners-global"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Kelly_Pham.png?alt=media&token=26590752-a8ff-4465-9c1e-b3f59b5edeb8"
+    },
+    {
+      "name": "Safwaan Chowdhury",
+      "role": "developer",
+      "term": 1231,
+      "teams": ["caring-partners-global"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Safwaan_Chowdhury.JPG?alt=media&token=210479f5-e8a8-4b2a-a1fb-c2f8d75a8861"
+    },
+    {
+      "name": "Connor Bechthold",
+      "role": "developer",
+      "term": 1231,
+      "teams": ["caring-partners-global"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Connor_Bechthold.jpeg?alt=media&token=9b68f528-daef-400a-a8a7-87b8692ad9ed"
+    },
+    {
+      "name": "Elle Luo",
+      "role": "designer",
+      "term": 1231,
+      "teams": ["caring-partners-global"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDesign_Elle_Luo.JPG?alt=media&token=d5632922-32ad-4e24-9372-b411ceaf207c"
     }
   ]
 }
