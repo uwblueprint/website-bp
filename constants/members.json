@@ -2210,14 +2210,14 @@
     },
     {
       "name": "Abu Bello",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1231,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Christine Ng",
-      "role": "project manager",
+      "role": "product manager",
       "term": 1231,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FPM_Christine_Ng.jpg?alt=media&token=b394cdd2-dce1-4cb2-9489-7f21e5faf885"
@@ -2448,14 +2448,14 @@
     },
     {
       "name": "Anish Aggarwal",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1231,
       "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ffall2021headshots%2Fdev_anish_aggarwal.jpeg?alt=media&token=a173f9d8-eded-44cf-a622-38511d6ad1a8"
     },
     {
       "name": "Jaishree Balamurugan",
-      "role": "project manager",
+      "role": "product manager",
       "term": 1231,
       "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FPM_Jaishree_Bala.jpg?alt=media&token=a342413b-18ae-44cf-88f2-546db4e68798"
