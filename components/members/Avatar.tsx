@@ -10,7 +10,8 @@ export const Avatar: FC<Member> = ({ name, role, img }) => {
       />
       <p className="font-bold text-center">{name}</p>
       <p className="text-charcoal-500 text-center capitalize">
-        {role?.replace("vp", "VP")}
+        {/**Making sure all occurences of vp are replaced */}
+        {role?.replace(/vp/g, "VP")}
       </p>
     </figure>
   );

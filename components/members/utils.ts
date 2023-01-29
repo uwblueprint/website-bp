@@ -12,19 +12,20 @@ export function roleType(role: string): number {
     ["vp communications", 7],
     ["vp finance", 8],
     ["vp talent", 9],
+    ["vp scoping mentor", 10],
     // CLUB SUPPORT ROLES
-    ["graphic designer", 10],
-    ["content strategist", 11],
-    ["user researcher", 12],
-    ["internal operations lead", 13],
+    ["graphic designer", 11],
+    ["content strategist", 12],
+    ["user researcher", 13],
+    ["internal operations lead", 14],
     // PROJECT TEAM ROLES
-    ["technical lead", 14],
-    ["product manager", 15],
-    ["project mentor", 16],
-    ["designer", 17],
-    ["design mentor", 18],
-    ["developer", 19],
-    ["developer mentor", 20],
+    ["technical lead", 15],
+    ["product manager", 16],
+    ["project mentor", 17],
+    ["designer", 18],
+    ["design mentor", 19],
+    ["developer", 20],
+    ["developer mentor", 21],
   ]);
 
   // If member has multiple roles, order by first one
