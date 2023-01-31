@@ -75,8 +75,8 @@
     },
     {
       "name": "Amanda Du",
-      "role": "vp design",
-      "term": 1229,
+      "role": "design system",
+      "term": 1231,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ffall2021headshots%2Fdesigner_amanda_du.jpg?alt=media&token=a02ac5be-0054-4771-8b19-dc335256c649"
     },
@@ -2182,9 +2182,9 @@
     },
     {
       "name": "Krystal Truong",
-      "role": "designer",
-      "term": 1229,
-      "teams": ["fck"],
+      "role": "design system",
+      "term": 1231,
+      "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fspring2021headshots%2FKrystal_Truong.jpg?alt=media&token=dc1986fd-5cca-41f9-94e3-13c869656bd5"
     },
     {
@@ -2889,9 +2889,9 @@
     },
     {
       "name": "Christine Duong",
-      "role": "user experience research",
-      "term": 1229,
-      "teams": ["fck"],
+      "role": "user researcher",
+      "term": 1231,
+      "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FUXR_Christine_Duong.jpeg?alt=media&token=b459e2af-f3d2-47d9-9728-736a149e2cc8"
     },
     {
@@ -3061,6 +3061,13 @@
       "term": 1231,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Courtney Bye",
+      "role": "graphic designer",
+      "term": 1231,
+      "teams": ["executive"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FGraphicDesigner_Courtney_Bye.JPG?alt=media&token=a67fc40a-3295-43be-a916-44b20ae383c7"
     },
     {
       "name": "Dashan Ji",
