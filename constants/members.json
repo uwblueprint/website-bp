@@ -152,10 +152,59 @@
     },
     {
       "name": "Bowen Zhu",
-      "role": "vp talent",
-      "term": 1229,
-      "teams": ["executive"],
+      "role": "technical lead",
+      "term": 1231,
+      "teams": ["casa"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FVP_Talent_Bowen_Zhu.jpg?alt=media&token=627c467e-19f5-4f46-93af-a9439e14b9e2"
+    },
+    {
+      "name": "Eugene Zhang",
+      "role": "developer",
+      "term": 1231,
+      "teams": ["casa"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2Fdev_eugene_zhang.jpeg?alt=media&token=8b3bf4cc-95f0-4c16-8ac0-2c05bea159b3"
+    },
+    {
+      "name": "Thomas Wu",
+      "role": "developer",
+      "term": 1231,
+      "teams": ["casa"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Deen Parak",
+      "role": "developer",
+      "term": 1231,
+      "teams": ["casa"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Ivan Yu",
+      "role": "developer",
+      "term": 1231,
+      "teams": ["casa"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Ivan_Yu.jpg?alt=media&token=0ac6ea8e-c881-4b08-a68f-96dd847ecb3c"
+    },
+    {
+      "name": "Jasmine Xiong",
+      "role": "developer",
+      "term": 1231,
+      "teams": ["casa"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Jasmine_Xiong.jpg?alt=media&token=9ee688ce-c2ec-4233-945c-680a6d44c94d"
+    },
+    {
+      "name": "Yan Zhang",
+      "role": "designer",
+      "term": 1231,
+      "teams": ["casa"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDesign_Yan_Zhang.JPG?alt=media&token=36ae37b4-5a4b-4f7f-8063-eb6ef4d29a90"
+    },
+    {
+      "name": "Olivia Wang",
+      "role": "designer",
+      "term": 1231,
+      "teams": ["casa"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Amy Li",
@@ -335,8 +384,8 @@
     {
       "name": "Jessica Yang",
       "role": "product manager",
-      "term": 1229,
-      "teams": ["internal-tools"],
+      "term": 1231,
+      "teams": ["casa"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FPM_Jessica_Yang.jpg?alt=media&token=6a318481-f5ca-49b0-bef1-cd98b43ef917"
     },
     {
@@ -2561,8 +2610,8 @@
     {
       "name": "Raya Ferdous",
       "role": "developer",
-      "term": 1229,
-      "teams": ["internal-tools"],
+      "term": 1231,
+      "teams": ["casa"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ffall2021headshots%2Fdev_raya_ferdous.jpeg?alt=media&token=dde217ce-9aab-4c0b-a4e1-2fbcadefc9fe"
     },
     {
@@ -2889,9 +2938,9 @@
     },
     {
       "name": "Christine Duong",
-      "role": "user researcher",
+      "role": "designer",
       "term": 1231,
-      "teams": ["executive"],
+      "teams": ["casa"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FUXR_Christine_Duong.jpeg?alt=media&token=b459e2af-f3d2-47d9-9728-736a149e2cc8"
     },
     {
