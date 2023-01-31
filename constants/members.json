@@ -1662,7 +1662,7 @@
     {
       "name": "Soha Khan",
       "role": "product manager",
-      "term": 1229,
+      "term": 1231,
       "teams": ["ccbc"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ffall2020headshots%2FVpMarketing_SohaKhan.JPG?alt=media&token=3d101c30-ff2a-4c98-99b9-08a2b9128615"
     },
@@ -2841,7 +2841,7 @@
     {
       "name": "Shrinjay Mukherjee",
       "role": "technical lead",
-      "term": 1229,
+      "term": 1231,
       "teams": ["ccbc"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fdev_shrinjay.jpeg?alt=media&token=d8499ae8-ae37-4d08-af6d-205c30eae915"
     },
@@ -2939,9 +2939,9 @@
     {
       "name": "Calder White",
       "role": "developer",
-      "term": 1229,
+      "term": 1231,
       "teams": ["ccbc"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Calder_White.png?alt=media&token=1de74ebd-ffdf-4fb3-a7c5-93a955034de6"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Calder_White.jpg?alt=media&token=496ad289-8393-48a7-b990-cf72baacc2f2"
     },
     {
       "name": "Arist Xu",
@@ -2953,7 +2953,7 @@
     {
       "name": "Khloe Ramdhan",
       "role": "developer",
-      "term": 1229,
+      "term": 1231,
       "teams": ["ccbc"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Khloe_Ramdhan.JPG?alt=media&token=36336a16-461c-4a2d-a9e2-e85ed14188a8"
     },
@@ -2967,7 +2967,7 @@
     {
       "name": "Sebastian Mendoza",
       "role": "developer",
-      "term": 1229,
+      "term": 1231,
       "teams": ["ccbc"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Sebastian_Mendoza.jpg?alt=media&token=c61c50a0-5508-4f08-9ad1-2c19432b76e8"
     },
@@ -3068,6 +3068,34 @@
       "term": 1231,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDesign_Dashan(Shawn)_Ji.jpg?alt=media&token=dc2cc650-698f-4e4d-8b96-bd6fa0c69227"
+    },
+    {
+      "name": "Caitlin Kwan",
+      "role": "developer",
+      "term": 1231,
+      "teams": ["ccbc"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Caitlin_Kwan.JPG?alt=media&token=69775866-b126-45cd-9355-6916934dad2f"
+    },
+    {
+      "name": "Derrick Yang",
+      "role": "developer",
+      "term": 1231,
+      "teams": ["ccbc"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Derrick_Yang.JPG?alt=media&token=ed801e8d-8351-411d-a5ef-2d80b7aca1c1"
+    },
+    {
+      "name": "Nathan Souphanthong",
+      "role": "developer",
+      "term": 1231,
+      "teams": ["ccbc"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Nathan_Souphanthong.jpeg?alt=media&token=93554ac4-df79-4a71-832e-547ca65c7ba8"
+    },
+    {
+      "name": "Kenson Hui",
+      "role": "developer",
+      "term": 1231,
+      "teams": ["ccbc"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     }
   ]
 }
