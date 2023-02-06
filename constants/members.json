@@ -96,14 +96,14 @@
     },
     {
       "name": "Aliyah Warsi",
-      "role": "vp scoping mentor",
-      "term": 1231,
+      "role": "vp scoping",
+      "term": 1229,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FAliyah_Warsi.jpg?alt=media&token=279063dc-6a15-4d62-ae73-e5c3025768b2"
     },
     {
       "name": "Rifa Tamanna",
-      "role": "vp product & vp scoping mentor",
+      "role": "vp product",
       "term": 1231,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FVPScoping_%20Rifa_Tamanna.jpg?alt=media&token=b04c583b-9464-42dc-a0c7-a9c1470ea557"
@@ -176,7 +176,7 @@
       "role": "developer",
       "term": 1231,
       "teams": ["casa"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Deen_Parak.png?alt=media&token=fa95b956-9f5c-4b8d-927e-968641023472"
     },
     {
       "name": "Ivan Yu",
@@ -446,7 +446,7 @@
     },
     {
       "name": "Tejas Wilkhoo",
-      "role": "developer",
+      "role": "technical lead",
       "term": 1229,
       "teams": ["focus-on-nature"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Tejas_Wilkhoo.jpg?alt=media&token=843beff4-38df-4ec7-b45b-8c92b5d5c71a"
@@ -475,7 +475,7 @@
 
     {
       "name": "Eric Feng",
-      "role": "project mentor",
+      "role": "technical lead",
       "term": 1219,
       "teams": ["sdc-foundation"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2021headshots%2FEric_Feng.JPG?alt=media&token=c8e7f462-780b-4a35-bcce-f096ef6ef2cb"
@@ -1953,7 +1953,7 @@
       "role": "vp design",
       "term": 1231,
       "teams": ["executive"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDesigner_Vyomesh_Iyengar.jpg?alt=media&token=dce39f20-511c-4a87-ba4d-8ae8a87863c2"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FVPD_Vyomesh_Iyengar.png?alt=media&token=76a43911-78b3-4e45-b689-55a5e8939f8d"
     },
     {
       "name": "Joy Lin",
@@ -2924,7 +2924,7 @@
     },
     {
       "name": "Ryan Chang",
-      "role": "developer",
+      "role": "technical lead",
       "term": 1229,
       "teams": ["focus-on-nature"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fdev_ryanchang.jpg?alt=media&token=f80f5590-47a7-449f-8371-c80c101ed227"
