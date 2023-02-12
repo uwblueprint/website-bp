@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import TextAreaInput from "@components/common/TextAreaInput";
 import { AppFormValues, RoleSpecificQuestion } from "./AppForm";
 
@@ -6,6 +6,12 @@ type Props = {
   values: AppFormValues;
   questions: RoleSpecificQuestion[];
   readOnly: boolean;
+};
+
+type AggregatedQuestion = RoleSpecificQuestion["questions"][0] & {
+  roles: string[];
+  roleIndex: number;
+  questionIndex: number;
 };
 
 const RoleSpecificQuestions: FC<Props> = ({
@@ -17,12 +23,39 @@ const RoleSpecificQuestions: FC<Props> = ({
     return <></>;
   }
 
-  const questionsToRender = questions.filter(
-    (question) =>
-      (question.role === values.firstChoiceRole ||
-        question.role === values.secondChoiceRole) &&
-      question.questions.length > 0,
-  );
+  const questionsToRender = useMemo(() => {
+    const questionsForSelectedRoles = questions.filter(
+      (question) =>
+        question.role === values.firstChoiceRole ||
+        question.role === values.secondChoiceRole,
+    );
+    const questionRolesByUniqueId: { [id: number]: string[] } = {};
+    return questionsForSelectedRoles
+      .map(({ id, role, questions: roleQuestions }) => ({
+        id,
+        role,
+        questions: roleQuestions
+          ?.map(({ uniqueId, ...question }, questionIndex) => {
+            const roles = [role];
+            if (uniqueId) {
+              if (questionRolesByUniqueId[uniqueId]) {
+                // Duplicate of a question which already exists.
+                questionRolesByUniqueId[uniqueId].push(role);
+                return null;
+              }
+
+              questionRolesByUniqueId[uniqueId] = roles;
+            }
+            const roleIndex = questions.findIndex(
+              ({ id: searchId }) => searchId == id,
+            );
+            return { ...question, roles, roleIndex, questionIndex };
+          })
+          // Remove duplicate (nulled-out) questions.
+          ?.filter((question): question is AggregatedQuestion => !!question),
+      }))
+      .filter(({ questions }) => questions.length);
+  }, [values.firstChoiceRole, values.secondChoiceRole]);
 
   return questionsToRender.length > 0 ? (
     <div className="grid gap-3 mb-12">
@@ -51,29 +84,25 @@ const RoleSpecificQuestions: FC<Props> = ({
                 />
               )),
             )
-          : questions.map((roleSpecificQuestion, index) => {
-              if (
-                roleSpecificQuestion.role === values.firstChoiceRole ||
-                roleSpecificQuestion.role === values.secondChoiceRole
-              ) {
-                return roleSpecificQuestion.questions.map((question, i) => (
+          : questionsToRender.map((roleSpecificQuestion) =>
+              roleSpecificQuestion.questions.map(
+                ({ roleIndex, questionIndex, roles, maxLength, question }) => (
                   <TextAreaInput
-                    id={`roleSpecificQuestions[${index}].questions[${i}].response`}
-                    key={`roleSpecificQuestion${roleSpecificQuestion.id}${i}`}
-                    labelText={
-                      question.question + " (" + roleSpecificQuestion.role + ")"
-                    }
+                    id={`roleSpecificQuestions[${roleIndex}].questions[${questionIndex}].response`}
+                    key={`roleSpecificQuestion[${roleIndex}][${questionIndex}]`}
+                    labelText={question + " (" + roles.join(", ") + ")"}
                     value={
-                      values.roleSpecificQuestions[index]?.questions[i]
-                        ?.response
+                      values.roleSpecificQuestions[roleIndex]?.questions[
+                        questionIndex
+                      ]?.response
                     }
-                    maxLength={question.maxLength}
+                    maxLength={maxLength}
                     required
                     readOnly={readOnly}
                   />
-                ));
-              }
-            })}
+                ),
+              ),
+            )}
       </div>
     </div>
   ) : (

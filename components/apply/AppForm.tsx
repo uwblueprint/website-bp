@@ -67,6 +67,7 @@ export type RoleSpecificQuestion = {
   role: string;
   questions: [
     {
+      uniqueId?: number;
       question: string;
       maxLength: number;
     },
@@ -146,7 +147,7 @@ const AppForm: FC<Props> = ({
       onSubmit={async (values) => {
         const uuid = uuidv4();
 
-        values.roleSpecificQuestions = values.roleSpecificQuestions
+        const roleSpecificQuestions = values.roleSpecificQuestions
           .filter(({ role }) => role === values.firstChoiceRole)
           .concat(
             values.roleSpecificQuestions.filter(
@@ -177,7 +178,7 @@ const AppForm: FC<Props> = ({
           firstChoiceRole: values.firstChoiceRole,
           secondChoiceRole: values.secondChoiceRole || "",
           shortAnswerQuestions: values.shortAnswerQuestions,
-          roleSpecificQuestions: values.roleSpecificQuestions,
+          roleSpecificQuestions,
           timestamp: serverTimestamp(),
           status: "pending",
         };
