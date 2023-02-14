@@ -23,8 +23,9 @@ const RoleSpecificQuestions: FC<Props> = ({
     return <></>;
   }
 
+  const sourceQuestions = readOnly ? values.roleSpecificQuestions : questions;
   const questionsToRender = useMemo(() => {
-    const questionsForSelectedRoles = questions.filter(
+    const questionsForSelectedRoles = sourceQuestions.filter(
       (question) =>
         question.role === values.firstChoiceRole ||
         question.role === values.secondChoiceRole,
@@ -46,7 +47,7 @@ const RoleSpecificQuestions: FC<Props> = ({
 
               questionRolesByUniqueId[uniqueId] = roles;
             }
-            const roleIndex = questions.findIndex(
+            const roleIndex = sourceQuestions.findIndex(
               ({ id: searchId }) => searchId == id,
             );
             return { ...question, roles, roleIndex, questionIndex };
@@ -67,42 +68,25 @@ const RoleSpecificQuestions: FC<Props> = ({
         </p>
       )}
       <div className="grid gap-6">
-        {readOnly
-          ? values.roleSpecificQuestions.map((roleQuestions, i) =>
-              roleQuestions.questions?.map((question, j) => (
-                <TextAreaInput
-                  id={`roleSpecificQuestions[${i}][${j}]`}
-                  key={`roleSpecificQuestion${i}${j}`}
-                  labelText={
-                    question.question + " (" + roleQuestions.role + ")"
-                  }
-                  value={
-                    values.roleSpecificQuestions[i]?.questions[j]?.response
-                  }
-                  required
-                  readOnly={readOnly}
-                />
-              )),
-            )
-          : questionsToRender.map((roleSpecificQuestion) =>
-              roleSpecificQuestion.questions.map(
-                ({ roleIndex, questionIndex, roles, maxLength, question }) => (
-                  <TextAreaInput
-                    id={`roleSpecificQuestions[${roleIndex}].questions[${questionIndex}].response`}
-                    key={`roleSpecificQuestion[${roleIndex}][${questionIndex}]`}
-                    labelText={question + " (" + roles.join(", ") + ")"}
-                    value={
-                      values.roleSpecificQuestions[roleIndex]?.questions[
-                        questionIndex
-                      ]?.response
-                    }
-                    maxLength={maxLength}
-                    required
-                    readOnly={readOnly}
-                  />
-                ),
-              ),
-            )}
+        {questionsToRender.map((roleSpecificQuestion) =>
+          roleSpecificQuestion.questions.map(
+            ({ roleIndex, questionIndex, roles, maxLength, question }) => (
+              <TextAreaInput
+                id={`roleSpecificQuestions[${roleIndex}].questions[${questionIndex}].response`}
+                key={`roleSpecificQuestion[${roleIndex}][${questionIndex}]`}
+                labelText={question + " (" + roles.join(", ") + ")"}
+                value={
+                  values.roleSpecificQuestions[roleIndex]?.questions[
+                    questionIndex
+                  ]?.response
+                }
+                maxLength={maxLength}
+                required
+                readOnly={readOnly}
+              />
+            ),
+          ),
+        )}
       </div>
     </div>
   ) : (

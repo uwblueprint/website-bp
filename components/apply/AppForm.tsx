@@ -20,6 +20,21 @@ import roleSpecificJson from "@constants/role-specific-questions.json";
 import ApplyConfirmation from "./ApplyConfirmation";
 import { firebaseDb, firebaseStore } from "@utils/firebase";
 
+export type ShortAnswerQuestion = {
+  question: string;
+  maxLength: number;
+};
+
+export type RoleSpecificQuestion = {
+  id: number;
+  role: string;
+  questions: {
+    uniqueId?: number;
+    question: string;
+    maxLength: number;
+  }[];
+};
+
 export type AppFormValues = {
   term: string;
   firstName?: string;
@@ -41,37 +56,15 @@ export type AppFormValues = {
     question: string;
     response?: string;
   }[];
-  roleSpecificQuestions: {
-    id: number;
-    role: string;
-    questions: {
-      question: string;
-      response?: string;
-    }[];
-  }[];
+  roleSpecificQuestions: (Omit<RoleSpecificQuestion, "questions"> & {
+    questions: (RoleSpecificQuestion["questions"][0] & { response?: string })[];
+  })[];
   gender?: string;
   genderSpecified?: string;
   ethnicity?: string;
   ethnicitySpecified?: string;
   identities?: string[];
   timestamp: number;
-};
-
-export type ShortAnswerQuestion = {
-  question: string;
-  maxLength: number;
-};
-
-export type RoleSpecificQuestion = {
-  id: number;
-  role: string;
-  questions: [
-    {
-      uniqueId?: number;
-      question: string;
-      maxLength: number;
-    },
-  ];
 };
 
 const shortAnswerQuestions: ShortAnswerQuestion[] = JSON.parse(
@@ -107,8 +100,8 @@ const appFormInitialValues: AppFormValues = {
     ({ id, role, questions }) => ({
       id,
       role,
-      questions: questions.map(({ question }) => ({
-        question,
+      questions: questions.map(({ ...question }) => ({
+        ...question,
         response: undefined,
       })),
     }),
