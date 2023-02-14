@@ -9,7 +9,7 @@
       },
       {
         "uniqueId": 1,
-        "question": "Tell us about a challenging technical problem that you’ve worked on in the past and how you solved it.",
+        "question": "Tell us about a challenging technical problem that you've worked on in the past and how you solved it.",
         "maxLength": 1000
       }
     ]
@@ -40,7 +40,7 @@
     "questions": [
       {
         "uniqueId": 1,
-        "question": "Tell us about a challenging technical problem that you’ve worked on in the past and how you solved it.",
+        "question": "Tell us about a challenging technical problem that you've worked on in the past and how you solved it.",
         "maxLength": 1000
       },
       {
