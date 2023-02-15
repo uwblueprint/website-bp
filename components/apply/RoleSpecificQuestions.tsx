@@ -30,6 +30,11 @@ const RoleSpecificQuestions: FC<Props> = ({
         question.role === values.firstChoiceRole ||
         question.role === values.secondChoiceRole,
     );
+
+    // Sort by ID so we always store the correct role first.
+    // This should be quite fast since applicants can select a max of two roles.
+    questionsForSelectedRoles.sort(({ id: idA }, { id: idB }) => idA - idB);
+
     const questionRolesByUniqueId: { [id: number]: string[] } = {};
     return questionsForSelectedRoles
       .map(({ id, role, questions: roleQuestions }) => ({

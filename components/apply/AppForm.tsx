@@ -146,7 +146,17 @@ const AppForm: FC<Props> = ({
             values.roleSpecificQuestions.filter(
               ({ role }) => role === values.secondChoiceRole,
             ),
-          );
+          )
+          // For aggregated questions, only the first response is filled in.
+          // Firebase doesn't like that we default responses to undefined,
+          // so we need to convert them to null here.
+          .map(({ questions, ...rest }) => ({
+            questions: questions.map(({ response, ...question }) => ({
+              ...question,
+              response: response ?? null,
+            })),
+            ...rest,
+          }));
 
         // Upload resume to Firebase storage.
         if (values.resume) {

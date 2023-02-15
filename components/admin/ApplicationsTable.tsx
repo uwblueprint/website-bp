@@ -50,11 +50,7 @@ const ApplicationsTable: FC<PageProps> = ({ students, roleSelected }) => {
                     </a>
                   </td>
                   <td className="pr-4 w-16 text-blue-100">
-                    <a
-                      href={`https://uwblueprint.org/admin/student-details/${app.id}`}
-                    >
-                      Details
-                    </a>
+                    <a href={`/admin/student-details/${app.id}`}>Details</a>
                   </td>
                 </tr>
               ),
