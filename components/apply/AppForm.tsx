@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Formik, Form } from "formik";
 import { getDownloadURL, ref as storeRef, uploadBytes } from "firebase/storage";
-import { set, ref as dbRef } from "firebase/database";
+import { set, ref as dbRef, serverTimestamp } from "firebase/database";
 
 import BasicInfo from "./BasicInfo";
 import PositionPreference from "./PositionPreference";
@@ -178,7 +178,7 @@ const AppForm: FC<Props> = ({
           secondChoiceRole: values.secondChoiceRole || "",
           shortAnswerQuestions: values.shortAnswerQuestions,
           roleSpecificQuestions: values.roleSpecificQuestions,
-          timestamp: Date.now(),
+          timestamp: serverTimestamp(),
           status: "pending",
         };
 
