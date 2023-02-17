@@ -8,7 +8,8 @@
         "maxLength": 1000
       },
       {
-        "question": "Tell us about a challenging technical problem that you’ve worked on in the past and how you solved it.",
+        "uniqueId": 1,
+        "question": "Tell us about a challenging technical problem that you've worked on in the past and how you solved it.",
         "maxLength": 1000
       }
     ]
@@ -38,7 +39,12 @@
     "role": "Project Lead",
     "questions": [
       {
-        "question": "Tell us about a challenging technical problem that you’ve worked on in the past and how you solved it.",
+        "uniqueId": 1,
+        "question": "Tell us about a challenging technical problem that you've worked on in the past and how you solved it.",
+        "maxLength": 1000
+      },
+      {
+        "question": "Tell us about a past experience working with other people where you demonstrated leadership.",
         "maxLength": 1000
       }
     ]

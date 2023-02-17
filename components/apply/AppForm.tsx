@@ -20,6 +20,21 @@ import roleSpecificJson from "@constants/role-specific-questions.json";
 import ApplyConfirmation from "./ApplyConfirmation";
 import { firebaseDb, firebaseStore } from "@utils/firebase";
 
+export type ShortAnswerQuestion = {
+  question: string;
+  maxLength: number;
+};
+
+export type RoleSpecificQuestion = {
+  id: number;
+  role: string;
+  questions: {
+    uniqueId?: number;
+    question: string;
+    maxLength: number;
+  }[];
+};
+
 export type AppFormValues = {
   term: string;
   firstName?: string;
@@ -41,36 +56,15 @@ export type AppFormValues = {
     question: string;
     response?: string;
   }[];
-  roleSpecificQuestions: {
-    id: number;
-    role: string;
-    questions: {
-      question: string;
-      response?: string;
-    }[];
-  }[];
+  roleSpecificQuestions: (Omit<RoleSpecificQuestion, "questions"> & {
+    questions: (RoleSpecificQuestion["questions"][0] & { response?: string })[];
+  })[];
   gender?: string;
   genderSpecified?: string;
   ethnicity?: string;
   ethnicitySpecified?: string;
   identities?: string[];
   timestamp: number;
-};
-
-export type ShortAnswerQuestion = {
-  question: string;
-  maxLength: number;
-};
-
-export type RoleSpecificQuestion = {
-  id: number;
-  role: string;
-  questions: [
-    {
-      question: string;
-      maxLength: number;
-    },
-  ];
 };
 
 const shortAnswerQuestions: ShortAnswerQuestion[] = JSON.parse(
@@ -106,8 +100,8 @@ const appFormInitialValues: AppFormValues = {
     ({ id, role, questions }) => ({
       id,
       role,
-      questions: questions.map(({ question }) => ({
-        question,
+      questions: questions.map(({ ...question }) => ({
+        ...question,
         response: undefined,
       })),
     }),
@@ -146,13 +140,23 @@ const AppForm: FC<Props> = ({
       onSubmit={async (values) => {
         const uuid = uuidv4();
 
-        values.roleSpecificQuestions = values.roleSpecificQuestions
+        const roleSpecificQuestions = values.roleSpecificQuestions
           .filter(({ role }) => role === values.firstChoiceRole)
           .concat(
             values.roleSpecificQuestions.filter(
               ({ role }) => role === values.secondChoiceRole,
             ),
-          );
+          )
+          // For aggregated questions, only the first response is filled in.
+          // Firebase doesn't like that we default responses to undefined,
+          // so we need to convert them to null here.
+          .map(({ questions, ...rest }) => ({
+            questions: questions.map(({ response, ...question }) => ({
+              ...question,
+              response: response ?? null,
+            })),
+            ...rest,
+          }));
 
         // Upload resume to Firebase storage.
         if (values.resume) {
@@ -177,7 +181,7 @@ const AppForm: FC<Props> = ({
           firstChoiceRole: values.firstChoiceRole,
           secondChoiceRole: values.secondChoiceRole || "",
           shortAnswerQuestions: values.shortAnswerQuestions,
-          roleSpecificQuestions: values.roleSpecificQuestions,
+          roleSpecificQuestions,
           timestamp: serverTimestamp(),
           status: "pending",
         };
