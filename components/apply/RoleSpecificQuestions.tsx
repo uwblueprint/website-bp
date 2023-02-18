@@ -1,4 +1,5 @@
 import { FC, useMemo } from "react";
+import MultiSelectInput from "@components/common/MultiSelectInput";
 import TextAreaInput from "@components/common/TextAreaInput";
 import { AppFormValues, RoleSpecificQuestion } from "./AppForm";
 
@@ -12,6 +13,49 @@ type AggregatedQuestion = RoleSpecificQuestion["questions"][0] & {
   roles: string[];
   roleIndex: number;
   questionIndex: number;
+};
+
+type QuestionInputProps = {
+  id: string;
+  labelText: string;
+  value?: string | string[];
+  question: RoleSpecificQuestion["questions"][0];
+  readOnly: boolean;
+};
+
+const QuestionInput = ({
+  id,
+  labelText,
+  value,
+  question,
+  readOnly,
+}: QuestionInputProps) => {
+  switch (question.type) {
+    case "multi-select": {
+      return (
+        <MultiSelectInput
+          id={id}
+          labelText={labelText}
+          value={value as string[]}
+          required
+          readOnly={readOnly}
+          {...question}
+        />
+      );
+    }
+    case "short-answer":
+    default:
+      return (
+        <TextAreaInput
+          id={id}
+          labelText={labelText}
+          value={value as string}
+          required
+          readOnly={readOnly}
+          {...question}
+        />
+      );
+  }
 };
 
 const RoleSpecificQuestions: FC<Props> = ({
@@ -75,19 +119,18 @@ const RoleSpecificQuestions: FC<Props> = ({
       <div className="grid gap-6">
         {questionsToRender.map((roleSpecificQuestion) =>
           roleSpecificQuestion.questions.map(
-            ({ roleIndex, questionIndex, roles, maxLength, question }) => (
-              <TextAreaInput
+            ({ roleIndex, questionIndex, roles, ...details }) => (
+              <QuestionInput
                 id={`roleSpecificQuestions[${roleIndex}].questions[${questionIndex}].response`}
                 key={`roleSpecificQuestion[${roleIndex}][${questionIndex}]`}
-                labelText={question + " (" + roles.join(", ") + ")"}
+                labelText={details.question + " (" + roles.join(", ") + ")"}
                 value={
                   values.roleSpecificQuestions[roleIndex]?.questions[
                     questionIndex
                   ]?.response
                 }
-                maxLength={maxLength}
-                required
                 readOnly={readOnly}
+                question={details}
               />
             ),
           ),
