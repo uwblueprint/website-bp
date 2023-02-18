@@ -25,14 +25,26 @@ export type ShortAnswerQuestion = {
   maxLength: number;
 };
 
+interface RoleQuestion {
+  uniqueId?: number;
+  question: string;
+}
+
+interface ShortAnswerRoleQuestion extends RoleQuestion {
+  type?: "short-answer";
+  maxLength: number;
+}
+
+interface MultiSelectRoleQuestion extends RoleQuestion {
+  type: "multi-select";
+  options: string[];
+  other: boolean;
+}
+
 export type RoleSpecificQuestion = {
   id: number;
   role: string;
-  questions: {
-    uniqueId?: number;
-    question: string;
-    maxLength: number;
-  }[];
+  questions: (ShortAnswerRoleQuestion | MultiSelectRoleQuestion)[];
 };
 
 export type AppFormValues = {

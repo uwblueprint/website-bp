@@ -4,8 +4,10 @@
     "role": "Project Developer",
     "questions": [
       {
-        "question": "Which areas of a project are you interested in working in (frontend, backend, fullstack, mobile, etc.)?",
-        "maxLength": 1000
+        "question": "Which areas of a project are you interested in working in?",
+        "type": "multi-select",
+        "options": ["Frontend", "Backend", "Fullstack", "Mobile"],
+        "other": true
       },
       {
         "uniqueId": 1,

@@ -13,7 +13,7 @@ const ApplyConfirmation: FC = () => {
         Please don't hesitate to contact us with any questions about your
         application.
       </p>
-      <a href="https://www.uwblueprint.org" className="text-blue-100">
+      <a href="/" className="text-blue-100">
         Back to main site
       </a>
       <div className="flex justify-center">

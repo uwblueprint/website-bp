@@ -7,6 +7,7 @@ import {
 import {
   APPLICATION_OPEN_DATETIME,
   APPLICATION_CLOSE_DATETIME,
+  APPLICATION_TERM,
   INVITE_DATE,
   FINAL_DECISION_DATE,
 } from "@constants/applications";
@@ -83,9 +84,9 @@ const OurProcess: FC = () => {
           </div>
           <h6>Interview with us</h6>
           <p>
-            Let&apos;s talk! We&apos;ll send out invites by{" "}
+            Let&apos;s talk! Invites will be sent out by{" "}
             <span className="text-blue">{INVITE_DATE}</span> to schedule a time
-            during the next week for us to connect. During these chats,
+            in the following week for us to connect. During these chats,
             you&apos;ll have a casual conversation with a couple of our members.
             You can use this time to ask us any questions you might have, and we
             can get to know each other better! We&apos;ll also use some of this
@@ -106,10 +107,13 @@ const OurProcess: FC = () => {
           <h6>Final decision</h6>
           <p>
             We&apos;ll let you know our final decision around{" "}
-            <span className="text-blue">{FINAL_DECISION_DATE}</span>. If we feel
-            you&apos;d be a good fit at Blueprint, we&apos;d appreciate it if
-            you replied as soon as possible regarding whether you’ll be joining
-            our team next term or not so we can get started with onboarding.
+            <span className="text-blue">{FINAL_DECISION_DATE}</span>. If you get
+            an offer to join us for{" "}
+            <span className="text-blue">{APPLICATION_TERM}</span>, we&apos;d
+            appreciate it if you replied as soon as possible to let us know if
+            you&apos;d like to accept! Once you&apos;ve confirmed, we&apos;ll
+            get you started with onboarding just before the term officially
+            begins.
           </p>
         </li>
       </ol>
