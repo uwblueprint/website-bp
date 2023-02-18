@@ -45,8 +45,14 @@ export const InfoText: FC<{
                 <a
                   href="https://www.notion.so/Role-Responsibilities-9494c8311ce0471f997c7473e0bfea1c"
                   target="_blank"
+                  className="inline-flex space-x-1 items-center text-blue"
                 >
-                  <span className="text-blue">roles page</span>
+                  <span>roles page</span>
+                  <img
+                    className="relative top-[1px]"
+                    src="/common/external-link.svg"
+                    alt="Link"
+                  />
                 </a>
                 .
               </li>
@@ -61,10 +67,19 @@ export const InfoText: FC<{
                 are encouraged to apply!
               </li>
               <li>
-                Please review our application process{" "}
-                <a href="http://uwblueprint.org/join#join-faq" target="_blank">
-                  <span className="text-blue"> FAQ </span>
-                </a>
+                Please review our{" "}
+                <a
+                  href="/join#join-faq"
+                  target="_blank"
+                  className="inline-flex space-x-1 items-center text-blue"
+                >
+                  <span>application process FAQ</span>
+                  <img
+                    className="relative top-[1px]"
+                    src="/common/external-link.svg"
+                    alt="Link"
+                  />
+                </a>{" "}
                 before completing your application.
               </li>
             </u>

@@ -168,11 +168,12 @@ const About: NextPage = () => {
           A huge thank you to our sponsors for supporting our team and our
           mission!
         </p>
-        <Link href="mailto:info@uwblueprint.org">
-          <a>
-            <Button className="leading-relaxed mb-5">Become a sponsor</Button>
-          </a>
-        </Link>
+        <Button
+          href="mailto:info@uwblueprint.org"
+          className="leading-relaxed mb-5"
+        >
+          Become a sponsor
+        </Button>
         <div className="grid grid-cols-1 justify-items-center lg:grid-cols-2 gap-x-20 gap-y-14 lg:gap-16 pt-16">
           <img
             className="h-32 object-contain"
@@ -202,13 +203,9 @@ const About: NextPage = () => {
           Interested in the work we do?
         </h2>
         <hr className="hidden md:block w-20 text-blue" />
-        <Link href="/nonprofits">
-          <a>
-            <Button className="leading-relaxed">
-              Learn about our project selection process
-            </Button>
-          </a>
-        </Link>
+        <Button href="/nonprofits" className="leading-relaxed">
+          Learn about our project selection process
+        </Button>
       </section>
     </Layout>
   );

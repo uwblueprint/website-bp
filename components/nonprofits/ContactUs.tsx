@@ -1,5 +1,4 @@
 import { FC } from "react";
-import Link from "next/link";
 import Button from "@components/common/Button";
 
 const ContactUs: FC = () => {
@@ -10,11 +9,7 @@ const ContactUs: FC = () => {
           Need help with your nonprofit?
         </h2>
         <hr className="w-96 mt-4 mb-8 text-blue hidden md:block" />
-        <Link href="/contact">
-          <a>
-            <Button>Contact Us</Button>
-          </a>
-        </Link>
+        <Button href="/contact">Contact Us</Button>
       </div>
       <div className="flex-1 hidden md:block">
         <img
