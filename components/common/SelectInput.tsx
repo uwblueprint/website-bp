@@ -37,7 +37,7 @@ const SelectInput: FC<Props> = ({
           style={{ minHeight: "50px" }}
           required={required}
         >
-          <option value="" disabled>
+          <option value="" disabled={required}>
             Select an option
           </option>
           {options.map((value) => (
