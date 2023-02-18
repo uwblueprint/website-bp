@@ -1,7 +1,7 @@
 import { FC } from "react";
+import MultiSelectInput from "@components/common/MultiSelectInput";
 import SelectInput from "@components/common/SelectInput";
 import TextInput from "@components/common/TextInput";
-import { Field } from "formik";
 import { AppFormValues } from "./AppForm";
 
 type Props = {
@@ -85,23 +85,13 @@ const SelfIdentificationForm: FC<Props> = ({ values }: Props) => {
             />
           </div>
         )}
-        <label htmlFor="conditions">
-          Which of the following applies to you? Select all applicable.
-        </label>
+        <MultiSelectInput
+          id="identities"
+          options={APPLICABLE_COND}
+          labelText="Which of the following applies to you? Select all applicable."
+          required={false}
+        />
       </div>
-      {APPLICABLE_COND.map((condition) => (
-        <div key={condition}>
-          <Field
-            type="checkbox"
-            name="identities"
-            id="identities"
-            value={condition}
-          />
-          <label htmlFor={condition} className="mx-2">
-            {condition}
-          </label>
-        </div>
-      ))}{" "}
     </section>
   );
 };
