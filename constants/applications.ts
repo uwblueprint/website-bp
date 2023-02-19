@@ -3,14 +3,14 @@
  * Format: MMM DD YYYY HH:MM:SS TZ
  * Note: be mindful of day light saving time changes!
  */
-export const APPLICATION_OPEN_DATETIME = "Feb 19 2023 00:00:00 EDT";
+export const APPLICATION_OPEN_DATETIME = "Feb 20 2023 00:00:00 EDT";
 
 /**
  * Application close datetime
  * Format: MMM DD YYYY HH:MM:SS TZ
  * Note: be mindful of day light saving time changes!
  */
-export const APPLICATION_CLOSE_DATETIME = "Mar 3 2023 23:59:59 EDT";
+export const APPLICATION_CLOSE_DATETIME = "Mar 4 2023 23:59:59 EDT";
 
 /**
  * Date that invites are sent out for interviews
@@ -22,7 +22,7 @@ export const INVITE_DATE = "Mar 19";
  * Final decision date
  * Format: MMM DD
  */
-export const FINAL_DECISION_DATE = "Apr 10";
+export const FINAL_DECISION_DATE = "Apr 3";
 
 // Term this application is for
 export const APPLICATION_TERM = "Spring 2023";
