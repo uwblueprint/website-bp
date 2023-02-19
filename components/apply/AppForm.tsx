@@ -44,6 +44,7 @@ interface MultiSelectRoleQuestion extends RoleQuestion {
 export type RoleSpecificQuestion = {
   id: number;
   role: string;
+  open?: boolean;
   questions: (ShortAnswerRoleQuestion | MultiSelectRoleQuestion)[];
 };
 
@@ -242,7 +243,9 @@ const AppForm: FC<Props> = ({
             <BasicInfo values={values} readOnly={readOnly} />
             <PositionPreference
               values={values}
-              memberRoles={roleSpecificQuestions.map(({ role }) => role)}
+              memberRoles={roleSpecificQuestions
+                .filter(({ open = true }) => open)
+                .map(({ role }) => role)}
               readOnly={readOnly}
             />
             <ShortAnswers
