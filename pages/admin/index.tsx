@@ -1,13 +1,24 @@
 import { useState, useEffect } from "react";
 import { NextPage } from "next";
 import { signOut } from "firebase/auth";
-import { ref, get } from "firebase/database";
+import {
+  ref,
+  get,
+  query,
+  orderByChild,
+  startAfter,
+  endBefore,
+} from "firebase/database";
 import { CSVLink } from "react-csv";
 import ApplicationsTable, {
   Student,
 } from "@components/admin/ApplicationsTable";
 import ProtectedRoute from "@components/context/ProtectedRoute";
-import { APPLICATION_TERM } from "@constants/applications";
+import {
+  APPLICATION_OPEN_DATETIME,
+  APPLICATION_CLOSE_DATETIME,
+  APPLICATION_TERM,
+} from "@constants/applications";
 import roleSpecificJson from "@constants/role-specific-questions.json";
 import { auth, firebaseDb } from "@utils/firebase";
 
@@ -33,7 +44,15 @@ const Admin: NextPage = () => {
   const [students, setStudents] = useState<Student[]>([]);
 
   useEffect(() => {
-    get(ref(firebaseDb, "studentApplications"))
+    get(
+      // Only show apps which actually fell within the application window.
+      query(
+        ref(firebaseDb, "studentApplications"),
+        orderByChild("timestamp"),
+        startAfter(+new Date(APPLICATION_OPEN_DATETIME)),
+        endBefore(+new Date(APPLICATION_CLOSE_DATETIME)),
+      ),
+    )
       .then((snapshot) => {
         if (snapshot.exists()) {
           const allApps = snapshot.val();
