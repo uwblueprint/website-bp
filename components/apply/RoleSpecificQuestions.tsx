@@ -104,7 +104,7 @@ const RoleSpecificQuestions: FC<Props> = ({
           // Remove duplicate (nulled-out) questions.
           ?.filter((question): question is AggregatedQuestion => !!question),
       }))
-      .filter(({ questions }) => questions.length);
+      .filter(({ questions }) => questions?.length);
   }, [values.firstChoiceRole, values.secondChoiceRole]);
 
   return questionsToRender.length > 0 ? (
