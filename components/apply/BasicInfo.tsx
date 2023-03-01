@@ -78,10 +78,10 @@ const BasicInfo: FC<Props> = ({ values, readOnly }: Props) => {
         />
         <TextInput
           id="academicYear"
-          labelText="Academic Year"
+          labelText={`Academic Year (or "Graduate student")`}
           placeholder="e.g. 2A, 4B"
           value={values.academicYear}
-          regexMatch={/^[1-5][A-B]$/}
+          regexMatch={/^(1-5][A-B])|[Gg]raduate student$/}
           errorMessage="Please enter a valid academic year (e.g. 2A, 4B)"
           readOnly={readOnly}
           required
