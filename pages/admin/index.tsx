@@ -49,8 +49,8 @@ const Admin: NextPage = () => {
       query(
         ref(firebaseDb, "studentApplications"),
         orderByChild("timestamp"),
-        startAfter(+new Date(APPLICATION_OPEN_DATETIME)),
-        endBefore(+new Date(APPLICATION_CLOSE_DATETIME)),
+        startAfter(APPLICATION_OPEN_DATETIME.getTime()),
+        endBefore(APPLICATION_CLOSE_DATETIME.getTime()),
       ),
     )
       .then((snapshot) => {

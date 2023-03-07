@@ -5,8 +5,8 @@ import {
   MEDIUM_URL,
 } from "@constants/social-media";
 import {
-  APPLICATION_OPEN_DATETIME,
-  APPLICATION_CLOSE_DATETIME,
+  APPLICATION_OPEN_STRING,
+  APPLICATION_CLOSE_STRING,
   APPLICATION_TERM,
   INVITE_DATE,
   FINAL_DECISION_DATE,
@@ -66,9 +66,8 @@ const OurProcess: FC = () => {
             application, so please be as detailed as possible. If we think you
             might be a good fit, we will send you an invite to have a coffee
             chat with us! Applications open{" "}
-            <span className="text-blue">{APPLICATION_OPEN_DATETIME}</span> and
-            close{" "}
-            <span className="text-blue">{APPLICATION_CLOSE_DATETIME}</span>.
+            <span className="text-blue">{APPLICATION_OPEN_STRING}</span> and
+            close <span className="text-blue">{APPLICATION_CLOSE_STRING}</span>.
           </p>
         </li>
         <li className="flex-1 flex flex-col space-y-4 md:px-6">
