@@ -28,6 +28,8 @@ const headers = [
   { label: "First Name", key: "firstName" },
   { label: "Last Name", key: "lastName" },
   { label: "Email", key: "email" },
+  { label: "First Choice", key: "firstChoiceRole" },
+  { label: "Second Choice", key: "secondChoiceRole" },
   { label: "Resume Link", key: "resumeLink" },
   {
     label: "Application Link",
