@@ -14,6 +14,8 @@ const APPLICATION_OPEN_TIME = [0, 0, 0];
 const APPLICATION_CLOSE_DATE = "Mar 6 2023 EST";
 const APPLICATION_CLOSE_TIME = [23, 59, 59];
 
+export const APPLICATION_CLOSE_GRACE_PERIOD = 5 * 60 * 1000; // 5 minutes
+
 /**
  * Date that invites are sent out for interviews
  * Format: MMM DD
