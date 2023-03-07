@@ -28,13 +28,15 @@ const headers = [
   { label: "First Name", key: "firstName" },
   { label: "Last Name", key: "lastName" },
   { label: "Email", key: "email" },
-  { label: "First Choice", key: "firstChoiceRole" },
-  { label: "Second Choice", key: "secondChoiceRole" },
-  { label: "Resume Link", key: "resumeLink" },
+  { label: "Academic Term", key: "academicYear" },
+  { label: "Program", key: "program" },
+  { label: "First Choice Position", key: "firstChoiceRole" },
+  { label: "Second Choice Position", key: "secondChoiceRole" },
   {
     label: "Application Link",
     key: "id",
   },
+  { label: "Resume Link", key: "resumeLink" },
 ];
 
 const signOutWithGoogle = async () => {
@@ -66,6 +68,8 @@ const Admin: NextPage = () => {
                 firstName: allApps[id].firstName,
                 lastName: allApps[id].lastName,
                 email: allApps[id].email,
+                academicYear: allApps[id].academicYear,
+                program: allApps[id].program,
                 resumeLink: allApps[id].resumeUrl,
                 firstChoiceRole: allApps[id].firstChoiceRole,
                 secondChoiceRole: allApps[id].secondChoiceRole,
