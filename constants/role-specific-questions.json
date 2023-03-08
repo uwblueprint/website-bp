@@ -21,6 +21,11 @@
     "role": "Product Designer",
     "questions": [
       {
+        "question": "Where do you look for inspiration in your daily life?",
+        "maxLength": 1000
+      },
+      {
+        "uniqueId": 2,
         "question": "Send us a link to your portfolio or a project you've worked on. If you do not have a link, please tell us about a project below. Describe the process and what you learned from it.",
         "maxLength": 1000
       }
@@ -101,6 +106,7 @@
         "maxLength": 1000
       },
       {
+        "uniqueId": 2,
         "question": "Send us a link to your portfolio or a project you've worked on. If you do not have a link, please tell us about a project below. Describe the process and what you learned from it.",
         "maxLength": 1000
       }
