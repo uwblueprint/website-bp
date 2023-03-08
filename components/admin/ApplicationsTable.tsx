@@ -5,6 +5,8 @@ export type Student = {
   firstName: string;
   lastName: string;
   email: string;
+  academicYear: string;
+  program: string;
   resumeLink: string;
   firstChoiceRole: string;
   secondChoiceRole: string;
