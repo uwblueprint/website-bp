@@ -16,7 +16,7 @@ import ApplicationsTable, {
 import ProtectedRoute from "@components/context/ProtectedRoute";
 import {
   APPLICATION_OPEN_DATETIME,
-  APPLICATION_CLOSE_DATETIME,
+  APPLICATION_CLOSE_DATETIME_WITH_GRACE_PERIOD,
   APPLICATION_TERM,
 } from "@constants/applications";
 import roleSpecificJson from "@constants/role-specific-questions.json";
@@ -53,8 +53,8 @@ const Admin: NextPage = () => {
       query(
         ref(firebaseDb, "studentApplications"),
         orderByChild("timestamp"),
-        startAfter(+new Date(APPLICATION_OPEN_DATETIME)),
-        endBefore(+new Date(APPLICATION_CLOSE_DATETIME)),
+        startAfter(+APPLICATION_OPEN_DATETIME),
+        endBefore(+APPLICATION_CLOSE_DATETIME_WITH_GRACE_PERIOD),
       ),
     )
       .then((snapshot) => {

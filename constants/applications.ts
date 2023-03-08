@@ -1,16 +1,25 @@
+import dayjs from "@utils/dayjs";
+
 /**
  * Application open datetime
- * Format: MMM DD YYYY HH:MM:SS TZ
- * Note: be mindful of day light saving time changes!
+ * Format: YYYY-MM-DD HH:MM:SS
  */
-export const APPLICATION_OPEN_DATETIME = "Feb 20 2023 00:00:00 EDT";
+export const APPLICATION_OPEN_DATETIME = dayjs.tz(
+  "2023-02-20 00:00:00",
+  "America/Toronto",
+);
 
 /**
  * Application close datetime
- * Format: MMM DD YYYY HH:MM:SS TZ
- * Note: be mindful of day light saving time changes!
+ * Format: YYYY-MM-DD HH:MM:SS
  */
-export const APPLICATION_CLOSE_DATETIME = "Mar 6 2023 23:59:59 EDT";
+export const APPLICATION_CLOSE_DATETIME = dayjs.tz(
+  "2023-03-06 23:59:59",
+  "America/Toronto",
+);
+
+export const APPLICATION_CLOSE_DATETIME_WITH_GRACE_PERIOD =
+  APPLICATION_CLOSE_DATETIME.add(5, "minute");
 
 /**
  * Date that invites are sent out for interviews
@@ -31,8 +40,7 @@ export const APPLICATION_TERM = "Spring 2023";
 export const APPLICATION_LINK = "/apply";
 
 // Calculate if the application is live
-const _currentDate = new Date();
-const _openDate = new Date(APPLICATION_OPEN_DATETIME);
-const _closeDate = new Date(APPLICATION_CLOSE_DATETIME);
+const now = dayjs();
 export const APPLICATION_IS_LIVE =
-  _openDate < _currentDate && _currentDate < _closeDate;
+  now.isAfter(APPLICATION_OPEN_DATETIME) &&
+  now.isBefore(APPLICATION_CLOSE_DATETIME);

@@ -66,9 +66,14 @@ const OurProcess: FC = () => {
             application, so please be as detailed as possible. If we think you
             might be a good fit, we will send you an invite to have a coffee
             chat with us! Applications open{" "}
-            <span className="text-blue">{APPLICATION_OPEN_DATETIME}</span> and
-            close{" "}
-            <span className="text-blue">{APPLICATION_CLOSE_DATETIME}</span>.
+            <span className="text-blue">
+              {APPLICATION_OPEN_DATETIME.format("lll")}
+            </span>{" "}
+            and close{" "}
+            <span className="text-blue">
+              {APPLICATION_CLOSE_DATETIME.format("lll")}
+            </span>
+            .
           </p>
         </li>
         <li className="flex-1 flex flex-col space-y-4 md:px-6">
