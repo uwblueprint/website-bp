@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { NextPage } from "next";
 import { signOut } from "firebase/auth";
 import {
@@ -84,6 +84,17 @@ const Admin: NextPage = () => {
       });
   }, []);
 
+  const filteredData = useMemo(
+    () =>
+      students.filter((app) =>
+        [app.firstChoiceRole, app.secondChoiceRole, "default"].includes(
+          roleSelected,
+        ),
+      ),
+
+    [students, roleSelected],
+  );
+
   return (
     <ProtectedRoute>
       <div className="container max-w-4xl px-4 mx-auto my-8">
@@ -111,7 +122,7 @@ const Admin: NextPage = () => {
           </select>
           <button className="text-blue-100">
             <CSVLink
-              data={students.map((app) =>
+              data={filteredData.map((app) =>
                 Object.assign({}, app, {
                   id: `https://uwblueprint.org/admin/student-details/${app.id}`,
                 }),
@@ -125,7 +136,7 @@ const Admin: NextPage = () => {
           </button>
         </div>
         <div className="my-8">
-          <ApplicationsTable students={students} roleSelected={roleSelected} />
+          <ApplicationsTable students={filteredData} />
         </div>
       </div>
     </ProtectedRoute>
