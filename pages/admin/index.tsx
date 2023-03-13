@@ -14,6 +14,7 @@ import ApplicationsTable, {
   Student,
 } from "@components/admin/ApplicationsTable";
 import ProtectedRoute from "@components/context/ProtectedRoute";
+import Loading from "@components/common/Loading";
 import {
   APPLICATION_OPEN_DATETIME,
   APPLICATION_CLOSE_DATETIME_WITH_GRACE_PERIOD,
@@ -45,7 +46,7 @@ const signOutWithGoogle = async () => {
 
 const Admin: NextPage = () => {
   const [roleSelected, setRoleSelected] = useState("default");
-  const [students, setStudents] = useState<Student[]>([]);
+  const [students, setStudents] = useState<Student[] | null>(null);
 
   useEffect(() => {
     get(
@@ -86,11 +87,15 @@ const Admin: NextPage = () => {
 
   const filteredData = useMemo(
     () =>
-      students.filter((app) =>
-        [app.firstChoiceRole, app.secondChoiceRole, "default"].includes(
-          roleSelected,
-        ),
-      ),
+      students
+        ?.filter((app) =>
+          [app.firstChoiceRole, app.secondChoiceRole, "default"].includes(
+            roleSelected,
+          ),
+        )
+        .sort(({ firstName: fn1 }, { firstName: fn2 }) =>
+          fn1 > fn2 ? 1 : fn1 < fn2 ? -1 : 0,
+        ) ?? [],
 
     [students, roleSelected],
   );
@@ -136,7 +141,11 @@ const Admin: NextPage = () => {
           </button>
         </div>
         <div className="my-8">
-          <ApplicationsTable students={filteredData} />
+          {students !== null ? (
+            <ApplicationsTable students={filteredData} />
+          ) : (
+            <Loading />
+          )}
         </div>
       </div>
     </ProtectedRoute>
