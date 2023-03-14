@@ -12,7 +12,7 @@ import SelfIdentificationForm from "./SelfIdentification";
 import InfoText from "./InfoText";
 import Button from "@components/common/Button";
 import {
-  APPLICATION_CLOSE_STRING,
+  APPLICATION_CLOSE_DATETIME,
   APPLICATION_TERM,
 } from "@constants/applications";
 import shortAnswerJson from "@constants/short-answer-questions.json";
@@ -236,7 +236,7 @@ const AppForm: FC<Props> = ({
                 : "Student Application"}
             </h2>
             <InfoText
-              deadline={APPLICATION_CLOSE_STRING}
+              deadline={APPLICATION_CLOSE_DATETIME.format("lll")}
               readOnly={readOnly}
               timestamp={values.timestamp}
             />

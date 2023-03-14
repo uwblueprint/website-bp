@@ -1,20 +1,25 @@
+import dayjs from "@utils/dayjs";
+
 /**
  * Application open datetime
- * Format: MMM DD YYYY [HH, MM, SS] EST
- * Make sure the timezone is set to "EST"!
+ * Format: YYYY-MM-DD HH:MM:SS
  */
-const APPLICATION_OPEN_DATE = "Feb 20 2023 EST";
-const APPLICATION_OPEN_TIME = [0, 0, 0];
+export const APPLICATION_OPEN_DATETIME = dayjs.tz(
+  "2023-02-20 00:00:00",
+  "America/Toronto",
+);
 
 /**
  * Application close datetime
- * Format: MMM DD YYYY [HH, MM, SS] EST
- * Make sure the timezone is set to "EST"!
+ * Format: YYYY-MM-DD HH:MM:SS
  */
-const APPLICATION_CLOSE_DATE = "Mar 6 2023 EST";
-const APPLICATION_CLOSE_TIME = [23, 59, 59];
+export const APPLICATION_CLOSE_DATETIME = dayjs.tz(
+  "2023-03-06 23:59:59",
+  "America/Toronto",
+);
 
-export const APPLICATION_CLOSE_GRACE_PERIOD = 5 * 60 * 1000; // 5 minutes
+export const APPLICATION_CLOSE_DATETIME_WITH_GRACE_PERIOD =
+  APPLICATION_CLOSE_DATETIME.add(5, "minute");
 
 /**
  * Date that invites are sent out for interviews
@@ -34,33 +39,8 @@ export const APPLICATION_TERM = "Spring 2023";
 // URL of application page
 export const APPLICATION_LINK = "/apply";
 
-// Export dates and strings with the DST-adjusted time.
-const DATE_FORMAT_OPTIONS = {
-  month: "short",
-  day: "numeric",
-  year: "numeric",
-  hour: "numeric",
-  minute: "numeric",
-  second: "numeric",
-};
-
-// Application open date
-const _openDate = new Date(APPLICATION_OPEN_DATE);
-_openDate.setHours(...APPLICATION_OPEN_TIME);
-export const APPLICATION_OPEN_DATETIME = _openDate;
-export const APPLICATION_OPEN_STRING = APPLICATION_OPEN_DATETIME.toLocaleString(
-  undefined,
-  DATE_FORMAT_OPTIONS,
-);
-
-// Application close date
-const _closeDate = new Date(APPLICATION_CLOSE_DATE);
-_closeDate.setHours(...APPLICATION_CLOSE_TIME);
-export const APPLICATION_CLOSE_DATETIME = _closeDate;
-export const APPLICATION_CLOSE_STRING =
-  APPLICATION_CLOSE_DATETIME.toLocaleString(undefined, DATE_FORMAT_OPTIONS);
-
 // Calculate if the application is live
-const _currentDate = new Date();
+const now = dayjs();
 export const APPLICATION_IS_LIVE =
-  _openDate < _currentDate && _currentDate < _closeDate;
+  now.isAfter(APPLICATION_OPEN_DATETIME) &&
+  now.isBefore(APPLICATION_CLOSE_DATETIME);

@@ -16,8 +16,7 @@ import ApplicationsTable, {
 import ProtectedRoute from "@components/context/ProtectedRoute";
 import {
   APPLICATION_OPEN_DATETIME,
-  APPLICATION_CLOSE_DATETIME,
-  APPLICATION_CLOSE_GRACE_PERIOD,
+  APPLICATION_CLOSE_DATETIME_WITH_GRACE_PERIOD,
   APPLICATION_TERM,
 } from "@constants/applications";
 import roleSpecificJson from "@constants/role-specific-questions.json";
@@ -45,16 +44,13 @@ const Admin: NextPage = () => {
   const [students, setStudents] = useState<Student[]>([]);
 
   useEffect(() => {
-    const endWithGracePeriod = new Date(
-      APPLICATION_CLOSE_DATETIME.getTime() + APPLICATION_CLOSE_GRACE_PERIOD,
-    );
     get(
       // Only show apps which actually fell within the application window.
       query(
         ref(firebaseDb, "studentApplications"),
         orderByChild("timestamp"),
-        startAfter(APPLICATION_OPEN_DATETIME.getTime()),
-        endBefore(endWithGracePeriod.getTime()),
+        startAfter(+APPLICATION_OPEN_DATETIME),
+        endBefore(+APPLICATION_CLOSE_DATETIME_WITH_GRACE_PERIOD),
       ),
     )
       .then((snapshot) => {
