@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react";
 import { NextPage } from "next";
+import { useRouter } from "next/router";
 
 const Login: NextPage = () => {
   const [loginState, setLoginState] = useState({
@@ -7,9 +8,36 @@ const Login: NextPage = () => {
     password: "",
   });
 
+  const router = useRouter()
+
   const login = (e: FormEvent) => {
-    console.log(loginState);
     e.preventDefault();
+    fetch("http://localhost:5000/graphql", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: `
+          query login($email: String!, $password: String!) {
+            login(email: $email, password: $password) {
+              canLogin
+            }
+          }
+        `,
+        variables: {
+          email: loginState.username,
+          password: loginState.password,
+        },
+      }),
+    }).then(async res => 
+      await res.json().then(result => {
+        console.log(result)
+        if (result.data.login.canLogin) {
+          router.push("/admin/login-success")
+        }
+      })
+    )
   };
 
   return (
