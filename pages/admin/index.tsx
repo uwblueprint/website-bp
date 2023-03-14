@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { NextPage } from "next";
 import { signOut } from "firebase/auth";
+import Header from "@components/admin/Header";
 import {
   ref,
   get,
@@ -102,7 +103,8 @@ const Admin: NextPage = () => {
 
   return (
     <ProtectedRoute>
-      <div className="container px-4 mx-auto my-8">
+      <Header />
+      {/* <div className="container max-w-4xl px-4 mx-auto my-8">
         <div className="flex justify-between items-center my-16">
           <img src="/common/logo-with-text-blue.svg" alt="UW Blueprint Logo" />
           <button className="text-blue-100" onClick={signOutWithGoogle}>
@@ -147,7 +149,7 @@ const Admin: NextPage = () => {
             <Loading />
           )}
         </div>
-      </div>
+      </div> */}
     </ProtectedRoute>
   );
 };
