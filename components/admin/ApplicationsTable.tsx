@@ -1,4 +1,8 @@
-import { FC } from "react";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import MUIDataTable, {
+  MUIDataTableColumn,
+} from "mui-datatables";
+import React, { FC } from "react";
 
 export type Student = {
   id: string;
@@ -12,48 +16,86 @@ export type Student = {
   secondChoiceRole: string;
 };
 
+type StudentRow = {
+  name: string;
+  application: string;
+  resume: string;
+  reviewerOne: string;
+  reviewerTwo: string;
+  score: number;
+  status: string;
+  skill: string;
+}
+
 type PageProps = {
   readonly students: Student[];
 };
 
-const ApplicationsTable: FC<PageProps> = ({ students }) => {
+const ApplicationsTable : FC<PageProps> = ({ students }) => {
+  const getMuiTheme = () =>
+    createTheme({
+      overrides: {},
+    });
+
+  const getTableColumns = (): MUIDataTableColumn[] => {
+    const columns: MUIDataTableColumn[] = [
+      {
+        name: "name",
+        label: "Name",
+        options: {},
+      },
+      {
+        name: "application",
+        label: "Application",
+        options: {},
+      },
+      {
+        name: "resume",
+        label: "Resume",
+        options: {},
+      },
+      {
+        name: "reviewer #1",
+        label: "Reviewer #1",
+        options: {},
+      },
+      {
+        name: "reviewer #2",
+        label: "Reviewer #2",
+        options: {},
+      },
+      {
+        name: "score",
+        label: "Score",
+        options: {},
+      },
+      {
+        name: "application status",
+        label: "Application Status",
+        options: {},
+      },
+      {
+        name: "skill category",
+        label: "Skill Category",
+        options: {},
+      },
+    ];
+    return columns;
+  };
+
+  const getTableRows = (): StudentRow[] => {
+    const rows: StudentRow[] = [];
+    return rows;
+  };
+
   return (
-    <div className="flex flex-col space-y-2">
-      <table className="table-fixed text-left border-collapse">
-        <thead className="pt-4">
-          <tr className="border-b-[2px]">
-            <th className="py-2">#</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Resume</th>
-            <th>Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          {students.map((app: Student, i: number) => (
-            <tr className="border-b-[1px] border-charcoal-400" key={i}>
-              <td className="pr-4 py-4 w-4">{`${i + 1}`}</td>
-              <td className="pr-4 w-32">{`${
-                app.firstName + " " + app.lastName
-              }`}</td>
-              <td className="pr-4 w-56">{`${app.email}`}</td>
-              <td className="pr-4 w-20 text-blue-100">
-                <a
-                  href={`${app.resumeLink}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Resume
-                </a>
-              </td>
-              <td className="pr-4 w-16 text-blue-100">
-                <a href={`/admin/student-details/${app.id}`}>Details</a>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <ThemeProvider theme={getMuiTheme()}>
+      <MUIDataTable
+        title={"Applicant Entry"}
+        data={getTableRows()}
+        columns={getTableColumns()}
+      />
+    </ThemeProvider>
   );
 };
 
