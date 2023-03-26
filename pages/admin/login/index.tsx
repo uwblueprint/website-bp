@@ -8,7 +8,7 @@ const Login: NextPage = () => {
     password: "",
   });
 
-  const router = useRouter()
+  const router = useRouter();
 
   const login = (e: FormEvent) => {
     e.preventDefault();
@@ -30,14 +30,15 @@ const Login: NextPage = () => {
           password: loginState.password,
         },
       }),
-    }).then(async res => 
-      await res.json().then(result => {
-        console.log(result)
-        if (result.data.login.canLogin) {
-          router.push("/admin/login-success")
-        }
-      })
-    )
+    }).then(
+      async (res) =>
+        await res.json().then((result) => {
+          console.log(result);
+          if (result.data.login.canLogin) {
+            router.push("/admin/login-success");
+          }
+        }),
+    );
   };
 
   return (
@@ -48,16 +49,52 @@ const Login: NextPage = () => {
           alt="UW Blueprint Logo"
           style={{ position: "relative", top: 37, left: 26 }}
         />
-        <form className="flex flex-col space-y-[26px] pl-[88px] mt-[90px]" onSubmit={(e) => {login(e)}}>
-          <label className="text-blue-100 font-poppins font-[600] text-[20px]" htmlFor="username">Username</label>
-          <input className="h-[36px] w-[300px] border-1 border-[#aaaaaa] rounded-[4px]" type="text" name="username" required onChange={(e) => {setLoginState({...loginState, username: e.target.value})}} />
-          <label className="text-blue-100 font-poppins font-[600] text-[20px]" htmlFor="password">Password</label>
-          <input className="h-[36px] w-[300px] border-1 border-[#aaaaaa] rounded-[4px]" type="text" name="password" required onChange={(e) => {setLoginState({...loginState, password: e.target.value})}} />
+        <form
+          className="flex flex-col space-y-[26px] pl-[88px] mt-[90px]"
+          onSubmit={(e) => {
+            login(e);
+          }}
+        >
+          <label
+            className="text-blue-100 font-poppins font-[600] text-[20px]"
+            htmlFor="username"
+          >
+            Username
+          </label>
+          <input
+            className="h-[36px] w-[300px] border-1 border-[#aaaaaa] rounded-[4px]"
+            type="text"
+            name="username"
+            required
+            onChange={(e) => {
+              setLoginState({ ...loginState, username: e.target.value });
+            }}
+          />
+          <label
+            className="text-blue-100 font-poppins font-[600] text-[20px]"
+            htmlFor="password"
+          >
+            Password
+          </label>
+          <input
+            className="h-[36px] w-[300px] border-1 border-[#aaaaaa] rounded-[4px]"
+            type="text"
+            name="password"
+            required
+            onChange={(e) => {
+              setLoginState({ ...loginState, password: e.target.value });
+            }}
+          />
         </form>
-        <button className="justify-self-start mt-[26px] rounded-full border-solid border-2 border-blue-100 bg-blue-100 text-white ml-[88px] px-[32px] py-[13px]" type="submit">Sign In</button>
+        <button
+          className="justify-self-start mt-[26px] rounded-full border-solid border-2 border-blue-100 bg-blue-100 text-white ml-[88px] px-[32px] py-[13px]"
+          type="submit"
+        >
+          Sign In
+        </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Login;
