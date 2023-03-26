@@ -29,19 +29,19 @@ const Login: NextPage = () => {
           password: loginState.password,
         },
       }),
-    }).then(
-      async (res) =>
-        await res.json().then((result) => {
-          if (result.data.login.firstName) {
-            router.push("/admin/login-success");
-          }
+    })
+      .then(
+        async (res) =>
+          await res.json().then((result) => {
+            if (result.data.login.firstName) {
+              router.push("/admin/login-success");
+            }
         }),
-    ).catch(
-      e => {
+      )
+      .catch((e) => {
         console.error("Invalid login credentials");
         console.log(e);
-      }
-    );
+      });
   };
 
   return (
