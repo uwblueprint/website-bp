@@ -36,7 +36,7 @@ const Login: NextPage = () => {
             if (result.data.login.firstName) {
               router.push("/admin/login-success");
             }
-        }),
+          }),
       )
       .catch((e) => {
         console.error("Invalid login credentials");
