@@ -15,8 +15,8 @@ const Header: FC = () => {
       "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Chris_Abey.jpg?alt=media&token=97630484-8ce5-49da-b77c-4190028a9abb",
   };
   return (
-    <div className="bg-charcoal-100">
-      <div className="header-container container px-4 mx-auto py-8 flex justify-between items-center">
+    <div className="bg-charcoal-100 px-8 mx-auto py-8">
+      <div className="py-3 header-container container flex justify-between items-center">
         <div className="flex items-center">
           <img
             src="/common/logo-with-text-blue.svg"
