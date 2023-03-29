@@ -1,13 +1,13 @@
-import { FC, useState } from "react";
-import Link from "next/link";
+import { FC } from "react";
 import DropdownMenu from "./DropdownMenu";
 import { Avatar } from "./Profile";
 import Tabs from "./Tabs";
 import Permissions from "entities/permissions";
+import Users from "entities/users";
 
 const Header: FC = () => {
-  const user = {
-    id: 1,
+  const user: Users = {
+    id: "1",
     name: "Chris Abey",
     email: "chrisabey@uwblueprint.org",
     role: Permissions.admin,
