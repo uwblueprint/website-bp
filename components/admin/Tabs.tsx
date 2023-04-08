@@ -4,20 +4,22 @@ import Permissions from "../../entities/permissions";
 
 interface NavbarProps {
   user: Users;
+  setActiveTab: (tab: string) => void;
+  activeTab: string;
 }
 
-const Navbar: FC<NavbarProps> = ({ user }) => {
+const Navbar: FC<NavbarProps> = (props) => {
   let tabs: string[] = [];
 
-  if (user.role === Permissions.admin) {
+  if (props.user.role === Permissions.admin) {
     tabs = ["Engineering", "Design", "Product", "Community"];
-  } else if (user.role === Permissions.vpe) {
+  } else if (props.user.role === Permissions.vpe) {
     tabs = ["Engineering"];
-  } else if (user.role === Permissions.vpd) {
+  } else if (props.user.role === Permissions.vpd) {
     tabs = ["Design"];
-  } else if (user.role === Permissions.vpp) {
+  } else if (props.user.role === Permissions.vpp) {
     tabs = ["Product"];
-  } else if (user.role === Permissions.community) {
+  } else if (props.user.role === Permissions.community) {
     tabs = ["Community"];
   } else {
     tabs = [];
@@ -25,7 +27,7 @@ const Navbar: FC<NavbarProps> = ({ user }) => {
 
   const tabStyle =
     "px-3 py-2 font-light text-gray-700 rounded-3xl hover:text-blue hover:bg-sky hover:shadow-md transition-colors duration-300";
-  const activeTabStyle = "text-charcoal";
+  const activeTabStyle = "text-blue bg-sky shadow-md";
 
   return (
     <nav className="-ml-2 bg-gray-800">
@@ -34,13 +36,15 @@ const Navbar: FC<NavbarProps> = ({ user }) => {
           <div className="hidden md:block">
             <div className="flex items-baseline space-x-4">
               {tabs.map((tab) => (
-                <a
+                <button
+                  onClick={() => props.setActiveTab(tab)}
                   key={tab}
-                  href="#"
-                  className={`${tabStyle} hover:text-blue ${activeTabStyle} font-poppins`}
+                  className={`${tabStyle} font-poppins ${
+                    props.activeTab === tab ? activeTabStyle : ""
+                  }`}
                 >
                   {tab}
-                </a>
+                </button>
               ))}
             </div>
           </div>
