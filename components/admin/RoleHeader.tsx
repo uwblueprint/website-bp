@@ -46,16 +46,16 @@ const RoleHeader: FC<RoleHeaderProps> = (props) => {
   }, [props.activeTab]);
 
   const tabStyle =
-    "border-2 border-orange-300 rounded-full text-orange-300 font-medium text-center p-2 m-2 inline-block capitalize";
+    "border-2 border-pink-500 rounded-full text-pink-500 text-center px-4 m-2 inline-block capitalize";
   const activeTabStyle =
-    "border-2 border-orange-300 rounded-full text-white font-medium text-center p-2 m-2 inline-block capitalize bg-orange-500";
+    "border-2 border-pink-500 rounded-full text-white text-center px-4 m-2 inline-block capitalize bg-pink-500";
 
   return (
     <div
       className="px-8 py-10 flex items-center"
       style={{ height: "44px", display: "flex", alignItems: "center" }}
     >
-      <h4 className="font-medium pr-2">Roles</h4>
+      <h4 className="font-poppins font-medium pr-2">Roles</h4>
       <div>
         {roles.map((role) => (
           <button
