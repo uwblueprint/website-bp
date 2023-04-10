@@ -19,8 +19,8 @@ const Header: FC = () => {
   };
   return (
     <div>
-      <div className="bg-charcoal-100 px-8 mx-auto py-8">
-        <div className="py-3 header-container container flex justify-between items-center">
+      <div className="shadow-md">
+        <div className="px-8 bg-sky-100 py-3 header-container flex justify-between items-center">
           <div className="flex items-center">
             <img
               src="/common/logo-with-text-blue.svg"
@@ -30,7 +30,7 @@ const Header: FC = () => {
             <DropdownMenu />
           </div>
           <div className="flex items-center space-x-4">
-            <Avatar img={user.profile_picture} name={user.name} />
+            <Avatar {...user} />
           </div>
         </div>
         <Tabs activeTab={activeTab} setActiveTab={setActiveTab} user={user} />

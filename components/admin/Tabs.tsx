@@ -26,11 +26,11 @@ const Navbar: FC<NavbarProps> = (props) => {
   }
 
   const tabStyle =
-    "px-3 py-2 font-light text-gray-700 rounded-3xl hover:text-blue hover:bg-sky hover:shadow-md transition-colors duration-300";
-  const activeTabStyle = "text-blue bg-sky shadow-md";
+    "px-4 py-1 font-light text-gray-700 rounded-3xl hover:text-white hover:bg-blue hover:shadow-md transition-colors duration-300";
+  const activeTabStyle = "text-white bg-blue shadow-md";
 
   return (
-    <nav className="-ml-2 bg-gray-800">
+    <nav className="-ml-2 bg-gray-800 px-8">
       <div className="flex items-center justify-between h-16">
         <div className="flex items-center">
           <div className="hidden md:block">

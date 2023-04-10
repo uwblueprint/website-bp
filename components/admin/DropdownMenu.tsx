@@ -8,7 +8,7 @@ const DropdownMenu: React.FC = () => {
   return (
     <div className="inline-block relative">
       <button
-        className="border border-blue-100 flex items-center bg-sky text-blue-100 hover:bg-sky-200 focus:bg-sky py-2 px-4 rounded-md"
+        className="flex items-center bg-sky-200 hover:bg-sky-300 focus:bg-sky py-2 px-4 rounded-md"
         onClick={toggleDropdown}
       >
         Blueprint Application Dashboard
@@ -26,7 +26,7 @@ const DropdownMenu: React.FC = () => {
         </svg>
       </button>
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-sky-100 ring-1 ring-black ring-opacity-5">
+        <div className="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-sky-300 ring-1 ring-black ring-opacity-5">
           <div
             className="py-1"
             role="menu"
@@ -35,7 +35,7 @@ const DropdownMenu: React.FC = () => {
           >
             <a
               href="#"
-              className="block px-4 py-2 text-sm text-blue hover:bg-sky-200 hover:text-blue-800"
+              className="block px-4 py-2 text-sm text-blue hover:bg-sky-300 hover:text-blue-800"
               role="menuitem"
             >
               Blueprint Application Dashboard
