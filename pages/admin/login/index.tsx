@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
+import mutations from "graphql/queries";
 
 const Login: NextPage = () => {
   const [loginState, setLoginState] = useState({
@@ -17,13 +18,7 @@ const Login: NextPage = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        query: `
-          mutation login($email: String!, $password: String!) {
-            login(email: $email, password: $password) {
-              firstName
-            }
-          }
-        `,
+        query: mutations.login,
         variables: {
           email: loginState.username,
           password: loginState.password,
