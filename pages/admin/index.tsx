@@ -102,7 +102,7 @@ const Admin: NextPage = () => {
 
   return (
     <ProtectedRoute>
-      <div className="container max-w-4xl px-4 mx-auto my-8">
+      <div className="container px-4 mx-auto my-8">
         <div className="flex justify-between items-center my-16">
           <img src="/common/logo-with-text-blue.svg" alt="UW Blueprint Logo" />
           <button className="text-blue-100" onClick={signOutWithGoogle}>
@@ -140,7 +140,7 @@ const Admin: NextPage = () => {
             </CSVLink>
           </button>
         </div>
-        <div className="my-8">
+        <div>
           {students !== null ? (
             <ApplicationsTable students={filteredData} />
           ) : (
