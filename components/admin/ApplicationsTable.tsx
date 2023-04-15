@@ -1,8 +1,7 @@
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
-import MUIDataTable, {
-  MUIDataTableColumn,
-} from "mui-datatables";
+import MUIDataTable from "mui-datatables";
 import React, { FC } from "react";
+import { getTableColumns } from "./ApplicationsTableColumn";
 
 export type Student = {
   id: string;
@@ -25,66 +24,32 @@ type StudentRow = {
   score: number;
   status: string;
   skill: string;
-}
+};
 
 type PageProps = {
   readonly students: Student[];
 };
 
-const ApplicationsTable : FC<PageProps> = ({ students }) => {
+const ApplicationsTable: FC<PageProps> = () => {
   const getMuiTheme = () =>
     createTheme({
       overrides: {},
     });
 
-  const getTableColumns = (): MUIDataTableColumn[] => {
-    const columns: MUIDataTableColumn[] = [
+  const getTableRows = (): StudentRow[] => {
+    // TO DO: replace mock data
+    const rows: StudentRow[] = [
       {
-        name: "name",
-        label: "Name",
-        options: {},
-      },
-      {
-        name: "application",
-        label: "Application",
-        options: {},
-      },
-      {
-        name: "resume",
-        label: "Resume",
-        options: {},
-      },
-      {
-        name: "reviewer #1",
-        label: "Reviewer #1",
-        options: {},
-      },
-      {
-        name: "reviewer #2",
-        label: "Reviewer #2",
-        options: {},
-      },
-      {
-        name: "score",
-        label: "Score",
-        options: {},
-      },
-      {
-        name: "application status",
-        label: "Application Status",
-        options: {},
-      },
-      {
-        name: "skill category",
-        label: "Skill Category",
-        options: {},
+        name: "Test",
+        application: "Test",
+        resume: "Test",
+        reviewerOne: "Test",
+        reviewerTwo: "Test",
+        score: 100,
+        status: "Test",
+        skill: "Test",
       },
     ];
-    return columns;
-  };
-
-  const getTableRows = (): StudentRow[] => {
-    const rows: StudentRow[] = [];
     return rows;
   };
 
