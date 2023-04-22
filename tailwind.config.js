@@ -99,6 +99,23 @@ module.exports = {
       // RESPONSE
       success: "#A6D669",
       error: "#EF5D5D",
+
+      // ADMIN
+      near_black: "#252525",
+      egg_shell: "#f4f9ff",
+      issue: "#f7b9b9",
+      progress: "#fff2a1",
+      no_issue: "#CEEBB8",
+      // roles
+      throat_pink: "#da4167",
+      grape_foot: "#de6449",
+      jaundice: "#eab01a",
+      algae: "#00a896",
+      barney: "#53599a",
+      // skills
+      junior: "#f7b9cf",
+      intermediate: "#eaaDe4",
+      senior: "#edbeff",
     },
     fontFamily: {
       poppins: "Poppins, sans-serif",

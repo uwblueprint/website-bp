@@ -8,7 +8,7 @@ const DropdownMenu: React.FC = () => {
   return (
     <div className="inline-block relative">
       <button
-        className="flex items-center bg-sky-200 hover:bg-sky-300 focus:bg-sky py-2 px-4 rounded-md"
+        className="flex items-center bg-sky-200 text-near_black hover:bg-sky-300 focus:bg-sky py-2 px-4 rounded-md"
         onClick={toggleDropdown}
       >
         Blueprint Application Dashboard
@@ -35,7 +35,7 @@ const DropdownMenu: React.FC = () => {
           >
             <a
               href="#"
-              className="block px-4 py-2 text-sm text-blue hover:bg-sky-300 hover:text-blue-800"
+              className="block px-4 py-2 text-md text-blue hover:bg-sky-300 hover:text-blue-800"
               role="menuitem"
             >
               Blueprint Application Dashboard

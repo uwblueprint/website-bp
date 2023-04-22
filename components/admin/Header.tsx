@@ -20,7 +20,7 @@ const Header: FC = () => {
   return (
     <div>
       <div className="shadow-md">
-        <div className="px-8 bg-sky-100 py-3 header-container flex justify-between items-center">
+        <div className="px-8 bg-egg_shell py-3 header-container flex justify-between items-center">
           <div className="flex items-center">
             <img
               src="/common/logo-with-text-blue.svg"

@@ -26,7 +26,7 @@ const Navbar: FC<NavbarProps> = (props) => {
   }
 
   const tabStyle =
-    "px-4 py-1 font-light text-gray-700 rounded-3xl hover:text-white hover:bg-blue hover:shadow-md transition-colors duration-300";
+    "px-4 py-1 font-light text-near_black rounded-3xl hover:text-white hover:bg-blue hover:shadow-md transition-colors duration-300";
   const activeTabStyle = "text-white bg-blue shadow-md";
 
   return (
