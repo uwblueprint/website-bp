@@ -2,6 +2,8 @@ import { useState, useEffect, useMemo } from "react";
 import { NextPage } from "next";
 import { signOut } from "firebase/auth";
 import Header from "@components/admin/Header";
+import Table from "@components/admin/Table";
+
 import {
   ref,
   get,
@@ -103,7 +105,10 @@ const Admin: NextPage = () => {
 
   return (
     <ProtectedRoute>
-      <Header />
+      <div>
+        <Header />
+        <Table />
+      </div>
       {/* <div className="container max-w-4xl px-4 mx-auto my-8">
         <div className="flex justify-between items-center my-16">
           <img src="/common/logo-with-text-blue.svg" alt="UW Blueprint Logo" />
