@@ -15,6 +15,8 @@ export const theme = {
   colors: {
     //Primary Variants
     C00: "#ffffff",
+    near_black: "#252525",
+    egg_shell: "#f4f9ff",
     transparent: "rgba(0, 0, 0, 0)",
     C10: "#fafafa",
     C20: "#eaeaea",
@@ -55,6 +57,9 @@ export const theme = {
     V20: "#af8df2",
     V30: "#9e8be8",
     V50: "#796dc3",
+    issue: "#f7b9b9",
+    progress: "#fff2a1",
+    no_issue: "#CEEBB8",
 
     //sKiN tOnEs
     K10: "#f8e7cd",
@@ -67,6 +72,18 @@ export const theme = {
     K41: "#914423",
     K50: "#573515",
     K51: "#683124",
+
+    // roles
+    throat_pink: "#da4167",
+    grape_foot: "#de6449",
+    jaundice: "#eab01a",
+    algae: "#00a896",
+    barney: "#53599a",
+
+    // skills
+    junior: "#f7b9cf",
+    intermediate: "#eaaDe4",
+    senior: "#edbeff",
   },
   button: {
     primaryDark: {
