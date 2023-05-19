@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import Users from "../../entities/users";
 import Permissions from "../../entities/permissions";
 
@@ -8,22 +8,30 @@ interface NavbarProps {
   activeTab: string;
 }
 
-const Navbar: FC<NavbarProps> = (props) => {
-  let tabs: string[] = [];
+const Navbar: FC<NavbarProps> = ({ user, setActiveTab, activeTab }) => {
+  const getTabs = () => {
+    if (user.role === Permissions.admin) {
+      return ["Engineering", "Design", "Product", "Community"];
+    } else if (user.role === Permissions.vpe) {
+      return ["Engineering"];
+    } else if (user.role === Permissions.vpd) {
+      return ["Design"];
+    } else if (user.role === Permissions.vpp) {
+      return ["Product"];
+    } else if (user.role === Permissions.community) {
+      return ["Community"];
+    }
 
-  if (props.user.role === Permissions.admin) {
-    tabs = ["Engineering", "Design", "Product", "Community"];
-  } else if (props.user.role === Permissions.vpe) {
-    tabs = ["Engineering"];
-  } else if (props.user.role === Permissions.vpd) {
-    tabs = ["Design"];
-  } else if (props.user.role === Permissions.vpp) {
-    tabs = ["Product"];
-  } else if (props.user.role === Permissions.community) {
-    tabs = ["Community"];
-  } else {
-    tabs = [];
-  }
+    return [];
+  };
+
+  const [tabs] = useState(getTabs());
+
+  useEffect(() => {
+    if (tabs.length > 0) {
+      setActiveTab(tabs[0]);
+    }
+  }, [tabs, setActiveTab]);
 
   const tabStyle =
     "px-4 py-1 font-light text-gray-700 rounded-3xl hover:text-white hover:bg-blue hover:shadow-md transition-colors duration-300";
@@ -37,10 +45,10 @@ const Navbar: FC<NavbarProps> = (props) => {
             <div className="flex items-baseline space-x-4">
               {tabs.map((tab) => (
                 <button
-                  onClick={() => props.setActiveTab(tab)}
+                  onClick={() => setActiveTab(tab)}
                   key={tab}
                   className={`${tabStyle} font-poppins ${
-                    props.activeTab === tab ? activeTabStyle : ""
+                    activeTab === tab ? activeTabStyle : ""
                   }`}
                 >
                   {tab}

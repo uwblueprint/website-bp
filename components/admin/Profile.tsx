@@ -1,7 +1,7 @@
 import { FC } from "react";
 import User from "../../entities/users";
 
-export const Avatar: FC<User> = (user: User) => {
+export const Avatar: FC<User> = () => {
   return (
     <div className="flex items-center space-x-4">
       <button>

@@ -22,11 +22,13 @@ const Header: FC = () => {
       <div className="shadow-md">
         <div className="px-8 bg-sky-100 py-3 header-container flex justify-between items-center">
           <div className="flex items-center">
-            <img
-              src="/common/logo-with-text-blue.svg"
-              alt="UW Blueprint Logo"
-              style={{ paddingRight: 20 }}
-            />
+            <a href="/admin" aria-label="Return to home">
+              <img
+                src="/common/logo-with-text-blue.svg"
+                alt="UW Blueprint Logo"
+                style={{ paddingRight: 20 }}
+              />
+            </a>
             <DropdownMenu />
           </div>
           <div className="flex items-center space-x-4">

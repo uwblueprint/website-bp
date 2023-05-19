@@ -46,14 +46,14 @@ const RoleHeader: FC<RoleHeaderProps> = (props) => {
   }, [props.activeTab]);
 
   const tabStyle =
-    "border-2 border-pink-500 rounded-full text-pink-500 text-center px-4 m-2 inline-block capitalize";
+    "border-2 border-pink-500 rounded-full text-pink-500 text-center px-4 m-2 inline-block capitalize hover:bg-pink-500 hover:text-white transition-colors";
   const activeTabStyle =
     "border-2 border-pink-500 rounded-full text-white text-center px-4 m-2 inline-block capitalize bg-pink-500";
 
   return (
     <div
       className="px-8 py-10 flex items-center"
-      style={{ height: "44px", display: "flex", alignItems: "center" }}
+      style={{ display: "flex", alignItems: "center" }}
     >
       <h4 className="font-poppins font-medium pr-2">Roles</h4>
       <div>
@@ -73,4 +73,5 @@ const RoleHeader: FC<RoleHeaderProps> = (props) => {
     </div>
   );
 };
+
 export default RoleHeader;

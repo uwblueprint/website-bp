@@ -35,7 +35,7 @@ const DropdownMenu: React.FC = () => {
           >
             <a
               href="#"
-              className="block px-4 py-2 text-sm text-blue hover:bg-sky-300 hover:text-blue-800"
+              className="block px-4 py-2 text-sm hover:bg-sky-300"
               role="menuitem"
             >
               Blueprint Application Dashboard
