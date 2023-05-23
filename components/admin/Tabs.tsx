@@ -1,25 +1,32 @@
 import React, { FC, useEffect, useState } from "react";
 import Users from "../../entities/users";
 import Permissions from "../../entities/permissions";
+import { OrganizationalArea } from "./Header";
 
 interface NavbarProps {
   user: Users;
-  setActiveTab: (tab: string) => void;
-  activeTab: string;
+  setActiveTab: (tab: OrganizationalArea) => void;
+  activeTab?: OrganizationalArea;
 }
 
 const Navbar: FC<NavbarProps> = ({ user, setActiveTab, activeTab }) => {
   const getTabs = () => {
     if (user.role === Permissions.admin) {
-      return ["Engineering", "Design", "Product", "Community"];
+      return [
+        OrganizationalArea.Engineering,
+        OrganizationalArea.Design,
+        OrganizationalArea.Product,
+        OrganizationalArea.Community,
+        OrganizationalArea.Executive,
+      ];
     } else if (user.role === Permissions.vpe) {
-      return ["Engineering"];
+      return [OrganizationalArea.Engineering];
     } else if (user.role === Permissions.vpd) {
-      return ["Design"];
+      return [OrganizationalArea.Design];
     } else if (user.role === Permissions.vpp) {
-      return ["Product"];
+      return [OrganizationalArea.Product];
     } else if (user.role === Permissions.community) {
-      return ["Community"];
+      return [OrganizationalArea.Community];
     }
 
     return [];
@@ -40,22 +47,18 @@ const Navbar: FC<NavbarProps> = ({ user, setActiveTab, activeTab }) => {
   return (
     <nav className="-ml-2 bg-gray-800 px-8">
       <div className="flex items-center justify-between h-16">
-        <div className="flex items-center">
-          <div className="hidden md:block">
-            <div className="flex items-baseline space-x-4">
-              {tabs.map((tab) => (
-                <button
-                  onClick={() => setActiveTab(tab)}
-                  key={tab}
-                  className={`${tabStyle} font-poppins ${
-                    activeTab === tab ? activeTabStyle : ""
-                  }`}
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
-          </div>
+        <div className="flex items-baseline space-x-4">
+          {tabs.map((tab) => (
+            <button
+              onClick={() => setActiveTab(tab)}
+              key={tab}
+              className={`${tabStyle} font-poppins ${
+                activeTab === tab ? activeTabStyle : ""
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
         </div>
       </div>
     </nav>

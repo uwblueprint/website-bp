@@ -6,8 +6,18 @@ import Permissions from "entities/permissions";
 import Users from "entities/users";
 import RoleHeader from "./RoleHeader";
 
+export enum OrganizationalArea {
+  Engineering = "Engineering",
+  Design = "Design",
+  Product = "Product",
+  Community = "Community",
+  Executive = "E Team"
+}
+
 const Header: FC = () => {
-  const [activeTab, setActiveTab] = React.useState("");
+  const [activeTab, setActiveTab] = React.useState<
+    OrganizationalArea | undefined
+  >();
 
   const user: Users = {
     id: "1",
