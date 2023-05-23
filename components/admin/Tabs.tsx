@@ -17,7 +17,6 @@ const Navbar: FC<NavbarProps> = ({ user, setActiveTab, activeTab }) => {
         OrganizationalArea.Design,
         OrganizationalArea.Product,
         OrganizationalArea.Community,
-        OrganizationalArea.Executive,
       ];
     } else if (user.role === Permissions.vpe) {
       return [OrganizationalArea.Engineering];

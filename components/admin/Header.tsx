@@ -11,7 +11,6 @@ export enum OrganizationalArea {
   Design = "Design",
   Product = "Product",
   Community = "Community",
-  Executive = "E Team"
 }
 
 const Header: FC = () => {

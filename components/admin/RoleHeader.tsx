@@ -42,7 +42,6 @@ const RoleHeader: FC<RoleHeaderProps> = ({ activeTab }) => {
           ApplicantRole.vp_scoping,
           ApplicantRole.vp_finance,
         ];
-      case OrganizationalArea.Executive:
       default:
         return [];
     }
@@ -77,13 +76,6 @@ const RoleHeader: FC<RoleHeaderProps> = ({ activeTab }) => {
           bg: "bg-org-areas-community",
           bgHover: "hover:bg-org-areas-community",
           text: "text-org-areas-community",
-        };
-      case OrganizationalArea.Executive:
-        return {
-          border: "border-org-areas-executive",
-          bg: "bg-org-areas-executive",
-          bgHover: "hover:bg-org-areas-executive",
-          text: "text-org-areas-executive",
         };
       default:
         return {};

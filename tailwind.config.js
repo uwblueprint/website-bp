@@ -104,7 +104,6 @@ module.exports = {
       "org-areas": {
         engineering: "#53599A",
         design: "#00A896",
-        executive: "#EAB01A",
         product: "#DE6449",
         community: "#DA4167",
       },
