@@ -90,8 +90,6 @@ const RoleHeader: FC<RoleHeaderProps> = ({ activeTab }) => {
 
   useEffect(() => {
     setRoles(getActiveRoles());
-
-    //@ts-ignore
     setColour(getRoleTabColour());
   }, [activeTab, getActiveRoles, getRoleTabColour]);
 
