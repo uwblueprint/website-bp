@@ -93,8 +93,6 @@ const RoleHeader: FC<RoleHeaderProps> = ({ activeTab }) => {
     setColour(getRoleTabColour());
   }, [activeTab, getActiveRoles, getRoleTabColour]);
 
-  useEffect(() => {});
-
   const tabStyle = `border-2 ${colour.border} rounded-full ${colour.text} text-center px-4 m-2 inline-block capitalize hover:${colour.bg} hover:text-white transition-colors`;
   const activeTabStyle = `border-2 ${colour.border} rounded-full text-white text-center px-4 m-2 inline-block capitalize ${colour.bg}`;
 
