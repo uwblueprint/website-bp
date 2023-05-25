@@ -82,7 +82,7 @@ const RowContent: FC = () => {
   };
   return (
     <div>
-      {applications.map((app) => app.status)}
+      {applications.map((app) => app)}
       {dashboards.map((dashboard) => dashboard.reviewerEmail)}
     </div>
   );
