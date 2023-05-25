@@ -1,4 +1,3 @@
-
 [
   {
     "question": "What timezone will you be based out of next term?",
@@ -7,7 +6,7 @@
   {
     "question": "Tell us about a cause that resonates with you.",
     "maxLength": 1000
-  },  
+  },
   {
     "question": "Tell us about a community you're proud to be a part of and how you contributed to it.",
     "maxLength": 1000
