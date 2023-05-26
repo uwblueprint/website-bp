@@ -32,7 +32,7 @@ const TextInput: FC<Props> = ({
         setError(false);
       }
     }
-  }, [value]);
+  }, [value, regexMatch]);
 
   return (
     <div className="flex flex-col space-y-2">
