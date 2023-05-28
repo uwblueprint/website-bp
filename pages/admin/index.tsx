@@ -2,6 +2,8 @@ import { useState, useEffect, useMemo } from "react";
 import { NextPage } from "next";
 import { signOut } from "firebase/auth";
 import Header from "@components/admin/Header";
+import Table from "@components/admin/Table";
+
 import {
   ref,
   get,
@@ -15,6 +17,7 @@ import ApplicationsTable, {
   Student,
 } from "@components/admin/ApplicationsTable";
 import ProtectedRoute from "@components/context/ProtectedRoute";
+import Loading from "@components/common/Loading";
 import {
   APPLICATION_OPEN_DATETIME,
   APPLICATION_CLOSE_DATETIME_WITH_GRACE_PERIOD,
@@ -46,7 +49,7 @@ const signOutWithGoogle = async () => {
 
 const Admin: NextPage = () => {
   const [roleSelected, setRoleSelected] = useState("default");
-  const [students, setStudents] = useState<Student[]>([]);
+  const [students, setStudents] = useState<Student[] | null>(null);
 
   useEffect(() => {
     get(
@@ -87,18 +90,25 @@ const Admin: NextPage = () => {
 
   const filteredData = useMemo(
     () =>
-      students.filter((app) =>
-        [app.firstChoiceRole, app.secondChoiceRole, "default"].includes(
-          roleSelected,
-        ),
-      ),
+      students
+        ?.filter((app) =>
+          [app.firstChoiceRole, app.secondChoiceRole, "default"].includes(
+            roleSelected,
+          ),
+        )
+        .sort(({ firstName: fn1 }, { firstName: fn2 }) =>
+          fn1 > fn2 ? 1 : fn1 < fn2 ? -1 : 0,
+        ) ?? [],
 
     [students, roleSelected],
   );
 
   return (
     <ProtectedRoute>
-      <Header />
+      <div>
+        <Header />
+        <Table />
+      </div>
       {/* <div className="container max-w-4xl px-4 mx-auto my-8">
         <div className="flex justify-between items-center my-16">
           <img src="/common/logo-with-text-blue.svg" alt="UW Blueprint Logo" />
@@ -137,8 +147,12 @@ const Admin: NextPage = () => {
             </CSVLink>
           </button>
         </div>
-        <div className="my-8">
-          <ApplicationsTable students={filteredData} />
+        <div>
+          {students !== null ? (
+            <ApplicationsTable students={filteredData} />
+          ) : (
+            <Loading />
+          )}
         </div>
       </div> */}
     </ProtectedRoute>

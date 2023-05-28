@@ -33,7 +33,7 @@ export const INVITE_DATE = "Mar 19";
  */
 export const FINAL_DECISION_DATE = "Apr 3";
 
-// Term this application is for
+// Term Blueprint is currently recruiting for (1 term after the current term)
 export const APPLICATION_TERM = "Spring 2023";
 
 // URL of application page
