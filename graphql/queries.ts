@@ -5,7 +5,7 @@ const mutations = {
               firstName
             }
           }
-        `
+        `,
 };
 
-export default mutations
+export default mutations;

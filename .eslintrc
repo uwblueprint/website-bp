@@ -6,16 +6,18 @@
     {
       "files": ["*.js"],
       "rules": {
-        "@typescript-eslint/no-var-requires": "off",
-        "prettier/prettier": [
-          "error",
-          {
-            "endOfLine": "auto"
-          }
-        ]
+        "@typescript-eslint/no-var-requires": "off"
       }
     }
   ],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  },
   "env": {
     "node": true,
     "browser": true,
@@ -26,6 +28,7 @@
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:react-hooks/recommended"
   ]
 }

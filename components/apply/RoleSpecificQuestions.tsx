@@ -63,10 +63,6 @@ const RoleSpecificQuestions: FC<Props> = ({
   questions,
   readOnly,
 }: Props) => {
-  if (!questions.length) {
-    return <></>;
-  }
-
   const sourceQuestions = readOnly ? values.roleSpecificQuestions : questions;
   const questionsToRender = useMemo(() => {
     const questionsForSelectedRoles = sourceQuestions.filter(
@@ -80,6 +76,7 @@ const RoleSpecificQuestions: FC<Props> = ({
     questionsForSelectedRoles.sort(({ id: idA }, { id: idB }) => idA - idB);
 
     const questionRolesByUniqueId: { [id: number]: string[] } = {};
+
     return questionsForSelectedRoles
       .map(({ id, role, questions: roleQuestions }) => ({
         id,
@@ -105,7 +102,13 @@ const RoleSpecificQuestions: FC<Props> = ({
           ?.filter((question): question is AggregatedQuestion => !!question),
       }))
       .filter(({ questions }) => questions?.length);
+    // @todo (from S23): Remove this eslint ignore and address the missing dependency
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values.firstChoiceRole, values.secondChoiceRole]);
+
+  if (!questions.length) {
+    return <></>;
+  }
 
   return questionsToRender.length > 0 ? (
     <div className="grid gap-3 mb-12">
