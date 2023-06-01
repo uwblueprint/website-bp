@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import mutations from "graphql/queries";
+import { mutations } from "graphql/queries";
 
 const Login: NextPage = () => {
   const [loginState, setLoginState] = useState({
@@ -28,7 +28,9 @@ const Login: NextPage = () => {
       .then(
         async (res) =>
           await res.json().then((result) => {
-            if (result.data.login.firstName) {
+            if (result.data.login) {
+              localStorage.setItem("accessToken", result.data.login.accessToken)
+              localStorage.setItem("refreshToken", result.data.login.refreshToken)
               router.push("/admin/login-success");
             }
           }),
