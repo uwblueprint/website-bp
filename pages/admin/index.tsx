@@ -102,7 +102,7 @@ const Admin: NextPage = () => {
   );
 
   return (
-    <ProtectedRoute allowedRoles={["Admin", "User"]}>
+    <ProtectedRoute allowedRoles={["Admin"]}>
       <Header />
       {/* <div className="container max-w-4xl px-4 mx-auto my-8">
         <div className="flex justify-between items-center my-16">
