@@ -1,8 +1,7 @@
 import { ReactChild, ReactElement, useEffect, useState } from "react";
 import Loading from "@components/common/Loading";
-import Login from "@components/common/Login";
-import Permissions from "entities/permissions";
 import { queries } from "graphql/queries";
+import { useRouter } from "next/router";
 
 type Props = {
   children: ReactChild;
@@ -17,6 +16,7 @@ interface AuthStatus {
 }
 
 const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
+  const router = useRouter();
   const [authStatus, setAuthStatus] = useState<AuthStatus>({
     loading: true,
     isAuthorized: false,
@@ -67,8 +67,10 @@ const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
         console.log(e);
       });
   }, []);
-  return  <>{children}</>
-  // return authStatus.loading ? <Loading /> : authStatus.isAuthorized ? <>{children}</> : <Login />
+
+  if (!authStatus.loading && !authStatus.isAuthorized) router.push("/admin/login")
+
+  return authStatus.loading ? <Loading /> : authStatus.isAuthorized ? <>{children}</> : <></>
 };
 
 export default ProtectedRoute;
