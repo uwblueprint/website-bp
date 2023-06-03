@@ -8,7 +8,7 @@ type Props = {
   allowedRoles: Role[];
 };
 
-type Role = "Admin" | "User"
+type Role = "Admin" | "User";
 
 interface AuthStatus {
   loading: boolean;
@@ -20,15 +20,15 @@ const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
   const [authStatus, setAuthStatus] = useState<AuthStatus>({
     loading: true,
     isAuthorized: false,
-  })
+  });
   useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken")
-    if (accessToken == null){
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken == null) {
       setAuthStatus({
         loading: false,
-        isAuthorized: false
-      })
-      return
+        isAuthorized: false,
+      });
+      return;
     }
 
     fetch("http://localhost:5000/graphql", {
@@ -40,7 +40,7 @@ const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
         query: queries.isAuthorizedByRole,
         variables: {
           accessToken,
-          roles: allowedRoles
+          roles: allowedRoles,
         },
       }),
     })
@@ -50,15 +50,13 @@ const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
             if (result.data.isAuthorizedByRole) {
               setAuthStatus({
                 loading: false,
-                isAuthorized: true
-              })
-            }
-            else{
+                isAuthorized: true,
+              });
+            } else {
               setAuthStatus({
                 loading: false,
-                isAuthorized: false
-              }
-              )
+                isAuthorized: false,
+              });
             }
           }),
       )
@@ -68,9 +66,16 @@ const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
       });
   }, []);
 
-  if (!authStatus.loading && !authStatus.isAuthorized) router.push("/admin/login")
+  if (!authStatus.loading && !authStatus.isAuthorized)
+    router.push("/admin/login");
 
-  return authStatus.loading ? <Loading /> : authStatus.isAuthorized ? <>{children}</> : <></>
+  return authStatus.loading ? (
+    <Loading />
+  ) : authStatus.isAuthorized ? (
+    <>{children}</>
+  ) : (
+    <></>
+  );
 };
 
 export default ProtectedRoute;

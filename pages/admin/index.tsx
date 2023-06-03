@@ -10,12 +10,8 @@ import {
   startAfter,
   endBefore,
 } from "firebase/database";
-import { CSVLink } from "react-csv";
-import ApplicationsTable, {
-  Student,
-} from "@components/admin/ApplicationsTable";
+import { Student } from "@components/admin/ApplicationsTable";
 import ProtectedRoute from "@components/context/ProtectedRoute";
-import Loading from "@components/common/Loading";
 import {
   APPLICATION_OPEN_DATETIME,
   APPLICATION_CLOSE_DATETIME_WITH_GRACE_PERIOD,

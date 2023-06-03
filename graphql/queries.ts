@@ -7,14 +7,14 @@ export const mutations = {
             }
           }
         `,
-}; 
+};
 
-// TODO: add functionaltiy to getRole in case accessToken expired and needs to be refreshed. 
+// TODO: add functionaltiy to getRole in case accessToken expired and needs to be refreshed.
 // This can be done with adding backend middleware and passing refresh token into getRole
 export const queries = {
   isAuthorizedByRole: `
   query isAuthorizedByRole($accessToken: String!, $roles: [Role!]!) {
       isAuthorizedByRole(accessToken: $accessToken, roles: $roles)
     }
-  `
-}
+  `,
+};
