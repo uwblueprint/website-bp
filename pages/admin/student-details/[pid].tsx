@@ -7,7 +7,7 @@ const Post: FC = () => {
   const { pid } = useRouter().query;
 
   return (
-    <ProtectedRoute>
+    <ProtectedRoute allowedRoles={["Admin"]}>
       <AppDetails id={pid as string} />
     </ProtectedRoute>
   );
