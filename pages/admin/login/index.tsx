@@ -1,50 +1,23 @@
 import { useState } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import { mutations } from "graphql/queries";
+import AuthAPIClient, { TokenInfo } from "APIClients/AuthAPIClient";
 
 const Login: NextPage = () => {
   const [loginState, setLoginState] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
   const router = useRouter();
 
-  const login = () => {
-    fetch("http://localhost:5000/graphql", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: mutations.login,
-        variables: {
-          email: loginState.username,
-          password: loginState.password,
-        },
-      }),
-    })
-      .then(
-        async (res) =>
-          await res.json().then((result) => {
-            if (result.data.login) {
-              localStorage.setItem(
-                "accessToken",
-                result.data.login.accessToken,
-              );
-              localStorage.setItem(
-                "refreshToken",
-                result.data.login.refreshToken,
-              );
-              router.push("/admin/login-success");
-            }
-          }),
-      )
-      .catch((e) => {
-        console.error("Invalid login credentials");
-        console.log(e);
-      });
+  const loginUser = async (email: string, password: string) => {
+    const result: TokenInfo | null = await AuthAPIClient.login(email, password);
+    if (result) {
+      localStorage.setItem("accessToken", result.accessToken);
+      localStorage.setItem("refreshToken", result.refreshToken);
+      router.push("/admin/login-success");
+    }
   };
 
   return (
@@ -68,7 +41,7 @@ const Login: NextPage = () => {
             name="username"
             required
             onChange={(e) => {
-              setLoginState({ ...loginState, username: e.target.value });
+              setLoginState({ ...loginState, email: e.target.value });
             }}
           />
           <label
@@ -90,7 +63,7 @@ const Login: NextPage = () => {
         <button
           className="justify-self-start mt-[26px] rounded-full border-solid border-2 border-blue-100 bg-blue-100 text-white ml-[88px] px-[32px] py-[13px]"
           onClick={() => {
-            login();
+            loginUser(loginState.email, loginState.password);
           }}
         >
           Sign In

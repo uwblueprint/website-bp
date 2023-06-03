@@ -1,14 +1,12 @@
 import { ReactChild, ReactElement, useEffect, useState } from "react";
 import Loading from "@components/common/Loading";
-import { queries } from "graphql/queries";
 import { useRouter } from "next/router";
+import AuthAPIClient, { Role } from "APIClients/AuthAPIClient";
 
 type Props = {
   children: ReactChild;
   allowedRoles: Role[];
 };
-
-type Role = "Admin" | "User";
 
 interface AuthStatus {
   loading: boolean;
@@ -31,39 +29,28 @@ const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
       return;
     }
 
-    fetch("http://localhost:5000/graphql", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: queries.isAuthorizedByRole,
-        variables: {
-          accessToken,
-          roles: allowedRoles,
-        },
-      }),
-    })
-      .then(
-        async (res) =>
-          await res.json().then((result) => {
-            if (result.data.isAuthorizedByRole) {
-              setAuthStatus({
-                loading: false,
-                isAuthorized: true,
-              });
-            } else {
-              setAuthStatus({
-                loading: false,
-                isAuthorized: false,
-              });
-            }
-          }),
-      )
-      .catch((e) => {
-        console.error("Auth Validation Error");
-        console.log(e);
-      });
+    const handleAuthorization = async (
+      accessToken: string,
+      allowedRoles: Role[],
+    ) => {
+      const isAuthorized = await AuthAPIClient.isAuthorizedByRole(
+        accessToken,
+        allowedRoles,
+      );
+      if (isAuthorized) {
+        setAuthStatus({
+          loading: false,
+          isAuthorized: true,
+        });
+      } else {
+        setAuthStatus({
+          loading: false,
+          isAuthorized: false,
+        });
+      }
+    };
+
+    handleAuthorization(accessToken, allowedRoles);
   }, []);
 
   if (!authStatus.loading && !authStatus.isAuthorized)
