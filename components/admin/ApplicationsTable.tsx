@@ -53,6 +53,14 @@ const queries = {
             }
           }
         `,
+  userByEmail: `
+          query userByEmail($email: String!) {
+            userByEmail(email: $email) {
+              firstName
+              lastName
+            }
+          }
+  `,
 };
 
 const ApplicationsTable = () => {
@@ -60,14 +68,42 @@ const ApplicationsTable = () => {
   const [dashboards, setDashboards] = useState<any[]>([]);
   useEffect(() => {
     applications.map(async (app) => {
-      const dashboards = await dashboardsByApplicationId(app.id);
+      const dashboards: any[] = await dashboardsByApplicationId(app.id);
       app.dashboards = dashboards;
+      const reviewerNames = await Promise.all(dashboards.map(async (dash) => {
+        const res = await nameByEmail(dash.reviewerEmail);
+        // console.log(res);
+        return res
+        // return {
+        //   name: nameByEmail(dash.reviewerEmail),
+        // }
+      }))
+      console.log(reviewerNames);
+      app.reviewerNames = reviewerNames;
     });
+    // console.log(applications);
   }, [applications]);
 
   useEffect(() => {
     applicationsByRole();
   }, []);
+
+  const nameByEmail = async (email: string) => {
+    const response = await fetch("http://localhost:5000/graphql", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: queries.userByEmail,
+        variables: {
+          email: email,
+        },
+      }),
+    });
+    const users = await response.json();
+    return users.data.userByEmail;
+  }
 
   const applicationsByRole = () => {
     fetch("http://localhost:5000/graphql", {
@@ -118,8 +154,8 @@ const ApplicationsTable = () => {
         application: application.resumeUrl,
         term: application.academicYear,
         program: application.program,
-        reviewerOne: application.dashboards?.length >= 1 ? application.dashboards[0].reviewerEmail : "",
-        reviewerTwo: application.dashboards?.length >= 2 ? application.dashboards[1].reviewerEmail : "",
+        reviewerOne: application.reviewerNames?.length >= 1 ? application.reviewerNames[0].firstName : "",
+        reviewerTwo: application.reviewerNames?.length >= 2 ? application.reviewerNames[1].firstName : "",
         score: 100,
         status: application.status,
         skill: application.dashboard,
