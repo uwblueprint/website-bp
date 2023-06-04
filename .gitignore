@@ -16,3 +16,4 @@ out
 **/.DS_Store
 .vscode
 **/*.cache
+*.tsbuildinfo
