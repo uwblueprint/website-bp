@@ -178,8 +178,8 @@
     {
       "name": "Deen Parak",
       "role": "developer",
-      "term": 1231,
-      "teams": ["casa"],
+      "term": 1235,
+      "teams": ["haven"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Deen_Parak.png?alt=media&token=fa95b956-9f5c-4b8d-927e-968641023472"
     },
     {
@@ -254,9 +254,9 @@
     },
     {
       "name": "Juthika Hoque",
-      "role": "developer",
-      "term": 1231,
-      "teams": ["shw"],
+      "role": "project manager",
+      "term": 1235,
+      "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Juthika_Hoque.jpg?alt=media&token=dd6c8088-b991-470a-8f94-9dcfca3f11e1"
     },
     {
@@ -360,7 +360,7 @@
     {
       "name": "Helen Guan",
       "role": "developer",
-      "term": 1231,
+      "term": 1235,
       "teams": ["shw"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Helen_Guan.JPG?alt=media&token=6f3cb672-f902-4c1e-ac50-d83acd55e617"
     },
@@ -395,7 +395,7 @@
     {
       "name": "Joyce Shi",
       "role": "technical lead",
-      "term": 1231,
+      "term": 1235,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fpl_joyceshi.jpeg?alt=media&token=70ff8087-72d2-4b8e-96b2-9046a7017655"
     },
@@ -409,8 +409,8 @@
     {
       "name": "Matthew Wang",
       "role": "designer",
-      "term": 1231,
-      "teams": ["internal-tools"],
+      "term": 1235,
+      "teams": ["haven"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_matthewwang.jpeg?alt=media&token=85739432-a296-4c80-94d2-f7c3369561b6"
     },
     {
@@ -465,7 +465,7 @@
     {
       "name": "William Tran",
       "role": "developer",
-      "term": 1229,
+      "term": 1235,
       "teams": ["focus-on-nature"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_WilliamTran.PNG?alt=media&token=3896825a-9863-4ead-88c3-63586fff6963"
     },
@@ -2278,16 +2278,16 @@
     {
       "name": "Anson He",
       "role": "developer",
-      "term": 1231,
+      "term": 1235,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Anson_He.jpg?alt=media&token=da9dbd9c-9fa5-4f09-a755-dd3287c45edd"
     },
     {
       "name": "Hannah Du",
       "role": "developer",
-      "term": 1231,
+      "term": 1235,
       "teams": ["fck"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Hannah_Du.jpg?alt=media&token=212504f5-d2d5-42b9-853d-669e7b9d8775"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2FDev_HannahDu.jpeg?alt=media&token=e8fd954d-22f4-46de-a06b-d7cc1a38f666&_gl=1*1wy2sle*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMjM5Mi4wLjAuMA.."
     },
     {
       "name": "Anmol Tyagi",
@@ -2299,14 +2299,14 @@
     {
       "name": "Jane Wu",
       "role": "designer",
-      "term": 1231,
+      "term": 1235,
       "teams": ["fck"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDesign_Jane_Wu.png?alt=media&token=4dfb9679-0066-43d3-adc9-9376bd0a85e8"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2FDesigner_Jane_Wu.png?alt=media&token=07d4125d-0fcc-46c4-9513-44b654a4f19d&_gl=1*kaqigc*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMjIwNy4wLjAuMA.."
     },
     {
       "name": "Selena Sahawneh",
       "role": "designer",
-      "term": 1231,
+      "term": 1235,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDesign_Selena_Sahawneh.jpg?alt=media&token=5730f514-4a68-48f3-a500-037e8725f12e"
     },
@@ -2523,8 +2523,8 @@
     {
       "name": "Chris Abey",
       "role": "developer",
-      "term": 1231,
-      "teams": ["internal-tools"],
+      "term": 1235,
+      "teams": ["haven"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Chris_Abey.jpg?alt=media&token=97630484-8ce5-49da-b77c-4190028a9abb"
     },
     {
@@ -2858,8 +2858,8 @@
     },
     {
       "name": "Carissa Tang",
-      "role": "technical lead",
-      "term": 1231,
+      "role": "product lead",
+      "term": 1235,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_carissatang.jpg?alt=media&token=5e0e7d58-5b98-4d20-85b8-45963e4d5698"
     },
@@ -2957,14 +2957,14 @@
     {
       "name": "Heet Shah",
       "role": "developer",
-      "term": 1231,
+      "term": 1235,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Heet_Shah.jpeg?alt=media&token=25e1140d-744b-411f-a4a6-e14ceececb88"
     },
     {
       "name": "Andrew Zhang",
-      "role": "developer",
-      "term": 1231,
+      "role": "project lead",
+      "term": 1235,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Andrew_Zhang.png?alt=media&token=d725ca8c-78fb-4571-95a9-923218fc35eb"
     },
@@ -2978,7 +2978,7 @@
     {
       "name": "Aaron Zhang",
       "role": "developer",
-      "term": 1229,
+      "term": 1235,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Aaron_Zhang.jpg?alt=media&token=67419add-7cbb-458b-9101-2e8c65eaedcc"
     },
@@ -2998,10 +2998,10 @@
     },
     {
       "name": "Khloe Ramdhan",
-      "role": "developer",
-      "term": 1231,
-      "teams": ["ccbc"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Khloe_Ramdhan.JPG?alt=media&token=36336a16-461c-4a2d-a9e2-e85ed14188a8"
+      "role": "project lead",
+      "term": 1235,
+      "teams": ["haven"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2FPL_Khloe_Ramdhan.jpg?alt=media&token=191ef90e-431e-4521-b607-85cfdc00c9c5&_gl=1*tvmdna*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMTQ0MC4wLjAuMA.."
     },
     {
       "name": "Ethan Alvizo",
@@ -3055,21 +3055,21 @@
     {
       "name": "Kelly Pham",
       "role": "developer",
-      "term": 1231,
+      "term": 1235,
       "teams": ["shw"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Kelly_Pham.png?alt=media&token=26590752-a8ff-4465-9c1e-b3f59b5edeb8"
     },
     {
       "name": "Safwaan Chowdhury",
-      "role": "developer",
-      "term": 1231,
+      "role": "product lead",
+      "term": 1235,
       "teams": ["shw"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Safwaan_Chowdhury.JPG?alt=media&token=210479f5-e8a8-4b2a-a1fb-c2f8d75a8861"
     },
     {
       "name": "Connor Bechthold",
       "role": "developer",
-      "term": 1231,
+      "term": 1235,
       "teams": ["shw"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Connor_Bechthold.jpeg?alt=media&token=9b68f528-daef-400a-a8a7-87b8692ad9ed"
     },
@@ -3116,10 +3116,10 @@
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FGraphicDesigner_Courtney_Bye.JPG?alt=media&token=a67fc40a-3295-43be-a916-44b20ae383c7"
     },
     {
-      "name": "Dashan Ji",
+      "name": "Shawn Ji",
       "role": "designer",
-      "term": 1231,
-      "teams": ["jump-math"],
+      "term": 1235,
+      "teams": ["haven"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDesign_Dashan(Shawn)_Ji.jpg?alt=media&token=dc2cc650-698f-4e4d-8b96-bd6fa0c69227"
     },
     {
@@ -3132,14 +3132,14 @@
     {
       "name": "Derrick Yang",
       "role": "developer",
-      "term": 1231,
+      "term": 1235,
       "teams": ["ccbc"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Derrick_Yang.JPG?alt=media&token=ed801e8d-8351-411d-a5ef-2d80b7aca1c1"
     },
     {
       "name": "Nathan Souphanthong",
       "role": "developer",
-      "term": 1231,
+      "term": 1235,
       "teams": ["ccbc"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Nathan_Souphanthong.jpeg?alt=media&token=93554ac4-df79-4a71-832e-547ca65c7ba8"
     },
@@ -3225,6 +3225,153 @@
       "role": "user researcher",
       "term": 1235,
       "teams": ["executive"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Alex Zhu",
+      "role": "project manager",
+      "term": 1235,
+      "teams": ["haven"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Nicky Lam",
+      "role": "developer",
+      "term": 1235,
+      "teams": ["haven"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2Fdev_nicky_lam.jpg?alt=media&token=f82bc204-637c-4afa-bc72-6c2e26256beb&_gl=1*pyq0e*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMTQ4NS4wLjAuMA.."
+    },
+    {
+      "name": "Shushawn Saha",
+      "role": "developer",
+      "term": 1235,
+      "teams": ["haven"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Shahan Nedadahandeh",
+      "role": "project lead",
+      "term": 1235,
+      "teams": ["fck"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2FPL_Shahan_Nedadahandeh.png?alt=media&token=7c3ffb67-f738-4e45-a660-4dfe8a55fb81&_gl=1*83e74z*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMjk5NS4wLjAuMA.."
+    },
+    {
+      "name": "Colin Toft",
+      "role": "developer",
+      "term": 1235,
+      "teams": ["fck"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2FDev_Colin_Toft.JPG?alt=media&token=1b0baa56-0a73-4755-b5a9-dada06f7da0b&_gl=1*gtp2kl*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMjM3Mi4wLjAuMA.."
+    },
+    {
+      "name": "Sophie Yang",
+      "role": "developer",
+      "term": 1235,
+      "teams": ["fck"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2FDev_Sophie_Yang.jpg?alt=media&token=e23d07e7-9fb0-43a9-940f-d7989d343cb0&_gl=1*1egyhjw*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMjY0MC4wLjAuMA.."
+    },
+    {
+      "name": "Tudor Barsan",
+      "role": "developer",
+      "term": 1235,
+      "teams": ["fck"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2FDev_Tudor_Barsan.jpg?alt=media&token=5d55b7fe-347c-4da8-8ef0-e1d644261008&_gl=1*1kik0yu*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMjgzNi4wLjAuMA.."
+    },
+    {
+      "name": "Levina Indrawan",
+      "role": "designer",
+      "term": 1235,
+      "teams": ["haven"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2FDesigner_Levina_Indrawan.jpg?alt=media&token=1871e938-0190-4217-b5de-12b746f4b66c&_gl=1*1qvrbmz*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMjIyOC4wLjAuMA.."
+    },
+    {
+      "name": "Tina Wang",
+      "role": "developer",
+      "term": 1235,
+      "teams": ["focus-on-nature"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2FDev_Tina_Wang.jpg?alt=media&token=eccc40a7-8516-46a9-a39a-3fe4e7789ad7&_gl=1*1bpkzot*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMjgxNi4wLjAuMA.."
+    },
+    {
+      "name": "Catherine Xie",
+      "role": "developer",
+      "term": 1235,
+      "teams": ["focus-on-nature"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2FDev_Catherine_Xie.jpg?alt=media&token=77b7b778-9ece-40bc-987c-9c7abf6fb977&_gl=1*13lei8a*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMjMzOC4wLjAuMA.."
+    },
+    {
+      "name": "Hiba Altaf",
+      "role": "product manager",
+      "term": 1235,
+      "teams": ["shw"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Kevin Pierce",
+      "role": "developer",
+      "term": 1235,
+      "teams": ["shw"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Daniel Kim",
+      "role": "developer",
+      "term": 1235,
+      "teams": ["shw"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Owen Sellner",
+      "role": "developer",
+      "term": 1235,
+      "teams": ["shw"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2FDev_Owen_Sellner.png?alt=media&token=6241c183-b6bd-4a6c-806c-f939d41fac46&_gl=1*16hnzg0*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMjYwOC4wLjAuMA.."
+    },
+    {
+      "name": "Wais Hundekar",
+      "role": "developer",
+      "term": 1235,
+      "teams": ["jump-math"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Nima Sheth",
+      "role": "developer",
+      "term": 1235,
+      "teams": ["jump-math"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Jenna Xiao",
+      "role": "developer",
+      "term": 1235,
+      "teams": ["jump-math"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Brian Zhang",
+      "role": "developer",
+      "term": 1235,
+      "teams": ["jump-math"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Cindy Gu",
+      "role": "developer",
+      "term": 1235,
+      "teams": ["jump-math"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "David Liu",
+      "role": "developer",
+      "term": 1235,
+      "teams": ["jump-math"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Brayden Roysten",
+      "role": "product lead",
+      "term": 1235,
+      "teams": ["focus-on-nature"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     }
   ]
