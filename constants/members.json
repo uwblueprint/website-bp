@@ -156,7 +156,7 @@
     },
     {
       "name": "Bowen Zhu",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1235,
       "teams": ["casa"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FVP_Talent_Bowen_Zhu.jpg?alt=media&token=627c467e-19f5-4f46-93af-a9439e14b9e2"
@@ -254,7 +254,7 @@
     },
     {
       "name": "Juthika Hoque",
-      "role": "project manager",
+      "role": "product manager",
       "term": 1235,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Juthika_Hoque.jpg?alt=media&token=dd6c8088-b991-470a-8f94-9dcfca3f11e1"
@@ -387,14 +387,14 @@
     },
     {
       "name": "Jessica Yang",
-      "role": "project manager",
+      "role": "product manager",
       "term": 1235,
       "teams": ["casa"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FPM_Jessica_Yang.jpg?alt=media&token=6a318481-f5ca-49b0-bef1-cd98b43ef917"
     },
     {
       "name": "Joyce Shi",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1235,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fpl_joyceshi.jpeg?alt=media&token=70ff8087-72d2-4b8e-96b2-9046a7017655"
@@ -415,7 +415,7 @@
     },
     {
       "name": "Mehak Dhaliwal",
-      "role": "project manager",
+      "role": "product manager",
       "term": 1235,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdesigner_mehak.JPG?alt=media&token=cb89e110-e5da-4a26-97b4-57b5a40eeddb"
@@ -592,7 +592,7 @@
     },
     {
       "name": "Imran Ahmed",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1905,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fspring2019headshots%2FImran_Ahmed.jpg?alt=media&token=c6b4f8c7-e20e-4825-a164-58124c54dc8b"
@@ -635,14 +635,14 @@
     },
     {
       "name": "Peiyao Chen",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1211,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fspring2019headshots%2FPeiyao_Chen.jpg?alt=media&token=d0d30b86-81ec-43e3-ad01-3d7c7df36c38"
     },
     {
       "name": "Chuqian Li",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1905,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fspring2019headshots%2FSusan_Li.jpg?alt=media&token=ff6c6c25-6354-4098-b00b-35d884bf70b2"
@@ -705,7 +705,7 @@
     },
     {
       "name": "Mattias Eyram",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1905,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2019headshots%2Fcompressed%2FMattias_Eyram.png?alt=media&token=c7a1271d-c375-4c59-b2d2-7ca4d3297ef4"
@@ -862,7 +862,7 @@
     },
     {
       "name": "Shela Qiu",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1901,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2019headshots%2Fcompressed%2FShela_Qiu.jpg?alt=media&token=abfbb216-1bc2-493c-9d7f-955e6a4d4c69"
@@ -897,7 +897,7 @@
     },
     {
       "name": "Stephen Yang",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1901,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2019headshots%2Fcompressed%2FStephen_Yang.jpg?alt=media&token=2cc09bda-f064-46f1-8436-eda0d9368b60"
@@ -955,7 +955,7 @@
     },
     {
       "name": "Narayan Gupta",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1901,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2019headshots%2Fcompressed%2FNarayan_Gupta.png?alt=media&token=e9c5fba7-1b4d-42c8-91e3-9bce60695018"
@@ -1083,28 +1083,28 @@
     },
     {
       "name": "Gautam Gupta",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1809,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fprofiles%2Fgautam.png?alt=media&token=dc114eb1-c04b-467c-8053-b36ae9c126f4"
     },
     {
       "name": "Mohammed Ridwanul Islam",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1809,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fprofiles%2Fmo.jpeg?alt=media&token=85970904-3b08-494a-b4c5-d9fc46b7e880"
     },
     {
       "name": "Charles Bai",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1809,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fspring2018headshots%2FCharles.jpg?alt=media&token=3da323e2-b94e-4531-a114-b65eeabf8ae0"
     },
     {
       "name": "Shivansh Dhar",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1809,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fprofiles%2Fshiv.jpeg?alt=media&token=adcc10dd-6781-453a-8d65-8dc6e295e61f"
@@ -1258,7 +1258,7 @@
     },
     {
       "name": "Katrina Crisostomo",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1809,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fprofiles%2Fkat.jpeg?alt=media&token=041ef1cb-f4ea-4f12-b7f8-ff47c35b383d"
@@ -1293,14 +1293,14 @@
     },
     {
       "name": "Samuel San",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1809,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ffall2018headshots%2Fcompressed%2FPL_BestFriend_SamuelSan.jpg?alt=media&token=3a29d014-dff0-4bfa-b36c-1027f2aa8dec"
     },
     {
       "name": "Raphael Koh",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1809,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fprofiles%2Fraphael.jpeg?alt=media&token=f6e21fba-eee4-4b2c-9b81-5ed7d5369352"
@@ -1321,7 +1321,7 @@
     },
     {
       "name": "Eric Bai",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1809,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fprofiles%2Feric.jpeg?alt=media&token=f1270a20-a392-4d0e-baa5-85f62ca00dab"
@@ -1349,7 +1349,7 @@
     },
     {
       "name": "Andy Zhang",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1809,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fprofiles%2Fandy.jpeg?alt=media&token=01534e83-c44a-4a62-a1e6-b641c8c42f5b"
@@ -1363,7 +1363,7 @@
     },
     {
       "name": "Casey McLewin",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1809,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fspring2018headshots%2FCasey.jpg?alt=media&token=5016210d-e009-4f45-bc7d-cbacbbacaf03"
@@ -1551,7 +1551,7 @@
     },
     {
       "name": "Daniel Williams",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1199,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff19headshots%2FF19_COMPRESSED-37.JPG?alt=media&token=ed8d0be4-2c12-40f9-a020-83aba20a5f3e",
@@ -1672,7 +1672,7 @@
     },
     {
       "name": "Peter Song",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1209,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fspring2020headshots%2FPeter_Song.jpg?alt=media&token=ac790a85-87b7-4931-9211-a3fecfe4efc4"
@@ -1905,7 +1905,7 @@
     },
     {
       "name": "Deep Dhillon",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1209,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ffall2020headshots%2FPL_DeepDhillon.png?alt=media&token=e74b13a8-cbb9-4af2-965a-738ea10eb590"
@@ -2038,7 +2038,7 @@
     },
     {
       "name": "Jeffrey Huang",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1211,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2021headshots%2FJeff_Huang.png?alt=media&token=692af405-594e-4e63-9d22-f2c0b780b8cb"
@@ -2508,7 +2508,7 @@
     },
     {
       "name": "Anish Aggarwal",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1235,
       "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ffall2021headshots%2Fdev_anish_aggarwal.jpeg?alt=media&token=a173f9d8-eded-44cf-a622-38511d6ad1a8"
@@ -2858,7 +2858,7 @@
     },
     {
       "name": "Carissa Tang",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1235,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_carissatang.jpg?alt=media&token=5e0e7d58-5b98-4d20-85b8-45963e4d5698"
@@ -2963,7 +2963,7 @@
     },
     {
       "name": "Andrew Zhang",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1235,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Andrew_Zhang.png?alt=media&token=d725ca8c-78fb-4571-95a9-923218fc35eb"
@@ -2998,7 +2998,7 @@
     },
     {
       "name": "Khloe Ramdhan",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1235,
       "teams": ["haven"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2FPL_Khloe_Ramdhan.jpg?alt=media&token=191ef90e-431e-4521-b607-85cfdc00c9c5&_gl=1*tvmdna*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMTQ0MC4wLjAuMA.."
@@ -3061,7 +3061,7 @@
     },
     {
       "name": "Safwaan Chowdhury",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1235,
       "teams": ["shw"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Safwaan_Chowdhury.JPG?alt=media&token=210479f5-e8a8-4b2a-a1fb-c2f8d75a8861"
@@ -3229,7 +3229,7 @@
     },
     {
       "name": "Alex Zhu",
-      "role": "project manager",
+      "role": "product manager",
       "term": 1235,
       "teams": ["haven"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
@@ -3250,7 +3250,7 @@
     },
     {
       "name": "Shahan Nedadahandeh",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1235,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2FPL_Shahan_Nedadahandeh.png?alt=media&token=7c3ffb67-f738-4e45-a660-4dfe8a55fb81&_gl=1*83e74z*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMjk5NS4wLjAuMA.."
@@ -3376,7 +3376,7 @@
     },
     {
       "name": "River Stanley",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1235,
       "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2FPL_River_Stanley.jpg?alt=media&token=b31ecc6f-c9db-46f7-b146-d7bcd8789031&_gl=1*15on0jq*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMTYxMi4wLjAuMA."
