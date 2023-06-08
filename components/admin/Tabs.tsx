@@ -43,6 +43,8 @@ const Navbar: FC<NavbarProps> = ({ user, setActiveTab, activeTab }) => {
     "px-4 py-1 font-light text-gray-700 rounded-3xl hover:text-white hover:bg-blue hover:shadow-md transition-colors duration-300";
   const activeTabStyle = "text-white bg-blue shadow-md";
 
+  if (tabs.length <= 1) return <></>;
+
   return (
     <nav className="-ml-2 bg-gray-800 px-8">
       <div className="flex items-center justify-between h-16">
