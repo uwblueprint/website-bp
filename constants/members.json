@@ -122,7 +122,7 @@
     {
       "name": "Nima Sheth",
       "role": "developer",
-      "term": 1231,
+      "term": 1235,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FVPI_Nima_Sheth.jpg?alt=media&token=73940d9a-85e6-45da-a7be-2fa2cebb0722"
     },
@@ -339,7 +339,7 @@
     {
       "name": "Brian Zhang",
       "role": "developer",
-      "term": 1231,
+      "term": 1235,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
@@ -381,7 +381,7 @@
     {
       "name": "Wais Hundekar",
       "role": "developer",
-      "term": 1231,
+      "term": 1235,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Wais_Hundekar.JPG?alt=media&token=9b5f48dc-a259-46a5-9ac5-29f871de1adb"
     },
@@ -1708,7 +1708,7 @@
     {
       "name": "Jenna Xiao",
       "role": "developer",
-      "term": 1231,
+      "term": 1235,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Jenna_Xiao.jpeg?alt=media&token=4cef69fd-c815-486f-8294-4341d528fe17"
     },
@@ -2418,7 +2418,7 @@
     {
       "name": "Cindy Gu",
       "role": "developer",
-      "term": 1231,
+      "term": 1235,
       "teams": ["jump-math"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Cindy_Gu.JPG?alt=media&token=eafa9e2f-f3bc-40bf-9b4f-29a7b256e29f"
     },
@@ -3324,41 +3324,6 @@
       "term": 1235,
       "teams": ["shw"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2FDev_Owen_Sellner.png?alt=media&token=6241c183-b6bd-4a6c-806c-f939d41fac46&_gl=1*16hnzg0*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMjYwOC4wLjAuMA.."
-    },
-    {
-      "name": "Wais Hundekar",
-      "role": "developer",
-      "term": 1235,
-      "teams": ["jump-math"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
-    },
-    {
-      "name": "Nima Sheth",
-      "role": "developer",
-      "term": 1235,
-      "teams": ["jump-math"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
-    },
-    {
-      "name": "Jenna Xiao",
-      "role": "developer",
-      "term": 1235,
-      "teams": ["jump-math"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
-    },
-    {
-      "name": "Brian Zhang",
-      "role": "developer",
-      "term": 1235,
-      "teams": ["jump-math"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
-    },
-    {
-      "name": "Cindy Gu",
-      "role": "developer",
-      "term": 1235,
-      "teams": ["jump-math"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "David Liu",
