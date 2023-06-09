@@ -8,7 +8,6 @@ import { PassionForSocialGoodStage } from "@components/review/stages/passionForS
 import { SkillStage } from "@components/review/stages/skillStage";
 import { TeamPlayerStage } from "@components/review/stages/teamPlayerStage";
 import { NextPage } from "next";
-import { useRouter } from "next/router.js";
 import { useState } from "react";
 
 export enum ReviewStage {
@@ -19,11 +18,6 @@ export enum ReviewStage {
   SKL = "SKL",
   END = "END",
   END_SUCCESS = "END_SUCCESS",
-}
-
-interface QueryParams {
-  stage: ReviewStage;
-  reviewId: string;
 }
 
 const Reviews: NextPage = () => {
