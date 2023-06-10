@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import mutations from "graphql/queries";
 import ErrorIcon from "@components/icons/error.icon";
+import { mutations } from "graphql/queries";
 
 const Login: NextPage = () => {
   const [loginState, setLoginState] = useState({

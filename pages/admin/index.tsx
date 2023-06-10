@@ -59,7 +59,7 @@ const Admin: NextPage = () => {
   }, []);
 
   return (
-    <ProtectedRoute>
+    <ProtectedRoute allowedRoles={["Admin", "User"]}>
       <Header />
     </ProtectedRoute>
   );
