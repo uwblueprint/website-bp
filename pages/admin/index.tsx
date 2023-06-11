@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { NextPage } from "next";
 import Header from "@components/admin/Header";
+import Table from "@components/admin/ApplicationDashboardTable";
 import {
   ref,
   get,
@@ -60,7 +61,10 @@ const Admin: NextPage = () => {
 
   return (
     <ProtectedRoute>
-      <Header />
+      <div>
+        <Header />
+        <Table />
+      </div>
     </ProtectedRoute>
   );
 };
