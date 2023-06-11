@@ -2,7 +2,7 @@ import { FC, ButtonHTMLAttributes } from "react";
 import Link from "next/link";
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
-  readonly size?: "md" | "lg";
+  readonly size?: "sm" | "md" | "lg";
   readonly variant?: "primary" | "secondary";
   /** Whether to invert the background and text/border colors, use depending on surrounding elements */
   readonly invert?: boolean;
@@ -46,13 +46,20 @@ const Button: FC<Props> = ({
     }
   }
 
+  const getSizeClasses = () => {
+    switch (size) {
+      case "lg":
+        return "h-auto py-2.5 text-sm md:text-base font-semibold";
+      case "md":
+        return "h-auto py-2.5 text-sm font-normal";
+      case "sm":
+        return "h-min py-1.5 text-sm font-normal";
+    }
+  };
+
   const buttonClasses = `
     ${classes}
-    ${
-      size === "lg"
-        ? "h-auto py-2.5 text-sm md:text-base font-semibold"
-        : "h-auto py-2.5 text-sm font-normal"
-    }
+    ${getSizeClasses()}
     font-poppins px-8 border-2 border-solid rounded-full text-base
     ${className}
   `;
