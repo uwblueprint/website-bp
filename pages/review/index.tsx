@@ -1,12 +1,12 @@
 import ProtectedRoute from "@components/context/ProtectedRoute";
-import { ReviewSetStageContext } from "@components/review/shared/reviewsContext";
-import { ReviewsDriveToLearnStage } from "@components/review/stages/reviewsDriveToLearnStage";
-import { ReviewsEndStage } from "@components/review/stages/reviewsEndStage";
-import { ReviewsEndSuccessStage } from "@components/review/stages/reviewsEndSuccessStage";
-import { ReviewsInfoStage } from "@components/review/stages/reviewsInfoStage";
-import { ReviewsPassionForSocialGoodStage } from "@components/review/stages/reviewsPassionForSocialGoodStage";
-import { ReviewsSkillStage } from "@components/review/stages/reviewsSkillStage";
-import { ReviewsTeamPlayerStage } from "@components/review/stages/reviewsTeamPlayerStage";
+import { ReviewSetStageContext } from "@components/review/shared/reviewContext";
+import { ReviewDriveToLearnStage } from "@components/review/stages/reviewDriveToLearnStage";
+import { ReviewEndStage } from "@components/review/stages/reviewEndStage";
+import { ReviewEndSuccessStage } from "@components/review/stages/reviewEndSuccessStage";
+import { ReviewInfoStage } from "@components/review/stages/reviewInfoStage";
+import { ReviewPassionForSocialGoodStage } from "@components/review/stages/reviewPassionForSocialGoodStage";
+import { ReviewSkillStage } from "@components/review/stages/reviewSkillStage";
+import { ReviewTeamPlayerStage } from "@components/review/stages/reviewTeamPlayerStage";
 import { NextPage } from "next";
 import { useState } from "react";
 
@@ -26,20 +26,20 @@ const Reviews: NextPage = () => {
   const getReviewStage = () => {
     switch (stage) {
       case ReviewStage.INFO:
-        return <ReviewsInfoStage />;
+        return <ReviewInfoStage />;
       case ReviewStage.PFSG:
-        return <ReviewsPassionForSocialGoodStage />;
+        return <ReviewPassionForSocialGoodStage />;
       case ReviewStage.TP:
-        return <ReviewsTeamPlayerStage />;
+        return <ReviewTeamPlayerStage />;
       case ReviewStage.D2L:
-        return <ReviewsDriveToLearnStage />;
+        return <ReviewDriveToLearnStage />;
       case ReviewStage.SKL:
-        return <ReviewsSkillStage />;
+        return <ReviewSkillStage />;
       case ReviewStage.END:
-        return <ReviewsEndStage />;
+        return <ReviewEndStage />;
       case ReviewStage.END_SUCCESS:
       default:
-        return <ReviewsEndSuccessStage />;
+        return <ReviewEndSuccessStage />;
     }
   };
 

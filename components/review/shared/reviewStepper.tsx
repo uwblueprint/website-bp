@@ -1,7 +1,7 @@
 import Button from "@components/common/Button";
 import { ReviewStage } from "pages/review";
 import React, { useMemo } from "react";
-import { ReviewSetStageContext } from "./reviewsContext";
+import { ReviewSetStageContext } from "./reviewContext";
 
 interface Props {
   currentStage: ReviewStage;
@@ -9,7 +9,7 @@ interface Props {
 
 type NavigationItemState = "current" | "past" | "future";
 
-export const ReviewsStepper: React.FC<Props> = ({ currentStage }) => {
+export const ReviewStepper: React.FC<Props> = ({ currentStage }) => {
   const buttons = useMemo(
     () => [
       { title: "INFO", index: 1, stage: ReviewStage.INFO },
