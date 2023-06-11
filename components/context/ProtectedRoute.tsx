@@ -2,8 +2,8 @@ import { ReactChild, ReactElement, useEffect, useState } from "react";
 import Loading from "@components/common/Loading";
 import { queries } from "graphql/queries";
 import getAccessToken from "common/authHelper";
-import Login from "@components/common/Login";
 import { auth } from "@utils/firebase";
+import { useRouter } from "next/router";
 
 type Props = {
   children: ReactChild;
@@ -18,6 +18,7 @@ interface AuthStatus {
 }
 
 const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
+  const router = useRouter();
   const [authStatus, setAuthStatus] = useState<AuthStatus>({
     loading: true,
     isAuthorized: false,
@@ -59,7 +60,6 @@ const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
                   isAuthorized: true,
                 });
               } else {
-                // TODO: handle redirect to 404 here
                 setAuthStatus({
                   loading: false,
                   isAuthorized: false,
@@ -74,12 +74,16 @@ const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
     });
   }, [allowedRoles]);
 
+  if (!authStatus.loading && !authStatus.isAuthorized)
+    router.push("/admin/login");
+  // TODO: handle redirect to 404 here
+
   return authStatus.loading ? (
     <Loading />
   ) : authStatus.isAuthorized ? (
     <>{children}</>
   ) : (
-    <Login />
+    <></>
   );
 };
 
