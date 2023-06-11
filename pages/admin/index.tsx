@@ -65,7 +65,6 @@ const Admin: NextPage = () => {
         <Header />
         <Table />
       </div>
-
     </ProtectedRoute>
   );
 };

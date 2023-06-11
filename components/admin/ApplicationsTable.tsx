@@ -1,6 +1,6 @@
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import MUIDataTable from "mui-datatables";
-import React, { FC, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getTableColumns } from "./ApplicationsTableColumn";
 
 export type Student = {
@@ -62,9 +62,8 @@ const queries = {
   `,
 };
 
-const ApplicationsTable = () => {
+const ApplicationsTable: React.FC = () => {
   const [applications, setApplications] = useState<any[]>([]);
-  const [dashboards, setDashboards] = useState<any[]>([]);
   useEffect(() => {
     applications.map(async (app) => {
       const dashboards: any[] = await dashboardsByApplicationId(app.id);
