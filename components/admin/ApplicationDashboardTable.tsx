@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 // import RowHeader from "./RowHeader";
-import TableTitle from "./TableTitle";
+import TableTitle from "./ApplicationDashboardTableTitle";
 // import RowContent from "./RowContent";
 import ApplicationsTable from "./ApplicationsTable";
 
