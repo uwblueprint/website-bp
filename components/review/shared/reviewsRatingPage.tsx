@@ -1,5 +1,5 @@
 import { ReviewStage } from "pages/review";
-import { SplitPanelPage } from "./SplitPanelPage";
+import { ReviewsSplitPanelPage } from "./reviewsSplitPanelPage";
 
 interface Props {
   studentName: string;
@@ -7,13 +7,13 @@ interface Props {
   title: string;
 }
 
-export const RatingPage: React.FC<Props> = ({
+export const ReviewsRatingPage: React.FC<Props> = ({
   studentName,
   currentStage,
   title,
 }) => {
   return (
-    <SplitPanelPage
+    <ReviewsSplitPanelPage
       studentName={studentName}
       currentStage={currentStage}
       leftTitle="Rubric"

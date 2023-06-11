@@ -1,6 +1,6 @@
 import { ReviewStage } from "pages/review";
 import { createContext } from "react";
 
-export const ReviewDispatchContext = createContext<
+export const ReviewSetStageContext = createContext<
   null | ((newValue: ReviewStage) => void)
 >(null);

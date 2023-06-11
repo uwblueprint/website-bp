@@ -1,12 +1,12 @@
 import ProtectedRoute from "@components/context/ProtectedRoute";
-import { ReviewDispatchContext } from "@components/review/shared/ReviewContext";
-import { DriveToLearnStage } from "@components/review/stages/driveToLearnStage";
-import { EndStage } from "@components/review/stages/endStage";
-import { EndSuccessStage } from "@components/review/stages/endSuccessStage";
-import { InfoStage } from "@components/review/stages/infoStage";
-import { PassionForSocialGoodStage } from "@components/review/stages/passionForSocialGoodStage";
-import { SkillStage } from "@components/review/stages/skillStage";
-import { TeamPlayerStage } from "@components/review/stages/teamPlayerStage";
+import { ReviewSetStageContext } from "@components/review/shared/reviewsContext";
+import { ReviewsDriveToLearnStage } from "@components/review/stages/reviewsDriveToLearnStage";
+import { ReviewsEndStage } from "@components/review/stages/reviewsEndStage";
+import { ReviewsEndSuccessStage } from "@components/review/stages/reviewsEndSuccessStage";
+import { ReviewsInfoStage } from "@components/review/stages/reviewsInfoStage";
+import { ReviewsPassionForSocialGoodStage } from "@components/review/stages/reviewsPassionForSocialGoodStage";
+import { ReviewsSkillStage } from "@components/review/stages/reviewsSkillStage";
+import { ReviewsTeamPlayerStage } from "@components/review/stages/reviewsTeamPlayerStage";
 import { NextPage } from "next";
 import { useState } from "react";
 
@@ -26,28 +26,28 @@ const Reviews: NextPage = () => {
   const getReviewStage = () => {
     switch (stage) {
       case ReviewStage.INFO:
-        return <InfoStage />;
+        return <ReviewsInfoStage />;
       case ReviewStage.PFSG:
-        return <PassionForSocialGoodStage />;
+        return <ReviewsPassionForSocialGoodStage />;
       case ReviewStage.TP:
-        return <TeamPlayerStage />;
+        return <ReviewsTeamPlayerStage />;
       case ReviewStage.D2L:
-        return <DriveToLearnStage />;
+        return <ReviewsDriveToLearnStage />;
       case ReviewStage.SKL:
-        return <SkillStage />;
+        return <ReviewsSkillStage />;
       case ReviewStage.END:
-        return <EndStage />;
+        return <ReviewsEndStage />;
       case ReviewStage.END_SUCCESS:
       default:
-        return <EndSuccessStage />;
+        return <ReviewsEndSuccessStage />;
     }
   };
 
   return (
     <ProtectedRoute>
-      <ReviewDispatchContext.Provider value={setStage}>
+      <ReviewSetStageContext.Provider value={setStage}>
         {getReviewStage()}
-      </ReviewDispatchContext.Provider>
+      </ReviewSetStageContext.Provider>
     </ProtectedRoute>
   );
 };

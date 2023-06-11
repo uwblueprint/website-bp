@@ -1,7 +1,7 @@
 import Button from "@components/common/Button";
 import { ReviewStage } from "pages/review";
 import React, { useMemo } from "react";
-import { ReviewDispatchContext } from "./ReviewContext";
+import { ReviewSetStageContext } from "./reviewsContext";
 
 interface Props {
   currentStage: ReviewStage;
@@ -9,7 +9,7 @@ interface Props {
 
 type NavigationItemState = "current" | "past" | "future";
 
-export const ReviewNavigationBar: React.FC<Props> = ({ currentStage }) => {
+export const ReviewsStepper: React.FC<Props> = ({ currentStage }) => {
   const buttons = useMemo(
     () => [
       { title: "INFO", index: 1, stage: ReviewStage.INFO },
@@ -69,7 +69,7 @@ export const ReviewNavigationBar: React.FC<Props> = ({ currentStage }) => {
             />
           ))}
         </div>
-        <ReviewDispatchContext.Consumer>
+        <ReviewSetStageContext.Consumer>
           {(setStage) => (
             <div className="grow flex justify-end items-center">
               {currentButtonIndex > 0 ? (
@@ -101,7 +101,7 @@ export const ReviewNavigationBar: React.FC<Props> = ({ currentStage }) => {
               )}
             </div>
           )}
-        </ReviewDispatchContext.Consumer>
+        </ReviewSetStageContext.Consumer>
       </div>
     </div>
   );
@@ -143,7 +143,7 @@ const NavigationItem: React.FC<NavigationItemProps> = ({
   };
 
   return (
-    <ReviewDispatchContext.Consumer>
+    <ReviewSetStageContext.Consumer>
       {(setStage) => (
         <button
           onClick={() => setStage?.(stage)}
@@ -166,6 +166,6 @@ const NavigationItem: React.FC<NavigationItemProps> = ({
           </div>
         </button>
       )}
-    </ReviewDispatchContext.Consumer>
+    </ReviewSetStageContext.Consumer>
   );
 };

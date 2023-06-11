@@ -1,6 +1,6 @@
 import { ReviewStage } from "pages/review/index.jsx";
 import React from "react";
-import { ReviewNavigationBar } from "./ReviewNavigationBar";
+import { ReviewsStepper } from "./reviewsStepper";
 
 interface Props {
   studentName: string;
@@ -11,7 +11,7 @@ interface Props {
   currentStage: ReviewStage;
 }
 
-export const SplitPanelPage: React.FC<Props> = ({
+export const ReviewsSplitPanelPage: React.FC<Props> = ({
   studentName,
   leftTitle,
   rightTitle,
@@ -34,7 +34,7 @@ export const SplitPanelPage: React.FC<Props> = ({
           {rightTitle ? <h2 className="text-xl">{rightTitle}</h2> : null}
           {rightContent}
         </div>
-        <ReviewNavigationBar currentStage={currentStage} />
+        <ReviewsStepper currentStage={currentStage} />
       </div>
     </div>
   );
