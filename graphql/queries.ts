@@ -13,6 +13,11 @@ export const mutations = {
       refreshToken
     }
   }`,
+  refresh: `
+  mutation refresh($refreshToken: String!) {
+    refresh(refreshToken: $refreshToken)
+  }
+`,
 };
 
 // TODO: add functionaltiy to getRole in case accessToken expired and needs to be refreshed.
