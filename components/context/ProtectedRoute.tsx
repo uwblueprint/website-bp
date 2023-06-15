@@ -24,12 +24,7 @@ const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
     isAuthorized: false,
   });
   useEffect(() => {
-    auth.onAuthStateChanged(async () => {
-      setAuthStatus({
-        loading: true,
-        isAuthorized: false,
-      });
-      const accessToken = await getAccessToken();
+      const accessToken = localStorage.getItem("accessToken");
       if (accessToken == null) {
         setAuthStatus({
           loading: false,
@@ -71,7 +66,6 @@ const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
           console.error("Auth Validation Error");
           console.error(e);
         });
-    });
   }, [allowedRoles]);
 
   if (!authStatus.loading && !authStatus.isAuthorized)
