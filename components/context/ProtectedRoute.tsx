@@ -1,8 +1,6 @@
 import { ReactChild, ReactElement, useEffect, useState } from "react";
 import Loading from "@components/common/Loading";
 import { queries } from "graphql/queries";
-import getAccessToken from "common/authHelper";
-import { auth } from "@utils/firebase";
 import { useRouter } from "next/router";
 
 type Props = {
