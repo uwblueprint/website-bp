@@ -1,4 +1,4 @@
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import { createTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import MUIDataTable from "mui-datatables";
 import React, { useEffect, useState } from "react";
 import { getTableColumns } from "./ApplicationsTableColumn";
@@ -155,7 +155,11 @@ const ApplicationsTable: React.FC = () => {
 
   const getMuiTheme = () =>
     createTheme({
-      overrides: {},
+      overrides: {
+        MUIDataTableHeadCell: {
+          data: { color: "blue" }, // @todo use real colour
+        },
+      },
     });
 
   const getTableRows = (): StudentRow[] => {
@@ -182,13 +186,13 @@ const ApplicationsTable: React.FC = () => {
   };
 
   return (
-    <ThemeProvider theme={getMuiTheme()}>
+    <MuiThemeProvider theme={getMuiTheme()}>
       <MUIDataTable
         title={""}
         data={getTableRows()}
         columns={getTableColumns()}
       />
-    </ThemeProvider>
+    </MuiThemeProvider>
   );
 };
 
