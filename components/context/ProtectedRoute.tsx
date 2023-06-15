@@ -24,48 +24,48 @@ const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
     isAuthorized: false,
   });
   useEffect(() => {
-      const accessToken = localStorage.getItem("accessToken");
-      if (accessToken == null) {
-        setAuthStatus({
-          loading: false,
-          isAuthorized: false,
-        });
-        return;
-      }
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken == null) {
+      setAuthStatus({
+        loading: false,
+        isAuthorized: false,
+      });
+      return;
+    }
 
-      fetch("http://localhost:5000/graphql", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    fetch("http://localhost:5000/graphql", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: queries.isAuthorizedByRole,
+        variables: {
+          accessToken,
+          roles: allowedRoles,
         },
-        body: JSON.stringify({
-          query: queries.isAuthorizedByRole,
-          variables: {
-            accessToken,
-            roles: allowedRoles,
-          },
-        }),
-      })
-        .then(
-          async (res) =>
-            await res.json().then((result) => {
-              if (result.data.isAuthorizedByRole) {
-                setAuthStatus({
-                  loading: false,
-                  isAuthorized: true,
-                });
-              } else {
-                setAuthStatus({
-                  loading: false,
-                  isAuthorized: false,
-                });
-              }
-            }),
-        )
-        .catch((e) => {
-          console.error("Auth Validation Error");
-          console.error(e);
-        });
+      }),
+    })
+      .then(
+        async (res) =>
+          await res.json().then((result) => {
+            if (result.data.isAuthorizedByRole) {
+              setAuthStatus({
+                loading: false,
+                isAuthorized: true,
+              });
+            } else {
+              setAuthStatus({
+                loading: false,
+                isAuthorized: false,
+              });
+            }
+          }),
+      )
+      .catch((e) => {
+        console.error("Auth Validation Error");
+        console.error(e);
+      });
   }, [allowedRoles]);
 
   if (!authStatus.loading && !authStatus.isAuthorized)
