@@ -45,6 +45,7 @@ module.exports = {
         400: "#7EB9F0",
         500: "#4498ED",
       },
+      eggshell: "#f4f9ff",
 
       // SECONDARY
       pink: {

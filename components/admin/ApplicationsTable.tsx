@@ -3,6 +3,7 @@ import { fetchGraphql } from "@utils/makegqlrequest";
 import MUIDataTable from "mui-datatables";
 import React, { useEffect, useState } from "react";
 import { getTableColumns } from "./ApplicationsTableColumn";
+import { theme } from "../../styles/Theme";
 
 export type Student = {
   id: string;
@@ -107,14 +108,58 @@ const ApplicationsTable: React.FC = () => {
     const response = await fetchGraphql(queries.dashboardsByApplicationId, {
       applicationId: id,
     });
-    return response.data.dashboardsByApplicationId;
+    const dashboards = await response.json();
+    return [];
+    return dashboards.data.dashboardsByApplicationId;
   };
 
   const getMuiTheme = () =>
     createTheme({
       overrides: {
+        MuiPaper: {
+          root: {
+            border: `1px solid ${theme.colors.greys.border}`,
+          },
+        },
+        MUIDataTable: {
+          paper: {
+            boxShadow: "none",
+            marginBottom: "3em",
+          },
+          root: {
+            fontFamily: "Source Sans Pro",
+          },
+        },
         MUIDataTableHeadCell: {
-          data: { color: "blue" }, // @todo use real colour
+          data: {
+            color: theme.colors.B10,
+            fontFamily: "Source Sans Pro",
+            fontWeight: 600,
+          },
+          sortActive: {
+            color: theme.colors.B10,
+          },
+        },
+        MUIDataTableBodyCell: {
+          root: {
+            fontFamily: "Source Sans Pro",
+          },
+        },
+        MUIDataTableToolbar: {
+          root: {
+            display: "none",
+          },
+        },
+        MuiTableSortLabel: {
+          root: {
+            color: `${theme.colors.B10} !important`,
+          },
+          active: {
+            color: theme.colors.B10,
+          },
+          iconDirectionAsc: {
+            color: theme.colors.B10,
+          },
         },
       },
     });
