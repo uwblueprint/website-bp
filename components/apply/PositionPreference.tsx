@@ -31,6 +31,7 @@ const PositionPreference: FC<Props> = ({
       const newSecondChoice = SECOND_CHOICE_MEMBER_ROLES?.[0] || "";
       formikProps.setFieldValue("secondChoiceRole", newSecondChoice);
     }
+    // @todo (from S23): Remove this eslint ignore and address the missing dependency
   }, [values.firstChoiceRole]);
 
   return (
