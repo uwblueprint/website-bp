@@ -1,5 +1,5 @@
 {
-  "term": 1235,
+  "term": 1231,
   "teams": [
     {
       "name": "Executive Team",
@@ -28,10 +28,6 @@
     {
       "name": "Feeding Canadian Kids",
       "id": "fck"
-    },
-    {
-      "name": "Haven",
-      "id": "haven"
     }
   ],
   "members": [
