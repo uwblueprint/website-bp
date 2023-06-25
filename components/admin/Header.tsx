@@ -17,6 +17,7 @@ const Header: FC = () => {
   const [activeTab, setActiveTab] = React.useState<
     OrganizationalArea | undefined
   >();
+
   const user: Users = {
     id: "1",
     name: "Chris Abey",

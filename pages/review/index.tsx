@@ -44,7 +44,7 @@ const Reviews: NextPage = () => {
   };
 
   return (
-    <ProtectedRoute allowedRoles={["Admin", "User"]}>
+    <ProtectedRoute>
       <ReviewSetStageContext.Provider value={setStage}>
         {getReviewStage()}
       </ReviewSetStageContext.Provider>
