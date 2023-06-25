@@ -125,7 +125,6 @@
   {
     "id": "12",
     "role": "VP Communications",
-    "open": false,
     "questions": [
       {
         "question": "What's a cool idea you think Blueprint should do to elevate our current branding and image in the community?",
@@ -155,7 +154,7 @@
   },
   {
     "id": "15",
-    "role": "External Director",
+    "role": "VP External",
     "questions": [
       {
         "question": "What's a cool new event you think Blueprint should do and how does it align with Blueprint's mission?",
@@ -165,7 +164,7 @@
   },
   {
     "id": "16",
-    "role": "Internal Director",
+    "role": "VP Internal",
     "questions": [
       {
         "question": "What would an ideal member experience look like to you?",

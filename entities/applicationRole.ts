@@ -1,7 +1,5 @@
 enum ApplicantRole {
   pres = "president", // community tab
-  int_dir = "internal director",
-  ext_dir = "external director",
   vpe = "vp engineering", // eng tab
   vpd = "vp design", // design tab
   vpp = "vp product", // prod tab
