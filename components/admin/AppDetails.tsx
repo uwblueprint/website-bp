@@ -23,7 +23,7 @@ const AppDetails: FC<Props> = ({ id }: Props) => {
       .catch((error) => {
         console.error(error);
       });
-  }, [id]);
+  }, []);
 
   return !application ? <></> : <AppForm readOnly values={application} />;
 };
