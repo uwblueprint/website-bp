@@ -24,17 +24,20 @@ export enum ReviewStage {
 const ReviewsPages: NextPage = () => {
   const [stage, setStage] = useState<ReviewStage>(ReviewStage.INFO);
   const initialScores = new Map<ReviewStage, number>();
-  initialScores.set(ReviewStage.PFSG, 0);
-  initialScores.set(ReviewStage.TP, 0);
-  initialScores.set(ReviewStage.D2L, 0);
-  initialScores.set(ReviewStage.SKL, 0);
+  initialScores.set(ReviewStage.PFSG, 1);
+  initialScores.set(ReviewStage.TP, 1);
+  initialScores.set(ReviewStage.D2L, 1);
+  initialScores.set(ReviewStage.SKL, 1);
 
   const [scores, setScores] = useState<Map<ReviewStage, number>>(initialScores);
   const updateScores = (key: ReviewStage, value: number) => {
-    setScores(map => new Map(map.set(key, value)));
+    setScores((map) => {
+      if (value < 1 || value > 5) {
+        return map
+      }
+      return new Map(map.set(key, value))
+    });
   }
-
-  // const scores = useRef(initialScores);
 
   const getReviewStage = () => {
     switch (stage) {

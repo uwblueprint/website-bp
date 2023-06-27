@@ -13,8 +13,6 @@ export const ReviewRubric: React.FC<Props> = ({
   scores,
   currentStage,
 }) => {
-  const [score, setScore] = useState("");
-
   return (
       <div className='shrink=0 gap-8'>
         <div className='inline-flex gap-6 flex-col items-start'>
@@ -39,16 +37,8 @@ export const ReviewRubric: React.FC<Props> = ({
                 pattern="[1-5]"
                 value={scores.get(currentStage)}
                 onChange={(event) => {
-                  // setScore((val) => 
-                  //   (event.target.validity.valid ? event.target.value : val)
-                  // )
                   if (event.target.validity.valid) {
                     updateScore?.(currentStage, parseInt(event.target.value));
-                    // scores.set(currentStage, parseInt(event.target.value));
-                    // setScore(event.target.value);
-                    
-                    // console.log(event.target.value);
-                    console.log(scores.get(currentStage));
                   }
                 }}
               />

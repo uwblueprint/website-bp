@@ -65,11 +65,12 @@ export const ReviewStepper: React.FC<Props> = ({
     <div className="bottom-0 left-0 absolute w-full">
       <div className="bg-sky-100 m-2 p-4 flex">
         <div className="grid grid-flow-col auto-cols-fr">
-          {buttons.map((buttonProps) => (
+          {buttons.map((buttonProps, idx) => (
             <NavigationItem
               {...buttonProps}
               state={getButtonState(buttonProps)}
               containerClassName="px-2 basis-0"
+              key={idx}
             />
           ))}
         </div>
@@ -98,7 +99,13 @@ export const ReviewStepper: React.FC<Props> = ({
                 <Button
                   className="justify-self-end whitespace-nowrap"
                   size="sm"
-                  // disabled={scores.get(currentStage) == 0}
+                  disabled={
+                    currentStage != ReviewStage.INFO && 
+                    currentStage != ReviewStage.END_SUCCESS &&
+                    (scores == undefined || 
+                    scores.get(currentStage)! <= 0 ||
+                    scores.get(currentStage)! > 5)
+                  }
                   onClick={() => {
                     setStage?.(getNextStage())
                   }}

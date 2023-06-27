@@ -1,6 +1,5 @@
 import { ReviewStage } from "pages/review";
 import { ReviewSplitPanelPage } from "./reviewSplitPanelPage";
-import { ReviewRubric } from "../stages/reviewRubric";
 import Button from "@components/common/Button";
 
 
@@ -23,9 +22,6 @@ const ResumeLink: React.FC<resumeProps> = ({
 }) => {
   return (
     <div className="flex flex-col gap-8">
-      {/* <a href={resumeLink} target="_blank" rel="noopener noreferrer">
-        See candidate resume
-      </a> */}
       <Button 
         className="mr-2 justify-self-end" 
         size="sm"
