@@ -9,6 +9,7 @@ interface Props {
   leftContent?: JSX.Element;
   rightContent?: JSX.Element;
   currentStage: ReviewStage;
+  scores?: Map<ReviewStage, number>;
 }
 
 export const ReviewSplitPanelPage: React.FC<Props> = ({
@@ -18,6 +19,7 @@ export const ReviewSplitPanelPage: React.FC<Props> = ({
   leftContent,
   rightContent,
   currentStage,
+  scores,
 }) => {
   return (
     <div className="grid grid-cols-2 h-screen grid-rows-[auto_1fr]">
@@ -25,16 +27,20 @@ export const ReviewSplitPanelPage: React.FC<Props> = ({
       <div id="right-title" className="px-9 pt-9">
         <h1 className="text-blue text-4xl">{studentName}</h1>
       </div>
-      <div className="leftPanel flex-none grow bg-sky p-9">
-        {leftTitle ? <h2 className="text-xl">{leftTitle}</h2> : null}
-        {leftContent}
+      <div className="inline-flex flex-col justify-center gap-8 p-9 shrink-0 bg-sky" style={{alignItems: 'flex-start'}}>
+        <div>
+          {leftTitle ? <h2 className="text-[26px]">{leftTitle}</h2> : null}
+        </div>
+        <div>
+          {leftContent}
+        </div>
       </div>
       <div className="rightPanel flex-none grow px-9 py-10 relative">
-        <div>
-          {rightTitle ? <h2 className="text-xl">{rightTitle}</h2> : null}
+        <div className=" flex flex-col gap-8">
+          {rightTitle ? <h2 className="text-[26px]" style={{lineHeight: '140%'}}>{rightTitle}</h2> : null}
           {rightContent}
         </div>
-        <ReviewStepper currentStage={currentStage} />
+        <ReviewStepper currentStage={currentStage} scores={scores!}/>
       </div>
     </div>
   );

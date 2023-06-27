@@ -5,11 +5,15 @@ import { ReviewSetStageContext } from "./reviewContext";
 
 interface Props {
   currentStage: ReviewStage;
+  scores: Map<ReviewStage, number>;
 }
 
 type NavigationItemState = "current" | "past" | "future";
 
-export const ReviewStepper: React.FC<Props> = ({ currentStage }) => {
+export const ReviewStepper: React.FC<Props> = ({
+  currentStage,
+  scores,
+}) => {
   const buttons = useMemo(
     () => [
       { title: "INFO", index: 1, stage: ReviewStage.INFO },
@@ -94,7 +98,10 @@ export const ReviewStepper: React.FC<Props> = ({ currentStage }) => {
                 <Button
                   className="justify-self-end whitespace-nowrap"
                   size="sm"
-                  onClick={() => setStage?.(getNextStage())}
+                  // disabled={scores.get(currentStage) == 0}
+                  onClick={() => {
+                    setStage?.(getNextStage())
+                  }}
                 >
                   Save & continue
                 </Button>

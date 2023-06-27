@@ -1,5 +1,5 @@
 import ProtectedRoute from "@components/context/ProtectedRoute";
-import { ReviewSetStageContext } from "@components/review/shared/reviewContext";
+import { ReviewSetScoresContext, ReviewSetStageContext } from "@components/review/shared/reviewContext";
 import { ReviewDriveToLearnStage } from "@components/review/stages/reviewDriveToLearnStage";
 import { ReviewEndStage } from "@components/review/stages/reviewEndStage";
 import { ReviewEndSuccessStage } from "@components/review/stages/reviewEndSuccessStage";
@@ -7,8 +7,9 @@ import { ReviewInfoStage } from "@components/review/stages/reviewInfoStage";
 import { ReviewPassionForSocialGoodStage } from "@components/review/stages/reviewPassionForSocialGoodStage";
 import { ReviewSkillStage } from "@components/review/stages/reviewSkillStage";
 import { ReviewTeamPlayerStage } from "@components/review/stages/reviewTeamPlayerStage";
+import { update } from "firebase/database";
 import { NextPage } from "next";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export enum ReviewStage {
   INFO = "INFO",
@@ -20,23 +21,35 @@ export enum ReviewStage {
   END_SUCCESS = "END_SUCCESS",
 }
 
-const Reviews: NextPage = () => {
+const ReviewsPages: NextPage = () => {
   const [stage, setStage] = useState<ReviewStage>(ReviewStage.INFO);
+  const initialScores = new Map<ReviewStage, number>();
+  initialScores.set(ReviewStage.PFSG, 0);
+  initialScores.set(ReviewStage.TP, 0);
+  initialScores.set(ReviewStage.D2L, 0);
+  initialScores.set(ReviewStage.SKL, 0);
+
+  const [scores, setScores] = useState<Map<ReviewStage, number>>(initialScores);
+  const updateScores = (key: ReviewStage, value: number) => {
+    setScores(map => new Map(map.set(key, value)));
+  }
+
+  // const scores = useRef(initialScores);
 
   const getReviewStage = () => {
     switch (stage) {
       case ReviewStage.INFO:
-        return <ReviewInfoStage />;
+        return <ReviewInfoStage/>;
       case ReviewStage.PFSG:
-        return <ReviewPassionForSocialGoodStage />;
+        return <ReviewPassionForSocialGoodStage scores={scores}/>;
       case ReviewStage.TP:
-        return <ReviewTeamPlayerStage />;
+        return <ReviewTeamPlayerStage scores={scores}/>;
       case ReviewStage.D2L:
-        return <ReviewDriveToLearnStage />;
+        return <ReviewDriveToLearnStage scores={scores}/>;
       case ReviewStage.SKL:
-        return <ReviewSkillStage />;
+        return <ReviewSkillStage scores={scores}/>;
       case ReviewStage.END:
-        return <ReviewEndStage />;
+        return <ReviewEndStage scores={scores}/>;
       case ReviewStage.END_SUCCESS:
       default:
         return <ReviewEndSuccessStage />;
@@ -44,10 +57,19 @@ const Reviews: NextPage = () => {
   };
 
   return (
-    <ProtectedRoute allowedRoles={["Admin", "User"]}>
+    <ReviewSetScoresContext.Provider value={updateScores}>
       <ReviewSetStageContext.Provider value={setStage}>
         {getReviewStage()}
       </ReviewSetStageContext.Provider>
+    </ReviewSetScoresContext.Provider>
+  );
+};
+
+
+const Reviews: NextPage = () => {
+  return (
+    <ProtectedRoute allowedRoles={["Admin", "User"]}>
+      <ReviewsPages/>
     </ProtectedRoute>
   );
 };
