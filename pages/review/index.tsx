@@ -1,5 +1,8 @@
 import ProtectedRoute from "@components/context/ProtectedRoute";
-import { ReviewSetScoresContext, ReviewSetStageContext } from "@components/review/shared/reviewContext";
+import {
+  ReviewSetScoresContext,
+  ReviewSetStageContext,
+} from "@components/review/shared/reviewContext";
 import { ReviewDriveToLearnStage } from "@components/review/stages/reviewDriveToLearnStage";
 import { ReviewEndStage } from "@components/review/stages/reviewEndStage";
 import { ReviewEndSuccessStage } from "@components/review/stages/reviewEndSuccessStage";
@@ -7,9 +10,8 @@ import { ReviewInfoStage } from "@components/review/stages/reviewInfoStage";
 import { ReviewPassionForSocialGoodStage } from "@components/review/stages/reviewPassionForSocialGoodStage";
 import { ReviewSkillStage } from "@components/review/stages/reviewSkillStage";
 import { ReviewTeamPlayerStage } from "@components/review/stages/reviewTeamPlayerStage";
-import { update } from "firebase/database";
 import { NextPage } from "next";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 export enum ReviewStage {
   INFO = "INFO",
@@ -33,26 +35,26 @@ const ReviewsPages: NextPage = () => {
   const updateScores = (key: ReviewStage, value: number) => {
     setScores((map) => {
       if (value < 1 || value > 5) {
-        return map
+        return map;
       }
-      return new Map(map.set(key, value))
+      return new Map(map.set(key, value));
     });
-  }
+  };
 
   const getReviewStage = () => {
     switch (stage) {
       case ReviewStage.INFO:
-        return <ReviewInfoStage/>;
+        return <ReviewInfoStage scores={scores} />;
       case ReviewStage.PFSG:
-        return <ReviewPassionForSocialGoodStage scores={scores}/>;
+        return <ReviewPassionForSocialGoodStage scores={scores} />;
       case ReviewStage.TP:
-        return <ReviewTeamPlayerStage scores={scores}/>;
+        return <ReviewTeamPlayerStage scores={scores} />;
       case ReviewStage.D2L:
-        return <ReviewDriveToLearnStage scores={scores}/>;
+        return <ReviewDriveToLearnStage scores={scores} />;
       case ReviewStage.SKL:
-        return <ReviewSkillStage scores={scores}/>;
+        return <ReviewSkillStage scores={scores} />;
       case ReviewStage.END:
-        return <ReviewEndStage scores={scores}/>;
+        return <ReviewEndStage scores={scores} />;
       case ReviewStage.END_SUCCESS:
       default:
         return <ReviewEndSuccessStage />;
@@ -68,11 +70,10 @@ const ReviewsPages: NextPage = () => {
   );
 };
 
-
 const Reviews: NextPage = () => {
   return (
     <ProtectedRoute allowedRoles={["Admin", "User"]}>
-      <ReviewsPages/>
+      <ReviewsPages />
     </ProtectedRoute>
   );
 };

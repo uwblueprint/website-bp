@@ -2,7 +2,6 @@ import { ReviewStage } from "pages/review";
 import { ReviewSplitPanelPage } from "./reviewSplitPanelPage";
 import Button from "@components/common/Button";
 
-
 interface Props {
   studentName: string;
   currentStage: ReviewStage;
@@ -17,23 +16,22 @@ interface resumeProps {
   resumeLink: string;
 }
 
-const ResumeLink: React.FC<resumeProps> = ({
-  resumeLink
-}) => {
+const ResumeLink: React.FC<resumeProps> = ({ resumeLink }) => {
   return (
     <div className="flex flex-col gap-8">
-      <Button 
-        className="mr-2 justify-self-end" 
+      <Button
+        className="mr-2 justify-self-end"
         size="sm"
         variant="secondary"
-        onClick={() => window.open(resumeLink, '_blank')?.focus()}
+        onClick={() => window.open(resumeLink, "_blank")?.focus()}
       >
         <div className="flex justify-center items-center gap-2">
-          <img className="stroke-3" src={"common/resume.svg"}/> View Candidate Resume
+          <img className="stroke-3" src={"common/resume.svg"} /> View Candidate
+          Resume
         </div>
       </Button>
     </div>
-  )
+  );
 };
 
 export const ReviewRatingPage: React.FC<Props> = ({
@@ -53,12 +51,14 @@ export const ReviewRatingPage: React.FC<Props> = ({
       leftContent={currentStageRubric}
       rightTitle={title}
       rightContent={
-        <div className="flex flex-col gap-8" style={{alignItems: "flex-start"}}>
-            {resumeLink ? <ResumeLink resumeLink={resumeLink as string}/> : null}
-          <div>
-            {currentStageAnswers}
-          </div>
-        </div>}
+        <div
+          className="flex flex-col gap-8"
+          style={{ alignItems: "flex-start" }}
+        >
+          {resumeLink ? <ResumeLink resumeLink={resumeLink as string} /> : null}
+          <div>{currentStageAnswers}</div>
+        </div>
+      }
       scores={scores}
     />
   );

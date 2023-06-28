@@ -10,10 +10,7 @@ interface Props {
 
 type NavigationItemState = "current" | "past" | "future";
 
-export const ReviewStepper: React.FC<Props> = ({
-  currentStage,
-  scores,
-}) => {
+export const ReviewStepper: React.FC<Props> = ({ currentStage, scores }) => {
   const buttons = useMemo(
     () => [
       { title: "INFO", index: 1, stage: ReviewStage.INFO },
@@ -100,14 +97,16 @@ export const ReviewStepper: React.FC<Props> = ({
                   className="justify-self-end whitespace-nowrap"
                   size="sm"
                   disabled={
-                    currentStage != ReviewStage.INFO && 
+                    currentStage != ReviewStage.INFO &&
                     currentStage != ReviewStage.END_SUCCESS &&
-                    (scores == undefined || 
-                    scores.get(currentStage)! <= 0 ||
-                    scores.get(currentStage)! > 5)
+                    (scores == undefined ||
+                      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                      scores.get(currentStage)! <= 0 ||
+                      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                      scores.get(currentStage)! > 5)
                   }
                   onClick={() => {
-                    setStage?.(getNextStage())
+                    setStage?.(getNextStage());
                   }}
                 >
                   Save & continue
