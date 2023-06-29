@@ -1,7 +1,9 @@
 import { ReactChild, ReactElement } from "react";
 import { useAuth } from "./AuthUserContext";
 import Loading from "@components/common/Loading";
-import Login from "@components/common/Login";
+import { queries } from "graphql/queries";
+import { useRouter } from "next/router";
+import { fetchGraphql } from "@utils/makegqlrequest";
 
 type Props = {
   children: ReactChild;
@@ -10,11 +12,55 @@ type Props = {
 const ProtectedRoute = ({ children }: Props): ReactElement => {
   const { user, isLoading } = useAuth();
 
-  if (isLoading) return <Loading />;
-  else if (user) {
-    console.log("loading");
-    return <>{children}</>;
-  } else return <Login />;
+interface AuthStatus {
+  loading: boolean;
+  isAuthorized: boolean;
+}
+
+const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
+  const router = useRouter();
+  const [authStatus, setAuthStatus] = useState<AuthStatus>({
+    loading: true,
+    isAuthorized: false,
+  });
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken == null) {
+      setAuthStatus({
+        loading: false,
+        isAuthorized: false,
+      });
+      return;
+    }
+    fetchGraphql(queries.isAuthorizedByRole, {
+      accessToken,
+      roles: allowedRoles,
+    }).then((result) => {
+      if (result.data.isAuthorizedByRole) {
+        setAuthStatus({
+          loading: false,
+          isAuthorized: true,
+        });
+      } else {
+        setAuthStatus({
+          loading: false,
+          isAuthorized: false,
+        });
+      }
+    });
+  }, [allowedRoles]);
+
+  if (!authStatus.loading && !authStatus.isAuthorized)
+    router.push("/admin/login");
+  // TODO: handle redirect to 404 here
+
+  return authStatus.loading ? (
+    <Loading />
+  ) : authStatus.isAuthorized ? (
+    <>{children}</>
+  ) : (
+    <></>
+  );
 };
 
 export default ProtectedRoute;

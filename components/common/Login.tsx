@@ -2,11 +2,30 @@ import { auth } from "@utils/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { ReactElement } from "react";
 import Button from "./Button";
+import { fetchGraphql } from "@utils/makegqlrequest";
 
 const Login = (): ReactElement => {
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
+    const res = await signInWithPopup(auth, provider);
+    if (res) {
+      const oauthIdToken = (res as any)._tokenResponse.oauthIdToken;
+      fetchGraphql(mutations.loginWithGoogle, { idToken: oauthIdToken }).then(
+        (result) => {
+          if (result.data) {
+            localStorage.setItem(
+              "accessToken",
+              result.data.loginWithGoogle.accessToken,
+            );
+            localStorage.setItem(
+              "refreshToken",
+              result.data.loginWithGoogle.refreshToken,
+            );
+            router.back();
+          }
+        },
+      );
+    }
   };
 
   return (
