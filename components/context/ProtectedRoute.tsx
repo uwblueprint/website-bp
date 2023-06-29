@@ -1,4 +1,5 @@
-import { ReactChild, ReactElement, useEffect, useState } from "react";
+import { ReactChild, ReactElement } from "react";
+import { useAuth } from "./AuthUserContext";
 import Loading from "@components/common/Loading";
 import { queries } from "graphql/queries";
 import { useRouter } from "next/router";
@@ -6,10 +7,10 @@ import AuthAPIClient from "APIClients/AuthAPIClient";
 
 type Props = {
   children: ReactChild;
-  allowedRoles: Role[];
 };
 
-type Role = "Admin" | "User";
+const ProtectedRoute = ({ children }: Props): ReactElement => {
+  const { user, isLoading } = useAuth();
 
 interface AuthStatus {
   loading: boolean;

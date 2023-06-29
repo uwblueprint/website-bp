@@ -1,14 +1,10 @@
 import { auth } from "@utils/firebase";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { mutations } from "graphql/queries";
+import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
 import { ReactElement } from "react";
-import { useRouter } from "next/router";
 import Button from "./Button";
 import { fetchGraphql } from "@utils/makegqlrequest";
 
 const Login = (): ReactElement => {
-  const router = useRouter();
-
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
     const res = await signInWithPopup(auth, provider);
