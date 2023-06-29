@@ -24,7 +24,6 @@ const AuthContext = createContext<AuthContext>({
   isLoading: true,
 });
 
-// TODO: Figure out whether we plan to use AUthProvider or not to get our auth access/id token
 export const AuthProvider = ({ children }: Props): ReactElement => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);

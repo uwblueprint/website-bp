@@ -1,51 +1,12 @@
 import { auth } from "@utils/firebase";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { mutations } from "graphql/queries";
+import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
 import { ReactElement } from "react";
-import { useRouter } from "next/router";
 import Button from "./Button";
 
 const Login = (): ReactElement => {
-  const router = useRouter();
-
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
-    const res = await signInWithPopup(auth, provider);
-    if (res) {
-      const oauthIdToken = (res as any)._tokenResponse.oauthIdToken;
-      fetch("http://localhost:5000/graphql", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          query: mutations.loginWithGoogle,
-          variables: {
-            idToken: oauthIdToken,
-          },
-        }),
-      })
-        .then(
-          async (res) =>
-            await res.json().then((result) => {
-              if (result.data) {
-                localStorage.setItem(
-                  "accessToken",
-                  result.data.loginWithGoogle.accessToken,
-                );
-                localStorage.setItem(
-                  "refreshToken",
-                  result.data.loginWithGoogle.refreshToken,
-                );
-                router.back();
-              }
-            }),
-        )
-        .catch((e) => {
-          console.error("Oauth login failed");
-          console.log(e);
-        });
-    }
+    signInWithRedirect(auth, provider);
   };
 
   return (

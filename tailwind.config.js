@@ -99,14 +99,6 @@ module.exports = {
       // RESPONSE
       success: "#A6D669",
       error: "#EF5D5D",
-
-      // ADMIN: ORGANIZATIONAL AREAS
-      "org-areas": {
-        engineering: "#53599A",
-        design: "#00A896",
-        product: "#DE6449",
-        community: "#DA4167",
-      },
     },
     fontFamily: {
       poppins: "Poppins, sans-serif",

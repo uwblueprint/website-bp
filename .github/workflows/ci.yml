@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - main
-
+      
 env:
   NEXT_PUBLIC_API_KEY: "${{ secrets.NEXT_PUBLIC_API_KEY }}"
   NEXT_PUBLIC_APP_ID: "${{ secrets.NEXT_PUBLIC_APP_ID }}"

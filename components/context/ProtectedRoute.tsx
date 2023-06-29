@@ -1,82 +1,16 @@
-import { ReactChild, ReactElement, useEffect, useState } from "react";
+import { ReactChild, ReactElement } from "react";
+import { useAuth } from "./AuthUserContext";
 import Loading from "@components/common/Loading";
-import { queries } from "graphql/queries";
-import { useRouter } from "next/router";
+import Login from "@components/common/Login";
 
 type Props = {
   children: ReactChild;
-  allowedRoles: Role[];
 };
 
-type Role = "Admin" | "User";
+const ProtectedRoute = ({ children }: Props): ReactElement => {
+  const { user, isLoading } = useAuth();
 
-interface AuthStatus {
-  loading: boolean;
-  isAuthorized: boolean;
-}
-
-const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
-  const router = useRouter();
-  const [authStatus, setAuthStatus] = useState<AuthStatus>({
-    loading: true,
-    isAuthorized: false,
-  });
-  useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
-    if (accessToken == null) {
-      setAuthStatus({
-        loading: false,
-        isAuthorized: false,
-      });
-      return;
-    }
-
-    fetch("http://localhost:5000/graphql", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: queries.isAuthorizedByRole,
-        variables: {
-          accessToken,
-          roles: allowedRoles,
-        },
-      }),
-    })
-      .then(
-        async (res) =>
-          await res.json().then((result) => {
-            if (result.data.isAuthorizedByRole) {
-              setAuthStatus({
-                loading: false,
-                isAuthorized: true,
-              });
-            } else {
-              setAuthStatus({
-                loading: false,
-                isAuthorized: false,
-              });
-            }
-          }),
-      )
-      .catch((e) => {
-        console.error("Auth Validation Error");
-        console.error(e);
-      });
-  }, [allowedRoles]);
-
-  if (!authStatus.loading && !authStatus.isAuthorized)
-    router.push("/admin/login");
-  // TODO: handle redirect to 404 here
-
-  return authStatus.loading ? (
-    <Loading />
-  ) : authStatus.isAuthorized ? (
-    <>{children}</>
-  ) : (
-    <></>
-  );
+  return isLoading ? <Loading /> : user ? <>{children}</> : <Login />;
 };
 
 export default ProtectedRoute;
