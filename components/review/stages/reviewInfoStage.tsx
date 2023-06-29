@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { ReviewStage } from "pages/review";
 import { ReviewSplitPanelPage } from "../shared/reviewSplitPanelPage";
+import Image from "next/image";
 
 type Props = {
   readonly question: string;
@@ -40,19 +41,29 @@ const QuestionAnswer: FC<Props> = ({ question, answer }) => {
 export const ReviewInfoStage: React.FC = () => {
   return (
     <ReviewSplitPanelPage
-      studentName="M. Goose"
+      studentName="Matthew Wang"
       rightTitle="Basic Information"
       currentStage={ReviewStage.INFO}
-    >
-      {data.map((item, index) => {
-        return (
-          <QuestionAnswer
-            key={index}
-            question={item.question}
-            answer={item.answer}
-          />
-        );
-      })}
-    </ReviewSplitPanelPage>
+      leftContent={
+        <Image
+          layout={"fill"}
+          alt="Picture of the Blueprint logo"
+          src="/common/review-page-logo.svg"
+        />
+      }
+      rightContent={
+        <>
+          {data.map((item, index) => {
+            return (
+              <QuestionAnswer
+                key={index}
+                question={item.question}
+                answer={item.answer}
+              />
+            );
+          })}
+        </>
+      }
+    ></ReviewSplitPanelPage>
   );
 };

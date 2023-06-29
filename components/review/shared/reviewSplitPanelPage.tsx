@@ -18,15 +18,14 @@ export const ReviewSplitPanelPage: React.FC<Props> = ({
   leftContent,
   rightContent,
   currentStage,
-  children,
 }) => {
   return (
     <div className="grid grid-cols-2 h-screen grid-rows-[auto_1fr]">
-      <div id="left-title" className="bg-sky"></div>
+      <div id="left-title" className="bg-sky-200"></div>
       <div id="right-title" className="px-9 pt-9">
         <h1 className="text-blue text-4xl">{studentName}</h1>
       </div>
-      <div className="leftPanel flex-none grow bg-sky p-9">
+      <div className="leftPanel flex-none grow bg-sky-200 p-9 relative">
         {leftTitle ? <h2 className="text-xl">{leftTitle}</h2> : null}
         {leftContent}
       </div>
@@ -35,7 +34,6 @@ export const ReviewSplitPanelPage: React.FC<Props> = ({
           {rightTitle ? <h2 className="text-xl">{rightTitle}</h2> : null}
           {rightContent}
         </div>
-        {children}
         <ReviewStepper currentStage={currentStage} />
       </div>
     </div>
