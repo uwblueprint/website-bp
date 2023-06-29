@@ -6,8 +6,7 @@ export const mutations = {
             }
           }
         `,
-  loginWithGoogle: `
-  mutation loginWithGoogle($idToken: String!) {
+  loginWithGoogle: `mutation loginWithGoogle($idToken: String!) {
     loginWithGoogle(idToken: $idToken) {
       accessToken
       refreshToken

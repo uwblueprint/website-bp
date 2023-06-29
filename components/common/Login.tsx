@@ -4,6 +4,7 @@ import { mutations } from "graphql/queries";
 import { ReactElement } from "react";
 import { useRouter } from "next/router";
 import Button from "./Button";
+import { fetchGraphql } from "@utils/makegqlrequest";
 
 const Login = (): ReactElement => {
   const router = useRouter();
@@ -13,38 +14,21 @@ const Login = (): ReactElement => {
     const res = await signInWithPopup(auth, provider);
     if (res) {
       const oauthIdToken = (res as any)._tokenResponse.oauthIdToken;
-      fetch("http://localhost:5000/graphql", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      fetchGraphql(mutations.loginWithGoogle, { idToken: oauthIdToken }).then(
+        (result) => {
+          if (result.data) {
+            localStorage.setItem(
+              "accessToken",
+              result.data.loginWithGoogle.accessToken,
+            );
+            localStorage.setItem(
+              "refreshToken",
+              result.data.loginWithGoogle.refreshToken,
+            );
+            router.back();
+          }
         },
-        body: JSON.stringify({
-          query: mutations.loginWithGoogle,
-          variables: {
-            idToken: oauthIdToken,
-          },
-        }),
-      })
-        .then(
-          async (res) =>
-            await res.json().then((result) => {
-              if (result.data) {
-                localStorage.setItem(
-                  "accessToken",
-                  result.data.loginWithGoogle.accessToken,
-                );
-                localStorage.setItem(
-                  "refreshToken",
-                  result.data.loginWithGoogle.refreshToken,
-                );
-                router.back();
-              }
-            }),
-        )
-        .catch((e) => {
-          console.error("Oauth login failed");
-          console.log(e);
-        });
+      );
     }
   };
 

@@ -1,4 +1,5 @@
 import { createTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { fetchGraphql } from "@utils/makegqlrequest";
 import MUIDataTable from "mui-datatables";
 import React, { useEffect, useState } from "react";
 import { getTableColumns } from "./ApplicationsTableColumn";
@@ -101,56 +102,20 @@ const ApplicationsTable: React.FC = () => {
   };
 
   const nameByEmail = async (email: string) => {
-    const response = await fetch("http://localhost:5000/graphql", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: queries.userByEmail,
-        variables: {
-          email: email,
-        },
-      }),
-    });
-    const users = await response.json();
-    return users.data.userByEmail;
+    const response = await fetchGraphql(queries.userByEmail, { email });
+    return response.data.userByEmail;
   };
 
   const applicationsByRole = () => {
-    fetch("http://localhost:5000/graphql", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: queries.applicationsByRole,
-        variables: {
-          firstChoice: "project developer",
-        },
-      }),
-    }).then(
-      async (res) =>
-        await res
-          .json()
-          .then((result) => setApplications(result.data.applicationsByRole)),
-    );
+    fetchGraphql(queries.applicationsByRole, {
+      firstChoice: "project developer",
+    }).then((result) => setApplications(result.data.applicationsByRole));
   };
   const dashboardsByApplicationId = async (id: number) => {
-    const response = await fetch("http://localhost:5000/graphql", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: queries.dashboardsByApplicationId,
-        variables: {
-          applicationId: id,
-        },
-      }),
+    const response = await fetchGraphql(queries.dashboardsByApplicationId, {
+      applicationId: id,
     });
-    const dashboards = await response.json();
-    return dashboards.data.dashboardsByApplicationId;
+    return response.data.dashboardsByApplicationId;
   };
 
   const getMuiTheme = () =>

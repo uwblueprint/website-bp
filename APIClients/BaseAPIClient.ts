@@ -1,3 +1,4 @@
+import { fetchGraphql } from "@utils/makegqlrequest";
 import { mutations } from "graphql/queries";
 import jwt_decode from "jwt-decode";
 
@@ -15,24 +16,13 @@ class BaseAPIClient {
         decodedToken &&
         decodedToken.exp <= Math.round(new Date().getTime() / 1000)
       ) {
-        fetch("http://localhost:5000/graphql", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            query: mutations.refresh,
-            variables: {
-              refreshToken: localStorage.getItem("refreshToken"),
-            },
-          }),
+        fetchGraphql(mutations.refresh, {
+          refreshToken: localStorage.getItem("refreshToken"),
         })
-          .then(async (res) => {
-            await res.json().then((result) => {
-              if (typeof result.data.refresh === "string") {
-                localStorage.setItem("accessToken", result.data.refresh);
-              }
-            });
+          .then((result) => {
+            if (typeof result.data.refresh === "string") {
+              localStorage.setItem("accessToken", result.data.refresh);
+            }
           })
           .catch((e: Error) => {
             // fail to refresh and de-auth user
