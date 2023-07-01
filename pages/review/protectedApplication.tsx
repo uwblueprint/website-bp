@@ -1,8 +1,5 @@
-import { NextPage } from "next";
-import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
 import { ReactChild, ReactElement, useEffect, useState } from "react";
-import { ReviewStage } from ".";
 import jwt_decode from "jwt-decode";
 import { fetchGraphql } from "@utils/makegqlrequest";
 import { queries } from "graphql/queries";
