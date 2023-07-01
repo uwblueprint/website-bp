@@ -32,6 +32,10 @@
     @apply text-[16px] leading-[20px] font-normal font-source;
   }
 
+  a:hover {
+    @apply opacity-80;
+  }
+
   /* TODO: Add Caption typography? */
 
   /* Layout */

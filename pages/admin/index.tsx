@@ -1,27 +1,63 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { NextPage } from "next";
-import { auth } from "@utils/firebase";
 import { signOut } from "firebase/auth";
-import { ref, get } from "firebase/database";
+import {
+  ref,
+  get,
+  query,
+  orderByChild,
+  startAfter,
+  endBefore,
+} from "firebase/database";
+import { CSVLink } from "react-csv";
 import ApplicationsTable, {
   Student,
 } from "@components/admin/ApplicationsTable";
 import ProtectedRoute from "@components/context/ProtectedRoute";
-import { APPLICATION_TERM } from "@constants/applications";
+import Loading from "@components/common/Loading";
+import {
+  APPLICATION_OPEN_DATETIME,
+  APPLICATION_CLOSE_DATETIME_WITH_GRACE_PERIOD,
+  APPLICATION_TERM,
+} from "@constants/applications";
 import roleSpecificJson from "@constants/role-specific-questions.json";
+import { auth, firebaseDb } from "@utils/firebase";
+
+const memberRoles = roleSpecificJson.map(({ role }) => role);
+
+const headers = [
+  { label: "First Name", key: "firstName" },
+  { label: "Last Name", key: "lastName" },
+  { label: "Email", key: "email" },
+  { label: "Academic Term", key: "academicYear" },
+  { label: "Program", key: "program" },
+  { label: "First Choice Position", key: "firstChoiceRole" },
+  { label: "Second Choice Position", key: "secondChoiceRole" },
+  {
+    label: "Application Link",
+    key: "id",
+  },
+  { label: "Resume Link", key: "resumeLink" },
+];
 
 const signOutWithGoogle = async () => {
   signOut(auth);
 };
-import { firebaseDb } from "@utils/firebase";
-
-const memberRoles = roleSpecificJson.map(({ role }) => role);
 
 const Admin: NextPage = () => {
-  const [students, setStudents] = useState<Student[]>([]);
+  const [roleSelected, setRoleSelected] = useState("default");
+  const [students, setStudents] = useState<Student[] | null>(null);
 
   useEffect(() => {
-    get(ref(firebaseDb, "studentApplications"))
+    get(
+      // Only show apps which actually fell within the application window.
+      query(
+        ref(firebaseDb, "studentApplications"),
+        orderByChild("timestamp"),
+        startAfter(+APPLICATION_OPEN_DATETIME),
+        endBefore(+APPLICATION_CLOSE_DATETIME_WITH_GRACE_PERIOD),
+      ),
+    )
       .then((snapshot) => {
         if (snapshot.exists()) {
           const allApps = snapshot.val();
@@ -33,7 +69,11 @@ const Admin: NextPage = () => {
                 firstName: allApps[id].firstName,
                 lastName: allApps[id].lastName,
                 email: allApps[id].email,
+                academicYear: allApps[id].academicYear,
+                program: allApps[id].program,
                 resumeLink: allApps[id].resumeUrl,
+                firstChoiceRole: allApps[id].firstChoiceRole,
+                secondChoiceRole: allApps[id].secondChoiceRole,
               });
             }
           });
@@ -44,6 +84,21 @@ const Admin: NextPage = () => {
         console.error(error);
       });
   }, []);
+
+  const filteredData = useMemo(
+    () =>
+      students
+        ?.filter((app) =>
+          [app.firstChoiceRole, app.secondChoiceRole, "default"].includes(
+            roleSelected,
+          ),
+        )
+        .sort(({ firstName: fn1 }, { firstName: fn2 }) =>
+          fn1 > fn2 ? 1 : fn1 < fn2 ? -1 : 0,
+        ) ?? [],
+
+    [students, roleSelected],
+  );
 
   return (
     <ProtectedRoute>
@@ -61,20 +116,36 @@ const Admin: NextPage = () => {
             name="roles"
             className="border-l-charcoal-300 text-charcoal-600 border border-charcoal-300 rounded-md px-4 py-3 border-l-4 focus:outline-none focus:ring-1 focus:ring-blue-100 focus:border-blue-100"
             style={{ minHeight: "25px" }}
+            onChange={(e) => setRoleSelected(e.target.value)}
           >
-            <option value="" disabled>
-              Select an option
-            </option>
+            <option value="default">Select an option</option>
             {memberRoles.map((value) => (
               <option key={value} value={value}>
                 {value}
               </option>
             ))}
           </select>
-          <button className="text-blue-100">Export CSV</button>
+          <button className="text-blue-100">
+            <CSVLink
+              data={filteredData.map((app) =>
+                Object.assign({}, app, {
+                  id: `https://uwblueprint.org/admin/student-details/${app.id}`,
+                }),
+              )}
+              filename={"export.csv"}
+              headers={headers}
+              target="_blank"
+            >
+              Export CSV
+            </CSVLink>
+          </button>
         </div>
         <div className="my-8">
-          <ApplicationsTable students={students} />
+          {students !== null ? (
+            <ApplicationsTable students={filteredData} />
+          ) : (
+            <Loading />
+          )}
         </div>
       </div>
     </ProtectedRoute>

@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Formik, Form } from "formik";
 import { getDownloadURL, ref as storeRef, uploadBytes } from "firebase/storage";
-import { set, ref as dbRef } from "firebase/database";
+import { set, ref as dbRef, serverTimestamp } from "firebase/database";
 
 import BasicInfo from "./BasicInfo";
 import PositionPreference from "./PositionPreference";
@@ -19,6 +19,34 @@ import shortAnswerJson from "@constants/short-answer-questions.json";
 import roleSpecificJson from "@constants/role-specific-questions.json";
 import ApplyConfirmation from "./ApplyConfirmation";
 import { firebaseDb, firebaseStore } from "@utils/firebase";
+
+export type ShortAnswerQuestion = {
+  question: string;
+  maxLength: number;
+};
+
+interface RoleQuestion {
+  uniqueId?: number;
+  question: string;
+}
+
+interface ShortAnswerRoleQuestion extends RoleQuestion {
+  type?: "short-answer";
+  maxLength: number;
+}
+
+interface MultiSelectRoleQuestion extends RoleQuestion {
+  type: "multi-select";
+  options: string[];
+  other: boolean;
+}
+
+export type RoleSpecificQuestion = {
+  id: number;
+  role: string;
+  open?: boolean;
+  questions: (ShortAnswerRoleQuestion | MultiSelectRoleQuestion)[];
+};
 
 export type AppFormValues = {
   term: string;
@@ -41,36 +69,15 @@ export type AppFormValues = {
     question: string;
     response?: string;
   }[];
-  roleSpecificQuestions: {
-    id: number;
-    role: string;
-    questions: {
-      question: string;
-      response?: string;
-    }[];
-  }[];
+  roleSpecificQuestions: (Omit<RoleSpecificQuestion, "questions"> & {
+    questions: (RoleSpecificQuestion["questions"][0] & { response?: string })[];
+  })[];
   gender?: string;
   genderSpecified?: string;
   ethnicity?: string;
   ethnicitySpecified?: string;
   identities?: string[];
   timestamp: number;
-};
-
-export type ShortAnswerQuestion = {
-  question: string;
-  maxLength: number;
-};
-
-export type RoleSpecificQuestion = {
-  id: number;
-  role: string;
-  questions: [
-    {
-      question: string;
-      maxLength: number;
-    },
-  ];
 };
 
 const shortAnswerQuestions: ShortAnswerQuestion[] = JSON.parse(
@@ -106,8 +113,8 @@ const appFormInitialValues: AppFormValues = {
     ({ id, role, questions }) => ({
       id,
       role,
-      questions: questions.map(({ question }) => ({
-        question,
+      questions: questions.map(({ ...question }) => ({
+        ...question,
         response: undefined,
       })),
     }),
@@ -146,13 +153,23 @@ const AppForm: FC<Props> = ({
       onSubmit={async (values) => {
         const uuid = uuidv4();
 
-        values.roleSpecificQuestions = values.roleSpecificQuestions
+        const roleSpecificQuestions = values.roleSpecificQuestions
           .filter(({ role }) => role === values.firstChoiceRole)
           .concat(
             values.roleSpecificQuestions.filter(
               ({ role }) => role === values.secondChoiceRole,
             ),
-          );
+          )
+          // For aggregated questions, only the first response is filled in.
+          // Firebase doesn't like that we default responses to undefined,
+          // so we need to convert them to null here.
+          .map(({ questions, ...rest }) => ({
+            questions: questions.map(({ response, ...question }) => ({
+              ...question,
+              response: response ?? null,
+            })),
+            ...rest,
+          }));
 
         // Upload resume to Firebase storage.
         if (values.resume) {
@@ -177,8 +194,8 @@ const AppForm: FC<Props> = ({
           firstChoiceRole: values.firstChoiceRole,
           secondChoiceRole: values.secondChoiceRole || "",
           shortAnswerQuestions: values.shortAnswerQuestions,
-          roleSpecificQuestions: values.roleSpecificQuestions,
-          timestamp: Date.now(),
+          roleSpecificQuestions,
+          timestamp: serverTimestamp(),
           status: "pending",
         };
 
@@ -219,14 +236,16 @@ const AppForm: FC<Props> = ({
                 : "Student Application"}
             </h2>
             <InfoText
-              deadline={APPLICATION_CLOSE_DATETIME}
+              deadline={APPLICATION_CLOSE_DATETIME.format("lll")}
               readOnly={readOnly}
               timestamp={values.timestamp}
             />
             <BasicInfo values={values} readOnly={readOnly} />
             <PositionPreference
               values={values}
-              memberRoles={roleSpecificQuestions.map(({ role }) => role)}
+              memberRoles={roleSpecificQuestions
+                .filter(({ open = true }) => open)
+                .map(({ role }) => role)}
               readOnly={readOnly}
             />
             <ShortAnswers

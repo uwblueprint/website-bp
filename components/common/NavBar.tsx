@@ -23,9 +23,9 @@ const Navbar: FC = () => {
       <div className="w-full fixed z-30">
         {APPLICATION_IS_LIVE && (
           <Link href={APPLICATION_LINK}>
-            <a className="block w-full text-center px-4 py-1 bg-charcoal-0 font-poppins">
+            <a className="block w-full text-center px-4 py-1 bg-charcoal-0 font-poppins hover:opacity-100">
               Applications to join the {APPLICATION_TERM} team are now open,{" "}
-              <span className="underline">apply here</span>! 🎉
+              <span className="underline hover:opacity-60">apply here</span>! 🎉
             </a>
           </Link>
         )}

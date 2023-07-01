@@ -59,16 +59,23 @@ const Button: FC<Props> = ({
 
   return href ? (
     href.startsWith("http") ? (
-      <a href={href} target="_blank" rel="noopener noreferrer">
-        <button className={buttonClasses} {...props}>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:opacity-100"
+      >
+        <button className={buttonClasses} tabIndex={-1} {...props}>
           {children}
         </button>
       </a>
     ) : (
       <Link href={href}>
-        <button className={buttonClasses} {...props}>
-          {children}
-        </button>
+        <a className="hover:opacity-100">
+          <button className={buttonClasses} tabIndex={-1} {...props}>
+            {children}
+          </button>
+        </a>
       </Link>
     )
   ) : (

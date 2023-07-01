@@ -5,7 +5,11 @@ export type Student = {
   firstName: string;
   lastName: string;
   email: string;
+  academicYear: string;
+  program: string;
   resumeLink: string;
+  firstChoiceRole: string;
+  secondChoiceRole: string;
 };
 
 type PageProps = {
@@ -43,11 +47,7 @@ const ApplicationsTable: FC<PageProps> = ({ students }) => {
                 </a>
               </td>
               <td className="pr-4 w-16 text-blue-100">
-                <a
-                  href={`https://uwblueprint.org/admin/student-details/${app.id}`}
-                >
-                  Details
-                </a>
+                <a href={`/admin/student-details/${app.id}`}>Details</a>
               </td>
             </tr>
           ))}

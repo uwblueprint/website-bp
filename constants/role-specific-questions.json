@@ -4,11 +4,14 @@
     "role": "Project Developer",
     "questions": [
       {
-        "question": "Which areas of a project are you interested in working in (frontend, backend, fullstack, mobile, etc.)?",
-        "maxLength": 1000
+        "question": "Which areas of a project are you interested in working in?",
+        "type": "multi-select",
+        "options": ["Frontend", "Backend", "Fullstack", "Mobile"],
+        "other": true
       },
       {
-        "question": "Tell us about a challenging technical problem that you’ve worked on in the past and how you solved it.",
+        "uniqueId": 1,
+        "question": "Tell us about a challenging technical problem that you've worked on in the past and how you solved it.",
         "maxLength": 1000
       }
     ]
@@ -18,6 +21,11 @@
     "role": "Product Designer",
     "questions": [
       {
+        "question": "Where do you look for inspiration in your daily life?",
+        "maxLength": 1000
+      },
+      {
+        "uniqueId": 2,
         "question": "Send us a link to your portfolio or a project you've worked on. If you do not have a link, please tell us about a project below. Describe the process and what you learned from it.",
         "maxLength": 1000
       }
@@ -38,7 +46,12 @@
     "role": "Project Lead",
     "questions": [
       {
-        "question": "Tell us about a challenging technical problem that you’ve worked on in the past and how you solved it.",
+        "uniqueId": 1,
+        "question": "Tell us about a challenging technical problem that you've worked on in the past and how you solved it.",
+        "maxLength": 1000
+      },
+      {
+        "question": "Tell us about a past experience working with other people where you demonstrated leadership.",
         "maxLength": 1000
       }
     ]
@@ -56,6 +69,7 @@
   {
     "id": "6",
     "role": "Content Strategist",
+    "open": false,
     "questions": [
       {
         "question": "What do you see as the purposes of content within the user experience of an app?",
@@ -92,6 +106,7 @@
         "maxLength": 1000
       },
       {
+        "uniqueId": 2,
         "question": "Send us a link to your portfolio or a project you've worked on. If you do not have a link, please tell us about a project below. Describe the process and what you learned from it.",
         "maxLength": 1000
       }
@@ -110,6 +125,7 @@
   {
     "id": "12",
     "role": "VP Communications",
+    "open": false,
     "questions": [
       {
         "question": "What's a cool idea you think Blueprint should do to elevate our current branding and image in the community?",
@@ -139,7 +155,7 @@
   },
   {
     "id": "15",
-    "role": "VP External",
+    "role": "External Director",
     "questions": [
       {
         "question": "What's a cool new event you think Blueprint should do and how does it align with Blueprint's mission?",
@@ -149,7 +165,7 @@
   },
   {
     "id": "16",
-    "role": "VP Internal",
+    "role": "Internal Director",
     "questions": [
       {
         "question": "What would an ideal member experience look like to you?",
