@@ -30,6 +30,7 @@ export const AuthProvider = ({ children }: Props): ReactElement => {
 
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
+      console.log(`yuhh ${user}`)
       if (user) {
         if (user.email && user.email.endsWith("@uwblueprint.org")) {
           setUser(user);

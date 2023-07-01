@@ -10,7 +10,12 @@ type Props = {
 const ProtectedRoute = ({ children }: Props): ReactElement => {
   const { user, isLoading } = useAuth();
 
-  return isLoading ? <Loading /> : user ? <>{children}</> : <Login />;
+  if (isLoading) return  <Loading />
+  else if (user){
+    console.log("loading") 
+    return  <>{children}</>
+  }
+  else return <Login />
 };
 
 export default ProtectedRoute;

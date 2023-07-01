@@ -1,12 +1,12 @@
 import { auth } from "@utils/firebase";
-import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, signInWithRedirect } from "firebase/auth";
 import { ReactElement } from "react";
 import Button from "./Button";
 
 const Login = (): ReactElement => {
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
-    signInWithRedirect(auth, provider);
+    signInWithPopup(auth, provider);
   };
 
   return (

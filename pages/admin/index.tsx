@@ -22,6 +22,7 @@ import {
 } from "@constants/applications";
 import roleSpecificJson from "@constants/role-specific-questions.json";
 import { auth, firebaseDb } from "@utils/firebase";
+import { useAuth } from "@components/context/AuthUserContext";
 
 const memberRoles = roleSpecificJson.map(({ role }) => role);
 
@@ -47,6 +48,7 @@ const signOutWithGoogle = async () => {
 const Admin: NextPage = () => {
   const [roleSelected, setRoleSelected] = useState("default");
   const [students, setStudents] = useState<Student[] | null>(null);
+  const { user } = useAuth(); // get the logged in user to trigger 
 
   useEffect(() => {
     get(
@@ -83,7 +85,7 @@ const Admin: NextPage = () => {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [user]);
 
   const filteredData = useMemo(
     () =>
