@@ -48,7 +48,7 @@ const signOutWithGoogle = async () => {
 const Admin: NextPage = () => {
   const [roleSelected, setRoleSelected] = useState("default");
   const [students, setStudents] = useState<Student[] | null>(null);
-  const { user } = useAuth(); // get the logged in user to trigger 
+  const { user } = useAuth(); // get the logged in user to trigger
 
   useEffect(() => {
     get(

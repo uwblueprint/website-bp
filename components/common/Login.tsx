@@ -1,5 +1,9 @@
 import { auth } from "@utils/firebase";
-import { GoogleAuthProvider, signInWithPopup, signInWithRedirect } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+} from "firebase/auth";
 import { ReactElement } from "react";
 import Button from "./Button";
 
