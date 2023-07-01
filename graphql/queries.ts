@@ -22,4 +22,9 @@ export const queries = {
       isAuthorizedByRole(accessToken: $accessToken, roles: $roles)
     }
   `,
+  isAuthorizedToReview: `
+  query isAuthorizedToReview($applicationId: Int!, $reviewerUserId: String!) {
+    isAuthorizedToReview(applicationId: $applicationId, reviewerUserId: $reviewerUserId)
+  }
+  `,
 };
