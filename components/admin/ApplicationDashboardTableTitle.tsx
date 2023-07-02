@@ -6,13 +6,14 @@ const TableTitle: FC = () => {
     <div className="bg-eggshell border-charcoal-300 border border-b-0 text-blue-300 text-base font-inter font-medium px-4 py-4 flex justify-between items-center">
       <div className="flex items-center">
         <h1 className="pr-2 text-base text-charcoal-600">Applicant Entry</h1>
-        <p className="border-2 border-blue rounded-full text-blue text-center px-2 py-1 m-2 inline-block capitalize">
+        <p className="border-2 border-blue rounded-full text-blue text-center px-2 py-1 mx-2 inline-block capitalize">
           200 Entries
         </p>
       </div>
       <Button
         aria-labelledby="application-table-edit-button-label"
         variant="secondary"
+        size="sm"
       >
         <div className="flex items-center">
           <svg

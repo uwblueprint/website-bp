@@ -4,6 +4,7 @@ import MUIDataTable from "mui-datatables";
 import React, { useEffect, useState } from "react";
 import { getTableColumns } from "./ApplicationsTableColumn";
 import { theme } from "../../styles/Theme";
+import { CopyIcon } from "@components/icons/copy.icon";
 
 export type Student = {
   id: string;
@@ -17,8 +18,16 @@ export type Student = {
   secondChoiceRole: string;
 };
 
-type PageProps = {
-  readonly students: Student[];
+type StudentRow = {
+  name: string;
+  resume: React.ReactNode;
+  term: string;
+  program: string;
+  reviewerOne: string;
+  reviewerTwo: string;
+  score: number;
+  status: string;
+  skill: string;
 };
 
 const queries = {
@@ -62,12 +71,14 @@ const ApplicationsTable: React.FC = () => {
     applications.map(async (app) => {
       const dashboards: any[] = await dashboardsByApplicationId(app.id);
       app.dashboards = dashboards;
-      const reviewerNames = await Promise.all(
-        dashboards.map(async (dash) => {
-          const res = await nameByEmail(dash.reviewerEmail);
-          return res;
-        }),
-      );
+      const reviewerNames = dashboards
+        ? await Promise.all(
+            dashboards.map(async (dash) => {
+              const res = await nameByEmail(dash.reviewerEmail);
+              return res;
+            }),
+          )
+        : [];
       app.reviewerNames = reviewerNames;
     });
   }, [applications]);
@@ -108,9 +119,7 @@ const ApplicationsTable: React.FC = () => {
     const response = await fetchGraphql(queries.dashboardsByApplicationId, {
       applicationId: id,
     });
-    const dashboards = await response.json();
-    return [];
-    return dashboards.data.dashboardsByApplicationId;
+    return response?.data?.dashboardsByApplicationId;
   };
 
   const getMuiTheme = () =>
@@ -161,6 +170,11 @@ const ApplicationsTable: React.FC = () => {
             color: theme.colors.B10,
           },
         },
+        MuiSvgIcon: {
+          root: {
+            color: `${theme.colors.B10} !important`,
+          },
+        },
       },
     });
 
@@ -168,7 +182,7 @@ const ApplicationsTable: React.FC = () => {
     const rows: StudentRow[] = applications.map((application) => {
       return {
         name: application.firstName + " " + application.lastName,
-        application: application.resumeUrl,
+        resume: <ResumeIcon url={application.resumeUrl} />,
         term: application.academicYear,
         program: application.program,
         reviewerOne:
@@ -224,6 +238,14 @@ const ApplicationsTable: React.FC = () => {
         </tbody>
       </table>
     </div>
+  );
+};
+
+const ResumeIcon: React.FC<{ url: string }> = ({ url }) => {
+  return (
+    <a target="_blank" href={url}>
+      <CopyIcon />
+    </a>
   );
 };
 
