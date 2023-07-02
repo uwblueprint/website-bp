@@ -23,11 +23,11 @@ const ResumeLink: React.FC<resumeProps> = ({ resumeLink }) => {
         className="mr-2 justify-self-end"
         size="sm"
         variant="secondary"
-        onClick={() => window.open(resumeLink, "_blank")?.focus()}
+        href={resumeLink}
       >
         <div className="flex justify-center items-center gap-2">
-          <img className="stroke-3" src={"common/resume.svg"} /> View Candidate
-          Resume
+          <img className="stroke-3" src={"common/resume.svg"} alt="" /> View
+          Candidate Resume
         </div>
       </Button>
     </div>

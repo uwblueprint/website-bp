@@ -58,6 +58,26 @@ export const ReviewStepper: React.FC<Props> = ({ currentStage, scores }) => {
     return buttons[Math.max(currentButtonIndex - 1, 0)].stage;
   };
 
+  const isButtonDisabled = () => {
+    if (
+      currentStage == ReviewStage.INFO ||
+      currentStage == ReviewStage.END_SUCCESS
+    ) {
+      return false;
+    } else if (scores == undefined) {
+      return false;
+    } else {
+      const currScore = scores.get(currentStage);
+      if (currScore == undefined) {
+        return false;
+      } else if (currScore > 0 && currScore <= 5) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  };
+
   return (
     <div className="bottom-0 left-0 absolute w-full">
       <div className="bg-sky-100 m-2 p-4 flex">
@@ -96,15 +116,7 @@ export const ReviewStepper: React.FC<Props> = ({ currentStage, scores }) => {
                 <Button
                   className="justify-self-end whitespace-nowrap"
                   size="sm"
-                  disabled={
-                    currentStage != ReviewStage.INFO &&
-                    currentStage != ReviewStage.END_SUCCESS &&
-                    (scores == undefined ||
-                      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                      scores.get(currentStage)! <= 0 ||
-                      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                      scores.get(currentStage)! > 5)
-                  }
+                  disabled={isButtonDisabled()}
                   onClick={() => {
                     setStage?.(getNextStage());
                   }}

@@ -34,7 +34,8 @@ const ReviewsPages: NextPage = () => {
   const [scores, setScores] = useState<Map<ReviewStage, number>>(initialScores);
   const updateScores = (key: ReviewStage, value: number) => {
     setScores((map) => {
-      if (value < 1 || value > 5) {
+      if (isNaN(value) || value < 1 || value > 5) {
+        console.log("got value: %d\n", value);
         return map;
       }
       return new Map(map.set(key, value));
