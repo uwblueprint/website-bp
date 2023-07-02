@@ -59,22 +59,13 @@ const ConflictModal: FC<ConflictModalProps> = ({ name, open, onClose }) => {
       >
         {/* Modal */}
         <div
-          className="md:max-w-[400px] relative flex flex-col px-4 md:px-12 pt-4 pb-4 rounded-t-3xl md:rounded-3xl bg-white shadow-lg max-h-[calc(100vh-2rem)]"
+          className="md:max-w-[310px] relative flex flex-col px-6 md:px-12 pt-4 pb-4 rounded-t-3xl md:rounded-3xl bg-white shadow-lg"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Modal header */}
-          <header className="flex flex-col justify-between relative mb-4">
-            <button
-              className="absolute right-0 top-2 lg:-right-6 lg:-top-2"
-              onClick={onClose}
-            >
-              <img src="/common/close.svg" alt="Close" />
-            </button>
-          </header>
           {/* Modal content */}
           <div className="flex justify-between space-x-8 ">
-            {/* NPO description */}
-            <div className="flex flex-col justify-between space-y-6 md:space-y-8">
+            {/* Description */}
+            <div className="flex flex-col justify-between space-y-4 text-center">
               <div>
                 <h6 className="mb-1 text-blue">Report a conflict</h6>
                 <p className="text-[16px] font-source text-charcoal-500">
