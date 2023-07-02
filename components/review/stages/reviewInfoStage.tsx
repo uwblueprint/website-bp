@@ -45,11 +45,24 @@ export const ReviewInfoStage: React.FC = () => {
       rightTitle="Basic Information"
       currentStage={ReviewStage.INFO}
       leftContent={
-        <Image
-          layout={"fill"}
-          alt="Picture of the Blueprint logo"
-          src="/common/review-page-logo.svg"
-        />
+        <div className="flex flex-col place-items-center space-y-8 place-content-center h-full">
+          <div>
+            <Image
+              height={87}
+              width={440}
+              alt="Picture of the Blueprint logo"
+              src="/common/review-page-banner.svg"
+            />
+          </div>
+          <div>
+            <Image
+              height={300}
+              width={330}
+              alt="Picture of the Blueprint logo"
+              src="/common/review-page-people.svg"
+            />
+          </div>
+        </div>
       }
       rightContent={
         <>
