@@ -124,7 +124,7 @@ export const ReviewInfoStage: React.FC = () => {
             <Image
               height={87}
               width={440}
-              alt="Picture of the Blueprint logo"
+              alt=""
               src="/common/review-page-banner.svg"
             />
           </div>
@@ -132,7 +132,7 @@ export const ReviewInfoStage: React.FC = () => {
             <Image
               height={300}
               width={330}
-              alt="Picture of the Blueprint logo"
+              alt=""
               src="/common/review-page-people.svg"
             />
           </div>
