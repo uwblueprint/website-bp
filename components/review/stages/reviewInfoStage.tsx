@@ -34,7 +34,7 @@ const data = [
 
 const QuestionAnswer: FC<Props> = ({ question, answer }) => {
   return (
-    <div className="pt-[24px]">
+    <div className="py-[12px]">
       <p className="text-[16px] font-poppins pb-[4px]">{question}</p>
       <p className="text-[16px] font-source text-charcoal-500">{answer}</p>
     </div>
@@ -104,6 +104,19 @@ export const ReviewInfoStage: React.FC = () => {
     <ReviewSplitPanelPage
       studentName="Matthew Wang"
       rightTitle="Basic Information"
+      rightTitleButton={
+        <Button
+          variant="secondary"
+          onClick={() => setModalOpen(true)}
+          className="whitespace-nowrap"
+          size="sm"
+        >
+          <div className="flex place-items-center space-x-2">
+            <WarningIcon />
+            <p>Conflict</p>
+          </div>
+        </Button>
+      }
       currentStage={ReviewStage.INFO}
       leftContent={
         <div className="flex flex-col place-items-center space-y-8 place-content-center h-full">
@@ -127,17 +140,6 @@ export const ReviewInfoStage: React.FC = () => {
       }
       rightContent={
         <>
-          <Button
-            variant="secondary"
-            onClick={() => setModalOpen(true)}
-            className="whitespace-nowrap"
-            href={""}
-          >
-            <div className="flex place-items-center space-x-2">
-              <WarningIcon />
-              <p>Conflict</p>
-            </div>
-          </Button>
           {/* Modal */}
           <ConflictModal
             name="Matthew Wang"

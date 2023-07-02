@@ -6,6 +6,7 @@ interface Props {
   studentName: string;
   leftTitle?: string;
   rightTitle?: string;
+  rightTitleButton?: JSX.Element;
   leftContent?: JSX.Element;
   rightContent?: JSX.Element;
   currentStage: ReviewStage;
@@ -15,6 +16,7 @@ export const ReviewSplitPanelPage: React.FC<Props> = ({
   studentName,
   leftTitle,
   rightTitle,
+  rightTitleButton,
   leftContent,
   rightContent,
   currentStage,
@@ -31,7 +33,13 @@ export const ReviewSplitPanelPage: React.FC<Props> = ({
       </div>
       <div className="rightPanel flex-none grow px-9 py-10 relative">
         <div>
-          {rightTitle ? <h2 className="text-xl">{rightTitle}</h2> : null}
+          {rightTitle && rightTitleButton ? (
+            <div className="flex justify-between">
+              <h2 className="text-xl">{rightTitle} </h2> {rightTitleButton}
+            </div>
+          ) : rightTitle ? (
+            <h2 className="text-xl">{rightTitle} </h2>
+          ) : null}
           {rightContent}
         </div>
         <ReviewStepper currentStage={currentStage} />
