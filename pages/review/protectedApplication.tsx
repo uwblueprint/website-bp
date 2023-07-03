@@ -22,8 +22,7 @@ const getReviewId = (query: ParsedUrlQuery): number => {
       : (() => {
           throw new Error("reviewId must be a String");
         })();
-  if (Number.isNaN(reviewId))
-    throw Error("reviewId must be parsable into an int");
+  if (Number.isNaN(reviewId)) throw Error("reviewId must be parsable into an int");
 
   return reviewId;
 };
@@ -53,7 +52,7 @@ const ProtectedApplication = ({
       applicationId: reviewId,
       reviewerUserId,
     }).then((result) => {
-      if (result.data.isAuthorizedToReview) {
+      if (result.data && result.data.isAuthorizedToReview) {
         setAuthStatus({
           loading: false,
           isAuthorized: true,
