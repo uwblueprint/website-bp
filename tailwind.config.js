@@ -24,6 +24,7 @@ module.exports = {
         100: "#FAFAFA",
         200: "#EAEAEA",
         300: "#CECECE",
+        350: "#BFBFBF",
         400: "#9F9F9F",
         500: "#707070",
         600: "#333333",
@@ -80,6 +81,9 @@ module.exports = {
         200: "#AF9DF2",
         300: "#9E8BE8",
         500: "#796DC3",
+      },
+      red: {
+        500: "#FF6699",
       },
 
       // SKIN TONES

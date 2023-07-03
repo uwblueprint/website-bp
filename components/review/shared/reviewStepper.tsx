@@ -5,11 +5,12 @@ import { ReviewSetStageContext } from "./reviewContext";
 
 interface Props {
   currentStage: ReviewStage;
+  scores: Map<ReviewStage, number>;
 }
 
 type NavigationItemState = "current" | "past" | "future";
 
-export const ReviewStepper: React.FC<Props> = ({ currentStage }) => {
+export const ReviewStepper: React.FC<Props> = ({ currentStage, scores }) => {
   const buttons = useMemo(
     () => [
       { title: "INFO", index: 1, stage: ReviewStage.INFO },
@@ -57,15 +58,36 @@ export const ReviewStepper: React.FC<Props> = ({ currentStage }) => {
     return buttons[Math.max(currentButtonIndex - 1, 0)].stage;
   };
 
+  const isButtonDisabled = () => {
+    if (
+      currentStage == ReviewStage.INFO ||
+      currentStage == ReviewStage.END_SUCCESS
+    ) {
+      return false;
+    } else if (scores == undefined) {
+      return false;
+    } else {
+      const currScore = scores.get(currentStage);
+      if (currScore == undefined) {
+        return false;
+      } else if (currScore > 0 && currScore <= 5) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  };
+
   return (
     <div className="bottom-0 left-0 absolute w-full">
       <div className="bg-sky-100 m-2 p-4 flex">
         <div className="grid grid-flow-col auto-cols-fr">
-          {buttons.map((buttonProps) => (
+          {buttons.map((buttonProps, idx) => (
             <NavigationItem
               {...buttonProps}
               state={getButtonState(buttonProps)}
               containerClassName="px-2 basis-0"
+              key={idx}
             />
           ))}
         </div>
@@ -94,7 +116,10 @@ export const ReviewStepper: React.FC<Props> = ({ currentStage }) => {
                 <Button
                   className="justify-self-end whitespace-nowrap"
                   size="sm"
-                  onClick={() => setStage?.(getNextStage())}
+                  disabled={isButtonDisabled()}
+                  onClick={() => {
+                    setStage?.(getNextStage());
+                  }}
                 >
                   Save & continue
                 </Button>
