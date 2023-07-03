@@ -1,5 +1,8 @@
 import ProtectedRoute from "@components/context/ProtectedRoute";
-import { ReviewSetStageContext } from "@components/review/shared/reviewContext";
+import {
+  ReviewSetScoresContext,
+  ReviewSetStageContext,
+} from "@components/review/shared/reviewContext";
 import { ReviewDriveToLearnStage } from "@components/review/stages/reviewDriveToLearnStage";
 import { ReviewEndStage } from "@components/review/stages/reviewEndStage";
 import { ReviewEndSuccessStage } from "@components/review/stages/reviewEndSuccessStage";
@@ -22,24 +25,39 @@ export enum ReviewStage {
   END_SUCCESS = "END_SUCCESS",
 }
 
-const Reviews: NextPage = () => {
+const ReviewsPages: NextPage = () => {
   const [stage, setStage] = useState<ReviewStage>(ReviewStage.INFO);
-  const router = useRouter();
+  const initialScores = new Map<ReviewStage, number>();
+  initialScores.set(ReviewStage.PFSG, 1);
+  initialScores.set(ReviewStage.TP, 1);
+  initialScores.set(ReviewStage.D2L, 1);
+  initialScores.set(ReviewStage.SKL, 1);
+
+  const [scores, setScores] = useState<Map<ReviewStage, number>>(initialScores);
+  const updateScores = (key: ReviewStage, value: number) => {
+    setScores((map) => {
+      if (isNaN(value) || value < 1 || value > 5) {
+        console.log("got value: %d\n", value);
+        return map;
+      }
+      return new Map(map.set(key, value));
+    });
+  };
 
   const getReviewStage = () => {
     switch (stage) {
       case ReviewStage.INFO:
-        return <ReviewInfoStage />;
+        return <ReviewInfoStage scores={scores} />;
       case ReviewStage.PFSG:
-        return <ReviewPassionForSocialGoodStage />;
+        return <ReviewPassionForSocialGoodStage scores={scores} />;
       case ReviewStage.TP:
-        return <ReviewTeamPlayerStage />;
+        return <ReviewTeamPlayerStage scores={scores} />;
       case ReviewStage.D2L:
-        return <ReviewDriveToLearnStage />;
+        return <ReviewDriveToLearnStage scores={scores} />;
       case ReviewStage.SKL:
-        return <ReviewSkillStage />;
+        return <ReviewSkillStage scores={scores} />;
       case ReviewStage.END:
-        return <ReviewEndStage />;
+        return <ReviewEndStage scores={scores} />;
       case ReviewStage.END_SUCCESS:
       default:
         return <ReviewEndSuccessStage />;
@@ -47,11 +65,20 @@ const Reviews: NextPage = () => {
   };
 
   return (
+    <ReviewSetScoresContext.Provider value={updateScores}>
+      <ReviewSetStageContext.Provider value={setStage}>
+        {getReviewStage()}
+      </ReviewSetStageContext.Provider>
+    </ReviewSetScoresContext.Provider>
+  );
+};
+
+const Reviews: NextPage = () => {
+  const router = useRouter();
+  return (
     <ProtectedRoute allowedRoles={["Admin", "User"]}>
       <ProtectedApplication headerInformation={router.query}>
-        <ReviewSetStageContext.Provider value={setStage}>
-          {getReviewStage()}
-        </ReviewSetStageContext.Provider>
+        <ReviewsPages />
       </ProtectedApplication>
     </ProtectedRoute>
   );
