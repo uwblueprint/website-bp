@@ -172,5 +172,15 @@
         "maxLength": 1000
       }
     ]
+  },
+  {
+    "id": "17",
+    "role": "UX Content Writer",
+    "questions": [
+      {
+        "question": "What do you see as the purposes of content within the user experience of an app?",
+        "maxLength": 1000
+      }
+    ]
   }
 ]
