@@ -134,7 +134,7 @@ const BasicInfo: FC<Props> = ({ values, readOnly }: Props) => {
         <br className="md:block hidden" />
         <SelectInput
           id="pronouns"
-          labelText="What are your preferred pronouns?"
+          labelText="What are your pronouns?"
           value={values.pronouns}
           options={SELECT_PRONOUNS}
           readOnly={readOnly}
