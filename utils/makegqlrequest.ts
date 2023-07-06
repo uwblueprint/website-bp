@@ -5,19 +5,27 @@ interface GraphqlResponse {
   errors?: any[];
 }
 
-export async function fetchGraphql(query: string, variables?: any): Promise<GraphqlResponse> {
+export async function fetchGraphql(
+  query: string,
+  variables?: any,
+): Promise<GraphqlResponse> {
   if (!BE_DEPLOYMENT_DOMAIN) {
-    throw new Error(`DEPLOYMENT_DOMAIN not defined. Please check your env file.`)
+    throw new Error(
+      `DEPLOYMENT_DOMAIN not defined. Please check your env file.`,
+    );
   }
   const requestOptions: RequestInit = {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({ query, variables }),
   };
   try {
-    const response = await fetch(BE_DEPLOYMENT_DOMAIN + "/graphql", requestOptions);
+    const response = await fetch(
+      BE_DEPLOYMENT_DOMAIN + "/graphql",
+      requestOptions,
+    );
     const responseData = await response.json();
 
     if (response.ok) {

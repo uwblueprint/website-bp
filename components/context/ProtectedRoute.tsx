@@ -3,7 +3,7 @@ import { useAuth } from "./AuthUserContext";
 import Loading from "@components/common/Loading";
 import { queries } from "graphql/queries";
 import { useRouter } from "next/router";
-import { fetchGraphql } from "@utils/makegqlrequest";
+import AuthAPIClient from "APIClients/AuthAPIClient";
 
 type Props = {
   children: ReactChild;
@@ -24,30 +24,32 @@ const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
     isAuthorized: false,
   });
   useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
-    if (accessToken == null) {
+    // check if we have an accessToken cached
+    if (localStorage.getItem("accessToken") == null) {
       setAuthStatus({
         loading: false,
         isAuthorized: false,
       });
       return;
     }
-    fetchGraphql(queries.isAuthorizedByRole, {
-      accessToken,
-      roles: allowedRoles,
-    }).then((result) => {
-      if (result.data.isAuthorizedByRole) {
-        setAuthStatus({
-          loading: false,
-          isAuthorized: true,
-        });
-      } else {
-        setAuthStatus({
-          loading: false,
-          isAuthorized: false,
-        });
-      }
-    });
+    AuthAPIClient.isAuthorizedByRole(allowedRoles)
+      .then(async (isAuthorized) => {
+        if (isAuthorized) {
+          setAuthStatus({
+            loading: false,
+            isAuthorized: true,
+          });
+        } else {
+          setAuthStatus({
+            loading: false,
+            isAuthorized: false,
+          });
+        }
+      })
+      .catch((e) => {
+        console.error("Auth Validation Error");
+        console.error(e);
+      });
   }, [allowedRoles]);
 
   if (!authStatus.loading && !authStatus.isAuthorized)
