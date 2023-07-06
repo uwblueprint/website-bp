@@ -118,6 +118,9 @@ export const theme = {
       fill: "#A6D669",
       text: "#FFFFFF",
     },
+    disabled: {
+      color: "#666",
+    },
   },
   mediaQueries: {
     xs: `@media only screen and (max-width: ${SCREEN_BREAKPOINTS.xs}px)`,

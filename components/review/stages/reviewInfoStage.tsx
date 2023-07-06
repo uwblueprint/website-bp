@@ -6,7 +6,7 @@ import Button from "@components/common/Button";
 import Image from "next/image";
 import WarningIcon from "@components/icons/warning.icon";
 
-type Props = {
+type QuestionAnswerProps = {
   readonly question: string;
   readonly answer: string;
 };
@@ -32,9 +32,9 @@ const data = [
   },
 ];
 
-const QuestionAnswer: FC<Props> = ({ question, answer }) => {
+const QuestionAnswer: FC<QuestionAnswerProps> = ({ question, answer }) => {
   return (
-    <div className="py-[12px]">
+    <div>
       <p className="text-[16px] font-poppins pb-[4px]">{question}</p>
       <p className="text-[16px] font-source text-charcoal-500">{answer}</p>
     </div>
@@ -97,9 +97,12 @@ const ConflictModal: FC<ConflictModalProps> = ({ name, open, onClose }) => {
   ) : null;
 };
 
-export const ReviewInfoStage: React.FC = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+interface Props {
+  scores: Map<ReviewStage, number>;
+}
 
+export const ReviewInfoStage: React.FC<Props> = ({ scores }) => {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <ReviewSplitPanelPage
       studentName="Matthew Wang"
@@ -157,6 +160,7 @@ export const ReviewInfoStage: React.FC = () => {
           })}
         </>
       }
+      scores={scores}
     ></ReviewSplitPanelPage>
   );
 };
