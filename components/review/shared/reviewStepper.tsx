@@ -79,7 +79,7 @@ export const ReviewStepper: React.FC<Props> = ({ currentStage, scores }) => {
   };
 
   return (
-    <div className="bottom-0 left-0 absolute w-full">
+    <div className="bottom-0 left-0 w-full">
       <div className="bg-sky-100 m-2 p-4 flex">
         <div className="grid grid-flow-col auto-cols-fr">
           {buttons.map((buttonProps, idx) => (
