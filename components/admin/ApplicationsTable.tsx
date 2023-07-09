@@ -139,6 +139,22 @@ const ApplicationsTable: React.FC = () => {
             fontFamily: "Source Sans Pro",
           },
         },
+        MuiTypography: {
+          root: {
+            fontFamily: "Source Sans Pro !important",
+          },
+          body1: {
+            fontFamily: "Source Sans Pro",
+          },
+          body2: {
+            fontFamily: "Source Sans Pro",
+          },
+        },
+        MuiButtonBase: {
+          root: {
+            fontFamily: "Source Sans Pro",
+          },
+        },
         MUIDataTableHeadCell: {
           data: {
             color: theme.colors.B10,
