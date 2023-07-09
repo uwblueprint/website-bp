@@ -3,6 +3,8 @@ import { fetchGraphql } from "@utils/makegqlrequest";
 import MUIDataTable from "mui-datatables";
 import React, { useEffect, useState } from "react";
 import { getTableColumns } from "./ApplicationsTableColumn";
+import { theme } from "../../styles/Theme";
+import { CopyIcon } from "@components/icons/copy.icon";
 
 export type Student = {
   id: string;
@@ -18,7 +20,7 @@ export type Student = {
 
 type StudentRow = {
   name: string;
-  application: string;
+  resume: React.ReactNode;
   term: string;
   program: string;
   reviewerOne: string;
@@ -69,12 +71,14 @@ const ApplicationsTable: React.FC = () => {
     applications.map(async (app) => {
       const dashboards: any[] = await dashboardsByApplicationId(app.id);
       app.dashboards = dashboards;
-      const reviewerNames = await Promise.all(
-        dashboards.map(async (dash) => {
-          const res = await nameByEmail(dash.reviewerEmail);
-          return res;
-        }),
-      );
+      const reviewerNames = dashboards
+        ? await Promise.all(
+            dashboards.map(async (dash) => {
+              const res = await nameByEmail(dash.reviewerEmail);
+              return res;
+            }),
+          )
+        : [];
       app.reviewerNames = reviewerNames;
     });
   }, [applications]);
@@ -115,14 +119,77 @@ const ApplicationsTable: React.FC = () => {
     const response = await fetchGraphql(queries.dashboardsByApplicationId, {
       applicationId: id,
     });
-    return response.data.dashboardsByApplicationId;
+    return response?.data?.dashboardsByApplicationId;
   };
 
   const getMuiTheme = () =>
     createTheme({
       overrides: {
+        MuiPaper: {
+          root: {
+            border: `1px solid ${theme.colors.greys.border}`,
+          },
+        },
+        MUIDataTable: {
+          paper: {
+            boxShadow: "none",
+            marginBottom: "3em",
+          },
+          root: {
+            fontFamily: "Source Sans Pro",
+          },
+        },
+        MuiTypography: {
+          root: {
+            fontFamily: "Source Sans Pro !important",
+          },
+          body1: {
+            fontFamily: "Source Sans Pro",
+          },
+          body2: {
+            fontFamily: "Source Sans Pro",
+          },
+        },
+        MuiButtonBase: {
+          root: {
+            fontFamily: "Source Sans Pro",
+          },
+        },
         MUIDataTableHeadCell: {
-          data: { color: "blue" }, // @todo use real colour
+          data: {
+            color: theme.colors.B10,
+            fontFamily: "Source Sans Pro",
+            fontWeight: 600,
+          },
+          sortActive: {
+            color: theme.colors.B10,
+          },
+        },
+        MUIDataTableBodyCell: {
+          root: {
+            fontFamily: "Source Sans Pro",
+          },
+        },
+        MUIDataTableToolbar: {
+          root: {
+            display: "none",
+          },
+        },
+        MuiTableSortLabel: {
+          root: {
+            color: `${theme.colors.B10} !important`,
+          },
+          active: {
+            color: theme.colors.B10,
+          },
+          iconDirectionAsc: {
+            color: theme.colors.B10,
+          },
+        },
+        MuiSvgIcon: {
+          root: {
+            color: `${theme.colors.B10} !important`,
+          },
         },
       },
     });
@@ -131,7 +198,7 @@ const ApplicationsTable: React.FC = () => {
     const rows: StudentRow[] = applications.map((application) => {
       return {
         name: application.firstName + " " + application.lastName,
-        application: application.resumeUrl,
+        resume: <ResumeIcon url={application.resumeUrl} />,
         term: application.academicYear,
         program: application.program,
         reviewerOne:
@@ -158,6 +225,14 @@ const ApplicationsTable: React.FC = () => {
         columns={getTableColumns()}
       />
     </MuiThemeProvider>
+  );
+};
+
+const ResumeIcon: React.FC<{ url: string }> = ({ url }) => {
+  return (
+    <a target="_blank" href={url}>
+      <CopyIcon />
+    </a>
   );
 };
 
