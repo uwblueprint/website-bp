@@ -11,7 +11,9 @@ import { ReviewPassionForSocialGoodStage } from "@components/review/stages/revie
 import { ReviewSkillStage } from "@components/review/stages/reviewSkillStage";
 import { ReviewTeamPlayerStage } from "@components/review/stages/reviewTeamPlayerStage";
 import { NextPage } from "next";
+import { useRouter } from "next/router";
 import { useState } from "react";
+import ProtectedApplication from "./protectedApplication";
 
 export enum ReviewStage {
   INFO = "INFO",
@@ -72,9 +74,12 @@ const ReviewsPages: NextPage = () => {
 };
 
 const Reviews: NextPage = () => {
+  const router = useRouter();
   return (
     <ProtectedRoute allowedRoles={["Admin", "User"]}>
-      <ReviewsPages />
+      <ProtectedApplication headerInformation={router.query}>
+        <ReviewsPages />
+      </ProtectedApplication>
     </ProtectedRoute>
   );
 };
