@@ -122,8 +122,8 @@ export const ReviewInfoStage: React.FC<Props> = ({ scores }) => {
       }
       currentStage={ReviewStage.INFO}
       leftContent={
-        <div className="flex flex-col place-items-center space-y-8 place-content-center h-full">
-          <div>
+        <div className="flex flex-col place-items-center justify-center absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 space-y-8 place-content-center h-full m-auto w-full">
+          <div className="">
             <Image
               height={87}
               width={440}
@@ -149,15 +149,17 @@ export const ReviewInfoStage: React.FC<Props> = ({ scores }) => {
             open={modalOpen}
             onClose={() => setModalOpen(false)}
           />
-          {data.map((item, index) => {
-            return (
-              <QuestionAnswer
-                key={index}
-                question={item.question}
-                answer={item.answer}
-              />
-            );
-          })}
+          <div className="flex flex-col gap-4">
+            {data.map((item, index) => {
+              return (
+                <QuestionAnswer
+                  key={index}
+                  question={item.question}
+                  answer={item.answer}
+                />
+              );
+            })}
+          </div>
         </>
       }
       scores={scores}
