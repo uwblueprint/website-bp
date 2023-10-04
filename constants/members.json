@@ -39,7 +39,7 @@
     },
     {
       "name": "Marillac Place",
-      "id": "marillac-place"
+      "id": "mp"
     },
     {
       "name": "Infrastructure",
@@ -3467,7 +3467,7 @@
       "name": "Sharujan Sreekaran",
       "role": "developer",
       "term": 1236,
-      "teams": ["marillac-place"],
+      "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Sharujan_Sreekaran.jpg?alt=media&token=49efa945-1e20-4494-b7ea-e1155e088407"
     },
     {
