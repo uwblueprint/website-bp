@@ -32,65 +32,42 @@ type StudentRow = {
 
 const queries = {
   applicationsByRole: `
-            query applicationsByRole($firstChoice: String!) {
-              applicationsByRole(firstChoice: $firstChoice) {
-                id
-                firstName
-                lastName
-                academicYear
-                resumeUrl
-                program
-                status
+            query applicationTable($role: String!) {
+              applicationTable(role: $role) {
+                application {
+                  firstName
+                  lastName
+                  academicYear
+                  resumeUrl
+                  program
+                  status
+              }
+              reviewers {
+                  firstName
+                  lastName
+              }
+              reviewDashboards {
+                  passionFSG
+                  teamPlayer
+                  desireToLearn
+                  skillCategory
+              }
               }
             }
           `,
-  dashboardsByApplicationId: `
-          query dashboardsByApplicationId($applicationId: Int!) {
-            dashboardsByApplicationId(applicationId: $applicationId) {
-                reviewerEmail
-                passionFSG
-                teamPlayer
-                desireToLearn
-                skillCategory
-            }
-          }
-        `,
-  userByEmail: `
-          query userByEmail($email: String!) {
-            userByEmail(email: $email) {
-              firstName
-              lastName
-            }
-          }
-  `,
 };
 
 const ApplicationsTable: React.FC = () => {
   const [applications, setApplications] = useState<any[]>([]);
-  useEffect(() => {
-    applications.map(async (app) => {
-      const dashboards: any[] = await dashboardsByApplicationId(app.id);
-      app.dashboards = dashboards;
-      const reviewerNames = dashboards
-        ? await Promise.all(
-            dashboards.map(async (dash) => {
-              const res = await nameByEmail(dash.reviewerEmail);
-              return res;
-            }),
-          )
-        : [];
-      app.reviewerNames = reviewerNames;
-    });
-  }, [applications]);
 
   useEffect(() => {
     applicationsByRole();
   }, []);
 
-  const getSkillCategory = (application: any) => {
-    if (application.dashboards?.length >= 2) {
-      const reviewer1Skill = application.dashboards[0].skillCategory;
-      const reviewer2Skill = application.dashboards[1].skillCategory;
+  const getSkillCategory = (dashboards: any) => {
+    if (dashboards?.length >= 2) {
+      const reviewer1Skill = dashboards[0].skillCategory;
+      const reviewer2Skill = dashboards[1].skillCategory;
       if (reviewer1Skill == "junior" || reviewer2Skill == "junior") {
         return "Junior";
       } else if (
@@ -102,24 +79,13 @@ const ApplicationsTable: React.FC = () => {
         return "Senior";
       }
     }
-    return "";
-  };
-
-  const nameByEmail = async (email: string) => {
-    const response = await fetchGraphql(queries.userByEmail, { email });
-    return response.data.userByEmail;
+    return dashboards.length == 1 ? dashboards[0].skillCategory : "";
   };
 
   const applicationsByRole = () => {
     fetchGraphql(queries.applicationsByRole, {
-      firstChoice: "project developer",
-    }).then((result) => setApplications(result.data.applicationsByRole));
-  };
-  const dashboardsByApplicationId = async (id: number) => {
-    const response = await fetchGraphql(queries.dashboardsByApplicationId, {
-      applicationId: id,
-    });
-    return response?.data?.dashboardsByApplicationId;
+      role: "project developer",
+    }).then((result) => setApplications(result.data.applicationTable));
   };
 
   const getMuiTheme = () =>
@@ -196,22 +162,24 @@ const ApplicationsTable: React.FC = () => {
 
   const getTableRows = (): StudentRow[] => {
     const rows: StudentRow[] = applications.map((application) => {
+      const app = application.application;
+      const reviewers = application.reviewers;
       return {
-        name: application.firstName + " " + application.lastName,
-        resume: <ResumeIcon url={application.resumeUrl} />,
-        term: application.academicYear,
-        program: application.program,
+        name: app.firstName + " " + app.lastName,
+        application: app.resumeUrl,
+        term: app.academicYear,
+        program: app.program,
         reviewerOne:
-          application.reviewerNames?.length >= 1
-            ? application.reviewerNames[0].firstName + " "
+          reviewers?.length >= 1
+            ? reviewers[0].firstName + " " + reviewers[0].lastName
             : "",
         reviewerTwo:
-          application.reviewerNames?.length >= 2
-            ? application.reviewerNames[1].firstName
+          reviewers?.length >= 2
+            ? reviewers[1].firstName + " " + reviewers[1].lastName
             : "",
         score: 100,
-        status: application.status,
-        skill: getSkillCategory(application),
+        status: app.status,
+        skill: getSkillCategory(application.reviewDashboards),
       };
     });
     return rows;
