@@ -35,6 +35,10 @@ export const theme = {
     S30: "#99ceff",
     S40: "#7eb9f0",
 
+    greys: {
+      border: "#CECECE",
+    },
+
     //Secondary Colours
     R30: "#ef5d5d",
     P10: "#ffc6c6",
