@@ -32,6 +32,18 @@
     {
       "name": "Haven",
       "id": "haven"
+    },
+    {
+      "name": "A Better Tent City",
+      "id": "abtc"
+    },
+    {
+      "name": "Marillac Place",
+      "id": "mp"
+    },
+    {
+      "name": "Infrastructure",
+      "id": "infra"
     }
   ],
   "members": [
@@ -165,7 +177,7 @@
       "name": "Eugene Zhang",
       "role": "developer",
       "term": 1236,
-      "teams": ["cas"],
+      "teams": ["casa"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2Fdev_eugene_zhang.JPG?alt=media&token=a0d74a26-daef-472e-ad43-7a025b2f081e"
     },
     {
@@ -2538,7 +2550,7 @@
       "name": "Kevin Chen",
       "role": "developer",
       "term": 1236,
-      "teams": ["cas"],
+      "teams": ["casa"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FDev_Kevin_Chen.jpeg?alt=media&token=a59293e9-b0b0-410b-a553-866ea210ebdc"
     },
     {
@@ -2825,7 +2837,7 @@
       "name": "Joshua Ye",
       "role": "developer",
       "term": 1236,
-      "teams": ["cas"],
+      "teams": ["casa"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fpm_joshuaye.jpg?alt=media&token=322e667a-fd5c-47b7-b70a-81996ea9ca07"
     },
     {
@@ -3189,7 +3201,7 @@
       "name": "Cindy Li",
       "role": "developer",
       "term": 1236,
-      "teams": ["cas"],
+      "teams": ["casa"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FVPI_Cindy_Li.jpg?alt=media&token=35611a3e-ea9b-4bb1-a2a8-963d9ac954c4"
     },
     {
@@ -3399,28 +3411,28 @@
       "name": "Jenny Vong",
       "role": "developer",
       "term": 1236,
-      "teams": ["cas"],
+      "teams": ["casa"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2Fdev_jenny_vong.JPG?alt=media&token=1ee3f66e-1dd5-4b17-9d83-ff9a8c10ab19"
     },
     {
       "name": "Jacqueline Fung",
       "role": "developer",
       "term": 1236,
-      "teams": ["cas"],
+      "teams": ["casa"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_JacquelineFung.jpg?alt=media&token=66e7d231-9e82-462d-a3e3-60d03cd33909"
     },
     {
       "name": "Oditha Amarasinghe",
       "role": "developer",
       "term": 1236,
-      "teams": ["cas"],
+      "teams": ["casa"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Oditha_Amarasinghe.jpeg?alt=media&token=7e71b36a-3275-4f8e-b52c-6c77d73833b0"
     },
     {
       "name": "Chen Kai Yan",
       "role": "developer",
       "term": 1236,
-      "teams": ["cas"],
+      "teams": ["casa"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2FDev_Kevin_Yan.jpg?alt=media&token=c352bdb2-33af-43c8-ad09-d7d379b431b5&_gl=1*1l0brd7*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMjQxMi4wLjAuMA..."
     },
     {
@@ -3462,14 +3474,14 @@
       "name": "Maisha Thasin",
       "role": "developer",
       "term": 1236,
-      "teams": ["infrastructure"],
+      "teams": ["infra"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2Fdev_maisha_thasin.jpeg?alt=media&token=b4ddba89-ccd2-4345-b136-5b80475ca4a7"
     },
     {
       "name": "Maisha Thasin",
       "role": "developer",
       "term": 1236,
-      "teams": ["marillac-place"],
+      "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FPL_Shahan_Nedadahandeh.png?alt=media&token=13fe9646-4c81-494c-a81f-b0b2aa8ef396"
     },
     {
@@ -3497,7 +3509,7 @@
       "name": "Omer Adeel",
       "role": "developer",
       "term": 1236,
-      "teams": ["cas"],
+      "teams": ["casa"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     }
   ]
