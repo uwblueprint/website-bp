@@ -52,18 +52,15 @@ const queries = {
               }
               }
             }
-          `
+          `,
 };
 
 const ApplicationsTable: React.FC = () => {
   const [applications, setApplications] = useState<any[]>([]);
-  useEffect(() => {
-    console.log(applications);
-  }, [applications])
 
   useEffect(() => {
     applicationsByRole();
-  }, [])
+  }, []);
 
   const getSkillCategory = (dashboards: any) => {
     if (dashboards?.length >= 2) {
@@ -83,7 +80,6 @@ const ApplicationsTable: React.FC = () => {
     return dashboards.length == 1 ? dashboards[0].skillCategory : "";
   };
 
-
   const applicationsByRole = () => {
     fetchGraphql(queries.applicationsByRole, {
       role: "project developer",
@@ -100,7 +96,6 @@ const ApplicationsTable: React.FC = () => {
     });
 
   const getTableRows = (): StudentRow[] => {
-    console.log(applications);
     const rows: StudentRow[] = applications.map((application) => {
       const app = application.application;
       const reviewers = application.reviewers;
