@@ -472,9 +472,9 @@
     },
     {
       "name": "William Tran",
-      "role": "project lead",
+      "role": "technical lead",
       "term": 1236,
-      "teams": ["ma"],
+      "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_WilliamTran.PNG?alt=media&token=3896825a-9863-4ead-88c3-63586fff6963"
     },
     {
@@ -3458,13 +3458,6 @@
       "term": 1236,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FProductDesigner_Sunny_Zhang.JPG?alt=media&token=b935d1a8-174d-442a-86e4-f8d0563c8b78"
-    },
-    {
-      "name": "William Tran",
-      "role": "project lead",
-      "term": 1236,
-      "teams": ["mp"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_William_Tran.jpg?alt=media&token=2b793ab4-ac16-4954-985b-bd18b15fd0bc"
     },
     {
       "name": "Daniel Truong",
