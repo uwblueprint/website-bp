@@ -5,7 +5,7 @@ interface Props {
 
 export const ReviewAnswers: React.FC<Props> = ({ questions, answers }) => {
   return (
-    <div>
+    <div className="flex flex-col gap-5">
       {questions.map((question, idx) => {
         return (
           <div
@@ -21,7 +21,6 @@ export const ReviewAnswers: React.FC<Props> = ({ questions, answers }) => {
                 <div className="px-2 charcoal-0">{answers[idx]}</div>
               </div>
             </div>
-            <br></br>
           </div>
         );
       })}
