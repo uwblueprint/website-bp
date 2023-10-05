@@ -1,5 +1,5 @@
 {
-  "term": 1235,
+  "term": 1236,
   "teams": [
     {
       "name": "Executive Team",
@@ -3492,7 +3492,7 @@
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FVP%20Talent_Janaki_Menon.jpeg?alt=media&token=51ef769e-0970-44d5-b0ef-7051f920cddc"
     },
     {
-      "name": "Janaki Menon",
+      "name": "Vaaranan Yogalingam",
       "role": "developer",
       "term": 1236,
       "teams": ["abtc"],
