@@ -1,5 +1,5 @@
 {
-  "term": 1235,
+  "term": 1236,
   "teams": [
     {
       "name": "Executive Team",
@@ -32,6 +32,14 @@
     {
       "name": "Haven",
       "id": "haven"
+    },
+    {
+      "name": "Marillac Place",
+      "id": "mp"
+    },
+    {
+      "name": "Infrastructure",
+      "id": "infra"
     }
   ],
   "members": [
@@ -248,7 +256,7 @@
     {
       "name": "Serena Li",
       "role": "vp design",
-      "term": 1235,
+      "term": 1236,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2Fdesigner_serena_li.jpeg?alt=media&token=b763e351-2ae2-4dab-b7cd-bed0e3dd208d"
     },
@@ -464,10 +472,10 @@
     },
     {
       "name": "William Tran",
-      "role": "developer",
-      "term": 1235,
-      "teams": ["focus-on-nature"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_WilliamTran.PNG?alt=media&token=3896825a-9863-4ead-88c3-63586fff6963"
+      "role": "technical lead",
+      "term": 1236,
+      "teams": ["mp"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FPL_William_Tran.jpg?alt=media&token=5d8cf545-085a-4424-9de5-a6e10a8d3a2b"
     },
     {
       "name": "Yousef Sahawneh",
@@ -2955,13 +2963,6 @@
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Alyssa_Guo.JPG?alt=media&token=1bfc9d9b-bd57-486c-a5ce-b5036b93d216"
     },
     {
-      "name": "Heet Shah",
-      "role": "developer",
-      "term": 1235,
-      "teams": ["fck"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Heet_Shah.jpeg?alt=media&token=25e1140d-744b-411f-a4a6-e14ceececb88"
-    },
-    {
       "name": "Andrew Zhang",
       "role": "technical lead",
       "term": 1235,
@@ -3202,9 +3203,9 @@
     {
       "name": "Fred Fang",
       "role": "vp finance",
-      "term": 1235,
+      "term": 1236,
       "teams": ["executive"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2FVPF_Fred_Fang.png?alt=media&token=5aaedacc-158b-424a-bad9-97b9f8af52f7&_gl=1*eskaxr*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMzExMy4wLjAuMA.."
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FVPF_Fred_Fang.png?alt=media&token=57c0fa76-c58a-4b54-a2e7-ebdaf9ee259d"
     },
     {
       "name": "Weinna Zheng",
@@ -3216,7 +3217,7 @@
     {
       "name": "Kathy Chen",
       "role": "vp design",
-      "term": 1235,
+      "term": 1236,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2FVPD_Kathy_Chen.jpg?alt=media&token=82a825a2-4a22-41fe-947c-870bbdac7d73&_gl=1*vpsghn*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMzA2NC4wLjAuMA.."
     },
@@ -3398,7 +3399,7 @@
     {
       "name": "Jenny Vong",
       "role": "developer",
-      "term": 1235,
+      "term": 1236,
       "teams": ["casa"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2Fdev_jenny_vong.JPG?alt=media&token=ac212929-bca0-4b21-b6c4-7dfa9d6a6851&_gl=1*mtx4i3*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMzcwNS4wLjAuMA.."
     },
@@ -3429,6 +3430,74 @@
       "term": 1235,
       "teams": ["shw"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+
+    {
+      "name": "Victoria Nguyen",
+      "role": "vp talent",
+      "term": 1236,
+      "teams": ["executive"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FVP%20Talent%20_%20Victoria%20_%20Nguyen.jpg?alt=media&token=ce183595-a203-429c-8ec4-5840d277f1a6"
+    },
+
+
+    {
+      "name": "Selena Zhang",
+      "role": "developer",
+      "term": 1236,
+      "teams": ["mp"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2019headshots%2Fcompressed%2FDev_VictoriaLi.jpg?alt=media&token=7b38b3db-7c95-4672-8f95-51b1518530ce"
+    },
+
+    {
+      "name": "Rachel Heo",
+      "role": "developer",
+      "term": 1236,
+      "teams": ["fck"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2Fdev_rachel_heo.JPG?alt=media&token=beb590ab-2cd0-41ba-ab41-b280d07db2ae"
+    },
+
+
+    {
+      "name": "Barton Lu",
+      "role": "developer",
+      "term": 1236,
+      "teams": ["fck"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Barton_Lu.png?alt=media&token=a0a065a4-420d-48ea-99d1-ff035b0de5c8"
+    },
+
+    {
+      "name": "Heet Shah",
+      "role": "technical lead",
+      "term": 1236,
+      "teams": ["internal-tools"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FPL_Heet_Shah.jpeg?alt=media&token=51cca2f5-f6cd-4f42-8615-6fdbf1388a3a"
+    },
+
+    {
+      "name": "Kriti Sodhi",
+      "role": "vp engineering",
+      "term": 1236,
+      "teams": ["executive"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FVPE_Kriti_Sodhi.jpg?alt=media&token=8b2f57e8-7cb7-4794-ba79-b5e2cb1e2d4a"
+    },
+
+
+    {
+      "name": "Helios He",
+      "role": "developer",
+      "term": 1236,
+      "teams": ["infra"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Helios_He.jpg?alt=media&token=d59b558b-c4fc-4a4f-9656-f8f6c853a65d"
+    },
+
+    {
+      "name": "Bill Gong",
+      "role": "designer",
+      "term": 1236,
+      "teams": ["mp"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FProductDesigner_Bill_Gong.jpg?alt=media&token=62dcf03a-7a55-470b-8e79-e09fa2e8d163"
     }
+
   ]
 }
