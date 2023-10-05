@@ -3458,7 +3458,7 @@
     },
     {
       "name": "Maggie Lu",
-      "role": "vp engineering",
+      "role": "external director",
       "term": 1236,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FVPE_Maggie_Lu.JPG?alt=media&token=ebc4f915-0d39-4934-a3b5-fea3c55a31d3"
@@ -3476,13 +3476,6 @@
       "term": 1236,
       "teams": ["infra"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2Fdev_maisha_thasin.jpeg?alt=media&token=b4ddba89-ccd2-4345-b136-5b80475ca4a7"
-    },
-    {
-      "name": "Maisha Thasin",
-      "role": "developer",
-      "term": 1236,
-      "teams": ["mp"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FPL_Shahan_Nedadahandeh.png?alt=media&token=13fe9646-4c81-494c-a81f-b0b2aa8ef396"
     },
     {
       "name": "Parth Desai",
