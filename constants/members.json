@@ -3195,15 +3195,15 @@
     },
     {
       "name": "Cindy Li",
-      "role": "vp internal",
+      "role": "developer",
       "term": 1236,
-      "teams": ["executive"],
+      "teams": ["cas"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FVPI_Cindy_Li.jpg?alt=media&token=35611a3e-ea9b-4bb1-a2a8-963d9ac954c4"
     },
     {
       "name": "Shirley Fang",
       "role": "vp external",
-      "term": 1236,
+      "term": 1235,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FVPE_Shirley_Fang.jpg?alt=media&token=44f63043-a008-4dae-bd03-db7718c58fd2"
     },
@@ -3427,7 +3427,7 @@
     {
       "name": "Chen Kai Yan",
       "role": "developer",
-      "term": 1235,
+      "term": 1236,
       "teams": ["casa"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs23headshots%2FDev_Kevin_Yan.jpg?alt=media&token=c352bdb2-33af-43c8-ad09-d7d379b431b5&_gl=1*1l0brd7*_ga*MTUwMDEyNjY3My4xNjc0MDgyODE2*_ga_CW55HF8NVT*MTY4NTkwMDY2Mi4zLjEuMTY4NTkwMjQxMi4wLjAuMA..."
     },
@@ -3512,26 +3512,26 @@
       "name": "Mathily Kadam",
       "role": "internal director",
       "term": 1236,
-      "teams": ["internal director"],
+      "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Olivia Chan",
       "role": "external director",
       "term": 1236,
-      "teams": ["internal director"],
+      "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Maggie Lu",
-      "role": "external director",
+      "role": "executive",
       "term": 1236,
       "teams": ["internal director"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Kriti Sodhi",
-      "role": "external director",
+      "role": "executive",
       "term": 1236,
       "teams": ["internal director"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
@@ -3540,7 +3540,7 @@
       "name": "Serena Poonawalla",
       "role": "ux researcher",
       "term": 1236,
-      "teams": ["internal director"],
+      "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     }
   ]
