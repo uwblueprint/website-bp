@@ -3440,7 +3440,6 @@
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FVP%20Talent%20_%20Victoria%20_%20Nguyen.jpg?alt=media&token=ce183595-a203-429c-8ec4-5840d277f1a6"
     },
 
-
     {
       "name": "Selena Zhang",
       "role": "developer",
@@ -3456,7 +3455,6 @@
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2Fdev_rachel_heo.JPG?alt=media&token=beb590ab-2cd0-41ba-ab41-b280d07db2ae"
     },
-
 
     {
       "name": "Barton Lu",
@@ -3476,12 +3474,11 @@
 
     {
       "name": "Kriti Sodhi",
-      "role": "vp engineering",
+      "role": "external director",
       "term": 1236,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FVPE_Kriti_Sodhi.jpg?alt=media&token=8b2f57e8-7cb7-4794-ba79-b5e2cb1e2d4a"
     },
-
 
     {
       "name": "Helios He",
@@ -3498,6 +3495,5 @@
       "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FProductDesigner_Bill_Gong.jpg?alt=media&token=62dcf03a-7a55-470b-8e79-e09fa2e8d163"
     }
-
   ]
 }
