@@ -32,7 +32,7 @@
     {
       "name": "Haven",
       "id": "haven"
-    }, 
+    },
     {
       "name": "A Better Tent City",
       "id": "abtc"
@@ -478,7 +478,7 @@
       "name": "William Tran",
       "role": "technical lead",
       "term": 1236,
-      "teams": ["marillac-place"],
+      "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_WilliamTran.PNG?alt=media&token=3896825a-9863-4ead-88c3-63586fff6963"
     },
     {
@@ -3313,7 +3313,7 @@
       "name": "Hiba Altaf",
       "role": "product manager",
       "term": 1236,
-      "teams": ["marillac-place"],
+      "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
@@ -3397,7 +3397,7 @@
       "name": "Sarah Qiao",
       "role": "Product Designer",
       "term": 1236,
-      "teams": ["marillac-place"],
+      "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FProductDesigner_Sarah_Qiao.JPG?alt=media&token=b85378c2-9718-4a37-bf9f-0ab8f03eb8df"
     },
     {
@@ -3481,7 +3481,7 @@
       "name": "Dhruvi Kapadia",
       "role": "Product Designer",
       "term": 1236,
-      "teams": ["a-better-tent-city"],
+      "teams": ["abtc"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FProductDesigner_Dhruvi_Kapadia.jpg?alt=media&token=6a238cec-f570-4211-acc3-2adcda871544"
     },
     {
@@ -3495,28 +3495,28 @@
       "name": "Tina Wang",
       "role": "developer",
       "term": 1236,
-      "teams": ["a-better-tent-city"],
+      "teams": ["abtc"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Tina_Wang.jpg?alt=media&token=60344c9e-9189-4ab8-ab08-4a5c1abf9998"
     },
     {
       "name": "Kevin Cui",
       "role": "developer",
       "term": 1236,
-      "teams": ["infrastructure"],
+      "teams": ["infra"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Kevin_Cui.jpg?alt=media&token=4f372d1e-5187-4df6-bd15-0486453d9bb3"
     },
     {
       "name": "Benjamin Ng",
       "role": "developer",
       "term": 1236,
-      "teams": ["marillac-place"],
+      "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDEV_Benjamin_Ng.png?alt=media&token=c59c88e7-f596-44bd-85f2-6d5d02a46d77"
     },
     {
       "name": "Jasmine Sun",
       "role": "developer",
       "term": 1236,
-      "teams": ["infrastructure"],
+      "teams": ["infra"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2Fdev_jasmine_sun.jpg?alt=media&token=0c63ece6-da7b-4959-9add-1e09a24cd529"
     },
     {
@@ -3537,14 +3537,14 @@
       "name": "Nandini Mehrotra",
       "role": "developer",
       "term": 1236,
-      "teams": ["marillac-place"],
+      "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Nandini_Mehrotra.jpg?alt=media&token=a9d1e4a0-ade5-45fd-878c-57084f50f53d"
     },
     {
       "name": "Kevin Ouyang",
-      "role": "",
+      "role": "technical lead",
       "term": 1236,
-      "teams": [""],
+      "teams": ["abtc"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FPL_kevin_ouyang.jpeg?alt=media&token=f6d811a4-231f-441d-9402-bc0caa3e1460"
     },
     {
@@ -3594,65 +3594,63 @@
       "role": "developer",
       "term": 1236,
       "teams": ["internal-tools"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Lucy_Wu.jpg?alt=media&token=d0b4400a-4b54-4c0d-b774-b121a6a5696b"
     },
     {
       "name": "Daniel Troung",
       "role": "developer",
       "term": 1236,
-      "teams": ["marillac-place"],
+      "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Shelley Chen",
       "role": "developer",
       "term": 1236,
-      "teams": ["marillac-place"],
+      "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Jesse Huang",
       "role": "developer",
       "term": 1236,
-      "teams": ["marillac-place"],
+      "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Selena Zhang",
       "role": "developer",
       "term": 1236,
-      "teams": ["marillac-place"],
+      "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Kathleen Xiong",
       "role": "developer",
       "term": 1236,
-      "teams": ["marillac-place"],
+      "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Sharujan Sreekaran",
       "role": "developer",
       "term": 1236,
-      "teams": ["marillac-place"],
+      "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Bill Gong",
       "role": "designer",
       "term": 1236,
-      "teams": ["marillac-place"],
+      "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Janie Ong",
       "role": "designer",
       "term": 1236,
-      "teams": ["marillac-place"],
+      "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     }
   ]
 }
-
-
