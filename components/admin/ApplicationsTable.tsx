@@ -2,7 +2,7 @@ import { createTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { fetchGraphql } from "@utils/makegqlrequest";
 import MUIDataTable from "mui-datatables";
 import React, { useEffect, useState } from "react";
-import { getTableColumns } from "./ApplicationsTableColumn";
+import { getApplicationTableColumns } from "./ApplicationsTableColumn";
 import { theme } from "../../styles/Theme";
 import { CopyIcon } from "@components/icons/copy.icon";
 
@@ -27,6 +27,8 @@ type StudentRow = {
   reviewerTwo: string;
   score: number;
   status: string;
+  secondChoice: string;
+  secondChoiceStatus: string;
   skill: string;
 };
 
@@ -41,6 +43,7 @@ const queries = {
                   resumeUrl
                   program
                   status
+                  secondChoiceRole
               }
               reviewers {
                   firstName
@@ -88,6 +91,35 @@ const ApplicationsTable: React.FC = () => {
     }).then((result) => setApplications(result.data.applicationTable));
   };
 
+  const getStatusStyle = (status: String) => {
+    switch (status) {
+      case "applied":
+        return (
+          <div style={{backgroundColor: '#E0F0FF', textAlign: 'center', borderRadius: '4px', width:'120px', height:'30px'}}>
+            Applied
+          </div> 
+        )
+      case "in review":
+        return (
+          <div style={{backgroundColor: '#FFF2A1', textAlign: 'center', borderRadius: '4px', width:'120px', height:'30px'}}>
+            In Review
+          </div> 
+        )
+      case "interview":
+        return (
+          <div style={{backgroundColor: '#CEEBB8', textAlign: 'center', borderRadius: '4px', width:'120px', height:'30px'}}>
+            Interview
+          </div> 
+        )
+      default:
+        return (
+          <div style={{backgroundColor: '#C4C4C4', textAlign: 'center', borderRadius: '4px', width:'120px', height:'30px'}}>
+            Pending
+          </div> 
+        )
+    }
+  }
+
   const getMuiTheme = () =>
     createTheme({
       overrides: {
@@ -123,9 +155,10 @@ const ApplicationsTable: React.FC = () => {
         },
         MUIDataTableHeadCell: {
           data: {
-            color: theme.colors.B10,
+            color: theme.colors.near_black,
             fontFamily: "Source Sans Pro",
-            fontWeight: 600,
+            fontWeight: 350,
+            fontSize: 18
           },
           sortActive: {
             color: theme.colors.B10,
@@ -133,7 +166,10 @@ const ApplicationsTable: React.FC = () => {
         },
         MUIDataTableBodyCell: {
           root: {
+            color: theme.colors.near_black,
             fontFamily: "Source Sans Pro",
+            fontWeight: 350,
+            fontSize: 18
           },
         },
         MUIDataTableToolbar: {
@@ -166,7 +202,7 @@ const ApplicationsTable: React.FC = () => {
       const reviewers = application.reviewers;
       return {
         name: app.firstName + " " + app.lastName,
-        application: app.resumeUrl,
+        application: <u>{app.firstName} {app.lastName}</u>, //app.resumeUrl
         term: app.academicYear,
         program: app.program,
         reviewerOne:
@@ -178,8 +214,19 @@ const ApplicationsTable: React.FC = () => {
             ? reviewers[1].firstName + " " + reviewers[1].lastName
             : "",
         score: 100,
-        status: app.status,
+        status: getStatusStyle(app.status),
         skill: getSkillCategory(application.reviewDashboards),
+        secondChoice: app.secondChoiceRole,
+        secondChoiceStatus:
+          1 === 1 // map styles to corresponding status
+          ? <div style={{borderWidth:'1px', borderColor: '#CD5A5A', borderRadius: '20px', textAlign: 'center', width: '41px', height:'24px', color: '#CD5A5A', padding:'4px, 8px, 4px, 8px', gap:'4px'}}>
+              N/A
+            </div>
+          : <div style={{borderWidth:'1px', borderColor: '#7EAE5A', borderRadius: '20px', textAlign: 'center', width: '93px', height:'24px', color: '#7EAE5A', gap:'4px'}}>
+              Considered
+            </div>
+          ,
+        resume: <u><ResumeIcon url={app.resumeUrl}/>View Resume</u>
       };
     });
     return rows;
@@ -190,7 +237,7 @@ const ApplicationsTable: React.FC = () => {
       <MUIDataTable
         title={""}
         data={getTableRows()}
-        columns={getTableColumns()}
+        columns={getApplicationTableColumns()}
       />
     </MuiThemeProvider>
   );

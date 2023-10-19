@@ -1,20 +1,10 @@
 import { MUIDataTableColumn } from "mui-datatables";
 
-export const getTableColumns = (): MUIDataTableColumn[] => {
+export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
   const columns: MUIDataTableColumn[] = [
-    {
-      name: "name",
-      label: "Name",
-      options: {},
-    },
     {
       name: "application",
       label: "Application",
-      options: {},
-    },
-    {
-      name: "resume",
-      label: "Resume",
       options: {},
     },
     {
@@ -28,18 +18,23 @@ export const getTableColumns = (): MUIDataTableColumn[] => {
       options: {},
     },
     {
-      name: "score",
-      label: "Score",
-      options: {},
-    },
-    {
       name: "status",
-      label: "Application Status",
+      label: "Status",
       options: {},
     },
     {
-      name: "skill",
-      label: "Skill Category",
+      name: "secondChoice",
+      label: "2nd Choice",
+      options: {},
+    },
+    {
+      name: "secondChoiceStatus",
+      label: "2nd Choice Status",
+      options: {},
+    },
+    {
+      name: "resume",
+      label: "",
       options: {},
     },
   ];
