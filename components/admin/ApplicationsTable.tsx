@@ -6,6 +6,7 @@ import { getApplicationTableColumns } from "./ApplicationsTableColumn";
 import { theme } from "../../styles/Theme";
 import { LinkIcon } from "@components/icons/link.icon";
 import { ResumeIcon } from "@components/icons/resume.icon";
+import ApplicantRole from "entities/applicationRole";
 
 export type Student = {
   id: string;
@@ -61,17 +62,26 @@ const queries = {
           `,
 };
 
-const ApplicationsTable: React.FC = () => {
-  const [applications, setApplications] = useState<any[]>([]);
+interface TableProps {
+  activeRole?: ApplicantRole;
+  setNumEntries: (tab: Number) => void;
+  numEntries?: Number;
+}
 
+const ApplicationsTable: React.FC<TableProps> = ({ activeRole, setNumEntries, numEntries }) => {
+  const [applications, setApplications] = useState<any[]>([]);
+  
   useEffect(() => {
     applicationsByRole();
-  }, []);
+  }, [activeRole]);
 
   const applicationsByRole = () => {
     fetchGraphql(queries.applicationsByRole, {
-      role: "project developer",
-    }).then((result) => setApplications(result.data.applicationTable));
+      role: activeRole ? activeRole : ApplicantRole.vpe,
+    }).then((result) => {
+      setApplications(result.data.applicationTable)
+      setNumEntries(result.data.applicationTable.length);
+    });
   };
 
   const getStatusStyle = (status: string) => {

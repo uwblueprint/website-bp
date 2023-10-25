@@ -1,6 +1,9 @@
 import React, { FC } from "react";
+interface TitleProps {
+  numEntries?: Number;
+}
 
-const TableTitle: FC = () => {
+const TableTitle: FC<TitleProps> = ({ numEntries }) => {
   const tabStyle =
     "border-2 border-blue-100 rounded-full text-blue-100 text-center px-4 m-2 inline-block capitalize";
 
@@ -11,7 +14,7 @@ const TableTitle: FC = () => {
     <div className="bg-sky text-blue-300 text-base font-inter font-medium px-4 py-1 flex justify-between items-center">
       <div className="flex items-center">
         <p style={{ fontSize: '20px', color: 'black', padding: '20px' }}>Applicant Entry</p>
-        <p style={{ fontSize: '20px' }} className={tabStyle}>200 Entries</p>
+        <p style={{ fontSize: '20px' }} className={tabStyle}>{numEntries} Entries</p>
       </div>
       <button className={`${editButton} flex items-center`}>
         <svg

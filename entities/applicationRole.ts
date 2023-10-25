@@ -10,13 +10,13 @@ enum ApplicantRole {
   vp_int = "vp internal", // community tab
   vp_comms = "vp communications", // community tab
   vp_scoping = "vp scoping", // community tab
-  vp_finance = "vp finance", // community tab
+  vp_finance = "vp finance & operations", // community tab
   pm = "project manager", // prod tab
   pl = "project lead", // eng tab
   design_mentor = "design mentor", // design tab
   graphic_design = "graphic designer", // design tab
   product_design = "product designer", // design tab
   uxr = "user researcher", // design tab
-  dev = "developer", // eng tab
+  dev = "project developer", // eng tab
 }
 export default ApplicantRole;
