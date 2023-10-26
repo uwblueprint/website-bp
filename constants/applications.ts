@@ -34,7 +34,7 @@ export const INVITE_DATE = "November 23rd";
 export const FINAL_DECISION_DATE = "December 9th";
 
 // Term Blueprint is currently recruiting for (1 term after the current term)
-export const APPLICATION_TERM = "Winter 2023";
+export const APPLICATION_TERM = "Winter 2024";
 
 // URL of application page
 export const APPLICATION_LINK = "/apply";
