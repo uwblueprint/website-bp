@@ -5,7 +5,7 @@ import dayjs from "@utils/dayjs";
  * Format: YYYY-MM-DD HH:MM:SS
  */
 export const APPLICATION_OPEN_DATETIME = dayjs.tz(
-  "2023-06-18 00:00:00",
+  "2023-10-25 00:00:00",
   "America/Toronto",
 );
 
@@ -14,7 +14,7 @@ export const APPLICATION_OPEN_DATETIME = dayjs.tz(
  * Format: YYYY-MM-DD HH:MM:SS
  */
 export const APPLICATION_CLOSE_DATETIME = dayjs.tz(
-  "2023-07-05 23:59:59",
+  "2023-11-11 23:59:59",
   "America/Toronto",
 );
 
@@ -25,16 +25,16 @@ export const APPLICATION_CLOSE_DATETIME_WITH_GRACE_PERIOD =
  * Date that invites are sent out for interviews
  * Format: MMM DD
  */
-export const INVITE_DATE = "Jul 15";
+export const INVITE_DATE = "November 23rd";
 
 /**
  * Final decision date
  * Format: MMM DD
  */
-export const FINAL_DECISION_DATE = "Aug 7";
+export const FINAL_DECISION_DATE = "December 9th";
 
 // Term Blueprint is currently recruiting for (1 term after the current term)
-export const APPLICATION_TERM = "Fall 2023";
+export const APPLICATION_TERM = "Winter 2023";
 
 // URL of application page
 export const APPLICATION_LINK = "/apply";
