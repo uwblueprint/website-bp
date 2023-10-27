@@ -254,6 +254,16 @@ const ApplicationsTable: React.FC<TableProps> = ({
         title=""
         data={getTableRows()}
         columns={getApplicationTableColumns()}
+        options={{
+          elevation: 0,
+          responsive: "standard",
+          print: false,
+          download: false,
+          viewColumns: true,
+          filter: true,
+          search: true,
+          pagination: true,
+        }}
       />
     </MuiThemeProvider>
   );
