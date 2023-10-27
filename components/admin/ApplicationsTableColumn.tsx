@@ -6,8 +6,7 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
       name: "name",
       label: "Application",
       options: {
-        filter: false,
-        sort: true,
+        // some custom sort function
       },
     },
     {
