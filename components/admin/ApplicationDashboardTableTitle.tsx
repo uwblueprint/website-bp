@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 interface TitleProps {
-  numEntries?: Number;
+  numEntries?: number;
 }
 
 const TableTitle: FC<TitleProps> = ({ numEntries }) => {
@@ -11,10 +11,14 @@ const TableTitle: FC<TitleProps> = ({ numEntries }) => {
     "border-2 border-blue rounded-full text-blue text-center px-8 py-1 m-2 inline-block capitalize bg-white";
 
   return (
-    <div className="bg-sky text-blue-300 text-base font-inter font-medium px-4 py-1 flex justify-between items-center">
+    <div className="bg-sky rounded-t text-blue-300 text-base font-inter font-medium px-4 py-1 flex justify-between items-center">
       <div className="flex items-center">
-        <p style={{ fontSize: '20px', color: 'black', padding: '20px' }}>Applicant Entry</p>
-        <p style={{ fontSize: '20px' }} className={tabStyle}>{numEntries} Entries</p>
+        <p style={{ fontSize: "20px", color: "black", padding: "20px" }}>
+          Applicant Entry
+        </p>
+        <p style={{ fontSize: "20px" }} className={tabStyle}>
+          {numEntries} Entries
+        </p>
       </div>
       <button className={`${editButton} flex items-center`}>
         <svg

@@ -3,39 +3,60 @@ import { MUIDataTableColumn } from "mui-datatables";
 export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
   const columns: MUIDataTableColumn[] = [
     {
-      name: "application",
+      name: "name",
       label: "Application",
-      options: {},
+      options: {
+        filter: false,
+        sort: true,
+      },
     },
     {
       name: "reviewerOne",
       label: "Reviewer #1",
-      options: {},
+      options: {
+        filter: false,
+        sort: true,
+      },
     },
     {
       name: "reviewerTwo",
       label: "Reviewer #2",
-      options: {},
+      options: {
+        filter: false,
+        sort: true,
+      },
     },
     {
       name: "status",
       label: "Status",
-      options: {},
+      options: {
+        filter: false,
+        sort: true,
+      },
     },
     {
       name: "secondChoice",
       label: "2nd Choice",
-      options: {},
+      options: {
+        filter: false,
+        sort: true,
+      },
     },
     {
       name: "secondChoiceStatus",
       label: "2nd Choice Status",
-      options: {},
+      options: {
+        filter: false,
+        sort: true,
+      },
     },
     {
       name: "resume",
-      label: "",
-      options: {},
+      label: "Resume",
+      options: {
+        filter: false,
+        sort: true,
+      },
     },
   ];
   return columns;

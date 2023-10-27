@@ -23,9 +23,7 @@ const Table: FC = () => {
   const [activeRole, setActiveRole] = React.useState<
     ApplicantRole | undefined
   >();
-  const [numEntries, setNumEntries] = React.useState<
-  Number | undefined
->();
+  const [numEntries, setNumEntries] = React.useState<number | undefined>();
   const user: Users = {
     id: "1",
     name: "Chris Abey",
@@ -54,11 +52,20 @@ const Table: FC = () => {
         </div>
         <Tabs activeTab={activeTab} setActiveTab={setActiveTab} user={user} />
       </div>
-      <RoleHeader activeTab={activeTab} setActiveRole={setActiveRole} activeRole={activeRole}/>
-      <TableTitle numEntries={numEntries}/>
-      <ApplicationsTable activeRole={activeRole} setNumEntries={setNumEntries} numEntries={numEntries} />
+      <RoleHeader
+        activeTab={activeTab}
+        setActiveRole={setActiveRole}
+        activeRole={activeRole}
+      />
+      <div className="mx-8">
+        <TableTitle numEntries={numEntries} />
+        <ApplicationsTable
+          activeRole={activeRole}
+          setNumEntries={setNumEntries}
+          numEntries={numEntries}
+        />
+      </div>
     </div>
-
   );
 };
 
