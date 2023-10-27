@@ -32,4 +32,32 @@ export const queries = {
     isAuthorizedToReview(applicationId: $applicationId, reviewerUserId: $reviewerUserId)
   }
   `,
+  applicationsById: `
+  query applicationsById($id: Int!) {
+    applicationsById(id: $id) {
+        id
+        academicOrCoop
+        academicYear
+        email
+        firstChoiceRole
+        firstName
+        heardFrom
+        lastName
+        locationPreference
+        program
+        pronouns
+        pronounsSpecified
+        resumeUrl
+        roleSpecificQuestions
+        secondChoiceRole
+        shortAnswerQuestions
+        status
+        term
+        timesApplied
+    }
+  }
+  applicationsById(id: 1) {
+    email
+  }
+`,
 };
