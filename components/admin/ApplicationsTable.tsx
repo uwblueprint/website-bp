@@ -49,6 +49,7 @@ const queries = {
                   program
                   status
                   secondChoiceRole
+                  secondChoiceStatus
               }
               reviewers {
                   firstName
@@ -116,22 +117,31 @@ const ApplicationsTable: React.FC<TableProps> = ({
   };
 
   const getSecondChoiceStatusStyle = (status: string) => {
-    if (status === "N/A") {
-      return (
-        <div
-          className={`${SECOND_CHOICE_BASE_CLASSES} text-red-500 border border-red-600`}
-        >
-          N/A
-        </div>
-      );
-    } else if (status === "Considered") {
-      return (
-        <div
-          className={`${SECOND_CHOICE_BASE_CLASSES} text-green-300 border border-green-600`}
-        >
-          Considered
-        </div>
-      );
+    switch (status) {
+      case "n/a":
+        return (
+          <div
+            className={`${SECOND_CHOICE_BASE_CLASSES} text-charcoal-300 border border-red-600`}
+          >
+            N/A
+          </div>
+        );
+      case "considered":
+        return (
+          <div
+            className={`${SECOND_CHOICE_BASE_CLASSES} text-green-300 border border-green-600`}
+          >
+            Considered
+          </div>
+        );
+      case "not considered":
+        return (
+          <div
+            className={`${SECOND_CHOICE_BASE_CLASSES} text-red-500 border border-green-600`}
+          >
+            Not Considered
+          </div>
+        );
     }
   };
 
@@ -242,7 +252,7 @@ const ApplicationsTable: React.FC<TableProps> = ({
           : "",
       status: getStatusStyle(app.status),
       secondChoice: app.secondChoiceRole,
-      secondChoiceStatus: getSecondChoiceStatusStyle("Considered"),
+      secondChoiceStatus: getSecondChoiceStatusStyle(app.secondChoiceStatus),
     };
   };
 
