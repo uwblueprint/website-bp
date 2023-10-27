@@ -187,11 +187,11 @@ const ApplicationsTable: React.FC<TableProps> = ({
             fontSize: 18,
           },
         },
-        // MUIDataTableToolbar: {
-        //   root: {
-        //     display: "none",
-        //   },
-        // },
+        MUIDataTableToolbar: {
+          root: {
+            display: "none",
+          },
+        },
         MuiTableSortLabel: {
           root: {
             color: `${theme.colors.B10} !important`,
@@ -254,16 +254,6 @@ const ApplicationsTable: React.FC<TableProps> = ({
         title=""
         data={getTableRows()}
         columns={getApplicationTableColumns()}
-        options={{
-          elevation: 0,
-          responsive: "standard",
-          print: false,
-          download: false,
-          viewColumns: true,
-          filter: true,
-          search: true,
-          pagination: true,
-        }}
       />
     </MuiThemeProvider>
   );
