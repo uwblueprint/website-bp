@@ -187,11 +187,11 @@ const ApplicationsTable: React.FC<TableProps> = ({
             fontSize: 18,
           },
         },
-        MUIDataTableToolbar: {
-          root: {
-            display: "none",
-          },
-        },
+        // MUIDataTableToolbar: {
+        //   root: {
+        //     display: "none",
+        //   },
+        // },
         MuiTableSortLabel: {
           root: {
             color: `${theme.colors.B10} !important`,
