@@ -56,16 +56,7 @@
       }
     ]
   },
-  {
-    "id": "5",
-    "role": "User Experience Researcher",
-    "questions": [
-      {
-        "question": "Describe the type of research methods you prefer to use. What would you consider to be your main methods of expertise?",
-        "maxLength": 1000
-      }
-    ]
-  },
+
   {
     "id": "6",
     "role": "Content Strategist",
@@ -169,16 +160,6 @@
     "questions": [
       {
         "question": "What would an ideal member experience look like to you?",
-        "maxLength": 1000
-      }
-    ]
-  },
-  {
-    "id": "17",
-    "role": "UX Content Writer",
-    "questions": [
-      {
-        "question": "What do you see as the purposes of content within the user experience of an app?",
         "maxLength": 1000
       }
     ]
