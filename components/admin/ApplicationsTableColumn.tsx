@@ -1,4 +1,4 @@
-import { MUIDataTableColumn } from "mui-datatables";
+import { MUIDataTableColumn, MUIDataTableColumnOptions } from "mui-datatables";
 
 export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
   const columns: MUIDataTableColumn[] = [
@@ -6,8 +6,19 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
       name: "name",
       label: "Application",
       options: {
-        // some custom sort function
-      },
+        customSort: (data1: any[], data2: any[]) => {
+          const name1 = data1[0].props.children[1].props.children
+            .split(" ")
+            .slice(-1)
+            .join(" ");
+          const name2 = data2[0].props.children[1].props.children
+            .split(" ")
+            .slice(-1)
+            .join(" ");
+
+          return name1.localeCompare(name2);
+        },
+      } as MUIDataTableColumnOptions,
     },
     {
       name: "reviewerOne",
