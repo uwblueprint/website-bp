@@ -1,15 +1,63 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import { ReviewStage } from "pages/review";
 import { ReviewSplitPanelPage } from "../shared/reviewSplitPanelPage";
 import Button from "@components/common/Button";
-
+import { mutations, queries } from "graphql/queries";
+import  getReviewId from "pages/review/protectedApplication";
 import Image from "next/image";
 import WarningIcon from "@components/icons/warning.icon";
+import { useRouter } from "next/router";
+
+
 
 type QuestionAnswerProps = {
   readonly question: string;
   readonly answer: string;
 };
+
+
+
+
+
+
+// const reviewId = getReviewId(headerInformation);
+// useEffect(() => {
+//   const accessToken = localStorage.getItem("accessToken");
+//   if (!accessToken) throw Error("undefined accessToken");
+
+//   const decodedToken = jwt_decode<AccessToken>(accessToken);
+//   const reviewerUserId = decodedToken.user_id;
+
+//   fetchGraphql(queries.isAuthorizedToReview, {
+//     applicationId: reviewId,
+//     reviewerUserId,
+//   }).then((result) => {
+//     if (result.data && result.data.isAuthorizedToReview) {
+//       setAuthStatus({
+//         loading: false,
+//         isAuthorized: true,
+//       });
+//     } else {
+//       setAuthStatus({
+//         loading: false,
+//         isAuthorized: false,
+//       });
+//     }
+//   });
+// }, [reviewId]);
+
+// const appplicationById = (id: int): Promise<in> => {
+//   BaseAPIClient.handleAuthRefresh();
+//   const accessToken = localStorage.getItem("accessToken");
+
+//   return fetchGraphql(queries.applicationsById, {
+//     id
+//   })
+//     .then((result) => result.data.isAuthorizedByRole)
+//     .catch((_) => {
+//       throw new Error("Auth Validation Error");
+//     });
+// };
 
 const data = [
   { question: "Email", answer: "matthew.wang@uwblueprint.org" },
@@ -99,9 +147,34 @@ const ConflictModal: FC<ConflictModalProps> = ({ name, open, onClose }) => {
 
 interface Props {
   scores: Map<ReviewStage, number>;
+  reviewId: number;
 }
 
 export const ReviewInfoStage: React.FC<Props> = ({ scores }) => {
+  const router = useRouter();
+  console.log(typeof router.query)
+useEffect(() => {
+
+  fetchGraphql(queries.isAuthorizedToReview, {
+    applicationId: reviewId,
+    reviewerUserId,
+  }).then((result) => {
+    if (result.data && result.data.isAuthorizedToReview) {
+      setAuthStatus({
+        loading: false,
+        isAuthorized: true,
+      });
+    } else {
+      setAuthStatus({
+        loading: false,
+        isAuthorized: false,
+      });
+    }
+  });
+}, [reviewId]);
+
+
+};
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <ReviewSplitPanelPage
