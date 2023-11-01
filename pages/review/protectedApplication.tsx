@@ -5,7 +5,7 @@ import { fetchGraphql } from "@utils/makegqlrequest";
 import { queries } from "graphql/queries";
 import Loading from "@components/common/Loading";
 
-type Props = {
+export type Props = {
   children: ReactChild;
   headerInformation: ParsedUrlQuery;
 };
@@ -14,7 +14,7 @@ type AccessToken = {
   readonly user_id: string;
 };
 
-const getReviewId = (query: ParsedUrlQuery): number => {
+export const getReviewId = (query: any): number => {
   // verify reviewId
   const reviewId =
     typeof query["reviewId"] === "string"
@@ -26,6 +26,8 @@ const getReviewId = (query: ParsedUrlQuery): number => {
 
   return reviewId;
 };
+
+// export default getReviewId;
 
 interface AuthStatus {
   loading: boolean;

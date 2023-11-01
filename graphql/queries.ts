@@ -56,8 +56,33 @@ export const queries = {
         timesApplied
     }
   }
-  applicationsById(id: 1) {
-    email
-  }
 `,
 };
+
+// const queries = {
+//   applicationsByRole: `
+//             query applicationTable($role: String!) {
+//               applicationTable(role: $role) {
+//                 application {
+//                   firstName
+//                   lastName
+//                   academicYear
+//                   resumeUrl
+//                   program
+//                   status
+//                   secondChoiceRole
+//               }
+//               reviewers {
+//                   firstName
+//                   lastName
+//               }
+//               reviewDashboards {
+//                   passionFSG
+//                   teamPlayer
+//                   desireToLearn
+//                   skillCategory
+//               }
+//               }
+//             }
+//           `,
+// };

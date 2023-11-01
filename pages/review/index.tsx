@@ -25,6 +25,20 @@ export enum ReviewStage {
   END_SUCCESS = "END_SUCCESS",
 }
 
+export const getReviewId = (query: any): number => {
+  // verify reviewId
+  const reviewId =
+    typeof query["reviewId"] === "string"
+      ? parseInt(query["reviewId"])
+      : (() => {
+          throw new Error("reviewId must be a String");
+        })();
+  if (Number.isNaN(reviewId)) throw Error("reviewId must be parsable into an int");
+
+  return reviewId;
+};
+
+
 const ReviewsPages: NextPage = () => {
   const [stage, setStage] = useState<ReviewStage>(ReviewStage.INFO);
   const initialScores = new Map<ReviewStage, number>();
@@ -45,9 +59,11 @@ const ReviewsPages: NextPage = () => {
   };
 
   const getReviewStage = () => {
+    const router = useRouter();
+    const reviewId = getReviewId(router.query)
     switch (stage) {
       case ReviewStage.INFO:
-        return <ReviewInfoStage scores={scores} />;
+        return <ReviewInfoStage scores={scores} reviewId={reviewId}/>;
       case ReviewStage.PFSG:
         return <ReviewPassionForSocialGoodStage scores={scores} />;
       case ReviewStage.TP:
@@ -73,11 +89,14 @@ const ReviewsPages: NextPage = () => {
   );
 };
 
+
+
 const Reviews: NextPage = () => {
   const router = useRouter();
   return (
     <ProtectedRoute allowedRoles={["Admin", "User"]}>
-      <ProtectedApplication headerInformation={router.query}>
+      <ProtectedApplication headerInformation={router.query}> 
+      {/* pass in the review id instead */}
         <ReviewsPages />
       </ProtectedApplication>
     </ProtectedRoute>
