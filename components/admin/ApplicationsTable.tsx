@@ -7,6 +7,7 @@ import { theme } from "../../styles/Theme";
 import { LinkIcon } from "@components/icons/link.icon";
 import { ResumeIcon } from "@components/icons/resume.icon";
 import ApplicantRole from "entities/applicationRole";
+import { useRouter } from "next/router";
 
 const STATUS_BASE_CLASSES = "text-center rounded px-2 py-1";
 const SECOND_CHOICE_BASE_CLASSES = "rounded-3xl text-center w-fit px-2";
@@ -42,6 +43,7 @@ const queries = {
             query applicationTable($role: String!) {
               applicationTable(role: $role) {
                 application {
+                  id
                   firstName
                   lastName
                   academicYear
@@ -241,18 +243,27 @@ const ApplicationsTable: React.FC<TableProps> = ({
       },
     });
 
+  const router = useRouter();
+
+  const handleNameClick = (appId: string) => {
+    router.push(`/review?reviewId=${appId}`);
+  };
+
   const createStudentRow = (application: any) => {
     const app = application.application;
     const reviewers = application.reviewers;
 
     return {
       name: (
-        <a target="_blank" href={app.resumeUrl} className="flex items-center">
+        <div
+          onClick={() => handleNameClick(app.id)}
+          className="flex items-center cursor-pointer"
+        >
           <LinkIcon />
           <span className="ml-2 underline">
             {app.firstName} {app.lastName}
           </span>
-        </a>
+        </div>
       ),
       resume: (
         <a target="_blank" href={app.resumeUrl} className="flex items-center">
