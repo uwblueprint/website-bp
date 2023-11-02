@@ -120,16 +120,14 @@ const ApplicationsTable: React.FC<TableProps> = ({
     switch (status) {
       case "n/a":
         return (
-          <div
-            className={`${SECOND_CHOICE_BASE_CLASSES} text-charcoal-300 border border-red-600`}
-          >
+          <div className={`${SECOND_CHOICE_BASE_CLASSES}  text-red-500 border`}>
             N/A
           </div>
         );
       case "considered":
         return (
           <div
-            className={`${SECOND_CHOICE_BASE_CLASSES} text-green-300 border border-green-600`}
+            className={`${SECOND_CHOICE_BASE_CLASSES} text-green-300 border`}
           >
             Considered
           </div>
@@ -137,9 +135,31 @@ const ApplicationsTable: React.FC<TableProps> = ({
       case "not considered":
         return (
           <div
-            className={`${SECOND_CHOICE_BASE_CLASSES} text-red-500 border border-green-600`}
+            className={`${SECOND_CHOICE_BASE_CLASSES}  border text-charcoal-400`}
           >
             Not Considered
+          </div>
+        );
+      case "in review":
+        return (
+          <div className={`${STATUS_BASE_CLASSES} bg-yellow-100`}>
+            In Review
+          </div>
+        );
+      case "interview":
+        return (
+          <div className={`${STATUS_BASE_CLASSES} bg-green-100`}>Interview</div>
+        );
+      case "recommended":
+        return (
+          <div className={`${STATUS_BASE_CLASSES} bg-orange-300`}>
+            Recommended
+          </div>
+        );
+      case "no interview":
+        return (
+          <div className={`${STATUS_BASE_CLASSES} bg-charcoal-300`}>
+            No Interview
           </div>
         );
     }
