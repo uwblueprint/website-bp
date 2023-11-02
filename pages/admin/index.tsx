@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { NextPage } from "next";
-import Header from "@components/admin/Header";
-import Table from "@components/admin/ApplicationDashboardTable";
+import Table from "@components/admin/Table";
 import {
   ref,
   get,
@@ -62,7 +61,6 @@ const Admin: NextPage = () => {
   return (
     <ProtectedRoute allowedRoles={["Admin", "User"]}>
       <div>
-        <Header />
         <Table />
       </div>
     </ProtectedRoute>

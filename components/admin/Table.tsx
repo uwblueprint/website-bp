@@ -5,6 +5,9 @@ import Tabs from "./Tabs";
 import Permissions from "entities/permissions";
 import Users from "entities/users";
 import RoleHeader from "./RoleHeader";
+import TableTitle from "./ApplicationDashboardTableTitle";
+import ApplicationsTable from "./ApplicationsTable";
+import ApplicantRole from "entities/applicationRole";
 
 export enum OrganizationalArea {
   Engineering = "Engineering",
@@ -13,10 +16,14 @@ export enum OrganizationalArea {
   Community = "Community",
 }
 
-const Header: FC = () => {
+const Table: FC = () => {
   const [activeTab, setActiveTab] = React.useState<
     OrganizationalArea | undefined
   >();
+  const [activeRole, setActiveRole] = React.useState<
+    ApplicantRole | undefined
+  >();
+  const [numEntries, setNumEntries] = React.useState<number | undefined>();
   const user: Users = {
     id: "1",
     name: "Chris Abey",
@@ -45,9 +52,21 @@ const Header: FC = () => {
         </div>
         <Tabs activeTab={activeTab} setActiveTab={setActiveTab} user={user} />
       </div>
-      <RoleHeader activeTab={activeTab} />
+      <RoleHeader
+        activeTab={activeTab}
+        setActiveRole={setActiveRole}
+        activeRole={activeRole}
+      />
+      <div className="mx-8">
+        <TableTitle numEntries={numEntries} />
+        <ApplicationsTable
+          activeRole={activeRole}
+          setNumEntries={setNumEntries}
+          numEntries={numEntries}
+        />
+      </div>
     </div>
   );
 };
 
-export default Header;
+export default Table;

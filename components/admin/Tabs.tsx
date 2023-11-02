@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import Users from "../../entities/users";
 import Permissions from "../../entities/permissions";
-import { OrganizationalArea } from "./Header";
+import { OrganizationalArea } from "./Table";
 
 interface NavbarProps {
   user: Users;

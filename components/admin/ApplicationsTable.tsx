@@ -2,9 +2,14 @@ import { createTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { fetchGraphql } from "@utils/makegqlrequest";
 import MUIDataTable from "mui-datatables";
 import React, { useEffect, useState } from "react";
-import { getTableColumns } from "./ApplicationsTableColumn";
+import { getApplicationTableColumns } from "./ApplicationsTableColumn";
 import { theme } from "../../styles/Theme";
-import { CopyIcon } from "@components/icons/copy.icon";
+import { LinkIcon } from "@components/icons/link.icon";
+import { ResumeIcon } from "@components/icons/resume.icon";
+import ApplicantRole from "entities/applicationRole";
+
+const STATUS_BASE_CLASSES = "text-center rounded px-2 py-1";
+const SECOND_CHOICE_BASE_CLASSES = "rounded-3xl text-center w-fit px-2";
 
 export type Student = {
   id: string;
@@ -27,6 +32,8 @@ type StudentRow = {
   reviewerTwo: string;
   score: number;
   status: string;
+  secondChoice: string;
+  secondChoiceStatus: string;
   skill: string;
 };
 
@@ -41,6 +48,8 @@ const queries = {
                   resumeUrl
                   program
                   status
+                  secondChoiceRole
+                  secondChoiceStatus
               }
               reviewers {
                   firstName
@@ -57,35 +66,103 @@ const queries = {
           `,
 };
 
-const ApplicationsTable: React.FC = () => {
+interface TableProps {
+  activeRole?: ApplicantRole;
+  setNumEntries: (tab: number) => void;
+  numEntries?: number;
+}
+
+const ApplicationsTable: React.FC<TableProps> = ({
+  activeRole,
+  setNumEntries,
+  numEntries,
+}) => {
   const [applications, setApplications] = useState<any[]>([]);
 
   useEffect(() => {
-    applicationsByRole();
-  }, []);
+    fetchApplicationsByRole();
+  }, [activeRole]);
 
-  const getSkillCategory = (dashboards: any) => {
-    if (dashboards?.length >= 2) {
-      const reviewer1Skill = dashboards[0].skillCategory;
-      const reviewer2Skill = dashboards[1].skillCategory;
-      if (reviewer1Skill == "junior" || reviewer2Skill == "junior") {
-        return "Junior";
-      } else if (
-        reviewer1Skill == "intermediate" ||
-        reviewer2Skill == "intermediate"
-      ) {
-        return "Intermediate";
-      } else {
-        return "Senior";
-      }
-    }
-    return dashboards.length == 1 ? dashboards[0].skillCategory : "";
+  const fetchApplicationsByRole = async () => {
+    const result = await fetchGraphql(queries.applicationsByRole, {
+      role: activeRole || ApplicantRole.vpe,
+    });
+    setApplications(result.data.applicationTable);
+    setNumEntries(result.data.applicationTable.length);
   };
 
-  const applicationsByRole = () => {
-    fetchGraphql(queries.applicationsByRole, {
-      role: "project developer",
-    }).then((result) => setApplications(result.data.applicationTable));
+  const getStatusStyle = (status: string) => {
+    switch (status) {
+      case "applied":
+        return (
+          <div className={`${STATUS_BASE_CLASSES} bg-sky-200`}>Applied</div>
+        );
+      case "in review":
+        return (
+          <div className={`${STATUS_BASE_CLASSES} bg-yellow-100`}>
+            In Review
+          </div>
+        );
+      case "interview":
+        return (
+          <div className={`${STATUS_BASE_CLASSES} bg-green-100`}>Interview</div>
+        );
+      default:
+        return (
+          <div className={`${STATUS_BASE_CLASSES} bg-charcoal-300`}>
+            Pending
+          </div>
+        );
+    }
+  };
+
+  const getSecondChoiceStatusStyle = (status: string) => {
+    switch (status) {
+      case "n/a":
+        return (
+          <div className={`${SECOND_CHOICE_BASE_CLASSES}  text-red-500 border`}>
+            N/A
+          </div>
+        );
+      case "considered":
+        return (
+          <div
+            className={`${SECOND_CHOICE_BASE_CLASSES} text-green-300 border`}
+          >
+            Considered
+          </div>
+        );
+      case "not considered":
+        return (
+          <div
+            className={`${SECOND_CHOICE_BASE_CLASSES}  border text-charcoal-400`}
+          >
+            Not Considered
+          </div>
+        );
+      case "in review":
+        return (
+          <div className={`${STATUS_BASE_CLASSES} bg-yellow-100`}>
+            In Review
+          </div>
+        );
+      case "interview":
+        return (
+          <div className={`${STATUS_BASE_CLASSES} bg-green-100`}>Interview</div>
+        );
+      case "recommended":
+        return (
+          <div className={`${STATUS_BASE_CLASSES} bg-orange-300`}>
+            Recommended
+          </div>
+        );
+      case "no interview":
+        return (
+          <div className={`${STATUS_BASE_CLASSES} bg-charcoal-300`}>
+            No Interview
+          </div>
+        );
+    }
   };
 
   const getMuiTheme = () =>
@@ -123,9 +200,10 @@ const ApplicationsTable: React.FC = () => {
         },
         MUIDataTableHeadCell: {
           data: {
-            color: theme.colors.B10,
+            color: theme.colors.near_black,
             fontFamily: "Source Sans Pro",
-            fontWeight: 600,
+            fontWeight: 350,
+            fontSize: 18,
           },
           sortActive: {
             color: theme.colors.B10,
@@ -133,14 +211,17 @@ const ApplicationsTable: React.FC = () => {
         },
         MUIDataTableBodyCell: {
           root: {
+            color: theme.colors.near_black,
             fontFamily: "Source Sans Pro",
+            fontWeight: 350,
+            fontSize: 18,
           },
         },
-        // MUIDataTableToolbar: {
-        //   root: {
-        //     display: "none",
-        //   },
-        // },
+        MUIDataTableToolbar: {
+          root: {
+            display: "none",
+          },
+        },
         MuiTableSortLabel: {
           root: {
             color: `${theme.colors.B10} !important`,
@@ -160,57 +241,51 @@ const ApplicationsTable: React.FC = () => {
       },
     });
 
-  const getTableRows = (): StudentRow[] => {
-    const rows: StudentRow[] = applications.map((application) => {
-      const app = application.application;
-      const reviewers = application.reviewers;
-      return {
-        name: app.firstName + " " + app.lastName,
-        application: app.resumeUrl,
-        term: app.academicYear,
-        program: app.program,
-        reviewerOne:
-          reviewers?.length >= 1
-            ? reviewers[0].firstName + " " + reviewers[0].lastName
-            : "",
-        reviewerTwo:
-          reviewers?.length >= 2
-            ? reviewers[1].firstName + " " + reviewers[1].lastName
-            : "",
-        score: 100,
-        status: app.status,
-        skill: getSkillCategory(application.reviewDashboards),
-      };
-    });
-    return rows;
+  const createStudentRow = (application: any) => {
+    const app = application.application;
+    const reviewers = application.reviewers;
+
+    return {
+      name: (
+        <a target="_blank" href={app.resumeUrl} className="flex items-center">
+          <LinkIcon />
+          <span className="ml-2 underline">
+            {app.firstName} {app.lastName}
+          </span>
+        </a>
+      ),
+      resume: (
+        <a target="_blank" href={app.resumeUrl} className="flex items-center">
+          <ResumeIcon />
+          <span className="ml-2 underline">View Resume</span>
+        </a>
+      ),
+      term: app.academicYear,
+      program: app.program,
+      reviewerOne:
+        reviewers?.length >= 1
+          ? `${reviewers[0].firstName} ${reviewers[0].lastName}`
+          : "",
+      reviewerTwo:
+        reviewers?.length >= 2
+          ? `${reviewers[1].firstName} ${reviewers[1].lastName}`
+          : "",
+      status: getStatusStyle(app.status),
+      secondChoice: app.secondChoiceRole,
+      secondChoiceStatus: getSecondChoiceStatusStyle(app.secondChoiceStatus),
+    };
   };
+
+  const getTableRows = () => applications.map(createStudentRow);
 
   return (
     <MuiThemeProvider theme={getMuiTheme()}>
       <MUIDataTable
-        options={{
-          elevation: 0,
-          responsive: "standard",
-          print: false,
-          download: false,
-          viewColumns: true,
-          filter: true,
-          search: true,
-          pagination: true,
-        }}
-        title={""}
+        title=""
         data={getTableRows()}
-        columns={getTableColumns()}
+        columns={getApplicationTableColumns()}
       />
     </MuiThemeProvider>
-  );
-};
-
-const ResumeIcon: React.FC<{ url: string }> = ({ url }) => {
-  return (
-    <a target="_blank" href={url}>
-      <CopyIcon />
-    </a>
   );
 };
 

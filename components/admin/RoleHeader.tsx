@@ -1,9 +1,11 @@
 import React, { FC, useState, useEffect, useCallback } from "react";
 import ApplicantRole from "entities/applicationRole";
-import { OrganizationalArea } from "./Header";
+import { OrganizationalArea } from "./Table";
 
 interface RoleHeaderProps {
   activeTab?: OrganizationalArea;
+  setActiveRole: (tab: ApplicantRole) => void;
+  activeRole?: ApplicantRole;
 }
 
 interface ColourMap {
@@ -13,8 +15,7 @@ interface ColourMap {
   text: string;
 }
 
-const RoleHeader: FC<RoleHeaderProps> = ({ activeTab }) => {
-  const [activeRole, setActiveRole] = useState<ApplicantRole | null>(null);
+const RoleHeader: FC<RoleHeaderProps> = ({ activeTab, setActiveRole, activeRole }) => {
   const [colour, setColour] = useState<Partial<ColourMap>>({});
   const [roles, setRoles] = useState<ApplicantRole[]>([]);
 
