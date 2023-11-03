@@ -7,6 +7,7 @@ import  getReviewId from "pages/review/protectedApplication";
 import Image from "next/image";
 import WarningIcon from "@components/icons/warning.icon";
 import { useRouter } from "next/router";
+import { fetchGraphql } from "@utils/makegqlrequest";
 
 
 
@@ -59,26 +60,28 @@ type QuestionAnswerProps = {
 //     });
 // };
 
-const data = [
-  { question: "Email", answer: "matthew.wang@uwblueprint.org" },
-  { question: "Program", answer: "Computer Science" },
-  { question: "Academic Term", answer: "4A" },
-  { question: "Where did you hear about us?", answer: "Word of mouth" },
-  {
-    question: "How many times have you applied to Blueprint in the past?",
-    answer: "This is my first time!",
-  },
-  { question: "Pronouns", answer: "He/Him/His" },
-  {
-    question: "Will you be in an academic (school) term or a co-op term?",
-    answer: "Academic",
-  },
-  { question: "Position", answer: "Product Designer" },
-  {
-    question: "What timezone will you be based out of?",
-    answer: "I will be based out of the Eastern timezone.",
-  },
-];
+
+var displayData: [{ [id: string] : string; }] = {};
+// const displayData = [
+//   { question: "Email", answer: "" },
+//   { question: "Program", answer: "" },
+//   { question: "Academic Term", answer: "" },
+//   { question: "Where did you hear about us?", answer: "" },
+//   {
+//     question: "How many times have you applied to Blueprint in the past?",
+//     answer: "",
+//   },
+//   { question: "Pronouns", answer: "" },
+//   {
+//     question: "Will you be in an academic (school) term or a co-op term?",
+//     answer: "",
+//   },
+//   { question: "Position", answer: "" },
+//   {
+//     question: "What timezone will you be based out of?",
+//     answer: "",
+//   },
+// ];
 
 const QuestionAnswer: FC<QuestionAnswerProps> = ({ question, answer }) => {
   return (
@@ -150,31 +153,47 @@ interface Props {
   reviewId: number;
 }
 
-export const ReviewInfoStage: React.FC<Props> = ({ scores }) => {
+// export const ReviewRubric: React.FC<Props> = ({
+//   scoringCriteria,
+//   scores,
+//   currentStage,
+// }) => 
+export const ReviewInfoStage: React.FC<Props> = ({ scores , reviewId, }) => {
+
   const router = useRouter();
   console.log(typeof router.query)
-useEffect(() => {
-
-  fetchGraphql(queries.isAuthorizedToReview, {
-    applicationId: reviewId,
-    reviewerUserId,
-  }).then((result) => {
-    if (result.data && result.data.isAuthorizedToReview) {
-      setAuthStatus({
-        loading: false,
-        isAuthorized: true,
-      });
-    } else {
-      setAuthStatus({
-        loading: false,
-        isAuthorized: false,
-      });
-    }
-  });
-}, [reviewId]);
-
-
-};
+  useEffect(() => {
+    fetchGraphql(queries.applicationsById, {
+      id: reviewId,
+    }).then((result) => {     
+      if (result.data) {
+          displayData = [
+          { question: "Email", answer: result.data.email},
+          { question: "Program", answer: result.data.program },
+          { question: "Academic Term", answer: result.data.academicYear },
+          { question: "Where did you hear about us?", answer: result.data.heardFrom },
+          {
+            question: "How many times have you applied to Blueprint in the past?",
+            answer: result.data.timesApplied,
+          },
+          { question: "Pronouns", answer: result.data.pronouns },
+          {
+            question: "Will you be in an academic (school) term or a co-op term?",
+            answer: result.data.academicOrCoop,
+          },
+          { question: "Position", answer: result.data.firstChoiceRole },
+          {
+            question: "What timezone will you be based out of?",
+            answer: result.data.firstChoiceRole,
+          },
+        ];
+      } else {
+        setAuthStatus({
+          loading: false,
+        });
+      }
+    });
+  }, [reviewId]);
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <ReviewSplitPanelPage
@@ -223,7 +242,7 @@ useEffect(() => {
             onClose={() => setModalOpen(false)}
           />
           <div className="flex flex-col gap-4">
-            {data.map((item, index) => {
+            {displayData.map((item, index) => {
               return (
                 <QuestionAnswer
                   key={index}
