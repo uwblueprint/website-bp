@@ -7,6 +7,7 @@ import { theme } from "../../styles/Theme";
 import ApplicantRole from "entities/applicationRole";
 import { useRouter } from "next/router";
 import { ResumeIcon } from "@components/icons/resume.icon";
+import { applicationTableQueries } from "graphql/queries";
 
 export type Student = {
   id: string;
@@ -34,36 +35,6 @@ type StudentRow = {
   skill: string;
 };
 
-const queries = {
-  applicationsByRole: `
-            query applicationTable($role: String!) {
-              applicationTable(role: $role) {
-                application {
-                  id
-                  firstName
-                  lastName
-                  academicYear
-                  resumeUrl
-                  program
-                  status
-                  secondChoiceRole
-                  secondChoiceStatus
-              }
-              reviewers {
-                  firstName
-                  lastName
-              }
-              reviewDashboards {
-                  passionFSG
-                  teamPlayer
-                  desireToLearn
-                  skillCategory
-              }
-              }
-            }
-          `,
-};
-
 interface TableProps {
   activeRole?: ApplicantRole;
   setNumEntries: (tab: number) => void;
@@ -82,9 +53,12 @@ const ApplicationsTable: React.FC<TableProps> = ({
   }, [activeRole]);
 
   const fetchApplicationsByRole = async () => {
-    const result = await fetchGraphql(queries.applicationsByRole, {
-      role: activeRole || ApplicantRole.vpe,
-    });
+    const result = await fetchGraphql(
+      applicationTableQueries.applicationsByRole,
+      {
+        role: activeRole || ApplicantRole.vpe,
+      },
+    );
     setApplications(result.data.applicationTable);
     setNumEntries(result.data.applicationTable.length);
   };

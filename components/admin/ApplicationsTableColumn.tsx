@@ -206,7 +206,7 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
       label: "Resume",
       options: {
         filter: false,
-        sort: false,
+        sort: true,
         searchable: true,
       },
     },
