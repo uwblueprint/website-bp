@@ -1,13 +1,13 @@
-import { createTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { MuiThemeProvider } from "@material-ui/core/styles";
 import { fetchGraphql } from "@utils/makegqlrequest";
 import MUIDataTable from "mui-datatables";
 import React, { useEffect, useState } from "react";
 import { getApplicationTableColumns } from "./ApplicationsTableColumn";
-import { theme } from "../../styles/Theme";
 import ApplicantRole from "entities/applicationRole";
 import { useRouter } from "next/router";
 import { ResumeIcon } from "@components/icons/resume.icon";
 import { applicationTableQueries } from "graphql/queries";
+import { getMuiTheme } from "utils/muidatatable";
 
 export type Student = {
   id: string;
@@ -62,82 +62,6 @@ const ApplicationsTable: React.FC<TableProps> = ({
     setApplications(result.data.applicationTable);
     setNumEntries(result.data.applicationTable.length);
   };
-
-  const getMuiTheme = () =>
-    createTheme({
-      overrides: {
-        MuiPaper: {
-          root: {
-            border: `1px solid ${theme.colors.greys.border}`,
-          },
-        },
-        MUIDataTable: {
-          paper: {
-            boxShadow: "none",
-            marginBottom: "3em",
-          },
-          root: {
-            fontFamily: "Source Sans Pro",
-          },
-        },
-        MuiTypography: {
-          root: {
-            fontFamily: "Source Sans Pro !important",
-          },
-          body1: {
-            fontFamily: "Source Sans Pro",
-          },
-          body2: {
-            fontFamily: "Source Sans Pro",
-          },
-        },
-        MuiButtonBase: {
-          root: {
-            fontFamily: "Source Sans Pro",
-          },
-        },
-        MUIDataTableHeadCell: {
-          data: {
-            color: theme.colors.near_black,
-            fontFamily: "Source Sans Pro",
-            fontWeight: 350,
-            fontSize: 18,
-          },
-          sortActive: {
-            color: theme.colors.B10,
-          },
-        },
-        MUIDataTableBodyCell: {
-          root: {
-            color: theme.colors.near_black,
-            fontFamily: "Source Sans Pro",
-            fontWeight: 350,
-            fontSize: 18,
-          },
-        },
-        // MUIDataTableToolbar: {
-        //   root: {
-        //     display: "",
-        //   },
-        // },
-        MuiTableSortLabel: {
-          root: {
-            color: `${theme.colors.B10} !important`,
-          },
-          active: {
-            color: theme.colors.B10,
-          },
-          iconDirectionAsc: {
-            color: theme.colors.B10,
-          },
-        },
-        MuiSvgIcon: {
-          root: {
-            color: `${theme.colors.B10} !important`,
-          },
-        },
-      },
-    });
 
   const router = useRouter();
 
