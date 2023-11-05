@@ -1,7 +1,7 @@
-import { MUIDataTableColumn, MUIDataTableColumnOptions } from "mui-datatables";
+import { MUIDataTableColumn } from "mui-datatables";
 import { LinkIcon } from "@components/icons/link.icon";
 import { Status, SecondChoiceStatus } from "@utils/muidatatable";
-import { get } from "http";
+import { router } from "next/router";
 
 // const extractLastName = (data: any) => {
 //   const fullNameArray = data.props.children[1].props.children;
@@ -23,10 +23,16 @@ import { get } from "http";
 
 export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
   const handleNameClick = (appId: string) => {
-    window.location.href = `/review?reviewId=${appId}`;
+    router.push(`/review?reviewId=${appId}`);
   };
 
   const columns: MUIDataTableColumn[] = [
+    {
+      name: "id",
+      options: {
+        display: "excluded",
+      },
+    },
     {
       name: "name",
       label: "Application",
@@ -36,15 +42,14 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
         searchable: true,
         customBodyRender(value, tableMeta, updateValue) {
           console.log(tableMeta.rowData);
+          const appId = tableMeta.rowData[0];
           return (
             <div
-              onClick={() => handleNameClick(tableMeta.rowData[8])}
+              onClick={() => handleNameClick(appId)}
               className="flex items-center cursor-pointer"
             >
               <LinkIcon />
-              <span className="ml-2 underline">
-                {tableMeta.rowData[0] + " " + tableMeta.rowData[1]}
-              </span>
+              <span className="ml-2 underline">{value}</span>
             </div>
           );
         },

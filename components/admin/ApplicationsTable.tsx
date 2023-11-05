@@ -22,6 +22,7 @@ export type Student = {
 };
 
 type StudentRow = {
+  id: string;
   name: string;
   resume: React.ReactNode;
   term: string;
@@ -70,6 +71,7 @@ const ApplicationsTable: React.FC<TableProps> = ({
     const reviewers = application.reviewers;
 
     return {
+      id: app.id,
       name: app.firstName + " " + app.lastName,
       resume: (
         <a target="_blank" href={app.resumeUrl} className="flex items-center">
