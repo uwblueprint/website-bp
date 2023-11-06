@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "yarn lint:eslint && yarn lint:tsc",
+    "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
     "lint:eslint": "eslint **/*.{js,jsx,ts,tsx} --cache --format stylish",
     "lint:tsc": "tsc --noemit",
     "fix": "yarn fix:eslint && yarn fix:prettier",

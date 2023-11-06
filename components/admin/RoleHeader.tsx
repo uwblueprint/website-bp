@@ -15,7 +15,11 @@ interface ColourMap {
   text: string;
 }
 
-const RoleHeader: FC<RoleHeaderProps> = ({ activeTab, setActiveRole, activeRole }) => {
+const RoleHeader: FC<RoleHeaderProps> = ({
+  activeTab,
+  setActiveRole,
+  activeRole,
+}) => {
   const [colour, setColour] = useState<Partial<ColourMap>>({});
   const [roles, setRoles] = useState<ApplicantRole[]>([]);
 

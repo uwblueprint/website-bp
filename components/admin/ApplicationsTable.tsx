@@ -30,7 +30,6 @@ interface TableProps {
 const ApplicationsTable: React.FC<TableProps> = ({
   activeRole,
   setNumEntries,
-  numEntries,
 }) => {
   const [applications, setApplications] = useState<any[]>([]);
 
