@@ -1,5 +1,4 @@
 import { fetchGraphql } from "@utils/makegqlrequest";
-import { mutations, queries } from "graphql/queries";
 import BaseAPIClient from "./BaseAPIClient";
 
 export type TokenInfo = {
@@ -18,7 +17,7 @@ const isAuthorizedByRole = (allowedRoles: Role[]): Promise<boolean> => {
     roles: allowedRoles,
   })
     .then((result) => result.data.isAuthorizedByRole)
-    .catch((_) => {
+    .catch(() => {
       throw new Error("Auth Validation Error");
     });
 };

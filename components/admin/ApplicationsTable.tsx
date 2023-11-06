@@ -1,16 +1,13 @@
-import { createTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { MuiThemeProvider } from "@material-ui/core/styles";
 import { fetchGraphql } from "@utils/makegqlrequest";
 import MUIDataTable from "mui-datatables";
 import React, { useEffect, useState } from "react";
 import { getApplicationTableColumns } from "./ApplicationsTableColumn";
-import { theme } from "../../styles/Theme";
-import { LinkIcon } from "@components/icons/link.icon";
-import { ResumeIcon } from "@components/icons/resume.icon";
 import ApplicantRole from "entities/applicationRole";
 import { useRouter } from "next/router";
-
-const STATUS_BASE_CLASSES = "text-center rounded px-2 py-1";
-const SECOND_CHOICE_BASE_CLASSES = "rounded-3xl text-center w-fit px-2";
+import { ResumeIcon } from "@components/icons/resume.icon";
+import { applicationTableQueries } from "graphql/queries";
+import { getMuiTheme } from "utils/muidatatable";
 
 export type Student = {
   id: string;
@@ -24,50 +21,6 @@ export type Student = {
   secondChoiceRole: string;
 };
 
-type StudentRow = {
-  name: string;
-  resume: React.ReactNode;
-  term: string;
-  program: string;
-  reviewerOne: string;
-  reviewerTwo: string;
-  score: number;
-  status: string;
-  secondChoice: string;
-  secondChoiceStatus: string;
-  skill: string;
-};
-
-const queries = {
-  applicationsByRole: `
-            query applicationTable($role: String!) {
-              applicationTable(role: $role) {
-                application {
-                  id
-                  firstName
-                  lastName
-                  academicYear
-                  resumeUrl
-                  program
-                  status
-                  secondChoiceRole
-                  secondChoiceStatus
-              }
-              reviewers {
-                  firstName
-                  lastName
-              }
-              reviewDashboards {
-                  passionFSG
-                  teamPlayer
-                  desireToLearn
-                  skillCategory
-              }
-              }
-            }
-          `,
-};
-
 interface TableProps {
   activeRole?: ApplicantRole;
   setNumEntries: (tab: number) => void;
@@ -77,7 +30,6 @@ interface TableProps {
 const ApplicationsTable: React.FC<TableProps> = ({
   activeRole,
   setNumEntries,
-  numEntries,
 }) => {
   const [applications, setApplications] = useState<any[]>([]);
 
@@ -86,185 +38,25 @@ const ApplicationsTable: React.FC<TableProps> = ({
   }, [activeRole]);
 
   const fetchApplicationsByRole = async () => {
-    const result = await fetchGraphql(queries.applicationsByRole, {
-      role: activeRole || ApplicantRole.vpe,
-    });
+    const result = await fetchGraphql(
+      applicationTableQueries.applicationsByRole,
+      {
+        role: activeRole || ApplicantRole.vpe,
+      },
+    );
     setApplications(result.data.applicationTable);
     setNumEntries(result.data.applicationTable.length);
   };
 
-  const getStatusStyle = (status: string) => {
-    switch (status) {
-      case "applied":
-        return (
-          <div className={`${STATUS_BASE_CLASSES} bg-sky-200`}>Applied</div>
-        );
-      case "in review":
-        return (
-          <div className={`${STATUS_BASE_CLASSES} bg-yellow-100`}>
-            In Review
-          </div>
-        );
-      case "interview":
-        return (
-          <div className={`${STATUS_BASE_CLASSES} bg-green-100`}>Interview</div>
-        );
-      default:
-        return (
-          <div className={`${STATUS_BASE_CLASSES} bg-charcoal-300`}>
-            Pending
-          </div>
-        );
-    }
-  };
-
-  const getSecondChoiceStatusStyle = (status: string) => {
-    switch (status) {
-      case "n/a":
-        return (
-          <div className={`${SECOND_CHOICE_BASE_CLASSES}  text-red-500 border`}>
-            N/A
-          </div>
-        );
-      case "considered":
-        return (
-          <div
-            className={`${SECOND_CHOICE_BASE_CLASSES} text-green-300 border`}
-          >
-            Considered
-          </div>
-        );
-      case "not considered":
-        return (
-          <div
-            className={`${SECOND_CHOICE_BASE_CLASSES}  border text-charcoal-400`}
-          >
-            Not Considered
-          </div>
-        );
-      case "in review":
-        return (
-          <div className={`${STATUS_BASE_CLASSES} bg-yellow-100`}>
-            In Review
-          </div>
-        );
-      case "interview":
-        return (
-          <div className={`${STATUS_BASE_CLASSES} bg-green-100`}>Interview</div>
-        );
-      case "recommended":
-        return (
-          <div className={`${STATUS_BASE_CLASSES} bg-orange-300`}>
-            Recommended
-          </div>
-        );
-      case "no interview":
-        return (
-          <div className={`${STATUS_BASE_CLASSES} bg-charcoal-300`}>
-            No Interview
-          </div>
-        );
-    }
-  };
-
-  const getMuiTheme = () =>
-    createTheme({
-      overrides: {
-        MuiPaper: {
-          root: {
-            border: `1px solid ${theme.colors.greys.border}`,
-          },
-        },
-        MUIDataTable: {
-          paper: {
-            boxShadow: "none",
-            marginBottom: "3em",
-          },
-          root: {
-            fontFamily: "Source Sans Pro",
-          },
-        },
-        MuiTypography: {
-          root: {
-            fontFamily: "Source Sans Pro !important",
-          },
-          body1: {
-            fontFamily: "Source Sans Pro",
-          },
-          body2: {
-            fontFamily: "Source Sans Pro",
-          },
-        },
-        MuiButtonBase: {
-          root: {
-            fontFamily: "Source Sans Pro",
-          },
-        },
-        MUIDataTableHeadCell: {
-          data: {
-            color: theme.colors.near_black,
-            fontFamily: "Source Sans Pro",
-            fontWeight: 350,
-            fontSize: 18,
-          },
-          sortActive: {
-            color: theme.colors.B10,
-          },
-        },
-        MUIDataTableBodyCell: {
-          root: {
-            color: theme.colors.near_black,
-            fontFamily: "Source Sans Pro",
-            fontWeight: 350,
-            fontSize: 18,
-          },
-        },
-        MUIDataTableToolbar: {
-          root: {
-            display: "none",
-          },
-        },
-        MuiTableSortLabel: {
-          root: {
-            color: `${theme.colors.B10} !important`,
-          },
-          active: {
-            color: theme.colors.B10,
-          },
-          iconDirectionAsc: {
-            color: theme.colors.B10,
-          },
-        },
-        MuiSvgIcon: {
-          root: {
-            color: `${theme.colors.B10} !important`,
-          },
-        },
-      },
-    });
-
   const router = useRouter();
-
-  const handleNameClick = (appId: string) => {
-    router.push(`/review?reviewId=${appId}`);
-  };
 
   const createStudentRow = (application: any) => {
     const app = application.application;
     const reviewers = application.reviewers;
 
     return {
-      name: (
-        <div
-          onClick={() => handleNameClick(app.id)}
-          className="flex items-center cursor-pointer"
-        >
-          <LinkIcon />
-          <span className="ml-2 underline">
-            {app.firstName} {app.lastName}
-          </span>
-        </div>
-      ),
+      id: app.id,
+      name: app.firstName + " " + app.lastName,
       resume: (
         <a target="_blank" href={app.resumeUrl} className="flex items-center">
           <ResumeIcon />
@@ -281,9 +73,9 @@ const ApplicationsTable: React.FC<TableProps> = ({
         reviewers?.length >= 2
           ? `${reviewers[1].firstName} ${reviewers[1].lastName}`
           : "",
-      status: getStatusStyle(app.status),
+      status: app.status,
       secondChoice: app.secondChoiceRole,
-      secondChoiceStatus: getSecondChoiceStatusStyle(app.secondChoiceStatus),
+      secondChoiceStatus: app.secondChoiceStatus,
     };
   };
 
@@ -295,6 +87,16 @@ const ApplicationsTable: React.FC<TableProps> = ({
         title=""
         data={getTableRows()}
         columns={getApplicationTableColumns()}
+        options={{
+          search: true,
+          viewColumns: false,
+          download: false,
+          print: false,
+          searchPlaceholder: "Search by name, reviewer, status, etc...",
+          filter: true,
+          selectableRows: "none",
+          sortFilterList: true,
+        }}
       />
     </MuiThemeProvider>
   );

@@ -33,3 +33,33 @@ export const queries = {
   }
   `,
 };
+
+export const applicationTableQueries = {
+  applicationsByRole: `
+            query applicationTable($role: String!) {
+              applicationTable(role: $role) {
+                application {
+                  id
+                  firstName
+                  lastName
+                  academicYear
+                  resumeUrl
+                  program
+                  status
+                  secondChoiceRole
+                  secondChoiceStatus
+              }
+              reviewers {
+                  firstName
+                  lastName
+              }
+              reviewDashboards {
+                  passionFSG
+                  teamPlayer
+                  desireToLearn
+                  skillCategory
+              }
+              }
+            }
+          `,
+};
