@@ -22,7 +22,8 @@ const getReviewId = (query: ParsedUrlQuery): number => {
       : (() => {
           throw new Error("reviewId must be a String");
         })();
-  if (Number.isNaN(reviewId)) throw Error("reviewId must be parsable into an int");
+  if (Number.isNaN(reviewId))
+    throw Error("reviewId must be parsable into an int");
 
   return reviewId;
 };
