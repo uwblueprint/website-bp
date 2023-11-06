@@ -129,17 +129,17 @@ export const SecondChoiceStatus: React.FC<StatusProps> = ({ status }) => {
       text = "Not Considered";
       break;
     case "in review":
-      className = `${STATUS_BASE_CLASSES} bg-yellow-100`;
+      className += " bg-yellow-100";
       break;
     case "interview":
-      className = `${STATUS_BASE_CLASSES} bg-green-100`;
+      className += " bg-green-100";
       break;
     case "recommended":
-      className = `${STATUS_BASE_CLASSES} bg-orange-300`;
+      className += " bg-orange-300";
       text = "Recommended";
       break;
     case "no interview":
-      className = `${STATUS_BASE_CLASSES} bg-charcoal-300`;
+      className += " bg-charcoal-300";
       text = "No Interview";
       break;
   }

@@ -21,21 +21,6 @@ export type Student = {
   secondChoiceRole: string;
 };
 
-type StudentRow = {
-  id: string;
-  name: string;
-  resume: React.ReactNode;
-  term: string;
-  program: string;
-  reviewerOne: string;
-  reviewerTwo: string;
-  score: number;
-  status: string;
-  secondChoice: string;
-  secondChoiceStatus: string;
-  skill: string;
-};
-
 interface TableProps {
   activeRole?: ApplicantRole;
   setNumEntries: (tab: number) => void;

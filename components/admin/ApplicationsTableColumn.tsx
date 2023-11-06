@@ -3,24 +3,6 @@ import { LinkIcon } from "@components/icons/link.icon";
 import { Status, SecondChoiceStatus } from "@utils/muidatatable";
 import { router } from "next/router";
 
-// const extractLastName = (data: any) => {
-//   const fullNameArray = data.props.children[1].props.children;
-//   const fullName = fullNameArray[0] + " " + fullNameArray[2];
-//   return fullName;
-// };
-
-// const createSortFunction =
-//   (order: "asc" | "desc") => (obj1: any, obj2: any) => {
-//     const name1 = extractLastName(obj1.data);
-//     const name2 = extractLastName(obj2.data);
-
-//     if (order === "asc") {
-//       return name1.localeCompare(name2);
-//     } else {
-//       return name2.localeCompare(name1);
-//     }
-//   };
-
 export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
   const handleNameClick = (appId: string) => {
     router.push(`/review?reviewId=${appId}`);
@@ -31,6 +13,9 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
       name: "id",
       options: {
         display: "excluded",
+        filter: false,
+        searchable: false,
+        sort: false,
       },
     },
     {
