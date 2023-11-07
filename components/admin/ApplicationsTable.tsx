@@ -23,29 +23,43 @@ export type Student = {
 
 interface TableProps {
   activeRole?: ApplicantRole;
-  setNumEntries: (tab: number) => void;
-  numEntries?: number;
+  setNumFirstChoiceEntries: (tab: number) => void;
+  numFirstChoiceEntries?: number;
+  setNumSecondChoiceEntries: (tab: number) => void;
+  numSecondChoiceEntries?: number;
 }
 
 const ApplicationsTable: React.FC<TableProps> = ({
   activeRole,
-  setNumEntries,
+  setNumFirstChoiceEntries,
+  setNumSecondChoiceEntries
 }) => {
-  const [applications, setApplications] = useState<any[]>([]);
+  const [firstChoiceApplications, setFirstChoiceApplications] = useState<any[]>([]);
+  const [secondChoiceApplications, setSecondChoiceApplications] = useState<any[]>([]);
+
 
   useEffect(() => {
     fetchApplicationsByRole();
   }, [activeRole]);
 
   const fetchApplicationsByRole = async () => {
-    const result = await fetchGraphql(
+    const firstChoiceResult = await fetchGraphql(
       applicationTableQueries.applicationsByRole,
       {
         role: activeRole || ApplicantRole.vpe,
       },
     );
-    setApplications(result.data.applicationTable);
-    setNumEntries(result.data.applicationTable.length);
+    setFirstChoiceApplications(firstChoiceResult.data.applicationTable);
+    setNumFirstChoiceEntries(firstChoiceResult.data.applicationTable.length);
+
+    const secondChoiceResult = await fetchGraphql(
+      applicationTableQueries.applicationsBySecondChoiceRole,
+      {
+        role: activeRole || ApplicantRole.vpe,
+      },
+    );
+    setSecondChoiceApplications(secondChoiceResult.data.secondChoiceRoleApplicationTable);
+    setNumSecondChoiceEntries(secondChoiceResult.data.secondChoiceRoleApplicationTable.length);
   };
 
   const router = useRouter();
@@ -79,7 +93,7 @@ const ApplicationsTable: React.FC<TableProps> = ({
     };
   };
 
-  const getTableRows = () => applications.map(createStudentRow);
+  const getTableRows = () => firstChoiceApplications.map(createStudentRow);
 
   return (
     <MuiThemeProvider theme={getMuiTheme()}>

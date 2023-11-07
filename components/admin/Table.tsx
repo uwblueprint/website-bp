@@ -23,7 +23,8 @@ const Table: FC = () => {
   const [activeRole, setActiveRole] = React.useState<
     ApplicantRole | undefined
   >();
-  const [numEntries, setNumEntries] = React.useState<number | undefined>();
+  const [numFirstChoiceEntries, setNumFirstChoiceEntries] = React.useState<number | undefined>();
+  const [numSecondChoiceEntries, setNumSecondChoiceEntries] = React.useState<number | undefined>();
   const user: Users = {
     id: "1",
     name: "Chris Abey",
@@ -58,11 +59,13 @@ const Table: FC = () => {
         activeRole={activeRole}
       />
       <div className="mx-8">
-        <TableTitle numEntries={numEntries} />
+        <TableTitle numFirstChoiceEntries={numFirstChoiceEntries} numSecondChoiceEntries={numSecondChoiceEntries}/>
         <ApplicationsTable
           activeRole={activeRole}
-          setNumEntries={setNumEntries}
-          numEntries={numEntries}
+          setNumFirstChoiceEntries={setNumFirstChoiceEntries}
+          numFirstChoiceEntries={numFirstChoiceEntries}
+          setNumSecondChoiceEntries={setNumSecondChoiceEntries}
+          numSecondChoiceEntries={numSecondChoiceEntries}
         />
       </div>
     </div>
