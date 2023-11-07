@@ -26,7 +26,6 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
         // sortCompare: (order: "asc" | "desc") => createSortFunction(order),
         searchable: true,
         customBodyRender(value, tableMeta, updateValue) {
-          console.log(tableMeta.rowData);
           const appId = tableMeta.rowData[0];
           return (
             <div

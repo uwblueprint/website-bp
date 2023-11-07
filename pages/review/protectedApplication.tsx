@@ -47,7 +47,7 @@ const ProtectedApplication = ({
     if (!accessToken) throw Error("undefined accessToken");
 
     const decodedToken = jwt_decode<AccessToken>(accessToken);
-    const reviewerUserId = decodedToken.user_id;
+    const reviewerUserId = decodedToken.user_id; // this is auth_id in the db
 
     fetchGraphql(queries.isAuthorizedToReview, {
       applicationId: reviewId,
