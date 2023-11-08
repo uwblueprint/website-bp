@@ -3,23 +3,22 @@ import { ReviewStage } from "pages/review";
 import { ReviewSplitPanelPage } from "../shared/reviewSplitPanelPage";
 import Button from "@components/common/Button";
 import { mutations, queries } from "graphql/queries";
-import  getReviewId from "pages/review/protectedApplication";
+import getReviewId from "pages/review/protectedApplication";
 import Image from "next/image";
 import WarningIcon from "@components/icons/warning.icon";
 import { useRouter } from "next/router";
 import { fetchGraphql } from "@utils/makegqlrequest";
-
-
+import { ReviewAnswers } from "./reviewAnswers";
 
 type QuestionAnswerProps = {
   readonly question: string;
   readonly answer: string;
 };
 
-
-
-
-
+interface AuthStatus {
+  loading: boolean;
+  isAuthorized: boolean;
+}
 
 // const reviewId = getReviewId(headerInformation);
 // useEffect(() => {
@@ -60,8 +59,7 @@ type QuestionAnswerProps = {
 //     });
 // };
 
-
-var displayData: [{ [id: string] : string; }] = {};
+// var displayData: [{ [id: string]: string }] = {};
 // const displayData = [
 //   { question: "Email", answer: "" },
 //   { question: "Program", answer: "" },
@@ -157,39 +155,32 @@ interface Props {
 //   scoringCriteria,
 //   scores,
 //   currentStage,
-// }) => 
-export const ReviewInfoStage: React.FC<Props> = ({ scores , reviewId, }) => {
-
+// }) =>
+export const ReviewInfoStage: React.FC<Props> = ({ scores, reviewId }) => {
+  const [answers, setAnswers] = useState<string[]>([]); // Read up useState(), useEffect(), useMemo() react hooks
+  const [questions, setQuestions] = useState<string[]>([]);
+  const [authStatus, setAuthStatus] = useState<AuthStatus>({
+    loading: true,
+    isAuthorized: false,
+  });
   const router = useRouter();
-  console.log(typeof router.query)
+  console.log(typeof router.query);
   useEffect(() => {
     fetchGraphql(queries.applicationsById, {
       id: reviewId,
-    }).then((result) => {     
+    }).then((result) => {
       if (result.data) {
-          displayData = [
-          { question: "Email", answer: result.data.email},
-          { question: "Program", answer: result.data.program },
-          { question: "Academic Term", answer: result.data.academicYear },
-          { question: "Where did you hear about us?", answer: result.data.heardFrom },
-          {
-            question: "How many times have you applied to Blueprint in the past?",
-            answer: result.data.timesApplied,
-          },
-          { question: "Pronouns", answer: result.data.pronouns },
-          {
-            question: "Will you be in an academic (school) term or a co-op term?",
-            answer: result.data.academicOrCoop,
-          },
-          { question: "Position", answer: result.data.firstChoiceRole },
-          {
-            question: "What timezone will you be based out of?",
-            answer: result.data.firstChoiceRole,
-          },
-        ];
+        const arr = result.data.applicationsById.shortAnswerQuestions[0];
+        const arrObject = JSON.parse(arr);
+
+        // map over the arrObject
+        // for every iteration, you want to extract out "question" and "response"
+        // setQuestions(questions => [...questions, question]). Read up on spread operators.
+        // setAnswers(answers => [...answers, response])
       } else {
         setAuthStatus({
           loading: false,
+          isAuthorized: false,
         });
       }
     });
@@ -242,15 +233,7 @@ export const ReviewInfoStage: React.FC<Props> = ({ scores , reviewId, }) => {
             onClose={() => setModalOpen(false)}
           />
           <div className="flex flex-col gap-4">
-            {displayData.map((item, index) => {
-              return (
-                <QuestionAnswer
-                  key={index}
-                  question={item.question}
-                  answer={item.answer}
-                />
-              );
-            })}
+            <ReviewAnswers questions={questions} answers={answers} />
           </div>
         </>
       }
