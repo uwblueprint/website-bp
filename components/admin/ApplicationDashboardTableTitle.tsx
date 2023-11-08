@@ -5,19 +5,20 @@ import Tab from '@mui/material/Tab';
 interface TitleProps {
   numFirstChoiceEntries?: number;
   numSecondChoiceEntries?: number;
+  setWhichChoiceTab: (tab: number) => void;
+  whichChoiceTab?: number;
 }
 
-const TableTitle: FC<TitleProps> = ({ numFirstChoiceEntries, numSecondChoiceEntries }) => {
+const TableTitle: FC<TitleProps> = ({ numFirstChoiceEntries, numSecondChoiceEntries, setWhichChoiceTab, whichChoiceTab }) => {
   const tabStyle =
     "border-2 border-blue-100 text-blue rounded-full px-4 py-2 m-2 font-large inline-block";
 
   const editButton =
     "border-2 border-blue rounded-full text-blue text-center px-8 py-1 m-2 inline-block capitalize bg-white";
 
-  const [value, setValue] = React.useState(0);
-
+  // const [value, setValue] = React.useState(0);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+    setWhichChoiceTab(newValue);
   };
 
   const firstChoiceTabDesc = <div>1st Choice Applicants <p className={tabStyle}> {numFirstChoiceEntries} Entries </p></div>
@@ -25,7 +26,7 @@ const TableTitle: FC<TitleProps> = ({ numFirstChoiceEntries, numSecondChoiceEntr
   return (
     <div className="bg-sky rounded-t text-blue-300 text-base font-inter font-medium px-4 py-1 flex justify-between items-center">
         <div className="flex items-baseline space-x-4">
-          <Tabs value={value} onChange={handleChange} variant="fullWidth" >
+          <Tabs value={whichChoiceTab} onChange={handleChange} variant="fullWidth" >
             <Tab label={firstChoiceTabDesc} style={{textTransform: 'none', fontSize: 20, width: 400}}/>
             <Tab label={secondChoiceTabDesc} style={{textTransform: 'none', fontSize: 20, width: 400}}/>
           </Tabs>

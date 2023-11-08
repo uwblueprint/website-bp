@@ -25,6 +25,7 @@ const Table: FC = () => {
   >();
   const [numFirstChoiceEntries, setNumFirstChoiceEntries] = React.useState<number | undefined>();
   const [numSecondChoiceEntries, setNumSecondChoiceEntries] = React.useState<number | undefined>();
+  const [whichChoiceTab, setWhichChoiceTab] = React.useState(0);
   const user: Users = {
     id: "1",
     name: "Chris Abey",
@@ -51,7 +52,11 @@ const Table: FC = () => {
             <Avatar {...user} />
           </div>
         </div>
-        <Tabs activeTab={activeTab} setActiveTab={setActiveTab} user={user} />
+        <Tabs 
+          activeTab={activeTab} 
+          setActiveTab={setActiveTab} 
+          user={user} 
+        />
       </div>
       <RoleHeader
         activeTab={activeTab}
@@ -59,9 +64,15 @@ const Table: FC = () => {
         activeRole={activeRole}
       />
       <div className="mx-8">
-        <TableTitle numFirstChoiceEntries={numFirstChoiceEntries} numSecondChoiceEntries={numSecondChoiceEntries}/>
+        <TableTitle 
+          numFirstChoiceEntries={numFirstChoiceEntries} 
+          numSecondChoiceEntries={numSecondChoiceEntries} 
+          setWhichChoiceTab={setWhichChoiceTab} 
+          whichChoiceTab={whichChoiceTab}
+        />
         <ApplicationsTable
           activeRole={activeRole}
+          whichChoiceTab={whichChoiceTab}
           setNumFirstChoiceEntries={setNumFirstChoiceEntries}
           numFirstChoiceEntries={numFirstChoiceEntries}
           setNumSecondChoiceEntries={setNumSecondChoiceEntries}

@@ -23,6 +23,7 @@ export type Student = {
 
 interface TableProps {
   activeRole?: ApplicantRole;
+  whichChoiceTab?: number;
   setNumFirstChoiceEntries: (tab: number) => void;
   numFirstChoiceEntries?: number;
   setNumSecondChoiceEntries: (tab: number) => void;
@@ -31,16 +32,16 @@ interface TableProps {
 
 const ApplicationsTable: React.FC<TableProps> = ({
   activeRole,
+  whichChoiceTab,
   setNumFirstChoiceEntries,
   setNumSecondChoiceEntries
 }) => {
   const [firstChoiceApplications, setFirstChoiceApplications] = useState<any[]>([]);
   const [secondChoiceApplications, setSecondChoiceApplications] = useState<any[]>([]);
 
-
   useEffect(() => {
     fetchApplicationsByRole();
-  }, [activeRole]);
+  }, [activeRole, whichChoiceTab]);
 
   const fetchApplicationsByRole = async () => {
     const firstChoiceResult = await fetchGraphql(
@@ -49,8 +50,6 @@ const ApplicationsTable: React.FC<TableProps> = ({
         role: activeRole || ApplicantRole.vpe,
       },
     );
-    setFirstChoiceApplications(firstChoiceResult.data.applicationTable);
-    setNumFirstChoiceEntries(firstChoiceResult.data.applicationTable.length);
 
     const secondChoiceResult = await fetchGraphql(
       applicationTableQueries.applicationsBySecondChoiceRole,
@@ -58,6 +57,9 @@ const ApplicationsTable: React.FC<TableProps> = ({
         role: activeRole || ApplicantRole.vpe,
       },
     );
+    setFirstChoiceApplications(firstChoiceResult.data.applicationTable);
+    setNumFirstChoiceEntries(firstChoiceResult.data.applicationTable.length);
+    
     setSecondChoiceApplications(secondChoiceResult.data.secondChoiceRoleApplicationTable);
     setNumSecondChoiceEntries(secondChoiceResult.data.secondChoiceRoleApplicationTable.length);
   };
@@ -93,13 +95,21 @@ const ApplicationsTable: React.FC<TableProps> = ({
     };
   };
 
+  const getTestTableRows = () => {
+    if (!whichChoiceTab) {
+      return firstChoiceApplications.map(createStudentRow)
+    }
+    return secondChoiceApplications.map(createStudentRow)
+
+  }
+
   const getTableRows = () => firstChoiceApplications.map(createStudentRow);
 
   return (
     <MuiThemeProvider theme={getMuiTheme()}>
       <MUIDataTable
         title=""
-        data={getTableRows()}
+        data={getTestTableRows()}
         columns={getApplicationTableColumns()}
         options={{
           search: true,
