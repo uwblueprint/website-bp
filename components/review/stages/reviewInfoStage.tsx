@@ -2,8 +2,7 @@ import { FC, useState, useEffect } from "react";
 import { ReviewStage } from "pages/review";
 import { ReviewSplitPanelPage } from "../shared/reviewSplitPanelPage";
 import Button from "@components/common/Button";
-import { mutations, queries } from "graphql/queries";
-import getReviewId from "pages/review/protectedApplication";
+import { queries } from "graphql/queries";
 import Image from "next/image";
 import WarningIcon from "@components/icons/warning.icon";
 import { useRouter } from "next/router";
@@ -20,67 +19,6 @@ interface AuthStatus {
   isAuthorized: boolean;
 }
 
-// const reviewId = getReviewId(headerInformation);
-// useEffect(() => {
-//   const accessToken = localStorage.getItem("accessToken");
-//   if (!accessToken) throw Error("undefined accessToken");
-
-//   const decodedToken = jwt_decode<AccessToken>(accessToken);
-//   const reviewerUserId = decodedToken.user_id;
-
-//   fetchGraphql(queries.isAuthorizedToReview, {
-//     applicationId: reviewId,
-//     reviewerUserId,
-//   }).then((result) => {
-//     if (result.data && result.data.isAuthorizedToReview) {
-//       setAuthStatus({
-//         loading: false,
-//         isAuthorized: true,
-//       });
-//     } else {
-//       setAuthStatus({
-//         loading: false,
-//         isAuthorized: false,
-//       });
-//     }
-//   });
-// }, [reviewId]);
-
-// const appplicationById = (id: int): Promise<in> => {
-//   BaseAPIClient.handleAuthRefresh();
-//   const accessToken = localStorage.getItem("accessToken");
-
-//   return fetchGraphql(queries.applicationsById, {
-//     id
-//   })
-//     .then((result) => result.data.isAuthorizedByRole)
-//     .catch((_) => {
-//       throw new Error("Auth Validation Error");
-//     });
-// };
-
-// var displayData: [{ [id: string]: string }] = {};
-// const displayData = [
-//   { question: "Email", answer: "" },
-//   { question: "Program", answer: "" },
-//   { question: "Academic Term", answer: "" },
-//   { question: "Where did you hear about us?", answer: "" },
-//   {
-//     question: "How many times have you applied to Blueprint in the past?",
-//     answer: "",
-//   },
-//   { question: "Pronouns", answer: "" },
-//   {
-//     question: "Will you be in an academic (school) term or a co-op term?",
-//     answer: "",
-//   },
-//   { question: "Position", answer: "" },
-//   {
-//     question: "What timezone will you be based out of?",
-//     answer: "",
-//   },
-// ];
-
 const QuestionAnswer: FC<QuestionAnswerProps> = ({ question, answer }) => {
   return (
     <div>
@@ -91,7 +29,7 @@ const QuestionAnswer: FC<QuestionAnswerProps> = ({ question, answer }) => {
 };
 
 type ConflictModalProps = {
-  readonly name: string;
+  readonly name: string | undefined
   readonly open: boolean;
   readonly onClose: () => void;
 };
@@ -151,14 +89,10 @@ interface Props {
   reviewId: number;
 }
 
-// export const ReviewRubric: React.FC<Props> = ({
-//   scoringCriteria,
-//   scores,
-//   currentStage,
-// }) =>
 export const ReviewInfoStage: React.FC<Props> = ({ scores, reviewId }) => {
   const [answers, setAnswers] = useState<string[]>([]); // Read up useState(), useEffect(), useMemo() react hooks
   const [questions, setQuestions] = useState<string[]>([]);
+  const [name, setName] = useState<string>();
   const [authStatus, setAuthStatus] = useState<AuthStatus>({
     loading: true,
     isAuthorized: false,
@@ -170,13 +104,35 @@ export const ReviewInfoStage: React.FC<Props> = ({ scores, reviewId }) => {
       id: reviewId,
     }).then((result) => {
       if (result.data) {
+        const email = result.data.applicationsById.email;
+        const program = result.data.applicationsById.program;
+        const academicTerm = result.data.applicationsById.academicYear;
+        const headFrom = result.data.applicationsById.heardFrom;
+        const timesApplied = result.data.applicationsById.timesApplied;
+        const pronouns = result.data.applicationsById.pronouns;
+        const academicOrCoop = result.data.applicationsById.academicOrCoop;
+        const position = result.data.applicationsById.firstChoiceRole;
         const arr = result.data.applicationsById.shortAnswerQuestions[0];
         const arrObject = JSON.parse(arr);
+        console.log (arrObject);
 
-        // map over the arrObject
-        // for every iteration, you want to extract out "question" and "response"
-        // setQuestions(questions => [...questions, question]). Read up on spread operators.
-        // setAnswers(answers => [...answers, response])
+        const combinedName = result.data.applicationsById.firstName + " " + result.data.applicationsById.lastName
+        setName(combinedName)
+
+        const extractedQuestions = arrObject.map((dict: { [key: string]: string }) => {
+          return dict.question;
+        });
+  
+        const extractedAnswers = arrObject.map((dict: { [key: string]: string }) => {
+          return dict.response;
+        });
+
+        setQuestions(questions => [...questions,"Email","Program","Academic Term", "Where did you hear about us?",
+        "How many times have you applied to Blueprint in the past?", "Pronouns", "Will you be in an academic (school) term or a co-op term?", "Position",]);
+        setAnswers(answers => [...answers, email, program, academicTerm, headFrom, timesApplied, pronouns, academicOrCoop, position,]);
+        setQuestions(questions => [...questions,extractedQuestions[0]]);
+        setAnswers(answers => [...answers,extractedAnswers[0]]); 
+
       } else {
         setAuthStatus({
           loading: false,
@@ -188,7 +144,7 @@ export const ReviewInfoStage: React.FC<Props> = ({ scores, reviewId }) => {
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <ReviewSplitPanelPage
-      studentName="Matthew Wang"
+      studentName={name}
       rightTitle="Basic Information"
       rightTitleButton={
         <Button
@@ -228,7 +184,7 @@ export const ReviewInfoStage: React.FC<Props> = ({ scores, reviewId }) => {
         <>
           {/* Modal */}
           <ConflictModal
-            name="Matthew Wang"
+            name={name}
             open={modalOpen}
             onClose={() => setModalOpen(false)}
           />

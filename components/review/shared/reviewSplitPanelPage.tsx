@@ -3,7 +3,7 @@ import React from "react";
 import { ReviewStepper } from "./reviewStepper";
 
 interface Props {
-  studentName: string;
+  studentName: string| undefined;
   leftTitle?: string;
   rightTitle?: string;
   rightTitleButton?: JSX.Element;
