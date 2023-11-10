@@ -83,29 +83,38 @@ type StatusProps = {
   status: string;
 };
 
-const STATUS_BASE_CLASSES = "text-center rounded px-2 py-1";
-const SECOND_CHOICE_BASE_CLASSES = "rounded-3xl text-center w-fit px-2";
+const STATUS_BASE_CLASSES = "text-center rounded w-max px-2 py-1 ";
+const SECOND_CHOICE_BASE_CLASSES = "text-center rounded w-max px-2 ";
 
 export const Status: React.FC<StatusProps> = ({ status }) => {
   let className = STATUS_BASE_CLASSES;
   let text = "";
 
   switch (status) {
+    case "accepted":
+      className += "bg-green-100 ";
+      text = "Accepted";
+      break;
     case "applied":
-      className += " bg-sky-200";
+      className += "bg-sky-200 ";
       text = "Applied";
       break;
     case "in review":
-      className += " bg-yellow-100";
+      className += "bg-yellow-100 ";
       text = "In Review";
       break;
-    case "interview":
-      className += " bg-green-100";
-      text = "Interview";
+    case "interviewed":
+      className += "bg-orange-200 ";
+      text = "Interviewed";
       break;
     case "pending":
-      className += " bg-charcoal-300";
+      className += "bg-charcoal-300 ";
       text = "Pending";
+      break;
+    case "rejected":
+      className += "bg-pink-300 ";
+      text = "Rejected";
+      break;
   }
 
   return <div className={className}>{text}</div>;
@@ -116,30 +125,32 @@ export const SecondChoiceStatus: React.FC<StatusProps> = ({ status }) => {
   let text = "";
 
   switch (status) {
-    case "n/a":
-      className += " text-red-500 border";
-      text = "N/A";
-      break;
     case "considered":
-      className += " text-green-300 border";
+      className += "rounded-3xl text-green-300 border ";
       text = "Considered";
       break;
+    case "n/a":
+      className += "rounded-3xl text-red-500 border ";
+      text = "N/A";
+      break;
     case "not considered":
-      className += " border text-charcoal-400";
+      className += "rounded-3xl border text-charcoal-400 ";
       text = "Not Considered";
       break;
     case "in review":
-      className += " bg-yellow-100";
+      className += "bg-yellow-100 py-1 ";
+      text = "In Review";
       break;
     case "interview":
-      className += " bg-green-100";
+      className += "bg-green-100 py-1 ";
+      text = "Interview";
       break;
     case "recommended":
-      className += " bg-orange-300";
+      className += "bg-orange-200 py-1 ";
       text = "Recommended";
       break;
     case "no interview":
-      className += " bg-charcoal-300";
+      className += "bg-charcoal-300 py-1 ";
       text = "No Interview";
       break;
   }
