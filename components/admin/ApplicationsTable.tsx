@@ -43,18 +43,19 @@ const ApplicationsTable: React.FC<TableProps> = ({
   }, [activeRole, whichChoiceTab]);
 
   const fetchApplicationsByRole = async () => {
+    const currentRole = activeRole || ApplicantRole.vpe;
     try {
       const firstChoiceResult = await fetchGraphql(
         applicationTableQueries.applicationsByRole,
         {
-          role: activeRole || ApplicantRole.vpe,
+          role: currentRole,
         },
       );
   
       const secondChoiceResult = await fetchGraphql(
         applicationTableQueries.applicationsBySecondChoiceRole,
         {
-          role: activeRole || ApplicantRole.vpe,
+          role: currentRole,
         },
       );
       setFirstChoiceApplications(firstChoiceResult.data.applicationTable);
@@ -103,7 +104,6 @@ const ApplicationsTable: React.FC<TableProps> = ({
       return firstChoiceApplications.map(createStudentRow)
     }
     return secondChoiceApplications.map(createStudentRow)
-
   }
 
   return (
