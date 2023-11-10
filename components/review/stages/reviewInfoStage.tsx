@@ -104,32 +104,25 @@ export const ReviewInfoStage: React.FC<Props> = ({ scores, reviewId }) => {
       id: reviewId,
     }).then((result) => {
       if (result.data) {
-        const email = result.data.applicationsById.email;
-        const program = result.data.applicationsById.program;
-        const academicTerm = result.data.applicationsById.academicYear;
-        const headFrom = result.data.applicationsById.heardFrom;
-        const timesApplied = result.data.applicationsById.timesApplied;
-        const pronouns = result.data.applicationsById.pronouns;
-        const academicOrCoop = result.data.applicationsById.academicOrCoop;
-        const position = result.data.applicationsById.firstChoiceRole;
-        const arr = result.data.applicationsById.shortAnswerQuestions[0];
-        const arrObject = JSON.parse(arr);
-        console.log (arrObject);
+        let appInfo = result.data.applicationsById;
+        const shortAnswerStr = appInfo.shortAnswerQuestions[0];
+        const shortAnswerJSON = JSON.parse(shortAnswerStr);
+        console.log(shortAnswerJSON);
 
-        const combinedName = result.data.applicationsById.firstName + " " + result.data.applicationsById.lastName
+        const combinedName = appInfo.firstName + " " + appInfo.lastName
         setName(combinedName)
 
-        const extractedQuestions = arrObject.map((dict: { [key: string]: string }) => {
+        const extractedQuestions = shortAnswerJSON.map((dict: { [key: string]: string }) => {
           return dict.question;
         });
   
-        const extractedAnswers = arrObject.map((dict: { [key: string]: string }) => {
+        const extractedAnswers = shortAnswerJSON.map((dict: { [key: string]: string }) => {
           return dict.response;
         });
 
         setQuestions(questions => [...questions,"Email","Program","Academic Term", "Where did you hear about us?",
         "How many times have you applied to Blueprint in the past?", "Pronouns", "Will you be in an academic (school) term or a co-op term?", "Position",]);
-        setAnswers(answers => [...answers, email, program, academicTerm, headFrom, timesApplied, pronouns, academicOrCoop, position,]);
+        setAnswers(answers => [...answers, appInfo.email, appInfo.program, appInfo.academicYear, appInfo.heardFrom, appInfo.timesApplied, appInfo.pronouns, appInfo.academicOrCoop, appInfo.firstChoiceRole,]);
         setQuestions(questions => [...questions,extractedQuestions[0]]);
         setAnswers(answers => [...answers,extractedAnswers[0]]); 
 
