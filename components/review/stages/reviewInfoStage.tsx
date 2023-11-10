@@ -8,28 +8,15 @@ import WarningIcon from "@components/icons/warning.icon";
 import { useRouter } from "next/router";
 import { fetchGraphql } from "@utils/makegqlrequest";
 import { ReviewAnswers } from "./reviewAnswers";
-
-type QuestionAnswerProps = {
-  readonly question: string;
-  readonly answer: string;
-};
+import { ApplicationDTO } from "types";
 
 interface AuthStatus {
   loading: boolean;
   isAuthorized: boolean;
 }
 
-const QuestionAnswer: FC<QuestionAnswerProps> = ({ question, answer }) => {
-  return (
-    <div>
-      <p className="text-[16px] font-poppins pb-[4px]">{question}</p>
-      <p className="text-[16px] font-source text-charcoal-500">{answer}</p>
-    </div>
-  );
-};
-
 type ConflictModalProps = {
-  readonly name: string | undefined
+  readonly name: string | undefined;
   readonly open: boolean;
   readonly onClose: () => void;
 };
@@ -104,28 +91,50 @@ export const ReviewInfoStage: React.FC<Props> = ({ scores, reviewId }) => {
       id: reviewId,
     }).then((result) => {
       if (result.data) {
-        let appInfo = result.data.applicationsById;
+        const appInfo: ApplicationDTO = result.data.applicationsById;
         const shortAnswerStr = appInfo.shortAnswerQuestions[0];
         const shortAnswerJSON = JSON.parse(shortAnswerStr);
         console.log(shortAnswerJSON);
 
-        const combinedName = appInfo.firstName + " " + appInfo.lastName
-        setName(combinedName)
+        const combinedName = appInfo.firstName + " " + appInfo.lastName;
+        setName(combinedName);
 
-        const extractedQuestions = shortAnswerJSON.map((dict: { [key: string]: string }) => {
-          return dict.question;
-        });
-  
-        const extractedAnswers = shortAnswerJSON.map((dict: { [key: string]: string }) => {
-          return dict.response;
-        });
+        const extractedQuestions = shortAnswerJSON.map(
+          (dict: { [key: string]: string }) => {
+            return dict.question;
+          },
+        );
 
-        setQuestions(questions => [...questions,"Email","Program","Academic Term", "Where did you hear about us?",
-        "How many times have you applied to Blueprint in the past?", "Pronouns", "Will you be in an academic (school) term or a co-op term?", "Position",]);
-        setAnswers(answers => [...answers, appInfo.email, appInfo.program, appInfo.academicYear, appInfo.heardFrom, appInfo.timesApplied, appInfo.pronouns, appInfo.academicOrCoop, appInfo.firstChoiceRole,]);
-        setQuestions(questions => [...questions,extractedQuestions[0]]);
-        setAnswers(answers => [...answers,extractedAnswers[0]]); 
+        const extractedAnswers = shortAnswerJSON.map(
+          (dict: { [key: string]: string }) => {
+            return dict.response;
+          },
+        );
 
+        setQuestions((questions) => [
+          ...questions,
+          "Email",
+          "Program",
+          "Academic Term",
+          "Where did you hear about us?",
+          "How many times have you applied to Blueprint in the past?",
+          "Pronouns",
+          "Will you be in an academic (school) term or a co-op term?",
+          "Position",
+        ]);
+        setAnswers((answers) => [
+          ...answers,
+          appInfo.email,
+          appInfo.program,
+          appInfo.academicYear,
+          appInfo.heardFrom,
+          appInfo.timesApplied,
+          appInfo.pronouns,
+          appInfo.academicOrCoop,
+          appInfo.firstChoiceRole,
+        ]);
+        setQuestions((questions) => [...questions, extractedQuestions[0]]);
+        setAnswers((answers) => [...answers, extractedAnswers[0]]);
       } else {
         setAuthStatus({
           loading: false,
