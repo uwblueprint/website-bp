@@ -103,7 +103,7 @@ const RoleHeader: FC<RoleHeaderProps> = ({
 
   return (
     <div
-      className="px-8 py-10 flex items-center"
+      className="flex items-center pt-2"
       style={{ display: "flex", alignItems: "center" }}
     >
       <h4 className="font-poppins font-medium pr-2">Roles</h4>

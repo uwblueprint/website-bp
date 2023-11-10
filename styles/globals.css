@@ -58,3 +58,11 @@
     @apply w-full max-w-6xl mx-auto px-4 md:px-6;
   }
 }
+
+select {
+  color: #0573E8;
+}
+
+select.form-control:focus {
+  box-shadow: none!important;
+}

@@ -48,8 +48,6 @@ const ApplicationsTable: React.FC<TableProps> = ({
     setNumEntries(result.data.applicationTable.length);
   };
 
-  const router = useRouter();
-
   const createStudentRow = (application: any) => {
     const app = application.application;
     const reviewers = application.reviewers;
