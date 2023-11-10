@@ -43,24 +43,28 @@ const ApplicationsTable: React.FC<TableProps> = ({
   }, [activeRole, whichChoiceTab]);
 
   const fetchApplicationsByRole = async () => {
-    const firstChoiceResult = await fetchGraphql(
-      applicationTableQueries.applicationsByRole,
-      {
-        role: activeRole || ApplicantRole.vpe,
-      },
-    );
-
-    const secondChoiceResult = await fetchGraphql(
-      applicationTableQueries.applicationsBySecondChoiceRole,
-      {
-        role: activeRole || ApplicantRole.vpe,
-      },
-    );
-    setFirstChoiceApplications(firstChoiceResult.data.applicationTable);
-    setNumFirstChoiceEntries(firstChoiceResult.data.applicationTable.length);
-
-    setSecondChoiceApplications(secondChoiceResult.data.secondChoiceRoleApplicationTable);
-    setNumSecondChoiceEntries(secondChoiceResult.data.secondChoiceRoleApplicationTable.length);
+    try {
+      const firstChoiceResult = await fetchGraphql(
+        applicationTableQueries.applicationsByRole,
+        {
+          role: activeRole || ApplicantRole.vpe,
+        },
+      );
+  
+      const secondChoiceResult = await fetchGraphql(
+        applicationTableQueries.applicationsBySecondChoiceRole,
+        {
+          role: activeRole || ApplicantRole.vpe,
+        },
+      );
+      setFirstChoiceApplications(firstChoiceResult.data.applicationTable);
+      setNumFirstChoiceEntries(firstChoiceResult.data.applicationTable.length);
+  
+      setSecondChoiceApplications(secondChoiceResult.data.secondChoiceRoleApplicationTable);
+      setNumSecondChoiceEntries(secondChoiceResult.data.secondChoiceRoleApplicationTable.length);
+    } catch (error) {
+        console.error('Error fetching applications:', error);
+      }
   };
 
   const router = useRouter();
