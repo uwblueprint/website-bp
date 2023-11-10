@@ -38,7 +38,6 @@ const ApplicationsTable: React.FC<TableProps> = ({
 }) => {
   const [firstChoiceApplications, setFirstChoiceApplications] = useState<any[]>([]);
   const [secondChoiceApplications, setSecondChoiceApplications] = useState<any[]>([]);
-
   useEffect(() => {
     fetchApplicationsByRole();
   }, [activeRole, whichChoiceTab]);
@@ -59,7 +58,7 @@ const ApplicationsTable: React.FC<TableProps> = ({
     );
     setFirstChoiceApplications(firstChoiceResult.data.applicationTable);
     setNumFirstChoiceEntries(firstChoiceResult.data.applicationTable.length);
-    
+
     setSecondChoiceApplications(secondChoiceResult.data.secondChoiceRoleApplicationTable);
     setNumSecondChoiceEntries(secondChoiceResult.data.secondChoiceRoleApplicationTable.length);
   };
@@ -95,7 +94,7 @@ const ApplicationsTable: React.FC<TableProps> = ({
     };
   };
 
-  const getTestTableRows = () => {
+  const getTableRows = () => {
     if (!whichChoiceTab) {
       return firstChoiceApplications.map(createStudentRow)
     }
@@ -103,13 +102,11 @@ const ApplicationsTable: React.FC<TableProps> = ({
 
   }
 
-  const getTableRows = () => firstChoiceApplications.map(createStudentRow);
-
   return (
     <MuiThemeProvider theme={getMuiTheme()}>
       <MUIDataTable
         title=""
-        data={getTestTableRows()}
+        data={getTableRows()}
         columns={getApplicationTableColumns()}
         options={{
           search: true,
