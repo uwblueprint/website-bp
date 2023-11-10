@@ -56,9 +56,6 @@ export const queries = {
         timesApplied
     }
   }
-  applicationsById(id: 1) {
-    email
-  }
 `,
 };
 
