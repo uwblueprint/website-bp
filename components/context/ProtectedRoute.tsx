@@ -1,6 +1,5 @@
 import { ReactChild, ReactElement, useEffect, useState } from "react";
 import Loading from "@components/common/Loading";
-import { queries } from "graphql/queries";
 import { useRouter } from "next/router";
 import AuthAPIClient from "APIClients/AuthAPIClient";
 
