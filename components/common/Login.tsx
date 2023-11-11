@@ -1,5 +1,6 @@
 import { auth } from "@utils/firebase";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
+import { mutations } from "graphql/queries";
 import { ReactElement } from "react";
 import Button from "./Button";
 import { fetchGraphql } from "@utils/makegqlrequest";
@@ -7,7 +8,8 @@ import { fetchGraphql } from "@utils/makegqlrequest";
 const Login = (): ReactElement => {
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
-    const res = await signInWithPopup(auth, provider);
+    provider.setCustomParameters({ hd: "uwblueprint.org" }); // only allow uwblueprint.org emails to sign in
+    const res = await signInWithRedirect(auth, provider);
     if (res) {
       const oauthIdToken = (res as any)._tokenResponse.oauthIdToken;
       fetchGraphql(mutations.loginWithGoogle, { idToken: oauthIdToken }).then(
