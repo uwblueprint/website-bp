@@ -28,8 +28,6 @@ export const getReviewId = (query: any): number => {
   return reviewId;
 };
 
-// export default getReviewId;
-
 interface AuthStatus {
   loading: boolean;
   isAuthorized: boolean;
