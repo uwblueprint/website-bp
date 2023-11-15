@@ -1,18 +1,18 @@
 export interface AuthStatus {
-    loading: boolean;
-    isAuthorized: boolean;
+  loading: boolean;
+  isAuthorized: boolean;
 }
 
 export type Student = {
-    id: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    academicYear: string;
-    program: string;
-    resumeLink: string;
-    firstChoiceRole: string;
-    secondChoiceRole: string;
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  academicYear: string;
+  program: string;
+  resumeLink: string;
+  firstChoiceRole: string;
+  secondChoiceRole: string;
 };
 
 export type ApplicationDTO = {
@@ -38,3 +38,13 @@ export type ApplicationDTO = {
   timesApplied: string;
   timestamp: bigint;
 };
+
+export enum ReviewStage {
+  INFO = "INFO",
+  PFSG = "PFSG",
+  TP = "TP",
+  D2L = "D2L",
+  SKL = "SKL",
+  END = "END",
+  END_SUCCESS = "END_SUCCESS",
+}

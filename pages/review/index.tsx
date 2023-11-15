@@ -14,16 +14,7 @@ import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import ProtectedApplication from "./protectedApplication";
-
-export enum ReviewStage {
-  INFO = "INFO",
-  PFSG = "PFSG",
-  TP = "TP",
-  D2L = "D2L",
-  SKL = "SKL",
-  END = "END",
-  END_SUCCESS = "END_SUCCESS",
-}
+import { ReviewStage } from "types";
 
 export const getReviewId = (query: any): number => {
   // verify reviewId
@@ -40,6 +31,7 @@ export const getReviewId = (query: any): number => {
 };
 
 const ReviewsPages: NextPage = () => {
+  const router = useRouter();
   const [stage, setStage] = useState<ReviewStage>(ReviewStage.INFO);
   const initialScores = new Map<ReviewStage, number>();
   initialScores.set(ReviewStage.PFSG, 1);
@@ -58,7 +50,6 @@ const ReviewsPages: NextPage = () => {
   };
 
   const getReviewStage = () => {
-    const router = useRouter();
     const reviewId = getReviewId(router.query);
     switch (stage) {
       case ReviewStage.INFO:
