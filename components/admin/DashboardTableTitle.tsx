@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
 
 interface TitleProps {
   numFirstChoiceEntries?: number;
@@ -14,13 +14,24 @@ interface TabDescriptionProps {
   pillStyle: string;
 }
 
-const TabDescription: FC<TabDescriptionProps> = ({ title, numEntries, pillStyle }) => (
-  <div style={{color: 'black', textTransform: 'none', fontSize: 20, width: 400}}>
+const TabDescription: FC<TabDescriptionProps> = ({
+  title,
+  numEntries,
+  pillStyle,
+}) => (
+  <div
+    style={{ color: "black", textTransform: "none", fontSize: 20, width: 400 }}
+  >
     {title} <p className={pillStyle}>{numEntries} Entries</p>
   </div>
 );
 
-const TableTitle: FC<TitleProps> = ({ numFirstChoiceEntries, numSecondChoiceEntries, setWhichChoiceTab, whichChoiceTab }) => {
+const TableTitle: FC<TitleProps> = ({
+  numFirstChoiceEntries,
+  numSecondChoiceEntries,
+  setWhichChoiceTab,
+  whichChoiceTab,
+}) => {
   const pillStyle =
     "border-2 border-blue-100 text-blue rounded-full px-4 py-2 m-2 font-large inline-block";
 
@@ -30,15 +41,36 @@ const TableTitle: FC<TitleProps> = ({ numFirstChoiceEntries, numSecondChoiceEntr
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setWhichChoiceTab(newValue);
   };
-  
+
   return (
     <div className="bg-sky rounded-t text-blue-300 text-base font-inter font-medium px-4 py-1 flex justify-between items-center">
-        <div className="flex items-baseline space-x-4">
-          <Tabs value={whichChoiceTab} onChange={handleChange} variant="fullWidth" textColor="inherit">
-            <Tab label={<TabDescription title="1st Choice Applicants" numEntries={numFirstChoiceEntries} pillStyle={pillStyle}/>}/>
-            <Tab label={<TabDescription title="2nd Choice Applicants" numEntries={numSecondChoiceEntries} pillStyle={pillStyle}/>}/>
-          </Tabs>
-        </div>
+      <div className="flex items-baseline space-x-4">
+        <Tabs
+          value={whichChoiceTab}
+          onChange={handleChange}
+          variant="fullWidth"
+          textColor="inherit"
+        >
+          <Tab
+            label={
+              <TabDescription
+                title="1st Choice Applicants"
+                numEntries={numFirstChoiceEntries}
+                pillStyle={pillStyle}
+              />
+            }
+          />
+          <Tab
+            label={
+              <TabDescription
+                title="2nd Choice Applicants"
+                numEntries={numSecondChoiceEntries}
+                pillStyle={pillStyle}
+              />
+            }
+          />
+        </Tabs>
+      </div>
       {/* <button className={`${editButton} flex items-center`}>
         <svg
           width="13"
