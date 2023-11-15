@@ -8,6 +8,7 @@ import RoleHeader from "./RoleHeader";
 import TableTitle from "./ApplicationDashboardTableTitle";
 import ApplicationsTable from "./ApplicationsTable";
 import ApplicantRole from "entities/applicationRole";
+import ReviewTable from "./ReviewTable";
 
 export enum OrganizationalArea {
   Engineering = "Engineering",
@@ -24,6 +25,14 @@ const Table: FC = () => {
     ApplicantRole | undefined
   >();
   const [numEntries, setNumEntries] = React.useState<number | undefined>();
+
+  const [selectedDropdownItem, setSelectedDropdownItem] =
+    React.useState<string>("");
+
+  const handleDropdownChange = (selectedItem: string) => {
+    setSelectedDropdownItem(selectedItem);
+  };
+
   const user: Users = {
     id: "1",
     name: "Chris Abey",
@@ -52,7 +61,7 @@ const Table: FC = () => {
         <Tabs activeTab={activeTab} setActiveTab={setActiveTab} user={user} />
       </div>
       <div className="px-10 py-6">
-        <DropdownMenu />
+        <DropdownMenu onChange={handleDropdownChange} />
         <RoleHeader
           activeTab={activeTab}
           setActiveRole={setActiveRole}
@@ -61,11 +70,20 @@ const Table: FC = () => {
       </div>
       <div className="mx-8">
         <TableTitle numEntries={numEntries} />
-        <ApplicationsTable
-          activeRole={activeRole}
-          setNumEntries={setNumEntries}
-          numEntries={numEntries}
-        />
+        {selectedDropdownItem === "Review Dashboard" && (
+          <ReviewTable
+            activeRole={activeRole}
+            setNumEntries={setNumEntries}
+            numEntries={numEntries}
+          />
+        )}
+        {selectedDropdownItem === "Delegation Dashboard" && (
+          <ApplicationsTable
+            activeRole={activeRole}
+            setNumEntries={setNumEntries}
+            numEntries={numEntries}
+          />
+        )}
       </div>
     </div>
   );
