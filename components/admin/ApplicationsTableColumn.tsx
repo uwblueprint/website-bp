@@ -1,7 +1,7 @@
 import { MUIDataTableColumn } from "mui-datatables";
 import { LinkIcon } from "@components/icons/link.icon";
 import { Status, SecondChoiceStatus } from "@utils/muidatatable";
-import { router } from "next/router";
+import router from "next/router";
 
 export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
   const handleNameClick = (appId: string) => {
@@ -25,7 +25,7 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
         filter: false,
         // sortCompare: (order: "asc" | "desc") => createSortFunction(order),
         searchable: true,
-        customBodyRender(value, tableMeta, updateValue) {
+        customBodyRender(value, tableMeta) {
           const appId = tableMeta.rowData[0];
           return (
             <div
@@ -75,7 +75,7 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
           ],
         },
         filterType: "multiselect",
-        customBodyRender(value, tableMeta, updateValue) {
+        customBodyRender(value) {
           return <Status status={value} />;
         },
       },
@@ -109,7 +109,7 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
           ],
         },
         filterType: "multiselect",
-        customBodyRender(value, tableMeta, updateValue) {
+        customBodyRender(value) {
           return <SecondChoiceStatus status={value} />;
         },
       },

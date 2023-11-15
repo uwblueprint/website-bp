@@ -14,7 +14,16 @@ import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import ProtectedApplication from "./protectedApplication";
-import { ReviewStage } from "types";
+
+export enum ReviewStage {
+  INFO = "INFO",
+  PFSG = "PFSG",
+  TP = "TP",
+  D2L = "D2L",
+  SKL = "SKL",
+  END = "END",
+  END_SUCCESS = "END_SUCCESS",
+}
 
 export const getReviewId = (query: any): number => {
   // verify reviewId

@@ -38,13 +38,3 @@ export type ApplicationDTO = {
   timesApplied: string;
   timestamp: bigint;
 };
-
-export enum ReviewStage {
-  INFO = "INFO",
-  PFSG = "PFSG",
-  TP = "TP",
-  D2L = "D2L",
-  SKL = "SKL",
-  END = "END",
-  END_SUCCESS = "END_SUCCESS",
-}
