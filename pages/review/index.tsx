@@ -33,11 +33,11 @@ export const getReviewId = (query: any): number => {
       : (() => {
           throw new Error("reviewId must be a String");
         })();
-  if (Number.isNaN(reviewId)) throw Error("reviewId must be parsable into an int");
+  if (Number.isNaN(reviewId))
+    throw Error("reviewId must be parsable into an int");
 
   return reviewId;
 };
-
 
 const ReviewsPages: NextPage = () => {
   const [stage, setStage] = useState<ReviewStage>(ReviewStage.INFO);
@@ -59,10 +59,10 @@ const ReviewsPages: NextPage = () => {
 
   const getReviewStage = () => {
     const router = useRouter();
-    const reviewId = getReviewId(router.query)
+    const reviewId = getReviewId(router.query);
     switch (stage) {
       case ReviewStage.INFO:
-        return <ReviewInfoStage scores={scores} reviewId={reviewId}/>;
+        return <ReviewInfoStage scores={scores} reviewId={reviewId} />;
       case ReviewStage.PFSG:
         return <ReviewPassionForSocialGoodStage scores={scores} />;
       case ReviewStage.TP:
@@ -88,14 +88,12 @@ const ReviewsPages: NextPage = () => {
   );
 };
 
-
-
 const Reviews: NextPage = () => {
   const router = useRouter();
   return (
     <ProtectedRoute allowedRoles={["Admin", "User"]}>
-      <ProtectedApplication headerInformation={router.query}> 
-      {/* pass in the review id instead */}
+      <ProtectedApplication headerInformation={router.query}>
+        {/* pass in the review id instead */}
         <ReviewsPages />
       </ProtectedApplication>
     </ProtectedRoute>
