@@ -1,7 +1,19 @@
 export interface AuthStatus {
-  loading: boolean;
-  isAuthorized: boolean;
+    loading: boolean;
+    isAuthorized: boolean;
 }
+
+export type Student = {
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    academicYear: string;
+    program: string;
+    resumeLink: string;
+    firstChoiceRole: string;
+    secondChoiceRole: string;
+};
 
 export type ApplicationDTO = {
   id: number;

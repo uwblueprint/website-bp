@@ -5,7 +5,7 @@ import Tabs from "./Tabs";
 import Permissions from "entities/permissions";
 import Users from "entities/users";
 import RoleHeader from "./RoleHeader";
-import TableTitle from "./ApplicationDashboardTableTitle";
+import TableTitle from "./DashboardTableTitle";
 import ApplicationsTable from "./ApplicationsTable";
 import ApplicantRole from "entities/applicationRole";
 
@@ -23,7 +23,9 @@ const Table: FC = () => {
   const [activeRole, setActiveRole] = React.useState<
     ApplicantRole | undefined
   >();
-  const [numEntries, setNumEntries] = React.useState<number | undefined>();
+  const [numFirstChoiceEntries, setNumFirstChoiceEntries] = React.useState<number | undefined>();
+  const [numSecondChoiceEntries, setNumSecondChoiceEntries] = React.useState<number | undefined>();
+  const [whichChoiceTab, setWhichChoiceTab] = React.useState(0);
   const user: Users = {
     id: "1",
     name: "Chris Abey",
@@ -49,7 +51,11 @@ const Table: FC = () => {
             <Avatar {...user} />
           </div>
         </div>
-        <Tabs activeTab={activeTab} setActiveTab={setActiveTab} user={user} />
+        <Tabs 
+          activeTab={activeTab} 
+          setActiveTab={setActiveTab} 
+          user={user} 
+        />
       </div>
       <div className="px-10 py-6">
         <DropdownMenu />
@@ -60,11 +66,19 @@ const Table: FC = () => {
         />
       </div>
       <div className="mx-8">
-        <TableTitle numEntries={numEntries} />
+        <TableTitle 
+          numFirstChoiceEntries={numFirstChoiceEntries} 
+          numSecondChoiceEntries={numSecondChoiceEntries} 
+          setWhichChoiceTab={setWhichChoiceTab} 
+          whichChoiceTab={whichChoiceTab}
+        />
         <ApplicationsTable
           activeRole={activeRole}
-          setNumEntries={setNumEntries}
-          numEntries={numEntries}
+          whichChoiceTab={whichChoiceTab}
+          setNumFirstChoiceEntries={setNumFirstChoiceEntries}
+          numFirstChoiceEntries={numFirstChoiceEntries}
+          setNumSecondChoiceEntries={setNumSecondChoiceEntries}
+          numSecondChoiceEntries={numSecondChoiceEntries}
         />
       </div>
     </div>
