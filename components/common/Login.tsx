@@ -11,6 +11,7 @@ const Login = (): ReactElement => {
 
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({ hd: "uwblueprint.org" }); // only allow uwblueprint.org emails to sign in
     const res = await signInWithPopup(auth, provider);
     if (res) {
       const oauthIdToken = (res as any)._tokenResponse.oauthIdToken;

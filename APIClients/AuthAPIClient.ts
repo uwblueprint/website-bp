@@ -1,6 +1,7 @@
 import { fetchGraphql } from "@utils/makegqlrequest";
 import { mutations, queries } from "graphql/queries";
 import BaseAPIClient from "./BaseAPIClient";
+import { queries } from "graphql/queries";
 
 export type TokenInfo = {
   accessToken: string;

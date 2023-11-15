@@ -46,7 +46,6 @@ const Table: FC = () => {
                 style={{ paddingRight: 20 }}
               />
             </a>
-            <DropdownMenu />
           </div>
           <div className="flex items-center space-x-4">
             <Avatar {...user} />
@@ -58,11 +57,14 @@ const Table: FC = () => {
           user={user} 
         />
       </div>
-      <RoleHeader
-        activeTab={activeTab}
-        setActiveRole={setActiveRole}
-        activeRole={activeRole}
-      />
+      <div className="px-10 py-6">
+        <DropdownMenu />
+        <RoleHeader
+          activeTab={activeTab}
+          setActiveRole={setActiveRole}
+          activeRole={activeRole}
+        />
+      </div>
       <div className="mx-8">
         <TableTitle 
           numFirstChoiceEntries={numFirstChoiceEntries} 

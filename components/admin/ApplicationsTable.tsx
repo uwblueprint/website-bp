@@ -57,8 +57,6 @@ const ApplicationsTable: React.FC<TableProps> = ({
       }
   };
 
-  const router = useRouter();
-
   const createStudentRow = (application: any) => {
     const app = application.application;
     const reviewers = application.reviewers;

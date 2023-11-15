@@ -5,7 +5,7 @@ import { fetchGraphql } from "@utils/makegqlrequest";
 import { queries } from "graphql/queries";
 import Loading from "@components/common/Loading";
 
-type Props = {
+export type Props = {
   children: ReactChild;
   headerInformation: ParsedUrlQuery;
 };
@@ -14,7 +14,7 @@ type AccessToken = {
   readonly user_id: string;
 };
 
-const getReviewId = (query: ParsedUrlQuery): number => {
+export const getReviewId = (query: any): number => {
   // verify reviewId
   const reviewId =
     typeof query["reviewId"] === "string"
@@ -47,7 +47,7 @@ const ProtectedApplication = ({
     if (!accessToken) throw Error("undefined accessToken");
 
     const decodedToken = jwt_decode<AccessToken>(accessToken);
-    const reviewerUserId = decodedToken.user_id;
+    const reviewerUserId = decodedToken.user_id; // this is auth_id in the db
 
     fetchGraphql(queries.isAuthorizedToReview, {
       applicationId: reviewId,

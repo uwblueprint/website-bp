@@ -1,48 +1,23 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import { ReviewStage } from "pages/review";
 import { ReviewSplitPanelPage } from "../shared/reviewSplitPanelPage";
 import Button from "@components/common/Button";
-
+import { mutations, queries } from "graphql/queries";
+import  getReviewId from "pages/review/protectedApplication";
 import Image from "next/image";
 import WarningIcon from "@components/icons/warning.icon";
+import { useRouter } from "next/router";
+import { fetchGraphql } from "@utils/makegqlrequest";
+import { ReviewAnswers } from "./reviewAnswers";
+import { ApplicationDTO } from "types";
 
-type QuestionAnswerProps = {
-  readonly question: string;
-  readonly answer: string;
-};
-
-const data = [
-  { question: "Email", answer: "matthew.wang@uwblueprint.org" },
-  { question: "Program", answer: "Computer Science" },
-  { question: "Academic Term", answer: "4A" },
-  { question: "Where did you hear about us?", answer: "Word of mouth" },
-  {
-    question: "How many times have you applied to Blueprint in the past?",
-    answer: "This is my first time!",
-  },
-  { question: "Pronouns", answer: "He/Him/His" },
-  {
-    question: "Will you be in an academic (school) term or a co-op term?",
-    answer: "Academic",
-  },
-  { question: "Position", answer: "Product Designer" },
-  {
-    question: "What timezone will you be based out of?",
-    answer: "I will be based out of the Eastern timezone.",
-  },
-];
-
-const QuestionAnswer: FC<QuestionAnswerProps> = ({ question, answer }) => {
-  return (
-    <div>
-      <p className="text-[16px] font-poppins pb-[4px]">{question}</p>
-      <p className="text-[16px] font-source text-charcoal-500">{answer}</p>
-    </div>
-  );
-};
+interface AuthStatus {
+  loading: boolean;
+  isAuthorized: boolean;
+}
 
 type ConflictModalProps = {
-  readonly name: string;
+  readonly name: string | undefined;
   readonly open: boolean;
   readonly onClose: () => void;
 };
@@ -99,9 +74,69 @@ const ConflictModal: FC<ConflictModalProps> = ({ name, open, onClose }) => {
 
 interface Props {
   scores: Map<ReviewStage, number>;
+  reviewId: number;
 }
 
 export const ReviewInfoStage: React.FC<Props> = ({ scores }) => {
+  const router = useRouter();
+  console.log(typeof router.query);
+  useEffect(() => {
+    fetchGraphql(queries.applicationsById, {
+      id: reviewId,
+    }).then((result) => {
+      if (result.data) {
+        const appInfo: ApplicationDTO = result.data.applicationsById;
+        const shortAnswerStr = appInfo.shortAnswerQuestions[0];
+        const shortAnswerJSON = JSON.parse(shortAnswerStr);
+        console.log(shortAnswerJSON);
+
+        const combinedName = appInfo.firstName + " " + appInfo.lastName;
+        setName(combinedName);
+
+        const extractedQuestions = shortAnswerJSON.map(
+          (dict: { [key: string]: string }) => {
+            return dict.question;
+          },
+        );
+
+        const extractedAnswers = shortAnswerJSON.map(
+          (dict: { [key: string]: string }) => {
+            return dict.response;
+          },
+        );
+
+        setQuestions((questions) => [
+          ...questions,
+          "Email",
+          "Program",
+          "Academic Term",
+          "Where did you hear about us?",
+          "How many times have you applied to Blueprint in the past?",
+          "Pronouns",
+          "Will you be in an academic (school) term or a co-op term?",
+          "Position",
+        ]);
+        setAnswers((answers) => [
+          ...answers,
+          appInfo.email,
+          appInfo.program,
+          appInfo.academicYear,
+          appInfo.heardFrom,
+          appInfo.timesApplied,
+          appInfo.pronouns,
+          appInfo.academicOrCoop,
+          appInfo.firstChoiceRole,
+        ]);
+        setQuestions((questions) => [...questions, extractedQuestions[0]]);
+        setAnswers((answers) => [...answers, extractedAnswers[0]]);
+      } else {
+        setAuthStatus({
+          loading: false,
+          isAuthorized: false,
+        });
+      }
+    });
+  }, [reviewId]);
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <ReviewSplitPanelPage
