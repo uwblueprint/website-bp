@@ -6,6 +6,7 @@ import Button from "./Button";
 import { fetchGraphql } from "@utils/makegqlrequest";
 
 const Login = (): ReactElement => {
+  const router = useRouter();
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({ hd: "uwblueprint.org" }); // only allow uwblueprint.org emails to sign in
