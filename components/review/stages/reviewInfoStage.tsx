@@ -2,14 +2,13 @@ import { FC, useState, useEffect } from "react";
 import { ReviewStage } from "pages/review";
 import { ReviewSplitPanelPage } from "../shared/reviewSplitPanelPage";
 import Button from "@components/common/Button";
-import { mutations, queries } from "graphql/queries";
-import  getReviewId from "pages/review/protectedApplication";
+import { queries } from "graphql/queries";
 import Image from "next/image";
 import WarningIcon from "@components/icons/warning.icon";
 import { useRouter } from "next/router";
 import { fetchGraphql } from "@utils/makegqlrequest";
-import { ReviewAnswers } from "./reviewAnswers";
 import { ApplicationDTO } from "types";
+import { ReviewAnswers } from "./reviewAnswers";
 
 interface AuthStatus {
   loading: boolean;
@@ -77,9 +76,17 @@ interface Props {
   reviewId: number;
 }
 
-export const ReviewInfoStage: React.FC<Props> = ({ scores }) => {
+export const ReviewInfoStage: React.FC<Props> = ({ scores, reviewId }) => {
   const router = useRouter();
   console.log(typeof router.query);
+  const [name, setName] = useState("");
+  const [questions, setQuestions] = useState<string[]>([]);
+  const [answers, setAnswers] = useState<string[]>([]);
+  const [authStatus, setAuthStatus] = useState<AuthStatus>({
+    loading: true,
+    isAuthorized: false,
+  });
+
   useEffect(() => {
     fetchGraphql(queries.applicationsById, {
       id: reviewId,
@@ -87,6 +94,7 @@ export const ReviewInfoStage: React.FC<Props> = ({ scores }) => {
       if (result.data) {
         const appInfo: ApplicationDTO = result.data.applicationsById;
         const shortAnswerStr = appInfo.shortAnswerQuestions[0];
+        console.log(appInfo);
         const shortAnswerJSON = JSON.parse(shortAnswerStr);
         console.log(shortAnswerJSON);
 
@@ -136,11 +144,11 @@ export const ReviewInfoStage: React.FC<Props> = ({ scores }) => {
         });
       }
     });
-  }, [reviewId]);
+  }, []);
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <ReviewSplitPanelPage
-      studentName="Matthew Wang"
+      studentName={name}
       rightTitle="Basic Information"
       rightTitleButton={
         <Button
@@ -180,20 +188,12 @@ export const ReviewInfoStage: React.FC<Props> = ({ scores }) => {
         <>
           {/* Modal */}
           <ConflictModal
-            name="Matthew Wang"
+            name={name}
             open={modalOpen}
             onClose={() => setModalOpen(false)}
           />
           <div className="flex flex-col gap-4">
-            {data.map((item, index) => {
-              return (
-                <QuestionAnswer
-                  key={index}
-                  question={item.question}
-                  answer={item.answer}
-                />
-              );
-            })}
+            <ReviewAnswers questions={questions} answers={answers} />
           </div>
         </>
       }
