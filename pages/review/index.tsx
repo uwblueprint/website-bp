@@ -64,9 +64,9 @@ const ReviewsPages: NextPage = () => {
       case ReviewStage.INFO:
         return <ReviewInfoStage scores={scores} reviewId={reviewId} />;
       case ReviewStage.PFSG:
-        return <ReviewPassionForSocialGoodStage scores={scores} />;
+        return <ReviewPassionForSocialGoodStage scores={scores} reviewId={reviewId} />;
       case ReviewStage.TP:
-        return <ReviewTeamPlayerStage scores={scores} />;
+        return <ReviewTeamPlayerStage scores={scores} reviewId={reviewId}/>;
       case ReviewStage.D2L:
         return <ReviewDriveToLearnStage scores={scores} />;
       case ReviewStage.SKL:
