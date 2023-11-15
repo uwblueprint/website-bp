@@ -8,18 +8,7 @@ import { useRouter } from "next/router";
 import { ResumeIcon } from "@components/icons/resume.icon";
 import { applicationTableQueries } from "graphql/queries";
 import { getMuiTheme } from "utils/muidatatable";
-
-export type Student = {
-  id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  academicYear: string;
-  program: string;
-  resumeLink: string;
-  firstChoiceRole: string;
-  secondChoiceRole: string;
-};
+import { Student } from "types";
 
 interface TableProps {
   activeRole?: ApplicantRole;

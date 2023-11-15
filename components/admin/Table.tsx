@@ -5,7 +5,7 @@ import Tabs from "./Tabs";
 import Permissions from "entities/permissions";
 import Users from "entities/users";
 import RoleHeader from "./RoleHeader";
-import TableTitle from "./ApplicationDashboardTableTitle";
+import TableTitle from "./DashboardTableTitle";
 import ApplicationsTable from "./ApplicationsTable";
 import ApplicantRole from "entities/applicationRole";
 

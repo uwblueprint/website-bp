@@ -39,7 +39,7 @@ const TableTitle: FC<TitleProps> = ({ numFirstChoiceEntries, numSecondChoiceEntr
             <Tab label={<TabDescription title="2nd Choice Applicants" numEntries={numSecondChoiceEntries} pillStyle={pillStyle}/>}/>
           </Tabs>
         </div>
-      <button className={`${editButton} flex items-center`}>
+      {/* <button className={`${editButton} flex items-center`}>
         <svg
           width="13"
           height="12"
@@ -53,7 +53,7 @@ const TableTitle: FC<TitleProps> = ({ numFirstChoiceEntries, numSecondChoiceEntr
           />
         </svg>
         Edit
-      </button>
+      </button> */}
     </div>
   );
 };
