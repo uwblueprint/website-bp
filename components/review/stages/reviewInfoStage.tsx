@@ -78,7 +78,6 @@ interface Props {
 
 export const ReviewInfoStage: React.FC<Props> = ({ scores, reviewId }) => {
   const router = useRouter();
-  console.log(typeof router.query);
   const [name, setName] = useState("");
   const [questions, setQuestions] = useState<string[]>([]);
   const [answers, setAnswers] = useState<string[]>([]);
@@ -94,10 +93,8 @@ export const ReviewInfoStage: React.FC<Props> = ({ scores, reviewId }) => {
       if (result.data) {
         const appInfo: ApplicationDTO = result.data.applicationsById;
         const shortAnswerStr = appInfo.shortAnswerQuestions[0];
-        console.log(appInfo);
         const shortAnswerJSON = JSON.parse(shortAnswerStr);
-        console.log(shortAnswerJSON);
-
+        
         const combinedName = appInfo.firstName + " " + appInfo.lastName;
         setName(combinedName);
 

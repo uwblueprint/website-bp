@@ -70,7 +70,7 @@ const ReviewsPages: NextPage = () => {
       case ReviewStage.D2L:
         return <ReviewDriveToLearnStage scores={scores} />;
       case ReviewStage.SKL:
-        return <ReviewSkillStage scores={scores} />;
+        return <ReviewSkillStage scores={scores} reviewId={reviewId} />;
       case ReviewStage.END:
         return <ReviewEndStage scores={scores} />;
       case ReviewStage.END_SUCCESS:
