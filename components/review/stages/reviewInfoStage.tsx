@@ -5,7 +5,6 @@ import Button from "@components/common/Button";
 import { queries } from "graphql/queries";
 import Image from "next/image";
 import WarningIcon from "@components/icons/warning.icon";
-import { useRouter } from "next/router";
 import { fetchGraphql } from "@utils/makegqlrequest";
 import { ApplicationDTO } from "types";
 import { ReviewAnswers } from "./reviewAnswers";
@@ -77,8 +76,6 @@ interface Props {
 }
 
 export const ReviewInfoStage: React.FC<Props> = ({ scores, reviewId }) => {
-  const router = useRouter();
-  console.log(typeof router.query);
   const [name, setName] = useState("");
   const [questions, setQuestions] = useState<string[]>([]);
   const [answers, setAnswers] = useState<string[]>([]);
@@ -94,9 +91,7 @@ export const ReviewInfoStage: React.FC<Props> = ({ scores, reviewId }) => {
       if (result.data) {
         const appInfo: ApplicationDTO = result.data.applicationsById;
         const shortAnswerStr = appInfo.shortAnswerQuestions[0];
-        console.log(appInfo);
         const shortAnswerJSON = JSON.parse(shortAnswerStr);
-        console.log(shortAnswerJSON);
 
         const combinedName = appInfo.firstName + " " + appInfo.lastName;
         setName(combinedName);

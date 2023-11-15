@@ -68,7 +68,7 @@ const ReviewsPages: NextPage = () => {
       case ReviewStage.TP:
         return <ReviewTeamPlayerStage scores={scores} />;
       case ReviewStage.D2L:
-        return <ReviewDriveToLearnStage scores={scores} />;
+        return <ReviewDriveToLearnStage scores={scores}  reviewId={reviewId}/>;
       case ReviewStage.SKL:
         return <ReviewSkillStage scores={scores} />;
       case ReviewStage.END:
