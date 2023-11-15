@@ -8,44 +8,53 @@ import { useRouter } from "next/router";
 import { ResumeIcon } from "@components/icons/resume.icon";
 import { applicationTableQueries } from "graphql/queries";
 import { getMuiTheme } from "utils/muidatatable";
-
-export type Student = {
-  id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  academicYear: string;
-  program: string;
-  resumeLink: string;
-  firstChoiceRole: string;
-  secondChoiceRole: string;
-};
+import { Student } from "types";
 
 interface TableProps {
   activeRole?: ApplicantRole;
-  setNumEntries: (tab: number) => void;
-  numEntries?: number;
+  whichChoiceTab?: number;
+  setNumFirstChoiceEntries: (tab: number) => void;
+  numFirstChoiceEntries?: number;
+  setNumSecondChoiceEntries: (tab: number) => void;
+  numSecondChoiceEntries?: number;
 }
 
 const ApplicationsTable: React.FC<TableProps> = ({
   activeRole,
-  setNumEntries,
+  whichChoiceTab,
+  setNumFirstChoiceEntries,
+  setNumSecondChoiceEntries
 }) => {
-  const [applications, setApplications] = useState<any[]>([]);
-
+  const [firstChoiceApplications, setFirstChoiceApplications] = useState<any[]>([]);
+  const [secondChoiceApplications, setSecondChoiceApplications] = useState<any[]>([]);
   useEffect(() => {
     fetchApplicationsByRole();
-  }, [activeRole]);
+  }, [activeRole, whichChoiceTab]);
 
   const fetchApplicationsByRole = async () => {
-    const result = await fetchGraphql(
-      applicationTableQueries.applicationsByRole,
-      {
-        role: activeRole || ApplicantRole.vpe,
-      },
-    );
-    setApplications(result.data.applicationTable);
-    setNumEntries(result.data.applicationTable.length);
+    const currentRole = activeRole || ApplicantRole.vpe;
+    try {
+      const firstChoiceResult = await fetchGraphql(
+        applicationTableQueries.applicationsByRole,
+        {
+          role: currentRole,
+        },
+      );
+  
+      const secondChoiceResult = await fetchGraphql(
+        applicationTableQueries.applicationsBySecondChoiceRole,
+        {
+          role: currentRole,
+        },
+      );
+      setFirstChoiceApplications(firstChoiceResult.data.applicationTable);
+      setNumFirstChoiceEntries(firstChoiceResult.data.applicationTable.length);
+  
+      setSecondChoiceApplications(secondChoiceResult.data.secondChoiceRoleApplicationTable);
+      setNumSecondChoiceEntries(secondChoiceResult.data.secondChoiceRoleApplicationTable.length);
+    } catch (error) {
+        console.error('Error fetching applications:', error);
+      }
   };
 
   const createStudentRow = (application: any) => {
@@ -77,7 +86,12 @@ const ApplicationsTable: React.FC<TableProps> = ({
     };
   };
 
-  const getTableRows = () => applications.map(createStudentRow);
+  const getTableRows = () => {
+    if (!whichChoiceTab) {
+      return firstChoiceApplications.map(createStudentRow)
+    }
+    return secondChoiceApplications.map(createStudentRow)
+  }
 
   return (
     <MuiThemeProvider theme={getMuiTheme()}>

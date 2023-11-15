@@ -87,4 +87,31 @@ export const applicationTableQueries = {
               }
             }
           `,
+  applicationsBySecondChoiceRole: `
+          query secondChoiceRoleApplicationTable($role: String!) {
+            secondChoiceRoleApplicationTable(role: $role) {
+              application {
+                id
+                firstName
+                lastName
+                academicYear
+                resumeUrl
+                program
+                status
+                secondChoiceRole
+                secondChoiceStatus
+            }
+            reviewers {
+                firstName
+                lastName
+            }
+            reviewDashboards {
+                passionFSG
+                teamPlayer
+                desireToLearn
+                skillCategory
+            }
+            }
+          }
+        `
 };
