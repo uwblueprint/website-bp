@@ -23,10 +23,14 @@ const ApplicationsTable: React.FC<TableProps> = ({
   activeRole,
   whichChoiceTab,
   setNumFirstChoiceEntries,
-  setNumSecondChoiceEntries
+  setNumSecondChoiceEntries,
 }) => {
-  const [firstChoiceApplications, setFirstChoiceApplications] = useState<any[]>([]);
-  const [secondChoiceApplications, setSecondChoiceApplications] = useState<any[]>([]);
+  const [firstChoiceApplications, setFirstChoiceApplications] = useState<any[]>(
+    [],
+  );
+  const [secondChoiceApplications, setSecondChoiceApplications] = useState<
+    any[]
+  >([]);
   useEffect(() => {
     fetchApplicationsByRole();
   }, [activeRole, whichChoiceTab]);
@@ -40,7 +44,7 @@ const ApplicationsTable: React.FC<TableProps> = ({
           role: currentRole,
         },
       );
-  
+
       const secondChoiceResult = await fetchGraphql(
         applicationTableQueries.applicationsBySecondChoiceRole,
         {
@@ -49,12 +53,16 @@ const ApplicationsTable: React.FC<TableProps> = ({
       );
       setFirstChoiceApplications(firstChoiceResult.data.applicationTable);
       setNumFirstChoiceEntries(firstChoiceResult.data.applicationTable.length);
-  
-      setSecondChoiceApplications(secondChoiceResult.data.secondChoiceRoleApplicationTable);
-      setNumSecondChoiceEntries(secondChoiceResult.data.secondChoiceRoleApplicationTable.length);
+
+      setSecondChoiceApplications(
+        secondChoiceResult.data.secondChoiceRoleApplicationTable,
+      );
+      setNumSecondChoiceEntries(
+        secondChoiceResult.data.secondChoiceRoleApplicationTable.length,
+      );
     } catch (error) {
-        console.error('Error fetching applications:', error);
-      }
+      console.error("Error fetching applications:", error);
+    }
   };
 
   const createStudentRow = (application: any) => {
@@ -88,10 +96,10 @@ const ApplicationsTable: React.FC<TableProps> = ({
 
   const getTableRows = () => {
     if (!whichChoiceTab) {
-      return firstChoiceApplications.map(createStudentRow)
+      return firstChoiceApplications.map(createStudentRow);
     }
-    return secondChoiceApplications.map(createStudentRow)
-  }
+    return secondChoiceApplications.map(createStudentRow);
+  };
 
   return (
     <MuiThemeProvider theme={getMuiTheme()}>
