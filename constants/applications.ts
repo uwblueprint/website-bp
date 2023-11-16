@@ -14,7 +14,7 @@ export const APPLICATION_OPEN_DATETIME = dayjs.tz(
  * Format: YYYY-MM-DD HH:MM:SS
  */
 export const APPLICATION_CLOSE_DATETIME = dayjs.tz(
-  "2023-06-30 23:59:59",
+  "2024-06-30 23:59:59",
   "America/Toronto",
 );
 

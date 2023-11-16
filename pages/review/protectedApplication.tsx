@@ -4,6 +4,7 @@ import jwt_decode from "jwt-decode";
 import { fetchGraphql } from "@utils/makegqlrequest";
 import { queries } from "graphql/queries";
 import Loading from "@components/common/Loading";
+import { AuthStatus } from "types";
 
 export type Props = {
   children: ReactChild;
@@ -27,11 +28,6 @@ export const getReviewId = (query: any): number => {
 
   return reviewId;
 };
-
-interface AuthStatus {
-  loading: boolean;
-  isAuthorized: boolean;
-}
 
 const ProtectedApplication = ({
   children,

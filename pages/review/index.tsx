@@ -12,8 +12,11 @@ import { ReviewSkillStage } from "@components/review/stages/reviewSkillStage";
 import { ReviewTeamPlayerStage } from "@components/review/stages/reviewTeamPlayerStage";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { fetchGraphql } from "@utils/makegqlrequest";
 import ProtectedApplication from "./protectedApplication";
+import { queries } from "graphql/queries";
+import { ApplicationDTO, AuthStatus } from "types";
 
 export enum ReviewStage {
   INFO = "INFO",
@@ -39,8 +42,30 @@ export const getReviewId = (query: any): number => {
   return reviewId;
 };
 
+export const extractShortAnswerData = (shortAnswerJSON: any) => {
+  const extractedQuestions = shortAnswerJSON.map(
+    (dict: { [key: string]: string }) => dict.question,
+  );
+
+  const extractedAnswers = shortAnswerJSON.map(
+    (dict: { [key: string]: string }) => dict.response,
+  );
+
+  return { extractedQuestions, extractedAnswers };
+};
+
 const ReviewsPages: NextPage = () => {
   const [stage, setStage] = useState<ReviewStage>(ReviewStage.INFO);
+  const [application, setApplication] = useState<ApplicationDTO>();
+  const name = application?.firstName + " " + application?.lastName;
+
+  const [authStatus, setAuthStatus] = useState<AuthStatus>({
+    loading: true,
+    isAuthorized: false,
+  });
+
+  const reviewId = getReviewId(useRouter().query);
+
   const initialScores = new Map<ReviewStage, number>();
   initialScores.set(ReviewStage.PFSG, 1);
   initialScores.set(ReviewStage.TP, 1);
@@ -57,12 +82,32 @@ const ReviewsPages: NextPage = () => {
     });
   };
 
+  useEffect(() => {
+    fetchGraphql(queries.applicationsById, {
+      id: reviewId,
+    }).then((result) => {
+      if (result.data) {
+        const appInfo = result.data.applicationsById;
+        setApplication(appInfo);
+      } else {
+        setAuthStatus({
+          loading: false,
+          isAuthorized: false,
+        });
+      }
+    });
+  }, [reviewId]);
+
   const getReviewStage = () => {
-    const router = useRouter();
-    const reviewId = getReviewId(router.query);
     switch (stage) {
       case ReviewStage.INFO:
-        return <ReviewInfoStage scores={scores} reviewId={reviewId} />;
+        return (
+          <ReviewInfoStage
+            name={name}
+            application={application}
+            scores={scores}
+          />
+        );
       case ReviewStage.PFSG:
         return <ReviewPassionForSocialGoodStage scores={scores} />;
       case ReviewStage.TP:
@@ -70,7 +115,13 @@ const ReviewsPages: NextPage = () => {
       case ReviewStage.D2L:
         return <ReviewDriveToLearnStage scores={scores} />;
       case ReviewStage.SKL:
-        return <ReviewSkillStage scores={scores} reviewId={reviewId} />;
+        return (
+          <ReviewSkillStage
+            name={name}
+            application={application}
+            scores={scores}
+          />
+        );
       case ReviewStage.END:
         return <ReviewEndStage scores={scores} />;
       case ReviewStage.END_SUCCESS:
@@ -93,7 +144,6 @@ const Reviews: NextPage = () => {
   return (
     <ProtectedRoute allowedRoles={["Admin", "User"]}>
       <ProtectedApplication headerInformation={router.query}>
-        {/* pass in the review id instead */}
         <ReviewsPages />
       </ProtectedApplication>
     </ProtectedRoute>
