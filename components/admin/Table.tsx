@@ -27,7 +27,7 @@ const Table: FC = () => {
   const [numEntries, setNumEntries] = React.useState<number | undefined>();
 
   const [selectedDropdownItem, setSelectedDropdownItem] =
-    React.useState<string>("");
+    React.useState<string>("Delegation Dashboard");
 
   const handleDropdownChange = (selectedItem: string) => {
     setSelectedDropdownItem(selectedItem);
