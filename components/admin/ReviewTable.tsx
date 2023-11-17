@@ -7,6 +7,7 @@ import ApplicantRole from "entities/applicationRole";
 import { ResumeIcon } from "@components/icons/resume.icon";
 import { applicationTableQueries } from "graphql/queries";
 import { getMuiTheme } from "utils/muidatatable";
+import ExpandableRowTable from "./ExpandableRowTable";
 
 interface TableProps {
   activeRole?: ApplicantRole;
@@ -17,7 +18,7 @@ interface TableProps {
   numSecondChoiceEntries?: number;
 }
 
-const ApplicationsTable: React.FC<TableProps> = ({
+const ReviewTable: React.FC<TableProps> = ({
   activeRole,
   whichChoiceTab,
   setNumFirstChoiceEntries,
@@ -66,6 +67,7 @@ const ApplicationsTable: React.FC<TableProps> = ({
   const createStudentRow = (application: any) => {
     const app = application.application;
     const reviewers = application.reviewers;
+    const skills = application.reviewDashboards;
 
     return {
       id: app.id,
@@ -91,6 +93,21 @@ const ApplicationsTable: React.FC<TableProps> = ({
     return secondChoiceApplications.map(createStudentRow);
   };
 
+  const generateMockInnerData = () => {
+    return [
+      {
+        "Reviewer Name": "John Doe",
+        PFSG: 4,
+        "Team Player": 3,
+        D2L: 6,
+        Skill: 5,
+        "Skill Category": "Junior",
+        "Reviewer Comments": "Great work presenting your case study.",
+      },
+      // Add as many objects as you want to simulate different rows
+    ];
+  };
+
   return (
     <MuiThemeProvider theme={getMuiTheme()}>
       <MUIDataTable
@@ -106,10 +123,44 @@ const ApplicationsTable: React.FC<TableProps> = ({
           filter: true,
           selectableRows: "none",
           sortFilterList: true,
+          expandableRows: true,
+          expandableRowsHeader: false,
+          expandableRowsOnClick: true,
+          renderExpandableRow: (rowData, rowMeta) => {
+            // const applicationId = rowData[0];
+            // const innerData = getDetailsForApplication(applicationId);
+            const innerData = generateMockInnerData(); // Use mock data for testing
+            const innerColumns = [
+              {
+                name: "Reviewer Name",
+                options: { filter: false, sort: false },
+              },
+              { name: "PFSG", options: { filter: false, sort: false } },
+              { name: "Team Player", options: { filter: false, sort: false } },
+              { name: "D2L", options: { filter: false, sort: false } },
+              { name: "Skill", options: { filter: false, sort: false } },
+              {
+                name: "Skill Category",
+                options: { filter: false, sort: false },
+              },
+              {
+                name: "Reviewer Comments",
+                options: { filter: false, sort: false },
+              },
+            ];
+
+            return (
+              <tr>
+                <td colSpan={10} className="p-5 px-10">
+                  <ExpandableRowTable data={innerData} columns={innerColumns} />
+                </td>
+              </tr>
+            );
+          },
         }}
       />
     </MuiThemeProvider>
   );
 };
 
-export default ApplicationsTable;
+export default ReviewTable;
