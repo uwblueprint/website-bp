@@ -6,10 +6,10 @@ import { useState, useEffect } from "react";
 import { ReviewStageProps } from "./reviewInfoStage";
 
 const reviewSKLScoringCriteria = [
-  "The technical problem is not challenging, or the applicant did not make a reasonable effort to attack it. Response does not show insight into the problem solving process. Example: “I found it difficult to do [x].”",
-  "The technical problem is not very challenging, or the applicant struggles to articulate their solution. Response shows limited insight into the problem solving process, or the applicant might struggle to solve a similar technical problem in the future. Example: “In the course of [x] I ran into [y]. After some debugging/Googling, I managed to solve it.”",
-  "The technical problem is reasonably challenging, and the applicant is able to articulate how they solved it. Response shows good insight into the problem solving process. The applicant would be able to solve similar technical problems in the future. Example: “In the course of [x] I ran into [y]. Here are some steps I used to solve this problem.”",
-  "The technical problem is (at least) reasonably challenging, and the applicant is able to articulate how they solved it, along with key takeaways (or some similar demonstration of transferable learning). Response shows excellent insight into the problem solving process. The applicant would be able to solve unrelated technical problems in the future. Example: “In the course of [x] I ran into [y]. [z] is my decision making process in general, and [q] is how I applied it here. [w] are some key takeaways.”",
+  "Does not possess any of the technical skills necessary for their role.",
+  "Has some familiarity with some technologies and would be able to contribute with help.",
+  "Has strong prior experience with 1+ technology and is familiar with other technologies. Would be able to contribute independently.",
+  "Has lots of prior experience and knowledge relevant to the specific role. Is technical ly mature and would be a strong mentor for others.",
 ];
 
 export const ReviewSkillStage: React.FC<ReviewStageProps> = ({
@@ -26,14 +26,19 @@ export const ReviewSkillStage: React.FC<ReviewStageProps> = ({
     if (!roleSpecificStr) return;
     const roleSpecificStrJSON = JSON.parse(roleSpecificStr);
 
-    console.log(roleSpecificStrJSON);
+    const questionsData = roleSpecificStrJSON[0]?.questions || [];
 
-    const questionText = roleSpecificStrJSON[0].questions[1].question;
-    const responseText = roleSpecificStrJSON[0].questions[1].response;
+    const tempQuestions = questionsData.map((item) => item.question || "");
+    const tempAnswers = questionsData.flatMap((item) => {
+      if (Array.isArray(item.response)) {
+        return [item.response.join(", ")];
+      } else {
+        return item.response;
+      }
+    });
 
-    setQuestions(() => [questionText]);
-    setAnswers(() => [responseText]);
-    console.log(resumeLink);
+    setQuestions(tempQuestions);
+    setAnswers(tempAnswers);
   }, [application]);
 
   return (
