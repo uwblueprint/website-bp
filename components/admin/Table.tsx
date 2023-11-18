@@ -8,6 +8,7 @@ import RoleHeader from "./RoleHeader";
 import TableTitle from "./DashboardTableTitle";
 import ApplicationsTable from "./ApplicationsTable";
 import ApplicantRole from "entities/applicationRole";
+import ReviewTable from "./ReviewTable";
 
 export enum OrganizationalArea {
   Engineering = "Engineering",
@@ -23,6 +24,7 @@ const Table: FC = () => {
   const [activeRole, setActiveRole] = React.useState<
     ApplicantRole | undefined
   >();
+
   const [numFirstChoiceEntries, setNumFirstChoiceEntries] = React.useState<
     number | undefined
   >();
@@ -30,6 +32,14 @@ const Table: FC = () => {
     number | undefined
   >();
   const [whichChoiceTab, setWhichChoiceTab] = React.useState(0);
+
+  const [selectedDropdownItem, setSelectedDropdownItem] =
+    React.useState<string>("");
+
+  const handleDropdownChange = (selectedItem: string) => {
+    setSelectedDropdownItem(selectedItem);
+  };
+
   const user: Users = {
     id: "1",
     name: "Chris Abey",
@@ -58,7 +68,7 @@ const Table: FC = () => {
         <Tabs activeTab={activeTab} setActiveTab={setActiveTab} user={user} />
       </div>
       <div className="px-10 py-6">
-        <DropdownMenu />
+        <DropdownMenu onChange={handleDropdownChange} />
         <RoleHeader
           activeTab={activeTab}
           setActiveRole={setActiveRole}
@@ -72,14 +82,26 @@ const Table: FC = () => {
           setWhichChoiceTab={setWhichChoiceTab}
           whichChoiceTab={whichChoiceTab}
         />
-        <ApplicationsTable
-          activeRole={activeRole}
-          whichChoiceTab={whichChoiceTab}
-          setNumFirstChoiceEntries={setNumFirstChoiceEntries}
-          numFirstChoiceEntries={numFirstChoiceEntries}
-          setNumSecondChoiceEntries={setNumSecondChoiceEntries}
-          numSecondChoiceEntries={numSecondChoiceEntries}
-        />
+        {selectedDropdownItem === "Review Dashboard" && (
+          <ReviewTable
+            activeRole={activeRole}
+            whichChoiceTab={whichChoiceTab}
+            setNumFirstChoiceEntries={setNumFirstChoiceEntries}
+            numFirstChoiceEntries={numFirstChoiceEntries}
+            setNumSecondChoiceEntries={setNumSecondChoiceEntries}
+            numSecondChoiceEntries={numSecondChoiceEntries}
+          />
+        )}
+        {selectedDropdownItem === "Delegation Dashboard" && (
+          <ApplicationsTable
+            activeRole={activeRole}
+            whichChoiceTab={whichChoiceTab}
+            setNumFirstChoiceEntries={setNumFirstChoiceEntries}
+            numFirstChoiceEntries={numFirstChoiceEntries}
+            setNumSecondChoiceEntries={setNumSecondChoiceEntries}
+            numSecondChoiceEntries={numSecondChoiceEntries}
+          />
+        )}
       </div>
     </div>
   );
