@@ -83,6 +83,10 @@ type StatusProps = {
   status: string;
 };
 
+type CategoryProps = {
+  category: string;
+};
+
 const STATUS_BASE_CLASSES = "text-center rounded w-max px-2 py-1 ";
 const SECOND_CHOICE_BASE_CLASSES = "text-center rounded w-max px-2 ";
 
@@ -152,6 +156,32 @@ export const SecondChoiceStatus: React.FC<StatusProps> = ({ status }) => {
     case "no interview":
       className += "bg-charcoal-300 py-1 ";
       text = "No Interview";
+      break;
+  }
+
+  return <div className={className}>{text}</div>;
+};
+
+export const SkillCategory: React.FC<CategoryProps> = ({ category }) => {
+  let className = STATUS_BASE_CLASSES;
+  let text = "";
+
+  switch (category) {
+    case "intermediate":
+      className += "bg-pink-300 ";
+      text = "Intermediate";
+      break;
+    case "junior":
+      className += "bg-violet-200 ";
+      text = "Junior";
+      break;
+    case "senior":
+      className += "bg-pink-100 ";
+      text = "Senior";
+      break;
+    default:
+      className += "bg-charcoal-300 ";
+      text = "Unavailable";
       break;
   }
 
