@@ -54,11 +54,6 @@ export const getMuiTheme = (): Theme => {
           fontSize: 18,
         },
       },
-      // MUIDataTableToolbar: {
-      //   root: {
-      //     display: "",
-      //   },
-      // },
       MuiTableSortLabel: {
         root: {
           color: `${theme.colors.B10} !important`,
@@ -73,6 +68,48 @@ export const getMuiTheme = (): Theme => {
       MuiSvgIcon: {
         root: {
           color: `${theme.colors.B10} !important`,
+        },
+      },
+    },
+  });
+};
+
+// utils/muidatatable.ts
+
+export const getExpandableRowMuiTheme = (): Theme => {
+  return createTheme({
+    overrides: {
+      MUIDataTable: {
+        paper: {
+          boxShadow: "none", // Removes the shadow around the table
+        },
+        responsiveScroll: {
+          maxHeight: "none", // You might want to remove max height if it's set
+        },
+      },
+      MUIDataTableToolbar: {
+        root: {
+          display: "",
+        },
+      },
+      MUIDataTableHeadCell: {
+        root: {
+          color: "#0573E8", // If you want a white text color
+        },
+      },
+      MUIDataTableDivider: {
+        root: {
+          display: "none", // This removes the border/divider below the table header
+        },
+      },
+      MUIDataTableBodyCell: {
+        root: {
+          borderBottom: "none", // Removes the cell dividers within the table body
+        },
+      },
+      MuiTableCell: {
+        root: {
+          borderBottom: "none", // Removes the cell dividers within the table as well
         },
       },
     },
