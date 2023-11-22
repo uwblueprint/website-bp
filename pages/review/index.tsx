@@ -55,6 +55,7 @@ export const extractShortAnswerData = (shortAnswerJSON: any) => {
 };
 
 const ReviewsPages: NextPage = () => {
+  const router = useRouter();
   const [stage, setStage] = useState<ReviewStage>(ReviewStage.INFO);
   const [application, setApplication] = useState<ApplicationDTO>();
   const name = application?.firstName + " " + application?.lastName;

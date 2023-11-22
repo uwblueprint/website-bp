@@ -2,7 +2,7 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import { fetchGraphql } from "@utils/makegqlrequest";
 import MUIDataTable from "mui-datatables";
 import React, { useEffect, useState } from "react";
-import { getApplicationTableColumns } from "./ApplicationsTableColumn";
+import { getReviewTableColumns } from "./ReviewTableColumn";
 import ApplicantRole from "entities/applicationRole";
 import { ResumeIcon } from "@components/icons/resume.icon";
 import { applicationTableQueries } from "graphql/queries";
@@ -78,14 +78,6 @@ const ApplicationsTable: React.FC<TableProps> = ({
       ),
       term: app.academicYear,
       program: app.program,
-      reviewerOne:
-        reviewers?.length >= 1
-          ? `${reviewers[0].firstName} ${reviewers[0].lastName}`
-          : "",
-      reviewerTwo:
-        reviewers?.length >= 2
-          ? `${reviewers[1].firstName} ${reviewers[1].lastName}`
-          : "",
       status: app.status,
       secondChoice: app.secondChoiceRole,
       secondChoiceStatus: app.secondChoiceStatus,
@@ -104,7 +96,7 @@ const ApplicationsTable: React.FC<TableProps> = ({
       <MUIDataTable
         title=""
         data={getTableRows()}
-        columns={getApplicationTableColumns()}
+        columns={getReviewTableColumns()}
         options={{
           search: true,
           viewColumns: false,
