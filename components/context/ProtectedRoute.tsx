@@ -2,6 +2,7 @@ import { ReactChild, ReactElement, useEffect, useState } from "react";
 import Loading from "@components/common/Loading";
 import { useRouter } from "next/router";
 import AuthAPIClient from "APIClients/AuthAPIClient";
+import { AuthStatus } from "types";
 
 type Props = {
   children: ReactChild;
@@ -9,11 +10,6 @@ type Props = {
 };
 
 type Role = "Admin" | "User";
-
-interface AuthStatus {
-  loading: boolean;
-  isAuthorized: boolean;
-}
 
 const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
   const router = useRouter();
