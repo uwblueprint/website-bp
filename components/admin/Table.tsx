@@ -24,7 +24,6 @@ const Table: FC = () => {
   const [activeRole, setActiveRole] = React.useState<
     ApplicantRole | undefined
   >();
-
   const [numFirstChoiceEntries, setNumFirstChoiceEntries] = React.useState<
     number | undefined
   >();
@@ -77,6 +76,16 @@ const Table: FC = () => {
       </div>
       <div className="mx-8">
         <TableTitle
+          numFirstChoiceEntries={numFirstChoiceEntries}
+          numSecondChoiceEntries={numSecondChoiceEntries}
+          setWhichChoiceTab={setWhichChoiceTab}
+          whichChoiceTab={whichChoiceTab}
+        />
+        <ApplicationsTable
+          activeRole={activeRole}
+          whichChoiceTab={whichChoiceTab}
+          setNumFirstChoiceEntries={setNumFirstChoiceEntries}
+
           numFirstChoiceEntries={numFirstChoiceEntries}
           numSecondChoiceEntries={numSecondChoiceEntries}
           setWhichChoiceTab={setWhichChoiceTab}

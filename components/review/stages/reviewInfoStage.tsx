@@ -2,26 +2,13 @@ import { FC, useState, useEffect } from "react";
 import { ReviewStage } from "pages/review";
 import { ReviewSplitPanelPage } from "../shared/reviewSplitPanelPage";
 import Button from "@components/common/Button";
-import { queries } from "graphql/queries";
 import Image from "next/image";
 import WarningIcon from "@components/icons/warning.icon";
-import { useRouter } from "next/router";
-import { fetchGraphql } from "@utils/makegqlrequest";
 import { ApplicationDTO } from "types";
 import { ReviewAnswers } from "./reviewAnswers";
+import { ConflictModalProps } from "types";
+import { extractShortAnswerData } from "pages/review";
 
-interface AuthStatus {
-  loading: boolean;
-  isAuthorized: boolean;
-}
-
-type ConflictModalProps = {
-  readonly name: string | undefined;
-  readonly open: boolean;
-  readonly onClose: () => void;
-};
-
-/** Highlighted project modal */
 const ConflictModal: FC<ConflictModalProps> = ({ name, open, onClose }) => {
   return open ? (
     <>
@@ -71,80 +58,54 @@ const ConflictModal: FC<ConflictModalProps> = ({ name, open, onClose }) => {
   ) : null;
 };
 
-interface Props {
+export interface ReviewStageProps {
+  name: string;
+  application: ApplicationDTO | undefined;
   scores: Map<ReviewStage, number>;
-  reviewId: number;
 }
 
-export const ReviewInfoStage: React.FC<Props> = ({ scores, reviewId }) => {
-  const router = useRouter();
-  console.log(typeof router.query);
-  const [name, setName] = useState("");
+export const ReviewInfoStage: React.FC<ReviewStageProps> = ({
+  name,
+  application,
+  scores,
+}) => {
   const [questions, setQuestions] = useState<string[]>([]);
   const [answers, setAnswers] = useState<string[]>([]);
-  const [authStatus, setAuthStatus] = useState<AuthStatus>({
-    loading: true,
-    isAuthorized: false,
-  });
 
   useEffect(() => {
-    fetchGraphql(queries.applicationsById, {
-      id: reviewId,
-    }).then((result) => {
-      if (result.data) {
-        const appInfo: ApplicationDTO = result.data.applicationsById;
-        const shortAnswerStr = appInfo.shortAnswerQuestions[0];
-        console.log(appInfo);
-        const shortAnswerJSON = JSON.parse(shortAnswerStr);
-        console.log(shortAnswerJSON);
+    const shortAnswerStr = application?.shortAnswerQuestions[0];
+    if (!shortAnswerStr) {
+      return;
+    }
 
-        const combinedName = appInfo.firstName + " " + appInfo.lastName;
-        setName(combinedName);
+    const shortAnswerJSON = JSON.parse(shortAnswerStr);
+    const { extractedAnswers } = extractShortAnswerData(shortAnswerJSON);
 
-        const extractedQuestions = shortAnswerJSON.map(
-          (dict: { [key: string]: string }) => {
-            return dict.question;
-          },
-        );
+    setQuestions([
+      ...questions,
+      "Email",
+      "Program",
+      "Academic Term",
+      "Where did you hear about us?",
+      "How many times have you applied to Blueprint in the past?",
+      "Pronouns",
+      "Will you be in an academic (school) term or a co-op term?",
+      "Position",
+    ]);
 
-        const extractedAnswers = shortAnswerJSON.map(
-          (dict: { [key: string]: string }) => {
-            return dict.response;
-          },
-        );
-
-        setQuestions((questions) => [
-          ...questions,
-          "Email",
-          "Program",
-          "Academic Term",
-          "Where did you hear about us?",
-          "How many times have you applied to Blueprint in the past?",
-          "Pronouns",
-          "Will you be in an academic (school) term or a co-op term?",
-          "Position",
-        ]);
-        setAnswers((answers) => [
-          ...answers,
-          appInfo.email,
-          appInfo.program,
-          appInfo.academicYear,
-          appInfo.heardFrom,
-          appInfo.timesApplied,
-          appInfo.pronouns,
-          appInfo.academicOrCoop,
-          appInfo.firstChoiceRole,
-        ]);
-        setQuestions((questions) => [...questions, extractedQuestions[0]]);
-        setAnswers((answers) => [...answers, extractedAnswers[0]]);
-      } else {
-        setAuthStatus({
-          loading: false,
-          isAuthorized: false,
-        });
-      }
-    });
-  }, []);
+    setAnswers([
+      ...answers,
+      application?.email ?? "",
+      application?.program ?? "",
+      application?.academicYear ?? "",
+      application?.heardFrom ?? "",
+      application?.timesApplied ?? "",
+      application?.pronouns ?? "",
+      application?.academicOrCoop ?? "",
+      application?.firstChoiceRole ?? "",
+      ...extractedAnswers,
+    ]);
+  }, [application]);
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <ReviewSplitPanelPage

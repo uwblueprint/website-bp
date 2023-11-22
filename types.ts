@@ -38,3 +38,9 @@ export type ApplicationDTO = {
   timesApplied: string;
   timestamp: bigint;
 };
+
+export type ConflictModalProps = {
+  readonly name: string | undefined;
+  readonly open: boolean;
+  readonly onClose: () => void;
+};

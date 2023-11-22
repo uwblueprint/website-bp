@@ -3,6 +3,7 @@ import { useAuth } from "./AuthUserContext";
 import Loading from "@components/common/Loading";
 import { useRouter } from "next/router";
 import AuthAPIClient from "APIClients/AuthAPIClient";
+import { AuthStatus } from "types";
 
 type Props = {
   children: ReactChild;
@@ -10,11 +11,6 @@ type Props = {
 
 const ProtectedRoute = ({ children }: Props): ReactElement => {
   const { user, isLoading } = useAuth();
-
-interface AuthStatus {
-  loading: boolean;
-  isAuthorized: boolean;
-}
 
 const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
   const router = useRouter();

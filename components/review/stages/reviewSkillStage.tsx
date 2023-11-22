@@ -2,33 +2,48 @@ import { ReviewStage } from "pages/review";
 import { ReviewRatingPage } from "../shared/reviewRatingPage";
 import { ReviewRubric } from "./reviewRubric";
 import { ReviewAnswers } from "./reviewAnswers";
-
-interface Props {
-  scores: Map<ReviewStage, number>;
-}
+import { useState, useEffect } from "react";
+import { ReviewStageProps } from "./reviewInfoStage";
 
 const reviewSKLScoringCriteria = [
-  "Does not provide a relevant cause that resonates with them. Example: I'm really involved in social good causes, I'm a very emphathetic person so I tend to resonate with them when I come across something negative in the world",
-  "Does not provide a relevant cause that resonates with them. Example: I'm really involved in social good causes, I'm a very emphathetic person so I tend to resonate with them when I come across something negative in the world",
-  "Does not provide a relevant cause that resonates with them. Example: I'm really involved in social good causes, I'm a very emphathetic person so I tend to resonate with them when I come across something negative in the world",
-  "Does not provide a relevant cause that resonates with them. Example: I'm really involved in social good causes, I'm a very emphathetic person so I tend to resonate with them when I come across something negative in the world",
-  "Does not provide a relevant cause that resonates with them. Example: I'm really involved in social good causes, I'm a very emphathetic person so I tend to resonate with them when I come across something negative in the world",
+  "Does not possess any of the technical skills necessary for their role.",
+  "Has some familiarity with some technologies and would be able to contribute with help.",
+  "Has strong prior experience with 1+ technology and is familiar with other technologies. Would be able to contribute independently.",
+  "Has lots of prior experience and knowledge relevant to the specific role. Is technical ly mature and would be a strong mentor for others.",
 ];
 
-const sampleQuestions = [
-  "Tell us about a time you learned a new skill. What was your motivation to learn it and what was your approach?",
-  "Bonus: Tell us about a cause that resonates with you",
-];
+export const ReviewSkillStage: React.FC<ReviewStageProps> = ({
+  name,
+  application,
+  scores,
+}) => {
+  const [questions, setQuestions] = useState<string[]>([]);
+  const [answers, setAnswers] = useState<string[]>([]);
+  const resumeLink = application?.resumeUrl;
 
-const sampleAnswers = [
-  "The organization I'm volunteering for right now, IleTTonna, is a healthcare startup devoted to helping those struggling through the postpartum period. To be completely honest, it's mission didn't resonate with me as much as it does now than when I first started. At the beginning, I wasn't sure how helpful what we were doing was because our audience seemed to sniche. But now, after meeting with stakeholders and launching our MVP, we're getting a lot of responses. Seeing the impact of your work is incredible and does a lot to inspire more hard work. ",
-  "The organization I'm volunteering for right now, IleTTonna, is a healthcare startup devoted to helping those struggling through the postpartum period. To be completely honest, it's mission didn't resonate with me as much as it does now than when I first started. At the beginning, I wasn't sure how helpful what we were doing was because our audience seemed to sniche. But now, after meeting with stakeholders and launching our MVP, we're getting a lot of responses. Seeing the impact of your work is incredible and does a lot to inspire more hard work. ",
-];
+  useEffect(() => {
+    const roleSpecificStr = application?.roleSpecificQuestions[0];
+    if (!roleSpecificStr) return;
+    const roleSpecificStrJSON = JSON.parse(roleSpecificStr);
 
-export const ReviewSkillStage: React.FC<Props> = ({ scores }) => {
+    const questionsData = roleSpecificStrJSON[0]?.questions || [];
+
+    const tempQuestions = questionsData.map((item) => item.question || "");
+    const tempAnswers = questionsData.flatMap((item) => {
+      if (Array.isArray(item.response)) {
+        return [item.response.join(", ")];
+      } else {
+        return item.response;
+      }
+    });
+
+    setQuestions(tempQuestions);
+    setAnswers(tempAnswers);
+  }, [application]);
+
   return (
     <ReviewRatingPage
-      studentName="M. Goose"
+      studentName={name}
       title="Skill"
       currentStage={ReviewStage.SKL}
       currentStageRubric={
@@ -39,9 +54,9 @@ export const ReviewSkillStage: React.FC<Props> = ({ scores }) => {
         />
       }
       currentStageAnswers={
-        <ReviewAnswers questions={sampleQuestions} answers={sampleAnswers} />
+        <ReviewAnswers questions={questions} answers={answers} />
       }
-      resumeLink="https://drive.google.com/file/d/1QMzemxyl5BVtcJGmv93wg0WOHJ48-ZEk/view?usp=sharing"
+      resumeLink={resumeLink}
       scores={scores}
     />
   );
