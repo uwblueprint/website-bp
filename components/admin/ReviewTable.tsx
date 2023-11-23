@@ -7,6 +7,7 @@ import ApplicantRole from "entities/applicationRole";
 import { ResumeIcon } from "@components/icons/resume.icon";
 import { applicationTableQueries } from "graphql/queries";
 import { getMuiTheme } from "utils/muidatatable";
+import ExpandableRowTable from "./ExpandableRowTable";
 
 interface TableProps {
   activeRole?: ApplicantRole;
@@ -17,7 +18,7 @@ interface TableProps {
   numSecondChoiceEntries?: number;
 }
 
-const ApplicationsTable: React.FC<TableProps> = ({
+const ReviewTable: React.FC<TableProps> = ({
   activeRole,
   whichChoiceTab,
   setNumFirstChoiceEntries,
@@ -91,6 +92,89 @@ const ApplicationsTable: React.FC<TableProps> = ({
     return secondChoiceApplications.map(createStudentRow);
   };
 
+  const generateMockInnerData = () => {
+    return [
+      {
+        "Reviewer Name": "John Doe",
+        PFSG: 4,
+        "Team Player": 3,
+        D2L: 6,
+        Skill: 5,
+        "Skill Category": "junior",
+        "Reviewer Comments": "Great work presenting your case study.",
+      },
+      // Add as many objects as you want to simulate different rows
+    ];
+  };
+
+  const renderExpandableRow = (
+    rowData: any,
+    rowMeta: { dataIndex: number },
+  ) => {
+    const innerData = generateMockInnerData(); // Use mock data for testing
+    const application = {
+      secondChoiceRole: "Graphic Designer",
+      recommendForSecondChoice: true,
+      adminComments: "Great",
+    };
+
+    const innerColumns = [
+      {
+        name: "Reviewer Name",
+        options: { filter: false, sort: false },
+      },
+      { name: "PFSG", options: { filter: false, sort: false } },
+      { name: "Team Player", options: { filter: false, sort: false } },
+      { name: "D2L", options: { filter: false, sort: false } },
+      { name: "Skill", options: { filter: false, sort: false } },
+      {
+        name: "Skill Category",
+        options: { filter: false, sort: false },
+      },
+      {
+        name: "Reviewer Comments",
+        options: { filter: false, sort: false },
+      },
+      // You may add more columns as needed
+    ];
+
+    return (
+      <React.Fragment>
+        <tr>
+          <td colSpan={8} className="p-5 px-10">
+            <div className="flex flex-col font-source text-base">
+              <ExpandableRowTable data={innerData} columns={innerColumns} />
+              <div className="flex items-start p-4 gap-120">
+                <div className="flex flex-col gap-2">
+                  <div className="flex flex-row justify-center items-center gap-5">
+                    <span className="text-blue font-semibold">2nd Choice:</span>
+                    <p>{application.secondChoiceRole}</p>
+                  </div>
+
+                  <div className="flex items-center mt-2">
+                    <input
+                      type="checkbox"
+                      checked={application.recommendForSecondChoice}
+                      // onChange logic here
+                    />
+                    <span className="ml-2">Recommend for 2nd Choice</span>
+                  </div>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-blue font-semibold">
+                    Admin Comments:
+                  </span>
+                  <p>{application.adminComments}</p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <td colSpan={11} style={{ borderBottom: "1px solid #e0e0e0" }}></td>
+      </React.Fragment>
+    );
+  };
+
   return (
     <MuiThemeProvider theme={getMuiTheme()}>
       <MUIDataTable
@@ -106,10 +190,14 @@ const ApplicationsTable: React.FC<TableProps> = ({
           filter: true,
           selectableRows: "none",
           sortFilterList: true,
+          expandableRows: true,
+          expandableRowsHeader: false,
+          expandableRowsOnClick: true,
+          renderExpandableRow: renderExpandableRow,
         }}
       />
     </MuiThemeProvider>
   );
 };
 
-export default ApplicationsTable;
+export default ReviewTable;

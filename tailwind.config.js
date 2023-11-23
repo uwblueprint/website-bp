@@ -141,6 +141,9 @@ module.exports = {
       height: {
         144: "36rem",
       },
+      gap: {
+        120: "28rem",
+      },
     },
   },
   variants: {},

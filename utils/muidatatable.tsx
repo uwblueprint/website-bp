@@ -74,17 +74,15 @@ export const getMuiTheme = (): Theme => {
   });
 };
 
-// utils/muidatatable.ts
-
 export const getExpandableRowMuiTheme = (): Theme => {
   return createTheme({
     overrides: {
       MUIDataTable: {
         paper: {
-          boxShadow: "none", // Removes the shadow around the table
+          boxShadow: "none",
         },
         responsiveScroll: {
-          maxHeight: "none", // You might want to remove max height if it's set
+          maxHeight: "none",
         },
       },
       MUIDataTableToolbar: {
@@ -92,24 +90,24 @@ export const getExpandableRowMuiTheme = (): Theme => {
           display: "",
         },
       },
-      MUIDataTableHeadCell: {
-        root: {
-          color: "#0573E8", // If you want a white text color
-        },
-      },
-      MUIDataTableDivider: {
-        root: {
-          display: "none", // This removes the border/divider below the table header
-        },
-      },
       MUIDataTableBodyCell: {
         root: {
-          borderBottom: "none", // Removes the cell dividers within the table body
+          fontSize: 15,
+          borderBottom: "none",
         },
       },
+      MUIDataTableHeadCell: {
+        root: {
+          color: "#0573E8",
+          fontFamily: "Source Sans Pro",
+          fontWeight: 600,
+          fontSize: 16,
+        },
+      },
+
       MuiTableCell: {
         root: {
-          borderBottom: "none", // Removes the cell dividers within the table as well
+          borderBottom: "none",
         },
       },
     },
@@ -124,8 +122,10 @@ type CategoryProps = {
   category: string;
 };
 
-const STATUS_BASE_CLASSES = "text-center rounded w-max px-2 py-1 ";
-const SECOND_CHOICE_BASE_CLASSES = "text-center rounded w-max px-2 ";
+const STATUS_BASE_CLASSES =
+  "font-source text-lg font-light	text-center rounded w-max px-2 py-1 ";
+const SECOND_CHOICE_BASE_CLASSES =
+  "font-source text-lg text-center rounded w-max px-2 ";
 
 export const Status: React.FC<StatusProps> = ({ status }) => {
   let className = STATUS_BASE_CLASSES;

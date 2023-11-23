@@ -6,6 +6,7 @@ import MUIDataTable, {
 } from "mui-datatables";
 import { getExpandableRowMuiTheme } from "utils/muidatatable";
 import { MuiThemeProvider } from "@material-ui/core";
+import { SkillCategory } from "@utils/muidatatable";
 
 type ReviewerData = {
   reviewerName: string;
@@ -23,6 +24,21 @@ interface InnerTableProps {
 }
 
 const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns }) => {
+  const updatedColumns = columns.map((column) => {
+    if (column.name === "Skill Category") {
+      return {
+        ...column,
+        options: {
+          ...column.options,
+          customBodyRender: (value: string) => {
+            return <SkillCategory category={value} />;
+          },
+        },
+      };
+    }
+    return column;
+  });
+
   const options: MUIDataTableOptions = {
     filter: false,
     print: false,
@@ -35,7 +51,12 @@ const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns }) => {
 
   return (
     <MuiThemeProvider theme={getExpandableRowMuiTheme()}>
-      <MUIDataTable title="" data={data} columns={columns} options={options} />
+      <MUIDataTable
+        title=""
+        data={data}
+        columns={updatedColumns}
+        options={options}
+      />
     </MuiThemeProvider>
   );
 };
