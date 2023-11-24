@@ -4,6 +4,7 @@ import { ReviewRubric } from "./reviewRubric";
 import { ReviewAnswers } from "./reviewAnswers";
 import { ApplicationDTO } from "types";
 import { useEffect, useState } from "react";
+import { ReviewSetScoresContext } from "../shared/reviewContext";
 
 interface Props {
   name: string;
@@ -65,6 +66,28 @@ export const ReviewDriveToLearnStage: React.FC<Props> = ({
         <ReviewAnswers questions={questions} answers={answers} />
       }
       scores={scores}
+      contextConsumer={
+        <ReviewSetScoresContext.Consumer>
+          {(updateScore) => (
+            <div className="flex items-center justify-end">
+              <input
+                type="number"
+                pattern="[1-5]"
+                value={ReviewStage.D2L}
+                onChange={(event) => {
+                  if (event.target.validity.valid) {
+                    updateScore?.(
+                      ReviewStage.D2L,
+                      parseInt(event.target.value),
+                    );
+                  }
+                }}
+              />
+              <h5 className="text-red-500 inline-block px-2 text-xl">*</h5>
+            </div>
+          )}
+        </ReviewSetScoresContext.Consumer>
+      }
     />
   );
 };
