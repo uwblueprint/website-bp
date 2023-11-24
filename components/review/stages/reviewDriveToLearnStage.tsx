@@ -73,7 +73,7 @@ export const ReviewDriveToLearnStage: React.FC<Props> = ({
               <input
                 type="number"
                 pattern="[1-5]"
-                value={ReviewStage.D2L}
+                value={scores.get(ReviewStage.D2L)}
                 onChange={(event) => {
                   if (event.target.validity.valid) {
                     updateScore?.(

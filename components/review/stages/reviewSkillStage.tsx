@@ -66,11 +66,11 @@ export const ReviewSkillStage: React.FC<ReviewStageProps> = ({
               <input
                 type="number"
                 pattern="[1-5]"
-                value={ReviewStage.D2L}
+                value={scores.get(ReviewStage.SKL)}
                 onChange={(event) => {
                   if (event.target.validity.valid) {
                     updateScore?.(
-                      ReviewStage.D2L,
+                      ReviewStage.SKL,
                       parseInt(event.target.value),
                     );
                   }
