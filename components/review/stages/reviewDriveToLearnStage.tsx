@@ -19,16 +19,6 @@ const reviewD2LScoringCriteria = [
   "Demonstrates a high level self-guided learning outside of class and work. Example: outstanding or non conventional projects / initiatives that clearly tie an applicant’s personal development goals with something new and creative.",
 ];
 
-const sampleQuestions = [
-  "Tell us about a time you learned a new skill. What was your motivation to learn it and what was your approach?",
-  "Bonus: Tell us about a cause that resonates with you",
-];
-
-const sampleAnswers = [
-  "The organization I'm volunteering for right now, IleTTonna, is a healthcare startup devoted to helping those struggling through the postpartum period. To be completely honest, it's mission didn't resonate with me as much as it does now than when I first started. At the beginning, I wasn't sure how helpful what we were doing was because our audience seemed to sniche. But now, after meeting with stakeholders and launching our MVP, we're getting a lot of responses. Seeing the impact of your work is incredible and does a lot to inspire more hard work. ",
-  "The organization I'm volunteering for right now, IleTTonna, is a healthcare startup devoted to helping those struggling through the postpartum period. To be completely honest, it's mission didn't resonate with me as much as it does now than when I first started. At the beginning, I wasn't sure how helpful what we were doing was because our audience seemed to sniche. But now, after meeting with stakeholders and launching our MVP, we're getting a lot of responses. Seeing the impact of your work is incredible and does a lot to inspire more hard work. ",
-];
-
 export const ReviewDriveToLearnStage: React.FC<Props> = ({
   name,
   application,
