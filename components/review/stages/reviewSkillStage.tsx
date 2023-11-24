@@ -65,7 +65,7 @@ export const ReviewSkillStage: React.FC<ReviewStageProps> = ({
             <div className="flex items-center justify-end">
               <input
                 type="number"
-                pattern="[1-5]"
+                pattern="[1-4]"
                 value={scores.get(ReviewStage.SKL)}
                 onChange={(event) => {
                   if (event.target.validity.valid) {
