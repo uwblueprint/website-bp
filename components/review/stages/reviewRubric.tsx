@@ -26,23 +26,6 @@ export const ReviewRubric: React.FC<Props> = ({
           })}
         </div>
       </div>
-      <ReviewSetScoresContext.Consumer>
-        {(updateScore) => (
-          <div className="flex items-center justify-end">
-            <input
-              type="number"
-              pattern="[1-5]"
-              value={scores.get(currentStage)}
-              onChange={(event) => {
-                if (event.target.validity.valid) {
-                  updateScore?.(currentStage, parseInt(event.target.value));
-                }
-              }}
-            />
-            <h5 className="text-red-500 inline-block px-2 text-xl">*</h5>
-          </div>
-        )}
-      </ReviewSetScoresContext.Consumer>
     </>
   );
 };
