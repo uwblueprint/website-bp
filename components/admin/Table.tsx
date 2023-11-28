@@ -85,7 +85,6 @@ const Table: FC = () => {
           activeRole={activeRole}
           whichChoiceTab={whichChoiceTab}
           setNumFirstChoiceEntries={setNumFirstChoiceEntries}
-
           numFirstChoiceEntries={numFirstChoiceEntries}
           numSecondChoiceEntries={numSecondChoiceEntries}
           setWhichChoiceTab={setWhichChoiceTab}

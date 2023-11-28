@@ -7,10 +7,11 @@ import { ReviewStageProps } from "./reviewInfoStage";
 import { ReviewSetScoresContext } from "../shared/reviewContext";
 
 const reviewSKLScoringCriteria = [
-  "Does not possess any of the technical skills necessary for their role.",
-  "Has some familiarity with some technologies and would be able to contribute with help.",
-  "Has strong prior experience with 1+ technology and is familiar with other technologies. Would be able to contribute independently.",
-  "Has lots of prior experience and knowledge relevant to the specific role. Is technical ly mature and would be a strong mentor for others.",
+  "Has never done any learning related to their role at all. Example: has no relevant coursework, projects, or experience",
+  "Minimal skill fit with Blueprint. Example: listing languages learned in class but minimal demonstrated projects or use of frameworks to back it up. Has only 1-3 projects with relevant experience",
+  "Has familiarity with some technologies and would be able to contribute with occasional guidance. Example: 1-2 terms of directly relevant experience OR strong projects with relevant technologies",
+  "Has strong prior experience with 1+ technologies and is familiar with other technologies. Would be an independent contributor. Example: 3+ terms of directly relevant experience OR  multiple projects with notable impact",
+  "Has lots of prior experience and knowledge relevant to the specific role. Would be a strong mentor for others.  Note: Candidates rated 5 would be close to the level of a PL.",
 ];
 
 export const ReviewSkillStage: React.FC<ReviewStageProps> = ({

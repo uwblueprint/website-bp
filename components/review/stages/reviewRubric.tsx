@@ -1,6 +1,5 @@
 import { ReviewStage } from "pages/review";
 
-
 interface Props {
   scoringCriteria: string[];
   scores: Map<ReviewStage, number>;
