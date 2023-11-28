@@ -6,11 +6,7 @@ interface Props {
   currentStage: ReviewStage;
 }
 
-export const ReviewRubric: React.FC<Props> = ({
-  scoringCriteria,
-  scores,
-  currentStage,
-}) => {
+export const ReviewRubric: React.FC<Props> = ({ scoringCriteria }) => {
   return (
     <>
       <div className="shrink gap-8">
