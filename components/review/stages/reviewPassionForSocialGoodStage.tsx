@@ -20,7 +20,6 @@ const reviewPFSGScoringCriteria = [
   "Provides a meaningful reason as to why that cause resonates with them and demonstrates genuine passion and enthusiasm for said cause. Backs up their passion with specific examples of action taken whether that be volunteer work, demonstrating in depth research, etc. Bonus: References a Blueprint project/did research. Example: Access to education is a cause that resonates with me because I grew up in [x] and I saw first hand how lack of education can [...]. Recognizing my own privilege to receive education in Canada, I [.action/research..] etc",
 ];
 
-
 export const ReviewPassionForSocialGoodStage: React.FC<Props> = ({
   name,
   application,
@@ -29,55 +28,54 @@ export const ReviewPassionForSocialGoodStage: React.FC<Props> = ({
 }) => {
   const [questions, setQuestions] = useState<string[]>([]);
   const [answers, setAnswers] = useState<string[]>([]);
-  const resumeLink = application?.resumeUrl;
 
   useEffect(() => {
     const shortAnswerStr = application?.shortAnswerQuestions[0];
     if (!shortAnswerStr) return;
     const shortAnswerJSON = JSON.parse(shortAnswerStr);
-    const question = shortAnswerJSON[1]?.question
+    const question = shortAnswerJSON[1]?.question;
     const answer = shortAnswerJSON[1]?.response;
 
-   setQuestions([question]);
-   setAnswers([answer]);
-
-  }, [application])
+    setQuestions([question]);
+    setAnswers([answer]);
+  }, [application]);
   return (
     <>
-    <ReviewRatingPage
-      studentName={name}
-      contextConsumer={<ReviewSetScoresContext.Consumer>
-        {(updateScore) => (
-          <div className="flex items-center justify-end">
-            <input
-              type="number"
-              pattern="[1-5]"
-              value={scores.get(currentStage)}
-              onChange={(event) => {
-                if (event.target.validity.valid) {
-                  updateScore?.(currentStage, parseInt(event.target.value));
-                }
-              }}
-            />
-            <h5 className="text-red-500 inline-block px-2 text-xl">*</h5>
-          </div>
-        )}
-      </ReviewSetScoresContext.Consumer>}
-      title="Passion for social good"
-      currentStage={ReviewStage.PFSG}
-      currentStageRubric={
-        <ReviewRubric
-          scoringCriteria={reviewPFSGScoringCriteria}
-          scores={scores}
-          currentStage={ReviewStage.PFSG}
-        />
-      }
-      currentStageAnswers={
-        <ReviewAnswers questions={questions} answers={answers} />
-      }
-      scores={scores}
-    />
+      <ReviewRatingPage
+        studentName={name}
+        contextConsumer={
+          <ReviewSetScoresContext.Consumer>
+            {(updateScore) => (
+              <div className="flex items-center justify-end">
+                <input
+                  type="number"
+                  pattern="[1-5]"
+                  value={scores.get(currentStage)}
+                  onChange={(event) => {
+                    if (event.target.validity.valid) {
+                      updateScore?.(currentStage, parseInt(event.target.value));
+                    }
+                  }}
+                />
+                <h5 className="text-red-500 inline-block px-2 text-xl">*</h5>
+              </div>
+            )}
+          </ReviewSetScoresContext.Consumer>
+        }
+        title="Passion for social good"
+        currentStage={ReviewStage.PFSG}
+        currentStageRubric={
+          <ReviewRubric
+            scoringCriteria={reviewPFSGScoringCriteria}
+            scores={scores}
+            currentStage={ReviewStage.PFSG}
+          />
+        }
+        currentStageAnswers={
+          <ReviewAnswers questions={questions} answers={answers} />
+        }
+        scores={scores}
+      />
     </>
   );
 };
-

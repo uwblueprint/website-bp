@@ -8,7 +8,6 @@ export const ReviewAnswers: React.FC<Props> = ({ questions, answers }) => {
     <div className="flex flex-col gap-5">
       {questions.map((question, idx) => {
         return (
-          
           <div
             className="flex flex-col gap-5"
             style={{ alignItems: "flex-start" }}
@@ -26,7 +25,5 @@ export const ReviewAnswers: React.FC<Props> = ({ questions, answers }) => {
         );
       })}
     </div>
-
-    
   );
 };

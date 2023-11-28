@@ -26,18 +26,16 @@ export const ReviewDriveToLearnStage: React.FC<Props> = ({
 }) => {
   const [questions, setQuestions] = useState<string[]>([]);
   const [answers, setAnswers] = useState<string[]>([]);
-  const resumeLink = application?.resumeUrl;
-  
+
   useEffect(() => {
     const shortAnswerStr = application?.shortAnswerQuestions[0];
     if (!shortAnswerStr) return;
     const shortAnswerJSON = JSON.parse(shortAnswerStr);
-    const question = shortAnswerJSON[3]?.question
+    const question = shortAnswerJSON[3]?.question;
     const answer = shortAnswerJSON[3]?.response;
 
-   setQuestions([question]);
-   setAnswers([answer]);
-
+    setQuestions([question]);
+    setAnswers([answer]);
   }, [application]);
   return (
     <ReviewRatingPage
