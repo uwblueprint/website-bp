@@ -1,5 +1,4 @@
 import { ReviewStage } from "pages/review";
-import { ReviewSetScoresContext } from "../shared/reviewContext";
 
 interface Props {
   scoringCriteria: string[];
@@ -7,11 +6,7 @@ interface Props {
   currentStage: ReviewStage;
 }
 
-export const ReviewRubric: React.FC<Props> = ({
-  scoringCriteria,
-  scores,
-  currentStage,
-}) => {
+export const ReviewRubric: React.FC<Props> = ({ scoringCriteria }) => {
   return (
     <>
       <div className="shrink gap-8">
