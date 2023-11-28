@@ -4,6 +4,7 @@ import { ReviewRubric } from "./reviewRubric";
 import { ReviewAnswers } from "./reviewAnswers";
 import { ApplicationDTO } from "types";
 import { useEffect, useState } from "react";
+import { ReviewSetScoresContext } from "../shared/reviewContext";
 
 interface Props {
   name: string;
@@ -19,16 +20,6 @@ const reviewD2LScoringCriteria = [
   "Demonstrates a high level self-guided learning outside of class and work. Example: outstanding or non conventional projects / initiatives that clearly tie an applicant’s personal development goals with something new and creative.",
 ];
 
-const sampleQuestions = [
-  "Tell us about a time you learned a new skill. What was your motivation to learn it and what was your approach?",
-  "Bonus: Tell us about a cause that resonates with you",
-];
-
-const sampleAnswers = [
-  "The organization I'm volunteering for right now, IleTTonna, is a healthcare startup devoted to helping those struggling through the postpartum period. To be completely honest, it's mission didn't resonate with me as much as it does now than when I first started. At the beginning, I wasn't sure how helpful what we were doing was because our audience seemed to sniche. But now, after meeting with stakeholders and launching our MVP, we're getting a lot of responses. Seeing the impact of your work is incredible and does a lot to inspire more hard work. ",
-  "The organization I'm volunteering for right now, IleTTonna, is a healthcare startup devoted to helping those struggling through the postpartum period. To be completely honest, it's mission didn't resonate with me as much as it does now than when I first started. At the beginning, I wasn't sure how helpful what we were doing was because our audience seemed to sniche. But now, after meeting with stakeholders and launching our MVP, we're getting a lot of responses. Seeing the impact of your work is incredible and does a lot to inspire more hard work. ",
-];
-
 export const ReviewDriveToLearnStage: React.FC<Props> = ({
   name,
   application,
@@ -36,18 +27,16 @@ export const ReviewDriveToLearnStage: React.FC<Props> = ({
 }) => {
   const [questions, setQuestions] = useState<string[]>([]);
   const [answers, setAnswers] = useState<string[]>([]);
-  const resumeLink = application?.resumeUrl;
-  
+
   useEffect(() => {
     const shortAnswerStr = application?.shortAnswerQuestions[0];
     if (!shortAnswerStr) return;
     const shortAnswerJSON = JSON.parse(shortAnswerStr);
-    const question = shortAnswerJSON[3]?.question
+    const question = shortAnswerJSON[3]?.question;
     const answer = shortAnswerJSON[3]?.response;
 
-   setQuestions([question]);
-   setAnswers([answer]);
-
+    setQuestions([question]);
+    setAnswers([answer]);
   }, [application]);
   return (
     <ReviewRatingPage
@@ -65,6 +54,28 @@ export const ReviewDriveToLearnStage: React.FC<Props> = ({
         <ReviewAnswers questions={questions} answers={answers} />
       }
       scores={scores}
+      contextConsumer={
+        <ReviewSetScoresContext.Consumer>
+          {(updateScore) => (
+            <div className="flex items-center justify-end">
+              <input
+                type="number"
+                pattern="[1-4]"
+                value={scores.get(ReviewStage.D2L)}
+                onChange={(event) => {
+                  if (event.target.validity.valid) {
+                    updateScore?.(
+                      ReviewStage.D2L,
+                      parseInt(event.target.value),
+                    );
+                  }
+                }}
+              />
+              <h5 className="text-red-500 inline-block px-2 text-xl">*</h5>
+            </div>
+          )}
+        </ReviewSetScoresContext.Consumer>
+      }
     />
   );
 };

@@ -10,6 +10,7 @@ interface Props {
   title: string;
   resumeLink?: string;
   scores: Map<ReviewStage, number>;
+  contextConsumer: JSX.Element;
 }
 
 interface resumeProps {
@@ -42,6 +43,7 @@ export const ReviewRatingPage: React.FC<Props> = ({
   title,
   resumeLink,
   scores,
+  contextConsumer,
 }) => {
   return (
     <ReviewSplitPanelPage
@@ -57,6 +59,7 @@ export const ReviewRatingPage: React.FC<Props> = ({
         >
           {resumeLink ? <ResumeLink resumeLink={resumeLink as string} /> : null}
           <div>{currentStageAnswers}</div>
+          <div>{contextConsumer}</div>
         </div>
       }
       scores={scores}
