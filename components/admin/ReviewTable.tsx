@@ -65,7 +65,6 @@ const ApplicationsTable: React.FC<TableProps> = ({
 
   const createStudentRow = (application: any) => {
     const app = application.application;
-    const reviewers = application.reviewers;
 
     return {
       id: app.id,

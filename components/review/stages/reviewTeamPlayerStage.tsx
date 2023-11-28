@@ -2,33 +2,63 @@ import { ReviewStage } from "pages/review";
 import { ReviewRatingPage } from "../shared/reviewRatingPage";
 import { ReviewRubric } from "./reviewRubric";
 import { ReviewAnswers } from "./reviewAnswers";
+import { ApplicationDTO } from "types";
+import { useEffect, useState } from "react";
+import { ReviewSetScoresContext } from "../shared/reviewContext";
 
 interface Props {
+  name: string;
+  application: ApplicationDTO | undefined;
   scores: Map<ReviewStage, number>;
 }
-
 const reviewTPScoringCriteria = [
-  "Does not provide a relevant cause that resonates with them. Example: I'm really involved in social good causes, I'm a very emphathetic person so I tend to resonate with them when I come across something negative in the world",
-  "Does not provide a relevant cause that resonates with them. Example: I'm really involved in social good causes, I'm a very emphathetic person so I tend to resonate with them when I come across something negative in the world",
-  "Does not provide a relevant cause that resonates with them. Example: I'm really involved in social good causes, I'm a very emphathetic person so I tend to resonate with them when I come across something negative in the world",
-  "Does not provide a relevant cause that resonates with them. Example: I'm really involved in social good causes, I'm a very emphathetic person so I tend to resonate with them when I come across something negative in the world",
-  "Does not provide a relevant cause that resonates with them. Example: I'm really involved in social good causes, I'm a very emphathetic person so I tend to resonate with them when I come across something negative in the world",
+  "Provides an irrelevant example of a meaningful community. Example has zero personal connection. Example: UW Blueprint seems to be a great community and I'd be proud to be a part of it",
+  "Only talks about the community but doesn't mention any contributions made or doesn't indicate why the community is meaningful to the candidate; doesn't have a personal connection. No mention is made of collaboration or group impacts. Example: I'm a part of [x] and I met a lot of great people through it!",
+  "Talks about a community that has a personal connection but doesn't demonstrate passion about being a part of that community (i.e. being a part of a community out of external requirements). Names generic reasons as to why the community is meaningful to them (i.e. accepting, caring, etc.).",
+  "Personal and meaningful connection to the community is evident and demonstrates strong contributions to the community. Speaks of the community and its impacts and/or the candidates impacts on the community with genuine passion",
+  "Personal and meaningful connection to the community is evident and demonstrates going above and beyond to contribute to that community. Genuinely talks about collaboration and the impact either the candidate had on the community and/or the impact of the community on the candidate. Example: 'I'm proud to be a part of [x] community because of [x, y, z]. I do [x] for the community by doing [y] because this community [...]' etc.",
 ];
 
-const sampleQuestions = [
-  "Tell us about a time you learned a new skill. What was your motivation to learn it and what was your approach?",
-  "Bonus: Tell us about a cause that resonates with you",
-];
+export const ReviewTeamPlayerStage: React.FC<Props> = ({
+  name,
+  application,
+  scores,
+}) => {
+  const [questions, setQuestions] = useState<string[]>([]);
+  const [answers, setAnswers] = useState<string[]>([]);
 
-const sampleAnswers = [
-  "The organization I'm volunteering for right now, IleTTonna, is a healthcare startup devoted to helping those struggling through the postpartum period. To be completely honest, it's mission didn't resonate with me as much as it does now than when I first started. At the beginning, I wasn't sure how helpful what we were doing was because our audience seemed to sniche. But now, after meeting with stakeholders and launching our MVP, we're getting a lot of responses. Seeing the impact of your work is incredible and does a lot to inspire more hard work. ",
-  "The organization I'm volunteering for right now, IleTTonna, is a healthcare startup devoted to helping those struggling through the postpartum period. To be completely honest, it's mission didn't resonate with me as much as it does now than when I first started. At the beginning, I wasn't sure how helpful what we were doing was because our audience seemed to sniche. But now, after meeting with stakeholders and launching our MVP, we're getting a lot of responses. Seeing the impact of your work is incredible and does a lot to inspire more hard work. ",
-];
+  useEffect(() => {
+    const shortAnswerStr = application?.shortAnswerQuestions[0];
+    if (!shortAnswerStr) return;
+    const shortAnswerJSON = JSON.parse(shortAnswerStr);
+    const question = shortAnswerJSON[2]?.question;
+    const answer = shortAnswerJSON[2]?.response;
 
-export const ReviewTeamPlayerStage: React.FC<Props> = ({ scores }) => {
+    setQuestions([question]);
+    setAnswers([answer]);
+  }, [application]);
   return (
     <ReviewRatingPage
-      studentName="M. Goose"
+      studentName={name}
+      contextConsumer={
+        <ReviewSetScoresContext.Consumer>
+          {(updateScore) => (
+            <div className="flex items-center justify-end">
+              <input
+                type="number"
+                pattern="[1-5]"
+                value={scores.get(ReviewStage.TP)}
+                onChange={(event) => {
+                  if (event.target.validity.valid) {
+                    updateScore?.(ReviewStage.TP, parseInt(event.target.value));
+                  }
+                }}
+              />
+              <h5 className="text-red-500 inline-block px-2 text-xl">*</h5>
+            </div>
+          )}
+        </ReviewSetScoresContext.Consumer>
+      }
       title="Team player"
       currentStage={ReviewStage.TP}
       currentStageRubric={
@@ -39,7 +69,7 @@ export const ReviewTeamPlayerStage: React.FC<Props> = ({ scores }) => {
         />
       }
       currentStageAnswers={
-        <ReviewAnswers questions={sampleQuestions} answers={sampleAnswers} />
+        <ReviewAnswers questions={questions} answers={answers} />
       }
       scores={scores}
     />

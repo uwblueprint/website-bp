@@ -110,9 +110,21 @@ const ReviewsPages: NextPage = () => {
           />
         );
       case ReviewStage.PFSG:
-        return <ReviewPassionForSocialGoodStage scores={scores} />;
+        return (
+          <ReviewPassionForSocialGoodStage
+            name={name}
+            application={application}
+            scores={scores}
+          />
+        );
       case ReviewStage.TP:
-        return <ReviewTeamPlayerStage scores={scores} />;
+        return (
+          <ReviewTeamPlayerStage
+            name={name}
+            application={application}
+            scores={scores}
+          />
+        );
       case ReviewStage.D2L:
         return (
           <ReviewDriveToLearnStage
