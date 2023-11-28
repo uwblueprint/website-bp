@@ -33,7 +33,7 @@ const Table: FC = () => {
   const [whichChoiceTab, setWhichChoiceTab] = React.useState(0);
 
   const [selectedDropdownItem, setSelectedDropdownItem] =
-    React.useState<string>("");
+    React.useState<string>("Delegation Dashboard");
 
   const handleDropdownChange = (selectedItem: string) => {
     setSelectedDropdownItem(selectedItem);
