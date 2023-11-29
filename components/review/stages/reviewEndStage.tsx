@@ -13,13 +13,53 @@ export const ReviewEndStage: React.FC<Props> = ({ scores }) => {
       leftTitle="Summary of scores"
       leftContent={
         <div>
-          <div>Passion for Social Good: {scores?.get(ReviewStage.PFSG)}</div>
-          <div>Team Player: {scores?.get(ReviewStage.TP)}</div>
-          <div>Desire to Learn: {scores?.get(ReviewStage.D2L)}</div>
-          <div>Skill: {scores?.get(ReviewStage.SKL)}</div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <span>Passion for Social Good</span>
+            <span style={{ textAlign: "right" }}>
+              {scores?.get(ReviewStage.PFSG)}/5
+            </span>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <span>Team Player</span>
+            <span style={{ textAlign: "right" }}>
+              {scores?.get(ReviewStage.TP)}/5
+            </span>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <span>Desire to Learn</span>
+            <span style={{ textAlign: "right" }}>
+              {scores?.get(ReviewStage.D2L)}/5
+            </span>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <span>Skill</span>
+            <span style={{ textAlign: "right" }}>
+              {scores?.get(ReviewStage.SKL)}/5
+            </span>
+          </div>
         </div>
       }
+      tallyLeftTitle="TOPIC"
+      tallyRightTitle="RATING"
       scores={scores}
+      totalTally={
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            fontWeight: "bold",
+          }}
+        >
+          <span>Total</span>
+          <span style={{ textAlign: "right", fontWeight: "bold" }}>
+            {scores?.get(ReviewStage.PFSG) +
+              scores?.get(ReviewStage.TP) +
+              scores?.get(ReviewStage.D2L) +
+              scores?.get(ReviewStage.SKL)}
+            /5
+          </span>
+        </div>
+      }
     ></ReviewSplitPanelPage>
   );
 };

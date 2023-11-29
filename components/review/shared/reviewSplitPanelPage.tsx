@@ -11,6 +11,9 @@ interface Props {
   rightContent?: JSX.Element;
   currentStage: ReviewStage;
   scores: Map<ReviewStage, number>;
+  tallyLeftTitle?: string;
+  tallyRightTitle?: string;
+  totalTally?: JSX.Element;
 }
 
 export const ReviewSplitPanelPage: React.FC<Props> = ({
@@ -22,6 +25,9 @@ export const ReviewSplitPanelPage: React.FC<Props> = ({
   rightContent,
   currentStage,
   scores,
+  tallyLeftTitle,
+  tallyRightTitle,
+  totalTally,
 }) => {
   return (
     <div className="grid grid-cols-2 grid-rows-[auto_1fr] h-screen">
@@ -29,12 +35,58 @@ export const ReviewSplitPanelPage: React.FC<Props> = ({
         id="left"
         className="flex flex-col bg-sky w-full h-screen p-9 relative"
       >
-        {leftTitle ? <h2 className="text-[26px]">{leftTitle}</h2> : null}
+        {leftTitle ? (
+          <h2
+            style={{ textAlign: "left", fontSize: "26px" }}
+            className="text-[26px]"
+          >
+            {leftTitle}
+          </h2>
+        ) : null}
+
+        {tallyLeftTitle && tallyRightTitle && (
+          <div
+            style={{
+              width: "516px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <h2 className="text-[26px] text-blue" style={{ textAlign: "left" }}>
+              {tallyLeftTitle}
+            </h2>
+            <h2
+              className="text-[26px] text-blue"
+              style={{ textAlign: "right" }}
+            >
+              {tallyRightTitle}
+            </h2>
+          </div>
+        )}
+
         <div
           className="inline-flex flex-col gap-8 shrink overflow-y-auto"
-          style={{ alignItems: "flex-start" }}
+          style={{
+            width: "516px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+          }}
         >
-          <div className="w-full">{leftContent}</div>
+          <div className="w-full text-[26px]">{leftContent}</div>
+          {totalTally && (
+            <>
+              <div
+                style={{
+                  width: "100%",
+                  borderBottom: "1px solid black",
+                  marginTop: "8px", // Adjust the margin as needed
+                }}
+              />
+              <div className="w-full text-[26px]">{totalTally}</div>
+            </>
+          )}
         </div>
       </div>
       <div id="right" className="h-screen relative flex flex-col h-screen">
