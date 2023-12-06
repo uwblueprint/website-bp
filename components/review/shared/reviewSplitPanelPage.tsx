@@ -2,6 +2,7 @@ import { ReviewStage } from "pages/review/index.jsx";
 import React from "react";
 import { ReviewStepper } from "./reviewStepper";
 
+
 interface Props {
   studentName: string;
   leftTitle?: string;
@@ -14,6 +15,7 @@ interface Props {
   tallyLeftTitle?: string;
   tallyRightTitle?: string;
   totalTally?: JSX.Element;
+  comment?: JSX.Element;
 }
 
 export const ReviewSplitPanelPage: React.FC<Props> = ({
@@ -28,7 +30,8 @@ export const ReviewSplitPanelPage: React.FC<Props> = ({
   tallyLeftTitle,
   tallyRightTitle,
   totalTally,
-}) => {
+  comment,
+}) => {  
   return (
     <div className="grid grid-cols-2 grid-rows-[auto_1fr] h-screen">
       <div
@@ -81,7 +84,7 @@ export const ReviewSplitPanelPage: React.FC<Props> = ({
                 style={{
                   width: "100%",
                   borderBottom: "1px solid black",
-                  marginTop: "8px", // Adjust the margin as needed
+                  marginTop: "8px",
                 }}
               />
               <div className="w-full text-[26px]">{totalTally}</div>
@@ -108,6 +111,7 @@ export const ReviewSplitPanelPage: React.FC<Props> = ({
               </h2>
             ) : null}
             <div>{rightContent}</div>
+            {totalTally && <p>{comment}</p>}
           </div>
         </div>
         <ReviewStepper currentStage={currentStage} scores={scores} />
