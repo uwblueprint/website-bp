@@ -81,7 +81,14 @@ const Table: FC = () => {
           setWhichChoiceTab={setWhichChoiceTab}
           whichChoiceTab={whichChoiceTab}
         />
-
+        {/* <ApplicationsTable
+          activeRole={activeRole}
+          whichChoiceTab={whichChoiceTab}
+          setNumFirstChoiceEntries={setNumFirstChoiceEntries}
+          numFirstChoiceEntries={numFirstChoiceEntries}
+          setNumSecondChoiceEntries={setNumSecondChoiceEntries}
+          numSecondChoiceEntries={numSecondChoiceEntries}
+        /> */}
         {selectedDropdownItem === "Review Dashboard" && (
           <ReviewTable
             activeRole={activeRole}
