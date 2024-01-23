@@ -81,7 +81,6 @@ const Table: FC = () => {
           setWhichChoiceTab={setWhichChoiceTab}
           whichChoiceTab={whichChoiceTab}
         />
-
         {selectedDropdownItem === "Review Dashboard" && (
           <ReviewTable
             activeRole={activeRole}
