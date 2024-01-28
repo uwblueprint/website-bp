@@ -1,5 +1,5 @@
 {
-  "term": 1236,
+  "term": 1237,
   "teams": [
     {
       "name": "Executive Team",
@@ -10,21 +10,12 @@
       "id": "internal-tools"
     },
     {
-      "name": "Supportive Housing of Waterloo",
-      "id": "shw"
-    },
-
-    {
       "name": "Children’s Aid Society of Algoma",
       "id": "casa"
     },
     {
       "name": "Feeding Canadian Kids",
       "id": "fck"
-    },
-    {
-      "name": "Haven",
-      "id": "haven"
     },
     {
       "name": "A Better Tent City",
@@ -35,8 +26,12 @@
       "id": "mp"
     },
     {
-      "name": "Infrastructure",
-      "id": "infra"
+      "name": "Child Witness Center",
+      "id": "cwc"
+    },
+    {
+      "name": "Don Efficace",
+      "id": "de"
     }
   ],
   "members": [
