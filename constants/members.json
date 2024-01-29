@@ -3223,8 +3223,8 @@
     {
       "name": "Shushawn Saha",
       "role": "developer",
-      "term": 1236,
-      "teams": ["haven"],
+      "term": 1237,
+      "teams": ["de"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
@@ -3364,9 +3364,9 @@
     },
     {
       "name": "Jacqueline Fung",
-      "role": "developer",
-      "term": 1236,
-      "teams": ["casa"],
+      "role": "product manager",
+      "term": 1237,
+      "teams": ["de"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_JacquelineFung.jpg?alt=media&token=66e7d231-9e82-462d-a3e3-60d03cd33909"
     },
     {
@@ -3407,8 +3407,8 @@
     {
       "name": "Zafir Raeid",
       "role": "product manager",
-      "term": 1236,
-      "teams": ["shw"],
+      "term": 1237,
+      "teams": ["de"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FPM_Zafir_Raeid.png?alt=media&token=c1987dd1-428c-4166-9460-a6a3f4cd9017"
     },
     {
@@ -3501,8 +3501,8 @@
     {
       "name": "Sunny Zhang",
       "role": "designer",
-      "term": 1236,
-      "teams": ["fck"],
+      "term": 1237,
+      "teams": ["de"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FProductDesigner_Sunny_Zhang.JPG?alt=media&token=b935d1a8-174d-442a-86e4-f8d0563c8b78"
     },
     {
@@ -3627,8 +3627,8 @@
     {
       "name": "Jessica Ding",
       "role": "developer",
-      "term": 1236,
-      "teams": ["haven"],
+      "term": 1237,
+      "teams": ["de"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Jessica_Ding.jpg?alt=media&token=60db6e71-e982-410e-847b-908e07c08e25"
     },
     {
@@ -3690,8 +3690,8 @@
     {
       "name": "Nandini Mehrotra",
       "role": "developer",
-      "term": 1236,
-      "teams": ["mp"],
+      "term": 1237,
+      "teams": ["de"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Nandini_Mehrotra.jpg?alt=media&token=a9d1e4a0-ade5-45fd-878c-57084f50f53d"
     },
     {
@@ -3798,6 +3798,20 @@
       "term": 1236,
       "teams": ["infra"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Hillary Heung",
+      "role": "designer",
+      "term": 1237,
+      "teams": ["de"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "David Sterling",
+      "role": "designer",
+      "term": 1237,
+      "teams": ["de"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FDavid%20Stirling.png?alt=media&token=996bd95e-094b-415c-8b71-6bdc68ed10ac"
     }
   ]
 }
