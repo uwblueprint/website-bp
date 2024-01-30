@@ -135,9 +135,9 @@
     },
     {
       "name": "Rachel Scott",
-      "role": "vp communications",
-      "term": 1235,
-      "teams": ["executive"],
+      "role": "product manager",
+      "term": 1237,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fvpi_rachelscott.jpg?alt=media&token=5d953b91-e734-4883-9c1d-51b55811d62b"
     },
     {
@@ -3535,16 +3535,16 @@
     },
     {
       "name": "Annie Cai",
-      "role": "developer",
-      "term": 1236,
+      "role": "technical lead",
+      "term": 1237,
       "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2Fdev_annie_cai.jpg?alt=media&token=63b6e3b5-35a7-4151-b7fd-7ebb11abfb84"
     },
     {
       "name": "Maisha Thasin",
       "role": "developer",
-      "term": 1236,
-      "teams": ["infra"],
+      "term": 1237,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2Fdev_maisha_thasin.jpeg?alt=media&token=b4ddba89-ccd2-4345-b136-5b80475ca4a7"
     },
     {
@@ -3606,8 +3606,8 @@
     {
       "name": "Lorena Rosati",
       "role": "developer",
-      "term": 1236,
-      "teams": ["haven"],
+      "term": 1237,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDEV_Lorena_Rosati.jpg?alt=media&token=bb75438f-d909-4808-ba50-bda4aea4b876"
     },
     {
@@ -3711,8 +3711,8 @@
     {
       "name": "Omer Adeel",
       "role": "developer",
-      "term": 1236,
-      "teams": ["casa"],
+      "term": 1237,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
 
@@ -3734,9 +3734,9 @@
 
     {
       "name": "Kriti Sodhi",
-      "role": "external director",
-      "term": 1236,
-      "teams": ["executive"],
+      "role": "developer",
+      "term": 1237,
+      "teams": ["internal-tools"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FVPE_Kriti_Sodhi.jpg?alt=media&token=8b2f57e8-7cb7-4794-ba79-b5e2cb1e2d4a"
     },
     {
@@ -3798,6 +3798,27 @@
       "term": 1236,
       "teams": ["infra"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Pranav Vishal",
+      "role": "technical lead",
+      "term": 1237,
+      "teams": ["internal-tools"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Kush Patel",
+      "role": "developer",
+      "term": 1237,
+      "teams": ["internal-tools"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Matthew Ng",
+      "role": "developer",
+      "term": 1237,
+      "teams": ["internal-tools"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FDeveloper_Matthew_Ng.jpg?alt=media&token=a971980c-9ab8-47e0-9beb-77afbb4d9263"
     }
   ]
 }
