@@ -3174,15 +3174,15 @@
     {
       "name": "Cindy Li",
       "role": "developer",
-      "term": 1236,
-      "teams": ["casa"],
+      "term": 1237,
+      "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FVPI_Cindy_Li.jpg?alt=media&token=35611a3e-ea9b-4bb1-a2a8-963d9ac954c4"
     },
     {
       "name": "Shirley Fang",
-      "role": "vp external",
-      "term": 1235,
-      "teams": ["executive"],
+      "role": "developer",
+      "term": 1237,
+      "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FVPE_Shirley_Fang.jpg?alt=media&token=44f63043-a008-4dae-bd03-db7718c58fd2"
     },
     {
@@ -3274,7 +3274,7 @@
     {
       "name": "Hiba Altaf",
       "role": "product manager",
-      "term": 1236,
+      "term": 1237,
       "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
@@ -3351,7 +3351,7 @@
     {
       "name": "Sarah Qiao",
       "role": "designer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FProductDesigner_Sarah_Qiao.JPG?alt=media&token=b85378c2-9718-4a37-bf9f-0ab8f03eb8df"
     },
@@ -3421,7 +3421,7 @@
     {
       "name": "Sharujan Sreekaran",
       "role": "developer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Sharujan_Sreekaran.jpg?alt=media&token=49efa945-1e20-4494-b7ea-e1155e088407"
     },
@@ -3472,7 +3472,7 @@
     {
       "name": "Selena Zhang",
       "role": "developer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Selena_Zhang.jpg?alt=media&token=6d920b51-4dc4-4f7f-9d2a-86cad73cabe1"
     },
@@ -3500,9 +3500,9 @@
     },
     {
       "name": "William Park",
-      "role": "developer",
-      "term": 1236,
-      "teams": ["fck"],
+      "role": "technical lead",
+      "term": 1237,
+      "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_William_Park.jpeg?alt=media&token=019bc1c3-95d4-4ee7-8c4d-bfb3bd1697c1"
     },
     {
@@ -3564,28 +3564,28 @@
     {
       "name": "Daniel Truong",
       "role": "developer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Daniel_Truong?alt=media&token=963bf59c-6ab3-4d35-98b7-c27f89189177"
     },
     {
       "name": "Jesse Huang",
       "role": "developer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Jesse_Huang.JPG?alt=media&token=b484c2a5-d2c4-4ebc-b1f9-46cfdfbac5a6"
     },
     {
       "name": "Janie Ong",
       "role": "designer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FProductDesigner_Janie_Ong.JPG?alt=media&token=06f55dcd-299b-490d-9ee9-d4d6a82afd45"
     },
     {
       "name": "Shelley Chen",
       "role": "developer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Shelley_Chen.jpeg?alt=media&token=ac5f232d-1c1e-4ff9-85e2-85bbebfd8c3c"
     },
@@ -3787,7 +3787,7 @@
     {
       "name": "Kathleen Xiong",
       "role": "developer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Kathleen_Xiong.JPG?alt=media&token=7e5aad80-a7bc-4fd4-a330-d471ed15c339"
     },
@@ -3795,7 +3795,7 @@
     {
       "name": "Bill Gong",
       "role": "designer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FProductDesigner_Bill_Gong.jpg?alt=media&token=62dcf03a-7a55-470b-8e79-e09fa2e8d163"
     },
