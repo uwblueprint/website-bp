@@ -254,6 +254,13 @@
     },
     {
       "name": "Juthika Hoque",
+      "role": "product manager",
+      "term": 1237,
+      "teams": ["fck"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Juthika_Hoque.jpg?alt=media&token=dd6c8088-b991-470a-8f94-9dcfca3f11e1"\
+    },
+    {
+      "name": "Juthika Hoque",
       "role": "vp product",
       "term": 1237,
       "teams": ["executive"],
@@ -2285,9 +2292,9 @@
     {
       "name": "Hannah Du",
       "role": "developer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["fck"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_HannahDu.jpeg?alt=media&token=d19b92c7-49a9-4b09-9900-4b92941a7b8b"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FDeveloper_Hannah_Du.png?alt=media&token=673b0f54-867a-4908-bab8-6a94260b666e"
     },
     {
       "name": "Anmol Tyagi",
@@ -3230,7 +3237,7 @@
     {
       "name": "Shahan Nedadahandeh",
       "role": "technical lead",
-      "term": 1236,
+      "term": 1237,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FPL_Shahan_Nedadahandeh.png?alt=media&token=13fe9646-4c81-494c-a81f-b0b2aa8ef396"
     },
@@ -3245,9 +3252,9 @@
     {
       "name": "Tudor Barsan",
       "role": "developer",
-      "term": 1235,
+      "term": 1237,
       "teams": ["fck"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Tudor_Barsan.jpg?alt=media&token=f03817ec-b23d-4820-97e7-bea03a210151"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FDeveloper_Tudor_Barsan.jpg?alt=media&token=d64e0c08-7ebe-46d7-a5d3-fa9dd5c49a34"
     },
     {
       "name": "Levina Indrawan",
@@ -3449,9 +3456,9 @@
     {
       "name": "Jaryd Diamond",
       "role": "developer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["fck"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Jaryd_Diamond.jpeg?alt=media&token=e4eff8d9-c702-49c1-8129-405f500377a4"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FDeveloper_Jaryd_Diamond.jpeg?alt=media&token=3b93c375-bfe1-4941-9caf-d072e5cabd3c"
     },
 
     {
@@ -3473,21 +3480,21 @@
     {
       "name": "Rachel Heo",
       "role": "developer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2Fdev_rachel_heo.JPG?alt=media&token=beb590ab-2cd0-41ba-ab41-b280d07db2ae"
     },
     {
       "name": "Aung Khant Min",
       "role": "developer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Barton Lu",
       "role": "developer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Barton_Lu.png?alt=media&token=a0a065a4-420d-48ea-99d1-ff035b0de5c8"
     },
@@ -3634,7 +3641,7 @@
     {
       "name": "Colin Toft",
       "role": "developer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Colin_Toft.JPG?alt=media&token=2bfcf3c0-e344-4f04-ae34-8c0ad79bdec5"
     },
@@ -3662,8 +3669,8 @@
     {
       "name": "Benjamin Ng",
       "role": "developer",
-      "term": 1236,
-      "teams": ["mp"],
+      "term": 1237,
+      "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDEV_Benjamin_Ng.png?alt=media&token=c59c88e7-f596-44bd-85f2-6d5d02a46d77"
     },
     {
@@ -3800,6 +3807,12 @@
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
+      "name": "Jacqueline Ho",
+      "role": "developer",
+      "term": 1237,
+      "teams": ["fck"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FDeveloper_Jacqueline_Ho.jpg?alt=media&token=709c3c4f-61b8-4868-808a-39e597db7230"
+
       "name": "Mannini Pathania",
       "role": "graphic designer",
       "term": 1237,
