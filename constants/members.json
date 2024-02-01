@@ -156,9 +156,9 @@
     },
     {
       "name": "Bowen Zhu",
-      "role": "technical lead",
-      "term": 1235,
-      "teams": ["casa"],
+      "role": "vp engineering",
+      "term": 1237,
+      "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FVP_Talent_Bowen_Zhu.jpg?alt=media&token=627c467e-19f5-4f46-93af-a9439e14b9e2"
     },
     {
@@ -255,8 +255,15 @@
     {
       "name": "Juthika Hoque",
       "role": "product manager",
-      "term": 1236,
+      "term": 1237,
       "teams": ["fck"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Juthika_Hoque.jpg?alt=media&token=dd6c8088-b991-470a-8f94-9dcfca3f11e1"\
+    },
+    {
+      "name": "Juthika Hoque",
+      "role": "vp product",
+      "term": 1237,
+      "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff22headshots%2FDev_Juthika_Hoque.jpg?alt=media&token=dd6c8088-b991-470a-8f94-9dcfca3f11e1"
     },
     {
@@ -1714,10 +1721,10 @@
     },
     {
       "name": "Soha Khan",
-      "role": "director lead",
-      "term": 1236,
+      "role": "co-president",
+      "term": 1237,
       "teams": ["executive"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ffall2020headshots%2FVpMarketing_SohaKhan.JPG?alt=media&token=3d101c30-ff2a-4c98-99b9-08a2b9128615"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FCo-President_Soha_Khan.jpg?alt=media&token=847a091e-934a-4d11-ba29-c2b8f7e38b1e"
     },
     {
       "name": "Narayan Subramoniam",
@@ -1955,9 +1962,9 @@
     {
       "name": "Vyomesh Iyengar",
       "role": "co-president",
-      "term": 1236,
+      "term": 1237,
       "teams": ["executive"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw23headshots%2FVPD_Vyomesh_Iyengar.png?alt=media&token=76a43911-78b3-4e45-b689-55a5e8939f8d"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FCoPresident_Vyomesh_Iyengar.png?alt=media&token=ba2d93c7-d25b-45e6-af7c-fb6a5e216219"
     },
     {
       "name": "Joy Lin",
@@ -2285,9 +2292,9 @@
     {
       "name": "Hannah Du",
       "role": "developer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["fck"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_HannahDu.jpeg?alt=media&token=d19b92c7-49a9-4b09-9900-4b92941a7b8b"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FDeveloper_Hannah_Du.png?alt=media&token=673b0f54-867a-4908-bab8-6a94260b666e"
     },
     {
       "name": "Anmol Tyagi",
@@ -2627,9 +2634,9 @@
     },
     {
       "name": "Binalpreet Kalra",
-      "role": "developer",
-      "term": 1221,
-      "teams": ["rowan-house"],
+      "role": "vp design",
+      "term": 1237,
+      "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ffall2021headshots%2Fdesign_binalpreet_kalra.jpeg?alt=media&token=98ab5d2f-c0c5-4b5a-a148-c8d0683513f5"
     },
     {
@@ -2802,9 +2809,9 @@
     },
     {
       "name": "Yi Nan Zhang",
-      "role": "designer",
-      "term": 1221,
-      "teams": ["ccbc"],
+      "role": "vp design",
+      "term": 1237,
+      "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fpdesigner_yinanzhang.png?alt=media&token=5ab40321-a46d-4f17-b8cb-79b3de363deb"
     },
     {
@@ -2914,9 +2921,9 @@
     },
     {
       "name": "Jason Xiong",
-      "role": "developer",
-      "term": 1229,
-      "teams": ["focus-on-nature"],
+      "role": "vp engineering",
+      "term": 1237,
+      "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2022headshots%2Fdev_jasonxiong.jpg?alt=media&token=1543e38f-2012-4962-a500-2e549a8249f4"
     },
     {
@@ -3180,8 +3187,8 @@
     },
     {
       "name": "Fred Fang",
-      "role": "vp finance",
-      "term": 1236,
+      "role": "vp finance & operations",
+      "term": 1237,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FVPF_Fred_Fang.png?alt=media&token=57c0fa76-c58a-4b54-a2e7-ebdaf9ee259d"
     },
@@ -3230,7 +3237,7 @@
     {
       "name": "Shahan Nedadahandeh",
       "role": "technical lead",
-      "term": 1236,
+      "term": 1237,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FPL_Shahan_Nedadahandeh.png?alt=media&token=13fe9646-4c81-494c-a81f-b0b2aa8ef396"
     },
@@ -3245,9 +3252,9 @@
     {
       "name": "Tudor Barsan",
       "role": "developer",
-      "term": 1235,
+      "term": 1237,
       "teams": ["fck"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Tudor_Barsan.jpg?alt=media&token=f03817ec-b23d-4820-97e7-bea03a210151"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FDeveloper_Tudor_Barsan.jpg?alt=media&token=d64e0c08-7ebe-46d7-a5d3-fa9dd5c49a34"
     },
     {
       "name": "Levina Indrawan",
@@ -3427,8 +3434,8 @@
     },
     {
       "name": "Olivia Chan",
-      "role": "external director",
-      "term": 1236,
+      "role": "vp scoping",
+      "term": 1237,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FVPE_Olivia_Chan.jpg?alt=media&token=8a8bf5f8-556b-45ca-957e-f96646dff97c"
     },
@@ -3449,15 +3456,15 @@
     {
       "name": "Jaryd Diamond",
       "role": "developer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["fck"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Jaryd_Diamond.jpeg?alt=media&token=e4eff8d9-c702-49c1-8129-405f500377a4"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FDeveloper_Jaryd_Diamond.jpeg?alt=media&token=3b93c375-bfe1-4941-9caf-d072e5cabd3c"
     },
 
     {
       "name": "Victoria Nguyen",
-      "role": "vp talent",
-      "term": 1236,
+      "role": "vp finance & operations",
+      "term": 1237,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FVP%20Talent%20_%20Victoria%20_%20Nguyen.jpg?alt=media&token=ce183595-a203-429c-8ec4-5840d277f1a6"
     },
@@ -3473,21 +3480,21 @@
     {
       "name": "Rachel Heo",
       "role": "developer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2Fdev_rachel_heo.JPG?alt=media&token=beb590ab-2cd0-41ba-ab41-b280d07db2ae"
     },
     {
       "name": "Aung Khant Min",
       "role": "developer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Barton Lu",
       "role": "developer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Barton_Lu.png?alt=media&token=a0a065a4-420d-48ea-99d1-ff035b0de5c8"
     },
@@ -3528,8 +3535,8 @@
     },
     {
       "name": "Maggie Lu",
-      "role": "external director",
-      "term": 1236,
+      "role": "director lead",
+      "term": 1237,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FVPE_Maggie_Lu.JPG?alt=media&token=ebc4f915-0d39-4934-a3b5-fea3c55a31d3"
     },
@@ -3585,7 +3592,7 @@
     {
       "name": "Janaki Menon",
       "role": "vp talent",
-      "term": 1236,
+      "term": 1237,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FVP%20Talent_Janaki_Menon.jpeg?alt=media&token=51ef769e-0970-44d5-b0ef-7051f920cddc"
     },
@@ -3634,7 +3641,7 @@
     {
       "name": "Colin Toft",
       "role": "developer",
-      "term": 1236,
+      "term": 1237,
       "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Colin_Toft.JPG?alt=media&token=2bfcf3c0-e344-4f04-ae34-8c0ad79bdec5"
     },
@@ -3662,8 +3669,8 @@
     {
       "name": "Benjamin Ng",
       "role": "developer",
-      "term": 1236,
-      "teams": ["mp"],
+      "term": 1237,
+      "teams": ["fck"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDEV_Benjamin_Ng.png?alt=media&token=c59c88e7-f596-44bd-85f2-6d5d02a46d77"
     },
     {
@@ -3833,6 +3840,104 @@
       "term": 1237,
       "teams": ["casa"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Jacqueline Ho",
+      "role": "developer",
+      "term": 1237,
+      "teams": ["fck"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FDeveloper_Jacqueline_Ho.jpg?alt=media&token=709c3c4f-61b8-4868-808a-39e597db7230"
+    },
+    {
+      "name": "Mannini Pathania",
+      "role": "graphic designer",
+      "term": 1237,
+      "teams": ["executive"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FGraphic%20Designer_Mannini%20Pathania.png?alt=media&token=984581b1-3986-4403-8bfc-12a1ebb9ee54"
+    },
+    {
+      "name": "Maithily Kadam",
+      "role": "internal director",
+      "term": 1237,
+      "teams": ["executive"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FMaithily%20Kadam%20director.png?alt=media&token=5c41c533-e131-45fc-9576-f1bdbb562562"
+    },
+    {
+      "name": "Sophia Zhu",
+      "role": "internal director",
+      "term": 1237,
+      "teams": ["executive"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FInternalDirector_Sophia_Zhu.JPG?alt=media&token=69dffbda-5434-4381-ae5b-0a31c4500aed"
+    },
+    {
+      "name": "Vanie Tran",
+      "role": "external director",
+      "term": 1237,
+      "teams": ["executive"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Lucy Qi",
+      "role": "external director",
+      "term": 1237,
+      "teams": ["executive"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FExternalDirector_Lucy_Qi.jpg?alt=media&token=c270df19-9249-4f76-9288-0b5f5afec9a6"
+    },
+    {
+      "name": "Kimberley Hoang",
+      "role": "external director",
+      "term": 1237,
+      "teams": ["executive"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FExternalDirector_Kimberley_Hoang.jpg?alt=media&token=7840bd87-ca59-4acc-98c7-324d26319346"
+    },
+    {
+      "name": "Jonathan Kim",
+      "role": "marketing and outreach director",
+      "term": 1237,
+      "teams": ["executive"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Arya Patel",
+      "role": "vp finance",
+      "term": 1237,
+      "teams": ["executive"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FVP-Finance_Arya_Patel.png?alt=media&token=13de88c4-5055-47f3-878b-1abbf440db00"
+    },
+    {
+      "name": "Inesh Jacob",
+      "role": "vp finance",
+      "term": 1237,
+      "teams": ["executive"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Jacyln Wang",
+      "role": "vp talent",
+      "term": 1237,
+      "teams": ["executive"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Jeeda Sabri",
+      "role": "vp scoping",
+      "term": 1237,
+      "teams": ["executive"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FVPScoping_Jeeda_Sabri.jpg?alt=media&token=ed60ec56-0920-4c6f-b4c6-66f5c419c9c7"
+    },
+    {
+      "name": "Youssef Abadeer",
+      "role": "vp scoping",
+      "term": 1237,
+      "teams": ["executive"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Swetaa Suresh",
+      "role": "vp scoping",
+      "term": 1237,
+      "teams": ["executive"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FVPScoping_Swetaa_Suresh.jpeg?alt=media&token=2f64cd44-5bb8-4bc3-94a3-f295459460c3"
     }
   ]
 }
