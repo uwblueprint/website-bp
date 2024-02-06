@@ -91,18 +91,40 @@ const ReviewTable: React.FC<TableProps> = ({
     return secondChoiceApplications.map(createStudentRow);
   };
 
-  const generateMockInnerData = () => {
-    return [
+  // GET ALL DATA FROM THE DATABASE AND USE IT TO POPULATE THE TABLE
+  const generateInnerData = (dataindex: number) => {
+      const reviewerScore = firstChoiceApplications[dataindex].reviewDashboards;
+      const reviewer = firstChoiceApplications[dataindex].reviewers;
+
+      const firstScore =  reviewerScore[0];
+      const secondScore = reviewerScore[1];
+      
+      const firstReviewer = reviewer[0];
+      const secondReviewer = reviewer[1];
+
+      if (!firstScore || !secondScore || !firstReviewer || !secondReviewer) return [];
+  
+     return [
       {
-        "Reviewer Name": "John Doe",
-        PFSG: 4,
-        "Team Player": 3,
-        D2L: 6,
-        Skill: 5,
-        "Skill Category": "junior",
-        "Reviewer Comments": "Great work presenting your case study.",
+        "Reviewer Name": firstReviewer.firstName + " " + firstReviewer.lastName,
+        PFSG: firstScore.passionFSG,
+        "Team Player": firstScore.teamPlayer, 
+        D2L: firstScore.desireToLearn,
+        Skill: firstScore.skill,
+        "Total Score": firstScore.passionFSG + firstScore.teamPlayer + firstScore.desireToLearn + firstScore.skill,
+        "Skill Category": firstScore.skillCategory,
+        "Reviewer Comments": firstScore.reviewerComments,
       },
-      // Add as many objects as you want to simulate different rows
+      {
+        "Reviewer Name": secondReviewer.firstName + " " + secondReviewer.lastName,
+        PFSG: secondScore.passionFSG,
+        "Team Player": secondScore.teamPlayer, 
+        D2L: secondScore.desireToLearn,
+        Skill: secondScore.skill,
+        "Total Score": secondScore.passionFSG + secondScore.teamPlayer + secondScore.desireToLearn + secondScore.skill,
+        "Skill Category": secondScore.skillCategory,
+        "Reviewer Comments": secondScore.reviewerComments,
+      },
     ];
   };
 
@@ -110,7 +132,7 @@ const ReviewTable: React.FC<TableProps> = ({
     rowData: any,
     rowMeta: { dataIndex: number },
   ) => {
-    const innerData = generateMockInnerData(); // Use mock data for testing
+    const innerData = generateInnerData(rowMeta.dataIndex); 
     const application = {
       secondChoiceRole: "Graphic Designer",
       recommendForSecondChoice: true,
@@ -126,6 +148,10 @@ const ReviewTable: React.FC<TableProps> = ({
       { name: "Team Player", options: { filter: false, sort: false } },
       { name: "D2L", options: { filter: false, sort: false } },
       { name: "Skill", options: { filter: false, sort: false } },
+      {
+        name: "Total Score",
+        options: { filter: false, sort: false },
+      },
       {
         name: "Skill Category",
         options: { filter: false, sort: false },
