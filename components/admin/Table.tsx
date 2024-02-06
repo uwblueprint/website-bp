@@ -9,6 +9,9 @@ import TableTitle from "./DashboardTableTitle";
 import ApplicationsTable from "./ApplicationsTable";
 import ApplicantRole from "entities/applicationRole";
 import ReviewTable from "./ReviewTable";
+import InterviewTableTitle from "./InterviewTableTitle";
+import { SecondChoiceStatus } from "@utils/muidatatable";
+import InterviewTable from "./InterviewTable";
 
 export enum OrganizationalArea {
   Engineering = "Engineering",
@@ -75,31 +78,57 @@ const Table: FC = () => {
         />
       </div>
       <div className="mx-8">
-        <TableTitle
-          numFirstChoiceEntries={numFirstChoiceEntries}
-          numSecondChoiceEntries={numSecondChoiceEntries}
-          setWhichChoiceTab={setWhichChoiceTab}
-          whichChoiceTab={whichChoiceTab}
-        />
+
         {selectedDropdownItem === "Review Dashboard" && (
-          <ReviewTable
-            activeRole={activeRole}
-            whichChoiceTab={whichChoiceTab}
-            setNumFirstChoiceEntries={setNumFirstChoiceEntries}
-            numFirstChoiceEntries={numFirstChoiceEntries}
-            setNumSecondChoiceEntries={setNumSecondChoiceEntries}
-            numSecondChoiceEntries={numSecondChoiceEntries}
-          />
+          <>
+            <TableTitle
+              numFirstChoiceEntries={numFirstChoiceEntries}
+              numSecondChoiceEntries={numSecondChoiceEntries}
+              setWhichChoiceTab={setWhichChoiceTab}
+              whichChoiceTab={whichChoiceTab}
+            />
+            <ReviewTable
+              activeRole={activeRole}
+              whichChoiceTab={whichChoiceTab}
+              setNumFirstChoiceEntries={setNumFirstChoiceEntries}
+              numFirstChoiceEntries={numFirstChoiceEntries}
+              setNumSecondChoiceEntries={setNumSecondChoiceEntries}
+              numSecondChoiceEntries={numSecondChoiceEntries}
+            />
+          </>
         )}
         {selectedDropdownItem === "Delegation Dashboard" && (
-          <ApplicationsTable
-            activeRole={activeRole}
-            whichChoiceTab={whichChoiceTab}
-            setNumFirstChoiceEntries={setNumFirstChoiceEntries}
-            numFirstChoiceEntries={numFirstChoiceEntries}
-            setNumSecondChoiceEntries={setNumSecondChoiceEntries}
-            numSecondChoiceEntries={numSecondChoiceEntries}
-          />
+          <>
+            <TableTitle
+              numFirstChoiceEntries={numFirstChoiceEntries}
+              numSecondChoiceEntries={numSecondChoiceEntries}
+              setWhichChoiceTab={setWhichChoiceTab}
+              whichChoiceTab={whichChoiceTab}
+            />
+            <ApplicationsTable
+              activeRole={activeRole}
+              whichChoiceTab={whichChoiceTab}
+              setNumFirstChoiceEntries={setNumFirstChoiceEntries}
+              numFirstChoiceEntries={numFirstChoiceEntries}
+              setNumSecondChoiceEntries={setNumSecondChoiceEntries}
+              numSecondChoiceEntries={numSecondChoiceEntries}
+            />
+          </>
+        )} {selectedDropdownItem === "Interview Dashboard" && (
+          // TODO: PASS IN COUNT OF CANDIDATES WITH INTERVIEW STATUS
+          <>
+            <InterviewTableTitle
+              numEntries={(200)}
+            />
+            <InterviewTable
+              activeRole={activeRole}
+              whichChoiceTab={whichChoiceTab}
+              setNumFirstChoiceEntries={setNumFirstChoiceEntries}
+              numFirstChoiceEntries={numFirstChoiceEntries}
+              setNumSecondChoiceEntries={setNumSecondChoiceEntries}
+              numSecondChoiceEntries={numSecondChoiceEntries}
+            />
+          </>
         )}
       </div>
     </div>

@@ -22,6 +22,7 @@ const DropdownMenu: React.FC<{ onChange?: (value: string) => void }> = ({
       >
         <option value="Delegation Dashboard">Delegation Dashboard</option>
         <option value="Review Dashboard">Review Dashboard</option>
+        <option value="Interview Dashboard">Interview Dashboard</option>
       </select>
     </div>
   );
