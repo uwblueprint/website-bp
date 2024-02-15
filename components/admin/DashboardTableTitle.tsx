@@ -26,6 +26,12 @@ const TabDescription: FC<TabDescriptionProps> = ({
   </div>
 );
 
+const EditButton: FC = () => {
+  return (
+    (edit?: boolean) => {
+  )
+}
+
 const TableTitle: FC<TitleProps> = ({
   numFirstChoiceEntries,
   numSecondChoiceEntries,
@@ -35,8 +41,8 @@ const TableTitle: FC<TitleProps> = ({
   const pillStyle =
     "border-2 border-blue-100 text-blue rounded-full px-4 py-2 m-2 font-large inline-block";
 
-  // const editButton =
-  //   "border-2 border-blue rounded-full text-blue text-center px-8 py-1 m-2 inline-block capitalize bg-white";
+  const editButton =
+    "border-2 border-blue rounded-full text-blue text-center px-8 py-1 m-2 inline-block capitalize bg-white";
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setWhichChoiceTab(newValue);
@@ -71,7 +77,7 @@ const TableTitle: FC<TitleProps> = ({
           />
         </Tabs>
       </div>
-      {/* <button className={`${editButton} flex items-center`}>
+      { <button className={`${editButton} flex items-center`}>
         <svg
           width="13"
           height="12"
@@ -85,7 +91,7 @@ const TableTitle: FC<TitleProps> = ({
           />
         </svg>
         Edit
-      </button> */}
+      </button> }
     </div>
   );
 };

@@ -91,7 +91,6 @@ const ReviewTable: React.FC<TableProps> = ({
     return secondChoiceApplications.map(createStudentRow);
   };
 
-  // GET ALL DATA FROM THE DATABASE AND USE IT TO POPULATE THE TABLE
   const generateInnerData = (dataindex: number) => {
     const reviewerScore = firstChoiceApplications[dataindex].reviewDashboards;
     const reviewer = firstChoiceApplications[dataindex].reviewers;
