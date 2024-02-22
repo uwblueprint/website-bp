@@ -32,11 +32,20 @@ interface RoleQuestion {
 
 interface ShortAnswerRoleQuestion extends RoleQuestion {
   type?: "short-answer";
+  description?: string;
   maxLength: number;
 }
 
 interface MultiSelectRoleQuestion extends RoleQuestion {
   type: "multi-select";
+  description?: string;
+  options: string[];
+  other: boolean;
+}
+
+interface SelectRoleQuestion extends RoleQuestion {
+  type: "select";
+  description?: string;
   options: string[];
   other: boolean;
 }
@@ -45,7 +54,11 @@ export type RoleSpecificQuestion = {
   id: number;
   role: string;
   open?: boolean;
-  questions: (ShortAnswerRoleQuestion | MultiSelectRoleQuestion)[];
+  questions: (
+    | ShortAnswerRoleQuestion
+    | MultiSelectRoleQuestion
+    | SelectRoleQuestion
+  )[];
 };
 
 export type AppFormValues = {

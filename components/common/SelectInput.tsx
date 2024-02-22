@@ -4,6 +4,7 @@ import { FC } from "react";
 type Props = {
   readonly id: string;
   readonly labelText?: string;
+  readonly description?: string;
   readonly value?: string;
   readonly options: string[];
   readonly required: boolean;
@@ -13,6 +14,7 @@ type Props = {
 const SelectInput: FC<Props> = ({
   id,
   labelText,
+  description,
   value,
   options,
   required,
@@ -24,6 +26,9 @@ const SelectInput: FC<Props> = ({
         <label htmlFor={id}>
           {labelText}
           {required && <span className="text-pink-500">*</span>}
+          {description && (
+            <p className="text-charcoal-500 my-4">{description}</p>
+          )}
         </label>
       )}
       {readOnly ? (
@@ -32,6 +37,7 @@ const SelectInput: FC<Props> = ({
         <Field
           as="select"
           id={id}
+          value={value ?? ""}
           name={id}
           className="border-l-charcoal-300 text-charcoal-600 border border-charcoal-300 rounded-md px-4 py-3 border-l-4 focus:outline-none focus:ring-1 focus:ring-blue-100 focus:border-blue-100"
           style={{ minHeight: "50px" }}

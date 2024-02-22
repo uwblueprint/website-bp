@@ -1,5 +1,6 @@
 import { FC, useMemo } from "react";
 import MultiSelectInput from "@components/common/MultiSelectInput";
+import SelectInput from "@components/common/SelectInput";
 import TextAreaInput from "@components/common/TextAreaInput";
 import { AppFormValues, RoleSpecificQuestion } from "./AppForm";
 
@@ -18,6 +19,7 @@ type AggregatedQuestion = RoleSpecificQuestion["questions"][0] & {
 type QuestionInputProps = {
   id: string;
   labelText: string;
+  description?: string;
   value?: string | string[];
   question: RoleSpecificQuestion["questions"][0];
   readOnly: boolean;
@@ -30,6 +32,8 @@ const QuestionInput = ({
   question,
   readOnly,
 }: QuestionInputProps) => {
+  const { description } = question;
+
   switch (question.type) {
     case "multi-select": {
       return (
@@ -37,6 +41,19 @@ const QuestionInput = ({
           id={id}
           labelText={labelText}
           value={value as string[]}
+          required
+          readOnly={readOnly}
+          {...question}
+        />
+      );
+    }
+    case "select": {
+      return (
+        <SelectInput
+          id={id}
+          labelText={labelText}
+          description={description}
+          value={value as string}
           required
           readOnly={readOnly}
           {...question}
