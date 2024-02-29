@@ -1,6 +1,7 @@
 import React, { FC, useState, createContext, useContext } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import ExpandableRowTable from "./ExpandableRowTable";
 
 interface TitleProps {
   numFirstChoiceEntries?: number;
@@ -26,42 +27,17 @@ const TabDescription: FC<TabDescriptionProps> = ({
   </div>
 );
 
-export const EditContext = createContext({edit: false, setEdit: (edit: boolean) => {}});
-
-export const EditProvider: React.FC = ({ children }) => {
-  const [edit, setEdit] = useState(false);
-  return (
-    <EditContext.Provider value={{ edit, setEdit }}>
-      {children}
-    </EditContext.Provider>
-  );
-}
-
-const EditButton = () => {
+export const EditButton = ({ edit, toggleEdit }: { edit: boolean, toggleEdit: () => void }) => {
   const editButton =
   "border-2 border-blue rounded-full text-blue text-center px-8 py-1 m-2 inline-block capitalize bg-white";
-
-  const { edit, setEdit } = useContext(EditContext);
-
-  const toggleEdit = () => {
-    setEdit(!edit);
-  }
-
-  const cancelEdit = () => {
-    setEdit(false);
-  }
-
-  const saveEdit = () => {
-    setEdit(false);
-  }
 
   return (
     ( edit ? (
       <div className="flex">
-        <button className={`${editButton} flex items-center mr-2`} onClick={cancelEdit}>
+        <button className={`${editButton} flex items-center mr-2`} onClick={toggleEdit}>
           Cancel
         </button>
-        <button className={`${editButton} flex items-center`} onClick={saveEdit}>
+        <button className={`${editButton} flex items-center`} onClick={toggleEdit}>
           Save
         </button>
       </div>
@@ -82,7 +58,7 @@ const EditButton = () => {
         Edit
       </button>
       )
-  )
+    )
   )
 }
 
@@ -98,6 +74,12 @@ const TableTitle: FC<TitleProps> = ({
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setWhichChoiceTab(newValue);
   };
+
+  const [edit, setEdit] = useState(false);
+
+  const toggleEdit = () => {
+    setEdit(!edit);
+  }
 
   return (
     <div className="bg-sky rounded-t text-blue-300 text-base font-inter font-medium px-4 py-1 flex justify-between items-center">
@@ -128,9 +110,8 @@ const TableTitle: FC<TitleProps> = ({
           />
         </Tabs>
       </div>
-      <EditProvider>
-        <EditButton />
-      </EditProvider>
+        <EditButton edit={edit} toggleEdit={toggleEdit}/>
+        {/* <ExpandableRowTable edit={edit} /> */}
     </div>
   );
 };

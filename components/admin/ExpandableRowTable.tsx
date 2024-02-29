@@ -23,7 +23,7 @@ interface InnerTableProps {
   columns: MUIDataTableColumn[];
 }
 
-const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns }) => {
+const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns}) => {
 
   let edit = true;
 
