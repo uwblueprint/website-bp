@@ -24,6 +24,9 @@ interface InnerTableProps {
 }
 
 const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns }) => {
+
+  let edit = true;
+
   const updatedColumns = columns.map((column) => {
     if (column.name === "Skill Category") {
       return {
@@ -35,6 +38,31 @@ const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns }) => {
           },
         },
       };
+    }
+    // Add custom body render for the values when edit is true
+    if (edit) {
+      if (column.name === "PFSG" || column.name === "Team Player" || column.name === "D2L" || column.name === "Skill") {
+        return {
+          ...column,
+          options: {
+            ...column.options,
+            customBodyRender: (value: number) => {
+              return (
+                <input 
+                  type="number" 
+                  value={value} 
+                  style={{ 
+                    width: '40px', 
+                    padding: '5px', 
+                    border: '1px solid #ccc', 
+                    borderRadius: '4px' 
+                  }} 
+                />
+              );
+            },
+          },
+        };
+      }
     }
     return column;
   });

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState, createContext, useContext } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
@@ -26,19 +26,47 @@ const TabDescription: FC<TabDescriptionProps> = ({
   </div>
 );
 
+export const EditContext = createContext({edit: false, setEdit: (edit: boolean) => {}});
+
+export const EditProvider: React.FC = ({ children }) => {
+  const [edit, setEdit] = useState(false);
+  return (
+    <EditContext.Provider value={{ edit, setEdit }}>
+      {children}
+    </EditContext.Provider>
+  );
+}
+
 const EditButton = () => {
   const editButton =
   "border-2 border-blue rounded-full text-blue text-center px-8 py-1 m-2 inline-block capitalize bg-white";
 
-  let edit = true;
+  const { edit, setEdit } = useContext(EditContext);
+
+  const toggleEdit = () => {
+    setEdit(!edit);
+  }
+
+  const cancelEdit = () => {
+    setEdit(false);
+  }
+
+  const saveEdit = () => {
+    setEdit(false);
+  }
 
   return (
     ( edit ? (
-      <div>
-        Cancel | Save 
+      <div className="flex">
+        <button className={`${editButton} flex items-center mr-2`} onClick={cancelEdit}>
+          Cancel
+        </button>
+        <button className={`${editButton} flex items-center`} onClick={saveEdit}>
+          Save
+        </button>
       </div>
     ): (
-      <button className={`${editButton} flex items-center`}>
+      <button className={`${editButton} flex items-center`} onClick={toggleEdit}>
         <svg
           width="13"
           height="12"
@@ -100,7 +128,9 @@ const TableTitle: FC<TitleProps> = ({
           />
         </Tabs>
       </div>
-      <EditButton/>
+      <EditProvider>
+        <EditButton />
+      </EditProvider>
     </div>
   );
 };
