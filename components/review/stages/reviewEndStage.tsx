@@ -4,17 +4,16 @@ import { useState } from "react";
 
 interface Props {
   name: string;
+  application: ApplicationDTO | undefined;
   scores: Map<ReviewStage, number>;
 }
 
 // TODO:
-// - make topic and rating blue
-// - get feedback on spacing/fonts
-// - confirm second choice flow
+// - make skills category required
 // - finish displaying the UI for second choice
 // - bundle the data together & send them to the backend db (need to create a new graphql query for such action)
 
-export const ReviewEndStage: React.FC<Props> = ({ name, scores }) => {
+export const ReviewEndStage: React.FC<Props> = ({ name, application, scores }) => {
   const totalScore = scores?.get(ReviewStage.PFSG) + scores?.get(ReviewStage.TP) + scores?.get(ReviewStage.D2L) + scores?.get(ReviewStage.SKL);
 
   const [selectedOption, setSelectedOption] = useState<string>(''); // State to store the selected option
@@ -40,8 +39,8 @@ export const ReviewEndStage: React.FC<Props> = ({ name, scores }) => {
       leftContent={
         <div className="flow-root pl-5 pr-5">
           <div className="flow-root pt-20 pb-5">
-            <h4 className="float-left B10">Topic</h4>
-            <h4 className="float-right B10">Rating</h4>
+            <h4 className="text-blue float-left B10">Topic</h4>
+            <h4 className="text-blue float-right B10">Rating</h4>
           </div>
           <div className="flex flex-col space-y-4">
             <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -82,13 +81,16 @@ export const ReviewEndStage: React.FC<Props> = ({ name, scores }) => {
       rightContent={
         <div className="flex flex-col space-y-4 pl-5 pr-5">
           <div>
-            <h3 className="text-[26px] pt-8">Skills Category</h3>
-            <select value={selectedOption} onChange={handleOptionChange}>
-              <option value="">Skills Category</option>
-              <option value="junior">Junior</option>
-              <option value="intermediate">Intermediate</option>
-              <option value="senior">Senior</option>
-            </select>
+            <form>
+              <h3 className="text-[26px] pt-8">Skills Category</h3>
+              <select value={selectedOption} onChange={handleOptionChange} required>
+                <option value="">Skills Category</option>
+                <option value="junior">Junior</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="senior">Senior</option>
+              </select>
+              <h5 className="text-red-500 inline-block px-2 text-xl">*</h5>
+            </form>
           </div>
           <div>
             <h3 className="text-[26px]">Comments</h3>
@@ -105,10 +107,9 @@ export const ReviewEndStage: React.FC<Props> = ({ name, scores }) => {
             />
           </div>
           <div> 
-            /* IN PROGRESS */
-            <h3 className="text-[26px]">Second Choice: Graphic Designer</h3>
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></input>
-            <label for="vehicle1"> I have a bike</label><br></br>
+            <h3 className="text-[26px]"><span className="text-blue">Second Choice: </span>{application?.secondChoiceRole}</h3>
+            <input className="B10" type="checkbox" id="secondChoice" name="secondChoice" value="secondChoice" onChange={handleChoiceChange}></input>
+            <label for="secondChoice">    Recommend for Second Choice</label>
           </div>
         </div>
       }
