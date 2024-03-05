@@ -1,5 +1,5 @@
 // InnerTableComponent.tsx
-import React from "react";
+import React, {useState} from "react";
 import MUIDataTable, {
   MUIDataTableColumn,
   MUIDataTableOptions,
@@ -27,6 +27,38 @@ interface InnerTableProps {
 
 const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns, edit}) => {
 
+  const [PFSG, setPFSG] = useState("")
+  const [team, setTeam] = useState("")
+  const [D2L, setD2L] = useState("")
+  const [skill, setSkill] = useState("")
+
+  for (let i=0; i<columns.length; i++) {
+    if (columns[i].name == "PFSG"){
+      setPFSG(columns[i].value)
+    } else if (columns[i].name == "Team Player") {
+      setTeam(columns[i].value)
+    } else if (columns[i].name == "D2L") {
+      setD2L(columns[i].value)
+    } else if (columns[i].name == "Skill"){
+      setSkill(columns[i].value)
+    }
+  }
+
+  const handleChange = (event: any) => {
+    const { id, value } = event.target;
+    if (id == "PFSG"){
+      setPFSG(value)
+    } else if (id == "Team Player") {
+      setTeam(value)
+    } else if (id == "D2L") {
+      setD2L(value)
+    } else if (id == "Skill"){
+      setSkill(value)
+    }
+  };
+
+
+
   const updatedColumns = columns.map((column) => {
     if (column.name === "Skill Category") {
       return {
@@ -51,6 +83,8 @@ const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns, edit}) =
                 <input 
                   type="number" 
                   value={value} 
+                  onChange={handleChange}
+                  id={column.name}
                   style={{ 
                     width: '40px', 
                     padding: '5px', 
