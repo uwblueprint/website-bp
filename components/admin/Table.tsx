@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import DropdownMenu from "./DropdownMenu";
 import { Avatar } from "./Profile";
 import Tabs from "./Tabs";
@@ -34,6 +34,12 @@ const Table: FC = () => {
 
   const [selectedDropdownItem, setSelectedDropdownItem] =
     React.useState<string>("Delegation Dashboard");
+
+  const [edit, setEdit] = useState(false);
+
+  const toggleEdit = () => {
+    setEdit(!edit);
+  }
 
   const handleDropdownChange = (selectedItem: string) => {
     setSelectedDropdownItem(selectedItem);
@@ -80,6 +86,8 @@ const Table: FC = () => {
           numSecondChoiceEntries={numSecondChoiceEntries}
           setWhichChoiceTab={setWhichChoiceTab}
           whichChoiceTab={whichChoiceTab}
+          edit={edit}
+          toggleEdit={toggleEdit}
         />
         {selectedDropdownItem === "Review Dashboard" && (
           <ReviewTable
@@ -89,6 +97,8 @@ const Table: FC = () => {
             numFirstChoiceEntries={numFirstChoiceEntries}
             setNumSecondChoiceEntries={setNumSecondChoiceEntries}
             numSecondChoiceEntries={numSecondChoiceEntries}
+            edit={edit}
+            toggleEdit={toggleEdit}
           />
         )}
         {selectedDropdownItem === "Delegation Dashboard" && (

@@ -8,6 +8,8 @@ interface TitleProps {
   numSecondChoiceEntries?: number;
   setWhichChoiceTab: (tab: number) => void;
   whichChoiceTab?: number;
+  edit: boolean;
+  toggleEdit: (edit: boolean) => void;
 }
 interface TabDescriptionProps {
   title: string;
@@ -27,7 +29,7 @@ const TabDescription: FC<TabDescriptionProps> = ({
   </div>
 );
 
-export const EditButton = ({ edit, toggleEdit }: { edit: boolean, toggleEdit: () => void }) => {
+export const EditButton = ({ edit, toggleEdit}: { edit: boolean, toggleEdit: () => void }) => {
   const editButton =
   "border-2 border-blue rounded-full text-blue text-center px-8 py-1 m-2 inline-block capitalize bg-white";
 
@@ -67,6 +69,8 @@ const TableTitle: FC<TitleProps> = ({
   numSecondChoiceEntries,
   setWhichChoiceTab,
   whichChoiceTab,
+  edit,
+  toggleEdit,
 }) => {
   const pillStyle =
     "border-2 border-blue-100 text-blue rounded-full px-4 py-2 m-2 font-large inline-block";
@@ -74,12 +78,6 @@ const TableTitle: FC<TitleProps> = ({
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setWhichChoiceTab(newValue);
   };
-
-  const [edit, setEdit] = useState(false);
-
-  const toggleEdit = () => {
-    setEdit(!edit);
-  }
 
   return (
     <div className="bg-sky rounded-t text-blue-300 text-base font-inter font-medium px-4 py-1 flex justify-between items-center">

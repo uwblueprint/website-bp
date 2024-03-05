@@ -21,11 +21,11 @@ type ReviewerData = {
 interface InnerTableProps {
   data: ReviewerData[];
   columns: MUIDataTableColumn[];
+  edit?: boolean;
+  toggleEdit?: () => void;
 }
 
-const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns}) => {
-
-  let edit = true;
+const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns, edit}) => {
 
   const updatedColumns = columns.map((column) => {
     if (column.name === "Skill Category") {
