@@ -95,7 +95,7 @@ const ReviewTable: React.FC<TableProps> = ({
     return secondChoiceApplications.map(createStudentRow);
   };
 
-  const generateInnerData = (dataindex: number) => {
+  const generateInnerData = (dataindex: number): any => {
     const reviewerScore = firstChoiceApplications[dataindex].reviewDashboards;
     const reviewer = firstChoiceApplications[dataindex].reviewers;
 
@@ -109,16 +109,16 @@ const ReviewTable: React.FC<TableProps> = ({
       return [{},{}];
     }
 
-    return [
+    const collectedReviewers = [
       {
-        "Reviewer Name": firstReviewer.firstName + " " + firstReviewer.lastName,
-        PFSG: firstScore.passionFSG,
-        "Team Player": firstScore.teamPlayer, 
-        D2L: firstScore.desireToLearn,
-        Skill: firstScore.skill,
-        "Total Score": firstScore.passionFSG + firstScore.teamPlayer + firstScore.desireToLearn + firstScore.skill,
-        "Skill Category": firstScore.skillCategory,
-        "Reviewer Comments": firstScore.reviewerComments,
+      "Reviewer Name": firstReviewer.firstName + " " + firstReviewer.lastName,
+      PFSG: firstScore.passionFSG,
+      "Team Player": firstScore.teamPlayer, 
+      D2L: firstScore.desireToLearn,
+      Skill: firstScore.skill,
+      "Total Score": firstScore.passionFSG + firstScore.teamPlayer + firstScore.desireToLearn + firstScore.skill,
+      "Skill Category": firstScore.skillCategory,
+      "Reviewer Comments": firstScore.reviewerComments,
       },
       {
         "Reviewer Name": secondReviewer.firstName + " " + secondReviewer.lastName,
@@ -130,14 +130,18 @@ const ReviewTable: React.FC<TableProps> = ({
         "Skill Category": secondScore.skillCategory,
         "Reviewer Comments": secondScore.reviewerComments,
       },
-    ];
+    ]
+
+    const [reviewers, setReviewer] = useState(collectedReviewers);
+
+    return ({reviewers, setReviewer});
   };
 
   const renderExpandableRow = (
     rowData: any,
     rowMeta: { dataIndex: number },
   ) => {
-    const innerData = generateInnerData(rowMeta.dataIndex); 
+    const {reviewers, setReviewer} = generateInnerData(rowMeta.dataIndex); 
     const application = {
       secondChoiceRole: "Graphic Designer",
       recommendForSecondChoice: true,
@@ -173,7 +177,7 @@ const ReviewTable: React.FC<TableProps> = ({
         <tr>
           <td colSpan={8} className="p-5 px-10">
             <div className="flex flex-col font-source text-base">
-              <ExpandableRowTable data={innerData} columns={innerColumns} edit={edit} toggleEdit={toggleEdit}/>
+              <ExpandableRowTable data={reviewers} setReviewer={setReviewer} columns={innerColumns} edit={edit} toggleEdit={toggleEdit}/>
               <div className="flex items-start p-4 gap-120">
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-row justify-center items-center gap-5">
