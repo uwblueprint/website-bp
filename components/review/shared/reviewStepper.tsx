@@ -2,6 +2,8 @@ import Button from "@components/common/Button";
 import { ReviewStage } from "pages/review";
 import React, { useMemo } from "react";
 import { ReviewSetStageContext } from "./reviewContext";
+import { fetchGraphql } from "@utils/makegqlrequest";
+import { mutations } from "graphql/queries";
 
 interface Props {
   currentStage: ReviewStage;
@@ -78,6 +80,17 @@ export const ReviewStepper: React.FC<Props> = ({ currentStage, scores }) => {
     }
   };
 
+  const sendData = () => {
+    console.log(ReviewStage.PFSG);
+    console.log(scores?.get(ReviewStage.PFSG));
+    fetchGraphql(mutations.changeRating, {id: 1, ratingToBeChanged: ReviewStage.PFSG, newValue: scores?.get(ReviewStage.PFSG)}).then(
+      (result) => {
+        if (result) {
+          console.log(result)
+      }},
+    );
+  };
+
   return (
     <div className="bottom-0 left-0 w-full">
       <div className="bg-sky-100 m-2 p-4 flex">
@@ -108,7 +121,7 @@ export const ReviewStepper: React.FC<Props> = ({ currentStage, scores }) => {
                 <Button
                   className="justify-self-end whitespace-nowrap"
                   size="sm"
-                  onClick={() => setStage?.(ReviewStage.END_SUCCESS)}
+                  onClick={() => {sendData(), setStage?.(ReviewStage.END_SUCCESS)}}
                 >
                   Finish
                 </Button>
