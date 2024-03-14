@@ -21,46 +21,63 @@ type ReviewerData = {
 
 interface InnerTableProps {
   data: ReviewerData[];
-  setReviewer: any;
   columns: MUIDataTableColumn[];
   edit?: boolean;
   toggleEdit?: () => void;
 }
 
-const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, setReviewer, columns, edit}) => {
+const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns, edit}) => {
 
-  const [PFSG, setPFSG] = useState(0)
-  const [team, setTeam] = useState(0)
-  const [D2L, setD2L] = useState(0)
-  const [skill, setSkill] = useState(0)
+  const initData1 = {"PFSG": data[0]["PFSG"], "team": data[0]["Team Player"], "D2L": data[0]["D2L"], "skill": data[0]["Skill"]}
+  const initData2 = {"PFSG": data[1]["PFSG"], "team": data[1]["Team Player"], "D2L": data[1]["D2L"], "skill": data[1]["Skill"]}
+
+  console.log("columns", columns);
+  console.log("data", data);
 
   // for (let i=0; i<columns.length; i++) {
   //   if (columns[i].name == "PFSG"){
-  //     setPFSG(columns[i].value)
+  //     initData["PFSG"] = columns[i].value
   //   } else if (columns[i].name == "Team Player") {
-  //     setTeam(columns[i].value)
+  //     initData["team"] = columns[i].value
   //   } else if (columns[i].name == "D2L") {
-  //     setD2L(columns[i].value)
+  //     initData["D2L"] = columns[i].value
   //   } else if (columns[i].name == "Skill"){
-  //     setSkill(columns[i].value)
+  //     initData["skill"] = columns[i].value
+  //   }
+  // }
+
+  //console.log("data", data);
+
+  const [PFSG, setPFSG] = useState(initData2["PFSG"])
+  const [team, setTeam] = useState(initData2["team"])
+  const [D2L, setD2L] = useState(initData2["D2L"])
+  const [skill, setSkill] = useState(initData2["skill"])
+
+  // for (let i=0; i<columns.length; i++) {
+  //   if (columns[i].name == "PFSG"){
+  //     initData2["PFSG"] = columns[i].value
+  //   } else if (columns[i].name == "Team Player") {
+  //     initData2["team"] = columns[i].value
+  //   } else if (columns[i].name == "D2L") {
+  //     initData2["D2L"] = columns[i].value
+  //   } else if (columns[i].name == "Skill"){
+  //     initData2["skill"] = columns[i].value
   //   }
   // }
 
   const handleChange = (event: any) => {
     const { id, value } = event.target;
 
-    setReviewer(prevReviewer => ({
-      
-    });
-
-    if (id == "PFSG"){
-      setPFSG(value)
-    } else if (id == "Team Player") {
-      setTeam(value)
-    } else if (id == "D2L") {
-      setD2L(value)
-    } else if (id == "Skill"){
-      setSkill(value)
+    if(edit) {
+      if (id == "PFSG"){
+        setPFSG(value)
+      } else if (id == "Team Player") {
+        setTeam(value)
+      } else if (id == "D2L") {
+        setD2L(value)
+      } else if (id == "Skill"){
+        setSkill(value)
+      }
     }
   };
 
@@ -89,21 +106,22 @@ const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, setReviewer, colu
         }
       }
       else {
-        if (column.name == "PFSG"){
-          setPFSG(value)
-        } else if (column.name == "Team Player") {
-          setTeam(value)
-        } else if (column.name == "D2L") {
-          setD2L(value)
-        } else if (column.name == "Skill"){
-          setSkill(value)
-        }
+        // if (column.name == "PFSG"){
+        //   setPFSG(value)
+        // } else if (column.name == "Team Player") {
+        //   setTeam(value)
+        // } else if (column.name == "D2L") {
+        //   setD2L(value)
+        // } else if (column.name == "Skill"){
+        //   setSkill(value)
+        // }
         return value
       }
     }
 
     // Add custom body render for the values when edit is true
     if (edit) {
+      //if (column.name === "Reviewer Name") {
       if (column.name === "PFSG" || column.name === "Team Player" || column.name === "D2L" || column.name === "Skill") {
         return {
           ...column,

@@ -132,16 +132,16 @@ const ReviewTable: React.FC<TableProps> = ({
       },
     ]
 
-    const [reviewers, setReviewer] = useState(collectedReviewers);
+    //const [reviewers, setReviewer] = useState(collectedReviewers);
 
-    return ({reviewers, setReviewer});
+    return (collectedReviewers);
   };
 
   const renderExpandableRow = (
     rowData: any,
     rowMeta: { dataIndex: number },
   ) => {
-    const {reviewers, setReviewer} = generateInnerData(rowMeta.dataIndex); 
+    const reviewers = generateInnerData(rowMeta.dataIndex); 
     const application = {
       secondChoiceRole: "Graphic Designer",
       recommendForSecondChoice: true,
@@ -177,7 +177,7 @@ const ReviewTable: React.FC<TableProps> = ({
         <tr>
           <td colSpan={8} className="p-5 px-10">
             <div className="flex flex-col font-source text-base">
-              <ExpandableRowTable data={reviewers} setReviewer={setReviewer} columns={innerColumns} edit={edit} toggleEdit={toggleEdit}/>
+              <ExpandableRowTable data={reviewers} columns={innerColumns} edit={edit} toggleEdit={toggleEdit}/>
               <div className="flex items-start p-4 gap-120">
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-row justify-center items-center gap-5">
