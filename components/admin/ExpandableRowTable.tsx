@@ -53,18 +53,6 @@ const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns, edit}) =
   const [D2L, setD2L] = useState(initData2["D2L"])
   const [skill, setSkill] = useState(initData2["skill"])
 
-  // for (let i=0; i<columns.length; i++) {
-  //   if (columns[i].name == "PFSG"){
-  //     initData2["PFSG"] = columns[i].value
-  //   } else if (columns[i].name == "Team Player") {
-  //     initData2["team"] = columns[i].value
-  //   } else if (columns[i].name == "D2L") {
-  //     initData2["D2L"] = columns[i].value
-  //   } else if (columns[i].name == "Skill"){
-  //     initData2["skill"] = columns[i].value
-  //   }
-  // }
-
   const handleChange = (event: any) => {
     const { id, value } = event.target;
 
@@ -106,15 +94,6 @@ const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns, edit}) =
         }
       }
       else {
-        // if (column.name == "PFSG"){
-        //   setPFSG(value)
-        // } else if (column.name == "Team Player") {
-        //   setTeam(value)
-        // } else if (column.name == "D2L") {
-        //   setD2L(value)
-        // } else if (column.name == "Skill"){
-        //   setSkill(value)
-        // }
         return value
       }
     }

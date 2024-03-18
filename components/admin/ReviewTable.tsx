@@ -131,7 +131,7 @@ const ReviewTable: React.FC<TableProps> = ({
         "Reviewer Comments": secondScore.reviewerComments,
       },
     ]
-
+    
     //const [reviewers, setReviewer] = useState(collectedReviewers);
 
     return (collectedReviewers);
