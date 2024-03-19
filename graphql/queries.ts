@@ -82,7 +82,9 @@ export const applicationTableQueries = {
                   passionFSG
                   teamPlayer
                   desireToLearn
+                  skill
                   skillCategory
+                  reviewerComments    
               }
               }
             }
