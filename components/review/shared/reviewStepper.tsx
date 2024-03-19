@@ -83,7 +83,7 @@ export const ReviewStepper: React.FC<Props> = ({ currentStage, scores }) => {
   const sendData = () => {
     console.log(ReviewStage.PFSG);
     console.log(scores?.get(ReviewStage.PFSG));
-    fetchGraphql(mutations.changeRating, {id: 1, ratingToBeChanged: ReviewStage.PFSG, newValue: scores?.get(ReviewStage.PFSG)}).then(
+    fetchGraphql(mutations.changeRating, {id: 1, ratingToBeChanged: "passionFSG", newValue: scores?.get(ReviewStage.PFSG)}).then(
       (result) => {
         if (result) {
           console.log(result)
