@@ -25,7 +25,7 @@ export const APPLICATION_CLOSE_DATETIME_WITH_GRACE_PERIOD =
  * Date that invites are sent out for interviews
  * Format: MMM DD
  */
-export const INVITE_DATE = "March 18th - 20th";
+export const INVITE_DATE = "the end of the school term";
 
 /**
  * Final decision date
