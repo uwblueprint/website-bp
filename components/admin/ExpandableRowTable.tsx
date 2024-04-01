@@ -1,5 +1,5 @@
 // InnerTableComponent.tsx
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import MUIDataTable, {
   MUIDataTableColumn,
   MUIDataTableOptions,
@@ -8,6 +8,8 @@ import { getExpandableRowMuiTheme } from "utils/muidatatable";
 import { MuiThemeProvider } from "@material-ui/core";
 import { SkillCategory } from "@utils/muidatatable";
 import { set } from "firebase/database";
+import { fetchGraphql } from "@utils/makegqlrequest";
+import { mutations } from "graphql/queries";
 
 type ReviewerData = {
   reviewerName: string;
@@ -24,15 +26,14 @@ interface InnerTableProps {
   columns: MUIDataTableColumn[];
   edit?: boolean;
   toggleEdit?: () => void;
+  saveFn?: any;
+  setSaveFn?: any;
 }
 
-const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns, edit}) => {
+const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns, edit, saveFn, setSaveFn}) => {
 
   const initData1 = {"PFSG": data[0]["PFSG"], "team": data[0]["Team Player"], "D2L": data[0]["D2L"], "skill": data[0]["Skill"]}
   const initData2 = {"PFSG": data[1]["PFSG"], "team": data[1]["Team Player"], "D2L": data[1]["D2L"], "skill": data[1]["Skill"]}
-
-  console.log("columns", columns);
-  console.log("data", data);
 
   const [PFSG1, setPFSG1] = useState(initData1["PFSG"])
   const [team1, setTeam1] = useState(initData1["team"])
@@ -44,9 +45,21 @@ const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns, edit}) =
   const [D2L, setD2L] = useState(initData2["D2L"])
   const [skill, setSkill] = useState(initData2["skill"])
 
+  useEffect(() => {
+    //if (typeof saveFn !== 'function') { // When this is commented out, the new value is updated on refresh. 
+      setSaveFn(() => {
+        fetchGraphql(mutations.changeRating, {id: 2, ratingToBeChanged: "passionFSG", newValue: 4}).then(
+          (result) => {
+            if (result) {
+              console.log(result)
+          }},
+        );
+      });
+    //}
+  }, []);
+
+
   const handleChange = (event: any, row: number) => {
-    console.log("event", event);
-    console.log("row", row);
     const { id, value } = event.target;
 
     if(edit && row == 0) {

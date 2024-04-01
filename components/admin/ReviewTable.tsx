@@ -18,6 +18,8 @@ interface TableProps {
   numSecondChoiceEntries?: number;
   edit?: boolean;
   toggleEdit?: () => void;
+  saveFn: () => void;
+  setSaveFn: any;
 }
 
 const ReviewTable: React.FC<TableProps> = ({
@@ -27,6 +29,8 @@ const ReviewTable: React.FC<TableProps> = ({
   setNumSecondChoiceEntries,
   edit,
   toggleEdit,
+  saveFn,
+  setSaveFn,
 }) => {
   const [firstChoiceApplications, setFirstChoiceApplications] = useState<any[]>(
     [],
@@ -177,7 +181,7 @@ const ReviewTable: React.FC<TableProps> = ({
         <tr>
           <td colSpan={8} className="p-5 px-10">
             <div className="flex flex-col font-source text-base">
-              <ExpandableRowTable data={reviewers} columns={innerColumns} edit={edit} toggleEdit={toggleEdit}/>
+              <ExpandableRowTable data={reviewers} columns={innerColumns} edit={edit} toggleEdit={toggleEdit} saveFn={saveFn} setSaveFn={setSaveFn}/>
               <div className="flex items-start p-4 gap-120">
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-row justify-center items-center gap-5">

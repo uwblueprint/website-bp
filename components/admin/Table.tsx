@@ -41,6 +41,8 @@ const Table: FC = () => {
     setEdit(!edit);
   }
 
+  const [saveFn, setSaveFn] = useState(() => () => {});
+
   const handleDropdownChange = (selectedItem: string) => {
     setSelectedDropdownItem(selectedItem);
   };
@@ -88,6 +90,7 @@ const Table: FC = () => {
           whichChoiceTab={whichChoiceTab}
           edit={edit}
           toggleEdit={toggleEdit}
+          saveFn={saveFn}
         />
         {selectedDropdownItem === "Review Dashboard" && (
           <ReviewTable
@@ -99,6 +102,8 @@ const Table: FC = () => {
             numSecondChoiceEntries={numSecondChoiceEntries}
             edit={edit}
             toggleEdit={toggleEdit}
+            saveFn={saveFn}
+            setSaveFn={setSaveFn}
           />
         )}
         {selectedDropdownItem === "Delegation Dashboard" && (

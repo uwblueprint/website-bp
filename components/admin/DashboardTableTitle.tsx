@@ -9,7 +9,8 @@ interface TitleProps {
   setWhichChoiceTab: (tab: number) => void;
   whichChoiceTab?: number;
   edit: boolean;
-  toggleEdit: (edit: boolean) => void;
+  toggleEdit: () => void;
+  saveFn: () => void;
 }
 interface TabDescriptionProps {
   title: string;
@@ -29,9 +30,16 @@ const TabDescription: FC<TabDescriptionProps> = ({
   </div>
 );
 
-export const EditButton = ({ edit, toggleEdit}: { edit: boolean, toggleEdit: () => void }) => {
+
+
+export const EditButton = ({ edit, toggleEdit, saveFn}: { edit: boolean, toggleEdit: () => void, saveFn: () => void }) => {
   const editButton =
   "border-2 border-blue rounded-full text-blue text-center px-8 py-1 m-2 inline-block capitalize bg-white";
+
+  const onSave = () => {
+    saveFn();
+    toggleEdit();
+  }
 
   return (
     ( edit ? (
@@ -39,7 +47,7 @@ export const EditButton = ({ edit, toggleEdit}: { edit: boolean, toggleEdit: () 
         <button className={`${editButton} flex items-center mr-2`} onClick={toggleEdit}>
           Cancel
         </button>
-        <button className={`${editButton} flex items-center`} onClick={toggleEdit}>
+        <button className={`${editButton} flex items-center`} onClick={onSave}>
           Save
         </button>
       </div>
@@ -71,6 +79,7 @@ const TableTitle: FC<TitleProps> = ({
   whichChoiceTab,
   edit,
   toggleEdit,
+  saveFn,
 }) => {
   const pillStyle =
     "border-2 border-blue-100 text-blue rounded-full px-4 py-2 m-2 font-large inline-block";
@@ -108,7 +117,7 @@ const TableTitle: FC<TitleProps> = ({
           />
         </Tabs>
       </div>
-        <EditButton edit={edit} toggleEdit={toggleEdit}/>
+        <EditButton edit={edit} toggleEdit={toggleEdit} saveFn={saveFn}/>
         {/* <ExpandableRowTable edit={edit} /> */}
     </div>
   );
