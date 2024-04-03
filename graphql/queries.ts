@@ -17,6 +17,21 @@ export const mutations = {
     refresh(refreshToken: $refreshToken)
   }
 `,
+  changeRating: `
+    mutation changeRating($id: Int!, $ratingToBeChanged: String!, $newValue: Int!) {
+      changeRating(id: $id, ratingToBeChanged: $ratingToBeChanged, newValue: $newValue) {
+        id
+      }
+    }
+  `
+  ,
+  modifyFinalComments: `
+    mutation modifyFinalComments($id: Int!, $newComments: String!, $newSkillCategory: String!, $newRecommendedSecondChoice: String!) {
+      modifyFinalComments(id: $id, newComments: $newComments, newSkillCategory: $newSkillCategory, newRecommendedSecondChoice: $newRecommendedSecondChoice) {
+        id
+      }
+    }
+  `,
 };
 
 // TODO: add functionaltiy to getRole in case accessToken expired and needs to be refreshed.
