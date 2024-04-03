@@ -11,6 +11,7 @@ interface Props {
   rightContent?: JSX.Element;
   currentStage: ReviewStage;
   scores: Map<ReviewStage, number>;
+  application: ApplicationDTO | undefined;
 }
 
 export const ReviewSplitPanelPage: React.FC<Props> = ({
@@ -22,6 +23,7 @@ export const ReviewSplitPanelPage: React.FC<Props> = ({
   rightContent,
   currentStage,
   scores,
+  application
 }) => {
   return (
     <div className="grid grid-cols-2 grid-rows-[auto_1fr] h-screen">
@@ -58,7 +60,7 @@ export const ReviewSplitPanelPage: React.FC<Props> = ({
             <div>{rightContent}</div>
           </div>
         </div>
-        <ReviewStepper currentStage={currentStage} scores={scores} />
+        <ReviewStepper currentStage={currentStage} scores={scores} application={application} />
       </div>
     </div>
   );

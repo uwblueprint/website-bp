@@ -1,4 +1,3 @@
-// TODO: add mutation for sending back all parts of the review dashboard
 export const mutations = {
   login: `
           mutation login($email: String!, $password: String!) {
@@ -26,6 +25,13 @@ export const mutations = {
     }
   `
   ,
+  modifyFinalComments: `
+    mutation modifyFinalComments($id: Int!, $newComments: String!, $newSkillCategory: String!, $newRecommendedSecondChoice: String!) {
+      modifyFinalComments(id: $id, newComments: $newComments, newSkillCategory: $newSkillCategory, newRecommendedSecondChoice: $newRecommendedSecondChoice) {
+        id
+      }
+    }
+  `,
 };
 
 // TODO: add functionaltiy to getRole in case accessToken expired and needs to be refreshed.

@@ -11,6 +11,7 @@ interface Props {
   resumeLink?: string;
   scores: Map<ReviewStage, number>;
   contextConsumer: JSX.Element;
+  application: ApplicationDTO | undefined;
 }
 
 interface resumeProps {
@@ -44,6 +45,7 @@ export const ReviewRatingPage: React.FC<Props> = ({
   resumeLink,
   scores,
   contextConsumer,
+  application
 }) => {
   return (
     <ReviewSplitPanelPage
@@ -63,6 +65,7 @@ export const ReviewRatingPage: React.FC<Props> = ({
         </div>
       }
       scores={scores}
+      application={application}
     />
   );
 };
