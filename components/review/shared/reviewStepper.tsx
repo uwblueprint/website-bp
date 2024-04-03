@@ -4,15 +4,17 @@ import React, { useMemo } from "react";
 import { ReviewSetStageContext } from "./reviewContext";
 import { fetchGraphql } from "@utils/makegqlrequest";
 import { mutations } from "graphql/queries";
+import { useRouter } from "next/router";
 
 interface Props {
   currentStage: ReviewStage;
   scores: Map<ReviewStage, number>;
+  application: ApplicationDTO | undefined;
 }
 
 type NavigationItemState = "current" | "past" | "future";
 
-export const ReviewStepper: React.FC<Props> = ({ currentStage, scores }) => {
+export const ReviewStepper: React.FC<Props> = ({ currentStage, application, scores }) => {
   const buttons = useMemo(
     () => [
       { title: "INFO", index: 1, stage: ReviewStage.INFO },
@@ -80,15 +82,42 @@ export const ReviewStepper: React.FC<Props> = ({ currentStage, scores }) => {
     }
   };
 
-  const sendData = () => {
-    console.log(ReviewStage.PFSG);
-    console.log(scores?.get(ReviewStage.PFSG));
-    fetchGraphql(mutations.changeRating, {id: 1, ratingToBeChanged: "passionFSG", newValue: scores?.get(ReviewStage.PFSG)}).then(
-      (result) => {
-        if (result) {
-          console.log(result)
-      }},
+  const sendRatingData = (id: number, ratingToBeChanged: string, newValue: number|undefined) => {
+    fetchGraphql(mutations.changeRating, {id: id, ratingToBeChanged: ratingToBeChanged, newValue: newValue}).then(
+      (result) => {},
     );
+  };
+
+  const sendFinalComments = (id: number, newComments: string, newSkillCategory: string, newRecommendedSecondChoice: string) => {
+    fetchGraphql(mutations.modifyFinalComments, {id: id, newComments: newComments, newSkillCategory: newSkillCategory, newRecommendedSecondChoice: newRecommendedSecondChoice}).then(
+      (result) => {},
+    );
+  };
+
+  const getReviewId = (query: any): number => {
+    // verify reviewId
+    const reviewId =
+      typeof query["reviewId"] === "string"
+        ? parseInt(query["reviewId"])
+        : (() => {
+            throw new Error("reviewId must be a String");
+          })();
+    if (Number.isNaN(reviewId))
+      throw Error("reviewId must be parsable into an int");
+  
+    return reviewId;
+  };
+
+  const reviewId = getReviewId(useRouter().query);
+
+  const updateAllData = () => {
+    // send all updated ratings
+    sendRatingData(reviewId, "passionFSG", scores?.get(ReviewStage.PFSG));
+    sendRatingData(reviewId, "teamPlayer", scores?.get(ReviewStage.TP));
+    sendRatingData(reviewId, "desireToLearn", scores?.get(ReviewStage.D2L));
+    sendRatingData(reviewId, "skill", scores?.get(ReviewStage.SKL));
+    // send finalComments (skills category, comments, second choice)
+    sendFinalComments(reviewId, application?.comments, application?.skillsCategory, application?.secondChoiceRole)
   };
 
   return (
@@ -121,7 +150,7 @@ export const ReviewStepper: React.FC<Props> = ({ currentStage, scores }) => {
                 <Button
                   className="justify-self-end whitespace-nowrap"
                   size="sm"
-                  onClick={() => {sendData(), setStage?.(ReviewStage.END_SUCCESS)}}
+                  onClick={() => {updateAllData(), setStage?.(ReviewStage.END_SUCCESS)}}
                 >
                   Finish
                 </Button>
