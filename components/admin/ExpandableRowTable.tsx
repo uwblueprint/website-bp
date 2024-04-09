@@ -26,62 +26,109 @@ interface InnerTableProps {
   columns: MUIDataTableColumn[];
   edit?: boolean;
   toggleEdit?: () => void;
-  saveFn?: any;
-  setSaveFn?: any;
+  saved?: boolean;
+  setSaved?: any;
 }
 
-const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns, edit, saveFn, setSaveFn}) => {
+const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns, edit, saved, setSaved}) => {
 
   const initData1 = {"PFSG": data[0]["PFSG"], "team": data[0]["Team Player"], "D2L": data[0]["D2L"], "skill": data[0]["Skill"]}
   const initData2 = {"PFSG": data[1]["PFSG"], "team": data[1]["Team Player"], "D2L": data[1]["D2L"], "skill": data[1]["Skill"]}
+
+  const reviewerId1 = data[0]["ReviewerId"];
+  const reviewerId2 = data[1]["ReviewerId"];
 
   const [PFSG1, setPFSG1] = useState(initData1["PFSG"])
   const [team1, setTeam1] = useState(initData1["team"])
   const [D2L1, setD2L1] = useState(initData1["D2L"])
   const [skill1, setSkill1] = useState(initData1["skill"])
 
-  const [PFSG, setPFSG] = useState(initData2["PFSG"])
-  const [team, setTeam] = useState(initData2["team"])
-  const [D2L, setD2L] = useState(initData2["D2L"])
-  const [skill, setSkill] = useState(initData2["skill"])
+  const [PFSG2, setPFSG2] = useState(initData2["PFSG"])
+  const [team2, setTeam2] = useState(initData2["team"])
+  const [D2L2, setD2L2] = useState(initData2["D2L"])
+  const [skill2, setSkill2] = useState(initData2["skill"])
 
-  useEffect(() => {
-    //if (typeof saveFn !== 'function') { // When this is commented out, the new value is updated on refresh. 
-      setSaveFn(() => {
-        fetchGraphql(mutations.changeRating, {id: 2, ratingToBeChanged: "passionFSG", newValue: 4}).then(
+  // 1. Figure out how to send the actual useState values to the newValues in the changeRating mutation
+
+  useEffect(() => { 
+      //if (saved){
+        fetchGraphql(mutations.changeRating, {id: reviewerId1, ratingToBeChanged: "passionFSG", newValue: 1}).then(
           (result) => {
             if (result) {
               console.log(result)
           }},
-        );
-      });
-    //}
-  }, []);
+        )
+        fetchGraphql(mutations.changeRating, {id: reviewerId1, ratingToBeChanged: "teamPlayer", newValue: 1}).then(
+          (result) => {
+            if (result) {
+              console.log(result)
+          }},
+        )
+        fetchGraphql(mutations.changeRating, {id: reviewerId1, ratingToBeChanged: "desireToLearn", newValue: 1}).then(
+          (result) => {
+            if (result) {
+              console.log(result)
+          }},
+        )
+        fetchGraphql(mutations.changeRating, {id: reviewerId1, ratingToBeChanged: "skill", newValue: 1}).then(
+          (result) => {
+            if (result) {
+              console.log(result)
+          }},
+        )
+        fetchGraphql(mutations.changeRating, {id: reviewerId2, ratingToBeChanged: "passionFSG", newValue: 2}).then(
+          (result) => {
+            if (result) {
+              console.log(result)
+          }},
+        )
+        fetchGraphql(mutations.changeRating, {id: reviewerId2, ratingToBeChanged: "teamPlayer", newValue: 2}).then(
+          (result) => {
+            if (result) {
+              console.log(result)
+          }},
+        )
+        fetchGraphql(mutations.changeRating, {id: reviewerId2, ratingToBeChanged: "desireToLearn", newValue: 2}).then(
+          (result) => {
+            if (result) {
+              console.log(result)
+          }},
+        )
+        fetchGraphql(mutations.changeRating, {id: reviewerId2, ratingToBeChanged: "skill", newValue: 2}).then(
+          (result) => {
+            if (result) {
+              console.log(result)
+          }},
+        )
+        setSaved(false);
+      //}
+      console.log("Save function set")
 
+  }, [saved]);
 
   const handleChange = (event: any, row: number) => {
     const { id, value } = event.target;
 
     if(edit && row == 0) {
       if (id == "PFSG"){
-        setPFSG1(value)
+        setPFSG1(parseInt(value))
       } else if (id == "Team Player") {
-        setTeam1(value)
+        setTeam1(parseInt(value))
       } else if (id == "D2L") {
-        setD2L1(value)
+        setD2L1(parseInt(value))
       } else if (id == "Skill"){
-        setSkill1(value)
+        setSkill1(parseInt(value))
       }
     }
     if (edit && row == 1) {
       if (id == "PFSG"){
-        setPFSG(value)
+        setPFSG2(parseInt(value))
       } else if (id == "Team Player") {
-        setTeam(value)
+        setTeam2(parseInt(value))
       } else if (id == "D2L") {
-        setD2L(value)
+        setD2L2(parseInt(value))
       } else if (id == "Skill"){
-        setSkill(value)
+        setSkill2(parseInt(value))
       }
     }
   };
@@ -112,13 +159,13 @@ const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns, edit, sa
       }
       else if (edit && row == 1) {
         if (column.name == "PFSG"){
-          return PFSG
+          return PFSG2
         } else if (column.name == "Team Player") {
-          return team
+          return team2
         } else if (column.name == "D2L") {
-          return D2L
+          return D2L2
         } else if (column.name == "Skill"){
-          return skill
+          return skill2
         }
       }
       else {

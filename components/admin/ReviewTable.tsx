@@ -18,8 +18,8 @@ interface TableProps {
   numSecondChoiceEntries?: number;
   edit?: boolean;
   toggleEdit?: () => void;
-  saveFn: () => void;
-  setSaveFn: any;
+  saved?: boolean;
+  setSaved?: any;
 }
 
 const ReviewTable: React.FC<TableProps> = ({
@@ -29,8 +29,8 @@ const ReviewTable: React.FC<TableProps> = ({
   setNumSecondChoiceEntries,
   edit,
   toggleEdit,
-  saveFn,
-  setSaveFn,
+  saved,
+  setSaved
 }) => {
   const [firstChoiceApplications, setFirstChoiceApplications] = useState<any[]>(
     [],
@@ -102,6 +102,8 @@ const ReviewTable: React.FC<TableProps> = ({
   const generateInnerData = (dataindex: number): any => {
     const reviewerScore = firstChoiceApplications[dataindex].reviewDashboards;
     const reviewer = firstChoiceApplications[dataindex].reviewers;
+    console.log(reviewer);
+    console.log(reviewerScore);
 
     const firstScore =  reviewerScore[0];
     const secondScore = reviewerScore[1];
@@ -123,6 +125,7 @@ const ReviewTable: React.FC<TableProps> = ({
       "Total Score": firstScore.passionFSG + firstScore.teamPlayer + firstScore.desireToLearn + firstScore.skill,
       "Skill Category": firstScore.skillCategory,
       "Reviewer Comments": firstScore.reviewerComments,
+      "ReviewerId": firstScore.reviewerId,
       },
       {
         "Reviewer Name": secondReviewer.firstName + " " + secondReviewer.lastName,
@@ -133,10 +136,9 @@ const ReviewTable: React.FC<TableProps> = ({
         "Total Score": secondScore.passionFSG + secondScore.teamPlayer + secondScore.desireToLearn + secondScore.skill,
         "Skill Category": secondScore.skillCategory,
         "Reviewer Comments": secondScore.reviewerComments,
+        "ReviewerId": secondScore.reviewerId,
       },
     ]
-    
-    //const [reviewers, setReviewer] = useState(collectedReviewers);
 
     return (collectedReviewers);
   };
@@ -181,7 +183,7 @@ const ReviewTable: React.FC<TableProps> = ({
         <tr>
           <td colSpan={8} className="p-5 px-10">
             <div className="flex flex-col font-source text-base">
-              <ExpandableRowTable data={reviewers} columns={innerColumns} edit={edit} toggleEdit={toggleEdit} saveFn={saveFn} setSaveFn={setSaveFn}/>
+              <ExpandableRowTable data={reviewers} columns={innerColumns} edit={edit} toggleEdit={toggleEdit} saved={saved} setSaved={setSaved}/>
               <div className="flex items-start p-4 gap-120">
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-row justify-center items-center gap-5">

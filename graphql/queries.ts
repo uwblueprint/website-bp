@@ -85,6 +85,7 @@ export const applicationTableQueries = {
                   lastName
               }
               reviewDashboards {
+                  reviewerId
                   passionFSG
                   teamPlayer
                   desireToLearn

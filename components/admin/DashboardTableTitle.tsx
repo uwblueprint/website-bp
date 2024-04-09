@@ -2,6 +2,7 @@ import React, { FC, useState, createContext, useContext } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import ExpandableRowTable from "./ExpandableRowTable";
+import { set } from "firebase/database";
 
 interface TitleProps {
   numFirstChoiceEntries?: number;
@@ -10,7 +11,8 @@ interface TitleProps {
   whichChoiceTab?: number;
   edit: boolean;
   toggleEdit: () => void;
-  saveFn: () => void;
+  saved?: boolean;
+  setSaved?: any;
 }
 interface TabDescriptionProps {
   title: string;
@@ -32,13 +34,19 @@ const TabDescription: FC<TabDescriptionProps> = ({
 
 
 
-export const EditButton = ({ edit, toggleEdit, saveFn}: { edit: boolean, toggleEdit: () => void, saveFn: () => void }) => {
+export const EditButton = ({ edit, toggleEdit, saved, setSaved}: { edit: boolean, toggleEdit: () => void, saved: any, setSaved: any}) => {
   const editButton =
   "border-2 border-blue rounded-full text-blue text-center px-8 py-1 m-2 inline-block capitalize bg-white";
 
+
+  // set saveFn to randomFn
+  // saveFn = randomFn;
+
   const onSave = () => {
-    saveFn();
+    setSaved(true);
+    console.log("Save function called")
     toggleEdit();
+    
   }
 
   return (
@@ -79,7 +87,8 @@ const TableTitle: FC<TitleProps> = ({
   whichChoiceTab,
   edit,
   toggleEdit,
-  saveFn,
+  saved,
+  setSaved
 }) => {
   const pillStyle =
     "border-2 border-blue-100 text-blue rounded-full px-4 py-2 m-2 font-large inline-block";
@@ -117,7 +126,7 @@ const TableTitle: FC<TitleProps> = ({
           />
         </Tabs>
       </div>
-        <EditButton edit={edit} toggleEdit={toggleEdit} saveFn={saveFn}/>
+        <EditButton edit={edit} toggleEdit={toggleEdit} saved={saved} setSaved={setSaved}/>
         {/* <ExpandableRowTable edit={edit} /> */}
     </div>
   );

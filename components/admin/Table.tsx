@@ -9,6 +9,7 @@ import TableTitle from "./DashboardTableTitle";
 import ApplicationsTable from "./ApplicationsTable";
 import ApplicantRole from "entities/applicationRole";
 import ReviewTable from "./ReviewTable";
+import { set } from "firebase/database";
 
 export enum OrganizationalArea {
   Engineering = "Engineering",
@@ -41,7 +42,9 @@ const Table: FC = () => {
     setEdit(!edit);
   }
 
-  const [saveFn, setSaveFn] = useState(() => () => {});
+  const [saved, setSaved] = useState(false);
+
+  const [saveFn, setSaveFn] = useState(() => {console.log("hello world")});
 
   const handleDropdownChange = (selectedItem: string) => {
     setSelectedDropdownItem(selectedItem);
@@ -90,7 +93,8 @@ const Table: FC = () => {
           whichChoiceTab={whichChoiceTab}
           edit={edit}
           toggleEdit={toggleEdit}
-          saveFn={saveFn}
+          saved={saved}
+          setSaved={setSaved}
         />
         {selectedDropdownItem === "Review Dashboard" && (
           <ReviewTable
@@ -102,8 +106,8 @@ const Table: FC = () => {
             numSecondChoiceEntries={numSecondChoiceEntries}
             edit={edit}
             toggleEdit={toggleEdit}
-            saveFn={saveFn}
-            setSaveFn={setSaveFn}
+            saved={saved}
+            setSaved={setSaved}
           />
         )}
         {selectedDropdownItem === "Delegation Dashboard" && (
