@@ -19,7 +19,7 @@ interface TableProps {
   edit?: boolean;
   toggleEdit?: () => void;
   saved?: boolean;
-  setSaved?: any;
+  toggleSaved?: () => void;
 }
 
 const ReviewTable: React.FC<TableProps> = ({
@@ -30,7 +30,7 @@ const ReviewTable: React.FC<TableProps> = ({
   edit,
   toggleEdit,
   saved,
-  setSaved
+  toggleSaved,
 }) => {
   const [firstChoiceApplications, setFirstChoiceApplications] = useState<any[]>(
     [],
@@ -102,8 +102,6 @@ const ReviewTable: React.FC<TableProps> = ({
   const generateInnerData = (dataindex: number): any => {
     const reviewerScore = firstChoiceApplications[dataindex].reviewDashboards;
     const reviewer = firstChoiceApplications[dataindex].reviewers;
-    console.log(reviewer);
-    console.log(reviewerScore);
 
     const firstScore =  reviewerScore[0];
     const secondScore = reviewerScore[1];
@@ -183,7 +181,7 @@ const ReviewTable: React.FC<TableProps> = ({
         <tr>
           <td colSpan={8} className="p-5 px-10">
             <div className="flex flex-col font-source text-base">
-              <ExpandableRowTable data={reviewers} columns={innerColumns} edit={edit} toggleEdit={toggleEdit} saved={saved} setSaved={setSaved}/>
+              <ExpandableRowTable data={reviewers} columns={innerColumns} edit={edit} toggleEdit={toggleEdit} saved={saved} toggleSaved={toggleSaved}/>
               <div className="flex items-start p-4 gap-120">
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-row justify-center items-center gap-5">

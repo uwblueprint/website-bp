@@ -44,7 +44,9 @@ const Table: FC = () => {
 
   const [saved, setSaved] = useState(false);
 
-  const [saveFn, setSaveFn] = useState(() => {console.log("hello world")});
+  const toggleSaved = () => {
+    setSaved(!saved);
+  }
 
   const handleDropdownChange = (selectedItem: string) => {
     setSelectedDropdownItem(selectedItem);
@@ -94,7 +96,7 @@ const Table: FC = () => {
           edit={edit}
           toggleEdit={toggleEdit}
           saved={saved}
-          setSaved={setSaved}
+          toggleSaved={toggleSaved}
         />
         {selectedDropdownItem === "Review Dashboard" && (
           <ReviewTable
@@ -107,7 +109,7 @@ const Table: FC = () => {
             edit={edit}
             toggleEdit={toggleEdit}
             saved={saved}
-            setSaved={setSaved}
+            toggleSaved={toggleSaved}
           />
         )}
         {selectedDropdownItem === "Delegation Dashboard" && (

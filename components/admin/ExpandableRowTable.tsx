@@ -27,10 +27,10 @@ interface InnerTableProps {
   edit?: boolean;
   toggleEdit?: () => void;
   saved?: boolean;
-  setSaved?: any;
+  toggleSaved: any;
 }
 
-const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns, edit, saved, setSaved}) => {
+const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns, edit, saved, toggleSaved}) => {
 
   const initData1 = {"PFSG": data[0]["PFSG"], "team": data[0]["Team Player"], "D2L": data[0]["D2L"], "skill": data[0]["Skill"]}
   const initData2 = {"PFSG": data[1]["PFSG"], "team": data[1]["Team Player"], "D2L": data[1]["D2L"], "skill": data[1]["Skill"]}
@@ -48,62 +48,59 @@ const ExpandableRowTable: React.FC<InnerTableProps> = ({ data, columns, edit, sa
   const [D2L2, setD2L2] = useState(initData2["D2L"])
   const [skill2, setSkill2] = useState(initData2["skill"])
 
-  // 1. Figure out how to send the actual useState values to the newValues in the changeRating mutation
-
+  // Logic: When the state of saved is changed, the useEffect will run only if saved is true
   useEffect(() => { 
-      //if (saved){
-        fetchGraphql(mutations.changeRating, {id: reviewerId1, ratingToBeChanged: "passionFSG", newValue: 1}).then(
+      if (saved){
+        fetchGraphql(mutations.changeRating, {id: reviewerId1, ratingToBeChanged: "passionFSG", newValue: PFSG1}).then(
           (result) => {
             if (result) {
               console.log(result)
           }},
         )
-        fetchGraphql(mutations.changeRating, {id: reviewerId1, ratingToBeChanged: "teamPlayer", newValue: 1}).then(
+        fetchGraphql(mutations.changeRating, {id: reviewerId1, ratingToBeChanged: "teamPlayer", newValue: team1}).then(
           (result) => {
             if (result) {
               console.log(result)
           }},
         )
-        fetchGraphql(mutations.changeRating, {id: reviewerId1, ratingToBeChanged: "desireToLearn", newValue: 1}).then(
+        fetchGraphql(mutations.changeRating, {id: reviewerId1, ratingToBeChanged: "desireToLearn", newValue: D2L1}).then(
           (result) => {
             if (result) {
               console.log(result)
           }},
         )
-        fetchGraphql(mutations.changeRating, {id: reviewerId1, ratingToBeChanged: "skill", newValue: 1}).then(
+        fetchGraphql(mutations.changeRating, {id: reviewerId1, ratingToBeChanged: "skill", newValue: skill1}).then(
           (result) => {
             if (result) {
               console.log(result)
           }},
         )
-        fetchGraphql(mutations.changeRating, {id: reviewerId2, ratingToBeChanged: "passionFSG", newValue: 2}).then(
+        fetchGraphql(mutations.changeRating, {id: reviewerId2, ratingToBeChanged: "passionFSG", newValue: PFSG2}).then(
           (result) => {
             if (result) {
               console.log(result)
           }},
         )
-        fetchGraphql(mutations.changeRating, {id: reviewerId2, ratingToBeChanged: "teamPlayer", newValue: 2}).then(
+        fetchGraphql(mutations.changeRating, {id: reviewerId2, ratingToBeChanged: "teamPlayer", newValue: team2}).then(
           (result) => {
             if (result) {
               console.log(result)
           }},
         )
-        fetchGraphql(mutations.changeRating, {id: reviewerId2, ratingToBeChanged: "desireToLearn", newValue: 2}).then(
+        fetchGraphql(mutations.changeRating, {id: reviewerId2, ratingToBeChanged: "desireToLearn", newValue: D2L2}).then(
           (result) => {
             if (result) {
               console.log(result)
           }},
         )
-        fetchGraphql(mutations.changeRating, {id: reviewerId2, ratingToBeChanged: "skill", newValue: 2}).then(
+        fetchGraphql(mutations.changeRating, {id: reviewerId2, ratingToBeChanged: "skill", newValue: skill2}).then(
           (result) => {
             if (result) {
               console.log(result)
           }},
         )
-        setSaved(false);
-      //}
-      console.log("Save function set")
-
+        toggleSaved();
+      }
   }, [saved]);
 
   const handleChange = (event: any, row: number) => {

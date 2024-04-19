@@ -12,7 +12,7 @@ interface TitleProps {
   edit: boolean;
   toggleEdit: () => void;
   saved?: boolean;
-  setSaved?: any;
+  toggleSaved: () => void;
 }
 interface TabDescriptionProps {
   title: string;
@@ -34,7 +34,7 @@ const TabDescription: FC<TabDescriptionProps> = ({
 
 
 
-export const EditButton = ({ edit, toggleEdit, saved, setSaved}: { edit: boolean, toggleEdit: () => void, saved: any, setSaved: any}) => {
+export const EditButton = ({ edit, toggleEdit, saved, toggleSaved}: { edit: boolean, toggleEdit: () => void, saved: any, toggleSaved: () => void}) => {
   const editButton =
   "border-2 border-blue rounded-full text-blue text-center px-8 py-1 m-2 inline-block capitalize bg-white";
 
@@ -43,10 +43,8 @@ export const EditButton = ({ edit, toggleEdit, saved, setSaved}: { edit: boolean
   // saveFn = randomFn;
 
   const onSave = () => {
-    setSaved(true);
-    console.log("Save function called")
+    toggleSaved();
     toggleEdit();
-    
   }
 
   return (
@@ -88,7 +86,7 @@ const TableTitle: FC<TitleProps> = ({
   edit,
   toggleEdit,
   saved,
-  setSaved
+  toggleSaved
 }) => {
   const pillStyle =
     "border-2 border-blue-100 text-blue rounded-full px-4 py-2 m-2 font-large inline-block";
@@ -126,7 +124,7 @@ const TableTitle: FC<TitleProps> = ({
           />
         </Tabs>
       </div>
-        <EditButton edit={edit} toggleEdit={toggleEdit} saved={saved} setSaved={setSaved}/>
+        <EditButton edit={edit} toggleEdit={toggleEdit} saved={saved} toggleSaved={toggleSaved}/>
         {/* <ExpandableRowTable edit={edit} /> */}
     </div>
   );
