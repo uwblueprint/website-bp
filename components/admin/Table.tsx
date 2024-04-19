@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import DropdownMenu from "./DropdownMenu";
 import { Avatar } from "./Profile";
 import Tabs from "./Tabs";
@@ -9,6 +9,7 @@ import TableTitle from "./DashboardTableTitle";
 import ApplicationsTable from "./ApplicationsTable";
 import ApplicantRole from "entities/applicationRole";
 import ReviewTable from "./ReviewTable";
+import { set } from "firebase/database";
 
 export enum OrganizationalArea {
   Engineering = "Engineering",
@@ -34,6 +35,18 @@ const Table: FC = () => {
 
   const [selectedDropdownItem, setSelectedDropdownItem] =
     React.useState<string>("Delegation Dashboard");
+
+  const [edit, setEdit] = useState(false);
+
+  const toggleEdit = () => {
+    setEdit(!edit);
+  }
+
+  const [saved, setSaved] = useState(false);
+
+  const toggleSaved = () => {
+    setSaved(!saved);
+  }
 
   const handleDropdownChange = (selectedItem: string) => {
     setSelectedDropdownItem(selectedItem);
@@ -80,6 +93,10 @@ const Table: FC = () => {
           numSecondChoiceEntries={numSecondChoiceEntries}
           setWhichChoiceTab={setWhichChoiceTab}
           whichChoiceTab={whichChoiceTab}
+          edit={edit}
+          toggleEdit={toggleEdit}
+          saved={saved}
+          toggleSaved={toggleSaved}
         />
         {selectedDropdownItem === "Review Dashboard" && (
           <ReviewTable
@@ -89,6 +106,10 @@ const Table: FC = () => {
             numFirstChoiceEntries={numFirstChoiceEntries}
             setNumSecondChoiceEntries={setNumSecondChoiceEntries}
             numSecondChoiceEntries={numSecondChoiceEntries}
+            edit={edit}
+            toggleEdit={toggleEdit}
+            saved={saved}
+            toggleSaved={toggleSaved}
           />
         )}
         {selectedDropdownItem === "Delegation Dashboard" && (

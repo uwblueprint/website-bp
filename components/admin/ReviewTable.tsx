@@ -16,6 +16,10 @@ interface TableProps {
   numFirstChoiceEntries?: number;
   setNumSecondChoiceEntries: (tab: number) => void;
   numSecondChoiceEntries?: number;
+  edit?: boolean;
+  toggleEdit?: () => void;
+  saved?: boolean;
+  toggleSaved?: () => void;
 }
 
 const ReviewTable: React.FC<TableProps> = ({
@@ -23,6 +27,10 @@ const ReviewTable: React.FC<TableProps> = ({
   whichChoiceTab,
   setNumFirstChoiceEntries,
   setNumSecondChoiceEntries,
+  edit,
+  toggleEdit,
+  saved,
+  toggleSaved,
 }) => {
   const [firstChoiceApplications, setFirstChoiceApplications] = useState<any[]>(
     [],
@@ -91,26 +99,53 @@ const ReviewTable: React.FC<TableProps> = ({
     return secondChoiceApplications.map(createStudentRow);
   };
 
-  const generateMockInnerData = () => {
-    return [
+  const generateInnerData = (dataindex: number): any => {
+    const reviewerScore = firstChoiceApplications[dataindex].reviewDashboards;
+    const reviewer = firstChoiceApplications[dataindex].reviewers;
+
+    const firstScore =  reviewerScore[0];
+    const secondScore = reviewerScore[1];
+      
+    const firstReviewer = reviewer[0];
+    const secondReviewer = reviewer[1];
+
+    if (!firstReviewer || !secondReviewer) {
+      return [{},{}];
+    }
+
+    const collectedReviewers = [
       {
-        "Reviewer Name": "John Doe",
-        PFSG: 4,
-        "Team Player": 3,
-        D2L: 6,
-        Skill: 5,
-        "Skill Category": "junior",
-        "Reviewer Comments": "Great work presenting your case study.",
+      "Reviewer Name": firstReviewer.firstName + " " + firstReviewer.lastName,
+      PFSG: firstScore.passionFSG,
+      "Team Player": firstScore.teamPlayer, 
+      D2L: firstScore.desireToLearn,
+      Skill: firstScore.skill,
+      "Total Score": firstScore.passionFSG + firstScore.teamPlayer + firstScore.desireToLearn + firstScore.skill,
+      "Skill Category": firstScore.skillCategory,
+      "Reviewer Comments": firstScore.reviewerComments,
+      "ReviewerId": firstScore.reviewerId,
       },
-      // Add as many objects as you want to simulate different rows
-    ];
+      {
+        "Reviewer Name": secondReviewer.firstName + " " + secondReviewer.lastName,
+        PFSG: secondScore.passionFSG,
+        "Team Player": secondScore.teamPlayer, 
+        D2L: secondScore.desireToLearn,
+        Skill: secondScore.skill,
+        "Total Score": secondScore.passionFSG + secondScore.teamPlayer + secondScore.desireToLearn + secondScore.skill,
+        "Skill Category": secondScore.skillCategory,
+        "Reviewer Comments": secondScore.reviewerComments,
+        "ReviewerId": secondScore.reviewerId,
+      },
+    ]
+
+    return (collectedReviewers);
   };
 
   const renderExpandableRow = (
     rowData: any,
     rowMeta: { dataIndex: number },
   ) => {
-    const innerData = generateMockInnerData(); // Use mock data for testing
+    const reviewers = generateInnerData(rowMeta.dataIndex); 
     const application = {
       secondChoiceRole: "Graphic Designer",
       recommendForSecondChoice: true,
@@ -127,6 +162,10 @@ const ReviewTable: React.FC<TableProps> = ({
       { name: "D2L", options: { filter: false, sort: false } },
       { name: "Skill", options: { filter: false, sort: false } },
       {
+        name: "Total Score",
+        options: { filter: false, sort: false },
+      },
+      {
         name: "Skill Category",
         options: { filter: false, sort: false },
       },
@@ -142,7 +181,7 @@ const ReviewTable: React.FC<TableProps> = ({
         <tr>
           <td colSpan={8} className="p-5 px-10">
             <div className="flex flex-col font-source text-base">
-              <ExpandableRowTable data={innerData} columns={innerColumns} />
+              <ExpandableRowTable data={reviewers} columns={innerColumns} edit={edit} toggleEdit={toggleEdit} saved={saved} toggleSaved={toggleSaved}/>
               <div className="flex items-start p-4 gap-120">
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-row justify-center items-center gap-5">
