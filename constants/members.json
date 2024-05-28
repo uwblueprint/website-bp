@@ -3202,8 +3202,8 @@
     {
       "name": "Weinna Zheng",
       "role": "designer",
-      "term": 1237,
-      "teams": ["cwc"],
+      "term": 1238,
+      "teams": ["sistema"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FProductDesigner_Weinna_Zheng.jpg?alt=media&token=c2f96a35-4370-4b18-927e-a9a3cf423548"
     },
     {
@@ -3358,15 +3358,15 @@
     {
       "name": "Sarah Qiao",
       "role": "designer",
-      "term": 1237,
+      "term": 1238,
       "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FProductDesigner_Sarah_Qiao.JPG?alt=media&token=b85378c2-9718-4a37-bf9f-0ab8f03eb8df"
     },
     {
       "name": "Sohail Sayed",
-      "role": "developer",
-      "term": 1237,
-      "teams": ["cwc"],
+      "role": "designer",
+      "term": 1238,
+      "teams": ["eaf"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FDeveloper_Sohail_Sayed.jpeg?alt=media&token=5a14b3f2-061d-4b0a-b62f-6e9cf7e82cd5"
     },
     {
@@ -3515,7 +3515,7 @@
     {
       "name": "Sunny Zhang",
       "role": "designer",
-      "term": 1237,
+      "term": 1238,
       "teams": ["de"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FProductDesigner_Sunny_Zhang.JPG?alt=media&token=b935d1a8-174d-442a-86e4-f8d0563c8b78"
     },
@@ -3802,7 +3802,7 @@
     {
       "name": "Bill Gong",
       "role": "designer",
-      "term": 1237,
+      "term": 1238,
       "teams": ["mp"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FProductDesigner_Bill_Gong.jpg?alt=media&token=62dcf03a-7a55-470b-8e79-e09fa2e8d163"
     },
@@ -3823,7 +3823,7 @@
     {
       "name": "David Sterling",
       "role": "designer",
-      "term": 1237,
+      "term": 1238,
       "teams": ["de"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FDavid%20Stirling.png?alt=media&token=996bd95e-094b-415c-8b71-6bdc68ed10ac"
     },
@@ -3955,9 +3955,9 @@
     },
     {
       "name": "Maithily Kadam",
-      "role": "internal director",
-      "term": 1237,
-      "teams": ["executive"],
+      "role": "designer",
+      "term": 1238,
+      "teams": ["humane-society"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FMaithily%20Kadam%20director.png?alt=media&token=5c41c533-e131-45fc-9576-f1bdbb562562"
     },
     {
@@ -4119,6 +4119,48 @@
       "role": "product manager",
       "term": 1238,
       "teams": ["eaf"],
+      "img": ""
+    },
+    {
+      "name": "Gaurav Shah",
+      "role": "designer",
+      "term": 1238,
+      "teams": ["eaf"],
+      "img": ""
+    },
+    {
+      "name": "Jennifer Lin",
+      "role": "designer",
+      "term": 1238,
+      "teams": ["humane-society"],
+      "img": ""
+    },
+    {
+      "name": "Gloria Pan",
+      "role": "designer",
+      "term": 1238,
+      "teams": ["sistema"],
+      "img": ""
+    },
+    {
+      "name": "Abeer Das",
+      "role": "designer",
+      "term": 1238,
+      "teams": ["eaf"],
+      "img": ""
+    },
+    {
+      "name": "Kelly Ng",
+      "role": "designer",
+      "term": 1238,
+      "teams": ["humane-society"],
+      "img": ""
+    },
+    {
+      "name": "Jay Wong",
+      "role": "designer",
+      "term": 1238,
+      "teams": ["sistema"],
       "img": ""
     }
   ]
