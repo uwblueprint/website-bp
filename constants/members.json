@@ -3076,8 +3076,8 @@
     {
       "name": "Elle Luo",
       "role": "project manager",
-      "term": 1236,
-      "teams": ["haven"],
+      "term": 1238,
+      "teams": ["humane-society"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FPM_Elle_Luo.jpg?alt=media&token=dbbdc57f-8777-41d4-b418-181fe33fc02c"
     },
     {
@@ -3379,7 +3379,7 @@
     {
       "name": "Jacqueline Fung",
       "role": "product manager",
-      "term": 1237,
+      "term": 1238,
       "teams": ["de"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_JacquelineFung.jpg?alt=media&token=66e7d231-9e82-462d-a3e3-60d03cd33909"
     },
@@ -3441,9 +3441,9 @@
     },
     {
       "name": "Olivia Chan",
-      "role": "vp scoping",
-      "term": 1237,
-      "teams": ["executive"],
+      "role": "product manager",
+      "term": 1238,
+      "teams": ["eaf"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FVPE_Olivia_Chan.jpg?alt=media&token=8a8bf5f8-556b-45ca-957e-f96646dff97c"
     },
     {
@@ -3830,8 +3830,8 @@
     {
       "name": "Gavneet Bhandal",
       "role": "product manager",
-      "term": 1237,
-      "teams": ["abtc"],
+      "term": 1238,
+      "teams": ["sistema"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FProductManager_Gavneet_Bhandal.jpg?alt=media&token=fb9ef46f-1c1f-478d-97f5-15fc7ef7e4b8"
     },
     {
@@ -4098,6 +4098,27 @@
       "role": "content strategist",
       "term": 1238,
       "teams": ["executive"],
+      "img": ""
+    },
+    {
+      "name": "Yvonne Wang",
+      "role": "product manager",
+      "term": 1238,
+      "teams": ["sistema"],
+      "img": ""
+    },
+    {
+      "name": "Rozalin Draghosian",
+      "role": "product manager",
+      "term": 1238,
+      "teams": ["mp"],
+      "img": ""
+    },
+    {
+      "name": "Aatman Shah",
+      "role": "product manager",
+      "term": 1238,
+      "teams": ["eaf"],
       "img": ""
     }
   ]
