@@ -20,7 +20,7 @@ const Hero: FC = () => {
             {APPLICATION_IS_LIVE && (
               <div>
                 <Button
-                  className="bg-transparent border-blue text-blue-100 md:border-white md:blue-100"
+                  className="border-blue text-blue-100 md:border-white md:blue-100"
                   size="lg"
                   variant="secondary"
                   href={APPLICATION_LINK}
