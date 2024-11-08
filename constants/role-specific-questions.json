@@ -166,16 +166,6 @@
     ]
   },
   {
-    "id": "12",
-    "role": "VP Communications",
-    "questions": [
-      {
-        "question": "What's a cool idea you think Blueprint should do to elevate our current branding and image in the community?",
-        "maxLength": 1000
-      }
-    ]
-  },
-  {
     "id": "13",
     "role": "VP Finance & Operations",
     "questions": [
