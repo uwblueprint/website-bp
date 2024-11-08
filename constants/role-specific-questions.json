@@ -158,7 +158,12 @@
   {
     "id": "11",
     "role": "VP Talent",
-    "questions": []
+    "questions": [
+      {
+        "question": "What skills and attributes should the ideal Blueprint candidate possess?",
+        "maxLength": 1000
+      }
+    ]
   },
   {
     "id": "12",
