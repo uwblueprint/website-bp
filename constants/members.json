@@ -417,7 +417,7 @@
       "name": "Matthew Wang",
       "role": "technical lead",
       "term": 1239,
-      "teams": ["abtc"],
+      "teams": ["llsc"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdev_matthewwang.jpeg?alt=media&token=85739432-a296-4c80-94d2-f7c3369561b6"
     },
     {
@@ -3414,7 +3414,7 @@
     {
       "name": "Yaser Nossibeh",
       "role": "vp engineering",
-      "term": 1230,
+      "term": 1239,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Yaser_Nossibeh.jpg?alt=media&token=aa737eec-3eca-4ad6-bfe9-ce5bea9512b9"
     },
@@ -3772,7 +3772,7 @@
       "name": "Aathithan Chandrabalan",
       "role": "technical lead",
       "term": 1239,
-      "teams": ["mp"],
+      "teams": ["abtc"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs24headshots%2Fdev_aathithan_chandrabalan.webp?alt=media&token=2079c6f7-b4bb-4b81-8322-9766264644eb"
     },
 
@@ -4020,7 +4020,7 @@
       "name": "Jeeda Sabri",
       "role": "product manager",
       "term": 1239,
-      "teams": ["abtc"],
+      "teams": ["llsc"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FVPScoping_Jeeda_Sabri.jpg?alt=media&token=ed60ec56-0920-4c6f-b4c6-66f5c419c9c7"
     },
     {
@@ -4314,7 +4314,7 @@
       "name": "Sanskriti Akhoury",
       "role": "developer",
       "term": 1239,
-      "teams": ["abtc"],
+      "teams": ["llsc"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs24headshots%2Fdev_sanskriti_akhoury.webp?alt=media&token=3fdb2be3-07ba-409c-a869-fb835485b29d"
     },
     {
@@ -4552,14 +4552,14 @@
       "name": "Michael Gee",
       "role": "designer",
       "term": 1239,
-      "teams": ["humane-society"],
+      "teams": ["eaf"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Justin Luu",
       "role": "designer",
       "term": 1239,
-      "teams": ["humane-society"],
+      "teams": ["eaf"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
@@ -4609,7 +4609,7 @@
       "role": "developer",
       "term": 1239,
       "teams": ["mp"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff24headshots%2FDeveloper_Karthik_Selva.jpg?alt=media&token=d3ad8dfb-18a8-418f-bdc8-b3a2ee2c2028"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff24headshots%2Fdev_karthik_selva.png?alt=media&token=1a416251-8b16-4a41-8a35-87713520ed5a"
     },
     {
       "name": "Allen Lu",
