@@ -20,6 +20,11 @@
         "description": "Scoping pods include a designer, developer, and PM to join VP Scoping for meetings with NPO’s to provide their opinion and expertise! This will be in addition to the existing responsibilities of your role.",
         "type": "select",
         "options": ["Yes", "No"]
+      },
+      {
+        "uniqueId": 4,
+        "question": "Mention your top 3 skills in full stack and years of experience for each of them. Example: GraphQL - 2 years, ...",
+        "maxLength": 1000
       }
     ]
   },
@@ -81,6 +86,11 @@
         "description": "Scoping pods include a designer, developer, and PM to join VP Scoping for meetings with NPO’s to provide their opinion and expertise! This will be in addition to the existing responsibilities of your role.",
         "type": "select",
         "options": ["Yes", "No"]
+      },
+      {
+        "uniqueId": 4,
+        "question": "Mention your top 3 skills in full stack and years of experience for each of them. Example: GraphQL - 2 years, ...",
+        "maxLength": 1000
       }
     ]
   },
@@ -167,7 +177,7 @@
   },
   {
     "id": "13",
-    "role": "VP Finance & Operations",
+    "role": "Finance Associate",
     "questions": [
       {
         "question": "How would you pitch to external organizations for sponsorship?",
