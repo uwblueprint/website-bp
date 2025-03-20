@@ -1,17 +1,9 @@
 {
-  "term": 1239,
+  "term": 1240,
   "teams": [
     {
       "name": "Executive Team",
       "id": "executive"
-    },
-    {
-      "name": "A Better Tent City",
-      "id": "abtc"
-    },
-    {
-      "name": "Don Efficace",
-      "id": "de"
     },
     {
       "name": "Extend-A-Family",
@@ -35,6 +27,20 @@
     }
   ],
   "members": [
+    {
+      "name": "Tony Qiu",
+      "role": "developer",
+      "term": 1240,
+      "teams": ["humane-society"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Vibhor Gautam",
+      "role": "developer",
+      "term": 1240,
+      "teams": ["humane-society"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
     {
       "name": "Aaron Abraham",
       "role": "co-president",
@@ -3885,9 +3891,9 @@
     },
     {
       "name": "Cynthia Shen",
-      "role": "developer",
+      "role": "technical lead",
       "term": 1238,
-      "teams": ["infra"],
+      "teams": ["humane-society"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
@@ -4265,7 +4271,7 @@
       "name": "Aayush Patel",
       "role": "developer",
       "term": 1239,
-      "teams": ["de"],
+      "teams": ["humane-society"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
