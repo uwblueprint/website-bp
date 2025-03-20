@@ -51,7 +51,7 @@
     {
       "name": "Chinemerem Chigbo",
       "role": "technical lead",
-      "term": 1239,
+      "term": 1240,
       "teams": ["sistema"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fspring2021headshots%2FChinemerem_Chigbo.jpg?alt=media&token=8448c257-dc48-41eb-b6b2-eebbbb906e6b"
     },
@@ -3208,7 +3208,7 @@
     {
       "name": "Weinna Zheng",
       "role": "designer",
-      "term": 1239,
+      "term": 1240,
       "teams": ["sistema"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FProductDesigner_Weinna_Zheng.jpg?alt=media&token=c2f96a35-4370-4b18-927e-a9a3cf423548"
     },
@@ -3654,8 +3654,8 @@
     {
       "name": "Colin Toft",
       "role": "developer",
-      "term": 1237,
-      "teams": ["fck"],
+      "term": 1240,
+      "teams": ["sistema"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff23headshosts%2FDev_Colin_Toft.JPG?alt=media&token=2bfcf3c0-e344-4f04-ae34-8c0ad79bdec5"
     },
     {
@@ -4109,7 +4109,7 @@
     {
       "name": "Yvonne Wang",
       "role": "product manager",
-      "term": 1239,
+      "term": 1240,
       "teams": ["sistema"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs24headshots%2Fpm_yvonne_wang.webp?alt=media&token=8fe986e4-6382-439d-ace0-38a64f915225"
     },
@@ -4165,7 +4165,7 @@
     {
       "name": "Jay Wong",
       "role": "designer",
-      "term": 1239,
+      "term": 1240,
       "teams": ["sistema"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs24headshots%2Fdesigner_jay_wong.webp?alt=media&token=da5688e4-ee9a-40f8-a8af-5cef82e1651e"
     },
@@ -4291,8 +4291,8 @@
     {
       "name": "Benjamin Bai",
       "role": "developer",
-      "term": 1239,
-      "teams": ["de"],
+      "term": 1240,
+      "teams": ["sistema"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
@@ -4368,14 +4368,14 @@
     {
       "name": "Anant Duggal",
       "role": "developer",
-      "term": 1239,
+      "term": 1240,
       "teams": ["sistema"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs24headshots%2Fdev_anant_duggal.webp?alt=media&token=75cf48eb-adf3-4852-9e72-9ee665512e75"
     },
     {
       "name": "Evelina Zheng",
       "role": "developer",
-      "term": 1239,
+      "term": 1240,
       "teams": ["sistema"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs24headshots%2Fdev_evelina_zheng.webp?alt=media&token=9a64bcd6-5b96-401c-b504-04484a757638"
     },
@@ -4389,7 +4389,7 @@
     {
       "name": "Vihaan Jagiasi",
       "role": "developer",
-      "term": 1239,
+      "term": 1240,
       "teams": ["sistema"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs24headshots%2Fdev_vihaan_jagiasi.webp?alt=media&token=e4f9bb25-1d9e-40a1-bbe9-cc9053e3a9e6"
     },
@@ -4431,8 +4431,8 @@
     {
       "name": "Daniel Su",
       "role": "developer",
-      "term": 1239,
-      "teams": ["abtc"],
+      "term": 1240,
+      "teams": ["sistema"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
@@ -4465,10 +4465,17 @@
     },
     {
       "name": "Anthony Tesca",
-      "role": "internal director",
-      "term": 1239,
-      "teams": ["executive"],
+      "role": "developer",
+      "term": 1240,
+      "teams": ["sistema"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff24headshots%2Fidir_anthony_tecsa.png?alt=media&token=2015f525-1f3a-4fb7-af1f-9764fbbf687e"
+    },
+    {
+      "name": "Purva Daga",
+      "role": "developer",
+      "term": 1240,
+      "teams": ["sistema"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Karen Zhang",
@@ -4585,7 +4592,7 @@
     {
       "name": "Kenzy Soror",
       "role": "developer",
-      "term": 1239,
+      "term": 1240,
       "teams": ["sistema"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff24headshots%2Fdev_kenzy_soror.jpg?alt=media&token=ea779a1f-eddc-4da4-b0ba-ec78a0dbb739"
     },
