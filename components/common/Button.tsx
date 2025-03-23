@@ -53,7 +53,7 @@ const Button: FC<Props> = ({
         ? "h-auto py-2.5 text-sm md:text-base font-semibold"
         : "h-auto py-2.5 text-sm font-normal"
     }
-    font-poppins px-8 border-2 border-solid rounded-full text-base
+    font-poppins transition-all px-8 border-2 border-solid rounded-full text-base
     ${className}
   `;
 
