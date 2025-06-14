@@ -96,7 +96,7 @@ export const ReviewStepper: React.FC<Props> = ({ currentStage, scores }) => {
         {/* Buttons Section */}
         <ReviewSetStageContext.Consumer>
           {(setStage) => (
-            <div className="flex justify-end lg:justify-end items-center gap-2 self-end lg:self-auto">
+            <div className="flex justify-end items-center gap-2 self-end lg:self-auto">
               {currentButtonIndex > 0 && (
                 <Button
                   size="sm"
