@@ -57,7 +57,7 @@ const ProtectedApplication = ({
       } else {
         setAuthStatus({
           loading: false,
-          isAuthorized: true,
+          isAuthorized: false,
         });
       }
     });
