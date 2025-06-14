@@ -67,10 +67,10 @@ const ReviewTable: React.FC<TableProps> = ({
   const createStudentRow = (application: any) => {
     const app = application.application;
     const mapToNumericalValue = {
-      "This is my first time!": 0,
-      Once: 1,
-      Twice: 2,
-      "3 or more": 3,
+      "This is my first time!": "0",
+      Once: "1",
+      Twice: "2",
+      "3 or more": "3+",
     };
 
     return {
