@@ -25,7 +25,7 @@ const Login = (): ReactElement => {
               "refreshToken",
               result.data.loginWithGoogle.refreshToken,
             );
-            router.back();
+            router.push("/admin");
           }
         },
       );
