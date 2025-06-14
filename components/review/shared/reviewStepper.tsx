@@ -82,7 +82,7 @@ export const ReviewStepper: React.FC<Props> = ({ currentStage, scores }) => {
     <div className="bottom-0 left-0 w-full">
       <div className="bg-sky-100 m-2 p-4 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         {/* Stepper Section */}
-        <div className="flex overflow-x-auto lg:grid lg:grid-flow-col lg:auto-cols-fr gap-2 lg:gap-0">
+        <div className="hidden lg:grid lg:grid-flow-col lg:auto-cols-fr gap-2">
           {buttons.map((buttonProps, idx) => (
             <NavigationItem
               {...buttonProps}
