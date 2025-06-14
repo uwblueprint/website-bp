@@ -80,33 +80,34 @@ export const ReviewStepper: React.FC<Props> = ({ currentStage, scores }) => {
 
   return (
     <div className="bottom-0 left-0 w-full">
-      <div className="bg-sky-100 m-2 p-4 flex">
-        <div className="grid grid-flow-col auto-cols-fr">
+      <div className="bg-sky-100 m-2 p-4 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        {/* Stepper Section */}
+        <div className="flex overflow-x-auto lg:grid lg:grid-flow-col lg:auto-cols-fr gap-2 lg:gap-0">
           {buttons.map((buttonProps, idx) => (
             <NavigationItem
               {...buttonProps}
               state={getButtonState(buttonProps)}
-              containerClassName="px-2 basis-0"
+              containerClassName="px-2 shrink-0"
               key={idx}
             />
           ))}
         </div>
+
+        {/* Buttons Section */}
         <ReviewSetStageContext.Consumer>
           {(setStage) => (
-            <div className="grow flex justify-end items-center">
-              {currentButtonIndex > 0 ? (
+            <div className="flex justify-end lg:justify-end items-center gap-2 self-end lg:self-auto">
+              {currentButtonIndex > 0 && (
                 <Button
-                  className="mr-2 justify-self-end"
                   size="sm"
                   variant="secondary"
                   onClick={() => setStage?.(getPreviousStage())}
                 >
                   Back
                 </Button>
-              ) : null}
+              )}
               {currentStage === ReviewStage.END ? (
                 <Button
-                  className="justify-self-end whitespace-nowrap"
                   size="sm"
                   onClick={() => setStage?.(ReviewStage.END_SUCCESS)}
                 >
@@ -114,7 +115,6 @@ export const ReviewStepper: React.FC<Props> = ({ currentStage, scores }) => {
                 </Button>
               ) : (
                 <Button
-                  className="justify-self-end whitespace-nowrap"
                   size="sm"
                   disabled={isButtonDisabled()}
                   onClick={() => {
