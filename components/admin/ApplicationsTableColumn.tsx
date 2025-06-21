@@ -102,7 +102,6 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
             "considered",
             "not considered",
             "n/a",
-            "recommended",
             "in review",
             "interview",
             "no interview",
