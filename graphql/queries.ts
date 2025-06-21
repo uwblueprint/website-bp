@@ -60,6 +60,7 @@ export const queries = {
         lastName
         locationPreference
         program
+        timesApplied
         pronouns
         pronounsSpecified
         resumeUrl
@@ -85,6 +86,7 @@ export const applicationTableQueries = {
                   academicYear
                   resumeUrl
                   program
+                  timesApplied
                   status
                   secondChoiceRole
                   secondChoiceStatus
@@ -112,6 +114,7 @@ export const applicationTableQueries = {
                 academicYear
                 resumeUrl
                 program
+                timesApplied
                 status
                 secondChoiceRole
                 secondChoiceStatus
