@@ -113,7 +113,6 @@ const ReviewTable: React.FC<TableProps> = ({
     const innerData = generateMockInnerData(); // Use mock data for testing
     const application = {
       secondChoiceRole: "Graphic Designer",
-      recommendForSecondChoice: true,
       adminComments: "Great",
     };
 
@@ -148,15 +147,6 @@ const ReviewTable: React.FC<TableProps> = ({
                   <div className="flex flex-row justify-center items-center gap-5">
                     <span className="text-blue font-semibold">2nd Choice:</span>
                     <p>{application.secondChoiceRole}</p>
-                  </div>
-
-                  <div className="flex items-center mt-2">
-                    <input
-                      type="checkbox"
-                      checked={application.recommendForSecondChoice}
-                      // onChange logic here
-                    />
-                    <span className="ml-2">Recommend for 2nd Choice</span>
                   </div>
                 </div>
                 <div className="flex flex-col">

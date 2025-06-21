@@ -186,10 +186,6 @@ export const SecondChoiceStatus: React.FC<StatusProps> = ({ status }) => {
       className += "bg-green-100 py-1 ";
       text = "Interview";
       break;
-    case "recommended":
-      className += "bg-orange-200 py-1 ";
-      text = "Recommended";
-      break;
     case "no interview":
       className += "bg-charcoal-300 py-1 ";
       text = "No Interview";
