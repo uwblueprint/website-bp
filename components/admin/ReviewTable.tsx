@@ -94,13 +94,13 @@ const ReviewTable: React.FC<TableProps> = ({
   const generateMockInnerData = () => {
     return [
       {
-        "Reviewer Name": "John Doe",
-        PFSG: 4,
-        "Team Player": 3,
-        D2L: 6,
-        Skill: 5,
-        "Skill Category": "junior",
-        "Reviewer Comments": "Great work presenting your case study.",
+        reviewerName: "John Doe",
+        pfsg: 4,
+        teamPlayer: 3,
+        d2l: 6,
+        skill: 5,
+        skillCategory: "junior",
+        reviewerComments: "Great work presenting your case study.",
       },
       // Add as many objects as you want to simulate different rows
     ];
