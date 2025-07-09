@@ -5,18 +5,18 @@ import {
   get_previous_members,
   get_old_members,
   get_term,
+  sort_members,
   extractInfoFromUrl,
   normalizeRole,
   doesMemberExist,
-  get_teams,
+  TEAMS,
+  DEFAULT_PHOTO,
   Member,
 } from "./constants";
 
-
 const Headshots: React.FC = () => {
   const [currentTerm, setCurrentTerm] = useState(get_term());
-
-  const [headshots, setHeadshots] = useState<Member[]>([
+  const [currentMembers, setCurrentMembers] = useState<Member[]>([
     ...get_current_members(currentTerm),
     {
       name: "",
@@ -27,126 +27,129 @@ const Headshots: React.FC = () => {
       isDuplicate: false,
     },
   ]);
-
   const previousTermMembers = get_previous_members(currentTerm);
 
-  const deleteHeadshot = (index: number) => {
-    setHeadshots(headshots.filter((_, i) => i !== index));
+  const findExistingMember = (name: string): Member | null => {
+    if (!name.trim()) return null;
+    const trimmedName = name.trim().toLowerCase();
+    return (
+      previousTermMembers.find(
+        (member) => member.name.toLowerCase() === trimmedName,
+      ) || null
+    );
+  };
+
+  const createEmptyMember = () => ({
+    name: "",
+    role: "",
+    term: currentTerm,
+    teams: [],
+    img: "",
+    isDuplicate: false,
+  });
+
+  const deleteMember = (index: number) => {
+    setCurrentMembers(currentMembers.filter((_, i) => i !== index));
   };
 
   const addEmptyAfter = (index: number) => {
-    const newHeadshots = [...headshots];
-    newHeadshots.splice(index + 1, 0, {
-      name: "",
-      role: "",
-      term: currentTerm,
-      teams: [],
-      img: "",
-      isDuplicate: false,
-    });
-    setHeadshots(newHeadshots);
+    const temp = [...currentMembers];
+    temp.splice(index + 1, 0, createEmptyMember());
+    setCurrentMembers(temp);
   };
 
-  const updateHeadshot = (
-    index: number,
-    updatedHeadshot: Partial<Member>,
-  ) => {
-    setHeadshots((currentHeadshots) => {
-      const newHeadshots = currentHeadshots.map((headshot, i) => {
+  // update the member manually given form changes
+  const updateMember = (index: number, updatedMember: Partial<Member>) => {
+    setCurrentMembers((memberList) => {
+      const newMembers = memberList.map((member, i) => {
         if (i === index) {
-          const newHeadshot = { ...headshot, ...updatedHeadshot };
+          const newMember = { ...member, ...updatedMember };
 
-          if (updatedHeadshot.name !== undefined) {
-            const isDuplicate = updatedHeadshot.name.trim()
-              ? doesMemberExist(updatedHeadshot.name, previousTermMembers)
+          if (updatedMember.name !== undefined) {
+            const isDuplicate = updatedMember.name.trim()
+              ? doesMemberExist(updatedMember.name, previousTermMembers)
               : false;
-            newHeadshot.isDuplicate = isDuplicate;
+            newMember.isDuplicate = isDuplicate;
           }
 
-          return newHeadshot;
+          return newMember;
         }
-        return headshot;
+        return member;
       });
-      console.log("newHeadshots", newHeadshots);
 
       if (
-        updatedHeadshot.img !== undefined &&
-        index === newHeadshots.length - 1 &&
-        updatedHeadshot.img.trim() !== ""
+        updatedMember.img !== undefined &&
+        index === newMembers.length - 1 &&
+        updatedMember.img.trim() !== ""
       ) {
-        return [
-          ...newHeadshots,
-          {
-            name: "",
-            role: "",
-            term: currentTerm,
-            teams: [],
-            img: "",
-            isDuplicate: false,
-          },
-        ];
+        return [...newMembers, createEmptyMember()];
       }
 
-      return newHeadshots;
+      return newMembers;
     });
   };
 
-  const updateHeadshotWithUrl = (index: number, url: string) => {
-    const templateUrl =
-      "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519";
-
-    if (url === templateUrl) {
-      updateHeadshot(index, { img: url });
+  // update a member by pasting in a URL
+  const updateMemberUsingURL = (index: number, url: string) => {
+    if (url === DEFAULT_PHOTO) {
+      updateMember(index, { img: url });
       return;
     }
 
     const extractedInfo = extractInfoFromUrl(url);
-    const isDuplicate = extractedInfo?.name
-      ? doesMemberExist(extractedInfo.name, previousTermMembers)
-      : false;
-
     const updates: Partial<Member> = {
       img: url,
-      isDuplicate: isDuplicate,
+      isDuplicate: extractedInfo?.name
+        ? doesMemberExist(extractedInfo.name, previousTermMembers)
+        : false,
     };
 
-    if (extractedInfo?.name) {
-      updates.name = extractedInfo.name;
-    }
-    if (extractedInfo?.role) {
-      updates.role = normalizeRole(extractedInfo.role);
-    }
-    if (extractedInfo?.teams) {
-      updates.teams = extractedInfo.teams;
-    }
+    if (extractedInfo?.name) updates.name = extractedInfo.name;
+    if (extractedInfo?.role) updates.role = normalizeRole(extractedInfo.role);
+    if (extractedInfo?.teams) updates.teams = extractedInfo.teams;
 
-    updateHeadshot(index, updates);
+    updateMember(index, updates);
   };
 
-  const saveToMembers = async () => {
-    const validHeadshots = headshots.filter(
+  // updates the current member to be a previous member's details (takes their img mainly)
+  const handleAddExisting = (index: number, name: string) => {
+    const existingMember = findExistingMember(name);
+    if (existingMember) {
+      updateMember(index, {
+        name: existingMember.name,
+        role: existingMember.role,
+        teams: existingMember.teams,
+        img: existingMember.img,
+        isDuplicate: true,
+      });
+      return true;
+    }
+    return false;
+  };
+
+  const handleSave = async () => {
+    const validList = currentMembers.filter(
       (headshot) => headshot.name.trim() !== "",
     );
 
-    if (validHeadshots.length === 0) {
-      alert("No valid headshots to save!");
+    if (validList.length === 0) {
+      alert("u aint got headshots lil bro");
       return;
     }
 
-    const oldMembers = get_old_members(validHeadshots, currentTerm);
-    
-    const newMembers = validHeadshots.map((headshot) => ({
-      name: headshot.name,
-      role: normalizeRole(headshot.role),
+    const oldMembers = get_old_members(validList, currentTerm);
+    const newMembers = validList.map((member) => ({
+      name: member.name,
+      role: normalizeRole(member.role),
       term: currentTerm,
-      teams: headshot.teams,
-      img: headshot.img,
+      teams: member.teams,
+      img: member.img,
     }));
 
     const updatedMembersJson = {
       term: currentTerm,
-      teams: get_teams(),
-      members: [...oldMembers, ...newMembers],
+      teams: TEAMS,
+      members: sort_members([...oldMembers, ...newMembers]),
     };
 
     try {
@@ -155,51 +158,58 @@ const Headshots: React.FC = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ membersData: updatedMembersJson }),
       });
-      alert(`ez save, updated ${validHeadshots.length} members`);
+      alert(`ez save, updated ${validList.length} members`);
     } catch (error) {
       alert(`failure: ${error}`);
     }
   };
 
   return (
-    <main className="flex flex-col items-center w-full justify-center min-h-screen p-4 space-y-4">
+    <main className="flex flex-col items-center w-full justify-center min-h-screen p-4">
       <h1 className="text-2xl font-bold">upload them headshots homie</h1>
 
-      <div className="flex items-center gap-4 mb-4">
+      <div className="flex items-center gap-4">
         <label className="text-sm font-medium">current term:</label>
         <input
           type="number"
           value={currentTerm}
           onChange={(e) => setCurrentTerm(parseInt(e.target.value))}
-          className="border rounded px-2 py-1 w-20"
+          className="border rounded"
         />
       </div>
 
-      <section className="flex flex-col items-center w-3/4 p-4 space-y-4 bg-white rounded shadow-md">
-        {headshots.map((headshot: Member, index: number) => (
+      <section className="flex flex-col items-center w-3/4 p-4 gap-4">
+        {currentMembers.map((headshot: Member, index: number) => (
           <HeadshotCard
             key={index}
             headshot={headshot}
             index={index}
-            onDelete={deleteHeadshot}
-            onUpdate={updateHeadshot}
-            onUrlChange={updateHeadshotWithUrl}
+            onDelete={deleteMember}
+            onUpdate={updateMember}
+            onUrlChange={updateMemberUsingURL}
             onAddEmpty={addEmptyAfter}
+            onCheckExisting={handleAddExisting}
+            getExistingMember={findExistingMember}
           />
         ))}
 
         <div className="flex gap-4">
           <button
-            onClick={saveToMembers}
+            onClick={handleSave}
             className="px-6 py-2 bg-sky-500 text-white font-bold rounded hover:bg-blue-200"
           >
             save members
           </button>
         </div>
 
-        <div className="text-xs text-gray-500 text-center max-w-md">
-          saves to members_temp.json. double check, then REPLACE the
-          members.json in the constnants folder
+        <div className="text-center max-w-md">
+          <p className="text-xs text-charcoal-500">
+            updates the member list with these members, set to the current term
+            (as given above).
+          </p>
+          <p className="text-xs text-charcoal-500">
+            Don't worry, a backup is generated in the code!
+          </p>
         </div>
       </section>
     </main>

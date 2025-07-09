@@ -1,6 +1,7 @@
 import members from "../../constants/members.json";
 
-// TYPE EXPORTS ========================================================
+// TYPE & CONSTANT EXPORTS ============================================
+
 export type Member = {
   name: string;
   role: string;
@@ -10,20 +11,48 @@ export type Member = {
   isDuplicate?: boolean;
 };
 
-// MEMBR EXPORTS ======================================================
+export const DEFAULT_PHOTO =
+  "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519";
 
-export const get_current_members = (curr_term: number) => {
-  return members.members
-    .filter((member) => member.term === curr_term)
-    .sort((a, b) => {
-      const teamA = (a.teams[0] || "").toLowerCase();
-      const teamB = (b.teams[0] || "").toLowerCase();
-      if (teamA < teamB) return -1;
-      if (teamA > teamB) return 1;
-      return 0;
-    });
+export const teamsMap = {
+  developer: ["dev", "developer", "project developer"],
+  "technical lead": ["pl", "project lead", "technical lead"],
+  "product manager": ["pm", "product manager"],
+  designer: ["designer", "design"],
+  "content strategist": ["content strategist", "content"],
+  "vp scoping": ["vp scoping", "vps"],
+  "vp engineering": ["vp engineering", "vpe"],
+  "vp design": ["vp design", "vpd"],
+  "vp product": ["vp product", "vpp"],
+  "vp talent": ["vp talent", "vpt"],
+  "vp finance": ["vp finance", "vpf"],
 };
 
+// MEMBR EXPORTS ======================================================
+
+export const sort_members = (members: Member[]) => {
+  // by term number
+  return members.sort((a, b) => {
+    if (a.term !== b.term) {
+      return b.term - a.term;
+    }
+    // if term is same, sort by team name
+    const teamA = (a.teams[0] || "").toLowerCase();
+    const teamB = (b.teams[0] || "").toLowerCase();
+    if (teamA < teamB) return -1;
+    if (teamA > teamB) return 1;
+    return 0;
+  });
+};
+
+// get members of the current term
+export const get_current_members = (curr_term: number) => {
+  return sort_members(
+    members.members.filter((member) => member.term === curr_term),
+  );
+};
+
+// previosou 2 terms
 export const get_previous_members = (curr_term: number) => {
   const previousTerm1 = curr_term - 1;
   const previousTerm2 = curr_term - 2;
@@ -32,6 +61,7 @@ export const get_previous_members = (curr_term: number) => {
   );
 };
 
+// old ass people
 export const get_old_members = (curr_members: Member[], curr_term: number) => {
   const oldMembers = members.members.filter((member) => {
     if (member.term < curr_term - 2) {
@@ -48,11 +78,10 @@ export const get_term = () => {
   return members.term;
 };
 
-export const get_teams = () => {
-  return members.teams;
-};
+export const TEAMS = members.teams;
 
 // FUNCTION EXPORTS ====================================================
+
 export const extractInfoFromUrl = (
   url: string,
 ): { name: string; role: string; teams: string[] } | null => {
@@ -87,20 +116,6 @@ export const extractInfoFromUrl = (
   return null;
 };
 
-export const teamsMap = {
-  developer: ["dev", "developer", "project developer"],
-  "technical lead": ["pl", "project lead", "technical lead"],
-  "product manager": ["pm", "product manager"],
-  designer: ["designer", "design"],
-  "content strategist": ["content strategist", "content"],
-  "vp scoping": ["vp scoping", "vps"],
-  "vp engineering": ["vp engineering", "vpe"],
-  "vp design": ["vp design", "vpd"],
-  "vp product": ["vp product", "vpp"],
-  "vp talent": ["vp talent", "vpt"],
-  "vp finance": ["vp finance", "vpf"],
-};
-
 export const normalizeRole = (role: string): string => {
   if (!role) return "";
 
@@ -122,5 +137,15 @@ export const doesMemberExist = (
   if (!name.trim()) return false;
   return previousTermMembers.some(
     (member) => member.name.toLowerCase() === name.toLowerCase(),
+  );
+};
+
+export const findExistingMember = (name: string, previousMembers: Member[]): Member | null => {
+  if (!name.trim()) return null;
+  const trimmedName = name.trim().toLowerCase();
+  return (
+    previousMembers.find(
+      (member) => member.name.toLowerCase() === trimmedName,
+    ) || null
   );
 };
