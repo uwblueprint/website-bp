@@ -1,27 +1,23 @@
 import React, { useState } from "react";
-import members from "../../constants/members.json";
 import HeadshotCard from "./components/HeadshotCard";
 import {
+  get_current_members,
+  get_previous_members,
+  get_old_members,
+  get_term,
   extractInfoFromUrl,
   normalizeRole,
-  checkIfMemberExists,
+  doesMemberExist,
+  get_teams,
+  Member,
 } from "./constants";
 
-type Headshot = {
-  name: string;
-  role: string;
-  term: number;
-  teams: string[];
-  img: string;
-  isDuplicate?: boolean;
-};
 
 const Headshots: React.FC = () => {
-  const [currentTerm, setCurrentTerm] = useState(1241);
-  const previousTerm1 = currentTerm - 1;
-  const previousTerm2 = currentTerm - 2;
+  const [currentTerm, setCurrentTerm] = useState(get_term());
 
-  const [headshots, setHeadshots] = useState<Headshot[]>([
+  const [headshots, setHeadshots] = useState<Member[]>([
+    ...get_current_members(currentTerm),
     {
       name: "",
       role: "",
@@ -32,9 +28,7 @@ const Headshots: React.FC = () => {
     },
   ]);
 
-  const previousTermMembers = members.members.filter(
-    (member) => member.term === previousTerm1 || member.term === previousTerm2,
-  );
+  const previousTermMembers = get_previous_members(currentTerm);
 
   const deleteHeadshot = (index: number) => {
     setHeadshots(headshots.filter((_, i) => i !== index));
@@ -55,17 +49,16 @@ const Headshots: React.FC = () => {
 
   const updateHeadshot = (
     index: number,
-    updatedHeadshot: Partial<Headshot>,
+    updatedHeadshot: Partial<Member>,
   ) => {
     setHeadshots((currentHeadshots) => {
       const newHeadshots = currentHeadshots.map((headshot, i) => {
         if (i === index) {
           const newHeadshot = { ...headshot, ...updatedHeadshot };
 
-          // Check for duplicates if name is being updated
           if (updatedHeadshot.name !== undefined) {
             const isDuplicate = updatedHeadshot.name.trim()
-              ? checkIfMemberExists(updatedHeadshot.name, previousTermMembers)
+              ? doesMemberExist(updatedHeadshot.name, previousTermMembers)
               : false;
             newHeadshot.isDuplicate = isDuplicate;
           }
@@ -76,7 +69,6 @@ const Headshots: React.FC = () => {
       });
       console.log("newHeadshots", newHeadshots);
 
-      // Add new empty headshot if updating img on last item
       if (
         updatedHeadshot.img !== undefined &&
         index === newHeadshots.length - 1 &&
@@ -103,19 +95,17 @@ const Headshots: React.FC = () => {
     const templateUrl =
       "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519";
 
-    // If it's the template URL, just update the image ONLY
     if (url === templateUrl) {
       updateHeadshot(index, { img: url });
       return;
     }
 
-    // For other URLs, extract info and update accordingly
     const extractedInfo = extractInfoFromUrl(url);
     const isDuplicate = extractedInfo?.name
-      ? checkIfMemberExists(extractedInfo.name, previousTermMembers)
+      ? doesMemberExist(extractedInfo.name, previousTermMembers)
       : false;
 
-    const updates: Partial<Headshot> = {
+    const updates: Partial<Member> = {
       img: url,
       isDuplicate: isDuplicate,
     };
@@ -143,14 +133,8 @@ const Headshots: React.FC = () => {
       return;
     }
 
-    const headshotNames = validHeadshots.map((h) => h.name.toLowerCase());
-    const existingMembers = members.members.filter((member) => {
-      if (member.term !== previousTerm1 && member.term !== previousTerm2) {
-        return true;
-      }
-      return !headshotNames.includes(member.name.toLowerCase());
-    });
-
+    const oldMembers = get_old_members(validHeadshots, currentTerm);
+    
     const newMembers = validHeadshots.map((headshot) => ({
       name: headshot.name,
       role: normalizeRole(headshot.role),
@@ -161,8 +145,8 @@ const Headshots: React.FC = () => {
 
     const updatedMembersJson = {
       term: currentTerm,
-      teams: members.teams,
-      members: [...existingMembers, ...newMembers],
+      teams: get_teams(),
+      members: [...oldMembers, ...newMembers],
     };
 
     try {
@@ -179,25 +163,20 @@ const Headshots: React.FC = () => {
 
   return (
     <main className="flex flex-col items-center w-full justify-center min-h-screen p-4 space-y-4">
-      <h1 className="text-2xl font-bold">Upload Blueprint Headshots</h1>
+      <h1 className="text-2xl font-bold">upload them headshots homie</h1>
 
       <div className="flex items-center gap-4 mb-4">
-        <label className="text-sm font-medium">Current Term:</label>
+        <label className="text-sm font-medium">current term:</label>
         <input
           type="number"
           value={currentTerm}
-          onChange={(e) => setCurrentTerm(parseInt(e.target.value) || 1241)}
+          onChange={(e) => setCurrentTerm(parseInt(e.target.value))}
           className="border rounded px-2 py-1 w-20"
         />
       </div>
 
-      <div className="text-sm text-gray-600">
-        Found {previousTermMembers.length} members from terms {previousTerm1}{" "}
-        and {previousTerm2}
-      </div>
-
       <section className="flex flex-col items-center w-3/4 p-4 space-y-4 bg-white rounded shadow-md">
-        {headshots.map((headshot: Headshot, index: number) => (
+        {headshots.map((headshot: Member, index: number) => (
           <HeadshotCard
             key={index}
             headshot={headshot}

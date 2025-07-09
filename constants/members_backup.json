@@ -5536,6 +5536,15 @@
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff24headshots%2Fexternal_karen_zhang.png?alt=media&token=b622a078-ec1f-4a73-8f90-27d035472521"
     },
     {
+      "name": "Paige Li",
+      "role": "vp talent",
+      "term": 1241,
+      "teams": [
+        "community"
+      ],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fvpt_paige_li.webp?alt=media&token=d6e51ec4-58fa-4a7d-a85e-a21ed3b29232"
+    },
+    {
       "name": "Alex Wang",
       "role": "vp finance",
       "term": 1240,
@@ -5878,6 +5887,15 @@
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fdev_colin_toft.webp?alt=media&token=9038618f-ef84-4433-a825-b9d66e0391c8"
     },
     {
+      "name": "Eric Martin",
+      "role": "developer",
+      "term": 1241,
+      "teams": [
+        "internal-tools"
+      ],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fdev_eric_martin.webp?alt=media&token=3a8cd970-915b-49d1-b812-c79f67025f6f"
+    },
+    {
       "name": "Gavin Xue",
       "role": "developer",
       "term": 1241,
@@ -5894,6 +5912,15 @@
         "mp"
       ],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fdev_jacob_yan.webp?alt=media&token=8b195e3d-c267-4c80-8ee7-5c1eb346c749"
+    },
+    {
+      "name": "Jesse Huang",
+      "role": "developer",
+      "term": 1241,
+      "teams": [
+        "internal-tools"
+      ],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fdev_jesse_huang.webp?alt=media&token=a2491b40-3fbf-4bd1-a3d4-13c83684f98c"
     },
     {
       "name": "Karthik Selva",
@@ -5984,6 +6011,15 @@
         "community"
       ],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fexternal_director_dhanvi_pandya.webp?alt=media&token=3a34e9e8-40f6-4b01-ba24-344cabeac2ef"
+    },
+    {
+      "name": "Jia Huang",
+      "role": "external director",
+      "term": 1241,
+      "teams": [
+        "community"
+      ],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fexternal_director_jia_huang.webp?alt=media&token=6e87d4d5-20e4-43fc-ac9c-f39d245aa190"
     },
     {
       "name": "Han Nguyen",
@@ -6146,56 +6182,6 @@
         "humane-society"
       ],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fproject_lead_tony-qiu.webp?alt=media&token=18142d05-cc5a-4fb4-aaaf-bb80b500d4dc"
-    },
-    {
-      "name": "Jesse Huang",
-      "role": "vp engineering",
-      "term": 1241,
-      "teams": [
-        "craft"
-      ],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fvpe_jesse_huang.webp?alt=media&token=6ada3acc-6117-401c-9503-3ea361e97919"
-    },
-    {
-      "name": "Eric Martin",
-      "role": "vp engineering",
-      "term": 1241,
-      "teams": [
-        "craft"
-      ],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2FVPE_eric_martin.webp?alt=media&token=af6ba51a-a817-42a0-9f96-73f6671347f3"
-    },
-    {
-      "name": "Paige Li",
-      "role": "vp talent",
-      "term": 1241,
-      "teams": [
-        "craft"
-      ],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fvpt_paige_li.webp?alt=media&token=d6e51ec4-58fa-4a7d-a85e-a21ed3b29232"
-    },
-    {
-      "name": "Jia Huang",
-      "role": "vp talent",
-      "term": 1241,
-      "teams": [
-        "craft"
-      ],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fvpt_jia_huang.webp?alt=media&token=68bf7381-c73f-4092-88af-1552fecd5766"
-    },
-    {
-      "name": "A",
-      "role": "",
-      "term": 1241,
-      "teams": [],
-      "img": ""
-    },
-    {
-      "name": "A",
-      "role": "",
-      "term": 1241,
-      "teams": [],
-      "img": ""
     }
   ]
 }

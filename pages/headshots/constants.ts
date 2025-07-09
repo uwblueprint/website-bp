@@ -1,3 +1,58 @@
+import members from "../../constants/members.json";
+
+// TYPE EXPORTS ========================================================
+export type Member = {
+  name: string;
+  role: string;
+  term: number;
+  teams: string[];
+  img: string;
+  isDuplicate?: boolean;
+};
+
+// MEMBR EXPORTS ======================================================
+
+export const get_current_members = (curr_term: number) => {
+  return members.members
+    .filter((member) => member.term === curr_term)
+    .sort((a, b) => {
+      const teamA = (a.teams[0] || "").toLowerCase();
+      const teamB = (b.teams[0] || "").toLowerCase();
+      if (teamA < teamB) return -1;
+      if (teamA > teamB) return 1;
+      return 0;
+    });
+};
+
+export const get_previous_members = (curr_term: number) => {
+  const previousTerm1 = curr_term - 1;
+  const previousTerm2 = curr_term - 2;
+  return members.members.filter(
+    (member) => member.term === previousTerm1 || member.term === previousTerm2,
+  );
+};
+
+export const get_old_members = (curr_members: Member[], curr_term: number) => {
+  const oldMembers = members.members.filter((member) => {
+    if (member.term < curr_term - 2) {
+      return true;
+    }
+    return !curr_members
+      .map((h) => h.name.toLowerCase())
+      .includes(member.name.toLowerCase());
+  });
+  return oldMembers;
+};
+
+export const get_term = () => {
+  return members.term;
+};
+
+export const get_teams = () => {
+  return members.teams;
+};
+
+// FUNCTION EXPORTS ====================================================
 export const extractInfoFromUrl = (
   url: string,
 ): { name: string; role: string; teams: string[] } | null => {
@@ -38,6 +93,12 @@ export const teamsMap = {
   "product manager": ["pm", "product manager"],
   designer: ["designer", "design"],
   "content strategist": ["content strategist", "content"],
+  "vp scoping": ["vp scoping", "vps"],
+  "vp engineering": ["vp engineering", "vpe"],
+  "vp design": ["vp design", "vpd"],
+  "vp product": ["vp product", "vpp"],
+  "vp talent": ["vp talent", "vpt"],
+  "vp finance": ["vp finance", "vpf"],
 };
 
 export const normalizeRole = (role: string): string => {
@@ -54,9 +115,7 @@ export const normalizeRole = (role: string): string => {
   return role.toLowerCase();
 };
 
-type Member = { name: string };
-
-export const checkIfMemberExists = (
+export const doesMemberExist = (
   name: string,
   previousTermMembers: Member[],
 ): boolean => {

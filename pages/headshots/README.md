@@ -1,0 +1,1 @@
+1. for each term, go into ./constants and change the term to the current term 
