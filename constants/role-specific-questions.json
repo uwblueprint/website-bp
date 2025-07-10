@@ -59,6 +59,11 @@
         "maxLength": 1000
       },
       {
+        "uniqueId": 2,
+        "question": "Tell us about a time you noticed a problem. What did you learn, and how did you go about solving it?",
+        "maxLength": 1000
+      },
+      {
         "uniqueId": 3,
         "question": "Would you be interested in joining a scoping pod?",
         "description": "Scoping pods include a designer, developer, and PM to join VP Scoping for meetings with NPO’s to provide their opinion and expertise! This will be in addition to the existing responsibilities of your role.",

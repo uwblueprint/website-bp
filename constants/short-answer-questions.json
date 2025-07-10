@@ -4,15 +4,15 @@
     "maxLength": 1000
   },
   {
+    "question": "Tell us about a cause that resonates with you.",
+    "maxLength": 1000
+  },
+  {
+    "question": "Tell us about a community you’re proud to be a part of and how you’ve contributed to it.",
+    "maxLength": 1000
+  },
+  {
     "question": "Tell us about a time you learned a new skill. What was your motivation to learn it and what was your approach?",
-    "maxLength": 1000
-  },
-  {
-    "question": "If you had the ability to change anything in the world, what would it be and why?",
-    "maxLength": 1000
-  },
-  {
-    "question": "If you could be any fictional character for 24 hours who would you be and what would you do?",
     "maxLength": 1000
   }
 ]
