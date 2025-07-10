@@ -15,19 +15,39 @@ export const DEFAULT_PHOTO =
   "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519";
 
 export const teamsMap = {
-  developer: ["dev", "developer", "project developer"],
-  "technical lead": ["pl", "project lead", "technical lead"],
-  "product manager": ["pm", "product manager"],
-  designer: ["designer", "design"],
+  // EXEC TEAM ROLES
+  "president": ["pres", "president"],
+  "co-president": ["co-pres", "co-president"],
+  "director lead": ["dl", "director lead"],
+  "internal director": ["id", "internal director"],
+  "external director": ["ed", "external director"],
+  "vp engineering": ["vpe", "vp engineering"],
+  "vp design": ["vpd", "vp design"],
+  "vp product": ["vpp", "vp product"],
+  "vp scoping": ["vps", "vp scoping"],
+  "vp internal": ["vpi", "vp internal"],
+  "vp external": ["vpx", "vp external"],
+  "vp communications": ["vpc", "vp communications"],
+  "vp finance": ["vpf", "vp finance"],
+  "finance coordinator": ["fc", "finance coordinator"],
+  "vp talent": ["vpt", "vp talent"],
+  
+  // CLUB SUPPORT ROLES
+  "graphic designer": ["gd", "graphic designer"],
   "content strategist": ["content strategist", "content"],
-  "vp scoping": ["vp scoping", "vps"],
-  "vp engineering": ["vp engineering", "vpe"],
-  "vp design": ["vp design", "vpd"],
-  "vp product": ["vp product", "vpp"],
-  "vp talent": ["vp talent", "vpt"],
-  "vp finance": ["vp finance", "vpf"],
+  "user researcher": ["ur", "user researcher"],
+  "internal operations lead": ["iol", "internal operations lead"],
+  "design system": ["ds", "design system"],
+  
+  // PROJECT TEAM ROLES
+  "technical lead": ["pl", "project lead"],
+  "product manager": ["pm", "product manager"],
+  "project mentor": ["mentor", "project mentor"],
+  "designer": ["designer", "design"],
+  "design mentor": ["dm", "design mentor"],
+  "developer": ["dev", "developer"],
+  "developer mentor": ["dev mentor", "developer mentor"],
 };
-
 // MEMBR EXPORTS ======================================================
 
 export const sort_members = (members: Member[]) => {
