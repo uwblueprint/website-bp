@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import HeadshotCard from "./components/HeadshotCard";
+import HeadshotCard from "../../components/headshots/HeadshotCard";
 import {
   get_current_members,
   get_previous_members,
@@ -12,7 +12,7 @@ import {
   TEAMS,
   DEFAULT_PHOTO,
   Member,
-} from "./constants";
+} from "../../constants/headshot-constants";
 
 const Headshots: React.FC = () => {
   const [currentTerm, setCurrentTerm] = useState(get_term());

@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { DEFAULT_PHOTO, TEAMS, Member } from "../constants";
+import {
+  DEFAULT_PHOTO,
+  TEAMS,
+  Member,
+} from "../../constants/headshot-constants";
 import InputSection from "./InputSection";
 import DisplaySection from "./DisplaySection";
 

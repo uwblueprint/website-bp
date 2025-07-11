@@ -1,5 +1,5 @@
 import React from "react";
-import { Member, TEAMS } from "../constants";
+import { Member, TEAMS } from "../../constants/headshot-constants";
 
 interface DisplaySectionProps {
   headshot: Member;

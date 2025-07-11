@@ -1,4 +1,4 @@
-import members from "../../constants/members.json";
+import members from "./members.json";
 
 // TYPE & CONSTANT EXPORTS ============================================
 
@@ -16,7 +16,7 @@ export const DEFAULT_PHOTO =
 
 export const teamsMap = {
   // EXEC TEAM ROLES
-  "president": ["pres", "president"],
+  president: ["pres", "president"],
   "co-president": ["co-pres", "co-president"],
   "director lead": ["dl", "director lead"],
   "internal director": ["id", "internal director"],
@@ -31,26 +31,26 @@ export const teamsMap = {
   "vp finance": ["vpf", "vp finance"],
   "finance coordinator": ["fc", "finance coordinator"],
   "vp talent": ["vpt", "vp talent"],
-  
+
   // CLUB SUPPORT ROLES
   "graphic designer": ["gd", "graphic designer"],
   "content strategist": ["content strategist", "content"],
   "user researcher": ["ur", "user researcher"],
   "internal operations lead": ["iol", "internal operations lead"],
   "design system": ["ds", "design system"],
-  
+
   // PROJECT TEAM ROLES
   "technical lead": ["pl", "project lead"],
   "product manager": ["pm", "product manager"],
   "project mentor": ["mentor", "project mentor"],
-  "designer": ["designer", "design"],
+  designer: ["designer", "design"],
   "design mentor": ["dm", "design mentor"],
-  "developer": ["dev", "developer"],
+  developer: ["dev", "developer"],
   "developer mentor": ["dev mentor", "developer mentor"],
 };
 // MEMBR EXPORTS ======================================================
 
-export const sort_members = (members: Member[]) => {
+export const sort_members = (members: Member[]): Member[] => {
   // by term number
   return members.sort((a, b) => {
     if (a.term !== b.term) {
@@ -66,14 +66,14 @@ export const sort_members = (members: Member[]) => {
 };
 
 // get members of the current term
-export const get_current_members = (curr_term: number) => {
+export const get_current_members = (curr_term: number): Member[] => {
   return sort_members(
     members.members.filter((member) => member.term === curr_term),
   );
 };
 
 // previosou 2 terms
-export const get_previous_members = (curr_term: number) => {
+export const get_previous_members = (curr_term: number): Member[] => {
   const previousTerm1 = curr_term - 1;
   const previousTerm2 = curr_term - 2;
   return members.members.filter(
@@ -82,7 +82,10 @@ export const get_previous_members = (curr_term: number) => {
 };
 
 // old ass people
-export const get_old_members = (curr_members: Member[], curr_term: number) => {
+export const get_old_members = (
+  curr_members: Member[],
+  curr_term: number,
+): Member[] => {
   const oldMembers = members.members.filter((member) => {
     if (member.term < curr_term - 2) {
       return true;
@@ -94,7 +97,7 @@ export const get_old_members = (curr_members: Member[], curr_term: number) => {
   return oldMembers;
 };
 
-export const get_term = () => {
+export const get_term = (): number => {
   return members.term;
 };
 
@@ -160,7 +163,10 @@ export const doesMemberExist = (
   );
 };
 
-export const findExistingMember = (name: string, previousMembers: Member[]): Member | null => {
+export const findExistingMember = (
+  name: string,
+  previousMembers: Member[],
+): Member | null => {
   if (!name.trim()) return null;
   const trimmedName = name.trim().toLowerCase();
   return (

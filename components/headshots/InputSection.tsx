@@ -1,5 +1,5 @@
 import React from "react";
-import { Member } from "../constants";
+import { Member } from "../../constants/headshot-constants";
 
 interface InputSectionProps {
   imageUrl: string;
@@ -72,9 +72,7 @@ const InputSection: React.FC<InputSectionProps> = ({
                   {getTeamNamesForDisplay(existingMember.teams)}
                 </div>
               )}
-              <div className="text-xs">
-                {existingMember.term}
-              </div>
+              <div className="text-xs">{existingMember.term}</div>
             </div>
           </div>
         </div>

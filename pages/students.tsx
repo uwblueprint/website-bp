@@ -18,7 +18,6 @@ type PageProps = {
   teams: Team[];
 };
 
-
 export default function Students({ teams }: PageProps): JSX.Element {
   return (
     <Layout title={`UW Blueprint | Students`}>
