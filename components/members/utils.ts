@@ -3,6 +3,7 @@ export function roleType(role: string): number {
     // EXEC TEAM ROLES
     ["president", 0],
     ["co-president", 0],
+    ["director lead", 0],
     ["internal director", 1],
     ["external director", 1],
     ["vp engineering", 2],
@@ -15,6 +16,7 @@ export function roleType(role: string): number {
     ["vp finance", 9],
     ["vp talent", 10],
     // CLUB SUPPORT ROLES
+    ["finance coordinator", 10],
     ["graphic designer", 11],
     ["content strategist", 12],
     ["user researcher", 13],
