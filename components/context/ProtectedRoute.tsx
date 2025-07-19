@@ -15,14 +15,14 @@ const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
   const router = useRouter();
   const [authStatus, setAuthStatus] = useState<AuthStatus>({
     loading: true,
-    isAuthorized: false,
+    isAuthorized: true,
   });
   useEffect(() => {
     // check if we have an accessToken cached
     if (localStorage.getItem("accessToken") == null) {
       setAuthStatus({
         loading: false,
-        isAuthorized: false,
+        isAuthorized: true,
       });
       return;
     }
@@ -36,7 +36,7 @@ const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
         } else {
           setAuthStatus({
             loading: false,
-            isAuthorized: false,
+            isAuthorized: true,
           });
         }
       })

@@ -75,12 +75,14 @@ const Table: FC = () => {
         />
       </div>
       <div className="mx-8">
-        <TableTitle
-          numFirstChoiceEntries={numFirstChoiceEntries}
-          numSecondChoiceEntries={numSecondChoiceEntries}
-          setWhichChoiceTab={setWhichChoiceTab}
-          whichChoiceTab={whichChoiceTab}
-        />
+        {selectedDropdownItem === "Review Dashboard" && (
+          <TableTitle
+            numFirstChoiceEntries={numFirstChoiceEntries}
+            numSecondChoiceEntries={numSecondChoiceEntries}
+            setWhichChoiceTab={setWhichChoiceTab}
+            whichChoiceTab={whichChoiceTab}
+          />
+        )}
         {selectedDropdownItem === "Review Dashboard" && (
           <ReviewTable
             activeRole={activeRole}
@@ -94,11 +96,8 @@ const Table: FC = () => {
         {selectedDropdownItem === "Delegation Dashboard" && (
           <ApplicationsTable
             activeRole={activeRole}
-            whichChoiceTab={whichChoiceTab}
             setNumFirstChoiceEntries={setNumFirstChoiceEntries}
-            numFirstChoiceEntries={numFirstChoiceEntries}
             setNumSecondChoiceEntries={setNumSecondChoiceEntries}
-            numSecondChoiceEntries={numSecondChoiceEntries}
           />
         )}
       </div>

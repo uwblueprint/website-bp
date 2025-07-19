@@ -40,8 +40,8 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
       },
     },
     {
-      name: "reviewerOne",
-      label: "Reviewer #1",
+      name: "resume",
+      label: "Resume",
       options: {
         filter: false,
         sort: true,
@@ -49,8 +49,17 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
       },
     },
     {
-      name: "reviewerTwo",
-      label: "Reviewer #2",
+      name: "firstChoice",
+      label: "Role",
+      options: {
+        filter: false,
+        sort: true,
+        searchable: true,
+      },
+    },
+    {
+      name: "firstChoiceApplication",
+      label: "First Choice",
       options: {
         filter: false,
         sort: true,
@@ -81,41 +90,17 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
       },
     },
     {
-      name: "secondChoice",
-      label: "2nd Choice",
+      name: "reviewerOne",
+      label: "Reviewer #1",
       options: {
-        filter: true,
+        filter: false,
         sort: true,
         searchable: true,
-        filterType: "multiselect",
       },
     },
     {
-      name: "secondChoiceStatus",
-      label: "2nd Choice Status",
-      options: {
-        filter: true,
-        sort: true,
-        searchable: true,
-        filterOptions: {
-          names: [
-            "considered",
-            "not considered",
-            "n/a",
-            "in review",
-            "interview",
-            "no interview",
-          ],
-        },
-        filterType: "multiselect",
-        customBodyRender(value) {
-          return <SecondChoiceStatus status={value} />;
-        },
-      },
-    },
-    {
-      name: "resume",
-      label: "Resume",
+      name: "reviewerTwo",
+      label: "Reviewer #2",
       options: {
         filter: false,
         sort: true,
