@@ -1,0 +1,13 @@
+[build]
+  command = "yarn build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["sharp"]
