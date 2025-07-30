@@ -4,9 +4,9 @@ import { Status, SecondChoiceStatus, SkillCategory } from "@utils/muidatatable";
 import { router } from "next/router";
 
 export const getReviewTableColumns = (): MUIDataTableColumn[] => {
-  const handleNameClick = (appId: string) => {
-    router.push(`/review?reviewId=${appId}`);
-  };
+  // const handleNameClick = (appId: string) => {
+  //   router.push(`/review?reviewId=${appId}`);
+  // };
 
   const columns: MUIDataTableColumn[] = [
     {
@@ -29,7 +29,7 @@ export const getReviewTableColumns = (): MUIDataTableColumn[] => {
           const appId = tableMeta.rowData[0];
           return (
             <div
-              onClick={() => handleNameClick(appId)}
+              // onClick={() => handleNameClick(appId)}
               className="flex items-center cursor-pointer"
             >
               <LinkIcon />
@@ -40,17 +40,8 @@ export const getReviewTableColumns = (): MUIDataTableColumn[] => {
       },
     },
     {
-      name: "term",
-      label: "Term",
-      options: {
-        filter: false,
-        sort: true,
-        searchable: true,
-      },
-    },
-    {
-      name: "program",
-      label: "Program",
+      name: "resume",
+      label: "Resume",
       options: {
         filter: false,
         sort: true,
@@ -60,15 +51,6 @@ export const getReviewTableColumns = (): MUIDataTableColumn[] => {
     {
       name: "timesApplied",
       label: "Times Applied",
-      options: {
-        filter: false,
-        sort: true,
-        searchable: true,
-      },
-    },
-    {
-      name: "score",
-      label: "Score",
       options: {
         filter: false,
         sort: true,
@@ -115,41 +97,8 @@ export const getReviewTableColumns = (): MUIDataTableColumn[] => {
       },
     },
     {
-      name: "secondChoice",
-      label: "2nd Choice",
-      options: {
-        filter: true,
-        sort: true,
-        searchable: true,
-        filterType: "multiselect",
-      },
-    },
-    {
-      name: "secondChoiceStatus",
-      label: "2nd Choice Status",
-      options: {
-        filter: true,
-        sort: true,
-        searchable: true,
-        filterOptions: {
-          names: [
-            "considered",
-            "not considered",
-            "n/a",
-            "in review",
-            "interview",
-            "no interview",
-          ],
-        },
-        filterType: "multiselect",
-        customBodyRender(value, tableMeta, updateValue) {
-          return <SecondChoiceStatus status={value} />;
-        },
-      },
-    },
-    {
-      name: "resume",
-      label: "Resume",
+      name: "score",
+      label: "Review Score",
       options: {
         filter: false,
         sort: true,
