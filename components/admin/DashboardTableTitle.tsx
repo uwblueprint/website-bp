@@ -20,7 +20,7 @@ const TabDescription: FC<TabDescriptionProps> = ({
   pillStyle,
 }) => (
   <div
-    style={{ color: "black", textTransform: "none", fontSize: 20, width: 400 }}
+    style={{ color: "black", textTransform: "none", fontSize: 16, width: 400 }}
   >
     {title} <p className={pillStyle}>{numEntries} Entries</p>
   </div>

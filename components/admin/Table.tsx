@@ -49,7 +49,7 @@ const Table: FC = () => {
   };
   return (
     <div>
-      <div className="shadow-md">
+      <div className="shadow-md font-source">
         <div className="px-8 bg-sky-100 py-3 header-container flex justify-between items-center">
           <div className="flex items-center">
             <a href="/admin" aria-label="Return to home">
