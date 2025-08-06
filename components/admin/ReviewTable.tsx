@@ -7,7 +7,7 @@ import ApplicantRole from "entities/applicationRole";
 import { ResumeIcon } from "@components/icons/resume.icon";
 import { applicationTableQueries } from "graphql/queries";
 import { getMuiTheme } from "utils/muidatatable";
-import ReviewOverlay from "./ReviewOverlay"; // 🆕 new component for the full overlay
+import ReviewOverlay from "./ReviewOverlay";
 
 interface TableProps {
   activeRole?: ApplicantRole;
@@ -68,7 +68,7 @@ const ReviewTable: React.FC<TableProps> = ({
     const applications =
       whichChoiceTab === 0 ? firstChoiceApplications : secondChoiceApplications;
     const clickedApp = applications[rowMeta.dataIndex];
-    setSelectedApplication(clickedApp); // 🆕 open overlay
+    setSelectedApplication(clickedApp);
   };
 
   const createStudentRow = (application: any) => {
@@ -115,7 +115,7 @@ const ReviewTable: React.FC<TableProps> = ({
             print: false,
             filter: true,
             selectableRows: "none",
-            onRowClick: handleRowClick, // 🆕 handle click
+            onRowClick: handleRowClick,
             searchPlaceholder: "Search by name, reviewer, status, etc...",
           }}
         />

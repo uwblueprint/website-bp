@@ -23,7 +23,6 @@ const ApplicationsTable: React.FC<TableProps> = ({
 
   useEffect(() => {
     fetchApplicationsByRole();
-    console.log("Active Role is: ", activeRole);
   }, [activeRole]);
 
   const fetchApplicationsByRole = async () => {

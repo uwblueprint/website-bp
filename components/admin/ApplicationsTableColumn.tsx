@@ -1,13 +1,9 @@
 import { MUIDataTableColumn } from "mui-datatables";
 import { LinkIcon } from "@components/icons/link.icon";
-import { Status, SecondChoiceStatus } from "@utils/muidatatable";
+import { Status } from "@utils/muidatatable";
 import router from "next/router";
 
 export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
-  const handleNameClick = (appId: string) => {
-    router.push(`/review?reviewId=${appId}`);
-  };
-
   const columns: MUIDataTableColumn[] = [
     {
       name: "id",
@@ -29,7 +25,7 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
           const appId = tableMeta.rowData[0];
           return (
             <div
-              onClick={() => handleNameClick(appId)}
+              onClick={() => router.push(`/review?reviewId=${appId}`)}
               className="flex items-center cursor-pointer"
             >
               <LinkIcon />
