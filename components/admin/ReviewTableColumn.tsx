@@ -101,7 +101,7 @@ export const getReviewTableColumns = (): MUIDataTableColumn[] => {
         sort: true,
         searchable: true,
         customBodyRender(value) {
-          return <span>{value ?? 0} / 10</span>;
+          return <span>{value ?? 0}/40</span>;
         },
       },
     },
