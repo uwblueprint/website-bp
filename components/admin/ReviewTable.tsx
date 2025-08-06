@@ -7,7 +7,7 @@ import ApplicantRole from "entities/applicationRole";
 import { ResumeIcon } from "@components/icons/resume.icon";
 import { applicationTableQueries } from "graphql/queries";
 import { getMuiTheme } from "utils/muidatatable";
-import ExpandableRowTable from "./ExpandableRowTable";
+import ReviewOverlay from "./ReviewOverlay";
 
 interface TableProps {
   activeRole?: ApplicantRole;
@@ -30,6 +30,10 @@ const ReviewTable: React.FC<TableProps> = ({
   const [secondChoiceApplications, setSecondChoiceApplications] = useState<
     any[]
   >([]);
+  const [selectedApplication, setSelectedApplication] = useState<any | null>(
+    null,
+  ); // 🆕
+
   useEffect(() => {
     fetchApplicationsByRole();
   }, [activeRole, whichChoiceTab]);
@@ -39,20 +43,16 @@ const ReviewTable: React.FC<TableProps> = ({
     try {
       const firstChoiceResult = await fetchGraphql(
         applicationTableQueries.applicationsByRole,
-        {
-          role: currentRole,
-        },
+        { role: currentRole },
       );
 
       const secondChoiceResult = await fetchGraphql(
         applicationTableQueries.applicationsBySecondChoiceRole,
-        {
-          role: currentRole,
-        },
+        { role: currentRole },
       );
+
       setFirstChoiceApplications(firstChoiceResult.data.applicationTable);
       setNumFirstChoiceEntries(firstChoiceResult.data.applicationTable.length);
-
       setSecondChoiceApplications(
         secondChoiceResult.data.secondChoiceRoleApplicationTable,
       );
@@ -64,9 +64,16 @@ const ReviewTable: React.FC<TableProps> = ({
     }
   };
 
+  const handleRowClick = (_rowData: any, rowMeta: { dataIndex: number }) => {
+    const applications =
+      whichChoiceTab === 0 ? firstChoiceApplications : secondChoiceApplications;
+    const clickedApp = applications[rowMeta.dataIndex];
+    setSelectedApplication(clickedApp);
+  };
+
   const createStudentRow = (application: any) => {
     const app = application.application;
-    const mapToNumericalValue = {
+    const mapToNumericalValue: any = {
       "This is my first time!": "0",
       Once: "1",
       Twice: "2",
@@ -82,12 +89,8 @@ const ReviewTable: React.FC<TableProps> = ({
           <span className="ml-2 underline">View Resume</span>
         </a>
       ),
-      term: app.academicYear,
-      program: app.program,
       timesApplied: mapToNumericalValue[app.timesApplied],
       status: app.status,
-      secondChoice: app.secondChoiceRole,
-      secondChoiceStatus: app.secondChoiceStatus,
     };
   };
 
@@ -98,101 +101,33 @@ const ReviewTable: React.FC<TableProps> = ({
     return secondChoiceApplications.map(createStudentRow);
   };
 
-  const generateMockInnerData = () => {
-    return [
-      {
-        reviewerName: "John Doe",
-        pfsg: 4,
-        teamPlayer: 3,
-        d2l: 6,
-        skill: 5,
-        skillCategory: "junior",
-        reviewerComments: "Great work presenting your case study.",
-      },
-      // Add as many objects as you want to simulate different rows
-    ];
-  };
-
-  const renderExpandableRow = (
-    rowData: any,
-    rowMeta: { dataIndex: number },
-  ) => {
-    const innerData = generateMockInnerData(); // Use mock data for testing
-    const application = {
-      secondChoiceRole: "Graphic Designer",
-      adminComments: "Great",
-    };
-
-    const innerColumns = [
-      {
-        name: "Reviewer Name",
-        options: { filter: false, sort: false },
-      },
-      { name: "PFSG", options: { filter: false, sort: false } },
-      { name: "Team Player", options: { filter: false, sort: false } },
-      { name: "D2L", options: { filter: false, sort: false } },
-      { name: "Skill", options: { filter: false, sort: false } },
-      {
-        name: "Skill Category",
-        options: { filter: false, sort: false },
-      },
-      {
-        name: "Reviewer Comments",
-        options: { filter: false, sort: false },
-      },
-      // You may add more columns as needed
-    ];
-
-    return (
-      <React.Fragment>
-        <tr>
-          <td colSpan={8} className="p-5 px-10">
-            <div className="flex flex-col font-source text-base">
-              <ExpandableRowTable data={innerData} columns={innerColumns} />
-              <div className="flex items-start p-4 gap-120">
-                <div className="flex flex-col gap-2">
-                  <div className="flex flex-row justify-center items-center gap-5">
-                    <span className="text-blue font-semibold">2nd Choice:</span>
-                    <p>{application.secondChoiceRole}</p>
-                  </div>
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-blue font-semibold">
-                    Admin Comments:
-                  </span>
-                  <p>{application.adminComments}</p>
-                </div>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <td colSpan={11} style={{ borderBottom: "1px solid #e0e0e0" }}></td>
-      </React.Fragment>
-    );
-  };
-
   return (
-    <MuiThemeProvider theme={getMuiTheme()}>
-      <MUIDataTable
-        title=""
-        data={getTableRows()}
-        columns={getReviewTableColumns()}
-        options={{
-          search: true,
-          viewColumns: false,
-          download: false,
-          print: false,
-          searchPlaceholder: "Search by name, reviewer, status, etc...",
-          filter: true,
-          selectableRows: "none",
-          sortFilterList: true,
-          expandableRows: true,
-          expandableRowsHeader: false,
-          expandableRowsOnClick: true,
-          renderExpandableRow: renderExpandableRow,
-        }}
-      />
-    </MuiThemeProvider>
+    <>
+      <MuiThemeProvider theme={getMuiTheme()}>
+        <MUIDataTable
+          title=""
+          data={getTableRows()}
+          columns={getReviewTableColumns()}
+          options={{
+            search: true,
+            viewColumns: false,
+            download: false,
+            print: false,
+            filter: true,
+            selectableRows: "none",
+            onRowClick: handleRowClick,
+            searchPlaceholder: "Search by name, reviewer, status, etc...",
+          }}
+        />
+      </MuiThemeProvider>
+
+      {selectedApplication && (
+        <ReviewOverlay
+          application={selectedApplication}
+          onClose={() => setSelectedApplication(null)}
+        />
+      )}
+    </>
   );
 };
 

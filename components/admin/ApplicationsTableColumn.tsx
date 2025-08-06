@@ -1,13 +1,9 @@
 import { MUIDataTableColumn } from "mui-datatables";
 import { LinkIcon } from "@components/icons/link.icon";
-import { Status, SecondChoiceStatus } from "@utils/muidatatable";
+import { Status } from "@utils/muidatatable";
 import router from "next/router";
 
 export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
-  const handleNameClick = (appId: string) => {
-    router.push(`/review?reviewId=${appId}`);
-  };
-
   const columns: MUIDataTableColumn[] = [
     {
       name: "id",
@@ -29,7 +25,7 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
           const appId = tableMeta.rowData[0];
           return (
             <div
-              onClick={() => handleNameClick(appId)}
+              onClick={() => router.push(`/review?reviewId=${appId}`)}
               className="flex items-center cursor-pointer"
             >
               <LinkIcon />
@@ -40,8 +36,8 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
       },
     },
     {
-      name: "reviewerOne",
-      label: "Reviewer #1",
+      name: "resume",
+      label: "Resume",
       options: {
         filter: false,
         sort: true,
@@ -49,8 +45,17 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
       },
     },
     {
-      name: "reviewerTwo",
-      label: "Reviewer #2",
+      name: "firstChoice",
+      label: "Role",
+      options: {
+        filter: false,
+        sort: true,
+        searchable: true,
+      },
+    },
+    {
+      name: "firstChoiceApplication",
+      label: "First Choice",
       options: {
         filter: false,
         sort: true,
@@ -81,41 +86,17 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
       },
     },
     {
-      name: "secondChoice",
-      label: "2nd Choice",
+      name: "reviewerOne",
+      label: "Reviewer #1",
       options: {
-        filter: true,
+        filter: false,
         sort: true,
         searchable: true,
-        filterType: "multiselect",
       },
     },
     {
-      name: "secondChoiceStatus",
-      label: "2nd Choice Status",
-      options: {
-        filter: true,
-        sort: true,
-        searchable: true,
-        filterOptions: {
-          names: [
-            "considered",
-            "not considered",
-            "n/a",
-            "in review",
-            "interview",
-            "no interview",
-          ],
-        },
-        filterType: "multiselect",
-        customBodyRender(value) {
-          return <SecondChoiceStatus status={value} />;
-        },
-      },
-    },
-    {
-      name: "resume",
-      label: "Resume",
+      name: "reviewerTwo",
+      label: "Reviewer #2",
       options: {
         filter: false,
         sort: true,
