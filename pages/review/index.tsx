@@ -151,7 +151,7 @@ const ReviewsPages: NextPage = () => {
         );
       case ReviewStage.END_SUCCESS:
       default:
-        return <ReviewEndSuccessStage />;
+        return <ReviewEndSuccessStage name={name}/>;
     }
   };
 
