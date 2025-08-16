@@ -1,13 +1,9 @@
 import { MUIDataTableColumn } from "mui-datatables";
 import { LinkIcon } from "@components/icons/link.icon";
-import { Status, SecondChoiceStatus, SkillCategory } from "@utils/muidatatable";
-import { router } from "next/router";
+import { Status, SkillCategory } from "@utils/muidatatable";
+import router from "next/router";
 
 export const getReviewTableColumns = (): MUIDataTableColumn[] => {
-  const handleNameClick = (appId: string) => {
-    router.push(`/review?reviewId=${appId}`);
-  };
-
   const columns: MUIDataTableColumn[] = [
     {
       name: "id",
@@ -25,12 +21,13 @@ export const getReviewTableColumns = (): MUIDataTableColumn[] => {
         filter: false,
         // sortCompare: (order: "asc" | "desc") => createSortFunction(order),
         searchable: true,
-        customBodyRender(value, tableMeta, updateValue) {
+        customBodyRender(value, tableMeta) {
           const appId = tableMeta.rowData[0];
+
           return (
             <div
-              onClick={() => handleNameClick(appId)}
               className="flex items-center cursor-pointer"
+              onClick={() => router.push(`/review?reviewId=${appId}`)}
             >
               <LinkIcon />
               <span className="ml-2 underline">{value}</span>
@@ -40,17 +37,8 @@ export const getReviewTableColumns = (): MUIDataTableColumn[] => {
       },
     },
     {
-      name: "term",
-      label: "Term",
-      options: {
-        filter: false,
-        sort: true,
-        searchable: true,
-      },
-    },
-    {
-      name: "program",
-      label: "Program",
+      name: "resume",
+      label: "Resume",
       options: {
         filter: false,
         sort: true,
@@ -60,15 +48,6 @@ export const getReviewTableColumns = (): MUIDataTableColumn[] => {
     {
       name: "timesApplied",
       label: "Times Applied",
-      options: {
-        filter: false,
-        sort: true,
-        searchable: true,
-      },
-    },
-    {
-      name: "score",
-      label: "Score",
       options: {
         filter: false,
         sort: true,
@@ -93,7 +72,7 @@ export const getReviewTableColumns = (): MUIDataTableColumn[] => {
           ],
         },
         filterType: "multiselect",
-        customBodyRender(value, tableMeta, updateValue) {
+        customBodyRender(value) {
           return <Status status={value} />;
         },
       },
@@ -109,51 +88,21 @@ export const getReviewTableColumns = (): MUIDataTableColumn[] => {
           names: ["intermediate", "junior", "senior"],
         },
         filterType: "multiselect",
-        customBodyRender(value, tableMeta, updateValue) {
+        customBodyRender(value) {
           return <SkillCategory category={value} />;
         },
       },
     },
     {
-      name: "secondChoice",
-      label: "2nd Choice",
-      options: {
-        filter: true,
-        sort: true,
-        searchable: true,
-        filterType: "multiselect",
-      },
-    },
-    {
-      name: "secondChoiceStatus",
-      label: "2nd Choice Status",
-      options: {
-        filter: true,
-        sort: true,
-        searchable: true,
-        filterOptions: {
-          names: [
-            "considered",
-            "not considered",
-            "n/a",
-            "in review",
-            "interview",
-            "no interview",
-          ],
-        },
-        filterType: "multiselect",
-        customBodyRender(value, tableMeta, updateValue) {
-          return <SecondChoiceStatus status={value} />;
-        },
-      },
-    },
-    {
-      name: "resume",
-      label: "Resume",
+      name: "score",
+      label: "Review Score",
       options: {
         filter: false,
         sort: true,
         searchable: true,
+        customBodyRender(value) {
+          return <span>{value ?? 0}/40</span>;
+        },
       },
     },
   ];
