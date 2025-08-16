@@ -49,7 +49,7 @@ const Table: FC = () => {
   };
   return (
     <div>
-      <div className="shadow-md">
+      <div className="shadow-md font-source">
         <div className="px-8 bg-sky-100 py-3 header-container flex justify-between items-center">
           <div className="flex items-center">
             <a href="/admin" aria-label="Return to home">
@@ -75,12 +75,14 @@ const Table: FC = () => {
         />
       </div>
       <div className="mx-8">
-        <TableTitle
-          numFirstChoiceEntries={numFirstChoiceEntries}
-          numSecondChoiceEntries={numSecondChoiceEntries}
-          setWhichChoiceTab={setWhichChoiceTab}
-          whichChoiceTab={whichChoiceTab}
-        />
+        {selectedDropdownItem === "Review Dashboard" && (
+          <TableTitle
+            numFirstChoiceEntries={numFirstChoiceEntries}
+            numSecondChoiceEntries={numSecondChoiceEntries}
+            setWhichChoiceTab={setWhichChoiceTab}
+            whichChoiceTab={whichChoiceTab}
+          />
+        )}
         {selectedDropdownItem === "Review Dashboard" && (
           <ReviewTable
             activeRole={activeRole}
@@ -94,11 +96,8 @@ const Table: FC = () => {
         {selectedDropdownItem === "Delegation Dashboard" && (
           <ApplicationsTable
             activeRole={activeRole}
-            whichChoiceTab={whichChoiceTab}
             setNumFirstChoiceEntries={setNumFirstChoiceEntries}
-            numFirstChoiceEntries={numFirstChoiceEntries}
             setNumSecondChoiceEntries={setNumSecondChoiceEntries}
-            numSecondChoiceEntries={numSecondChoiceEntries}
           />
         )}
       </div>

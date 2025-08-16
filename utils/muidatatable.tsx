@@ -40,7 +40,7 @@ export const getMuiTheme = (): Theme => {
           color: theme.colors.near_black,
           fontFamily: "Source Sans Pro",
           fontWeight: 350,
-          fontSize: 18,
+          fontSize: 16,
         },
         sortActive: {
           color: theme.colors.B10,
@@ -51,7 +51,7 @@ export const getMuiTheme = (): Theme => {
           color: theme.colors.near_black,
           fontFamily: "Source Sans Pro",
           fontWeight: 350,
-          fontSize: 18,
+          fontSize: 14,
         },
       },
       MuiTableSortLabel: {
@@ -92,7 +92,7 @@ export const getExpandableRowMuiTheme = (): Theme => {
       },
       MUIDataTableBodyCell: {
         root: {
-          fontSize: 15,
+          fontSize: 12,
           borderBottom: "none",
         },
       },
@@ -123,9 +123,9 @@ type CategoryProps = {
 };
 
 const STATUS_BASE_CLASSES =
-  "font-source text-lg font-light	text-center rounded w-max px-2 py-1 ";
+  "font-source text-sm font-light	text-center rounded w-max px-5 py-1 ";
 const SECOND_CHOICE_BASE_CLASSES =
-  "font-source text-lg text-center rounded w-max px-2 ";
+  "font-source text-sm text-center rounded w-max px-5 ";
 
 export const Status: React.FC<StatusProps> = ({ status }) => {
   let className = STATUS_BASE_CLASSES;
