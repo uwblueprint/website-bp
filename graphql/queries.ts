@@ -90,6 +90,7 @@ export const applicationTableQueries = {
                   teamPlayer
                   desireToLearn
                   skillCategory
+                 
               }
               }
             }
@@ -118,6 +119,7 @@ export const applicationTableQueries = {
                 teamPlayer
                 desireToLearn
                 skillCategory
+                
             }
             }
           }
