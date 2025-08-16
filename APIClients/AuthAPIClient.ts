@@ -9,20 +9,19 @@ export type TokenInfo = {
 
 export type Role = "Admin" | "User";
 
-const isAuthorizedByRole = (allowedRoles: Role[]): Promise<boolean> => {
+const isAuthorizedAdmin = (): Promise<boolean> => {
   BaseAPIClient.handleAuthRefresh();
   const accessToken = localStorage.getItem("accessToken");
 
-  return fetchGraphql(queries.isAuthorizedByRole, {
+  return fetchGraphql(queries.isAuthorizedAdmin, {
     accessToken,
-    roles: allowedRoles,
   })
-    .then((result) => result.data.isAuthorizedByRole)
+    .then((result) => result.data.isAuthorizedAdmin)
     .catch(() => {
       throw new Error("Auth Validation Error");
     });
 };
 
 export default {
-  isAuthorizedByRole,
+  isAuthorizedAdmin,
 };
