@@ -20,7 +20,7 @@ const TabDescription: FC<TabDescriptionProps> = ({
   pillStyle,
 }) => (
   <div
-    style={{ color: "black", textTransform: "none", fontSize: 20, width: 400 }}
+    style={{ color: "black", textTransform: "none", fontSize: 16, width: 400 }}
   >
     {title} <p className={pillStyle}>{numEntries} Entries</p>
   </div>
@@ -32,8 +32,7 @@ const TableTitle: FC<TitleProps> = ({
   setWhichChoiceTab,
   whichChoiceTab,
 }) => {
-  const pillStyle =
-    "border-2 border-blue-100 text-blue rounded-full px-4 py-2 m-2 font-large inline-block";
+  const pillStyle = "text-blue px-4 py-2 m-2 font-large inline-block";
 
   // const editButton =
   //   "border-2 border-blue rounded-full text-blue text-center px-8 py-1 m-2 inline-block capitalize bg-white";

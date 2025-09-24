@@ -10,66 +10,57 @@ import { getMuiTheme } from "utils/muidatatable";
 
 interface TableProps {
   activeRole?: ApplicantRole;
-  whichChoiceTab?: number;
-  setNumFirstChoiceEntries: (tab: number) => void;
-  numFirstChoiceEntries?: number;
-  setNumSecondChoiceEntries: (tab: number) => void;
-  numSecondChoiceEntries?: number;
+  setNumFirstChoiceEntries: (count: number) => void;
+  setNumSecondChoiceEntries: (count: number) => void;
 }
 
 const ApplicationsTable: React.FC<TableProps> = ({
   activeRole,
-  whichChoiceTab,
   setNumFirstChoiceEntries,
   setNumSecondChoiceEntries,
 }) => {
-  const [firstChoiceApplications, setFirstChoiceApplications] = useState<any[]>(
-    [],
-  );
-  const [secondChoiceApplications, setSecondChoiceApplications] = useState<
-    any[]
-  >([]);
+  const [allApplications, setAllApplications] = useState<any[]>([]);
+
   useEffect(() => {
     fetchApplicationsByRole();
-  }, [activeRole, whichChoiceTab]);
+  }, [activeRole]);
 
   const fetchApplicationsByRole = async () => {
     const currentRole = activeRole || ApplicantRole.vpe;
     try {
-      const firstChoiceResult = await fetchGraphql(
-        applicationTableQueries.applicationsByRole,
-        {
+      const [firstResult, secondResult] = await Promise.all([
+        fetchGraphql(applicationTableQueries.applicationsByRole, {
           role: currentRole,
-        },
+        }),
+        fetchGraphql(applicationTableQueries.applicationsBySecondChoiceRole, {
+          role: currentRole,
+        }),
+      ]);
+
+      console.log("First Apps", firstResult.data.applicationTable);
+      const firstApps = firstResult.data.applicationTable.map((app: any) =>
+        createStudentRow(app, true),
+      );
+      const secondApps = secondResult.data.secondChoiceRoleApplicationTable.map(
+        (app: any) => createStudentRow(app, false),
       );
 
-      const secondChoiceResult = await fetchGraphql(
-        applicationTableQueries.applicationsBySecondChoiceRole,
-        {
-          role: currentRole,
-        },
-      );
-      setFirstChoiceApplications(firstChoiceResult.data.applicationTable);
-      setNumFirstChoiceEntries(firstChoiceResult.data.applicationTable.length);
+      setAllApplications([...firstApps, ...secondApps]);
 
-      setSecondChoiceApplications(
-        secondChoiceResult.data.secondChoiceRoleApplicationTable,
-      );
-      setNumSecondChoiceEntries(
-        secondChoiceResult.data.secondChoiceRoleApplicationTable.length,
-      );
+      setNumFirstChoiceEntries(firstApps.length);
+      setNumSecondChoiceEntries(secondApps.length);
     } catch (error) {
       console.error("Error fetching applications:", error);
     }
   };
 
-  const createStudentRow = (application: any) => {
+  const createStudentRow = (application: any, isFirstChoice: boolean) => {
     const app = application.application;
     const reviewers = application.reviewers;
 
     return {
       id: app.id,
-      name: app.firstName + " " + app.lastName,
+      name: `${app.firstName} ${app.lastName}`,
       resume: (
         <a target="_blank" href={app.resumeUrl} className="flex items-center">
           <ResumeIcon />
@@ -86,34 +77,29 @@ const ApplicationsTable: React.FC<TableProps> = ({
         reviewers?.length >= 2
           ? `${reviewers[1].firstName} ${reviewers[1].lastName}`
           : "",
+      firstChoiceApplication: isFirstChoice ? "Yes" : "No",
       status: app.status,
+      firstChoice: app.firstChoiceRole,
       secondChoice: app.secondChoiceRole,
       secondChoiceStatus: app.secondChoiceStatus,
     };
-  };
-
-  const getTableRows = () => {
-    if (!whichChoiceTab) {
-      return firstChoiceApplications.map(createStudentRow);
-    }
-    return secondChoiceApplications.map(createStudentRow);
   };
 
   return (
     <MuiThemeProvider theme={getMuiTheme()}>
       <MUIDataTable
         title=""
-        data={getTableRows()}
-        columns={getApplicationTableColumns()}
+        data={allApplications}
+        columns={[...getApplicationTableColumns()]}
         options={{
-          search: true,
+          // search: true,
           viewColumns: false,
           download: false,
           print: false,
-          searchPlaceholder: "Search by name, reviewer, status, etc...",
-          filter: true,
+          // searchPlaceholder: "Search by name, reviewer, status, etc...",
+          // filter: true,
           selectableRows: "none",
-          sortFilterList: true,
+          // sortFilterList: true,
         }}
       />
     </MuiThemeProvider>

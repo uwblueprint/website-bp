@@ -73,6 +73,7 @@ export const applicationTableQueries = {
                   program
                   timesApplied
                   status
+                  firstChoiceRole
                   secondChoiceRole
                   secondChoiceStatus
               }
@@ -101,6 +102,7 @@ export const applicationTableQueries = {
                 program
                 timesApplied
                 status
+                firstChoiceRole
                 secondChoiceRole
                 secondChoiceStatus
             }

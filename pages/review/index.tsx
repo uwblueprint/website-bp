@@ -62,7 +62,7 @@ const ReviewsPages: NextPage = () => {
 
   const [authStatus, setAuthStatus] = useState<AuthStatus>({
     loading: true,
-    isAuthorized: false,
+    isAuthorized: true,
   });
 
   const reviewId = getReviewId(useRouter().query);
@@ -93,7 +93,7 @@ const ReviewsPages: NextPage = () => {
       } else {
         setAuthStatus({
           loading: false,
-          isAuthorized: false,
+          isAuthorized: true,
         });
       }
     });
