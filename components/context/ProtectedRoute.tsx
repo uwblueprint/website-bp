@@ -26,7 +26,7 @@ const ProtectedRoute = ({ children, allowedRoles }: Props): ReactElement => {
       });
       return;
     }
-    AuthAPIClient.isAuthorizedAdmin()
+    AuthAPIClient.isAuthorizedByRole(allowedRoles)
       .then(async (isAuthorized) => {
         if (isAuthorized) {
           setAuthStatus({
