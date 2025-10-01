@@ -118,3 +118,30 @@ export const applicationTableQueries = {
           }
         `,
 };
+
+export const teamMemberQueries = {
+  teamMembers: `
+    query teamMembers {
+      teamMembers {
+        id
+        firstName
+        lastName
+        teamRole
+      }
+    }
+  `,
+};
+
+export const teamMemberMutations = {
+  createTeamMember: `
+    mutation createTeamMember($input: CreateTeamMemberDTO!) {
+      createTeamMember(input: $input) {
+        id
+        firstName
+        lastName
+        teamRole
+      }
+    }
+  `,
+};
+
