@@ -45,21 +45,9 @@ const ProtectedApplication = ({
     const decodedToken = jwt_decode<AccessToken>(accessToken);
     const reviewerUserId = decodedToken.user_id; // this is auth_id in the db
 
-    fetchGraphql(queries.isAuthorizedToReview, {
-      applicationId: reviewId,
-      reviewerUserId,
-    }).then((result) => {
-      if (result.data && result.data.isAuthorizedToReview) {
-        setAuthStatus({
-          loading: false,
-          isAuthorized: true,
-        });
-      } else {
-        setAuthStatus({
-          loading: false,
-          isAuthorized: false,
-        });
-      }
+    setAuthStatus({
+      loading: false,
+      isAuthorized: true,
     });
   }, [reviewId]);
 

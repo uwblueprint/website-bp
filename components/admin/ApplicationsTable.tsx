@@ -1,11 +1,9 @@
 import { MuiThemeProvider } from "@material-ui/core/styles";
-import { fetchGraphql } from "@utils/makegqlrequest";
 import MUIDataTable from "mui-datatables";
 import React, { useEffect, useState } from "react";
 import { getApplicationTableColumns } from "./ApplicationsTableColumn";
 import ApplicantRole from "entities/applicationRole";
 import { ResumeIcon } from "@components/icons/resume.icon";
-import { applicationTableQueries } from "graphql/queries";
 import { getMuiTheme } from "utils/muidatatable";
 
 interface TableProps {
@@ -36,28 +34,11 @@ const ApplicationsTable: React.FC<TableProps> = ({
   const fetchApplicationsByRole = async () => {
     const currentRole = activeRole || ApplicantRole.vpe;
     try {
-      const firstChoiceResult = await fetchGraphql(
-        applicationTableQueries.applicationsByRole,
-        {
-          role: currentRole,
-        },
-      );
+      setFirstChoiceApplications([]);
+      setNumFirstChoiceEntries(0);
 
-      const secondChoiceResult = await fetchGraphql(
-        applicationTableQueries.applicationsBySecondChoiceRole,
-        {
-          role: currentRole,
-        },
-      );
-      setFirstChoiceApplications(firstChoiceResult.data.applicationTable);
-      setNumFirstChoiceEntries(firstChoiceResult.data.applicationTable.length);
-
-      setSecondChoiceApplications(
-        secondChoiceResult.data.secondChoiceRoleApplicationTable,
-      );
-      setNumSecondChoiceEntries(
-        secondChoiceResult.data.secondChoiceRoleApplicationTable.length,
-      );
+      setSecondChoiceApplications([]);
+      setNumSecondChoiceEntries(0);
     } catch (error) {
       console.error("Error fetching applications:", error);
     }
