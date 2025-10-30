@@ -470,7 +470,8 @@
       "name": "Eddy Zheng",
       "role": "developer",
       "term": 1242,
-      "teams": ["llsc"]
+      "teams": ["llsc"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Evan Wu",
@@ -735,7 +736,8 @@
       "name": "Oliad Rundassa",
       "role": "developer",
       "term": 1242,
-      "teams": ["mp"]
+      "teams": ["mp"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Annie Guo",
@@ -762,7 +764,8 @@
       "name": "Anne Sun",
       "role": "developer",
       "term": 1242,
-      "teams": ["mp"]
+      "teams": ["mp"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Jennifer Shi",
