@@ -11,7 +11,12 @@
       },
       {
         "uniqueId": 1,
-        "question": "Tell us about a challenging technical problem that you've worked on in the past and how you solved it.",
+        "question": "Tell us why you want to be a Project Developer on Blueprint!",
+        "maxLength": 1000
+      },
+      {
+        "uniqueId": 2,
+        "question": "Tell us about a challenging technical problem you’ve solved.",
         "maxLength": 1000
       },
       {
@@ -37,12 +42,22 @@
         "maxLength": 1000
       },
       {
+        "uniqueId": 1,
+        "question": "Tell us about a time where you successfully worked with engineering and/or product managers. Please highlight any instances of conflict resolution.",
+        "maxLength": 1000
+      },
+      {
         "uniqueId": 2,
-        "question": "Send us a link to your portfolio or a project you've worked on. If you do not have a link, please tell us about a project below. Describe the process and what you learned from it.",
+        "question": "What does designing for good mean to you?",
         "maxLength": 1000
       },
       {
         "uniqueId": 3,
+        "question": "Send us a link to your portfolio or a project you've worked on. If you do not have a link, please tell us about a project below. Describe the process and what you learned from it.",
+        "maxLength": 1000
+      },
+      {
+        "uniqueId": 4,
         "question": "Would you be interested in joining a scoping pod?",
         "description": "Scoping pods include a designer, developer, and PM to join VP Scoping for meetings with NPO’s to provide their opinion and expertise! This will be in addition to the existing responsibilities of your role.",
         "type": "select",
@@ -138,18 +153,9 @@
     ]
   },
   {
-    "id": "9",
-    "role": "VP Design",
+    "id": "10",
+    "role": "VP Product",
     "questions": [
-      {
-        "question": "What do you think is most important in supporting a design team? Tell us about what activities you think have the most impact.",
-        "maxLength": 1000
-      },
-      {
-        "uniqueId": 2,
-        "question": "Send us a link to your portfolio or a project you've worked on. If you do not have a link, please tell us about a project below. Describe the process and what you learned from it.",
-        "maxLength": 1000
-      },
       {
         "uniqueId": 3,
         "question": "Would you be interested in joining a scoping pod?",
@@ -158,17 +164,6 @@
         "options": ["Yes", "No"]
       }
     ]
-  },
-  {
-    "id": "10",
-    "role": "VP Product",
-    "questions": [{
-      "uniqueId": 3,
-      "question": "Would you be interested in joining a scoping pod?",
-      "description": "Scoping pods include a designer, developer, and PM to join VP Scoping for meetings with NPO’s to provide their opinion and expertise! This will be in addition to the existing responsibilities of your role.",
-      "type": "select",
-      "options": ["Yes", "No"]
-    }]
   },
   {
     "id": "11",

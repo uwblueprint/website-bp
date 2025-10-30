@@ -1,5 +1,5 @@
 {
-  "term": 1241,
+  "term": 1242,
   "teams": [
     {
       "name": "Executive Team (Craft)",
@@ -119,28 +119,28 @@
     {
       "name": "Paige Li",
       "role": "vp talent",
-      "term": 1241,
+      "term": 1242,
       "teams": ["craft"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fvpt_paige_li.webp?alt=media&token=d6e51ec4-58fa-4a7d-a85e-a21ed3b29232"
     },
     {
       "name": "Shriya Kaistha",
       "role": "vp scoping",
-      "term": 1241,
+      "term": 1242,
       "teams": ["craft"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2FShriya_Kaistha_VP_Scoping.webp?alt=media&token=2d064cf2-128b-425b-bf09-fc3cc51a0c4c"
     },
     {
       "name": "Deekshu Kannan",
       "role": "vp scoping",
-      "term": 1241,
+      "term": 1242,
       "teams": ["craft"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2FDeekshuKannanVPS.webp?alt=media&token=0ab34547-456a-4a53-807c-9f8af0505ed0"
     },
     {
       "name": "Janaki Menon",
       "role": "vp scoping",
-      "term": 1241,
+      "term": 1242,
       "teams": ["craft"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fvps_janaki_menon.webp?alt=media&token=61cce55a-3728-4479-8a54-abe5525b40b9"
     },
@@ -181,30 +181,30 @@
     },
     {
       "name": "Jesse Huang",
-      "role": "vp engineering",
-      "term": 1241,
+      "role": "president",
+      "term": 1242,
       "teams": ["craft"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fvpe_jesse_huang.webp?alt=media&token=6ada3acc-6117-401c-9503-3ea361e97919"
     },
     {
       "name": "Eric Martin",
       "role": "vp engineering",
-      "term": 1241,
+      "term": 1242,
       "teams": ["craft"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fdev_eric_martin.webp?alt=media&token=3a8cd970-915b-49d1-b812-c79f67025f6f"
     },
     {
       "name": "Jia Huang",
       "role": "vp talent",
-      "term": 1241,
+      "term": 1242,
       "teams": ["craft"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fexternal_director_jia_huang.webp?alt=media&token=6e87d4d5-20e4-43fc-ac9c-f39d245aa190"
     },
     {
       "name": "Olivia Chan",
-      "role": "product manager",
-      "term": 1241,
-      "teams": ["eaf"],
+      "role": "vp product",
+      "term": 1242,
+      "teams": ["craft"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2FPM_Olivia_Chan.webp?alt=media&token=19b45c62-5b49-4f1e-a0fe-10e631e1b06e"
     },
     {
@@ -307,9 +307,9 @@
     },
     {
       "name": "Sophia Zhu",
-      "role": "product manager",
-      "term": 1241,
-      "teams": ["humane-society"],
+      "role": "vp product",
+      "term": 1242,
+      "teams": ["craft"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fproductmanager_Sophia_Zhu.webp?alt=media&token=ccc41496-52b4-4539-b94e-dd716d111a74"
     },
     {
@@ -398,9 +398,9 @@
     },
     {
       "name": "Carolyn Zhang",
-      "role": "developer",
-      "term": 1241,
-      "teams": ["internal-tools"],
+      "role": "vp engineering",
+      "term": 1242,
+      "teams": ["craft"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fdev_carolyn_zhang.webp?alt=media&token=fe62c171-96a2-40e2-85e7-e8f4d56f2a01"
     },
     {
@@ -510,10 +510,10 @@
     },
     {
       "name": "Saima Desai",
-      "role": "designer",
-      "term": 1241,
-      "teams": ["llsc"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2FProduct_Designer_Saima_Desai.webp?alt=media&token=dacc3b0a-1677-49d3-93ed-05f6c9e0e52c"
+      "role": "vp design",
+      "term": 1242,
+      "teams": ["craft"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF25HEADSHOTS%2FVPD_Saima_Desai.jpg?alt=media&token=89175fa2-6d85-4656-9d6c-1fd233041ca0"
     },
     {
       "name": "Tracy Ou",
@@ -720,10 +720,10 @@
     },
     {
       "name": "David Stirling",
-      "role": "vp design",
-      "term": 1240,
-      "teams": ["executive"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FDavid%20Stirling.png?alt=media&token=996bd95e-094b-415c-8b71-6bdc68ed10ac"
+      "role": "president",
+      "term": 1242,
+      "teams": ["craft"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF25HEADSHOTS%2FPres_David_Stirling.png?alt=media&token=3082496d-4047-4952-b4d7-29b4d2d79696"
     },
     {
       "name": "Inesh Jacob",
@@ -2603,10 +2603,10 @@
     },
     {
       "name": "Riishi Jeevakumar",
-      "role": "designer",
-      "term": 1231,
-      "teams": ["jump-math"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs22headshots%2Fdesigner_RiishiJeevakumar.jpg?alt=media&token=ff4615a1-bd85-469c-89fa-0497d163076d"
+      "role": "vp design",
+      "term": 1242,
+      "teams": ["craft"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF25HEADSHOTS%2FVPD_Riishi_Jeevakumar.JPG?alt=media&token=534be843-1c44-4dd5-bcbf-64405c3a93e8"
     },
     {
       "name": "Dinu Wijetunga",
