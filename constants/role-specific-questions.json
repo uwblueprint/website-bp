@@ -4,31 +4,27 @@
     "role": "Project Developer",
     "questions": [
       {
-        "uniqueId": 1,
         "question": "Which areas of a project are you interested in working in?",
         "type": "multi-select",
         "options": ["Frontend", "Backend", "Fullstack", "Mobile"],
         "other": true
       },
       {
-        "uniqueId": 2,
         "question": "Tell us why you want to be a Project Developer on Blueprint!",
         "maxLength": 1000
       },
       {
-        "uniqueId": 3,
         "question": "Tell us about a challenging technical problem you’ve solved.",
         "maxLength": 1000
       },
       {
-        "uniqueId": 4,
+        "uniqueid": 1,
         "question": "Would you be interested in joining a scoping pod?",
         "description": "Scoping pods include a designer, developer, and PM to join VP Scoping for meetings with NPO’s to provide their opinion and expertise! This will be in addition to the existing responsibilities of your role.",
         "type": "select",
         "options": ["Yes", "No"]
       },
       {
-        "uniqueId": 5,
         "question": "Mention your top 3 skills in full stack and years of experience for each of them. Example: GraphQL - 2 years, ...",
         "maxLength": 1000
       }
@@ -39,27 +35,23 @@
     "role": "Product Designer",
     "questions": [
       {
-        "uniqueId": 1,
         "question": "Tell us about your design journey - how did you get into design?",
         "maxLength": 1000
       },
       {
-        "uniqueId": 2,
         "question": "Tell us about a time where you successfully worked with engineering and/or product managers. Please highlight any instances of conflict resolution.",
         "maxLength": 1000
       },
       {
-        "uniqueId": 3,
         "question": "What does designing for good mean to you?",
         "maxLength": 1000
       },
       {
-        "uniqueId": 4,
         "question": "Send us a link to your portfolio or a project you've worked on. If you do not have a link, please tell us about a project below. Describe the process and what you learned from it.",
         "maxLength": 1000
       },
       {
-        "uniqueId": 5,
+        "uniqueid": 1,
         "question": "Would you be interested in joining a scoping pod?",
         "description": "Scoping pods include a designer, developer, and PM to join VP Scoping for meetings with NPO’s to provide their opinion and expertise! This will be in addition to the existing responsibilities of your role.",
         "type": "select",
@@ -72,17 +64,15 @@
     "role": "Product Manager",
     "questions": [
       {
-        "uniqueId": 1,
         "question": "What is your favourite product?",
         "maxLength": 1000
       },
       {
-        "uniqueId": 2,
         "question": "Tell us about a time you noticed a problem. What did you learn, and how did you go about solving it?",
         "maxLength": 1000
       },
       {
-        "uniqueId": 3,
+        "uniqueid": 1,
         "question": "Would you be interested in joining a scoping pod?",
         "description": "Scoping pods include a designer, developer, and PM to join VP Scoping for meetings with NPO’s to provide their opinion and expertise! This will be in addition to the existing responsibilities of your role.",
         "type": "select",
@@ -95,36 +85,31 @@
     "role": "Project Lead",
     "questions": [
       {
-        "uniqueId": 1,
         "question": "Tell us about a challenging technical problem that you've worked on in the past and how you solved it.",
         "maxLength": 1000
       },
       {
-        "uniqueId": 2,
         "question": "Tell us about a past experience working with other people where you demonstrated leadership.",
         "maxLength": 1000
       },
       {
-        "uniqueId": 3,
+        "uniqueid": 1,
         "question": "Would you be interested in joining a scoping pod?",
         "description": "Scoping pods include a designer, developer, and PM to join VP Scoping for meetings with NPO’s to provide their opinion and expertise! This will be in addition to the existing responsibilities of your role.",
         "type": "select",
         "options": ["Yes", "No"]
       },
       {
-        "uniqueId": 4,
         "question": "Mention your top 3 skills in full stack and years of experience for each of them. Example: GraphQL - 2 years, ...",
         "maxLength": 1000
       }
     ]
   },
-
   {
     "id": "6",
     "role": "Content Strategist",
     "questions": [
       {
-        "uniqueId": 1,
         "question": "What do you see as the purposes of content within the user experience of an app?",
         "maxLength": 1000
       }
@@ -135,7 +120,6 @@
     "role": "Graphic Designer",
     "questions": [
       {
-        "uniqueId": 1,
         "question": "Send us a link to your portfolio or a project you've worked on. If you do not have a link, please tell us about a project below. Describe the process and what you learned from it.",
         "maxLength": 1000
       }
@@ -146,12 +130,11 @@
     "role": "VP Engineering",
     "questions": [
       {
-        "uniqueId": 1,
         "question": "Consider this hypothetical scenario: Blueprint is thinking of creating a standardized code repository for new projects to build off of. This idea has both supporters and detractors among the project leads. In bullet points, explain how you would build alignment among developers. Please state any assumptions or details as necessary.",
         "maxLength": 1000
       },
       {
-        "uniqueId": 2,
+        "uniqueid": 1,
         "question": "Would you be interested in joining a scoping pod?",
         "description": "Scoping pods include a designer, developer, and PM to join VP Scoping for meetings with NPO’s to provide their opinion and expertise! This will be in addition to the existing responsibilities of your role.",
         "type": "select",
@@ -164,7 +147,7 @@
     "role": "VP Product",
     "questions": [
       {
-        "uniqueId": 1,
+        "uniqueid": 1,
         "question": "Would you be interested in joining a scoping pod?",
         "description": "Scoping pods include a designer, developer, and PM to join VP Scoping for meetings with NPO’s to provide their opinion and expertise! This will be in addition to the existing responsibilities of your role.",
         "type": "select",
@@ -177,7 +160,6 @@
     "role": "VP Talent",
     "questions": [
       {
-        "uniqueId": 1,
         "question": "What skills and attributes should the ideal Blueprint candidate possess?",
         "maxLength": 1000
       }
@@ -188,7 +170,6 @@
     "role": "Finance Associate",
     "questions": [
       {
-        "uniqueId": 1,
         "question": "How would you pitch to external organizations for sponsorship?",
         "maxLength": 1000
       }
@@ -199,7 +180,6 @@
     "role": "VP Project Scoping",
     "questions": [
       {
-        "uniqueId": 1,
         "question": "How do you know whether a non-profit has a goal that resonates with Blueprint?",
         "maxLength": 1000
       }
@@ -210,7 +190,6 @@
     "role": "External Director",
     "questions": [
       {
-        "uniqueId": 1,
         "question": "What's a cool new event you think Blueprint should do and how does it align with Blueprint's mission?",
         "maxLength": 1000
       }
@@ -221,7 +200,6 @@
     "role": "Internal Director",
     "questions": [
       {
-        "uniqueId": 1,
         "question": "What would an ideal member experience look like to you?",
         "maxLength": 1000
       }
