@@ -42,23 +42,30 @@
     {
       "name": "Victoria Nguyen",
       "role": "vp finance",
-      "term": 1241,
+      "term": 1242,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fvp%20finance%20%26%20operations_victoria_nguyen.webp?alt=media&token=c919bec5-6b03-43e3-9ed8-8edf8724ec28"
     },
     {
       "name": "Michelle Kwon",
       "role": "content strategist",
-      "term": 1241,
+      "term": 1242,
       "teams": ["community"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fcontent_strategist_michelle_kwon.webp?alt=media&token=203c0351-2962-4f3c-a81b-1aed50457f04"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF25HEADSHOTS%2FContent_Strategist_Michelle_Kwon.JPG?alt=media&token=eecab24b-c130-4fa3-b653-252e688ca47a"
     },
     {
       "name": "Ashvin Ramgoolam",
       "role": "director lead",
-      "term": 1241,
+      "term": 1242,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fdirector_lead_ashvin_ramgoolam.webp?alt=media&token=0d868f71-eea2-491e-b50d-8cc54cacb4e6"
+    },
+    {
+      "name": "Tiara Lanson",
+      "role": "internal director",
+      "term": 1242,
+      "teams": ["community"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF25HEADSHOTS%2FTiara_Headshot.jpg?alt=media&token=cb2d79e4-67a3-4ae0-811d-0d1c40123992"
     },
     {
       "name": "Cristal Lu",
@@ -70,35 +77,35 @@
     {
       "name": "Dhanvi Pandya",
       "role": "external director",
-      "term": 1241,
+      "term": 1242,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fexternal_director_dhanvi_pandya.webp?alt=media&token=3a34e9e8-40f6-4b01-ba24-344cabeac2ef"
     },
     {
       "name": "Jia Huang",
       "role": "external director",
-      "term": 1241,
+      "term": 1242,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fexternal_director_jia_huang.webp?alt=media&token=6e87d4d5-20e4-43fc-ac9c-f39d245aa190"
     },
     {
       "name": "Han Nguyen",
-      "role": "finance coordinator",
-      "term": 1241,
+      "role": "vp finance",
+      "term": 1242,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Ffinance_han_nguyen.webp?alt=media&token=d486b000-6370-474c-82c4-efe15ebefe99"
     },
     {
       "name": "Aneeva Murray",
       "role": "graphic designer",
-      "term": 1241,
+      "term": 1242,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fgraphic_designer_aneeva_murray.webp?alt=media&token=1b1f0e47-86d3-42b9-bfd0-8021614de396"
     },
     {
       "name": "Mya Mistry",
       "role": "graphic designer",
-      "term": 1241,
+      "term": 1242,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2Fgraphic_designer_mya_mistry.webp?alt=media&token=77da9fee-d870-46ee-accd-a3384bc2704e"
     },
@@ -952,8 +959,8 @@
     {
       "name": "Karen Zhang",
       "role": "external director",
-      "term": 1240,
-      "teams": ["executive"],
+      "term": 1242,
+      "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff24headshots%2Fexternal_karen_zhang.png?alt=media&token=b622a078-ec1f-4a73-8f90-27d035472521"
     },
     {
@@ -965,9 +972,9 @@
     },
     {
       "name": "Elili Marakathalingasivam",
-      "role": "vp talent",
-      "term": 1240,
-      "teams": ["executive"],
+      "role": "internal director",
+      "term": 1242,
+      "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw25headshots%2FElili_Marakathalingasivam_VP_Talent.jpg?alt=media&token=75ccaebc-587c-4e8c-ac01-b7b14cec8213"
     },
     {
