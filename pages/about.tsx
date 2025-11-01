@@ -21,8 +21,35 @@ const About: NextPage = () => {
       </section>
 
       {/* Who we are, What we do, Our story */}
-      <section className="content flex md:space-x-12 lg:space-x-8 mt-16 mb-20">
-        <div className="hidden md:block w-5/12 lg:w-1/2 md:bg-about-us-circles-md lg:bg-about-us-circles-lg bg-contain bg-no-repeat bg-center" />
+      <section className="content flex flex-col md:flex-row md:space-x-12 lg:space-x-8 mt-16 mb-20">
+        {/* Left Column - Bubbles */}
+        {/* Left Column - Natural bubble layout */}
+        <div className="hidden md:flex relative w-5/12 lg:w-1/2 min-h-[650px]">
+          {/* Top bubble */}
+          <img
+            src="/about/marillac-social.jpg"
+            alt="Bubble Image"
+            className="absolute top-12 left-24 h-[320px] w-[320px] rounded-full object-cover border-[6px] border-pink-200 shadow-md"
+          />
+          {/* Middle bubble */}
+          <img
+            src="/about/eaf-social.jpg"
+            alt="Bubble Image"
+            className="absolute top-72 right-6 w-[220px] h-[220px] rounded-full object-cover border-[6px] border-yellow-200 shadow-md"
+          />
+          {/* Bottom bubble */}
+          <img
+            src="/about/pumpkin-social.jpg"
+            alt="Bubble Image"
+            className="absolute bottom-48 left-12 w-72 h-72 rounded-full object-cover border-[6px] border-blue-200 shadow-md"
+          />
+          <img
+            src="/about/f4k-social.jpg"
+            alt="Bubble Image"
+            className="absolute bottom-32 right-10 w-52 h-52 rounded-full object-cover border-[6px] border-green-200 shadow-md"
+          />
+        </div>
+
         <div className="flex-1 flex flex-col space-y-12">
           <div className="flex flex-col">
             <h2 className="text-blue md:text-4xl mb-3 md:mb-1.5">Who we are</h2>
@@ -187,13 +214,19 @@ const About: NextPage = () => {
           />
           <img
             className="h-32 object-contain"
-            src="/about/techyon-logo.png"
-            alt="Techyon Logo"
+            src="/about/weef-logo.png"
+            alt="Waterloo Engineering Endowment Fund Logo"
           />
           <img
             className="h-32 object-contain"
-            src="/about/weef-logo.png"
-            alt="Waterloo Engineering Endowment Fund Logo"
+            src="/about/verkada.png"
+            alt="Verkada"
+          />
+          <img className="h-32 object-cover" src="/about/ramp.png" alt="Ramp" />
+          <img
+            className="h-32 object-contain"
+            src="/about/figma.png"
+            alt="Figma"
           />
         </div>
       </section>
