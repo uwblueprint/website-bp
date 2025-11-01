@@ -4,7 +4,7 @@ const Hero: FC = () => {
   return (
     <header
       className="h-144 md:h-[670px] w-full relative flex flex-col justify-end pb-24 md:pb-32 bg-cover bg-center"
-      style={{ backgroundImage: "url('/about/blueprint-team.png')" }}
+      style={{ backgroundImage: "url('/about/f25-bot.png')" }}
     >
       <div className="content">
         <div className="max-w-xl space-y-3">

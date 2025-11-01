@@ -42,13 +42,15 @@ const ProjectModal: FC<Props> = ({ project, open, onClose }) => {
                 <p className="text-charcoal-500">{terms}</p>
               </div>
               <div className="flex items-center space-x-4 lg:space-x-6 mr-6">
-                <Button
-                  variant="secondary"
-                  className="whitespace-nowrap"
-                  href={caseStudyUrl}
-                >
-                  View Case Study
-                </Button>
+                {caseStudyUrl && (
+                  <Button
+                    variant="secondary"
+                    className="whitespace-nowrap"
+                    href={caseStudyUrl}
+                  >
+                    View Case Study
+                  </Button>
+                )}
                 <a href={githubUrl} className="w-10 md:w-12" target="_blank">
                   <img src="/common/github-logo-blue.svg" alt="GitHub logo" />
                 </a>

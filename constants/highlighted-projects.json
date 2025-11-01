@@ -1,5 +1,47 @@
 [
   {
+    "name": "Sistema",
+    "type": "Calendar Tool",
+    "terms": "Winter 2024 - Fall 2024",
+    "caseStudyUrl": "",
+    "githubUrl": "https://github.com/uwblueprint/sistema",
+    "about": "Sistema Toronto is a non-profit organization dedicated to providing accessible and high-quality music education to youth from underserved communities. We are building an absence management platform where teachers can mark their absences, upload lesson plans, claim classes from other absent teachers, and receive class related email notifications. Administrators on the platform can view metrics like number of absences and receive class related email notifications.",
+    "solution": "Our team developed a class management platform where teachers can mark their absences, upload lesson plans, claim classes from other absent teachers, and receive class related email notifications.",
+    "quote": {
+      "text": "The UW Blueprint team worked diligently throughout the year to design a product that was going to be flexible, well-designed, and most of all useful to us. With their help we were able to identify a workable project, move through the design process, test, and make changes. Their design integrates beautifully with the software we are already using. It will help us track and manage teacher absences, book subs, and coordinate lesson plans across our different locations and subject areas. The team was a delight to work with, and we'll be using this system for years to come!",
+      "signature": "Sistema Team"
+    },
+    "image": "/projects/sistema-toronto.png"
+  },
+  {
+    "name": "A Better Tent City",
+    "type": "Scheduling Platform",
+    "terms": "Fall 2023 - Fall 2024",
+    "caseStudyUrl": "",
+    "githubUrl": "https://github.com/uwblueprint/abtc",
+    "about": "A Better Tent City (ABTC) is a registered NPO based in the Kitchener Waterloo region that believes that everyone should have a right to housing. ABTC provides homeless individuals an opportunity to move from dangerous conditions to safer, more hygienic facilities. The site includes built-in showers, laundry facilities and regular visits from mobile health clinics and HIV testing. Food is provided via ABTC’s partner organizations such as the Foodbank of Waterloo Region which sends weekly deliveries. The site has 42 individual  cabins setup for up to 50 residents , but an additional 40 visitors also spend time on site, in the shared space and in cabins and access meals and other services offered on site. The site provides a shared space and kitchen and endeavors to provide air conditioners, microwaves and mini fridges to residents and primarily funds their operations through donations and housing allowances from their residents.",
+    "solution": "The objective was to create a scalable web application that acts as a volunteer scheduling and tracking platform, as well as an overall dashboard for Admins.  Admins will be able to create volunteer requests for different types of shifts/events. The system will also allow Admins to track the volunteer hours and history of a selected volunteer. Both types of users will require an account to access the system. ",
+    "quote": {
+      "text": "We’re incredibly grateful for the dedicated team at Blueprint and their work on our new volunteer management platform. From the start, they showed genuine compassion for our mission to provide safe and dignified housing for people experiencing homelessness. The Blueprint team took the time to understand our day-to-day operations and built a system that truly meets our needs, from scheduling volunteers to tracking hours and managing events with ease. Their professionalism and empathy made the entire process smooth and collaborative. Thanks to this new platform, our staff can spend less time on logistics and more time supporting our residents. Blueprint’s work will have a lasting impact on our community.",
+      "signature": "ABTC Team"
+    },
+    "image": "/projects/abtc.png"
+  },
+  {
+    "name": "Feeding Canadian Kids",
+    "type": "Delivery Tooling",
+    "terms": "Fall 2022 - Spring 2024",
+    "caseStudyUrl": "",
+    "githubUrl": "https://github.com/uwblueprint/feeding-canadian-kids",
+    "about": "Feeding Canadian Kids is the only Canadian federal registered charity working to fill the dinner-gap, providing healthy meals to hungry children for a good night’s sleep, nourished body and brighter future.",
+    "solution": "Our project team developed a streamlined, user-friendly platform that makes it easier for volunteers to sign up for food delivery to schools. The aim was to create a formalized process that is intuitive and straightforward, encouraging more volunteers to participate in this important cause. Moreover, the platform provides a centralized hub for volunteers to submit required documents for screening, ensuring the safety of the children.",
+    "quote": {
+      "text": "We were thrilled with the incredible support we received from our volunteer team at Blueprint! From the very beginning, their enthusiasm for our mission at Feeding Canadian Kids was infectious. They made the entire process of building our online Meal Pairing Platform feel seamless, even for someone like me who isn’t very tech-savvy. Our Project Managers were exceptionally organized, keeping us informed every step of the way. We also had the pleasure of meeting some of the team members, and it was clear that they truly listened to our needs and concerns. Their thoughtful collaboration ensured that the final product reflected our goals and vision. The development of this platform marks a major milestone for Feeding Canadian Kids, as it allows us to scale our efforts nationwide. Thanks to Blueprint, what once felt like a dream is now a reality. The team went above and beyond, and their contribution will have a lasting impact on children and families across Canada.",
+      "signature": "Jessica Roelink, Co-Founder of FCK"
+    },
+    "image": "/projects/feeding-canadian-kids.png"
+  },
+  {
     "name": "Social Venture Partners",
     "type": "Decision Making",
     "terms": "Fall 2019 - Fall 2020",
