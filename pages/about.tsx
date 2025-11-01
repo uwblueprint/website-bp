@@ -223,11 +223,6 @@ const About: NextPage = () => {
             alt="Verkada"
           />
           <img className="h-32 object-cover" src="/about/ramp.png" alt="Ramp" />
-          <img
-            className="h-32 object-contain"
-            src="/about/figma.png"
-            alt="Figma"
-          />
         </div>
       </section>
       {/* Interested in the work we do? */}
