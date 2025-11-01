@@ -5,6 +5,7 @@ import { ReactElement } from "react";
 import { useRouter } from "next/router";
 import Button from "./Button";
 import { fetchGraphql } from "@utils/makegqlrequest";
+import AuthAPIClient from "APIClients/AuthAPIClient";
 
 const Login = (): ReactElement => {
   const router = useRouter();
@@ -14,21 +15,15 @@ const Login = (): ReactElement => {
     const res = await signInWithPopup(auth, provider);
     if (res) {
       const oauthIdToken = (res as any)._tokenResponse.oauthIdToken;
-      fetchGraphql(mutations.loginWithGoogle, { idToken: oauthIdToken }).then(
-        (result) => {
-          if (result.data) {
-            localStorage.setItem(
-              "accessToken",
-              result.data.loginWithGoogle.accessToken,
-            );
-            localStorage.setItem(
-              "refreshToken",
-              result.data.loginWithGoogle.refreshToken,
-            );
-            router.push("/admin");
-          }
-        },
-      );
+      AuthAPIClient.loginWithGoogle(oauthIdToken)
+        .then((result) => {
+          localStorage.setItem("accessToken", result.accessToken);
+          localStorage.setItem("refreshToken", result.refreshToken);
+          router.push("/admin");
+        })
+        .catch((e) => {
+          console.error(e);
+        });
     }
   };
 
