@@ -2,7 +2,7 @@ import { ReviewStage } from "pages/review";
 import { ReviewRatingPage } from "../shared/reviewRatingPage";
 import { ReviewRubric } from "./reviewRubric";
 import { ReviewAnswers } from "./reviewAnswers";
-import { ApplicationDTO } from "types";
+import { ApplicationDTO } from "../../../types";
 import { useEffect, useState } from "react";
 import { ReviewSetScoresContext } from "../shared/reviewContext";
 

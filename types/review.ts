@@ -1,20 +1,3 @@
-export interface AuthStatus {
-  loading: boolean;
-  isAuthorized: boolean;
-}
-
-export type Student = {
-  id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  academicYear: string;
-  program: string;
-  resumeLink: string;
-  firstChoiceRole: string;
-  secondChoiceRole: string;
-};
-
 export type ApplicationDTO = {
   id: number;
   academicOrCoop: string;
@@ -37,10 +20,4 @@ export type ApplicationDTO = {
   term: string;
   timesApplied: string;
   timestamp: bigint;
-};
-
-export type ConflictModalProps = {
-  readonly name: string | undefined;
-  readonly open: boolean;
-  readonly onClose: () => void;
 };

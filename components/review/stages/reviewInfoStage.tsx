@@ -4,10 +4,15 @@ import { ReviewSplitPanelPage } from "../shared/reviewSplitPanelPage";
 import Button from "@components/common/Button";
 import Image from "next/image";
 import WarningIcon from "@components/icons/warning.icon";
-import { ApplicationDTO } from "types";
+import { ApplicationDTO } from "../../../types";
 import { ReviewAnswers } from "./reviewAnswers";
-import { ConflictModalProps } from "types";
 import { extractShortAnswerData } from "pages/review";
+
+export type ConflictModalProps = {
+  readonly name: string | undefined;
+  readonly open: boolean;
+  readonly onClose: () => void;
+};
 
 const ConflictModal: FC<ConflictModalProps> = ({ name, open, onClose }) => {
   return open ? (
