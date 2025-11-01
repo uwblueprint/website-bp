@@ -1,5 +1,5 @@
 import { fetchGraphql } from "@utils/makegqlrequest";
-import { queries } from "graphql/queries";
+import { mutations, queries } from "graphql/queries";
 import BaseAPIClient from "./BaseAPIClient";
 
 export type TokenInfo = {
@@ -23,6 +23,20 @@ const isAuthorizedByRole = (allowedRoles: Role[]): Promise<boolean> => {
     });
 };
 
+const loginWithGoogle = async (idToken: string): Promise<TokenInfo> => {
+  return fetchGraphql(mutations.loginWithGoogle, { idToken })
+    .then((result) => {
+      return {
+        accessToken: result.data.loginWithGoogle.accessToken,
+        refreshToken: result.data.loginWithGoogle.refreshToken,
+      };
+    })
+    .catch(() => {
+      throw new Error("Login Error");
+    });
+};
+
 export default {
   isAuthorizedByRole,
+  loginWithGoogle,
 };
