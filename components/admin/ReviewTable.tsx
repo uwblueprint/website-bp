@@ -1,11 +1,9 @@
 import { MuiThemeProvider } from "@material-ui/core/styles";
-import { fetchGraphql } from "@utils/makegqlrequest";
 import MUIDataTable from "mui-datatables";
 import React, { useEffect, useState } from "react";
 import { getReviewTableColumns } from "./ReviewTableColumn";
 import ApplicantRole from "entities/applicationRole";
 import { ResumeIcon } from "@components/icons/resume.icon";
-import { applicationTableQueries } from "graphql/queries";
 import { getMuiTheme } from "utils/muidatatable";
 import ExpandableRowTable from "./ExpandableRowTable";
 
@@ -37,28 +35,11 @@ const ReviewTable: React.FC<TableProps> = ({
   const fetchApplicationsByRole = async () => {
     const currentRole = activeRole || ApplicantRole.vpe;
     try {
-      const firstChoiceResult = await fetchGraphql(
-        applicationTableQueries.applicationsByRole,
-        {
-          role: currentRole,
-        },
-      );
+      setFirstChoiceApplications([]);
+      setNumFirstChoiceEntries(0);
 
-      const secondChoiceResult = await fetchGraphql(
-        applicationTableQueries.applicationsBySecondChoiceRole,
-        {
-          role: currentRole,
-        },
-      );
-      setFirstChoiceApplications(firstChoiceResult.data.applicationTable);
-      setNumFirstChoiceEntries(firstChoiceResult.data.applicationTable.length);
-
-      setSecondChoiceApplications(
-        secondChoiceResult.data.secondChoiceRoleApplicationTable,
-      );
-      setNumSecondChoiceEntries(
-        secondChoiceResult.data.secondChoiceRoleApplicationTable.length,
-      );
+      setSecondChoiceApplications([]);
+      setNumSecondChoiceEntries(0);
     } catch (error) {
       console.error("Error fetching applications:", error);
     }
@@ -66,6 +47,12 @@ const ReviewTable: React.FC<TableProps> = ({
 
   const createStudentRow = (application: any) => {
     const app = application.application;
+    const mapToNumericalValue = {
+      "This is my first time!": "0",
+      Once: "1",
+      Twice: "2",
+      "3 or more": "3+",
+    };
 
     return {
       id: app.id,
@@ -78,6 +65,7 @@ const ReviewTable: React.FC<TableProps> = ({
       ),
       term: app.academicYear,
       program: app.program,
+      timesApplied: mapToNumericalValue[app.timesApplied],
       status: app.status,
       secondChoice: app.secondChoiceRole,
       secondChoiceStatus: app.secondChoiceStatus,
@@ -94,13 +82,13 @@ const ReviewTable: React.FC<TableProps> = ({
   const generateMockInnerData = () => {
     return [
       {
-        "Reviewer Name": "John Doe",
-        PFSG: 4,
-        "Team Player": 3,
-        D2L: 6,
-        Skill: 5,
-        "Skill Category": "junior",
-        "Reviewer Comments": "Great work presenting your case study.",
+        reviewerName: "John Doe",
+        pfsg: 4,
+        teamPlayer: 3,
+        d2l: 6,
+        skill: 5,
+        skillCategory: "junior",
+        reviewerComments: "Great work presenting your case study.",
       },
       // Add as many objects as you want to simulate different rows
     ];
@@ -113,7 +101,6 @@ const ReviewTable: React.FC<TableProps> = ({
     const innerData = generateMockInnerData(); // Use mock data for testing
     const application = {
       secondChoiceRole: "Graphic Designer",
-      recommendForSecondChoice: true,
       adminComments: "Great",
     };
 
@@ -148,15 +135,6 @@ const ReviewTable: React.FC<TableProps> = ({
                   <div className="flex flex-row justify-center items-center gap-5">
                     <span className="text-blue font-semibold">2nd Choice:</span>
                     <p>{application.secondChoiceRole}</p>
-                  </div>
-
-                  <div className="flex items-center mt-2">
-                    <input
-                      type="checkbox"
-                      checked={application.recommendForSecondChoice}
-                      // onChange logic here
-                    />
-                    <span className="ml-2">Recommend for 2nd Choice</span>
                   </div>
                 </div>
                 <div className="flex flex-col">

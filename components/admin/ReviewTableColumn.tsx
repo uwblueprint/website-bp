@@ -58,6 +58,15 @@ export const getReviewTableColumns = (): MUIDataTableColumn[] => {
       },
     },
     {
+      name: "timesApplied",
+      label: "Times Applied",
+      options: {
+        filter: false,
+        sort: true,
+        searchable: true,
+      },
+    },
+    {
       name: "score",
       label: "Score",
       options: {
@@ -127,7 +136,6 @@ export const getReviewTableColumns = (): MUIDataTableColumn[] => {
             "considered",
             "not considered",
             "n/a",
-            "recommended",
             "in review",
             "interview",
             "no interview",
