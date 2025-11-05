@@ -16,7 +16,7 @@ import { useState, useEffect } from "react";
 import { fetchGraphql } from "@utils/makegqlrequest";
 import ProtectedApplication from "./protectedApplication";
 import { queries } from "graphql/queries";
-import { ApplicationDTO, AuthStatus } from "types";
+import { ApplicationDTO, AuthStatus } from "../../types";
 
 export enum ReviewStage {
   INFO = "INFO",
