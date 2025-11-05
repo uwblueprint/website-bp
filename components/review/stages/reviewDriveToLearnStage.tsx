@@ -54,6 +54,7 @@ export const ReviewDriveToLearnStage: React.FC<Props> = ({
         <ReviewAnswers questions={questions} answers={answers} />
       }
       scores={scores}
+      application={application}
       contextConsumer={
         <ReviewSetScoresContext.Consumer>
           {(updateScore) => (

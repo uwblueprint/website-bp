@@ -60,6 +60,7 @@ export const ReviewSkillStage: React.FC<ReviewStageProps> = ({
       }
       resumeLink={resumeLink}
       scores={scores}
+      application={application}
       contextConsumer={
         <ReviewSetScoresContext.Consumer>
           {(updateScore) => (

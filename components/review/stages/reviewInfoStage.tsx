@@ -164,6 +164,7 @@ export const ReviewInfoStage: React.FC<ReviewStageProps> = ({
         </>
       }
       scores={scores}
+      application={application}
     ></ReviewSplitPanelPage>
   );
 };

@@ -72,6 +72,7 @@ export const ReviewTeamPlayerStage: React.FC<Props> = ({
         <ReviewAnswers questions={questions} answers={answers} />
       }
       scores={scores}
+      application={application}
     />
   );
 };
