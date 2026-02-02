@@ -40,6 +40,41 @@
   ],
   "members": [
     {
+      "name": "Deekshitha Kannan",
+      "role": "vp scoping",
+      "term": 1243,
+      "teams": ["craft"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Michelle Wang",
+      "role": "vp scoping",
+      "term": 1243,
+      "teams": ["craft"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Rohan Sane",
+      "role": "vp scoping",
+      "term": 1243,
+      "teams": ["craft"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Sophia Mao",
+      "role": "vp talent",
+      "term": 1243,
+      "teams": ["craft"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
+      "name": "Maitreyee Gangal",
+      "role": "vp talent",
+      "term": 1243,
+      "teams": ["craft"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+    },
+    {
       "name": "Vrinda Joshi",
       "role": "developer",
       "term": 1242,
@@ -454,9 +489,9 @@
     },
     {
       "name": "Justin Luu",
-      "role": "designer",
-      "term": 1242,
-      "teams": ["internal-tools"],
+      "role": "vp design",
+      "term": 1243,
+      "teams": ["craft"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fs25headshots%2FDesigner_Justin_Luu.webp?alt=media&token=dd7e7371-7f68-44ce-b6d6-3b7756cbadd6"
     },
     {
@@ -1336,9 +1371,9 @@
     },
     {
       "name": "Weinna Zheng",
-      "role": "designer",
-      "term": 1240,
-      "teams": ["sistema"],
+      "role": "vp design",
+      "term": 1243,
+      "teams": ["craft"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fw24headshots%2FProductDesigner_Weinna_Zheng.jpg?alt=media&token=c2f96a35-4370-4b18-927e-a9a3cf423548"
     },
     {
@@ -2996,7 +3031,7 @@
     {
       "name": "Riishi Jeevakumar",
       "role": "vp design",
-      "term": 1242,
+      "term": 1243,
       "teams": ["craft"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF25HEADSHOTS%2FVPD_Riishi_Jeevakumar.JPG?alt=media&token=534be843-1c44-4dd5-bcbf-64405c3a93e8"
     },
