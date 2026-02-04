@@ -1,12 +1,13 @@
-import { ReviewStage } from "pages/review";
+import { ReviewStage } from "../shared/constants";
+import { ReviewScores } from "../shared/types";
 
-interface Props {
+export interface Props {
   scoringCriteria: string[];
-  scores: Map<ReviewStage, number>;
+  scores: ReviewScores;
   currentStage: ReviewStage;
 }
 
-export const ReviewRubric: React.FC<Props> = ({ scoringCriteria }) => {
+export const ReviewRubric = ({ scoringCriteria }: Props) => {
   return (
     <>
       <div className="shrink gap-8">

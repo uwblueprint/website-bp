@@ -1,24 +1,18 @@
-import { ReviewStage } from "pages/review";
-import { ReviewRatingPage } from "../shared/reviewRatingPage";
-import { ReviewRubric } from "./reviewRubric";
-import { ReviewAnswers } from "./reviewAnswers";
-import { ApplicationDTO } from "../../../types";
 import { useEffect, useState } from "react";
+import { ApplicationDTO } from "../../../types";
+import { ReviewStage } from "../shared/constants";
 import { ReviewSetScoresContext } from "../shared/reviewContext";
+import { ReviewRatingPage } from "../shared/reviewRatingPage";
+import { REVIEW_D2L_SCORING_CRITERIA } from "../shared/rubricConstants";
+import { ReviewScores } from "../shared/types";
+import { ReviewAnswers } from "./reviewAnswers";
+import { ReviewRubric } from "./reviewRubric";
 
 interface Props {
   name: string;
   application: ApplicationDTO | undefined;
-  scores: Map<ReviewStage, number>;
+  scores: ReviewScores;
 }
-
-const reviewD2LScoringCriteria = [
-  "Resume is low effort and shows no sign of polishing. Application questions are clearly thrown together at the last minute. Answers are short and shallow.",
-  "No indication of learning pursued outside of class / work. Example: no participation in other clubs / organizations, online courses, side projects",
-  "Some learning demonstrated outside of class / work, but all are minimal or non-self guided. Example: general member of a club, course group project, taking a popular Udemy course",
-  "Demonstrates some self-guided learning outside of class and work. Example: working on a noteworthy side project, deep pursuit of an interest, participation in a competitive team, applying newly learned frameworks from school or work etc.",
-  "Demonstrates a high level self-guided learning outside of class and work. Example: outstanding or non conventional projects / initiatives that clearly tie an applicant’s personal development goals with something new and creative.",
-];
 
 export const ReviewDriveToLearnStage: React.FC<Props> = ({
   name,
@@ -45,7 +39,7 @@ export const ReviewDriveToLearnStage: React.FC<Props> = ({
       currentStage={ReviewStage.D2L}
       currentStageRubric={
         <ReviewRubric
-          scoringCriteria={reviewD2LScoringCriteria}
+          scoringCriteria={REVIEW_D2L_SCORING_CRITERIA}
           scores={scores}
           currentStage={ReviewStage.D2L}
         />
@@ -62,7 +56,7 @@ export const ReviewDriveToLearnStage: React.FC<Props> = ({
               <input
                 type="number"
                 pattern="[1-4]"
-                value={scores.get(ReviewStage.D2L)}
+                value={scores[ReviewStage.D2L]}
                 onChange={(event) => {
                   if (event.target.validity.valid) {
                     updateScore?.(

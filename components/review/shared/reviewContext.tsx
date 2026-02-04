@@ -1,5 +1,5 @@
-import { ReviewStage } from "pages/review";
 import { createContext } from "react";
+import { ReviewStage } from "./constants";
 
 export const ReviewSetStageContext = createContext<
   null | ((newValue: ReviewStage) => void)

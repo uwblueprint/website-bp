@@ -1,8 +1,11 @@
-import { ReviewStage } from "pages/review/index.jsx";
 import React from "react";
+import { ApplicationDTO } from "../../../types";
+import { ReviewStage } from "./constants";
+import { ReviewProgressHeader } from "./ReviewProgressHeader";
 import { ReviewStepper } from "./reviewStepper";
+import { ReviewScores } from "./types";
 
-interface Props {
+export interface Props {
   studentName: string;
   leftTitle?: string;
   rightTitle?: string;
@@ -10,8 +13,9 @@ interface Props {
   leftContent?: JSX.Element;
   rightContent?: JSX.Element;
   currentStage: ReviewStage;
-  scores: Map<ReviewStage, number>;
+  scores: ReviewScores;
   application: ApplicationDTO | undefined;
+  onConflictClick?: () => void;
 }
 
 export const ReviewSplitPanelPage: React.FC<Props> = ({
@@ -23,44 +27,55 @@ export const ReviewSplitPanelPage: React.FC<Props> = ({
   rightContent,
   currentStage,
   scores,
-  application
+  application,
+  onConflictClick,
 }) => {
   return (
-    <div className="grid grid-cols-2 grid-rows-[auto_1fr] h-screen">
-      <div
-        id="left"
-        className="flex flex-col bg-sky w-full h-screen p-9 relative"
-      >
-        {leftTitle ? <h2 className="text-[26px]">{leftTitle}</h2> : null}
+    <div className="flex flex-col h-screen">
+      <ReviewProgressHeader
+        currentStage={currentStage}
+        onConflictClick={onConflictClick}
+      />
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
         <div
-          className="inline-flex flex-col gap-8 shrink overflow-y-auto"
-          style={{ alignItems: "flex-start" }}
+          id="left"
+          className="flex flex-col bg-sky w-full h-full p-9 relative overflow-y-auto"
         >
-          <div className="w-full">{leftContent}</div>
+          {leftTitle ? <h2 className="text-[26px] mb-4">{leftTitle}</h2> : null}
+          <div className="flex-1 relative">
+            <div className="w-full">{leftContent}</div>
+          </div>
         </div>
-      </div>
-      <div id="right" className="h-screen relative flex flex-col h-screen">
-        <div id="right-title" className="px-9 pt-9">
-          <h1 className="text-blue text-4xl">{studentName}</h1>
-        </div>
-        <div className="rightPanel flex-1 px-9 py-10 shrink overflow-y-scroll">
-          <div className=" flex flex-col gap-8">
+        <div
+          id="right"
+          className="flex flex-col h-full overflow-hidden bg-white"
+        >
+          <div id="right-title" className="px-9 pt-6 pb-2">
+            <p className="text-charcoal-500 text-sm mb-1">
+              {studentName}&apos;s Application
+            </p>
             {rightTitle && rightTitleButton ? (
-              <div className="flex justify-between">
-                <h2 className="text-[26px]" style={{ lineHeight: "140%" }}>
+              <div className="flex justify-between items-center">
+                <h2 className="text-[26px] text-charcoal-900 font-semibold">
                   {rightTitle}
                 </h2>
                 {rightTitleButton}
               </div>
             ) : rightTitle ? (
-              <h2 className="text-[26px]" style={{ lineHeight: "140%" }}>
+              <h2 className="text-[26px] text-charcoal-900 font-semibold">
                 {rightTitle}
               </h2>
             ) : null}
+          </div>
+          <div className="flex-1 px-9 py-6 overflow-y-auto">
             <div>{rightContent}</div>
           </div>
+          <ReviewStepper
+            currentStage={currentStage}
+            scores={scores}
+            application={application}
+          />
         </div>
-        <ReviewStepper currentStage={currentStage} scores={scores} application={application} />
       </div>
     </div>
   );

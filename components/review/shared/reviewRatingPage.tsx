@@ -1,6 +1,8 @@
-import { ReviewStage } from "pages/review";
-import { ReviewSplitPanelPage } from "./reviewSplitPanelPage";
 import Button from "@components/common/Button";
+import { ApplicationDTO } from "../../../types";
+import { ReviewStage } from "./constants";
+import { ReviewSplitPanelPage } from "./reviewSplitPanelPage";
+import { ReviewScores } from "./types";
 
 interface Props {
   studentName: string;
@@ -9,7 +11,7 @@ interface Props {
   currentStageAnswers: JSX.Element;
   title: string;
   resumeLink?: string;
-  scores: Map<ReviewStage, number>;
+  scores: ReviewScores;
   contextConsumer: JSX.Element;
   application: ApplicationDTO | undefined;
 }
@@ -45,7 +47,7 @@ export const ReviewRatingPage: React.FC<Props> = ({
   resumeLink,
   scores,
   contextConsumer,
-  application
+  application,
 }) => {
   return (
     <ReviewSplitPanelPage

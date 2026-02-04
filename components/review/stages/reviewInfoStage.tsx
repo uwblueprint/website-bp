@@ -1,12 +1,12 @@
-import { FC, useState, useEffect } from "react";
-import { ReviewStage } from "pages/review";
-import { ReviewSplitPanelPage } from "../shared/reviewSplitPanelPage";
-import Button from "@components/common/Button";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import WarningIcon from "@components/icons/warning.icon";
-import { ApplicationDTO } from "../../../types";
-import { ReviewAnswers } from "./reviewAnswers";
+import Button from "@components/common/Button";
 import { extractShortAnswerData } from "pages/review";
+import { ApplicationDTO } from "../../../types";
+import { ReviewStage } from "../shared/constants";
+import { ReviewSplitPanelPage } from "../shared/reviewSplitPanelPage";
+import { ReviewScores } from "../shared/types";
+import { ReviewAnswers } from "./reviewAnswers";
 
 export type ConflictModalProps = {
   readonly name: string | undefined;
@@ -14,7 +14,7 @@ export type ConflictModalProps = {
   readonly onClose: () => void;
 };
 
-const ConflictModal: FC<ConflictModalProps> = ({ name, open, onClose }) => {
+const ConflictModal = ({ name, open, onClose }: ConflictModalProps) => {
   return open ? (
     <>
       {/* Overlay */}
@@ -66,7 +66,7 @@ const ConflictModal: FC<ConflictModalProps> = ({ name, open, onClose }) => {
 export interface ReviewStageProps {
   name: string;
   application: ApplicationDTO | undefined;
-  scores: Map<ReviewStage, number>;
+  scores: ReviewScores;
 }
 
 export const ReviewInfoStage: React.FC<ReviewStageProps> = ({
@@ -76,6 +76,7 @@ export const ReviewInfoStage: React.FC<ReviewStageProps> = ({
 }) => {
   const [questions, setQuestions] = useState<string[]>([]);
   const [answers, setAnswers] = useState<string[]>([]);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const shortAnswerStr = application?.shortAnswerQuestions[0];
@@ -111,60 +112,47 @@ export const ReviewInfoStage: React.FC<ReviewStageProps> = ({
       ...extractedAnswers,
     ]);
   }, [application]);
-  const [modalOpen, setModalOpen] = useState(false);
+
   return (
-    <ReviewSplitPanelPage
-      studentName={name}
-      rightTitle="Basic Information"
-      rightTitleButton={
-        <Button
-          variant="secondary"
-          onClick={() => setModalOpen(true)}
-          className="whitespace-nowrap"
-          size="sm"
-        >
-          <div className="flex place-items-center space-x-2">
-            <WarningIcon />
-            <p>Conflict</p>
+    <>
+      <ConflictModal
+        name={name}
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+      />
+      <ReviewSplitPanelPage
+        studentName={name}
+        rightTitle="Basic Information"
+        currentStage={ReviewStage.INFO}
+        onConflictClick={() => setModalOpen(true)}
+        leftContent={
+          <div className="flex flex-col place-items-center justify-center absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 space-y-8 place-content-center h-full m-auto w-full">
+            <div className="">
+              <Image
+                height={87}
+                width={440}
+                alt=""
+                src="/common/review-page-banner.svg"
+              />
+            </div>
+            <div>
+              <Image
+                height={300}
+                width={330}
+                alt=""
+                src="/common/review-page-people.svg"
+              />
+            </div>
           </div>
-        </Button>
-      }
-      currentStage={ReviewStage.INFO}
-      leftContent={
-        <div className="flex flex-col place-items-center justify-center absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 space-y-8 place-content-center h-full m-auto w-full">
-          <div className="">
-            <Image
-              height={87}
-              width={440}
-              alt=""
-              src="/common/review-page-banner.svg"
-            />
-          </div>
-          <div>
-            <Image
-              height={300}
-              width={330}
-              alt=""
-              src="/common/review-page-people.svg"
-            />
-          </div>
-        </div>
-      }
-      rightContent={
-        <>
-          {/* Modal */}
-          <ConflictModal
-            name={name}
-            open={modalOpen}
-            onClose={() => setModalOpen(false)}
-          />
+        }
+        rightContent={
           <div className="flex flex-col gap-4">
             <ReviewAnswers questions={questions} answers={answers} />
           </div>
-        </>
-      }
-      scores={scores}
-      application={application}
-    ></ReviewSplitPanelPage>
+        }
+        scores={scores}
+        application={application}
+      ></ReviewSplitPanelPage>
+    </>
   );
 };

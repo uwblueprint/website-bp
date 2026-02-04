@@ -1,4 +1,9 @@
+import { useEffect, useState } from "react";
+import { NextPage } from "next";
+import { useRouter } from "next/router";
 import ProtectedRoute from "@components/context/ProtectedRoute";
+import { ReviewStage } from "@components/review/shared/constants";
+import { ReviewScores } from "@components/review/shared/types";
 import {
   ReviewSetScoresContext,
   ReviewSetStageContext,
@@ -10,23 +15,8 @@ import { ReviewInfoStage } from "@components/review/stages/reviewInfoStage";
 import { ReviewPassionForSocialGoodStage } from "@components/review/stages/reviewPassionForSocialGoodStage";
 import { ReviewSkillStage } from "@components/review/stages/reviewSkillStage";
 import { ReviewTeamPlayerStage } from "@components/review/stages/reviewTeamPlayerStage";
-import { NextPage } from "next";
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
-import { fetchGraphql } from "@utils/makegqlrequest";
-import ProtectedApplication from "./protectedApplication";
-import { queries } from "graphql/queries";
 import { ApplicationDTO, AuthStatus } from "../../types";
-
-export enum ReviewStage {
-  INFO = "INFO",
-  PFSG = "PFSG",
-  TP = "TP",
-  D2L = "D2L",
-  SKL = "SKL",
-  END = "END",
-  END_SUCCESS = "END_SUCCESS",
-}
+import ProtectedApplication from "./protectedApplication";
 
 const sampleApplication: ApplicationDTO = {
   id: 1,
@@ -96,19 +86,23 @@ const ReviewsPages: NextPage = () => {
 
   const reviewId = getReviewId(useRouter().query);
 
-  const initialScores = new Map<ReviewStage, number>();
-  initialScores.set(ReviewStage.PFSG, 1);
-  initialScores.set(ReviewStage.TP, 1);
-  initialScores.set(ReviewStage.D2L, 1);
-  initialScores.set(ReviewStage.SKL, 1);
+  const initialScores: ReviewScores = {
+    [ReviewStage.INFO]: 0,
+    [ReviewStage.PFSG]: 1,
+    [ReviewStage.TP]: 1,
+    [ReviewStage.D2L]: 1,
+    [ReviewStage.SKL]: 1,
+    [ReviewStage.END]: 0,
+    [ReviewStage.END_SUCCESS]: 0,
+  };
 
-  const [scores, setScores] = useState<Map<ReviewStage, number>>(initialScores);
+  const [scores, setScores] = useState<ReviewScores>(initialScores);
   const updateScores = (key: ReviewStage, value: number) => {
-    setScores((map) => {
+    setScores((prev) => {
       if (isNaN(value) || value < 1 || value > 5) {
-        return map;
+        return prev;
       }
-      return new Map(map.set(key, value));
+      return { ...prev, [key]: value };
     });
   };
 
@@ -161,10 +155,10 @@ const ReviewsPages: NextPage = () => {
         );
       case ReviewStage.END:
         return (
-          <ReviewEndStage 
+          <ReviewEndStage
             name={name}
             application={application}
-            scores={scores} 
+            scores={scores}
           />
         );
       case ReviewStage.END_SUCCESS:

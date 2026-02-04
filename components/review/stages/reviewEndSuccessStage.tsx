@@ -1,14 +1,12 @@
 import Button from "@components/common/Button";
-import { ReviewStage } from "pages/review";
+import { ReviewStage } from "../shared/constants";
 import { ReviewSetStageContext } from "../shared/reviewContext";
 
-interface Props {
+export type Props = {
   name: string;
-}
+};
 
-//add href for buttons
-
-export const ReviewEndSuccessStage: React.FC<Props> = ({ name }) => {
+export const ReviewEndSuccessStage = ({ name }: Props) => {
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="flex flex-col items-center w-3/5">
