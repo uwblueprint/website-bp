@@ -23,8 +23,7 @@ export const mutations = {
         id
       }
     }
-  `
-  ,
+  `,
   modifyFinalComments: `
     mutation modifyFinalComments($id: Int!, $newComments: String!, $newSkillCategory: String!, $newRecommendedSecondChoice: String!) {
       modifyFinalComments(id: $id, newComments: $newComments, newSkillCategory: $newSkillCategory, newRecommendedSecondChoice: $newRecommendedSecondChoice) {

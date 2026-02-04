@@ -1,34 +1,42 @@
-import { ReviewStage } from "pages/review";
-import { ReviewSplitPanelPage } from "../shared/reviewSplitPanelPage";
 import { useState } from "react";
+import { ApplicationDTO } from "../../../types";
+import { ReviewStage } from "../shared/constants";
+import { ReviewSplitPanelPage } from "../shared/reviewSplitPanelPage";
 
 interface Props {
   name: string;
   application: ApplicationDTO | undefined;
-  scores: Map<ReviewStage, number>;
+  scores: Record<ReviewStage, number>;
 }
 
-
-export const ReviewEndStage: React.FC<Props> = ({ name, application, scores }) => {
-  const totalScore = scores?.get(ReviewStage.PFSG) + scores?.get(ReviewStage.TP) + scores?.get(ReviewStage.D2L) + scores?.get(ReviewStage.SKL);
-
-  const [selectedOption, setSelectedOption] = useState<string>(''); // State to store the selected option
-  const [comment, setComment] = useState<string>(''); // State to store the comment
+export const ReviewEndStage = ({ name, application, scores }: Props) => {
+  const totalScore =
+    scores[ReviewStage.PFSG] +
+    scores[ReviewStage.TP] +
+    scores[ReviewStage.D2L] +
+    scores[ReviewStage.SKL];
+  const [selectedOption, setSelectedOption] = useState<string>(""); // State to store the selected option
+  const [comment, setComment] = useState<string>(""); // State to store the comment
 
   // Function to handle option change
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    if (!application) return;
     application.skillsCategory = event.target.value;
     setSelectedOption(event.target.value);
   };
-  const handleCommentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCommentChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>,
+  ) => {
+    if (!application) return;
     application.comments = event.target.value;
     setComment(event.target.value);
   };
   const handleChoiceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (application.secondChoiceRole == "considered") {
-      application.secondChoiceRole = "not considered"
+    if (!application) return;
+    if (application.secondChoiceRole === "considered") {
+      application.secondChoiceRole = "not considered";
     } else {
-      application.secondChoiceRole = "considered"
+      application.secondChoiceRole = "considered";
     }
   };
 
@@ -47,35 +55,33 @@ export const ReviewEndStage: React.FC<Props> = ({ name, application, scores }) =
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <span>Passion for Social Good</span>
               <span style={{ textAlign: "right" }}>
-                {scores?.get(ReviewStage.PFSG)}/5
+                {scores[ReviewStage.PFSG]}/5
               </span>
             </div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <span>Team Player</span>
               <span style={{ textAlign: "right" }}>
-                {scores?.get(ReviewStage.TP)}/5
+                {scores[ReviewStage.TP]}/5
               </span>
             </div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <span>Desire to Learn</span>
               <span style={{ textAlign: "right" }}>
-                {scores?.get(ReviewStage.D2L)}/5
+                {scores[ReviewStage.D2L]}/5
               </span>
             </div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <span>Skill</span>
               <span style={{ textAlign: "right" }}>
-                {scores?.get(ReviewStage.SKL)}/5
+                {scores[ReviewStage.SKL]}/5
               </span>
             </div>
           </div>
           <hr className="h-px my-8 bg-gray-200 border-1"></hr>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <h4>Total</h4>
-              <h4 style={{ textAlign: "right" }}>
-                {totalScore}/5
-              </h4>
-            </div>
+            <h4>Total</h4>
+            <h4 style={{ textAlign: "right" }}>{totalScore}/5</h4>
+          </div>
         </div>
       }
       scores={scores}
@@ -85,7 +91,11 @@ export const ReviewEndStage: React.FC<Props> = ({ name, application, scores }) =
           <div>
             <form>
               <h3 className="text-[26px] pt-8">Skills Category</h3>
-              <select value={selectedOption} onChange={handleOptionChange} required>
+              <select
+                value={selectedOption}
+                onChange={handleOptionChange}
+                required
+              >
                 <option value="">Skills Category</option>
                 <option value="junior">Junior</option>
                 <option value="intermediate">Intermediate</option>
@@ -108,10 +118,20 @@ export const ReviewEndStage: React.FC<Props> = ({ name, application, scores }) =
               }}
             />
           </div>
-          <div> 
-            <h3 className="text-[26px]"><span className="text-blue">Second Choice: </span>{application?.secondChoiceRole}</h3>
-            <input className="B10" type="checkbox" id="secondChoice" name="secondChoice" value="secondChoice" onChange={handleChoiceChange}></input>
-            <label>    Recommend for Second Choice</label>
+          <div>
+            <h3 className="text-[26px]">
+              <span className="text-blue">Second Choice: </span>
+              {application?.secondChoiceRole}
+            </h3>
+            <input
+              className="B10"
+              type="checkbox"
+              id="secondChoice"
+              name="secondChoice"
+              value="secondChoice"
+              onChange={handleChoiceChange}
+            ></input>
+            <label> Recommend for Second Choice</label>
           </div>
         </div>
       }
