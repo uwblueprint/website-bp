@@ -51,7 +51,7 @@
       "role": "developer",
       "term": 1243,
       "teams": ["humane-society"],
-      "img": ""
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Angela Li",
@@ -142,14 +142,14 @@
       "role": "product manager",
       "term": 1243,
       "teams": ["mfsn"],
-      "img": ""
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Frank Li",
       "role": "technical lead",
       "term": 1243,
       "teams": ["better-angels"],
-      "img": ""
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
     },
     {
       "name": "Deekshitha Kannan",
