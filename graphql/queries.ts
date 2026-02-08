@@ -18,6 +18,23 @@ export const mutations = {
       refreshToken
     }
   }`,
+  reportReviewConflict: `
+    mutation reportReviewConflict(
+      $applicantRecordId: String!
+      $reviewerId: Int!
+    ) {
+      reportReviewConflict(
+        applicantRecordId: $applicantRecordId
+        reviewerId: $reviewerId
+      ) {
+        applicantRecordId
+        reviewerId
+        status
+        score
+        reviewerHasConflict
+      }
+    }
+  `,
   refresh: `
   mutation refresh($refreshToken: String!) {
     refresh(refreshToken: $refreshToken)
