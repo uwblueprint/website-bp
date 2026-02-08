@@ -1,9 +1,7 @@
-import React from "react";
-import { ApplicationDTO } from "../../../types";
 import { ReviewStage } from "./constants";
 import { ReviewProgressHeader } from "./ReviewProgressHeader";
 import { ReviewStepper } from "./reviewStepper";
-import { ReviewScores } from "./types";
+import { ReviewEndData, ReviewScores } from "./types";
 
 export interface Props {
   studentName: string;
@@ -14,11 +12,11 @@ export interface Props {
   rightContent?: JSX.Element;
   currentStage: ReviewStage;
   scores: ReviewScores;
-  application: ApplicationDTO | undefined;
   onConflictClick?: () => void;
+  endData?: ReviewEndData;
 }
 
-export const ReviewSplitPanelPage: React.FC<Props> = ({
+export const ReviewSplitPanelPage = ({
   studentName,
   leftTitle,
   rightTitle,
@@ -27,9 +25,9 @@ export const ReviewSplitPanelPage: React.FC<Props> = ({
   rightContent,
   currentStage,
   scores,
-  application,
   onConflictClick,
-}) => {
+  endData,
+}: Props) => {
   return (
     <div className="flex flex-col h-screen">
       <ReviewProgressHeader
@@ -73,7 +71,7 @@ export const ReviewSplitPanelPage: React.FC<Props> = ({
           <ReviewStepper
             currentStage={currentStage}
             scores={scores}
-            application={application}
+            endData={endData}
           />
         </div>
       </div>

@@ -1,5 +1,4 @@
 import Button from "@components/common/Button";
-import { ApplicationDTO } from "../../../types";
 import { ReviewStage } from "./constants";
 import { ReviewSplitPanelPage } from "./reviewSplitPanelPage";
 import { ReviewScores } from "./types";
@@ -13,14 +12,13 @@ interface Props {
   resumeLink?: string;
   scores: ReviewScores;
   contextConsumer: JSX.Element;
-  application: ApplicationDTO | undefined;
 }
 
 interface resumeProps {
   resumeLink: string;
 }
 
-const ResumeLink: React.FC<resumeProps> = ({ resumeLink }) => {
+const ResumeLink = ({ resumeLink }: resumeProps) => {
   return (
     <div className="flex flex-col gap-8">
       <Button
@@ -38,7 +36,7 @@ const ResumeLink: React.FC<resumeProps> = ({ resumeLink }) => {
   );
 };
 
-export const ReviewRatingPage: React.FC<Props> = ({
+export const ReviewRatingPage = ({
   studentName,
   currentStage,
   currentStageRubric,
@@ -47,8 +45,7 @@ export const ReviewRatingPage: React.FC<Props> = ({
   resumeLink,
   scores,
   contextConsumer,
-  application,
-}) => {
+}: Props) => {
   return (
     <ReviewSplitPanelPage
       studentName={studentName}
@@ -67,7 +64,6 @@ export const ReviewRatingPage: React.FC<Props> = ({
         </div>
       }
       scores={scores}
-      application={application}
     />
   );
 };

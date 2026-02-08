@@ -63,7 +63,6 @@ export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
         <ReviewAnswers questions={questions} answers={answers} />
       }
       scores={scores}
-      application={application}
     />
   );
 };

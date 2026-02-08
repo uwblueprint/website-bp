@@ -3,7 +3,8 @@ import { NextPage } from "next";
 import { useRouter } from "next/router";
 import ProtectedRoute from "@components/context/ProtectedRoute";
 import { ReviewStage } from "@components/review/shared/constants";
-import { ReviewScores } from "@components/review/shared/types";
+import { ReviewEndData, ReviewScores } from "@components/review/shared/types";
+import { getReviewId } from "@components/review/shared/reviewUtils";
 import {
   ReviewSetScoresContext,
   ReviewSetStageContext,
@@ -47,56 +48,34 @@ const sampleApplication: ApplicationDTO = {
   timestamp: BigInt(1728673405),
 };
 
-export const getReviewId = (query: any): number => {
-  // verify reviewId
-  const reviewId =
-    typeof query["reviewId"] === "string"
-      ? parseInt(query["reviewId"])
-      : (() => {
-          throw new Error("reviewId must be a String");
-        })();
-  if (Number.isNaN(reviewId))
-    throw Error("reviewId must be parsable into an int");
-
-  return reviewId;
-};
-
-export const extractShortAnswerData = (shortAnswerJSON: any) => {
-  const extractedQuestions = shortAnswerJSON.map(
-    (dict: { [key: string]: string }) => dict.question,
-  );
-
-  const extractedAnswers = shortAnswerJSON.map(
-    (dict: { [key: string]: string }) => dict.response,
-  );
-
-  return { extractedQuestions, extractedAnswers };
+const initialScores: ReviewScores = {
+  [ReviewStage.INFO]: 0,
+  [ReviewStage.PFSG]: 1,
+  [ReviewStage.TP]: 1,
+  [ReviewStage.D2L]: 1,
+  [ReviewStage.SKL]: 1,
+  [ReviewStage.END]: 0,
+  [ReviewStage.END_SUCCESS]: 0,
 };
 
 const ReviewsPages: NextPage = () => {
   const router = useRouter();
   const [stage, setStage] = useState<ReviewStage>(ReviewStage.INFO);
   const [application, setApplication] = useState<ApplicationDTO>();
-  const name = application?.firstName + " " + application?.lastName;
-
   const [authStatus, setAuthStatus] = useState<AuthStatus>({
     loading: true,
     isAuthorized: false,
   });
-
-  const reviewId = getReviewId(useRouter().query);
-
-  const initialScores: ReviewScores = {
-    [ReviewStage.INFO]: 0,
-    [ReviewStage.PFSG]: 1,
-    [ReviewStage.TP]: 1,
-    [ReviewStage.D2L]: 1,
-    [ReviewStage.SKL]: 1,
-    [ReviewStage.END]: 0,
-    [ReviewStage.END_SUCCESS]: 0,
-  };
-
+  const [endData, setEndData] = useState<ReviewEndData>({
+    comments: "",
+    skillsCategory: "",
+    secondChoiceRole: "",
+  });
   const [scores, setScores] = useState<ReviewScores>(initialScores);
+
+  const reviewId = router.isReady ? getReviewId(router.query) : null;
+  const name = application?.firstName + " " + application?.lastName;
+
   const updateScores = (key: ReviewStage, value: number) => {
     setScores((prev) => {
       if (isNaN(value) || value < 1 || value > 5) {
@@ -107,9 +86,12 @@ const ReviewsPages: NextPage = () => {
   };
 
   useEffect(() => {
+    if (reviewId === null) return;
     const appInfo = sampleApplication;
     setApplication(appInfo);
   }, [reviewId]);
+
+  if (!router.isReady) return null;
 
   const getReviewStage = () => {
     switch (stage) {
@@ -157,8 +139,9 @@ const ReviewsPages: NextPage = () => {
         return (
           <ReviewEndStage
             name={name}
-            application={application}
             scores={scores}
+            endData={endData}
+            setEndData={setEndData}
           />
         );
       case ReviewStage.END_SUCCESS:
