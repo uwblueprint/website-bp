@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { ApplicationDTO } from "../../../types";
 import { ReviewStage } from "../shared/constants";
-import { ReviewSetScoresContext } from "../shared/reviewContext";
-import { ReviewRatingPage } from "../shared/reviewRatingPage";
+import { ReviewSetScoresContext } from "../shared/ReviewContext";
+import { ReviewRatingPage } from "../shared/ReviewRatingPage";
 import { REVIEW_PFSG_SCORING_CRITERIA } from "../shared/rubricConstants";
 import { ReviewScores } from "../shared/types";
-import { ReviewAnswers } from "./reviewAnswers";
-import { ReviewRubric } from "./reviewRubric";
+import { ReviewAnswers } from "./ReviewAnswers";
+import { ReviewRubric } from "./ReviewRubric";
 
 export interface Props {
   name: string;

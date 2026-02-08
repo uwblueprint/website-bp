@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { ReviewStage } from "../shared/constants";
-import { ReviewSetScoresContext } from "../shared/reviewContext";
-import { ReviewRatingPage } from "../shared/reviewRatingPage";
+import { ReviewSetScoresContext } from "../shared/ReviewContext";
+import { ReviewRatingPage } from "../shared/ReviewRatingPage";
 import { REVIEW_SKL_SCORING_CRITERIA } from "../shared/rubricConstants";
-import { ReviewAnswers } from "./reviewAnswers";
-import { ReviewStageProps } from "./reviewInfoStage";
-import { ReviewRubric } from "./reviewRubric";
+import { ReviewAnswers } from "./ReviewAnswers";
+import { ReviewStageProps } from "./ReviewInfoStage";
+import { ReviewRubric } from "./ReviewRubric";
 
 export const ReviewSkillStage = ({
   name,

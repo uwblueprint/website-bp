@@ -8,14 +8,14 @@ import { getReviewId } from "@components/review/shared/reviewUtils";
 import {
   ReviewSetScoresContext,
   ReviewSetStageContext,
-} from "@components/review/shared/reviewContext";
-import { ReviewDriveToLearnStage } from "@components/review/stages/reviewDriveToLearnStage";
-import { ReviewEndStage } from "@components/review/stages/reviewEndStage";
-import { ReviewEndSuccessStage } from "@components/review/stages/reviewEndSuccessStage";
-import { ReviewInfoStage } from "@components/review/stages/reviewInfoStage";
-import { ReviewPassionForSocialGoodStage } from "@components/review/stages/reviewPassionForSocialGoodStage";
-import { ReviewSkillStage } from "@components/review/stages/reviewSkillStage";
-import { ReviewTeamPlayerStage } from "@components/review/stages/reviewTeamPlayerStage";
+} from "@components/review/shared/ReviewContext";
+import { ReviewDriveToLearnStage } from "@components/review/stages/ReviewDriveToLearnStage";
+import { ReviewEndStage } from "@components/review/stages/ReviewEndStage";
+import { ReviewEndSuccessStage } from "@components/review/stages/ReviewEndSuccessStage";
+import { ReviewInfoStage } from "@components/review/stages/ReviewInfoStage";
+import { ReviewPassionForSocialGoodStage } from "@components/review/stages/ReviewPassionForSocialGoodStage";
+import { ReviewSkillStage } from "@components/review/stages/ReviewSkillStage";
+import { ReviewTeamPlayerStage } from "@components/review/stages/ReviewTeamPlayerStage";
 import { ApplicationDTO, AuthStatus } from "../../types";
 import ProtectedApplication from "./protectedApplication";
 

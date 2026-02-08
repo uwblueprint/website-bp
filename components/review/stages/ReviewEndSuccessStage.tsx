@@ -1,6 +1,6 @@
 import Button from "@components/common/Button";
 import { ReviewStage } from "../shared/constants";
-import { ReviewSetStageContext } from "../shared/reviewContext";
+import { ReviewSetStageContext } from "../shared/ReviewContext";
 
 export type Props = {
   name: string;

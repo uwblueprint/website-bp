@@ -4,7 +4,7 @@ import WarningIcon from "@components/icons/warning.icon";
 import Image from "next/image";
 import Link from "next/link";
 import { ReviewStage } from "./constants";
-import { ReviewSetStageContext } from "./reviewContext";
+import { ReviewSetStageContext } from "./ReviewContext";
 
 interface Props {
   currentStage: ReviewStage;

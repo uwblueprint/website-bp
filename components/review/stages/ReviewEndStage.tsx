@@ -1,6 +1,6 @@
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
 import { ReviewStage } from "../shared/constants";
-import { ReviewSplitPanelPage } from "../shared/reviewSplitPanelPage";
+import { ReviewSplitPanelPage } from "../shared/ReviewSplitPanelPage";
 import { ReviewEndData, ReviewScores } from "../shared/types";
 
 interface Props {
@@ -10,7 +10,12 @@ interface Props {
   setEndData: Dispatch<SetStateAction<ReviewEndData>>;
 }
 
-export const ReviewEndStage = ({ name, scores, endData, setEndData }: Props) => {
+export const ReviewEndStage = ({
+  name,
+  scores,
+  endData,
+  setEndData,
+}: Props) => {
   const { skillsCategory, comments, secondChoiceRole } = endData;
   const totalScore =
     scores[ReviewStage.PFSG] +
@@ -27,7 +32,10 @@ export const ReviewEndStage = ({ name, scores, endData, setEndData }: Props) => 
   const handleChoiceChange = () => {
     setEndData((prev) => ({
       ...prev,
-      secondChoiceRole: prev.secondChoiceRole === "considered" ? "not considered" : "considered",
+      secondChoiceRole:
+        prev.secondChoiceRole === "considered"
+          ? "not considered"
+          : "considered",
     }));
   };
 
@@ -45,27 +53,19 @@ export const ReviewEndStage = ({ name, scores, endData, setEndData }: Props) => 
           <div className="flex flex-col space-y-4">
             <div className="flex justify-between">
               <span>Passion for Social Good</span>
-              <span className="text-right">
-                {scores[ReviewStage.PFSG]}/5
-              </span>
+              <span className="text-right">{scores[ReviewStage.PFSG]}/5</span>
             </div>
             <div className="flex justify-between">
               <span>Team Player</span>
-              <span className="text-right">
-                {scores[ReviewStage.TP]}/5
-              </span>
+              <span className="text-right">{scores[ReviewStage.TP]}/5</span>
             </div>
             <div className="flex justify-between">
               <span>Desire to Learn</span>
-              <span className="text-right">
-                {scores[ReviewStage.D2L]}/5
-              </span>
+              <span className="text-right">{scores[ReviewStage.D2L]}/5</span>
             </div>
             <div className="flex justify-between">
               <span>Skill</span>
-              <span className="text-right">
-                {scores[ReviewStage.SKL]}/5
-              </span>
+              <span className="text-right">{scores[ReviewStage.SKL]}/5</span>
             </div>
           </div>
           <hr className="h-px my-8 bg-gray-200 border-0"></hr>
