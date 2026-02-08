@@ -15,20 +15,6 @@ type AccessToken = {
   readonly user_id: string;
 };
 
-export const getReviewId = (query: any): number => {
-  // verify reviewId
-  const reviewId =
-    typeof query["reviewId"] === "string"
-      ? parseInt(query["reviewId"])
-      : (() => {
-          throw new Error("reviewId must be a String");
-        })();
-  if (Number.isNaN(reviewId))
-    throw Error("reviewId must be parsable into an int");
-
-  return reviewId;
-};
-
 const ProtectedApplication = ({
   children,
   headerInformation,
@@ -37,14 +23,22 @@ const ProtectedApplication = ({
     loading: true,
     isAuthorized: false,
   });
-  const reviewId = getReviewId(headerInformation);
+  // During prerender/export, query params aren't available. Treat missing reviewId as null.
+  const reviewId =
+    typeof headerInformation["reviewId"] === "string"
+      ? headerInformation["reviewId"]
+      : null;
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
-    if (!accessToken) throw Error("undefined accessToken");
+    if (!accessToken) {
+      setAuthStatus({
+        loading: false,
+        isAuthorized: false,
+      });
+      return;
+    }
 
     const decodedToken = jwt_decode<AccessToken>(accessToken);
-    const reviewerUserId = decodedToken.user_id; // this is auth_id in the db
-
     setAuthStatus({
       loading: false,
       isAuthorized: true,

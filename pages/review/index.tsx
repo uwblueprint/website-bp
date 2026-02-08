@@ -17,7 +17,7 @@ import { ReviewPassionForSocialGoodStage } from "@components/review/stages/Revie
 import { ReviewSkillStage } from "@components/review/stages/ReviewSkillStage";
 import { ReviewTeamPlayerStage } from "@components/review/stages/ReviewTeamPlayerStage";
 import { ApplicationDTO, AuthStatus } from "../../types";
-import ProtectedApplication from "./protectedApplication";
+import ProtectedApplication from "@components/review/ProtectedApplication";
 
 const sampleApplication: ApplicationDTO = {
   id: 1,
@@ -86,9 +86,8 @@ const ReviewsPages: NextPage = () => {
   };
 
   useEffect(() => {
-    if (reviewId === null) return;
-    const appInfo = sampleApplication;
-    setApplication(appInfo);
+    if (reviewId == null) return;
+    setApplication(sampleApplication);
   }, [reviewId]);
 
   if (!router.isReady) return null;
