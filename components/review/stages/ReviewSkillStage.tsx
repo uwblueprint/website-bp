@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { ReviewStage } from "../shared/constants";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
 import { ReviewRatingPage } from "../shared/ReviewRatingPage";
@@ -12,34 +11,27 @@ export const ReviewSkillStage = ({
   application,
   scores,
 }: ReviewStageProps) => {
-  const [questions, setQuestions] = useState<string[]>([]);
-  const [answers, setAnswers] = useState<string[]>([]);
   const resumeLink = application?.resumeUrl;
 
-  useEffect(() => {
-    const roleSpecificStr = application?.roleSpecificQuestions[0];
-    if (!roleSpecificStr) return;
-    const roleSpecificStrJSON = JSON.parse(roleSpecificStr);
+  const roleSpecificStr = application?.roleSpecificQuestions[0];
+  const roleSpecificStrJSON = roleSpecificStr
+    ? JSON.parse(roleSpecificStr)
+    : [];
+  const questionsData = roleSpecificStrJSON[0]?.questions || [];
 
-    const questionsData = roleSpecificStrJSON[0]?.questions || [];
-
-    const tempQuestions = questionsData.map(
-      (item: { question?: string; response?: string | string[] }) =>
-        item.question || "",
-    );
-    const tempAnswers = questionsData.flatMap(
-      (item: { question?: string; response?: string | string[] }) => {
-        if (Array.isArray(item.response)) {
-          return [item.response.join(", ")];
-        } else {
-          return item.response;
-        }
-      },
-    );
-
-    setQuestions(tempQuestions);
-    setAnswers(tempAnswers);
-  }, [application]);
+  const questions = questionsData.map(
+    (item: { question?: string; response?: string | string[] }) =>
+      item.question || "",
+  );
+  const answers = questionsData.flatMap(
+    (item: { question?: string; response?: string | string[] }) => {
+      if (Array.isArray(item.response)) {
+        return [item.response.join(", ")];
+      } else {
+        return item.response;
+      }
+    },
+  );
 
   return (
     <ReviewRatingPage
