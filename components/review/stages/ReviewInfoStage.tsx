@@ -1,6 +1,6 @@
 import Button from "@components/common/Button";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ApplicationDTO } from "../../../types";
 import { ReviewStage } from "../shared/constants";
 import { ReviewSplitPanelPage } from "../shared/ReviewSplitPanelPage";
@@ -74,44 +74,34 @@ export const ReviewInfoStage = ({
   application,
   scores,
 }: ReviewStageProps) => {
-  const [questions, setQuestions] = useState<string[]>([]);
-  const [answers, setAnswers] = useState<string[]>([]);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
-  useEffect(() => {
-    const shortAnswerStr = application?.shortAnswerQuestions[0];
-    if (!shortAnswerStr) {
-      return;
-    }
+  const shortAnswerStr = application?.shortAnswerQuestions[0];
+  const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
+  const { extractedAnswers } = extractShortAnswerData(shortAnswerJSON);
 
-    const shortAnswerJSON = JSON.parse(shortAnswerStr);
-    const { extractedAnswers } = extractShortAnswerData(shortAnswerJSON);
+  const questions = [
+    "Email",
+    "Program",
+    "Academic Term",
+    "Where did you hear about us?",
+    "How many times have you applied to Blueprint in the past?",
+    "Pronouns",
+    "Will you be in an academic (school) term or a co-op term?",
+    "Position",
+  ];
 
-    setQuestions([
-      ...questions,
-      "Email",
-      "Program",
-      "Academic Term",
-      "Where did you hear about us?",
-      "How many times have you applied to Blueprint in the past?",
-      "Pronouns",
-      "Will you be in an academic (school) term or a co-op term?",
-      "Position",
-    ]);
-
-    setAnswers([
-      ...answers,
-      application?.email ?? "",
-      application?.program ?? "",
-      application?.academicYear ?? "",
-      application?.heardFrom ?? "",
-      application?.timesApplied ?? "",
-      application?.pronouns ?? "",
-      application?.academicOrCoop ?? "",
-      application?.firstChoiceRole ?? "",
-      ...extractedAnswers,
-    ]);
-  }, [application]);
+  const answers = [
+    application?.email ?? "",
+    application?.program ?? "",
+    application?.academicYear ?? "",
+    application?.heardFrom ?? "",
+    application?.timesApplied ?? "",
+    application?.pronouns ?? "",
+    application?.academicOrCoop ?? "",
+    application?.firstChoiceRole ?? "",
+    ...extractedAnswers,
+  ];
 
   return (
     <>

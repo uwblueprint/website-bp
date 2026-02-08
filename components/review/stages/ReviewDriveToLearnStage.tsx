@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { ApplicationDTO } from "../../../types";
 import { ReviewStage } from "../shared/constants";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
@@ -19,19 +18,10 @@ export const ReviewDriveToLearnStage = ({
   application,
   scores,
 }: Props) => {
-  const [questions, setQuestions] = useState<string[]>([]);
-  const [answers, setAnswers] = useState<string[]>([]);
-
-  useEffect(() => {
-    const shortAnswerStr = application?.shortAnswerQuestions[0];
-    if (!shortAnswerStr) return;
-    const shortAnswerJSON = JSON.parse(shortAnswerStr);
-    const question = shortAnswerJSON[3]?.question;
-    const answer = shortAnswerJSON[3]?.response;
-
-    setQuestions([question]);
-    setAnswers([answer]);
-  }, [application]);
+  const shortAnswerStr = application?.shortAnswerQuestions[0];
+  const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
+  const questions = [shortAnswerJSON[3]?.question];
+  const answers = [shortAnswerJSON[3]?.response];
   return (
     <ReviewRatingPage
       studentName={name}
