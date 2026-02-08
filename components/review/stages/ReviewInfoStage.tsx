@@ -3,10 +3,10 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ApplicationDTO } from "../../../types";
 import { ReviewStage } from "../shared/constants";
-import { ReviewSplitPanelPage } from "../shared/reviewSplitPanelPage";
+import { ReviewSplitPanelPage } from "../shared/ReviewSplitPanelPage";
 import { extractShortAnswerData } from "../shared/reviewUtils";
 import { ReviewScores } from "../shared/types";
-import { ReviewAnswers } from "./reviewAnswers";
+import { ReviewAnswers } from "./ReviewAnswers";
 
 export type ConflictModalProps = {
   readonly name: string | undefined;

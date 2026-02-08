@@ -1,6 +1,6 @@
 import Button from "@components/common/Button";
 import { ReviewStage } from "./constants";
-import { ReviewSplitPanelPage } from "./reviewSplitPanelPage";
+import { ReviewSplitPanelPage } from "./ReviewSplitPanelPage";
 import { ReviewScores } from "./types";
 
 interface Props {

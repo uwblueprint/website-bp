@@ -4,7 +4,7 @@ import { mutations } from "graphql/queries";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import { REVIEW_STAGES, ReviewStage } from "./constants";
-import { ReviewSetStageContext } from "./reviewContext";
+import { ReviewSetStageContext } from "./ReviewContext";
 import { getReviewId } from "./reviewUtils";
 import { ReviewEndData, ReviewScores } from "./types";
 

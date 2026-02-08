@@ -1,6 +1,6 @@
 import { ReviewStage } from "./constants";
 import { ReviewProgressHeader } from "./ReviewProgressHeader";
-import { ReviewStepper } from "./reviewStepper";
+import { ReviewStepper } from "./ReviewStepper";
 import { ReviewEndData, ReviewScores } from "./types";
 
 export interface Props {
