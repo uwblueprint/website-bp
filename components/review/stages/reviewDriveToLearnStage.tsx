@@ -14,11 +14,11 @@ interface Props {
   scores: ReviewScores;
 }
 
-export const ReviewDriveToLearnStage: React.FC<Props> = ({
+export const ReviewDriveToLearnStage = ({
   name,
   application,
   scores,
-}) => {
+}: Props) => {
   const [questions, setQuestions] = useState<string[]>([]);
   const [answers, setAnswers] = useState<string[]>([]);
 
@@ -48,7 +48,6 @@ export const ReviewDriveToLearnStage: React.FC<Props> = ({
         <ReviewAnswers questions={questions} answers={answers} />
       }
       scores={scores}
-      application={application}
       contextConsumer={
         <ReviewSetScoresContext.Consumer>
           {(updateScore) => (

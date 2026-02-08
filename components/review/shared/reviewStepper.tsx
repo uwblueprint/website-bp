@@ -2,22 +2,28 @@ import Button from "@components/common/Button";
 import { fetchGraphql } from "@utils/makegqlrequest";
 import { mutations } from "graphql/queries";
 import { useRouter } from "next/router";
-import React, { useMemo } from "react";
-import { ApplicationDTO } from "../../../types";
+import { useMemo, useState } from "react";
 import { REVIEW_STAGES, ReviewStage } from "./constants";
 import { ReviewSetStageContext } from "./reviewContext";
-import { ReviewScores } from "./types";
+import { getReviewId } from "./reviewUtils";
+import { ReviewEndData, ReviewScores } from "./types";
 
 interface Props {
   currentStage: ReviewStage;
   scores: ReviewScores;
-  application: ApplicationDTO | undefined;
+  endData?: ReviewEndData;
 }
 
-export const ReviewStepper = ({ currentStage, application, scores }: Props) => {
+export const ReviewStepper = ({ currentStage, scores, endData }: Props) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
   const currentStageIndex = useMemo(() => {
     return REVIEW_STAGES.indexOf(currentStage);
   }, [currentStage]);
+
+  if (!router.isReady) return null;
+
+  const reviewId = getReviewId(router.query);
 
   const getNextStage = () => {
     if (currentStageIndex < REVIEW_STAGES.length - 1) {
@@ -36,16 +42,9 @@ export const ReviewStepper = ({ currentStage, application, scores }: Props) => {
       currentStage === ReviewStage.END_SUCCESS
     ) {
       return false;
-    } else if (scores === undefined) {
-      return false;
-    } else {
-      const currScore = scores[currentStage];
-      if (currScore > 0 && currScore <= 5) {
-        return false;
-      } else {
-        return true;
-      }
     }
+    const currScore = scores[currentStage];
+    return !(currScore > 0 && currScore <= 5);
   };
 
   const sendRatingData = (
@@ -53,12 +52,10 @@ export const ReviewStepper = ({ currentStage, application, scores }: Props) => {
     ratingToBeChanged: string,
     newValue: number | undefined,
   ) => {
-    fetchGraphql(mutations.changeRating, {
+    return fetchGraphql(mutations.changeRating, {
       id: id,
       ratingToBeChanged: ratingToBeChanged,
       newValue: newValue,
-    }).then(() => {
-      // Rating update handled by backend
     });
   };
 
@@ -68,44 +65,27 @@ export const ReviewStepper = ({ currentStage, application, scores }: Props) => {
     newSkillCategory: string,
     newRecommendedSecondChoice: string,
   ) => {
-    fetchGraphql(mutations.modifyFinalComments, {
+    return fetchGraphql(mutations.modifyFinalComments, {
       id: id,
       newComments: newComments,
       newSkillCategory: newSkillCategory,
       newRecommendedSecondChoice: newRecommendedSecondChoice,
-    }).then(() => {
-      // Comments update handled by backend
     });
   };
 
-  const getReviewId = (
-    query: Record<string, string | string[] | undefined>,
-  ): number => {
-    const reviewId =
-      typeof query["reviewId"] === "string"
-        ? parseInt(query["reviewId"])
-        : (() => {
-            throw new Error("reviewId must be a String");
-          })();
-    if (Number.isNaN(reviewId))
-      throw Error("reviewId must be parsable into an int");
-
-    return reviewId;
-  };
-
-  const reviewId = getReviewId(useRouter().query);
-
-  const updateAllData = () => {
-    sendRatingData(reviewId, "passionFSG", scores[ReviewStage.PFSG]);
-    sendRatingData(reviewId, "teamPlayer", scores[ReviewStage.TP]);
-    sendRatingData(reviewId, "desireToLearn", scores[ReviewStage.D2L]);
-    sendRatingData(reviewId, "skill", scores[ReviewStage.SKL]);
-    sendFinalComments(
-      reviewId,
-      application?.comments ?? "",
-      application?.skillsCategory ?? "",
-      application?.secondChoiceRole ?? "",
-    );
+  const updateAllData = async () => {
+    await Promise.all([
+      sendRatingData(reviewId, "passionFSG", scores[ReviewStage.PFSG]),
+      sendRatingData(reviewId, "teamPlayer", scores[ReviewStage.TP]),
+      sendRatingData(reviewId, "desireToLearn", scores[ReviewStage.D2L]),
+      sendRatingData(reviewId, "skill", scores[ReviewStage.SKL]),
+      sendFinalComments(
+        reviewId,
+        endData?.comments ?? "",
+        endData?.skillsCategory ?? "",
+        endData?.secondChoiceRole ?? "",
+      ),
+    ]);
   };
 
   // Don't show navigation on success page
@@ -130,12 +110,21 @@ export const ReviewStepper = ({ currentStage, application, scores }: Props) => {
             {currentStage === ReviewStage.END ? (
               <Button
                 size="sm"
-                onClick={() => {
-                  updateAllData();
-                  setStage?.(ReviewStage.END_SUCCESS);
+                disabled={isSubmitting}
+                onClick={async () => {
+                  setIsSubmitting(true);
+                  try {
+                    await updateAllData();
+                    setStage?.(ReviewStage.END_SUCCESS);
+                  } catch (error) {
+                    console.error("Failed to submit review data:", error);
+                    alert("Failed to submit review. Please try again.");
+                  } finally {
+                    setIsSubmitting(false);
+                  }
                 }}
               >
-                Finish
+                {isSubmitting ? "Submitting..." : "Finish"}
               </Button>
             ) : (
               <Button

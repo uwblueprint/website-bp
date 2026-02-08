@@ -71,7 +71,6 @@ export const ReviewPassionForSocialGoodStage = ({
           <ReviewAnswers questions={questions} answers={answers} />
         }
         scores={scores}
-        application={application}
       />
     </>
   );

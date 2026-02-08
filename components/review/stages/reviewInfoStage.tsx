@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import Image from "next/image";
 import Button from "@components/common/Button";
-import { extractShortAnswerData } from "pages/review";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import { ApplicationDTO } from "../../../types";
 import { ReviewStage } from "../shared/constants";
 import { ReviewSplitPanelPage } from "../shared/reviewSplitPanelPage";
+import { extractShortAnswerData } from "../shared/reviewUtils";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./reviewAnswers";
 
@@ -69,11 +69,11 @@ export interface ReviewStageProps {
   scores: ReviewScores;
 }
 
-export const ReviewInfoStage: React.FC<ReviewStageProps> = ({
+export const ReviewInfoStage = ({
   name,
   application,
   scores,
-}) => {
+}: ReviewStageProps) => {
   const [questions, setQuestions] = useState<string[]>([]);
   const [answers, setAnswers] = useState<string[]>([]);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -151,7 +151,6 @@ export const ReviewInfoStage: React.FC<ReviewStageProps> = ({
           </div>
         }
         scores={scores}
-        application={application}
       ></ReviewSplitPanelPage>
     </>
   );

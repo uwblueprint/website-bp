@@ -1,43 +1,34 @@
-import { useState } from "react";
-import { ApplicationDTO } from "../../../types";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
 import { ReviewStage } from "../shared/constants";
 import { ReviewSplitPanelPage } from "../shared/reviewSplitPanelPage";
+import { ReviewEndData, ReviewScores } from "../shared/types";
 
 interface Props {
   name: string;
-  application: ApplicationDTO | undefined;
-  scores: Record<ReviewStage, number>;
+  scores: ReviewScores;
+  endData: ReviewEndData;
+  setEndData: Dispatch<SetStateAction<ReviewEndData>>;
 }
 
-export const ReviewEndStage = ({ name, application, scores }: Props) => {
+export const ReviewEndStage = ({ name, scores, endData, setEndData }: Props) => {
+  const { skillsCategory, comments, secondChoiceRole } = endData;
   const totalScore =
     scores[ReviewStage.PFSG] +
     scores[ReviewStage.TP] +
     scores[ReviewStage.D2L] +
     scores[ReviewStage.SKL];
-  const [selectedOption, setSelectedOption] = useState<string>(""); // State to store the selected option
-  const [comment, setComment] = useState<string>(""); // State to store the comment
 
-  // Function to handle option change
-  const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    if (!application) return;
-    application.skillsCategory = event.target.value;
-    setSelectedOption(event.target.value);
+  const handleOptionChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setEndData((prev) => ({ ...prev, skillsCategory: event.target.value }));
   };
-  const handleCommentChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>,
-  ) => {
-    if (!application) return;
-    application.comments = event.target.value;
-    setComment(event.target.value);
+  const handleCommentChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setEndData((prev) => ({ ...prev, comments: event.target.value }));
   };
-  const handleChoiceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!application) return;
-    if (application.secondChoiceRole === "considered") {
-      application.secondChoiceRole = "not considered";
-    } else {
-      application.secondChoiceRole = "considered";
-    }
+  const handleChoiceChange = () => {
+    setEndData((prev) => ({
+      ...prev,
+      secondChoiceRole: prev.secondChoiceRole === "considered" ? "not considered" : "considered",
+    }));
   };
 
   return (
@@ -46,53 +37,53 @@ export const ReviewEndStage = ({ name, application, scores }: Props) => {
       currentStage={ReviewStage.END}
       leftTitle={"Summary of scores"}
       leftContent={
-        <div className="flow-root pl-5 pr-5">
+        <div className="flow-root px-5">
           <div className="flow-root pt-20 pb-5">
             <h4 className="text-blue float-left B10">Topic</h4>
             <h4 className="text-blue float-right B10">Rating</h4>
           </div>
           <div className="flex flex-col space-y-4">
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div className="flex justify-between">
               <span>Passion for Social Good</span>
-              <span style={{ textAlign: "right" }}>
+              <span className="text-right">
                 {scores[ReviewStage.PFSG]}/5
               </span>
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div className="flex justify-between">
               <span>Team Player</span>
-              <span style={{ textAlign: "right" }}>
+              <span className="text-right">
                 {scores[ReviewStage.TP]}/5
               </span>
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div className="flex justify-between">
               <span>Desire to Learn</span>
-              <span style={{ textAlign: "right" }}>
+              <span className="text-right">
                 {scores[ReviewStage.D2L]}/5
               </span>
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div className="flex justify-between">
               <span>Skill</span>
-              <span style={{ textAlign: "right" }}>
+              <span className="text-right">
                 {scores[ReviewStage.SKL]}/5
               </span>
             </div>
           </div>
-          <hr className="h-px my-8 bg-gray-200 border-1"></hr>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <hr className="h-px my-8 bg-gray-200 border-0"></hr>
+          <div className="flex justify-between">
             <h4>Total</h4>
-            <h4 style={{ textAlign: "right" }}>{totalScore}/5</h4>
+            <h4 className="text-right">{totalScore}/20</h4>
           </div>
         </div>
       }
       scores={scores}
-      application={application}
+      endData={endData}
       rightContent={
-        <div className="flex flex-col space-y-4 pl-5 pr-5">
+        <div className="flex flex-col space-y-4 px-5">
           <div>
             <form>
               <h3 className="text-[26px] pt-8">Skills Category</h3>
               <select
-                value={selectedOption}
+                value={skillsCategory}
                 onChange={handleOptionChange}
                 required
               >
@@ -107,21 +98,16 @@ export const ReviewEndStage = ({ name, application, scores }: Props) => {
           <div>
             <h3 className="text-[26px]">Comments</h3>
             <textarea
-              value={comment}
+              value={comments}
               onChange={handleCommentChange}
               placeholder="Leave comments here"
-              style={{
-                width: "100%",
-                height: "100px",
-                padding: "8px",
-                fontSize: "16px",
-              }}
+              className="w-full h-[100px] p-2 text-base"
             />
           </div>
           <div>
             <h3 className="text-[26px]">
               <span className="text-blue">Second Choice: </span>
-              {application?.secondChoiceRole}
+              {secondChoiceRole}
             </h3>
             <input
               className="B10"

@@ -7,11 +7,11 @@ import { ReviewAnswers } from "./reviewAnswers";
 import { ReviewStageProps } from "./reviewInfoStage";
 import { ReviewRubric } from "./reviewRubric";
 
-export const ReviewSkillStage: React.FC<ReviewStageProps> = ({
+export const ReviewSkillStage = ({
   name,
   application,
   scores,
-}) => {
+}: ReviewStageProps) => {
   const [questions, setQuestions] = useState<string[]>([]);
   const [answers, setAnswers] = useState<string[]>([]);
   const resumeLink = application?.resumeUrl;
@@ -58,7 +58,6 @@ export const ReviewSkillStage: React.FC<ReviewStageProps> = ({
       }
       resumeLink={resumeLink}
       scores={scores}
-      application={application}
       contextConsumer={
         <ReviewSetScoresContext.Consumer>
           {(updateScore) => (

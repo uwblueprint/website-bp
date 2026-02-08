@@ -3,7 +3,6 @@ import CheckIcon from "@components/icons/check.icon";
 import WarningIcon from "@components/icons/warning.icon";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { ReviewStage } from "./constants";
 import { ReviewSetStageContext } from "./reviewContext";
 
@@ -29,10 +28,10 @@ const steps: StepConfig[] = [
   { label: "END", index: 6, stage: ReviewStage.END },
 ];
 
-export const ReviewProgressHeader: React.FC<Props> = ({
+export const ReviewProgressHeader = ({
   currentStage,
   onConflictClick,
-}) => {
+}: Props) => {
   const getStepState = (step: StepConfig): StepState => {
     if (step.stage === currentStage) {
       return "current";
@@ -107,7 +106,7 @@ interface StepIndicatorProps {
   state: StepState;
 }
 
-const StepIndicator: React.FC<StepIndicatorProps> = ({ step, state }) => {
+const StepIndicator = ({ step, state }: StepIndicatorProps) => {
   const getCircleStyles = (): string => {
     switch (state) {
       case "completed":
