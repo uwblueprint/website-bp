@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ReviewStage } from "./constants";
 import { ReviewSetStageContext } from "./ReviewContext";
+import { useContext } from "react";
 
 interface Props {
   currentStage: ReviewStage;
@@ -28,23 +29,18 @@ const steps: StepConfig[] = [
   { label: "END", index: 6, stage: ReviewStage.END },
 ];
 
+const getStepState = (step: StepConfig, currentIndex: number): StepState => {
+  const stepIndex = steps.indexOf(step);
+  if (stepIndex === currentIndex) return "current";
+  if (stepIndex < currentIndex) return "completed";
+  return "future";
+};
+
 export const ReviewProgressHeader = ({
   currentStage,
   onConflictClick,
 }: Props) => {
-  const getStepState = (step: StepConfig): StepState => {
-    if (step.stage === currentStage) {
-      return "current";
-    }
-
-    const currentIndex = steps.findIndex((s) => s.stage === currentStage);
-    const stepIndex = steps.findIndex((s) => s.stage === step.stage);
-
-    if (stepIndex < currentIndex) {
-      return "completed";
-    }
-    return "future";
-  };
+  const currentIndex = steps.findIndex((s) => s.stage === currentStage);
 
   return (
     <header className="bg-blue w-full">
@@ -66,7 +62,7 @@ export const ReviewProgressHeader = ({
             <StepIndicator
               key={step.index}
               step={step}
-              state={getStepState(step)}
+              state={getStepState(step, currentIndex)}
             />
           ))}
         </div>
@@ -106,55 +102,39 @@ interface StepIndicatorProps {
   state: StepState;
 }
 
-const StepIndicator = ({ step, state }: StepIndicatorProps) => {
-  const getCircleStyles = (): string => {
-    switch (state) {
-      case "completed":
-        return "bg-success border-success";
-      case "current":
-        return "bg-white border-white";
-      case "future":
-        return "bg-transparent border-white/60";
-    }
-  };
-
-  const getNumberStyles = (): string => {
-    switch (state) {
-      case "completed":
-        return "text-white";
-      case "current":
-        return "text-blue font-bold";
-      case "future":
-        return "text-white/80";
-    }
-  };
-
-  return (
-    <ReviewSetStageContext.Consumer>
-      {(setStage) => (
-        <button
-          onClick={() => setStage?.(step.stage)}
-          className="flex flex-col items-center gap-1 hover:opacity-80 transition-opacity"
-          aria-label={`Navigate to ${step.label} step`}
-        >
-          <div
-            className={`w-9 h-9 rounded-full border-2 flex items-center justify-center ${getCircleStyles()}`}
-          >
-            {state === "completed" ? (
-              <CheckIcon className="w-5 h-5 text-white" />
-            ) : (
-              <span className={`text-sm ${getNumberStyles()}`}>
-                {step.index}
-              </span>
-            )}
-          </div>
-          <span className="text-white text-xs font-medium uppercase tracking-wide">
-            {step.label}
-          </span>
-        </button>
-      )}
-    </ReviewSetStageContext.Consumer>
-  );
+const circleStyles: Record<StepState, string> = {
+  completed: "bg-success border-success",
+  current: "bg-white border-white",
+  future: "bg-transparent border-white/60",
 };
 
-export default ReviewProgressHeader;
+const numberStyles: Record<StepState, string> = {
+  completed: "text-white",
+  current: "text-blue font-bold",
+  future: "text-white/80",
+};
+
+const StepIndicator = ({ step, state }: StepIndicatorProps) => {
+  const setStage = useContext(ReviewSetStageContext);
+
+  return (
+    <button
+      onClick={() => setStage?.(step.stage)}
+      className="flex flex-col items-center gap-1 hover:opacity-80 transition-opacity"
+      aria-label={`Navigate to ${step.label} step`}
+    >
+      <div
+        className={`w-9 h-9 rounded-full border-2 flex items-center justify-center ${circleStyles[state]}`}
+      >
+        {state === "completed" ? (
+          <CheckIcon className="w-5 h-5 text-white" />
+        ) : (
+          <span className={`text-sm ${numberStyles[state]}`}>{step.index}</span>
+        )}
+      </div>
+      <span className="text-white text-xs font-medium uppercase tracking-wide">
+        {step.label}
+      </span>
+    </button>
+  );
+};
