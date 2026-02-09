@@ -14,88 +14,43 @@ export interface ReviewStageProps {
   scores: ReviewScores;
 }
 
-export const ReviewInfoStage = ({
-  name,
-  application,
-  scores,
-}: ReviewStageProps) => {
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const shortAnswerStr = application?.shortAnswerQuestions[0];
-  const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
-  const { extractedAnswers } = extractShortAnswerData(shortAnswerJSON);
-
-  const questions = [
-    "Email",
-    "Program",
-    "Academic Term",
-    "Where did you hear about us?",
-    "How many times have you applied to Blueprint in the past?",
-    "Pronouns",
-    "Will you be in an academic (school) term or a co-op term?",
-    "Position",
-  ];
-
-  const answers = [
-    application?.email ?? "",
-    application?.program ?? "",
-    application?.academicYear ?? "",
-    application?.heardFrom ?? "",
-    application?.timesApplied ?? "",
-    application?.pronouns ?? "",
-    application?.academicOrCoop ?? "",
-    application?.firstChoiceRole ?? "",
-    ...extractedAnswers,
-  ];
-
-  return (
-    <>
-      <ConflictModal
-        name={name}
-        open={modalOpen}
-        onClose={() => setModalOpen(false)}
+const InfoBanner = () => (
+  <div className="flex flex-col place-items-center justify-center absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 space-y-8 place-content-center h-full m-auto w-full">
+    <div>
+      <Image
+        height={87}
+        width={440}
+        alt=""
+        src="/common/review-page-banner.svg"
       />
-      <ReviewSplitPanelPage
-        studentName={name}
-        rightTitle="Basic Information"
-        currentStage={ReviewStage.INFO}
-        onConflictClick={() => setModalOpen(true)}
-        leftContent={
-          <div className="flex flex-col place-items-center justify-center absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 space-y-8 place-content-center h-full m-auto w-full">
-            <div>
-              <Image
-                height={87}
-                width={440}
-                alt=""
-                src="/common/review-page-banner.svg"
-              />
-            </div>
-            <div>
-              <Image
-                height={300}
-                width={330}
-                alt=""
-                src="/common/review-page-people.svg"
-              />
-            </div>
-          </div>
-        }
-        rightContent={
-          <div className="flex flex-col gap-4">
-            <ReviewAnswers questions={questions} answers={answers} />
-          </div>
-        }
-        scores={scores}
+    </div>
+    <div>
+      <Image
+        height={300}
+        width={330}
+        alt=""
+        src="/common/review-page-people.svg"
       />
-    </>
-  );
-};
+    </div>
+  </div>
+);
 
 type ConflictModalProps = {
   readonly name: string | undefined;
   readonly open: boolean;
   readonly onClose: () => void;
 };
+
+const INFO_QUESTIONS = [
+  "Email",
+  "Program",
+  "Academic Term",
+  "Where did you hear about us?",
+  "How many times have you applied to Blueprint in the past?",
+  "Pronouns",
+  "Will you be in an academic (school) term or a co-op term?",
+  "Position",
+];
 
 const ConflictModal = ({ name, open, onClose }: ConflictModalProps) => {
   return open ? (
@@ -137,4 +92,51 @@ const ConflictModal = ({ name, open, onClose }: ConflictModalProps) => {
       </div>
     </div>
   ) : null;
+};
+
+export const ReviewInfoStage = ({
+  name,
+  application,
+  scores,
+}: ReviewStageProps) => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const shortAnswerStr = application?.shortAnswerQuestions[0];
+  const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
+  const { extractedAnswers } = extractShortAnswerData(shortAnswerJSON);
+
+  const answers = [
+    application?.email ?? "",
+    application?.program ?? "",
+    application?.academicYear ?? "",
+    application?.heardFrom ?? "",
+    application?.timesApplied ?? "",
+    application?.pronouns ?? "",
+    application?.academicOrCoop ?? "",
+    application?.firstChoiceRole ?? "",
+    ...extractedAnswers,
+  ];
+
+  return (
+    <>
+      <ConflictModal
+        name={name}
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+      />
+      <ReviewSplitPanelPage
+        studentName={name}
+        rightTitle="Basic Information"
+        currentStage={ReviewStage.INFO}
+        onConflictClick={() => setModalOpen(true)}
+        leftContent={<InfoBanner />}
+        rightContent={
+          <div className="flex flex-col gap-4">
+            <ReviewAnswers questions={INFO_QUESTIONS} answers={answers} />
+          </div>
+        }
+        scores={scores}
+      />
+    </>
+  );
 };

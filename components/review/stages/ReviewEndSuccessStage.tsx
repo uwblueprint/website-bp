@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import Button from "@components/common/Button";
 import { ReviewStage } from "../shared/constants";
 import { ReviewSetStageContext } from "../shared/ReviewContext";
@@ -7,6 +8,8 @@ export type Props = {
 };
 
 export const ReviewEndSuccessStage = ({ name }: Props) => {
+  const setStage = useContext(ReviewSetStageContext);
+
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="flex flex-col items-center w-3/5">
@@ -21,22 +24,18 @@ export const ReviewEndSuccessStage = ({ name }: Props) => {
           Your review for <span className="text-blue">{name}</span> has been
           submitted!
         </h4>
-        <ReviewSetStageContext.Consumer>
-          {(setStage) => (
-            <div className="flex flex-col items-center">
-              <Button size="sm" href="/admin" className="mb-2">
-                All Done!
-              </Button>
-              <Button
-                size="sm"
-                variant="secondary"
-                onClick={() => setStage?.(ReviewStage.INFO)}
-              >
-                Edit Review
-              </Button>
-            </div>
-          )}
-        </ReviewSetStageContext.Consumer>
+        <div className="flex flex-col items-center">
+          <Button size="sm" href="/admin" className="mb-2">
+            All Done!
+          </Button>
+          <Button
+            size="sm"
+            variant="secondary"
+            onClick={() => setStage?.(ReviewStage.INFO)}
+          >
+            Edit Review
+          </Button>
+        </div>
       </div>
     </div>
   );

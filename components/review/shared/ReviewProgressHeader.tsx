@@ -36,6 +36,48 @@ const getStepState = (step: StepConfig, currentIndex: number): StepState => {
   return "future";
 };
 
+interface StepIndicatorProps {
+  step: StepConfig;
+  state: StepState;
+}
+
+const circleStyles: Record<StepState, string> = {
+  completed: "bg-success border-success",
+  current: "bg-white border-white",
+  future: "bg-transparent border-white/60",
+};
+
+const numberStyles: Record<StepState, string> = {
+  completed: "text-white",
+  current: "text-blue font-bold",
+  future: "text-white/80",
+};
+
+const StepIndicator = ({ step, state }: StepIndicatorProps) => {
+  const setStage = useContext(ReviewSetStageContext);
+
+  return (
+    <button
+      onClick={() => setStage?.(step.stage)}
+      className="flex flex-col items-center gap-1 hover:opacity-80 transition-opacity"
+      aria-label={`Navigate to ${step.label} step`}
+    >
+      <div
+        className={`w-9 h-9 rounded-full border-2 flex items-center justify-center ${circleStyles[state]}`}
+      >
+        {state === "completed" ? (
+          <CheckIcon className="w-5 h-5 text-white" />
+        ) : (
+          <span className={`text-sm ${numberStyles[state]}`}>{step.index}</span>
+        )}
+      </div>
+      <span className="text-white text-xs font-medium uppercase tracking-wide">
+        {step.label}
+      </span>
+    </button>
+  );
+};
+
 export const ReviewProgressHeader = ({
   currentStage,
   onConflictClick,
@@ -94,47 +136,5 @@ export const ReviewProgressHeader = ({
         </div>
       </div>
     </header>
-  );
-};
-
-interface StepIndicatorProps {
-  step: StepConfig;
-  state: StepState;
-}
-
-const circleStyles: Record<StepState, string> = {
-  completed: "bg-success border-success",
-  current: "bg-white border-white",
-  future: "bg-transparent border-white/60",
-};
-
-const numberStyles: Record<StepState, string> = {
-  completed: "text-white",
-  current: "text-blue font-bold",
-  future: "text-white/80",
-};
-
-const StepIndicator = ({ step, state }: StepIndicatorProps) => {
-  const setStage = useContext(ReviewSetStageContext);
-
-  return (
-    <button
-      onClick={() => setStage?.(step.stage)}
-      className="flex flex-col items-center gap-1 hover:opacity-80 transition-opacity"
-      aria-label={`Navigate to ${step.label} step`}
-    >
-      <div
-        className={`w-9 h-9 rounded-full border-2 flex items-center justify-center ${circleStyles[state]}`}
-      >
-        {state === "completed" ? (
-          <CheckIcon className="w-5 h-5 text-white" />
-        ) : (
-          <span className={`text-sm ${numberStyles[state]}`}>{step.index}</span>
-        )}
-      </div>
-      <span className="text-white text-xs font-medium uppercase tracking-wide">
-        {step.label}
-      </span>
-    </button>
   );
 };
