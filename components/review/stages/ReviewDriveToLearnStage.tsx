@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { ApplicationDTO } from "../../../types";
 import { ReviewStage } from "../shared/constants";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
@@ -18,6 +19,7 @@ export const ReviewDriveToLearnStage = ({
   application,
   scores,
 }: Props) => {
+  const updateScore = useContext(ReviewSetScoresContext);
   const shortAnswerStr = application?.shortAnswerQuestions[0];
   const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
   const questions = [shortAnswerJSON[3]?.question];
@@ -39,26 +41,19 @@ export const ReviewDriveToLearnStage = ({
       }
       scores={scores}
       contextConsumer={
-        <ReviewSetScoresContext.Consumer>
-          {(updateScore) => (
-            <div className="flex items-center justify-end">
-              <input
-                type="number"
-                pattern="[1-4]"
-                value={scores[ReviewStage.D2L]}
-                onChange={(event) => {
-                  if (event.target.validity.valid) {
-                    updateScore?.(
-                      ReviewStage.D2L,
-                      parseInt(event.target.value),
-                    );
-                  }
-                }}
-              />
-              <h5 className="text-red-500 inline-block px-2 text-xl">*</h5>
-            </div>
-          )}
-        </ReviewSetScoresContext.Consumer>
+        <div className="flex items-center justify-end">
+          <input
+            type="number"
+            pattern="[1-4]"
+            value={scores[ReviewStage.D2L]}
+            onChange={(event) => {
+              if (event.target.validity.valid) {
+                updateScore?.(ReviewStage.D2L, parseInt(event.target.value));
+              }
+            }}
+          />
+          <h5 className="text-red-500 inline-block px-2 text-xl">*</h5>
+        </div>
       }
     />
   );
