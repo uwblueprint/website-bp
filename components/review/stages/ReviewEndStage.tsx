@@ -82,17 +82,16 @@ const EndForm = ({
   };
 
   return (
-    <div className="flex flex-col space-y-4 px-5">
+    <div className="flex flex-col space-y-4 px-5 font-[Poppins]">
       <div>
         <form>
-          <h3 className="text-[26px] pt-8">Skills Category</h3>
+          <h3 className="font-[Poppins] text-[20px] font-medium leading-[140%] text-[#252525] pt-8 pb-6">Skills Category</h3>
           <select
             value={skillsCategory}
             onChange={handleOptionChange}
             required
-            className={`h-[55px] w-full self-stretch rounded-md border border-[#C4C4C4] bg-white pt-4 pr-3 pb-[15px] pl-4 font-[Inter] text-base font-normal leading-6 ${
-              skillsCategory === "" ? "text-[#C4C4C4]" : "text-black"
-            }`}
+            style={{ color: skillsCategory === "" ? "#C4C4C4" : "#000000" }}
+            className="h-[55px] w-full self-stretch rounded-md border border-[#C4C4C4] bg-white pt-4 pr-3 pb-[15px] pl-4 font-[Poppins] text-base font-normal leading-6"
           >
             <option value="">Skills Category</option>
             <option value="junior">Junior</option>
@@ -102,12 +101,12 @@ const EndForm = ({
         </form>
       </div>
       <div>
-        <h3 className="text-[26px]">Comments</h3>
+        <h3 className="text-[20px] font-medium leading-[140%] text-[#252525] pt-[31px] pb-[24px]">Comments</h3>
         <textarea
           value={comments}
           onChange={handleCommentChange}
           placeholder="Leave comments here"
-          className="w-full h-[250px] self-stretch rounded-md border border-[#C4C4C4] bg-white p-2 text-base placeholder:font-[Inter] placeholder:text-sm placeholder:font-normal placeholder:leading-5 placeholder:text-black/[0.36]"
+          className="w-full h-[250px] self-stretch rounded-md border border-[#C4C4C4] bg-white p-2 text-base placeholder:font-[Poppins] placeholder:text-sm placeholder:font-normal placeholder:leading-5 placeholder:text-black/[0.36]"
         />
       </div>
     </div>

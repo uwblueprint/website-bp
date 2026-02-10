@@ -53,9 +53,6 @@ export const ReviewSplitPanelPage = ({
           className="flex flex-col h-full overflow-hidden bg-white"
         >
           <div id="right-title" className="px-9 pt-6 pb-2">
-            <p className="text-charcoal-500 text-sm mb-1">
-              {studentName}&apos;s Application
-            </p>
             {rightTitle && rightTitleButton ? (
               <div className="flex justify-between items-center">
                 <h2 className="text-[26px] text-charcoal-900 font-semibold">
