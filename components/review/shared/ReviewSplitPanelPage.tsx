@@ -12,7 +12,6 @@ export interface Props {
   rightContent?: JSX.Element;
   currentStage: ReviewStage;
   scores: ReviewScores;
-  onConflictClick?: () => void;
   endData?: ReviewEndData;
 }
 
@@ -25,15 +24,11 @@ export const ReviewSplitPanelPage = ({
   rightContent,
   currentStage,
   scores,
-  onConflictClick,
   endData,
 }: Props) => {
   return (
     <div className="flex flex-col h-screen">
-      <ReviewProgressHeader
-        currentStage={currentStage}
-        onConflictClick={onConflictClick}
-      />
+      <ReviewProgressHeader currentStage={currentStage} />
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
         <div
           id="left"
