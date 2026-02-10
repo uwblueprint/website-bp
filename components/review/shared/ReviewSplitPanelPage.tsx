@@ -32,9 +32,13 @@ export const ReviewSplitPanelPage = ({
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
         <div
           id="left"
-          className="flex flex-col bg-sky w-full h-full p-9 relative overflow-y-auto"
+          className={`flex flex-col w-full h-full p-9 relative overflow-y-auto ${
+            currentStage === ReviewStage.END ? "bg-white" : "bg-sky"
+          }`}
         >
-          {leftTitle ? <h2 className="text-[26px] mb-4">{leftTitle}</h2> : null}
+          {currentStage !== ReviewStage.END && leftTitle ? (
+            <h2 className="text-[26px] mb-4">{leftTitle}</h2>
+          ) : null}
           <div className="flex-1 relative">
             <div className="w-full">{leftContent}</div>
           </div>
