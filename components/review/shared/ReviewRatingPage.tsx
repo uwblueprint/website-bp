@@ -1,6 +1,7 @@
-import { ReviewStage } from "pages/review";
-import { ReviewSplitPanelPage } from "./reviewSplitPanelPage";
 import Button from "@components/common/Button";
+import { ReviewStage } from "./constants";
+import { ReviewSplitPanelPage } from "./ReviewSplitPanelPage";
+import { ReviewScores } from "./types";
 
 interface Props {
   studentName: string;
@@ -9,7 +10,7 @@ interface Props {
   currentStageAnswers: JSX.Element;
   title: string;
   resumeLink?: string;
-  scores: Map<ReviewStage, number>;
+  scores: ReviewScores;
   contextConsumer: JSX.Element;
 }
 
@@ -17,7 +18,7 @@ interface resumeProps {
   resumeLink: string;
 }
 
-const ResumeLink: React.FC<resumeProps> = ({ resumeLink }) => {
+const ResumeLink = ({ resumeLink }: resumeProps) => {
   return (
     <div className="flex flex-col gap-8">
       <Button
@@ -35,7 +36,7 @@ const ResumeLink: React.FC<resumeProps> = ({ resumeLink }) => {
   );
 };
 
-export const ReviewRatingPage: React.FC<Props> = ({
+export const ReviewRatingPage = ({
   studentName,
   currentStage,
   currentStageRubric,
@@ -44,7 +45,7 @@ export const ReviewRatingPage: React.FC<Props> = ({
   resumeLink,
   scores,
   contextConsumer,
-}) => {
+}: Props) => {
   return (
     <ReviewSplitPanelPage
       studentName={studentName}

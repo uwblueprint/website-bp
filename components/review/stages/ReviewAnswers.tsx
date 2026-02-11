@@ -1,9 +1,9 @@
-interface Props {
+export interface Props {
   questions: string[];
   answers: string[];
 }
 
-export const ReviewAnswers: React.FC<Props> = ({ questions, answers }) => {
+export const ReviewAnswers = ({ questions, answers }: Props) => {
   return (
     <div className="flex flex-col gap-5">
       {questions.map((question, idx) => {

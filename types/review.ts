@@ -20,4 +20,6 @@ export type ApplicationDTO = {
   term: string;
   timesApplied: string;
   timestamp: bigint;
+  comments?: string;
+  skillsCategory?: string;
 };
