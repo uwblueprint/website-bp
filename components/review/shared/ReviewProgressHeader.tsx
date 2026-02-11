@@ -1,6 +1,4 @@
-import Button from "@components/common/Button";
 import CheckIcon from "@components/icons/check.icon";
-import WarningIcon from "@components/icons/warning.icon";
 import Image from "next/image";
 import Link from "next/link";
 import { ReviewStage } from "./constants";
@@ -9,7 +7,6 @@ import { useContext } from "react";
 
 interface Props {
   currentStage: ReviewStage;
-  onConflictClick?: () => void;
 }
 
 type StepState = "current" | "completed" | "future";
@@ -78,10 +75,7 @@ const StepIndicator = ({ step, state }: StepIndicatorProps) => {
   );
 };
 
-export const ReviewProgressHeader = ({
-  currentStage,
-  onConflictClick,
-}: Props) => {
+export const ReviewProgressHeader = ({ currentStage }: Props) => {
   const currentIndex = steps.findIndex((s) => s.stage === currentStage);
 
   return (
@@ -107,32 +101,6 @@ export const ReviewProgressHeader = ({
               state={getStepState(step, currentIndex)}
             />
           ))}
-        </div>
-      </div>
-
-      {/* Secondary bar with actions */}
-      <div className="bg-white px-6 py-3 flex items-center justify-between border-b border-gray-200">
-        <Link href="/admin">
-          <Button variant="secondary" size="sm">
-            <span className="flex items-center gap-2">
-              <span>&larr;</span>
-              <span>Back to home</span>
-            </span>
-          </Button>
-        </Link>
-
-        <div className="flex items-center gap-4">
-          <span className="text-blue text-sm hidden sm:inline">
-            Is the applicant a conflict of interest?
-          </span>
-          {onConflictClick && (
-            <Button variant="secondary" size="sm" onClick={onConflictClick}>
-              <div className="flex items-center gap-2">
-                <WarningIcon />
-                <span>Report</span>
-              </div>
-            </Button>
-          )}
         </div>
       </div>
     </header>

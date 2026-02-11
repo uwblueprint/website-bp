@@ -128,7 +128,6 @@ export const ReviewInfoStage = ({
         studentName={name}
         rightTitle="Basic Information"
         currentStage={ReviewStage.INFO}
-        onConflictClick={() => setModalOpen(true)}
         leftContent={<InfoBanner />}
         rightContent={
           <div className="flex flex-col gap-4">

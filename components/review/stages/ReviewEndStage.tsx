@@ -10,55 +10,38 @@ interface Props {
   setEndData: Dispatch<SetStateAction<ReviewEndData>>;
 }
 
-const LeftPanelContent = ({
-  name,
-  scores,
-}: {
-  name: string;
-  scores: ReviewScores;
-}) => {
+const ScoreSummary = ({ scores }: { scores: ReviewScores }) => {
   const { PFSG, TP, D2L, SKL } = ReviewStage;
   const totalScore = scores[PFSG] + scores[TP] + scores[D2L] + scores[SKL];
 
   return (
-    <div className="flex flex-col gap-6">
-      {/* Scoring section header */}
-      <div>
-        <p className="text-charcoal-500 text-sm mb-1">Scoring</p>
-        <h2 className="text-charcoal-700 font-semibold text-xl">
-          {name}&apos;s final scores
-        </h2>
+    <div className="flow-root px-5">
+      <div className="flow-root pt-20 pb-5">
+        <h4 className="text-blue float-left B10">Topic</h4>
+        <h4 className="text-blue float-right B10">Rating</h4>
       </div>
-
-      {/* Score card */}
-      <div className="rounded-lg border border-charcoal-200 bg-white p-6 shadow-sm">
-        <div className="flex justify-between mb-4">
-          <span className="text-blue font-semibold">Topic</span>
-          <span className="text-blue font-semibold">Rating</span>
+      <div className="flex flex-col space-y-4">
+        <div className="flex justify-between">
+          <span>Passion for Social Good</span>
+          <span className="text-right">{scores[PFSG]}/5</span>
         </div>
-        <div className="flex flex-col gap-3">
-          <div className="flex justify-between">
-            <span className="text-charcoal-700">Passion for Social Good</span>
-            <span>{scores[PFSG]}/5</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-charcoal-700">Team Player</span>
-            <span>{scores[TP]}/5</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-charcoal-700">Desire to Learn</span>
-            <span>{scores[D2L]}/5</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-charcoal-700">Skill</span>
-            <span>{scores[SKL]}/5</span>
-          </div>
+        <div className="flex justify-between">
+          <span>Team Player</span>
+          <span className="text-right">{scores[TP]}/5</span>
         </div>
-        <hr className="my-4 border-charcoal-200" />
-        <div className="flex justify-between font-semibold">
-          <span className="text-charcoal-700">Total Score</span>
-          <span className="text-blue">{totalScore}/20</span>
+        <div className="flex justify-between">
+          <span>Desire to Learn</span>
+          <span className="text-right">{scores[D2L]}/5</span>
         </div>
+        <div className="flex justify-between">
+          <span>Skill</span>
+          <span className="text-right">{scores[SKL]}/5</span>
+        </div>
+      </div>
+      <hr className="h-px my-8 bg-gray-200 border-0" />
+      <div className="flex justify-between">
+        <h4>Total</h4>
+        <h4 className="text-right">{totalScore}/20</h4>
       </div>
     </div>
   );
@@ -71,7 +54,7 @@ const EndForm = ({
   endData: ReviewEndData;
   setEndData: Dispatch<SetStateAction<ReviewEndData>>;
 }) => {
-  const { skillsCategory, comments } = endData;
+  const { skillsCategory, comments, secondChoiceRole } = endData;
 
   const handleOptionChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setEndData((prev) => ({ ...prev, skillsCategory: event.target.value }));
@@ -81,33 +64,53 @@ const EndForm = ({
     setEndData((prev) => ({ ...prev, comments: event.target.value }));
   };
 
+  const handleChoiceChange = () => {
+    setEndData((prev) => ({
+      ...prev,
+      secondChoiceRole:
+        prev.secondChoiceRole === "considered"
+          ? "not considered"
+          : "considered",
+    }));
+  };
+
   return (
-    <div className="flex flex-col space-y-4 px-5 font-[Poppins]">
+    <div className="flex flex-col space-y-4 px-5">
       <div>
         <form>
-          <h3 className="font-[Poppins] text-[20px] font-medium leading-[140%] text-[#252525] pt-8 pb-6">Skills Category</h3>
-          <select
-            value={skillsCategory}
-            onChange={handleOptionChange}
-            required
-            style={{ color: skillsCategory === "" ? "#C4C4C4" : "#000000" }}
-            className="h-[55px] w-full self-stretch rounded-md border border-[#C4C4C4] bg-white pt-4 pr-3 pb-[15px] pl-4 font-[Poppins] text-base font-normal leading-6"
-          >
+          <h3 className="text-[26px] pt-8">Skills Category</h3>
+          <select value={skillsCategory} onChange={handleOptionChange} required>
             <option value="">Skills Category</option>
             <option value="junior">Junior</option>
             <option value="intermediate">Intermediate</option>
             <option value="senior">Senior</option>
           </select>
+          <h5 className="text-red-500 inline-block px-2 text-xl">*</h5>
         </form>
       </div>
       <div>
-        <h3 className="text-[20px] font-medium leading-[140%] text-[#252525] pt-[31px] pb-[24px]">Comments</h3>
+        <h3 className="text-[26px]">Comments</h3>
         <textarea
           value={comments}
           onChange={handleCommentChange}
           placeholder="Leave comments here"
-          className="w-full h-[250px] self-stretch rounded-md border border-[#C4C4C4] bg-white p-2 text-base placeholder:font-[Poppins] placeholder:text-sm placeholder:font-normal placeholder:leading-5 placeholder:text-black/[0.36]"
+          className="w-full h-[100px] p-2 text-base"
         />
+      </div>
+      <div>
+        <h3 className="text-[26px]">
+          <span className="text-blue">Second Choice: </span>
+          {secondChoiceRole}
+        </h3>
+        <input
+          className="B10"
+          type="checkbox"
+          id="secondChoice"
+          name="secondChoice"
+          value="secondChoice"
+          onChange={handleChoiceChange}
+        />
+        <label> Recommend for Second Choice</label>
       </div>
     </div>
   );
@@ -123,7 +126,8 @@ export const ReviewEndStage = ({
     <ReviewSplitPanelPage
       studentName={name}
       currentStage={ReviewStage.END}
-      leftContent={<LeftPanelContent name={name} scores={scores} />}
+      leftTitle={"Summary of scores"}
+      leftContent={<ScoreSummary scores={scores} />}
       scores={scores}
       endData={endData}
       rightContent={<EndForm endData={endData} setEndData={setEndData} />}
