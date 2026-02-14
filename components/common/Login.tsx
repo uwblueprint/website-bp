@@ -1,14 +1,15 @@
 import { auth } from "@utils/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { mutations } from "graphql/queries";
 import { ReactElement } from "react";
 import { useRouter } from "next/router";
 import Button from "./Button";
-import { fetchGraphql } from "@utils/makegqlrequest";
 import AuthAPIClient from "APIClients/AuthAPIClient";
+import { useAuthUserContext } from "@components/context/AuthUserContext";
 
 const Login = (): ReactElement => {
   const router = useRouter();
+  const { setAuthenticatedUser } = useAuthUserContext();
+
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({ hd: "uwblueprint.org" }); // only allow uwblueprint.org emails to sign in
@@ -19,6 +20,14 @@ const Login = (): ReactElement => {
         .then((result) => {
           localStorage.setItem("accessToken", result.accessToken);
           localStorage.setItem("refreshToken", result.refreshToken);
+          setAuthenticatedUser({
+            id: result.id,
+            firstName: result.firstName,
+            lastName: result.lastName,
+            email: result.email,
+            role: result.role,
+            position: result.position,
+          });
           router.push("/admin");
         })
         .catch((e) => {
