@@ -2,6 +2,9 @@ import { ChangeEvent, Dispatch, SetStateAction } from "react";
 import { ReviewStage } from "../shared/constants";
 import { ReviewSplitPanelPage } from "../shared/ReviewSplitPanelPage";
 import { ReviewEndData, ReviewScores } from "../shared/types";
+import ArrowLeftIcon from "@components/icons/arrow-left.icon";
+import WarningOutlineIcon from "@components/icons/warning-outline.icon";
+import Link from "next/link";
 
 interface Props {
   name: string;
@@ -22,6 +25,32 @@ const LeftPanelContent = ({
 
   return (
     <div className="flex flex-col gap-6">
+      {/* Top bar with navigation back home and report */}
+      <div className="flex flex-col md:flex-row lg:flex-col xl:flex-row items-start md:items-center lg:items-start xl:items-center justify-between gap-2">
+        <Link href="/admin">
+          <button className="flex justify-center items-center gap-2 py-2 px-4 rounded-[1.25rem] border-2 border-blue bg-white hover:bg-gray-50 transition-colors">
+            <ArrowLeftIcon className="w-6 h-6 text-blue" />
+            <span className="text-blue text-base font-normal leading-[22.4px] font-source">
+              Back to home
+            </span>
+          </button>
+        </Link>
+
+        <div className="flex items-center gap-3">
+          <span className="text-blue text-base font-normal leading-[20.13px] font-source italic">
+            Is the applicant a conflict of interest?
+          </span>
+          {/* Does nothing yet, assuming it should be coupled with the conflict modal from this ticket: */}
+          {/* https://www.notion.so/uwblueprintexecs/Implement-Report-Conflict-Feature-00710f3fb1dc826ebaf001ff3482afb1?v=6b710f3fb1dc83d7b43d08147fd183be&source=copy_link */}
+          <button className="flex justify-center items-center gap-2 py-2 px-4 rounded-[1.25rem] border-2 border-blue bg-white hover:bg-gray-50 transition-colors">
+            <WarningOutlineIcon className="w-6 h-6 text-blue" />
+            <span className="text-blue text-base font-normal leading-[22.4px] font-source">
+              Report
+            </span>
+          </button>
+        </div>
+      </div>
+
       {/* Scoring section header */}
       <div>
         <p className="text-charcoal-500 text-sm mb-1">Scoring</p>
@@ -90,9 +119,8 @@ const EndForm = ({
             value={skillsCategory}
             onChange={handleOptionChange}
             required
-            className={`h-[55px] w-full self-stretch rounded-md border border-[#C4C4C4] bg-white pt-4 pr-3 pb-[15px] pl-4 font-[Inter] text-base font-normal leading-6 ${
-              skillsCategory === "" ? "text-[#C4C4C4]" : "text-black"
-            }`}
+            className={`h-[55px] w-full self-stretch rounded-md border border-[#C4C4C4] bg-white pt-4 pr-3 pb-[15px] pl-4 font-[Inter] text-base font-normal leading-6 ${skillsCategory === "" ? "text-[#C4C4C4]" : "text-black"
+              }`}
           >
             <option value="">Skills Category</option>
             <option value="junior">Junior</option>
