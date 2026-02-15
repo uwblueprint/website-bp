@@ -51,60 +51,65 @@ const LeftPanelContent = ({
         </div>
       </div>
 
-      {/* Scoring section header */}
-      <div>
-        <p className="text-charcoal-500 text-sm mb-1">Scoring</p>
-        <h2 className="text-charcoal-700 font-semibold text-xl">
-          {name}&apos;s final scores
-        </h2>
-      </div>
-
-      {/* Score card */}
-      <div className="rounded-lg border border-[#C4C4C4] bg-white p-6 flex flex-col gap-8">
-        <div className="flex justify-between items-center">
-          <div className="flex flex-col gap-6 w-[235px]">
-            <span className="text-blue font-medium text-[20px] leading-[28px] font-poppins">
-              Topic
-            </span>
-            <span className="text-black font-normal text-base leading-[22.4px] font-source">
-              Passion for Social Good
-            </span>
-            <span className="text-black font-normal text-base leading-[22.4px] font-source">
-              Team Player
-            </span>
-            <span className="text-black font-normal text-base leading-[22.4px] font-source">
-              Desire to Learn
-            </span>
-            <span className="text-black font-normal text-base leading-[22.4px] font-source">
-              Skill
-            </span>
-          </div>
-          <div className="flex flex-col gap-6 items-end">
-            <span className="text-blue font-normal text-[20px] leading-[28px] font-poppins">
-              Justin&apos;s rating
-            </span>
-            <span className="text-black font-normal text-base leading-[22.4px] font-source">
-              {scores[PFSG]}/5
-            </span>
-            <span className="text-black font-normal text-base leading-[22.4px] font-source">
-              {scores[TP]}/5
-            </span>
-            <span className="text-black font-normal text-base leading-[22.4px] font-source">
-              {scores[D2L]}/5
-            </span>
-            <span className="text-black font-normal text-base leading-[22.4px] font-source">
-              {scores[SKL]}/5
-            </span>
-          </div>
+      {/* Scoring section */}
+      <div className="flex flex-col gap-8">
+        {/* Scoring section header */}
+        <div className="flex flex-col gap-3">
+          <p className="text-[rgba(37,37,37,0.75)] font-source font-normal text-base leading-[22.4px]">
+            Scoring
+          </p>
+          <h2 className="text-[#252525] font-poppins font-semibold text-[28px] leading-[39.2px]">
+            {name}&apos;s final scores
+          </h2>
         </div>
-        <hr className="border-[#C4C4C4]" />
-        <div className="flex justify-between items-center">
-          <span className="text-black font-medium text-[20px] leading-[28px] font-poppins">
-            Total Score
-          </span>
-          <span className="text-blue font-normal text-[20px] leading-[28px] font-poppins">
-            {totalScore}/20
-          </span>
+
+        {/* Score card */}
+        <div className="rounded-lg border border-[#C4C4C4] bg-white p-6 flex flex-col gap-8">
+          <div className="flex justify-between items-center">
+            <div className="flex flex-col gap-6 w-[235px]">
+              <span className="text-blue font-medium text-[20px] leading-[28px] font-poppins">
+                Topic
+              </span>
+              <span className="text-black font-normal text-base leading-[22.4px] font-source">
+                Passion for Social Good
+              </span>
+              <span className="text-black font-normal text-base leading-[22.4px] font-source">
+                Team Player
+              </span>
+              <span className="text-black font-normal text-base leading-[22.4px] font-source">
+                Desire to Learn
+              </span>
+              <span className="text-black font-normal text-base leading-[22.4px] font-source">
+                Skill
+              </span>
+            </div>
+            <div className="flex flex-col gap-6 items-end">
+              <span className="text-blue font-normal text-[20px] leading-[28px] font-poppins">
+                Justin&apos;s rating
+              </span>
+              <span className="text-black font-normal text-base leading-[22.4px] font-source">
+                {scores[PFSG]}/5
+              </span>
+              <span className="text-black font-normal text-base leading-[22.4px] font-source">
+                {scores[TP]}/5
+              </span>
+              <span className="text-black font-normal text-base leading-[22.4px] font-source">
+                {scores[D2L]}/5
+              </span>
+              <span className="text-black font-normal text-base leading-[22.4px] font-source">
+                {scores[SKL]}/5
+              </span>
+            </div>
+          </div>
+          <hr className="border-[#C4C4C4]" />
+          <div className="flex justify-between items-center">
+            <span className="text-black font-medium text-[20px] leading-[28px] font-poppins">
+              Total Score
+            </span>
+            <span className="text-blue font-normal text-[20px] leading-[28px] font-poppins">
+              {totalScore}/20
+            </span>
+          </div>
         </div>
       </div>
     </div>
