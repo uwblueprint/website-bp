@@ -134,32 +134,34 @@ const EndForm = ({
   };
 
   return (
-    <div className="flex flex-col space-y-4 px-5">
-      <div>
-        <form>
-          <h3 className="text-[26px] pt-8">Skills Category</h3>
-          <select
-            value={skillsCategory}
-            onChange={handleOptionChange}
-            required
-            className={`h-[55px] w-full self-stretch rounded-md border border-[#C4C4C4] bg-white pt-4 pr-3 pb-[15px] pl-4 font-[Inter] text-base font-normal leading-6 ${
-              skillsCategory === "" ? "text-[#C4C4C4]" : "text-black"
-            }`}
-          >
-            <option value="">Skills Category</option>
-            <option value="junior">Junior</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="senior">Senior</option>
-          </select>
-        </form>
+    <div className="flex flex-col gap-[31px] w-full lg:max-w-[541px] lg:mx-auto">
+      <div className="flex flex-col gap-6">
+        <h3 className="text-[#252525] font-poppins font-medium text-[20px] leading-[28px]">
+          Skill Category
+        </h3>
+        <select
+          value={skillsCategory}
+          onChange={handleOptionChange}
+          required
+          className={`h-[55px] w-full rounded-md border border-[#C4C4C4] bg-white px-4 py-4 font-[Inter] text-base font-normal leading-6 ${
+            skillsCategory === "" ? "text-[#C4C4C4]" : "text-black"
+          }`}
+        >
+          <option value="">Skill Category</option>
+          <option value="junior">Junior</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="senior">Senior</option>
+        </select>
       </div>
-      <div>
-        <h3 className="text-[26px]">Comments</h3>
+      <div className="flex flex-col gap-6">
+        <h3 className="text-[#252525] font-poppins font-medium text-[20px] leading-[28px]">
+          Comments
+        </h3>
         <textarea
           value={comments}
           onChange={handleCommentChange}
-          placeholder="Leave comments here"
-          className="w-full h-[250px] self-stretch rounded-md border border-[#C4C4C4] bg-white p-2 text-base placeholder:font-[Inter] placeholder:text-sm placeholder:font-normal placeholder:leading-5 placeholder:text-black/[0.36]"
+          placeholder="Leave Comments here"
+          className="w-full h-[250px] rounded-md border border-[#C4C4C4] bg-white px-[12.5px] py-[15px] font-[Inter] text-base font-normal leading-6 placeholder:font-[Inter] placeholder:text-sm placeholder:font-normal placeholder:leading-[20px] placeholder:text-[rgba(0,0,0,0.36)]"
         />
       </div>
     </div>
