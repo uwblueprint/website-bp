@@ -64,10 +64,7 @@ export const ReviewSkillStage = ({
         />
       </PanelLeft>
       <PanelRight title="Skill" studentName={name}>
-        <div
-          className="flex flex-col gap-8"
-          style={{ alignItems: "flex-start" }}
-        >
+        <div className="flex flex-col items-start gap-8">
           {resumeLink ? <ResumeLink resumeLink={resumeLink} /> : null}
           <div>
             <ReviewAnswers questions={questions} answers={answers} />

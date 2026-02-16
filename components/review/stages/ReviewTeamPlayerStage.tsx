@@ -31,10 +31,7 @@ export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
         />
       </PanelLeft>
       <PanelRight title="Team player" studentName={name}>
-        <div
-          className="flex flex-col gap-8"
-          style={{ alignItems: "flex-start" }}
-        >
+        <div className="flex flex-col items-start gap-8">
           <div>
             <ReviewAnswers questions={questions} answers={answers} />
           </div>
