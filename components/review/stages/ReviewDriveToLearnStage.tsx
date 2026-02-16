@@ -33,7 +33,7 @@ export const ReviewDriveToLearnStage = ({
           currentStage={ReviewStage.D2L}
         />
       </PanelLeft>
-      <PanelRight title="Drive to learn" studentName={name}>
+      <PanelRight title="Drive to learn" subtitle={`${name}'s Application`}>
         <div className="flex flex-col items-start gap-8">
           <div>
             <ReviewAnswers questions={questions} answers={answers} />
