@@ -76,6 +76,9 @@ const ReviewsPages: NextPage = () => {
   const reviewId = router.isReady ? getReviewId(router.query) : null;
   const name = application?.firstName + " " + application?.lastName;
 
+  // TODO: Replace with actual reviewer name from auth/user data
+  const reviewerName = "Reviewer";
+
   const updateScores = (key: ReviewStage, value: number) => {
     setScores((prev) => {
       if (isNaN(value) || value < 1 || value > 5) {
@@ -139,6 +142,7 @@ const ReviewsPages: NextPage = () => {
         return (
           <ReviewEndStage
             name={name}
+            reviewerName={reviewerName}
             scores={scores}
             endData={endData}
             setEndData={setEndData}
