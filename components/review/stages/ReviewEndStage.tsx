@@ -22,8 +22,14 @@ const LeftPanelContent = ({
   reviewerName: string;
   scores: ReviewScores;
 }) => {
-  const { PFSG, TP, D2L, SKL } = ReviewStage;
-  const totalScore = scores[PFSG] + scores[TP] + scores[D2L] + scores[SKL];
+  const SCORE_ROWS: { label: string; stage: ReviewStage }[] = [
+    { label: "Passion for Social Good", stage: ReviewStage.PFSG },
+    { label: "Team Player", stage: ReviewStage.TP },
+    { label: "Desire to Learn", stage: ReviewStage.D2L },
+    { label: "Skill", stage: ReviewStage.SKL },
+  ];
+
+  const totalScore = SCORE_ROWS.reduce((sum, { stage }) => sum + scores[stage], 0);
 
   return (
     <div className="flex flex-col gap-6 p-3">
@@ -39,7 +45,6 @@ const LeftPanelContent = ({
 
       {/* Scoring section */}
       <div className="flex flex-col gap-8">
-        {/* Scoring section header */}
         <div className="flex flex-col gap-3">
           <p className="text-[rgba(37,37,37,0.75)] font-source font-normal text-base leading-[22.4px]">
             Scoring
@@ -56,35 +61,21 @@ const LeftPanelContent = ({
               <span className="text-blue font-medium text-xl leading-[28px] font-poppins">
                 Topic
               </span>
-              <span className="text-black font-normal text-base leading-[22.4px] font-source">
-                Passion for Social Good
-              </span>
-              <span className="text-black font-normal text-base leading-[22.4px] font-source">
-                Team Player
-              </span>
-              <span className="text-black font-normal text-base leading-[22.4px] font-source">
-                Desire to Learn
-              </span>
-              <span className="text-black font-normal text-base leading-[22.4px] font-source">
-                Skill
-              </span>
+              {SCORE_ROWS.map(({ label }) => (
+                <span key={label} className="text-black font-normal text-base leading-[22.4px] font-source">
+                  {label}
+                </span>
+              ))}
             </div>
             <div className="flex flex-col gap-6 items-end">
               <span className="text-blue font-normal text-xl leading-[28px] font-poppins">
                 {reviewerName}&apos;s rating
               </span>
-              <span className="text-black font-normal text-base leading-[22.4px] font-source">
-                {scores[PFSG]}/5
-              </span>
-              <span className="text-black font-normal text-base leading-[22.4px] font-source">
-                {scores[TP]}/5
-              </span>
-              <span className="text-black font-normal text-base leading-[22.4px] font-source">
-                {scores[D2L]}/5
-              </span>
-              <span className="text-black font-normal text-base leading-[22.4px] font-source">
-                {scores[SKL]}/5
-              </span>
+              {SCORE_ROWS.map(({ label, stage }) => (
+                <span key={label} className="text-black font-normal text-base leading-[22.4px] font-source">
+                  {scores[stage]}/5
+                </span>
+              ))}
             </div>
           </div>
           <hr className="border-[#C4C4C4]" />
