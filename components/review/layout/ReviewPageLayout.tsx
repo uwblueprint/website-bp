@@ -22,7 +22,7 @@ export const ReviewPageLayout = ({
   return (
     <div className="flex flex-col h-screen">
       <ReviewProgressHeader currentStage={currentStage} />
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 overflow-hidden border border-[#C4C4C4]">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 overflow-hidden border border-charcoal-250">
         {children}
       </div>
       <ReviewStepper
@@ -53,7 +53,7 @@ export const PanelLeft = ({
     <div
       className={`flex flex-col w-full h-full px-6 py-8 relative overflow-y-auto ${
         variant === "white" ? "bg-white" : "bg-sky"
-      } ${outlined ? "lg:border-r border-[#C4C4C4]" : ""}`}
+      } ${outlined ? "lg:border-r border-charcoal-250" : ""}`}
     >
       {title && <h2 className="text-[26px] mb-4">{title}</h2>}
       <div className="flex-1 relative">
@@ -82,7 +82,7 @@ export const PanelRight = ({
 }: PanelRightProps) => {
   return (
     <div
-      className={`flex flex-col h-full overflow-hidden bg-white ${outlined ? "border border-[#C4C4C4]" : ""}`}
+      className={`flex flex-col h-full overflow-hidden bg-white ${outlined ? "border border-charcoal-250" : ""}`}
     >
       <div className="px-6 pt-8 pb-2">
         {studentName && (

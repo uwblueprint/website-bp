@@ -66,7 +66,7 @@ const ConflictModal = ({ name, open, onClose }: ConflictModalProps) => {
           <div className="flex flex-col justify-between space-y-4 text-center">
             <div>
               <h6 className="mb-1 text-blue">Report a conflict</h6>
-              <p className="text-[16px] font-source text-charcoal-500">
+              <p className="text-[16px] text-charcoal-500">
                 Do you know {name} and want to report a conflict?
               </p>
             </div>
