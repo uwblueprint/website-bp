@@ -1,11 +1,30 @@
+import Button from "@components/common/Button";
 import { useContext } from "react";
 import { ReviewStage } from "../shared/constants";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
-import { ReviewRatingPage } from "../shared/ReviewRatingPage";
 import { REVIEW_SKL_SCORING_CRITERIA } from "../shared/rubricConstants";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewStageProps } from "./ReviewInfoStage";
 import { ReviewRubric } from "./ReviewRubric";
+import { ReviewPageLayout, PanelLeft, PanelRight } from "../layout";
+
+const ResumeLink = ({ resumeLink }: { resumeLink: string }) => {
+  return (
+    <div className="flex flex-col gap-8">
+      <Button
+        className="mr-2 justify-self-end"
+        size="sm"
+        variant="secondary"
+        href={resumeLink}
+      >
+        <div className="flex justify-center items-center gap-2">
+          <img className="stroke-3" src={"common/resume.svg"} alt="" /> View
+          Candidate Resume
+        </div>
+      </Button>
+    </div>
+  );
+};
 
 export const ReviewSkillStage = ({
   name,
@@ -36,37 +55,43 @@ export const ReviewSkillStage = ({
   );
 
   return (
-    <ReviewRatingPage
-      studentName={name}
-      title="Skill"
-      currentStage={ReviewStage.SKL}
-      currentStageRubric={
+    <ReviewPageLayout currentStage={ReviewStage.SKL} scores={scores}>
+      <PanelLeft title="Rubric">
         <ReviewRubric
           scoringCriteria={REVIEW_SKL_SCORING_CRITERIA}
           scores={scores}
           currentStage={ReviewStage.SKL}
         />
-      }
-      currentStageAnswers={
-        <ReviewAnswers questions={questions} answers={answers} />
-      }
-      resumeLink={resumeLink}
-      scores={scores}
-      contextConsumer={
-        <div className="flex items-center justify-end">
-          <input
-            type="number"
-            pattern="[1-4]"
-            value={scores[ReviewStage.SKL]}
-            onChange={(event) => {
-              if (event.target.validity.valid) {
-                updateScore?.(ReviewStage.SKL, parseInt(event.target.value));
-              }
-            }}
-          />
-          <h5 className="text-red-500 inline-block px-2 text-xl">*</h5>
+      </PanelLeft>
+      <PanelRight title="Skill" studentName={name}>
+        <div
+          className="flex flex-col gap-8"
+          style={{ alignItems: "flex-start" }}
+        >
+          {resumeLink ? <ResumeLink resumeLink={resumeLink} /> : null}
+          <div>
+            <ReviewAnswers questions={questions} answers={answers} />
+          </div>
+          <div>
+            <div className="flex items-center justify-end">
+              <input
+                type="number"
+                pattern="[1-4]"
+                value={scores[ReviewStage.SKL]}
+                onChange={(event) => {
+                  if (event.target.validity.valid) {
+                    updateScore?.(
+                      ReviewStage.SKL,
+                      parseInt(event.target.value),
+                    );
+                  }
+                }}
+              />
+              <h5 className="text-red-500 inline-block px-2 text-xl">*</h5>
+            </div>
+          </div>
         </div>
-      }
-    />
+      </PanelRight>
+    </ReviewPageLayout>
   );
 };

@@ -89,7 +89,7 @@ export const ReviewStepper = ({ currentStage, scores, endData }: Props) => {
   };
 
   return (
-    <div className="border-t border-gray-200 bg-white px-6 py-4">
+    <div className="bg-white px-6 py-4">
       <div className="flex justify-end items-center gap-3">
         {currentStageIndex > 0 && (
           <Button
