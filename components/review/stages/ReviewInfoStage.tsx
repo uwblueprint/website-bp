@@ -128,7 +128,7 @@ export const ReviewInfoStage = ({
         <PanelLeft>
           <InfoBanner />
         </PanelLeft>
-        <PanelRight title="Basic Information" studentName={name}>
+        <PanelRight title="Basic Information" subtitle={`${name}'s Application`}>
           <div className="flex flex-col gap-4">
             <ReviewAnswers questions={INFO_QUESTIONS} answers={answers} />
           </div>

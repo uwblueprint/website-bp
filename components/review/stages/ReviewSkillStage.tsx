@@ -63,7 +63,7 @@ export const ReviewSkillStage = ({
           currentStage={ReviewStage.SKL}
         />
       </PanelLeft>
-      <PanelRight title="Skill" studentName={name}>
+      <PanelRight title="Skill" subtitle={`${name}'s Application`}>
         <div className="flex flex-col items-start gap-8">
           {resumeLink ? <ResumeLink resumeLink={resumeLink} /> : null}
           <div>
