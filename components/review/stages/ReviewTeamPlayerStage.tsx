@@ -6,7 +6,7 @@ import { REVIEW_TP_SCORING_CRITERIA } from "../shared/rubricConstants";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewRubric } from "./ReviewRubric";
-import { ReviewPageLayout, PanelLeft, PanelRight } from "../layout";
+import { ReviewPageLayout, PanelLayout } from "../layout";
 
 interface Props {
   name: string;
@@ -23,14 +23,14 @@ export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
   const { TP } = ReviewStage;
   return (
     <ReviewPageLayout currentStage={TP} scores={scores}>
-      <PanelLeft title="Rubric">
+      <PanelLayout variant="sky" borderRight title="Rubric">
         <ReviewRubric
           scoringCriteria={REVIEW_TP_SCORING_CRITERIA}
           scores={scores}
           currentStage={TP}
         />
-      </PanelLeft>
-      <PanelRight title="Team player" subtitle={`${name}'s Application`}>
+      </PanelLayout>
+      <PanelLayout title="Team player" subtitle={`${name}'s Application`}>
         <div className="flex flex-col items-start gap-8">
           <div>
             <ReviewAnswers questions={questions} answers={answers} />
@@ -51,7 +51,7 @@ export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
             </div>
           </div>
         </div>
-      </PanelRight>
+      </PanelLayout>
     </ReviewPageLayout>
   );
 };

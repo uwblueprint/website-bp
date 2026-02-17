@@ -6,7 +6,7 @@ import { REVIEW_PFSG_SCORING_CRITERIA } from "../shared/rubricConstants";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewRubric } from "./ReviewRubric";
-import { ReviewPageLayout, PanelLeft, PanelRight } from "../layout";
+import { ReviewPageLayout, PanelLayout } from "../layout";
 
 export interface Props {
   name: string;
@@ -26,14 +26,14 @@ export const ReviewPassionForSocialGoodStage = ({
   const answers = [shortAnswerJSON[1]?.response];
   return (
     <ReviewPageLayout currentStage={ReviewStage.PFSG} scores={scores}>
-      <PanelLeft title="Rubric">
+      <PanelLayout variant="sky" borderRight title="Rubric">
         <ReviewRubric
           scoringCriteria={REVIEW_PFSG_SCORING_CRITERIA}
           scores={scores}
           currentStage={ReviewStage.PFSG}
         />
-      </PanelLeft>
-      <PanelRight title="Passion for social good" subtitle={`${name}'s Application`}>
+      </PanelLayout>
+      <PanelLayout title="Passion for social good" subtitle={`${name}'s Application`}>
         <div className="flex flex-col items-start gap-8">
           <div>
             <ReviewAnswers questions={questions} answers={answers} />
@@ -57,7 +57,7 @@ export const ReviewPassionForSocialGoodStage = ({
             </div>
           </div>
         </div>
-      </PanelRight>
+      </PanelLayout>
     </ReviewPageLayout>
   );
 };
