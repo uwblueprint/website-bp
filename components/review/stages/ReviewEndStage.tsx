@@ -35,7 +35,7 @@ const LeftPanelContent = ({
     <div className="flex flex-col gap-6 p-3">
       {/* Back to home */}
       <Link href="/admin" className="w-fit self-start">
-        <button className="w-fit flex justify-center items-center gap-2 py-2 px-4 rounded-2xl border-2 border-blue bg-white hover:bg-gray-50 transition-colors">
+        <button className="w-fit flex justify-center items-center gap-2 py-2 px-4 rounded-full border-2 border-blue bg-white hover:bg-gray-50 transition-colors">
           <ArrowLeftIcon className="w-6 h-6 text-blue" />
           <span className="text-blue text-base font-normal leading-snug">
             Back to home
