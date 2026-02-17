@@ -3,7 +3,7 @@ import { ReviewStage } from "../shared/constants";
 import { ReviewProgressHeader } from "../shared/ReviewProgressHeader";
 import { ReviewStepper } from "../shared/ReviewStepper";
 import { ReviewEndData, ReviewScores } from "../shared/types";
-import { PageLayout } from "@components/common/SplitPageLayout";
+import { SplitPanelLayout } from "@components/common/SplitPageLayout";
 
 interface ReviewPageLayoutProps {
   currentStage: ReviewStage;
@@ -21,7 +21,7 @@ export const ReviewPageLayout = ({
   children,
 }: ReviewPageLayoutProps) => {
   return (
-    <PageLayout
+    <SplitPanelLayout
       header={<ReviewProgressHeader currentStage={currentStage} />}
       footer={
         <ReviewStepper
@@ -33,6 +33,6 @@ export const ReviewPageLayout = ({
       }
     >
       {children}
-    </PageLayout>
+    </SplitPanelLayout>
   );
 };

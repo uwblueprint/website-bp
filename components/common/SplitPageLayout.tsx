@@ -1,14 +1,18 @@
 import { ReactNode } from "react";
 
-// ── PageLayout ───────────────────────────────────────────────────────
+// ── SplitPanelLayout ────────────────────────────────────────────────
 
-interface PageLayoutProps {
+interface SplitPanelLayoutProps {
   header?: ReactNode;
   footer?: ReactNode;
   children: ReactNode;
 }
 
-export const PageLayout = ({ header, footer, children }: PageLayoutProps) => {
+export const SplitPanelLayout = ({
+  header,
+  footer,
+  children,
+}: SplitPanelLayoutProps) => {
   return (
     <div className="flex flex-col h-screen">
       {header}
@@ -20,75 +24,57 @@ export const PageLayout = ({ header, footer, children }: PageLayoutProps) => {
   );
 };
 
-// ── PanelLeft ────────────────────────────────────────────────────────
+// ── PanelLayout ─────────────────────────────────────────────────────
 
-interface PanelLeftProps {
+interface PanelLayoutProps {
   title?: string;
-  variant?: "sky" | "white";
-  outlined?: boolean;
-  children: ReactNode;
-}
-
-export const PanelLeft = ({
-  title,
-  variant = "sky",
-  outlined = true,
-  children,
-}: PanelLeftProps) => {
-  return (
-    <div
-      className={`flex flex-col w-full h-full px-6 py-8 relative overflow-y-auto ${
-        variant === "white" ? "bg-white" : "bg-sky"
-      } ${outlined ? "lg:border-r border-charcoal-250" : ""}`}
-    >
-      {title && <h2 className="text-[26px] mb-4">{title}</h2>}
-      <div className="flex-1 relative">
-        <div className="w-full">{children}</div>
-      </div>
-    </div>
-  );
-};
-
-// ── PanelRight ───────────────────────────────────────────────────────
-
-interface PanelRightProps {
-  title?: string;
-  titleButton?: JSX.Element;
   subtitle?: string;
-  outlined?: boolean;
+  titleButton?: ReactNode;
+  variant?: "sky" | "white";
+  borderRight?: boolean;
   children: ReactNode;
 }
 
-export const PanelRight = ({
+export const PanelLayout = ({
   title,
-  titleButton,
   subtitle,
-  outlined = false,
+  titleButton,
+  variant = "white",
+  borderRight = false,
   children,
-}: PanelRightProps) => {
+}: PanelLayoutProps) => {
+  const bg = variant === "sky" ? "bg-sky" : "bg-white";
+  const hasHeader = !!(title || subtitle);
+
   return (
     <div
-      className={`flex flex-col h-full overflow-hidden bg-white ${outlined ? "border border-charcoal-250" : ""}`}
+      className={`flex flex-col h-full overflow-hidden relative ${bg} ${
+        borderRight ? "lg:border-r border-charcoal-250" : ""
+      }`}
     >
-      <div className="px-6 pt-8 pb-2">
-        {subtitle && (
-          <p className="text-charcoal-500 text-sm mb-1">{subtitle}</p>
-        )}
-        {title && titleButton ? (
-          <div className="flex justify-between items-center">
+      {hasHeader && (
+        <div className="px-6 pt-8 pb-2">
+          {subtitle && (
+            <p className="text-charcoal-500 text-sm mb-1">{subtitle}</p>
+          )}
+          {title && titleButton ? (
+            <div className="flex justify-between items-center">
+              <h2 className="text-[26px] text-charcoal-900 font-semibold">
+                {title}
+              </h2>
+              {titleButton}
+            </div>
+          ) : title ? (
             <h2 className="text-[26px] text-charcoal-900 font-semibold">
               {title}
             </h2>
-            {titleButton}
-          </div>
-        ) : title ? (
-          <h2 className="text-[26px] text-charcoal-900 font-semibold">
-            {title}
-          </h2>
-        ) : null}
-      </div>
-      <div className="flex-1 px-6 pb-8 overflow-y-auto">
-        <div>{children}</div>
+          ) : null}
+        </div>
+      )}
+      <div
+        className={`flex-1 px-6 pb-8 overflow-y-auto ${!hasHeader ? "pt-8" : ""}`}
+      >
+        <div className="w-full">{children}</div>
       </div>
     </div>
   );

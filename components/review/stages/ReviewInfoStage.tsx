@@ -6,7 +6,7 @@ import { ReviewStage } from "../shared/constants";
 import { extractShortAnswerData } from "../shared/reviewUtils";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
-import { ReviewPageLayout, PanelLeft, PanelRight } from "../layout";
+import { ReviewPageLayout, PanelLayout } from "../layout";
 
 export interface ReviewStageProps {
   name: string;
@@ -125,14 +125,14 @@ export const ReviewInfoStage = ({
         onClose={() => setModalOpen(false)}
       />
       <ReviewPageLayout currentStage={ReviewStage.INFO} scores={scores}>
-        <PanelLeft>
+        <PanelLayout variant="sky" borderRight>
           <InfoBanner />
-        </PanelLeft>
-        <PanelRight title="Basic Information" subtitle={`${name}'s Application`}>
+        </PanelLayout>
+        <PanelLayout title="Basic Information" subtitle={`${name}'s Application`}>
           <div className="flex flex-col gap-4">
             <ReviewAnswers questions={INFO_QUESTIONS} answers={answers} />
           </div>
-        </PanelRight>
+        </PanelLayout>
       </ReviewPageLayout>
     </>
   );

@@ -6,7 +6,7 @@ import { REVIEW_SKL_SCORING_CRITERIA } from "../shared/rubricConstants";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewStageProps } from "./ReviewInfoStage";
 import { ReviewRubric } from "./ReviewRubric";
-import { ReviewPageLayout, PanelLeft, PanelRight } from "../layout";
+import { ReviewPageLayout, PanelLayout } from "../layout";
 
 const ResumeLink = ({ resumeLink }: { resumeLink: string }) => {
   return (
@@ -56,14 +56,14 @@ export const ReviewSkillStage = ({
 
   return (
     <ReviewPageLayout currentStage={ReviewStage.SKL} scores={scores}>
-      <PanelLeft title="Rubric">
+      <PanelLayout variant="sky" borderRight title="Rubric">
         <ReviewRubric
           scoringCriteria={REVIEW_SKL_SCORING_CRITERIA}
           scores={scores}
           currentStage={ReviewStage.SKL}
         />
-      </PanelLeft>
-      <PanelRight title="Skill" subtitle={`${name}'s Application`}>
+      </PanelLayout>
+      <PanelLayout title="Skill" subtitle={`${name}'s Application`}>
         <div className="flex flex-col items-start gap-8">
           {resumeLink ? <ResumeLink resumeLink={resumeLink} /> : null}
           <div>
@@ -88,7 +88,7 @@ export const ReviewSkillStage = ({
             </div>
           </div>
         </div>
-      </PanelRight>
+      </PanelLayout>
     </ReviewPageLayout>
   );
 };

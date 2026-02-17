@@ -3,7 +3,7 @@ import { ReviewStage } from "../shared/constants";
 import { ReviewEndData, ReviewScores } from "../shared/types";
 import ArrowLeftIcon from "@components/icons/arrow-left.icon";
 import Link from "next/link";
-import { ReviewPageLayout, PanelLeft, PanelRight } from "../layout";
+import { ReviewPageLayout, PanelLayout } from "../layout";
 
 interface Props {
   name: string;
@@ -170,16 +170,16 @@ export const ReviewEndStage = ({
         return isValid;
       }}
     >
-      <PanelLeft variant="white">
+      <PanelLayout borderRight>
         <LeftPanelContent
           name={name}
           reviewerName={reviewerName}
           scores={scores}
         />
-      </PanelLeft>
-      <PanelRight>
+      </PanelLayout>
+      <PanelLayout>
         <EndForm endData={endData} setEndData={setEndData} validationError={validationError} />
-      </PanelRight>
+      </PanelLayout>
     </ReviewPageLayout>
   );
 };

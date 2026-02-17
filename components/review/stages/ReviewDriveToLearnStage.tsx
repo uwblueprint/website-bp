@@ -6,7 +6,7 @@ import { REVIEW_D2L_SCORING_CRITERIA } from "../shared/rubricConstants";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewRubric } from "./ReviewRubric";
-import { ReviewPageLayout, PanelLeft, PanelRight } from "../layout";
+import { ReviewPageLayout, PanelLayout } from "../layout";
 
 interface Props {
   name: string;
@@ -26,14 +26,14 @@ export const ReviewDriveToLearnStage = ({
   const answers = [shortAnswerJSON[3]?.response];
   return (
     <ReviewPageLayout currentStage={ReviewStage.D2L} scores={scores}>
-      <PanelLeft title="Rubric">
+      <PanelLayout variant="sky" borderRight title="Rubric">
         <ReviewRubric
           scoringCriteria={REVIEW_D2L_SCORING_CRITERIA}
           scores={scores}
           currentStage={ReviewStage.D2L}
         />
-      </PanelLeft>
-      <PanelRight title="Drive to learn" subtitle={`${name}'s Application`}>
+      </PanelLayout>
+      <PanelLayout title="Drive to learn" subtitle={`${name}'s Application`}>
         <div className="flex flex-col items-start gap-8">
           <div>
             <ReviewAnswers questions={questions} answers={answers} />
@@ -57,7 +57,7 @@ export const ReviewDriveToLearnStage = ({
             </div>
           </div>
         </div>
-      </PanelRight>
+      </PanelLayout>
     </ReviewPageLayout>
   );
 };
