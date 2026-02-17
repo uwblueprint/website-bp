@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import { ReviewStage } from "../shared/constants";
 import { ReviewEndData, ReviewScores } from "../shared/types";
 import ArrowLeftIcon from "@components/icons/arrow-left.icon";
@@ -96,9 +96,11 @@ const LeftPanelContent = ({
 const EndForm = ({
   endData,
   setEndData,
+  validationError,
 }: {
   endData: ReviewEndData;
   setEndData: Dispatch<SetStateAction<ReviewEndData>>;
+  validationError: boolean;
 }) => {
   const { skillsCategory, comments } = endData;
 
@@ -120,9 +122,12 @@ const EndForm = ({
           value={skillsCategory}
           onChange={handleOptionChange}
           required
-          className={`h-14 w-full rounded-md border border-charcoal-250 bg-white px-4 py-4 text-base font-normal leading-6 ${
-            skillsCategory === "" ? "text-charcoal-250" : "text-black"
-          }`}
+          className={`h-14 w-full rounded-md border bg-white px-4 py-4 text-base font-normal leading-6
+            ${validationError && skillsCategory === ""
+              ? "border-red-500"
+              : "border-charcoal-250"
+            }
+            ${skillsCategory === "" ? "text-charcoal-250" : "text-black"}`}
         >
           <option value="">Skill Category</option>
           <option value="junior">Junior</option>
@@ -152,11 +157,18 @@ export const ReviewEndStage = ({
   endData,
   setEndData,
 }: Props) => {
+  const [validationError, setValidationError] = useState(false);
+
   return (
     <ReviewPageLayout
       currentStage={ReviewStage.END}
       scores={scores}
       endData={endData}
+      onValidate={() => {
+        const isValid = endData.skillsCategory !== "";
+        setValidationError(!isValid);
+        return isValid;
+      }}
     >
       <PanelLeft variant="white">
         <LeftPanelContent
@@ -166,7 +178,7 @@ export const ReviewEndStage = ({
         />
       </PanelLeft>
       <PanelRight>
-        <EndForm endData={endData} setEndData={setEndData} />
+        <EndForm endData={endData} setEndData={setEndData} validationError={validationError} />
       </PanelRight>
     </ReviewPageLayout>
   );

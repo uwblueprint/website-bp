@@ -45,9 +45,10 @@ interface Props {
   currentStage: ReviewStage;
   scores: ReviewScores;
   endData?: ReviewEndData;
+  onValidate?: () => boolean;
 }
 
-export const ReviewStepper = ({ currentStage, scores, endData }: Props) => {
+export const ReviewStepper = ({ currentStage, scores, endData, onValidate }: Props) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const setStage = useContext(ReviewSetStageContext);
@@ -105,6 +106,10 @@ export const ReviewStepper = ({ currentStage, scores, endData }: Props) => {
             size="sm"
             disabled={isSubmitting}
             onClick={async () => {
+              if (onValidate && !onValidate()) {
+                return;
+              }
+
               setIsSubmitting(true);
               try {
                 await updateAllData();

@@ -9,6 +9,7 @@ interface ReviewPageLayoutProps {
   currentStage: ReviewStage;
   scores: ReviewScores;
   endData?: ReviewEndData;
+  onValidate?: () => boolean;
   children: ReactNode;
 }
 
@@ -16,6 +17,7 @@ export const ReviewPageLayout = ({
   currentStage,
   scores,
   endData,
+  onValidate,
   children,
 }: ReviewPageLayoutProps) => {
   return (
@@ -26,6 +28,7 @@ export const ReviewPageLayout = ({
           currentStage={currentStage}
           scores={scores}
           endData={endData}
+          onValidate={onValidate}
         />
       }
     >
