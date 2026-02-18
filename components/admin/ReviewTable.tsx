@@ -47,8 +47,7 @@ const ReviewTable: React.FC<TableProps> = ({
 
   const createStudentRow = (application: any) => {
     const app = application.application;
-    // Allow indexing with unknown strings coming from backend/user data.
-    const mapToNumericalValue: Record<string, string> = {
+    const mapToNumericalValue = {
       "This is my first time!": "0",
       Once: "1",
       Twice: "2",
