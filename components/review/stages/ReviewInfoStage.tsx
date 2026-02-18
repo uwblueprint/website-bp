@@ -11,6 +11,7 @@ import { tryGetReviewId } from "@utils/reviewId";
 import Dialogue from "@components/common/Dialogue";
 import ReviewPageAPIClient from "APIClients/ReviewPageAPIClient";
 import { useRouter } from "next/router";
+import { useAuthenticatedUser } from "@components/context/AuthUserContext";
 
 export interface ReviewStageProps {
   name: string;
@@ -24,6 +25,7 @@ export const ReviewInfoStage: React.FC<ReviewStageProps> = ({
   scores,
 }) => {
   const router = useRouter();
+  const authenticatedUser = useAuthenticatedUser();
   const { questions, answers } = useMemo(() => {
     const shortAnswerStr = application?.shortAnswerQuestions[0];
     if (!shortAnswerStr) {
@@ -77,7 +79,14 @@ export const ReviewInfoStage: React.FC<ReviewStageProps> = ({
       if (applicantRecordId == null) {
         throw new Error("Missing reviewId in URL");
       }
-      await ReviewPageAPIClient.reportReviewConflict(applicantRecordId);
+      const reviewerId = Number(authenticatedUser?.id);
+      if (!Number.isInteger(reviewerId)) {
+        throw new Error("Missing authenticated reviewer ID");
+      }
+      await ReviewPageAPIClient.reportReviewConflict(
+        applicantRecordId,
+        reviewerId,
+      );
       setConfirmDialogOpen(false);
       setSuccessDialogOpen(true);
     } catch (error) {

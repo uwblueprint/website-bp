@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { ReactNode } from "react";
 import Dialog from "@mui/material/Dialog";
 
 type DialogueProps = {
@@ -10,7 +10,7 @@ type DialogueProps = {
   readonly textContainerClassName?: string;
 };
 
-const Dialogue: FC<DialogueProps> = ({
+const Dialogue = ({
   open,
   onClose,
   header,

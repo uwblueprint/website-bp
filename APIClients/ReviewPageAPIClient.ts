@@ -1,11 +1,6 @@
 import { fetchGraphql } from "@utils/makegqlrequest";
 import { mutations } from "graphql/queries";
-import jwt_decode from "jwt-decode";
 import BaseAPIClient from "./BaseAPIClient";
-
-type AccessTokenPayload = {
-  readonly user_id?: string;
-};
 
 export type ReportReviewConflictResult = {
   readonly applicantRecordId: string;
@@ -17,21 +12,11 @@ export type ReportReviewConflictResult = {
 
 const reportReviewConflict = async (
   applicantRecordId: number,
+  reviewerId: number,
 ): Promise<ReportReviewConflictResult> => {
   BaseAPIClient.handleAuthRefresh();
-  const accessToken = localStorage.getItem("accessToken");
-  if (!accessToken) {
-    throw new Error("No access token provided");
-  }
-
-  const decodedToken = jwt_decode<AccessTokenPayload>(accessToken);
-  const reviewerIdRaw = decodedToken?.user_id;
-  if (!reviewerIdRaw) {
-    throw new Error("Reviewer ID not found in access token");
-  }
-  const reviewerId = parseInt(reviewerIdRaw, 10);
-  if (Number.isNaN(reviewerId)) {
-    throw new Error("Reviewer ID in access token is not a number");
+  if (!Number.isInteger(reviewerId)) {
+    throw new Error("Reviewer ID is invalid");
   }
 
   return fetchGraphql(mutations.reportReviewConflict, {
