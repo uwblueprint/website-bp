@@ -21,7 +21,7 @@ export const ReviewRubric: React.FC<Props> = ({ scoringCriteria }) => {
             Level {idx + 1}
           </span>
           <p
-            className="text-[16px] font-normal text-charcoal-600"
+            className="text-[16px] font-normal text-charcoal-500"
             style={{ lineHeight: "140%" }}
           >
             {criteria}
