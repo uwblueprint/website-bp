@@ -1,4 +1,4 @@
-import { ReviewStage } from "pages/review";
+import { ReviewStage } from "@components/review/shared/constants";
 import { ReviewRatingPage } from "../shared/reviewRatingPage";
 import { ReviewRubric } from "./reviewRubric";
 import { ReviewAnswers } from "./reviewAnswers";

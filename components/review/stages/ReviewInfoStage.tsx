@@ -1,12 +1,12 @@
 import { useMemo, useState } from "react";
-import { ReviewStage } from "pages/review";
+import { ReviewStage } from "@components/review/shared/constants";
 import { ReviewSplitPanelPage } from "../shared/reviewSplitPanelPage";
 import Button from "@components/common/Button";
 import Image from "next/image";
 import WarningIcon from "@components/icons/warning.icon";
 import { ApplicationDTO } from "../../../types";
 import { ReviewAnswers } from "./reviewAnswers";
-import { extractShortAnswerData } from "pages/review";
+import { extractShortAnswerData } from "@components/review/shared/reviewUtils";
 import { tryGetReviewId } from "@utils/reviewId";
 import Dialogue from "@components/common/Dialogue";
 import ReviewPageAPIClient from "APIClients/ReviewPageAPIClient";
