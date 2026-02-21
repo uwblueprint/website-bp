@@ -6,7 +6,7 @@ import {
   semanticColors,
 } from "@constants/recruitmentPlatformPalette";
 
-// Augment MUI Palette to include recruitment-specific colors under `palette.recruitment`
+// Augment MUI Palette to include custom semantic colors
 declare module "@mui/material/styles" {
   interface Palette {
     semantics: typeof semanticColors;
@@ -16,7 +16,6 @@ declare module "@mui/material/styles" {
   }
 }
 
-// Create the recruitment platform theme and attach custom colors under `palette.recruitment`
 const recruitmentPlatformTheme = createTheme({
   palette: {
     ...muiPaletteOptions,

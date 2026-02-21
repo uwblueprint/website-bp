@@ -11,6 +11,7 @@ import Table from "@components/admin/Table";
 // } from "firebase/database";
 // import { Student } from "@components/admin/ApplicationsTable";
 import ProtectedRoute from "@components/context/ProtectedRoute";
+import RecruitmentPlatformThemeProvider from "@components/recruitmentPlatformCommon/RecruitmentPlatformThemeProvider";
 // import {
 //   APPLICATION_OPEN_DATETIME,
 //   APPLICATION_CLOSE_DATETIME_WITH_GRACE_PERIOD,
@@ -62,9 +63,11 @@ const Admin: NextPage = () => {
 
   return (
     <ProtectedRoute allowedRoles={["Admin", "User"]}>
-      <div>
-        <Table />
-      </div>
+      <RecruitmentPlatformThemeProvider>
+        <div>
+          <Table />
+        </div>
+      </RecruitmentPlatformThemeProvider>
     </ProtectedRoute>
   );
 };
