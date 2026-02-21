@@ -62,13 +62,13 @@ const Admin: NextPage = () => {
   // }, []);
 
   return (
-    <ProtectedRoute allowedRoles={["Admin", "User"]}>
-      <RecruitmentPlatformThemeProvider>
+    <RecruitmentPlatformThemeProvider>
+      <ProtectedRoute allowedRoles={["Admin", "User"]}>
         <div>
           <Table />
         </div>
-      </RecruitmentPlatformThemeProvider>
-    </ProtectedRoute>
+      </ProtectedRoute>
+    </RecruitmentPlatformThemeProvider>
   );
 };
 

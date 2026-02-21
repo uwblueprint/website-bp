@@ -163,13 +163,13 @@ const ReviewsPages: NextPage = () => {
 const Reviews: NextPage = () => {
   const router = useRouter();
   return (
-    <ProtectedRoute allowedRoles={["Admin", "User"]}>
-      <ProtectedApplication headerInformation={router.query}>
-        <RecruitmentPlatformThemeProvider>
+    <RecruitmentPlatformThemeProvider>
+      <ProtectedRoute allowedRoles={["Admin", "User"]}>
+        <ProtectedApplication headerInformation={router.query}>
           <ReviewsPages />
-        </RecruitmentPlatformThemeProvider>
-      </ProtectedApplication>
-    </ProtectedRoute>
+        </ProtectedApplication>
+      </ProtectedRoute>
+    </RecruitmentPlatformThemeProvider>
   );
 };
 

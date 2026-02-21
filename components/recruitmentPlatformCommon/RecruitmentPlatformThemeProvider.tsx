@@ -30,20 +30,15 @@ interface RecruitmentPlatformThemeProviderProps {
   children: ReactNode;
 }
 
-/**
- * Theme Provider for the Recruitment Platform
- *
- * <RecruitmentPlatformThemeProvider>
- *   <Component />
- * </RecruitmentPlatformThemeProvider>
- */
-export const RecruitmentPlatformThemeProvider: React.FC<
-  RecruitmentPlatformThemeProviderProps
-> = ({ children }) => (
-  <ThemeProvider theme={recruitmentPlatformTheme}>
-    <CssBaseline />
-    {children}
-  </ThemeProvider>
-);
+export const RecruitmentPlatformThemeProvider = ({
+  children,
+}: RecruitmentPlatformThemeProviderProps) => {
+  return (
+    <ThemeProvider theme={recruitmentPlatformTheme}>
+      <CssBaseline />
+      {children}
+    </ThemeProvider>
+  );
+};
 
 export default RecruitmentPlatformThemeProvider;
