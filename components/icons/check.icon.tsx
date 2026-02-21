@@ -2,9 +2,10 @@ import { ReactElement } from "react";
 
 interface CheckIconProps {
   className?: string;
+  style?: React.CSSProperties;
 }
 
-const CheckIcon = ({ className }: CheckIconProps): ReactElement => {
+const CheckIcon = ({ className, style }: CheckIconProps): ReactElement => {
   return (
     <svg
       width="16"
@@ -13,6 +14,7 @@ const CheckIcon = ({ className }: CheckIconProps): ReactElement => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      style={style}
     >
       <path
         d="M13.3334 4L6.00008 11.3333L2.66675 8"
