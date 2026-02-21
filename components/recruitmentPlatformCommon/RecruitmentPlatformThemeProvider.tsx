@@ -3,29 +3,29 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import {
   muiPaletteOptions,
-  customColors,
+  semanticColors,
 } from "@constants/recruitmentPlatformPalette";
 
-// Extend MUI theme to include custom colors
+// Augment MUI Palette to include recruitment-specific colors under `palette.recruitment`
 declare module "@mui/material/styles" {
-  interface Theme {
-    custom: typeof customColors;
+  interface Palette {
+    semantics: typeof semanticColors;
   }
-  interface ThemeOptions {
-    custom?: typeof customColors;
+  interface PaletteOptions {
+    semantics?: typeof semanticColors;
   }
 }
 
-// Create the recruitment platform theme with MUI palette and custom colors
+// Create the recruitment platform theme and attach custom colors under `palette.recruitment`
 const recruitmentPlatformTheme = createTheme({
-  palette: muiPaletteOptions,
+  palette: {
+    ...muiPaletteOptions,
+    semantics: semanticColors,
+  },
   typography: {
     fontFamily: "'Poppins', sans-serif",
   },
 });
-
-// Attach custom colors to theme
-recruitmentPlatformTheme.custom = customColors;
 
 interface RecruitmentPlatformThemeProviderProps {
   children: ReactNode;

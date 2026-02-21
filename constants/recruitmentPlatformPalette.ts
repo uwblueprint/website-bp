@@ -61,12 +61,6 @@ export const muiPaletteOptions: PaletteOptions = {
     dark: blue[900],
     contrastText: neutral[50],
   },
-  secondary: {
-    main: magenta[500],
-    light: magenta[100],
-    dark: magenta[900],
-    contrastText: neutral[50],
-  },
   error: {
     main: red[500],
     light: red[50],
@@ -85,12 +79,6 @@ export const muiPaletteOptions: PaletteOptions = {
     dark: green[900],
     contrastText: neutral[50],
   },
-  info: {
-    main: blue[500],
-    light: blue[100],
-    dark: blue[900],
-    contrastText: neutral[50],
-  },
   text: {
     primary: neutral[800], // default text color
     secondary: neutral[500],
@@ -101,8 +89,8 @@ export const muiPaletteOptions: PaletteOptions = {
   },
 };
 
-// customColors: additional color groupings for the recruitment platform that don't fit into MUI's palette structure
-export const customColors = {
+// semantic color definitions for the recruitment platform, to be used in addition to the MUI palette colors
+export const semanticColors = {
   reviewStatus: {
     reviewed: {
       background: green[50],
