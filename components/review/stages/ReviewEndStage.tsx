@@ -79,11 +79,7 @@ const EndForm = ({
       <div>
         <form>
           <h3 className="text-[26px] pt-8">Skills Category</h3>
-          <select
-            value={skillsCategory}
-            onChange={handleOptionChange}
-            required
-          >
+          <select value={skillsCategory} onChange={handleOptionChange} required>
             <option value="">Skills Category</option>
             <option value="junior">Junior</option>
             <option value="intermediate">Intermediate</option>
