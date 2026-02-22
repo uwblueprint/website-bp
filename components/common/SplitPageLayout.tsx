@@ -135,7 +135,7 @@ export const PanelLayout = ({
                   titleVariant === "medium" ? "mb-4" : ""
                 }`}
               >
-                <h2 className="font-poppins" style={titleStyle}>
+                <h2 className="font-poppins font-medium" style={titleStyle}>
                   {title}
                 </h2>
                 {titleButton}
@@ -143,7 +143,7 @@ export const PanelLayout = ({
             ) : title ? (
               <h2
                 className={`font-poppins ${titleVariant === "xlarge" ? "shrink-0" : ""} ${
-                  titleVariant === "medium" ? "mb-4" : ""
+                  titleVariant === "medium" ? "mb-4 font-medium" : ""
                 }`}
                 style={titleStyle}
               >
@@ -159,7 +159,9 @@ export const PanelLayout = ({
           </>
         )}
         <div
-          className="flex-1 overflow-y-auto min-h-0 flex flex-col w-full gap-8"
+          className={`flex-1 overflow-y-auto min-h-0 flex flex-col w-full gap-8 ${
+            titleVariant === "medium" ? "antialiased" : ""
+          }`}
           style={{ alignItems: "flex-start" }}
         >
           {children}

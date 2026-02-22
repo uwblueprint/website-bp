@@ -38,7 +38,7 @@ export const ReviewPassionForSocialGoodStage = ({
       </PanelLayout>
       <PanelLayout
         borderLeft
-        title="Scoring Passion for social good (PFSG)"
+        title="Scoring for passion for social good (PFSG)"
         titleVariant="medium"
         variant="white"
       >

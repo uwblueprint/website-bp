@@ -142,7 +142,7 @@ export const ReviewScoreInput: React.FC<Props> = ({
             borderBottom: "1px solid #C4C4C4",
           }}
         >
-          <UpCaret className="w-3 h-3 shrink-0" />
+          <UpCaret />
         </button>
         <button
           type="button"
