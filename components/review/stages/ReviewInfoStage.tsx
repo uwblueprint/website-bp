@@ -125,10 +125,18 @@ export const ReviewInfoStage = ({
         onClose={() => setModalOpen(false)}
       />
       <ReviewPageLayout currentStage={ReviewStage.INFO} scores={scores}>
-        <PanelLayout variant="sky" borderRight>
+        <PanelLayout
+          variant="sky"
+          borderRight
+          backToHomeHref="/admin"
+          showApplicationTitle={false}
+        >
           <InfoBanner />
         </PanelLayout>
-        <PanelLayout title="Basic Information" subtitle={`${name}'s Application`}>
+        <PanelLayout
+          title="Basic Information"
+          subtitle={`${name}'s Application`}
+        >
           <div className="flex flex-col gap-4">
             <ReviewAnswers questions={INFO_QUESTIONS} answers={answers} />
           </div>

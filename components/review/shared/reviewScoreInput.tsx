@@ -10,17 +10,38 @@ interface Props {
   onChange: (value: number) => void;
 }
 
-/** Up caret for increment button */
-const UpCaret: React.FC<{ className?: string }> = ({ className }) => (
-  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className={className} aria-hidden>
-    <path d="M6 3L10 9H2L6 3Z" fill="currentColor" />
+/** Up caret - per Figma: 10×6.25px, fill #2D3748 */
+const UpCaret = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="10"
+    height="6.25"
+    viewBox="0 0 9 6"
+    fill="none"
+    aria-hidden
+  >
+    <path
+      d="M4.07001 0.18775C4.27018 -0.0624531 4.65072 -0.0624533 4.85088 0.18775L8.81057 5.13736C9.07248 5.46474 8.83939 5.94971 8.42014 5.94971H0.500762C0.0815088 5.94971 -0.151578 5.46474 0.110327 5.13736L4.07001 0.18775Z"
+      fill="#2D3748"
+    />
   </svg>
 );
 
-/** Down caret for decrement button */
-const DownCaret: React.FC<{ className?: string }> = ({ className }) => (
-  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className={className} aria-hidden>
-    <path d="M6 9L2 3H10L6 9Z" fill="currentColor" />
+/** Down caret - mirrored up caret */
+const DownCaret = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="10"
+    height="6.25"
+    viewBox="0 0 9 6"
+    fill="none"
+    aria-hidden
+    style={{ transform: "rotate(180deg)" }}
+  >
+    <path
+      d="M4.07001 0.18775C4.27018 -0.0624531 4.65072 -0.0624533 4.85088 0.18775L8.81057 5.13736C9.07248 5.46474 8.83939 5.94971 8.42014 5.94971H0.500762C0.0815088 5.94971 -0.151578 5.46474 0.110327 5.13736L4.07001 0.18775Z"
+      fill="#2D3748"
+    />
   </svg>
 );
 
@@ -40,7 +61,7 @@ export const ReviewScoreInput: React.FC<Props> = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value;
     if (raw === "") {
-      onChange(min);
+      onChange(0);
       return;
     }
     const n = parseInt(raw, 10);
@@ -50,19 +71,30 @@ export const ReviewScoreInput: React.FC<Props> = ({
   };
 
   const handleIncrement = () => {
-    const next = Number.isNaN(numericValue) ? min : Math.min(max, numericValue + 1);
+    const next = Number.isNaN(numericValue)
+      ? min
+      : Math.min(max, numericValue + 1);
     onChange(next);
   };
 
   const handleDecrement = () => {
-    const next = Number.isNaN(numericValue) ? max : Math.max(min, numericValue - 1);
+    const next = Number.isNaN(numericValue)
+      ? max
+      : Math.max(min, numericValue - 1);
     onChange(next);
   };
 
   return (
     <div
-      className="inline-flex h-12 w-full max-w-[200px] bg-white border border-charcoal-300 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue/20 focus-within:border-blue"
+      className="flex items-center font-source overflow-hidden focus-within:ring-2 focus-within:ring-blue/20 shrink-0"
       role="group"
+      style={{
+        width: "280px",
+        height: "48px",
+        background: "#FFFFFF",
+        border: "1px solid #C4C4C4",
+        borderRadius: "8px",
+      }}
     >
       <input
         id={id}
@@ -73,28 +105,54 @@ export const ReviewScoreInput: React.FC<Props> = ({
         aria-label={ariaLabel}
         value={value === "" ? "" : value}
         onChange={handleInputChange}
-        className="h-full flex-1 min-w-0 border-0 px-4 text-[16px] font-normal text-charcoal-700 placeholder:text-charcoal-400 bg-transparent focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+        className="h-full flex-1 min-w-0 border-0 focus:outline-none placeholder:text-[#2D3748] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+        style={{
+          alignSelf: "stretch",
+          padding: "0 20px",
+          fontSize: "16px",
+          fontStyle: "normal",
+          fontWeight: 400,
+          lineHeight: "140%",
+          color: "#252525",
+          background: "#FFFFFF",
+          fontFeatureSettings: "'liga' off, 'clig' off",
+        }}
       />
       <div
-        className="flex shrink-0 w-px bg-[#C4C4C4]"
+        className="flex shrink-0 self-stretch"
+        style={{ background: "#C4C4C4", width: "1px" }}
         aria-hidden
       />
-      <div className="flex flex-col shrink-0 w-10 bg-charcoal-100 border-l border-charcoal-200">
+      <div
+        className="flex flex-col shrink-0 h-full"
+        style={{
+          width: "24px",
+          background: "#FFFFFF",
+        }}
+      >
         <button
           type="button"
           onClick={handleIncrement}
           disabled={!canIncrement}
           aria-label="Increase score"
-          className="flex-1 flex items-center justify-center min-h-[22px] text-charcoal-600 hover:bg-charcoal-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-charcoal-100 border-b border-charcoal-200"
+          className="flex-1 flex items-center justify-center min-h-0 disabled:opacity-40 disabled:cursor-not-allowed"
+          style={{
+            background: "#FFFFFF",
+            color: "#252525",
+            borderBottom: "1px solid #C4C4C4",
+          }}
         >
-          <UpCaret />
+          <UpCaret className="w-3 h-3 shrink-0" />
         </button>
         <button
           type="button"
           onClick={handleDecrement}
           disabled={!canDecrement}
           aria-label="Decrease score"
-          className="flex-1 flex items-center justify-center min-h-[22px] text-charcoal-600 hover:bg-charcoal-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-charcoal-100"
+          className="flex-1 flex items-center justify-center min-h-0 disabled:opacity-40 disabled:cursor-not-allowed"
+          style={{
+            background: "#FFFFFF",
+          }}
         >
           <DownCaret />
         </button>

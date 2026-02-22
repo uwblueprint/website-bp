@@ -29,7 +29,10 @@ const LeftPanelContent = ({
     { label: "Skill", stage: ReviewStage.SKL },
   ];
 
-  const totalScore = SCORE_ROWS.reduce((sum, { stage }) => sum + scores[stage], 0);
+  const totalScore = SCORE_ROWS.reduce(
+    (sum, { stage }) => sum + scores[stage],
+    0,
+  );
 
   return (
     <div className="flex flex-col gap-6 p-3">
@@ -62,7 +65,10 @@ const LeftPanelContent = ({
                 Topic
               </span>
               {SCORE_ROWS.map(({ label }) => (
-                <span key={label} className="text-black font-normal text-base leading-snug">
+                <span
+                  key={label}
+                  className="text-black font-normal text-base leading-snug"
+                >
                   {label}
                 </span>
               ))}
@@ -72,7 +78,10 @@ const LeftPanelContent = ({
                 {reviewerName}&apos;s rating
               </span>
               {SCORE_ROWS.map(({ label, stage }) => (
-                <span key={label} className="text-black font-normal text-base leading-snug">
+                <span
+                  key={label}
+                  className="text-black font-normal text-base leading-snug"
+                >
                   {scores[stage]}/5
                 </span>
               ))}
@@ -115,17 +124,16 @@ const EndForm = ({
   return (
     <div className="flex flex-col gap-8 w-full lg:max-w-[541px] lg:mx-auto">
       <div className="flex flex-col gap-6">
-        <h3 className="text-charcoal-900 text-xl leading-7">
-          Skill Category
-        </h3>
+        <h3 className="text-charcoal-900 text-xl leading-7">Skill Category</h3>
         <select
           value={skillsCategory}
           onChange={handleOptionChange}
           required
           className={`h-14 w-full rounded-md border bg-white px-4 py-4 text-base font-normal leading-6
-            ${validationError && skillsCategory === ""
-              ? "border-red-500"
-              : "border-charcoal-250"
+            ${
+              validationError && skillsCategory === ""
+                ? "border-red-500"
+                : "border-charcoal-250"
             }
             ${skillsCategory === "" ? "text-charcoal-250" : "text-black"}`}
         >
@@ -136,9 +144,7 @@ const EndForm = ({
         </select>
       </div>
       <div className="flex flex-col gap-6">
-        <h3 className="text-charcoal-900 text-xl leading-7">
-          Comments
-        </h3>
+        <h3 className="text-charcoal-900 text-xl leading-7">Comments</h3>
         <textarea
           value={comments}
           onChange={handleCommentChange}
@@ -178,7 +184,11 @@ export const ReviewEndStage = ({
         />
       </PanelLayout>
       <PanelLayout>
-        <EndForm endData={endData} setEndData={setEndData} validationError={validationError} />
+        <EndForm
+          endData={endData}
+          setEndData={setEndData}
+          validationError={validationError}
+        />
       </PanelLayout>
     </ReviewPageLayout>
   );

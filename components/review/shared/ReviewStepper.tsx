@@ -48,7 +48,12 @@ interface Props {
   onValidate?: () => boolean;
 }
 
-export const ReviewStepper = ({ currentStage, scores, endData, onValidate }: Props) => {
+export const ReviewStepper = ({
+  currentStage,
+  scores,
+  endData,
+  onValidate,
+}: Props) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const setStage = useContext(ReviewSetStageContext);
@@ -90,13 +95,17 @@ export const ReviewStepper = ({ currentStage, scores, endData, onValidate }: Pro
   };
 
   return (
-    <div className="bg-white px-6 py-4">
-      <div className="flex justify-end items-center gap-3">
+    <div
+      className="bg-white px-6 py-4"
+      style={{ borderTop: "1px solid #C4C4C4" }}
+    >
+      <div className="flex justify-end items-center gap-3 flex-nowrap">
         {currentStageIndex > 0 && (
           <Button
             size="sm"
             variant="secondary"
             onClick={() => setStage?.(previousStage)}
+            className="shrink-0 whitespace-nowrap !px-4 !py-2 !rounded-[20px] hover:!bg-white hover:!border-blue hover:!text-blue"
           >
             Previous section
           </Button>
@@ -105,6 +114,7 @@ export const ReviewStepper = ({ currentStage, scores, endData, onValidate }: Pro
           <Button
             size="sm"
             disabled={isSubmitting}
+            className="shrink-0 whitespace-nowrap !px-4 !py-2 !rounded-[20px] hover:!bg-blue hover:!border-blue hover:!text-white disabled:!opacity-60"
             onClick={async () => {
               if (onValidate && !onValidate()) {
                 return;
@@ -129,6 +139,7 @@ export const ReviewStepper = ({ currentStage, scores, endData, onValidate }: Pro
             size="sm"
             disabled={isButtonDisabled}
             onClick={() => setStage?.(nextStage)}
+            className="shrink-0 whitespace-nowrap !px-4 !py-2 !rounded-[20px] hover:!bg-blue hover:!border-blue hover:!text-white disabled:!opacity-60"
           >
             Save & Continue
           </Button>

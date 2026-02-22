@@ -81,7 +81,7 @@ const ReviewsPages: NextPage = () => {
 
   const updateScores = (key: ReviewStage, value: number) => {
     setScores((prev) => {
-      if (isNaN(value) || value < 1 || value > 5) {
+      if (isNaN(value) || value < 0 || value > 5) {
         return prev;
       }
       return { ...prev, [key]: value };

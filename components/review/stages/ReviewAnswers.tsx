@@ -13,21 +13,32 @@ export const ReviewAnswers = ({ questions, answers }: Props) => {
           style={{ alignItems: "flex-start" }}
         >
           <h5
-            className="text-[16px] font-medium text-charcoal-700"
-            style={{ lineHeight: "140%" }}
+            className="font-poppins"
+            style={{
+              color: "#252525",
+              fontSize: "16px",
+              fontWeight: 500,
+              lineHeight: "140%",
+              fontFeatureSettings: "'liga' off, 'clig' off",
+            }}
           >
             {question}
           </h5>
           <div className="flex w-full">
             <div
-              className="rounded-r px-4 py-3 w-full"
+              className="rounded-r px-4 py-3 w-full font-source"
               style={{
                 borderLeft: "4px solid rgba(37, 37, 37, 0.75)",
               }}
             >
               <p
-                className="text-[16px] font-normal text-charcoal-600"
-                style={{ lineHeight: "140%" }}
+                style={{
+                  color: "rgba(37, 37, 37, 0.80)",
+                  fontSize: "16px",
+                  fontWeight: 400,
+                  lineHeight: "140%",
+                  fontFeatureSettings: "'liga' off, 'clig' off",
+                }}
               >
                 {answers[idx]}
               </p>
