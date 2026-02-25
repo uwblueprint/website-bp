@@ -18,6 +18,7 @@ import { ReviewSkillStage } from "@components/review/stages/ReviewSkillStage";
 import { ReviewTeamPlayerStage } from "@components/review/stages/ReviewTeamPlayerStage";
 import { ApplicationDTO, AuthStatus } from "../../types";
 import ProtectedApplication from "./protectedApplication";
+import RecruitmentPlatformThemeProvider from "@components/recruitmentPlatformCommon/RecruitmentPlatformThemeProvider";
 
 const sampleApplication: ApplicationDTO = {
   id: 1,
@@ -162,11 +163,13 @@ const ReviewsPages: NextPage = () => {
 const Reviews: NextPage = () => {
   const router = useRouter();
   return (
-    <ProtectedRoute allowedRoles={["Admin", "User"]}>
-      <ProtectedApplication headerInformation={router.query}>
-        <ReviewsPages />
-      </ProtectedApplication>
-    </ProtectedRoute>
+    <RecruitmentPlatformThemeProvider>
+      <ProtectedRoute allowedRoles={["Admin", "User"]}>
+        <ProtectedApplication headerInformation={router.query}>
+          <ReviewsPages />
+        </ProtectedApplication>
+      </ProtectedRoute>
+    </RecruitmentPlatformThemeProvider>
   );
 };
 
