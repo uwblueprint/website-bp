@@ -92,7 +92,9 @@ export const ReviewSkillStage = ({
             ariaLabel="Skill score"
             onChange={(v) => updateScore?.(ReviewStage.SKL, v)}
           />
-          <span className="text-xl leading-none" style={{ color: "#CD5A5A" }}>*</span>
+          <span className="text-xl leading-none" style={{ color: "#CD5A5A" }}>
+            *
+          </span>
         </div>
       </PanelLayout>
     </ReviewPageLayout>

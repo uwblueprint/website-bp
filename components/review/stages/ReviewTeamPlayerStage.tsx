@@ -58,7 +58,9 @@ export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
             ariaLabel="Team player score"
             onChange={(v) => updateScore?.(TP, v)}
           />
-          <span className="text-xl leading-none" style={{ color: "#CD5A5A" }}>*</span>
+          <span className="text-xl leading-none" style={{ color: "#CD5A5A" }}>
+            *
+          </span>
         </div>
       </PanelLayout>
     </ReviewPageLayout>

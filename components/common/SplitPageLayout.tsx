@@ -142,9 +142,9 @@ export const PanelLayout = ({
               </div>
             ) : title ? (
               <h2
-                className={`font-poppins ${titleVariant === "xlarge" ? "shrink-0" : ""} ${
-                  titleVariant === "medium" ? "mb-4 font-medium" : ""
-                }`}
+                className={`font-poppins ${
+                  titleVariant === "xlarge" ? "shrink-0" : ""
+                } ${titleVariant === "medium" ? "mb-4 font-medium" : ""}`}
                 style={titleStyle}
               >
                 {title}

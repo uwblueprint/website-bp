@@ -61,7 +61,9 @@ export const ReviewPassionForSocialGoodStage = ({
             ariaLabel="Passion for social good score"
             onChange={(v) => updateScore?.(ReviewStage.PFSG, v)}
           />
-          <span className="text-xl leading-none" style={{ color: "#CD5A5A" }}>*</span>
+          <span className="text-xl leading-none" style={{ color: "#CD5A5A" }}>
+            *
+          </span>
         </div>
       </PanelLayout>
     </ReviewPageLayout>

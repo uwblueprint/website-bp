@@ -1,6 +1,7 @@
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import MUIDataTable from "mui-datatables";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { getReviewTableColumns } from "./ReviewTableColumn";
 import ApplicantRole from "entities/applicationRole";
 import { ResumeIcon } from "@components/icons/resume.icon";
@@ -22,6 +23,7 @@ const ReviewTable: React.FC<TableProps> = ({
   setNumFirstChoiceEntries,
   setNumSecondChoiceEntries,
 }) => {
+  const router = useRouter();
   const [firstChoiceApplications, setFirstChoiceApplications] = useState<any[]>(
     [],
   );
@@ -65,7 +67,9 @@ const ReviewTable: React.FC<TableProps> = ({
       ),
       term: app.academicYear,
       program: app.program,
-      timesApplied: mapToNumericalValue[app.timesApplied],
+      timesApplied: (mapToNumericalValue as Record<string, string>)[
+        app.timesApplied as string
+      ],
       status: app.status,
       secondChoice: app.secondChoiceRole,
       secondChoiceStatus: app.secondChoiceStatus,
@@ -157,7 +161,7 @@ const ReviewTable: React.FC<TableProps> = ({
       <MUIDataTable
         title=""
         data={getTableRows()}
-        columns={getReviewTableColumns()}
+        columns={getReviewTableColumns(router)}
         options={{
           search: true,
           viewColumns: false,

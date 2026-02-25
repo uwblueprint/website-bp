@@ -61,7 +61,9 @@ export const ReviewDriveToLearnStage = ({
             ariaLabel="Drive to learn score"
             onChange={(v) => updateScore?.(ReviewStage.D2L, v)}
           />
-          <span className="text-xl leading-none" style={{ color: "#CD5A5A" }}>*</span>
+          <span className="text-xl leading-none" style={{ color: "#CD5A5A" }}>
+            *
+          </span>
         </div>
       </PanelLayout>
     </ReviewPageLayout>
