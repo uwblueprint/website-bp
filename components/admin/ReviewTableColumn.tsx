@@ -1,11 +1,11 @@
 import { MUIDataTableColumn } from "mui-datatables";
 import { LinkIcon } from "@components/icons/link.icon";
 import { Status, SecondChoiceStatus, SkillCategory } from "@utils/muidatatable";
-import { router } from "next/router";
+import Router from "next/router";
 
 export const getReviewTableColumns = (): MUIDataTableColumn[] => {
   const handleNameClick = (appId: string) => {
-    router.push(`/review?reviewId=${appId}`);
+    Router.push(`/review?reviewId=${appId}`);
   };
 
   const columns: MUIDataTableColumn[] = [

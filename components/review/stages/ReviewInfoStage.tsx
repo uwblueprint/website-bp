@@ -1,12 +1,18 @@
+import { useMemo, useState } from "react";
+import { ReviewStage } from "@components/review/shared/constants";
+import { ReviewSplitPanelPage } from "../shared/ReviewSplitPanelPage";
 import Button from "@components/common/Button";
 import Image from "next/image";
-import { useState } from "react";
+import WarningIcon from "@components/icons/warning.icon";
 import { ApplicationDTO } from "../../../types";
-import { ReviewStage } from "../shared/constants";
-import { ReviewSplitPanelPage } from "../shared/ReviewSplitPanelPage";
-import { extractShortAnswerData } from "../shared/reviewUtils";
-import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
+import { extractShortAnswerData } from "@components/review/shared/reviewUtils";
+import { tryGetReviewId } from "@utils/reviewId";
+import Dialogue from "@components/common/Dialogue";
+import ReviewPageAPIClient from "APIClients/ReviewPageAPIClient";
+import { useRouter } from "next/router";
+import { useAuthenticatedUser } from "@components/context/AuthUserContext";
+import { ReviewScores } from "../shared/types";
 
 export interface ReviewStageProps {
   name: string;
@@ -14,128 +20,186 @@ export interface ReviewStageProps {
   scores: ReviewScores;
 }
 
-const InfoBanner = () => (
-  <div className="flex flex-col place-items-center justify-center absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 space-y-8 place-content-center h-full m-auto w-full">
-    <div>
-      <Image
-        height={87}
-        width={440}
-        alt=""
-        src="/common/review-page-banner.svg"
-      />
-    </div>
-    <div>
-      <Image
-        height={300}
-        width={330}
-        alt=""
-        src="/common/review-page-people.svg"
-      />
-    </div>
-  </div>
-);
-
-type ConflictModalProps = {
-  readonly name: string | undefined;
-  readonly open: boolean;
-  readonly onClose: () => void;
-};
-
-const INFO_QUESTIONS = [
-  "Email",
-  "Program",
-  "Academic Term",
-  "Where did you hear about us?",
-  "How many times have you applied to Blueprint in the past?",
-  "Pronouns",
-  "Will you be in an academic (school) term or a co-op term?",
-  "Position",
-];
-
-const ConflictModal = ({ name, open, onClose }: ConflictModalProps) => {
-  return open ? (
-    <div
-      className="fixed inset-0 flex justify-center items-end md:items-center md:p-4 bg-black bg-opacity-20 z-40 m-0"
-      onClick={onClose}
-    >
-      <div
-        className="md:max-w-[310px] relative flex flex-col px-6 md:px-12 pt-4 pb-4 rounded-t-3xl md:rounded-3xl bg-white shadow-lg"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex justify-between space-x-8">
-          <div className="flex flex-col justify-between space-y-4 text-center">
-            <div>
-              <h6 className="mb-1 text-blue">Report a conflict</h6>
-              <p className="text-[16px] font-source text-charcoal-500">
-                Do you know {name} and want to report a conflict?
-              </p>
-            </div>
-
-            <div className="flex justify-center space-x-6">
-              <Button
-                variant="secondary"
-                onClick={onClose}
-                className="whitespace-nowrap"
-              >
-                No
-              </Button>
-              <Button
-                variant="primary"
-                onClick={onClose}
-                className="whitespace-nowrap"
-              >
-                Yes
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  ) : null;
-};
-
-export const ReviewInfoStage = ({
+export const ReviewInfoStage: React.FC<ReviewStageProps> = ({
   name,
   application,
   scores,
-}: ReviewStageProps) => {
-  const [modalOpen, setModalOpen] = useState(false);
+}) => {
+  const router = useRouter();
+  const authenticatedUser = useAuthenticatedUser();
+  const { questions, answers } = useMemo(() => {
+    const shortAnswerStr = application?.shortAnswerQuestions[0];
+    if (!shortAnswerStr) {
+      return { questions: [], answers: [] };
+    }
 
-  const shortAnswerStr = application?.shortAnswerQuestions[0];
-  const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
-  const { extractedAnswers } = extractShortAnswerData(shortAnswerJSON);
+    try {
+      const shortAnswerJSON = JSON.parse(shortAnswerStr);
+      const { extractedQuestions, extractedAnswers } =
+        extractShortAnswerData(shortAnswerJSON);
 
-  const answers = [
-    application?.email ?? "",
-    application?.program ?? "",
-    application?.academicYear ?? "",
-    application?.heardFrom ?? "",
-    application?.timesApplied ?? "",
-    application?.pronouns ?? "",
-    application?.academicOrCoop ?? "",
-    application?.firstChoiceRole ?? "",
-    ...extractedAnswers,
-  ];
+      return {
+        questions: [
+          "Email",
+          "Program",
+          "Academic Term",
+          "Where did you hear about us?",
+          "How many times have you applied to Blueprint in the past?",
+          "Pronouns",
+          "Will you be in an academic (school) term or a co-op term?",
+          "Position",
+          ...extractedQuestions,
+        ],
+        answers: [
+          application?.email ?? "",
+          application?.program ?? "",
+          application?.academicYear ?? "",
+          application?.heardFrom ?? "",
+          application?.timesApplied ?? "",
+          application?.pronouns ?? "",
+          application?.academicOrCoop ?? "",
+          application?.firstChoiceRole ?? "",
+          ...extractedAnswers,
+        ],
+      };
+    } catch (e) {
+      console.error("Failed to parse shortAnswerQuestions[0]", e);
+      return { questions: [], answers: [] };
+    }
+  }, [application]);
+  const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
+  const [successDialogOpen, setSuccessDialogOpen] = useState(false);
+  const [isReporting, setIsReporting] = useState(false);
+  const [reportError, setReportError] = useState<string | null>(null);
 
+  const handleReportConflict = async () => {
+    try {
+      setIsReporting(true);
+      setReportError(null);
+      const applicantRecordId = tryGetReviewId(router.query);
+      if (applicantRecordId == null) {
+        throw new Error("Missing reviewId in URL");
+      }
+      const reviewerId = Number(authenticatedUser?.id);
+      if (!Number.isInteger(reviewerId)) {
+        throw new Error("Missing authenticated reviewer ID");
+      }
+      await ReviewPageAPIClient.reportReviewConflict(
+        applicantRecordId,
+        reviewerId,
+      );
+      setConfirmDialogOpen(false);
+      setSuccessDialogOpen(true);
+    } catch (error) {
+      console.error("Failed to report conflict", error);
+      setReportError("Couldn't report conflict. Please try again.");
+    } finally {
+      setIsReporting(false);
+    }
+  };
+
+  const handleBackToHomepage = () => {
+    setSuccessDialogOpen(false);
+    router.push("/");
+  };
+
+  const displayName =
+    name && !name.includes("undefined") ? name : "this applicant";
   return (
-    <>
-      <ConflictModal
-        name={name}
-        open={modalOpen}
-        onClose={() => setModalOpen(false)}
-      />
-      <ReviewSplitPanelPage
-        studentName={name}
-        rightTitle="Basic Information"
-        currentStage={ReviewStage.INFO}
-        leftContent={<InfoBanner />}
-        rightContent={
-          <div className="flex flex-col gap-4">
-            <ReviewAnswers questions={INFO_QUESTIONS} answers={answers} />
+    <ReviewSplitPanelPage
+      studentName={name}
+      rightTitle="Basic Information"
+      rightTitleButton={
+        <Button
+          variant="secondary"
+          onClick={() => setConfirmDialogOpen(true)}
+          className="whitespace-nowrap"
+          size="sm"
+        >
+          <div className="flex place-items-center space-x-2">
+            <WarningIcon />
+            <p>Conflict</p>
           </div>
-        }
-        scores={scores}
-      />
-    </>
+        </Button>
+      }
+      currentStage={ReviewStage.INFO}
+      leftContent={
+        <div className="flex flex-col place-items-center justify-center absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 space-y-8 place-content-center h-full m-auto w-full">
+          <div className="">
+            <Image
+              height={87}
+              width={440}
+              alt=""
+              src="/common/review-page-banner.svg"
+            />
+          </div>
+          <div>
+            <Image
+              height={300}
+              width={330}
+              alt=""
+              src="/common/review-page-people.svg"
+            />
+          </div>
+        </div>
+      }
+      rightContent={
+        <>
+          <Dialogue
+            open={confirmDialogOpen}
+            onClose={() => {
+              if (!isReporting) setConfirmDialogOpen(false);
+            }}
+            header="Report a conflict"
+            text={
+              <div className="flex flex-col gap-2">
+                <div>
+                  Do you know {displayName} and want to report a conflict?
+                </div>
+                {reportError ? (
+                  <div className="text-red-600">{reportError}</div>
+                ) : null}
+              </div>
+            }
+          >
+            <Button
+              variant="secondary"
+              onClick={() => setConfirmDialogOpen(false)}
+              className="whitespace-nowrap"
+              disabled={isReporting}
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="primary"
+              onClick={handleReportConflict}
+              className="whitespace-nowrap"
+              disabled={isReporting}
+            >
+              Yes, report
+            </Button>
+          </Dialogue>
+          <Dialogue
+            open={successDialogOpen}
+            onClose={() => setSuccessDialogOpen(false)}
+            header="Conflict reported"
+            text="This applicant has been reported as a conflict of interest and will be re-assigned to another reviewer."
+            textContainerClassName="w-[256px]"
+          >
+            <Button
+              variant="primary"
+              onClick={handleBackToHomepage}
+              className="whitespace-nowrap"
+            >
+              Back to homepage
+            </Button>
+          </Dialogue>
+          <div className="flex flex-col gap-4">
+            <ReviewAnswers questions={questions} answers={answers} />
+          </div>
+        </>
+      }
+      scores={scores}
+    ></ReviewSplitPanelPage>
   );
 };

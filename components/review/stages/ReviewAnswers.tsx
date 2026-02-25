@@ -9,6 +9,7 @@ export const ReviewAnswers = ({ questions, answers }: Props) => {
       {questions.map((question, idx) => {
         return (
           <div
+            key={`${idx}-${question}`}
             className="flex flex-col gap-5"
             style={{ alignItems: "flex-start" }}
           >
