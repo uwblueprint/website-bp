@@ -1,22 +1,23 @@
 import { useMemo, useState } from "react";
 import { ReviewStage } from "@components/review/shared/constants";
-import { ReviewSplitPanelPage } from "../shared/reviewSplitPanelPage";
+import { ReviewSplitPanelPage } from "../shared/ReviewSplitPanelPage";
 import Button from "@components/common/Button";
 import Image from "next/image";
 import WarningIcon from "@components/icons/warning.icon";
 import { ApplicationDTO } from "../../../types";
-import { ReviewAnswers } from "./reviewAnswers";
+import { ReviewAnswers } from "./ReviewAnswers";
 import { extractShortAnswerData } from "@components/review/shared/reviewUtils";
 import { tryGetReviewId } from "@utils/reviewId";
 import Dialogue from "@components/common/Dialogue";
 import ReviewPageAPIClient from "APIClients/ReviewPageAPIClient";
 import { useRouter } from "next/router";
 import { useAuthenticatedUser } from "@components/context/AuthUserContext";
+import { ReviewScores } from "../shared/types";
 
 export interface ReviewStageProps {
   name: string;
   application: ApplicationDTO | undefined;
-  scores: Map<ReviewStage, number>;
+  scores: ReviewScores;
 }
 
 export const ReviewInfoStage: React.FC<ReviewStageProps> = ({

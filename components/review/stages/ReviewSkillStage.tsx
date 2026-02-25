@@ -1,10 +1,10 @@
 import { ReviewStage } from "@components/review/shared/constants";
-import { ReviewRatingPage } from "../shared/reviewRatingPage";
-import { ReviewRubric } from "./reviewRubric";
-import { ReviewAnswers } from "./reviewAnswers";
-import { useState, useEffect } from "react";
-import { ReviewStageProps } from "./reviewInfoStage";
-import { ReviewSetScoresContext } from "../shared/reviewContext";
+import { ReviewRatingPage } from "../shared/ReviewRatingPage";
+import { ReviewRubric } from "./ReviewRubric";
+import { ReviewAnswers } from "./ReviewAnswers";
+import { useMemo } from "react";
+import { ReviewStageProps } from "./ReviewInfoStage";
+import { ReviewSetScoresContext } from "../shared/ReviewContext";
 
 type RoleSpecificQuestion = {
   readonly question?: string;
@@ -24,29 +24,34 @@ export const ReviewSkillStage: React.FC<ReviewStageProps> = ({
   application,
   scores,
 }) => {
-  const [questions, setQuestions] = useState<string[]>([]);
-  const [answers, setAnswers] = useState<string[]>([]);
-  const resumeLink = application?.resumeUrl;
-
-  useEffect(() => {
+  const { questions, answers } = useMemo(() => {
     const roleSpecificStr = application?.roleSpecificQuestions[0];
-    if (!roleSpecificStr) return;
-    const roleSpecificStrJSON = JSON.parse(roleSpecificStr) as Array<{
-      questions?: RoleSpecificQuestion[];
-    }>;
+    if (!roleSpecificStr) {
+      return { questions: [], answers: [] };
+    }
 
-    const questionsData: RoleSpecificQuestion[] =
-      roleSpecificStrJSON[0]?.questions ?? [];
+    try {
+      const roleSpecificStrJSON = JSON.parse(roleSpecificStr) as Array<{
+        questions?: RoleSpecificQuestion[];
+      }>;
 
-    const tempQuestions = questionsData.map((item) => item.question ?? "");
-    const tempAnswers = questionsData.map((item) => {
-      if (Array.isArray(item.response)) return item.response.join(", ");
-      return item.response ?? "";
-    });
+      const questionsData: RoleSpecificQuestion[] =
+        roleSpecificStrJSON[0]?.questions ?? [];
 
-    setQuestions(tempQuestions);
-    setAnswers(tempAnswers);
-  }, [application]);
+      const parsedQuestions = questionsData.map((item) => item.question ?? "");
+      const parsedAnswers = questionsData.map((item) => {
+        if (Array.isArray(item.response)) return item.response.join(", ");
+        return item.response ?? "";
+      });
+
+      return { questions: parsedQuestions, answers: parsedAnswers };
+    } catch (error) {
+      console.error("Failed to parse roleSpecificQuestions[0]", error);
+      return { questions: [], answers: [] };
+    }
+  }, [application?.roleSpecificQuestions]);
+
+  const resumeLink = application?.resumeUrl;
 
   return (
     <ReviewRatingPage
@@ -72,7 +77,7 @@ export const ReviewSkillStage: React.FC<ReviewStageProps> = ({
               <input
                 type="number"
                 pattern="[1-4]"
-                value={scores.get(ReviewStage.SKL)}
+                value={scores[ReviewStage.SKL]}
                 onChange={(event) => {
                   if (event.target.validity.valid) {
                     updateScore?.(
