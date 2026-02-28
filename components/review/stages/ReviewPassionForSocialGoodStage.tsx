@@ -33,7 +33,10 @@ export const ReviewPassionForSocialGoodStage = ({
           currentStage={ReviewStage.PFSG}
         />
       </PanelLayout>
-      <PanelLayout title="Passion for social good" subtitle={`${name}'s Application`}>
+      <PanelLayout
+        title="Passion for social good"
+        subtitle={`${name}'s Application`}
+      >
         <div className="flex flex-col items-start gap-8">
           <div>
             <ReviewAnswers questions={questions} answers={answers} />

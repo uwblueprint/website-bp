@@ -48,7 +48,12 @@ interface Props {
   onValidate?: () => boolean;
 }
 
-export const ReviewStepper = ({ currentStage, scores, endData, onValidate }: Props) => {
+export const ReviewStepper = ({
+  currentStage,
+  scores,
+  endData,
+  onValidate,
+}: Props) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const setStage = useContext(ReviewSetStageContext);

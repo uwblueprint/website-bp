@@ -128,7 +128,10 @@ export const ReviewInfoStage = ({
         <PanelLayout variant="sky" borderRight>
           <InfoBanner />
         </PanelLayout>
-        <PanelLayout title="Basic Information" subtitle={`${name}'s Application`}>
+        <PanelLayout
+          title="Basic Information"
+          subtitle={`${name}'s Application`}
+        >
           <div className="flex flex-col gap-4">
             <ReviewAnswers questions={INFO_QUESTIONS} answers={answers} />
           </div>

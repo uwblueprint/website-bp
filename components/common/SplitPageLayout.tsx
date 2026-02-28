@@ -16,7 +16,7 @@ export const SplitPanelLayout = ({
   return (
     <div className="flex flex-col h-screen">
       {header}
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 overflow-hidden border border-charcoal-250">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 overflow-hidden border border-[#C4C4C4]">
         {children}
       </div>
       {footer}
@@ -49,7 +49,7 @@ export const PanelLayout = ({
   return (
     <div
       className={`flex flex-col h-full overflow-hidden relative ${bg} ${
-        borderRight ? "lg:border-r border-charcoal-250" : ""
+        borderRight ? "lg:border-r border-[#C4C4C4]" : ""
       }`}
     >
       {hasHeader && (
@@ -59,20 +59,22 @@ export const PanelLayout = ({
           )}
           {title && titleButton ? (
             <div className="flex justify-between items-center">
-              <h2 className="text-[26px] text-charcoal-900 font-semibold">
+              <h2 className="text-[26px] text-[#252525] font-semibold">
                 {title}
               </h2>
               {titleButton}
             </div>
           ) : title ? (
-            <h2 className="text-[26px] text-charcoal-900 font-semibold">
+            <h2 className="text-[26px] text-[#252525] font-semibold">
               {title}
             </h2>
           ) : null}
         </div>
       )}
       <div
-        className={`flex-1 px-6 pb-8 overflow-y-auto ${!hasHeader ? "pt-8" : ""}`}
+        className={`flex-1 px-6 pb-8 overflow-y-auto ${
+          !hasHeader ? "pt-8" : ""
+        }`}
       >
         <div className="w-full">{children}</div>
       </div>

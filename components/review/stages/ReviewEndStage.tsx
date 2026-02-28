@@ -29,7 +29,10 @@ const LeftPanelContent = ({
     { label: "Skill", stage: ReviewStage.SKL },
   ];
 
-  const totalScore = SCORE_ROWS.reduce((sum, { stage }) => sum + scores[stage], 0);
+  const totalScore = SCORE_ROWS.reduce(
+    (sum, { stage }) => sum + scores[stage],
+    0,
+  );
 
   return (
     <div className="flex flex-col gap-6 p-3">
@@ -46,23 +49,26 @@ const LeftPanelContent = ({
       {/* Scoring section */}
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-3">
-          <p className="text-charcoal-900/75 font-normal text-base leading-snug">
+          <p className="text-[#252525]/75 font-normal text-base leading-snug">
             Scoring
           </p>
-          <h2 className="text-charcoal-900 text-3xl leading-snug">
+          <h2 className="text-[#252525] text-3xl leading-snug">
             {name}&apos;s final scores
           </h2>
         </div>
 
         {/* Score card */}
-        <div className="rounded-lg border border-charcoal-250 bg-white p-6 flex flex-col gap-8">
+        <div className="rounded-lg border border-[#C4C4C4] bg-white p-6 flex flex-col gap-8">
           <div className="flex justify-between items-center">
             <div className="flex flex-col gap-6 w-[235px]">
               <span className="text-blue font-medium text-xl leading-7 font-poppins">
                 Topic
               </span>
               {SCORE_ROWS.map(({ label }) => (
-                <span key={label} className="text-black font-normal text-base leading-snug">
+                <span
+                  key={label}
+                  className="text-black font-normal text-base leading-snug"
+                >
                   {label}
                 </span>
               ))}
@@ -72,13 +78,16 @@ const LeftPanelContent = ({
                 {reviewerName}&apos;s rating
               </span>
               {SCORE_ROWS.map(({ label, stage }) => (
-                <span key={label} className="text-black font-normal text-base leading-snug">
+                <span
+                  key={label}
+                  className="text-black font-normal text-base leading-snug"
+                >
                   {scores[stage]}/5
                 </span>
               ))}
             </div>
           </div>
-          <hr className="border-charcoal-250" />
+          <hr className="border-[#C4C4C4]" />
           <div className="flex justify-between items-center">
             <span className="text-black font-medium text-xl leading-7 font-poppins">
               Total Score
@@ -115,19 +124,18 @@ const EndForm = ({
   return (
     <div className="flex flex-col gap-8 w-full lg:max-w-[541px] lg:mx-auto">
       <div className="flex flex-col gap-6">
-        <h3 className="text-charcoal-900 text-xl leading-7">
-          Skill Category
-        </h3>
+        <h3 className="text-[#252525] text-xl leading-7">Skill Category</h3>
         <select
           value={skillsCategory}
           onChange={handleOptionChange}
           required
           className={`h-14 w-full rounded-md border bg-white px-4 py-4 text-base font-normal leading-6
-            ${validationError && skillsCategory === ""
-              ? "border-red-500"
-              : "border-charcoal-250"
+            ${
+              validationError && skillsCategory === ""
+                ? "border-red-500"
+                : "border-[#C4C4C4]"
             }
-            ${skillsCategory === "" ? "text-charcoal-250" : "text-black"}`}
+            ${skillsCategory === "" ? "text-[#C4C4C4]" : "text-black"}`}
         >
           <option value="">Skill Category</option>
           <option value="junior">Junior</option>
@@ -136,14 +144,12 @@ const EndForm = ({
         </select>
       </div>
       <div className="flex flex-col gap-6">
-        <h3 className="text-charcoal-900 text-xl leading-7">
-          Comments
-        </h3>
+        <h3 className="text-[#252525] text-xl leading-7">Comments</h3>
         <textarea
           value={comments}
           onChange={handleCommentChange}
           placeholder="Leave Comments here"
-          className="w-full h-[250px] rounded-md border border-charcoal-250 bg-white px-3 py-4 text-base font-normal leading-6 placeholder:text-sm placeholder:font-normal placeholder:leading-5 placeholder:text-black/[0.36]"
+          className="w-full h-[250px] rounded-md border border-[#C4C4C4] bg-white px-3 py-4 text-base font-normal leading-6 placeholder:text-sm placeholder:font-normal placeholder:leading-5 placeholder:text-black/[0.36]"
         />
       </div>
     </div>
@@ -178,7 +184,11 @@ export const ReviewEndStage = ({
         />
       </PanelLayout>
       <PanelLayout>
-        <EndForm endData={endData} setEndData={setEndData} validationError={validationError} />
+        <EndForm
+          endData={endData}
+          setEndData={setEndData}
+          validationError={validationError}
+        />
       </PanelLayout>
     </ReviewPageLayout>
   );
