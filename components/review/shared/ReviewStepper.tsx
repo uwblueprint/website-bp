@@ -45,9 +45,15 @@ interface Props {
   currentStage: ReviewStage;
   scores: ReviewScores;
   endData?: ReviewEndData;
+  onValidate?: () => boolean;
 }
 
-export const ReviewStepper = ({ currentStage, scores, endData }: Props) => {
+export const ReviewStepper = ({
+  currentStage,
+  scores,
+  endData,
+  onValidate,
+}: Props) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const setStage = useContext(ReviewSetStageContext);
@@ -89,7 +95,7 @@ export const ReviewStepper = ({ currentStage, scores, endData }: Props) => {
   };
 
   return (
-    <div className="border-t border-gray-200 bg-white px-6 py-4">
+    <div className="bg-white px-6 py-4">
       <div className="flex justify-end items-center gap-3">
         {currentStageIndex > 0 && (
           <Button
@@ -103,8 +109,12 @@ export const ReviewStepper = ({ currentStage, scores, endData }: Props) => {
         {currentStage === ReviewStage.END ? (
           <Button
             size="sm"
-            disabled={isSubmitting}
+            disabled={isSubmitting || !endData?.skillsCategory}
             onClick={async () => {
+              if (onValidate && !onValidate()) {
+                return;
+              }
+
               setIsSubmitting(true);
               try {
                 await updateAllData();

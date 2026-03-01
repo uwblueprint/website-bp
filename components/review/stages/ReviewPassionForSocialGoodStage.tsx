@@ -2,11 +2,11 @@ import { useContext } from "react";
 import { ApplicationDTO } from "../../../types";
 import { ReviewStage } from "../shared/constants";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
-import { ReviewRatingPage } from "../shared/ReviewRatingPage";
 import { REVIEW_PFSG_SCORING_CRITERIA } from "../shared/rubricConstants";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewRubric } from "./ReviewRubric";
+import { ReviewPageLayout, PanelLayout } from "../layout";
 
 export interface Props {
   name: string;
@@ -25,36 +25,42 @@ export const ReviewPassionForSocialGoodStage = ({
   const questions = [shortAnswerJSON[1]?.question];
   const answers = [shortAnswerJSON[1]?.response];
   return (
-    <ReviewRatingPage
-      studentName={name}
-      contextConsumer={
-        <div className="flex items-center justify-end">
-          <input
-            type="number"
-            pattern="[1-5]"
-            value={scores[ReviewStage.PFSG]}
-            onChange={(event) => {
-              if (event.target.validity.valid) {
-                updateScore?.(ReviewStage.PFSG, parseInt(event.target.value));
-              }
-            }}
-          />
-          <h5 className="text-red-500 inline-block px-2 text-xl">*</h5>
-        </div>
-      }
-      title="Passion for social good"
-      currentStage={ReviewStage.PFSG}
-      currentStageRubric={
+    <ReviewPageLayout currentStage={ReviewStage.PFSG} scores={scores}>
+      <PanelLayout variant="sky" borderRight title="Rubric">
         <ReviewRubric
           scoringCriteria={REVIEW_PFSG_SCORING_CRITERIA}
           scores={scores}
           currentStage={ReviewStage.PFSG}
         />
-      }
-      currentStageAnswers={
-        <ReviewAnswers questions={questions} answers={answers} />
-      }
-      scores={scores}
-    />
+      </PanelLayout>
+      <PanelLayout
+        title="Passion for social good"
+        subtitle={`${name}'s Application`}
+      >
+        <div className="flex flex-col items-start gap-8">
+          <div>
+            <ReviewAnswers questions={questions} answers={answers} />
+          </div>
+          <div>
+            <div className="flex items-center justify-end">
+              <input
+                type="number"
+                pattern="[1-5]"
+                value={scores[ReviewStage.PFSG]}
+                onChange={(event) => {
+                  if (event.target.validity.valid) {
+                    updateScore?.(
+                      ReviewStage.PFSG,
+                      parseInt(event.target.value),
+                    );
+                  }
+                }}
+              />
+              <h5 className="text-red-500 inline-block px-2 text-xl">*</h5>
+            </div>
+          </div>
+        </div>
+      </PanelLayout>
+    </ReviewPageLayout>
   );
 };

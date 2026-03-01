@@ -3,10 +3,10 @@ import Image from "next/image";
 import { useState } from "react";
 import { ApplicationDTO } from "../../../types";
 import { ReviewStage } from "../shared/constants";
-import { ReviewSplitPanelPage } from "../shared/ReviewSplitPanelPage";
 import { extractShortAnswerData } from "../shared/reviewUtils";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
+import { ReviewPageLayout, PanelLayout } from "../layout";
 
 export interface ReviewStageProps {
   name: string;
@@ -66,7 +66,7 @@ const ConflictModal = ({ name, open, onClose }: ConflictModalProps) => {
           <div className="flex flex-col justify-between space-y-4 text-center">
             <div>
               <h6 className="mb-1 text-blue">Report a conflict</h6>
-              <p className="text-[16px] font-source text-charcoal-500">
+              <p className="text-[16px] text-charcoal-500">
                 Do you know {name} and want to report a conflict?
               </p>
             </div>
@@ -124,18 +124,19 @@ export const ReviewInfoStage = ({
         open={modalOpen}
         onClose={() => setModalOpen(false)}
       />
-      <ReviewSplitPanelPage
-        studentName={name}
-        rightTitle="Basic Information"
-        currentStage={ReviewStage.INFO}
-        leftContent={<InfoBanner />}
-        rightContent={
+      <ReviewPageLayout currentStage={ReviewStage.INFO} scores={scores}>
+        <PanelLayout variant="sky" borderRight>
+          <InfoBanner />
+        </PanelLayout>
+        <PanelLayout
+          title="Basic Information"
+          subtitle={`${name}'s Application`}
+        >
           <div className="flex flex-col gap-4">
             <ReviewAnswers questions={INFO_QUESTIONS} answers={answers} />
           </div>
-        }
-        scores={scores}
-      />
+        </PanelLayout>
+      </ReviewPageLayout>
     </>
   );
 };

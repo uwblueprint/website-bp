@@ -19,6 +19,7 @@ import { ReviewTeamPlayerStage } from "@components/review/stages/ReviewTeamPlaye
 import { ApplicationDTO, AuthStatus } from "../../types";
 import ProtectedApplication from "./protectedApplication";
 import RecruitmentPlatformThemeProvider from "@components/recruitmentPlatformCommon/RecruitmentPlatformThemeProvider";
+import { useAuthenticatedUser } from "@components/context/AuthUserContext";
 
 const sampleApplication: ApplicationDTO = {
   id: 1,
@@ -76,6 +77,11 @@ const ReviewsPages: NextPage = () => {
 
   const reviewId = router.isReady ? getReviewId(router.query) : null;
   const name = application?.firstName + " " + application?.lastName;
+
+  const authenticatedUser = useAuthenticatedUser();
+  const reviewerName = authenticatedUser
+    ? authenticatedUser.firstName
+    : "Reviewer";
 
   const updateScores = (key: ReviewStage, value: number) => {
     setScores((prev) => {
@@ -140,6 +146,7 @@ const ReviewsPages: NextPage = () => {
         return (
           <ReviewEndStage
             name={name}
+            reviewerName={reviewerName}
             scores={scores}
             endData={endData}
             setEndData={setEndData}

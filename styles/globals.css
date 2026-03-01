@@ -45,7 +45,7 @@
       absolutely positioned elements causes them to
       span the viewport width
     */
-    @apply relative;
+    @apply relative font-source;
   }
 }
 
