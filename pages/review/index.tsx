@@ -80,7 +80,7 @@ const ReviewsPages: NextPage = () => {
 
   const authenticatedUser = useAuthenticatedUser();
   const reviewerName = authenticatedUser
-    ? authenticatedUser.firstName + " " + authenticatedUser.lastName
+    ? authenticatedUser.firstName
     : "Reviewer";
 
   const updateScores = (key: ReviewStage, value: number) => {
