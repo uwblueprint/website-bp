@@ -64,6 +64,9 @@ const Button: FC<Props> = ({
     ${className}
   `;
 
+  // add a little visual treatment when the button is disabled so it's obvious
+  const disabledClasses = props.disabled ? "opacity-50 cursor-not-allowed" : "";
+
   return href ? (
     href.startsWith("http") ? (
       <a
@@ -86,7 +89,7 @@ const Button: FC<Props> = ({
       </Link>
     )
   ) : (
-    <button className={buttonClasses} {...props}>
+    <button className={`${buttonClasses} ${disabledClasses}`} {...props}>
       {children}
     </button>
   );

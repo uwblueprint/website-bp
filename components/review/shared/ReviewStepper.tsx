@@ -109,7 +109,7 @@ export const ReviewStepper = ({
         {currentStage === ReviewStage.END ? (
           <Button
             size="sm"
-            disabled={isSubmitting}
+            disabled={isSubmitting || !endData?.skillsCategory}
             onClick={async () => {
               if (onValidate && !onValidate()) {
                 return;
