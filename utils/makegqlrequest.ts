@@ -1,7 +1,7 @@
 import { BE_DEPLOYMENT_DOMAIN } from "./secrets";
 
 interface GraphqlResponse {
-  data: any | null;
+  data: any;
   errors?: any[];
 }
 
@@ -11,7 +11,7 @@ export async function fetchGraphql(
 ): Promise<GraphqlResponse> {
   if (!BE_DEPLOYMENT_DOMAIN) {
     throw new Error(
-      `DEPLOYMENT_DOMAIN not defined. Please check your env file.`,
+      `NEXT_PUBLIC_BE_DEPLOYMENT_DOMAIN not defined. Please check your env file.`,
     );
   }
   const requestOptions: RequestInit = {
@@ -28,22 +28,28 @@ export async function fetchGraphql(
     );
     const responseData = await response.json();
 
+    // Many GraphQL servers return HTTP 200 even when resolvers error.
+    if (responseData?.errors?.length) {
+      throw new Error(JSON.stringify(responseData.errors));
+    }
+
     if (!response.ok) {
-      throw new Error(JSON.stringify(responseData.errors));
+      throw new Error(
+        JSON.stringify(
+          responseData?.errors ?? [{ message: response.statusText }],
+        ),
+      );
     }
 
-    if (Array.isArray(responseData?.errors) && responseData.errors.length > 0) {
-      throw new Error(JSON.stringify(responseData.errors));
+    if (
+      !responseData ||
+      typeof responseData !== "object" ||
+      !("data" in responseData)
+    ) {
+      throw new Error("Invalid GraphQL response");
     }
 
-    if (!responseData || typeof responseData !== "object") {
-      throw new Error("Invalid GraphQL response payload");
-    }
-
-    return {
-      data: "data" in responseData ? responseData.data : null,
-      errors: responseData.errors,
-    };
+    return { data: responseData.data };
   } catch (error: any) {
     throw new Error(`GraphQL request failed: ${error.message}`);
   }

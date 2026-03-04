@@ -41,7 +41,10 @@ const getReportConflictErrorMessage = (error: unknown): string => {
     return "Unable to verify your reviewer account. Please sign in again.";
   }
 
-  if (message.includes("DEPLOYMENT_DOMAIN not defined")) {
+  if (
+    message.includes("DEPLOYMENT_DOMAIN not defined") ||
+    message.includes("NEXT_PUBLIC_BE_DEPLOYMENT_DOMAIN not defined")
+  ) {
     return "Conflict reporting is temporarily unavailable. Please contact an admin.";
   }
 
