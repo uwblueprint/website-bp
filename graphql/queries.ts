@@ -37,6 +37,18 @@ export const mutations = {
       }
     }
   `,
+  createFirebaseFile: `
+    mutation createFirebaseFile($file: Upload!, $uploadedUserId: Int!) {
+      createFirebaseFile(file: $file, uploadedUserId: $uploadedUserId) {
+        id
+        storagePath
+        originalFileName
+        sizeBytes
+        uploadedUserId
+        createdAt
+      }
+    }
+  `,
 };
 
 // TODO: add functionaltiy to getRole in case accessToken expired and needs to be refreshed.
