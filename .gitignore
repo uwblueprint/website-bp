@@ -18,5 +18,3 @@ out
 .vscode
 **/*.cache
 *.tsbuildinfo
-AGENTS.MD
-frontend.md

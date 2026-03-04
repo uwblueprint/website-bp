@@ -11,7 +11,7 @@ export type ReportReviewConflictResult = {
 };
 
 const reportReviewConflict = async (
-  applicantRecordId: number,
+  applicantRecordId: string,
   reviewerId: number,
 ): Promise<ReportReviewConflictResult> => {
   BaseAPIClient.handleAuthRefresh();
@@ -19,10 +19,17 @@ const reportReviewConflict = async (
     throw new Error("Reviewer ID is invalid");
   }
 
-  return fetchGraphql(mutations.reportReviewConflict, {
-    applicantRecordId: String(applicantRecordId),
+  const result = await fetchGraphql(mutations.reportReviewConflict, {
+    applicantRecordId,
     reviewerId,
-  }).then((result) => result.data.reportReviewConflict);
+  });
+  const conflictResult = result?.data?.reportReviewConflict;
+
+  if (!conflictResult) {
+    throw new Error("Conflict report request returned no data");
+  }
+
+  return conflictResult;
 };
 
 export default {

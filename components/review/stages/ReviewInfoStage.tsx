@@ -7,7 +7,7 @@ import WarningIcon from "@components/icons/warning.icon";
 import { ApplicationDTO } from "../../../types";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { extractShortAnswerData } from "@components/review/shared/reviewUtils";
-import { tryGetReviewId } from "@utils/reviewId";
+import { tryGetApplicantRecordId } from "@utils/reviewId";
 import Dialogue from "@components/common/Dialogue";
 import ReviewPageAPIClient from "APIClients/ReviewPageAPIClient";
 import { useRouter } from "next/router";
@@ -19,6 +19,34 @@ export interface ReviewStageProps {
   application: ApplicationDTO | undefined;
   scores: ReviewScores;
 }
+
+const DEFAULT_REPORT_ERROR_MESSAGE =
+  "Couldn't report conflict. Please try again.";
+
+const getReportConflictErrorMessage = (error: unknown): string => {
+  if (!(error instanceof Error)) {
+    return DEFAULT_REPORT_ERROR_MESSAGE;
+  }
+
+  const { message } = error;
+
+  if (message.includes("Missing applicantRecordId")) {
+    return "Unable to identify this application. Please refresh and try again.";
+  }
+
+  if (
+    message.includes("Missing authenticated reviewer ID") ||
+    message.includes("Reviewer ID is invalid")
+  ) {
+    return "Unable to verify your reviewer account. Please sign in again.";
+  }
+
+  if (message.includes("DEPLOYMENT_DOMAIN not defined")) {
+    return "Conflict reporting is temporarily unavailable. Please contact an admin.";
+  }
+
+  return DEFAULT_REPORT_ERROR_MESSAGE;
+};
 
 export const ReviewInfoStage: React.FC<ReviewStageProps> = ({
   name,
@@ -76,9 +104,9 @@ export const ReviewInfoStage: React.FC<ReviewStageProps> = ({
     try {
       setIsReporting(true);
       setReportError(null);
-      const applicantRecordId = tryGetReviewId(router.query);
+      const applicantRecordId = tryGetApplicantRecordId(router.query);
       if (applicantRecordId == null) {
-        throw new Error("Missing reviewId in URL");
+        throw new Error("Missing applicantRecordId in URL");
       }
       const reviewerId = Number(authenticatedUser?.id);
       if (!Number.isInteger(reviewerId)) {
@@ -92,10 +120,23 @@ export const ReviewInfoStage: React.FC<ReviewStageProps> = ({
       setSuccessDialogOpen(true);
     } catch (error) {
       console.error("Failed to report conflict", error);
-      setReportError("Couldn't report conflict. Please try again.");
+      setReportError(getReportConflictErrorMessage(error));
     } finally {
       setIsReporting(false);
     }
+  };
+
+  const handleOpenConfirmDialog = () => {
+    setReportError(null);
+    setConfirmDialogOpen(true);
+  };
+
+  const handleCloseConfirmDialog = () => {
+    if (isReporting) {
+      return;
+    }
+    setReportError(null);
+    setConfirmDialogOpen(false);
   };
 
   const handleBackToHomepage = () => {
@@ -103,8 +144,6 @@ export const ReviewInfoStage: React.FC<ReviewStageProps> = ({
     router.push("/");
   };
 
-  const displayName =
-    name && !name.includes("undefined") ? name : "this applicant";
   return (
     <ReviewSplitPanelPage
       studentName={name}
@@ -112,7 +151,7 @@ export const ReviewInfoStage: React.FC<ReviewStageProps> = ({
       rightTitleButton={
         <Button
           variant="secondary"
-          onClick={() => setConfirmDialogOpen(true)}
+          onClick={handleOpenConfirmDialog}
           className="whitespace-nowrap"
           size="sm"
         >
@@ -147,24 +186,29 @@ export const ReviewInfoStage: React.FC<ReviewStageProps> = ({
         <>
           <Dialogue
             open={confirmDialogOpen}
-            onClose={() => {
-              if (!isReporting) setConfirmDialogOpen(false);
-            }}
-            header="Report a conflict"
+            onClose={handleCloseConfirmDialog}
+            header="Report as conflict of interest?"
             text={
               <div className="flex flex-col gap-2">
-                <div>
-                  Do you know {displayName} and want to report a conflict?
-                </div>
+                <span>
+                  Clicking yes will notify admins and cannot be undone.
+                </span>
                 {reportError ? (
-                  <div className="text-red-600">{reportError}</div>
+                  <span
+                    className="text-red-600"
+                    style={{ color: "#dc2626" }}
+                    role="alert"
+                  >
+                    {reportError}
+                  </span>
                 ) : null}
               </div>
             }
           >
             <Button
               variant="secondary"
-              onClick={() => setConfirmDialogOpen(false)}
+              size="md"
+              onClick={handleCloseConfirmDialog}
               className="whitespace-nowrap"
               disabled={isReporting}
             >
@@ -172,6 +216,7 @@ export const ReviewInfoStage: React.FC<ReviewStageProps> = ({
             </Button>
             <Button
               variant="primary"
+              size="md"
               onClick={handleReportConflict}
               className="whitespace-nowrap"
               disabled={isReporting}
@@ -182,9 +227,8 @@ export const ReviewInfoStage: React.FC<ReviewStageProps> = ({
           <Dialogue
             open={successDialogOpen}
             onClose={() => setSuccessDialogOpen(false)}
-            header="Conflict reported"
+            header="Conflict reported!"
             text="This applicant has been reported as a conflict of interest and will be re-assigned to another reviewer."
-            textContainerClassName="w-[256px]"
           >
             <Button
               variant="primary"

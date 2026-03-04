@@ -19,15 +19,15 @@ const Dialogue = ({
   textContainerClassName,
 }: Props): React.ReactElement => {
   const textContainerClasses =
-    `flex w-64 flex-col items-center text-center space-y-3 ${
+    `flex w-full flex-col items-center gap-2 text-center ${
       textContainerClassName ?? ""
     }`.trim();
 
   const actionChildren = Children.toArray(children).filter(Boolean);
-  const actionsContainerClasses =
-    actionChildren.length === 1
-      ? "flex w-full items-start justify-center space-x-2.5"
-      : "flex w-full items-start justify-between space-x-2.5";
+  const hasSingleAction = actionChildren.length === 1;
+  const actionsContainerClasses = hasSingleAction
+    ? "flex w-full items-start justify-center"
+    : "flex w-full items-start gap-4";
 
   const styledActionChildren = actionChildren.map((child) => {
     if (!isValidElement<{ className?: string }>(child)) {
@@ -36,14 +36,7 @@ const Dialogue = ({
 
     const existingClassName = child.props.className ?? "";
     const actionButtonClassName = [
-      "w-36",
-      "h-12",
-      "px-0",
-      "py-3",
-      "text-base",
-      "leading-6",
-      "font-semibold",
-      "whitespace-nowrap",
+      hasSingleAction ? "w-full" : "flex-1",
       existingClassName,
     ]
       .filter(Boolean)
@@ -60,19 +53,18 @@ const Dialogue = ({
       onClose={onClose}
       maxWidth={false}
       PaperProps={{
-        className: "!m-0 w-80 max-w-full overflow-hidden rounded shadow-none",
+        className:
+          "!m-0 w-80 max-w-[calc(100vw-32px)] overflow-hidden rounded-[8px] shadow-none",
       }}
     >
-      <div className="flex flex-col items-center gap-5 bg-white px-4 py-5">
-        <div className="flex w-64 flex-col items-center px-1 py-5">
-          <div className={textContainerClasses}>
-            <h2 className="font-poppins text-base font-medium leading-snug text-blue">
-              {header}
-            </h2>
-            {/* Use a non-<p> wrapper so callers can pass arbitrary ReactNode safely. */}
-            <div className="font-source text-sm leading-snug text-[#252525]">
-              {text}
-            </div>
+      <div className="flex flex-col items-center gap-[36px] bg-white p-6">
+        <div className={textContainerClasses}>
+          <h2 className="w-full font-poppins text-[20px] font-medium leading-[1.4] text-blue">
+            {header}
+          </h2>
+          {/* Use a non-<p> wrapper so callers can pass arbitrary ReactNode safely. */}
+          <div className="w-full font-source text-[14px] font-normal leading-[1.4] text-[#252525]">
+            {text}
           </div>
         </div>
         {styledActionChildren.length > 0 ? (
