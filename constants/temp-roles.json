@@ -1,0 +1,17 @@
+{
+    "id": "8",
+    "role": "VP Engineering",
+    "questions": [
+        {
+        "question": "Consider this hypothetical scenario: Blueprint is thinking of creating a standardized code repository for new projects to build off of. This idea has both supporters and detractors among the project leads. In bullet points, explain how you would build alignment among developers. Please state any assumptions or details as necessary.",
+        "maxLength": 1000
+        },
+        {
+        "uniqueid": 1,
+        "question": "Would you be interested in joining a scoping pod?",
+        "description": "Scoping pods include a designer, developer, and PM to join VP Scoping for meetings with NPO’s to provide their opinion and expertise! This will be in addition to the existing responsibilities of your role.",
+        "type": "select",
+        "options": ["Yes", "No"]
+        }
+    ]
+}
