@@ -112,6 +112,10 @@
       {
         "question": "What do you see as the purposes of content within the user experience of an app?",
         "maxLength": 1000
+      },
+      {
+        "question": "How comfortable are you using CapCut? Please share an example of a time you used it and what you created with it?",
+        "maxLength": 1000
       }
     ]
   },
