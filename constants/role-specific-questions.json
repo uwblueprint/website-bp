@@ -159,6 +159,20 @@
     ]
   },
   {
+    "id": "12",
+    "role": "VP Design",
+    "questions": [
+      {
+        "question": "Tell us about your product design experience. Attach a link to your portfolio.",
+        "maxLength": 1000
+      },
+      {
+        "question": "Tell us about a time you led or influenced a team decision. How did you align people toward a shared goal?",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
     "id": "13",
     "role": "Finance Associate",
     "questions": [
