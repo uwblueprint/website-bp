@@ -43,7 +43,7 @@ export const InfoText: FC<{
               <li>
                 For descriptions of our available roles, please visit our&nbsp;
                 <a
-                  href="https://www.notion.so/Role-Responsibilities-9494c8311ce0471f997c7473e0bfea1c"
+                  href="https://www.notion.so/uwblueprintexecs/Updated-Role-Responsibilities-2e410f3fb1dc80c39699f8b60b83203b?source=copy_link"
                   target="_blank"
                   className="inline-flex space-x-1 items-center text-blue"
                 >
