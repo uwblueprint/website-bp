@@ -8,6 +8,7 @@ import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewRubric } from "./ReviewRubric";
 import { ReviewPageLayout, PanelLayout } from "../layout";
+import { useTheme } from "@mui/material/styles";
 
 const BACK_TO_HOME_HREF = "/admin";
 
@@ -27,6 +28,7 @@ export const ReviewDriveToLearnStage = ({
   const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
   const questions = [shortAnswerJSON[3]?.question];
   const answers = [shortAnswerJSON[3]?.response];
+  const theme = useTheme();
   return (
     <ReviewPageLayout currentStage={ReviewStage.D2L} scores={scores}>
       <PanelLayout
@@ -49,7 +51,10 @@ export const ReviewDriveToLearnStage = ({
         />
         <div
           className="w-full shrink-0"
-          style={{ height: "1px", background: "#C4C4C4" }}
+          style={{
+            height: "1px",
+            background: theme.palette.background.default,
+          }}
         />
         <div className="flex items-center gap-3">
           <ReviewScoreInput
@@ -61,7 +66,10 @@ export const ReviewDriveToLearnStage = ({
             ariaLabel="Drive to learn score"
             onChange={(v) => updateScore?.(ReviewStage.D2L, v)}
           />
-          <span className="text-xl leading-none" style={{ color: "#CD5A5A" }}>
+          <span
+            className="text-xl leading-none"
+            style={{ color: theme.palette.error.main }}
+          >
             *
           </span>
         </div>

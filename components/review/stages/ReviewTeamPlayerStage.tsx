@@ -8,6 +8,7 @@ import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewRubric } from "./ReviewRubric";
 import { ReviewPageLayout, PanelLayout } from "../layout";
+import { useTheme } from "@mui/material";
 
 const BACK_TO_HOME_HREF = "/admin";
 
@@ -18,6 +19,7 @@ interface Props {
 }
 
 export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
+  const theme = useTheme();
   const updateScore = useContext(ReviewSetScoresContext);
   const shortAnswerStr = application?.shortAnswerQuestions[0];
   const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
@@ -46,7 +48,10 @@ export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
         />
         <div
           className="w-full shrink-0"
-          style={{ height: "1px", background: "#C4C4C4" }}
+          style={{
+            height: "1px",
+            background: theme.palette.background.default,
+          }}
         />
         <div className="flex items-center gap-3">
           <ReviewScoreInput
@@ -58,7 +63,10 @@ export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
             ariaLabel="Team player score"
             onChange={(v) => updateScore?.(TP, v)}
           />
-          <span className="text-xl leading-none" style={{ color: "#CD5A5A" }}>
+          <span
+            className="text-xl leading-none"
+            style={{ color: theme.palette.error.main }}
+          >
             *
           </span>
         </div>

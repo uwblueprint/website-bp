@@ -8,6 +8,7 @@ import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewStageProps } from "./ReviewInfoStage";
 import { ReviewRubric } from "./ReviewRubric";
 import { ReviewPageLayout, PanelLayout } from "../layout";
+import { useTheme } from "@mui/material/styles";
 
 const BACK_TO_HOME_HREF = "/admin";
 
@@ -34,6 +35,7 @@ export const ReviewSkillStage = ({
   application,
   scores,
 }: ReviewStageProps) => {
+  const theme = useTheme();
   const updateScore = useContext(ReviewSetScoresContext);
   const resumeLink = application?.resumeUrl;
 
@@ -80,7 +82,10 @@ export const ReviewSkillStage = ({
         />
         <div
           className="w-full shrink-0"
-          style={{ height: "1px", background: "#C4C4C4" }}
+          style={{
+            height: "1px",
+            background: theme.palette.background.default,
+          }}
         />
         <div className="flex items-center gap-3">
           <ReviewScoreInput
@@ -92,7 +97,10 @@ export const ReviewSkillStage = ({
             ariaLabel="Skill score"
             onChange={(v) => updateScore?.(ReviewStage.SKL, v)}
           />
-          <span className="text-xl leading-none" style={{ color: "#CD5A5A" }}>
+          <span
+            className="text-xl leading-none"
+            style={{ color: theme.palette.error.main }}
+          >
             *
           </span>
         </div>

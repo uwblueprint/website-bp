@@ -7,6 +7,7 @@ import { REVIEW_STAGES, ReviewStage } from "./constants";
 import { ReviewSetStageContext } from "./ReviewContext";
 import { getReviewId } from "./reviewUtils";
 import { ReviewEndData, ReviewScores } from "./types";
+import { useTheme } from "@mui/material/styles";
 
 const STAGE_RATING_FIELDS: [ReviewStage, string][] = [
   [ReviewStage.PFSG, "passionFSG"],
@@ -54,6 +55,7 @@ export const ReviewStepper = ({
   endData,
   onValidate,
 }: Props) => {
+  const theme = useTheme();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const setStage = useContext(ReviewSetStageContext);
@@ -96,8 +98,11 @@ export const ReviewStepper = ({
 
   return (
     <div
-      className="bg-white px-6 py-4"
-      style={{ borderTop: "1px solid #C4C4C4" }}
+      className="px-6 py-4"
+      style={{
+        borderTop: `1px solid ${theme.palette.semantics.border.light}`,
+        backgroundColor: theme.palette.background.default,
+      }}
     >
       <div className="flex justify-end items-center gap-3 flex-nowrap">
         {currentStageIndex > 0 && (
