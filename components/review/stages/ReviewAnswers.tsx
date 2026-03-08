@@ -5,25 +5,47 @@ export interface Props {
 
 export const ReviewAnswers = ({ questions, answers }: Props) => {
   return (
-    <div className="flex flex-col gap-5">
-      {questions.map((question, idx) => {
-        return (
-          <div
-            className="flex flex-col gap-5"
-            style={{ alignItems: "flex-start" }}
+    <div className="flex flex-col gap-10 w-full">
+      {questions.map((question, idx) => (
+        <div
+          key={idx}
+          className="flex flex-col gap-4"
+          style={{ alignItems: "flex-start" }}
+        >
+          <h5
+            className="font-poppins"
+            style={{
+              color: "#252525",
+              fontSize: "16px",
+              fontWeight: 500,
+              lineHeight: "140%",
+              fontFeatureSettings: "'liga' off, 'clig' off",
+            }}
           >
-            <h5 className="text-[16px]">{question}</h5>
+            {question}
+          </h5>
+          <div className="flex w-full">
             <div
-              className="flex gap-[9px] charcoal-500 pt-px pr-px"
-              style={{ alignItems: "flex-start" }}
+              className="rounded-r px-4 py-3 w-full font-source"
+              style={{
+                borderLeft: "4px solid rgba(37, 37, 37, 0.75)",
+              }}
             >
-              <div className="border-l-4 border-charcoal-350">
-                <div className="px-2 charcoal-0">{answers[idx]}</div>
-              </div>
+              <p
+                style={{
+                  color: "rgba(37, 37, 37, 0.80)",
+                  fontSize: "16px",
+                  fontWeight: 400,
+                  lineHeight: "140%",
+                  fontFeatureSettings: "'liga' off, 'clig' off",
+                }}
+              >
+                {answers[idx]}
+              </p>
             </div>
           </div>
-        );
-      })}
+        </div>
+      ))}
     </div>
   );
 };

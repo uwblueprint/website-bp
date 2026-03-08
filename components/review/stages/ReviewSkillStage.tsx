@@ -2,11 +2,14 @@ import Button from "@components/common/Button";
 import { useContext } from "react";
 import { ReviewStage } from "../shared/constants";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
+import { ReviewScoreInput } from "../shared/ReviewScoreInput";
 import { REVIEW_SKL_SCORING_CRITERIA } from "../shared/rubricConstants";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewStageProps } from "./ReviewInfoStage";
 import { ReviewRubric } from "./ReviewRubric";
 import { ReviewPageLayout, PanelLayout } from "../layout";
+
+const BACK_TO_HOME_HREF = "/admin";
 
 const ResumeLink = ({ resumeLink }: { resumeLink: string }) => {
   return (
@@ -56,37 +59,42 @@ export const ReviewSkillStage = ({
 
   return (
     <ReviewPageLayout currentStage={ReviewStage.SKL} scores={scores}>
-      <PanelLayout variant="sky" borderRight title="Rubric">
+      <PanelLayout
+        backToHomeHref={BACK_TO_HOME_HREF}
+        title="Skill"
+        subtitle={`${name}'s Application`}
+      >
+        {resumeLink ? <ResumeLink resumeLink={resumeLink} /> : null}
+        <ReviewAnswers questions={questions} answers={answers} />
+      </PanelLayout>
+      <PanelLayout
+        borderLeft
+        title="Scoring Skill (SKILL)"
+        titleVariant="medium"
+        variant="white"
+      >
         <ReviewRubric
           scoringCriteria={REVIEW_SKL_SCORING_CRITERIA}
           scores={scores}
           currentStage={ReviewStage.SKL}
         />
-      </PanelLayout>
-      <PanelLayout title="Skill" subtitle={`${name}'s Application`}>
-        <div className="flex flex-col items-start gap-8">
-          {resumeLink ? <ResumeLink resumeLink={resumeLink} /> : null}
-          <div>
-            <ReviewAnswers questions={questions} answers={answers} />
-          </div>
-          <div>
-            <div className="flex items-center justify-end">
-              <input
-                type="number"
-                pattern="[1-4]"
-                value={scores[ReviewStage.SKL]}
-                onChange={(event) => {
-                  if (event.target.validity.valid) {
-                    updateScore?.(
-                      ReviewStage.SKL,
-                      parseInt(event.target.value),
-                    );
-                  }
-                }}
-              />
-              <h5 className="text-red-500 inline-block px-2 text-xl">*</h5>
-            </div>
-          </div>
+        <div
+          className="w-full shrink-0"
+          style={{ height: "1px", background: "#C4C4C4" }}
+        />
+        <div className="flex items-center gap-3">
+          <ReviewScoreInput
+            id="skl-score"
+            value={scores[ReviewStage.SKL] || ""}
+            min={1}
+            max={4}
+            placeholder={`Enter ${name}'s score`}
+            ariaLabel="Skill score"
+            onChange={(v) => updateScore?.(ReviewStage.SKL, v)}
+          />
+          <span className="text-xl leading-none" style={{ color: "#CD5A5A" }}>
+            *
+          </span>
         </div>
       </PanelLayout>
     </ReviewPageLayout>

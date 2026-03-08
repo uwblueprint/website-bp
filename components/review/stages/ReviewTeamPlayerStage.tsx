@@ -2,11 +2,14 @@ import { useContext } from "react";
 import { ApplicationDTO } from "../../../types";
 import { ReviewStage } from "../shared/constants";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
+import { ReviewScoreInput } from "../shared/ReviewScoreInput";
 import { REVIEW_TP_SCORING_CRITERIA } from "../shared/rubricConstants";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewRubric } from "./ReviewRubric";
 import { ReviewPageLayout, PanelLayout } from "../layout";
+
+const BACK_TO_HOME_HREF = "/admin";
 
 interface Props {
   name: string;
@@ -23,33 +26,41 @@ export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
   const { TP } = ReviewStage;
   return (
     <ReviewPageLayout currentStage={TP} scores={scores}>
-      <PanelLayout variant="sky" borderRight title="Rubric">
+      <PanelLayout
+        backToHomeHref={BACK_TO_HOME_HREF}
+        title="Team player"
+        subtitle={`${name}'s Application`}
+      >
+        <ReviewAnswers questions={questions} answers={answers} />
+      </PanelLayout>
+      <PanelLayout
+        borderLeft
+        title="Scoring Team player (TEAM)"
+        titleVariant="medium"
+        variant="white"
+      >
         <ReviewRubric
           scoringCriteria={REVIEW_TP_SCORING_CRITERIA}
           scores={scores}
           currentStage={TP}
         />
-      </PanelLayout>
-      <PanelLayout title="Team player" subtitle={`${name}'s Application`}>
-        <div className="flex flex-col items-start gap-8">
-          <div>
-            <ReviewAnswers questions={questions} answers={answers} />
-          </div>
-          <div>
-            <div className="flex items-center justify-end">
-              <input
-                type="number"
-                pattern="[1-5]"
-                value={scores[ReviewStage.TP]}
-                onChange={(event) => {
-                  if (event.target.validity.valid) {
-                    updateScore?.(TP, parseInt(event.target.value));
-                  }
-                }}
-              />
-              <h5 className="text-red-500 inline-block px-2 text-xl">*</h5>
-            </div>
-          </div>
+        <div
+          className="w-full shrink-0"
+          style={{ height: "1px", background: "#C4C4C4" }}
+        />
+        <div className="flex items-center gap-3">
+          <ReviewScoreInput
+            id="tp-score"
+            value={scores[TP] || ""}
+            min={1}
+            max={5}
+            placeholder={`Enter ${name}'s score`}
+            ariaLabel="Team player score"
+            onChange={(v) => updateScore?.(TP, v)}
+          />
+          <span className="text-xl leading-none" style={{ color: "#CD5A5A" }}>
+            *
+          </span>
         </div>
       </PanelLayout>
     </ReviewPageLayout>

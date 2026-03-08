@@ -125,7 +125,12 @@ export const ReviewInfoStage = ({
         onClose={() => setModalOpen(false)}
       />
       <ReviewPageLayout currentStage={ReviewStage.INFO} scores={scores}>
-        <PanelLayout variant="sky" borderRight>
+        <PanelLayout
+          variant="sky"
+          borderRight
+          backToHomeHref="/admin"
+          showApplicationTitle={false}
+        >
           <InfoBanner />
         </PanelLayout>
         <PanelLayout
