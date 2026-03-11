@@ -8,6 +8,7 @@ import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewRubric } from "./ReviewRubric";
 import { ReviewPageLayout, PanelLayout } from "../layout";
+import { ReportConflictButton } from "../shared/ReportConflictButton";
 import { useTheme } from "@mui/material/styles";
 
 const BACK_TO_HOME_HREF = "/admin";
@@ -33,6 +34,7 @@ export const ReviewDriveToLearnStage = ({
     <ReviewPageLayout currentStage={ReviewStage.D2L} scores={scores}>
       <PanelLayout
         backToHomeHref={BACK_TO_HOME_HREF}
+        headerRightAction={<ReportConflictButton name={name} showQuestion />}
         title="Drive to Learn"
         subtitle={`${name}'s Application`}
       >
@@ -61,7 +63,7 @@ export const ReviewDriveToLearnStage = ({
             id="d2l-score"
             value={scores[ReviewStage.D2L] || ""}
             min={1}
-            max={4}
+            max={5}
             placeholder={`Enter ${name}'s score`}
             ariaLabel="Drive to learn score"
             onChange={(v) => updateScore?.(ReviewStage.D2L, v)}

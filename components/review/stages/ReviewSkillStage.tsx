@@ -8,6 +8,7 @@ import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewStageProps } from "./ReviewInfoStage";
 import { ReviewRubric } from "./ReviewRubric";
 import { ReviewPageLayout, PanelLayout } from "../layout";
+import { ReportConflictButton } from "../shared/ReportConflictButton";
 import { useTheme } from "@mui/material/styles";
 
 const BACK_TO_HOME_HREF = "/admin";
@@ -63,6 +64,7 @@ export const ReviewSkillStage = ({
     <ReviewPageLayout currentStage={ReviewStage.SKL} scores={scores}>
       <PanelLayout
         backToHomeHref={BACK_TO_HOME_HREF}
+        headerRightAction={<ReportConflictButton name={name} showQuestion />}
         title="Skill"
         subtitle={`${name}'s Application`}
       >
@@ -92,7 +94,7 @@ export const ReviewSkillStage = ({
             id="skl-score"
             value={scores[ReviewStage.SKL] || ""}
             min={1}
-            max={4}
+            max={5}
             placeholder={`Enter ${name}'s score`}
             ariaLabel="Skill score"
             onChange={(v) => updateScore?.(ReviewStage.SKL, v)}

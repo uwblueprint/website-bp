@@ -8,6 +8,7 @@ import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewRubric } from "./ReviewRubric";
 import { ReviewPageLayout, PanelLayout } from "../layout";
+import { ReportConflictButton } from "../shared/ReportConflictButton";
 import { useTheme } from "@mui/material";
 
 const BACK_TO_HOME_HREF = "/admin";
@@ -30,6 +31,9 @@ export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
     <ReviewPageLayout currentStage={TP} scores={scores}>
       <PanelLayout
         backToHomeHref={BACK_TO_HOME_HREF}
+        headerRightAction={
+          <ReportConflictButton name={name} showQuestion={true} />
+        }
         title="Team Player"
         subtitle={`${name}'s Application`}
       >

@@ -8,6 +8,7 @@ import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewRubric } from "./ReviewRubric";
 import { ReviewPageLayout, PanelLayout } from "../layout";
+import { ReportConflictButton } from "../shared/ReportConflictButton";
 import { useTheme } from "@mui/material/styles";
 
 const BACK_TO_HOME_HREF = "/admin";
@@ -33,6 +34,7 @@ export const ReviewPassionForSocialGoodStage = ({
     <ReviewPageLayout currentStage={ReviewStage.PFSG} scores={scores}>
       <PanelLayout
         backToHomeHref={BACK_TO_HOME_HREF}
+        headerRightAction={<ReportConflictButton name={name} showQuestion />}
         title="Passion for Social Good"
         subtitle={`${name}'s Application`}
       >

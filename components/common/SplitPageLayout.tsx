@@ -38,6 +38,8 @@ interface PanelLayoutProps {
   titleVariant?: "xlarge" | "medium";
   /** Renders pill-shaped "Back to home" link with arrow icon */
   backToHomeHref?: string;
+  /** Optional action (e.g. Report button) shown on the right of the Back to home row on the left panel */
+  headerRightAction?: ReactNode;
   /** When false, hides subtitle (e.g. for INFO stage) */
   showApplicationTitle?: boolean;
   children: ReactNode;
@@ -72,6 +74,7 @@ export const PanelLayout = ({
   borderLeft = false,
   titleVariant = "xlarge",
   backToHomeHref,
+  headerRightAction,
   showApplicationTitle = true,
   children,
 }: PanelLayoutProps) => {
@@ -89,35 +92,46 @@ export const PanelLayout = ({
         className="flex flex-col h-full overflow-hidden"
         style={{ padding: "32px 36px 32px 36px" }}
       >
-        {backToHomeHref && (
-          <Link href={backToHomeHref} passHref>
-            <a
-              className="font-source no-underline inline-flex justify-center items-center gap-2 w-fit mb-8 cursor-pointer shrink-0 hover:opacity-90 rounded-full"
-              style={{
-                display: "flex",
-                padding: "8px 16px",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: "8px",
-                border: "2px solid #0573E8",
-                background: "#FFF",
-                color: "#0573E8",
-                fontSize: "16px",
-                fontWeight: 400,
-                lineHeight: "140%",
-                fontFeatureSettings: "'liga' off, 'clig' off",
-              }}
-            >
-              <img
-                src="/common/long_left.svg"
-                alt=""
-                aria-hidden
-                width={24}
-                height={24}
-              />
-              Back to home
-            </a>
-          </Link>
+        {(backToHomeHref || headerRightAction) && (
+          <div className="flex justify-between items-center w-full mb-8 shrink-0">
+            {backToHomeHref ? (
+              <Link href={backToHomeHref} passHref>
+                <a
+                  className="font-source no-underline inline-flex justify-center items-center gap-2 w-fit cursor-pointer shrink-0 hover:opacity-90 rounded-full"
+                  style={{
+                    display: "flex",
+                    padding: "8px 16px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "8px",
+                    border: "2px solid #0573E8",
+                    background: "#FFF",
+                    color: "#0573E8",
+                    fontSize: "16px",
+                    fontWeight: 400,
+                    lineHeight: "140%",
+                    fontFeatureSettings: "'liga' off, 'clig' off",
+                  }}
+                >
+                  <img
+                    src="/common/long_left.svg"
+                    alt=""
+                    aria-hidden
+                    width={24}
+                    height={24}
+                  />
+                  Back to home
+                </a>
+              </Link>
+            ) : (
+              <span />
+            )}
+            {headerRightAction != null ? (
+              <div className="shrink-0 flex items-center">
+                {headerRightAction}
+              </div>
+            ) : null}
+          </div>
         )}
         {showApplicationTitle && subtitle && (
           <p
