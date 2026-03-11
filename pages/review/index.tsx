@@ -52,10 +52,10 @@ const sampleApplication: ApplicationDTO = {
 
 const initialScores: ReviewScores = {
   [ReviewStage.INFO]: 0,
-  [ReviewStage.PFSG]: 1,
-  [ReviewStage.TP]: 1,
-  [ReviewStage.D2L]: 1,
-  [ReviewStage.SKL]: 1,
+  [ReviewStage.PFSG]: 0,
+  [ReviewStage.TP]: 0,
+  [ReviewStage.D2L]: 0,
+  [ReviewStage.SKL]: 0,
   [ReviewStage.END]: 0,
   [ReviewStage.END_SUCCESS]: 0,
 };
@@ -85,7 +85,7 @@ const ReviewsPages: NextPage = () => {
 
   const updateScores = (key: ReviewStage, value: number) => {
     setScores((prev) => {
-      if (isNaN(value) || value < 1 || value > 5) {
+      if (isNaN(value) || value < 0 || value > 5) {
         return prev;
       }
       return { ...prev, [key]: value };
