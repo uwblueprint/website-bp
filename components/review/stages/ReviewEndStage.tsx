@@ -1,6 +1,7 @@
 import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import { ReviewStage } from "../shared/constants";
 import { ReviewEndData, ReviewScores } from "../shared/types";
+import { ReportConflictButton } from "../shared/ReportConflictButton";
 import ArrowLeftIcon from "@components/icons/arrow-left.icon";
 import Link from "next/link";
 import { ReviewPageLayout, PanelLayout } from "../layout";
@@ -35,16 +36,17 @@ const LeftPanelContent = ({
   );
 
   return (
-    <div className="flex flex-col gap-6 p-3">
-      {/* Back to home */}
-      <Link href="/admin" className="w-fit self-start">
-        <button className="w-fit flex justify-center items-center gap-2 py-2 px-4 rounded-full border-2 border-blue bg-white hover:bg-gray-50 transition-colors">
-          <ArrowLeftIcon className="w-6 h-6 text-blue" />
-          <span className="text-blue text-base font-normal leading-snug">
+    <div className="flex flex-col gap-6 p-3 w-full">
+      {/* Back to home (left) + Report question + button (right-justified) */}
+      <div className="flex justify-between items-center w-full gap-4 shrink-0">
+        <Link href="/admin" passHref>
+          <a className="w-fit shrink-0 flex items-center gap-2 py-2 px-4 rounded-full border-2 border-blue bg-white hover:bg-gray-50 transition-colors text-blue text-base font-normal leading-snug no-underline">
+            <ArrowLeftIcon className="w-6 h-6 text-blue" />
             Back to home
-          </span>
-        </button>
-      </Link>
+          </a>
+        </Link>
+        <ReportConflictButton name={name} showQuestion />
+      </div>
 
       {/* Scoring section */}
       <div className="flex flex-col gap-8">

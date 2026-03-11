@@ -4,6 +4,7 @@ import { PaletteOptions } from "@mui/material/styles";
 const neutral = {
   50: "#FFFFFF",
   100: "#EEEEEE",
+  200: "#C4C4C4",
   500: "#737373",
   700: "#444444",
   800: "#252525",
@@ -124,5 +125,9 @@ export const semanticColors = {
       border: magenta[900],
       text: magenta[900],
     },
+  },
+  border: {
+    light: neutral[200],
+    main: neutral[800],
   },
 };
