@@ -30,14 +30,14 @@ export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
     <ReviewPageLayout currentStage={TP} scores={scores}>
       <PanelLayout
         backToHomeHref={BACK_TO_HOME_HREF}
-        title="Team player"
+        title="Team Player"
         subtitle={`${name}'s Application`}
       >
         <ReviewAnswers questions={questions} answers={answers} />
       </PanelLayout>
       <PanelLayout
         borderLeft
-        title="Scoring Team player (TEAM)"
+        title="Scoring Team Player (TEAM)"
         titleVariant="medium"
         variant="white"
       >
