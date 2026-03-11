@@ -33,14 +33,14 @@ export const ReviewDriveToLearnStage = ({
     <ReviewPageLayout currentStage={ReviewStage.D2L} scores={scores}>
       <PanelLayout
         backToHomeHref={BACK_TO_HOME_HREF}
-        title="Drive to learn"
+        title="Drive to Learn"
         subtitle={`${name}'s Application`}
       >
         <ReviewAnswers questions={questions} answers={answers} />
       </PanelLayout>
       <PanelLayout
         borderLeft
-        title="Scoring Drive to learn (LEARN)"
+        title="Scoring for Drive to Learn (LEARN)"
         titleVariant="medium"
         variant="white"
       >

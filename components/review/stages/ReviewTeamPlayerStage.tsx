@@ -37,7 +37,7 @@ export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
       </PanelLayout>
       <PanelLayout
         borderLeft
-        title="Scoring Team Player (TEAM)"
+        title="Scoring for Team Player (TEAM)"
         titleVariant="medium"
         variant="white"
       >

@@ -33,14 +33,14 @@ export const ReviewPassionForSocialGoodStage = ({
     <ReviewPageLayout currentStage={ReviewStage.PFSG} scores={scores}>
       <PanelLayout
         backToHomeHref={BACK_TO_HOME_HREF}
-        title="Passion for social good"
+        title="Passion for Social Good"
         subtitle={`${name}'s Application`}
       >
         <ReviewAnswers questions={questions} answers={answers} />
       </PanelLayout>
       <PanelLayout
         borderLeft
-        title="Scoring for passion for social good (PFSG)"
+        title="Scoring for Passion for Social Good (PFSG)"
         titleVariant="medium"
         variant="white"
       >

@@ -71,7 +71,7 @@ export const ReviewSkillStage = ({
       </PanelLayout>
       <PanelLayout
         borderLeft
-        title="Scoring Skill (SKILL)"
+        title="Scoring for Skill (SKILL)"
         titleVariant="medium"
         variant="white"
       >
