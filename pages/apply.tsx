@@ -2,12 +2,25 @@ import AppForm from "@components/apply/AppForm";
 import Layout from "@components/common/Layout";
 import { APPLICATION_IS_LIVE, APPLICATION_TERM } from "@constants/applications";
 import { NextPage } from "next";
+import { useRouter } from "next/router";
 
 /** Apply to Blueprint! */
 const Apply: NextPage = () => {
+  const router = useRouter();
+  const queryKey = typeof router.query.key === "string" ? router.query.key : "";
+  const configuredSecret = process.env.NEXT_PUBLIC_SUPER_SECRET_KEY || "";
+
+  const hasAccess =
+    APPLICATION_IS_LIVE ||
+    (configuredSecret.length > 0 &&
+      queryKey.length > 0 &&
+      queryKey === configuredSecret);
+
+  if (!router.isReady) return <Layout />;
+
   return (
     <Layout>
-      {APPLICATION_IS_LIVE ? (
+      {hasAccess ? (
         <AppForm />
       ) : (
         <div className="container max-w-4xl px-4 mx-auto mt-44 mb-12 md:mt-40 md:mb-16">
