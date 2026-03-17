@@ -45,7 +45,7 @@ const DownCaret = () => (
   </svg>
 );
 
-export const ReviewScoreInput: React.FC<Props> = ({
+export function ReviewScoreInput({
   id,
   value,
   min,
@@ -53,7 +53,7 @@ export const ReviewScoreInput: React.FC<Props> = ({
   placeholder,
   ariaLabel,
   onChange,
-}) => {
+}: Props) {
   const numericValue = value === "" ? NaN : value;
   const canIncrement = Number.isNaN(numericValue) || numericValue < max;
   const canDecrement = Number.isNaN(numericValue) || numericValue > min;
@@ -159,4 +159,4 @@ export const ReviewScoreInput: React.FC<Props> = ({
       </div>
     </div>
   );
-};
+}
