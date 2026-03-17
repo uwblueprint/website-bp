@@ -14,7 +14,7 @@ type AppPropsWithLayout = AppProps & {
 
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page) => page);
-  return <AuthProvider><>{getLayout(<Component {...pageProps} />)}</></AuthProvider>;
+  return <AuthProvider>{getLayout(<Component {...pageProps} />)}</AuthProvider>;
 };
 
 export default App;
