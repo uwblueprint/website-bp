@@ -40,7 +40,7 @@ const green = {
   900: "#006002",
 };
 
-const blue = {
+export const blue = {
   50: "#F4F9FF",
   100: "#E0F0FF",
   500: "#0573E8",

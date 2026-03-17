@@ -1,3 +1,4 @@
+import { LongLeftIcon } from "@components/icons/long-left.icon";
 import Link from "next/link";
 import { ReactNode } from "react";
 
@@ -113,13 +114,7 @@ export const PanelLayout = ({
                     fontFeatureSettings: "'liga' off, 'clig' off",
                   }}
                 >
-                  <img
-                    src="/common/long_left.svg"
-                    alt=""
-                    aria-hidden
-                    width={24}
-                    height={24}
-                  />
+                  <LongLeftIcon />
                   Back to home
                 </a>
               </Link>
