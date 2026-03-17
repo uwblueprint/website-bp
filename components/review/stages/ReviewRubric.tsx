@@ -1,48 +1,28 @@
 import { ReviewStage } from "../shared/constants";
 import { ReviewScores } from "../shared/types";
 
-interface Props {
+export interface Props {
   scoringCriteria: string[];
   scores: ReviewScores;
   currentStage: ReviewStage;
 }
 
-export const ReviewRubric: React.FC<Props> = ({ scoringCriteria }) => {
+export const ReviewRubric = ({ scoringCriteria }: Props) => {
   return (
-    <div className="flex flex-col gap-6 w-full">
-      {scoringCriteria.map((criteria, idx) => (
-        <div key={idx} className="flex flex-col gap-2">
-          <span
-            className="font-poppins"
-            style={{
-              color: "#135FC5",
-              fontFeatureSettings: "'liga' off, 'clig' off",
-              fontSize: "16px",
-              fontStyle: "normal",
-              fontWeight: 500,
-              letterSpacing: 0,
-              lineHeight: "140%",
-            }}
+    <div className="shrink gap-8">
+      <div className="inline-flex gap-6 flex-col items-start">
+        {scoringCriteria.map((criteria, idx) => (
+          <div
+            key={criteria}
+            className="flex items-center shrink-0 self-stretch p-4 gap-6"
           >
-            Level {idx + 1}
-          </span>
-          <p
-            className="font-source"
-            style={{
-              alignSelf: "stretch",
-              color: "rgba(37, 37, 37, 0.80)",
-              fontFeatureSettings: "'liga' off, 'clig' off",
-              fontSize: "16px",
-              fontStyle: "normal",
-              fontWeight: 400,
-              letterSpacing: 0,
-              lineHeight: "140%",
-            }}
-          >
-            {criteria}
-          </p>
-        </div>
-      ))}
+            <h5 className="flex flex-col w-5 text-[28px]">{idx + 1}</h5>
+            <div className="flex-1 flex-col text-base text-charcoal-900/80 font-source text-base font-normal leading-[1.4]">
+              {criteria}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
