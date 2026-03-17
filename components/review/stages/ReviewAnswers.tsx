@@ -11,7 +11,7 @@ export const ReviewAnswers = ({ questions, answers }: Props) => {
     <div className="flex flex-col gap-10 w-full">
       {questions.map((question, idx) => (
         <div
-          key={idx}
+          key={`${question}-${idx}`}
           className="flex flex-col gap-4"
           style={{ alignItems: "flex-start" }}
         >
