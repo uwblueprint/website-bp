@@ -98,21 +98,7 @@ export const PanelLayout = ({
             {backToHomeHref ? (
               <Link href={backToHomeHref} passHref>
                 <a
-                  className="font-source no-underline inline-flex justify-center items-center gap-2 w-fit cursor-pointer shrink-0 hover:opacity-90 rounded-full"
-                  style={{
-                    display: "flex",
-                    padding: "8px 16px",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    gap: "8px",
-                    border: "2px solid #0573E8",
-                    background: "#FFF",
-                    color: "#0573E8",
-                    fontSize: "16px",
-                    fontWeight: 400,
-                    lineHeight: "140%",
-                    fontFeatureSettings: "'liga' off, 'clig' off",
-                  }}
+                  className="font-source no-underline inline-flex justify-center items-center gap-2 w-fit cursor-pointer shrink-0 hover:opacity-90 rounded-full py-2 px-4 border-2 border-blue bg-white text-blue text-base font-normal leading-[1.4]"
                 >
                   <LongLeftIcon />
                   Back to home
