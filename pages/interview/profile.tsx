@@ -1,14 +1,16 @@
-import ProtectedRoute from "@components/context/ProtectedRoute";
-import RecruitmentPlatformThemeProvider from "@components/recruitmentPlatformCommon/RecruitmentPlatformThemeProvider";
-import { InterviewLayout } from "@components/interview/layout";
 import { useInterviewProgress } from "@components/interview/shared";
 import { PanelLayout } from "@components/common/SplitPageLayout";
+import { getInterviewLayout } from "@components/interview/layout";
+import { NextPageWithLayout } from "../_app";
 
-const InterviewProfileContent = () => {
+const InterviewProfilePage: NextPageWithLayout = () => {
   const { currentStep, stepStatuses } = useInterviewProgress();
 
   return (
-    <PanelLayout title="Applicant Profile" subtitle="Percy Jackson's Application">
+    <PanelLayout
+      title="Applicant Profile"
+      subtitle="Percy Jackson's Application"
+    >
       <p>
         Current step: {currentStep}, Status: {stepStatuses[currentStep]}
       </p>
@@ -16,16 +18,6 @@ const InterviewProfileContent = () => {
   );
 };
 
-const InterviewProfilePage = () => {
-  return (
-    <RecruitmentPlatformThemeProvider>
-      <ProtectedRoute allowedRoles={["Admin", "User"]}>
-        <InterviewLayout candidateName="Percy Jackson">
-          <InterviewProfileContent />
-        </InterviewLayout>
-      </ProtectedRoute>
-    </RecruitmentPlatformThemeProvider>
-  );
-};
+InterviewProfilePage.getLayout = getInterviewLayout;
 
 export default InterviewProfilePage;

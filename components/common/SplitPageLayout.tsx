@@ -8,9 +8,9 @@ import { ReactElement, ReactNode } from "react";
 type SplitRatio = "equal" | "aside-main" | "main-aside";
 
 const SPLIT_GRID_CLASSES: Record<SplitRatio, string> = {
-  "equal": "lg:grid-cols-2",                // 50 / 50
-  "aside-main": "lg:grid-cols-[9fr_10fr]",  // ~47 / 53 (e.g. 698:740)
-  "main-aside": "lg:grid-cols-[10fr_9fr]",  // ~53 / 47
+  equal: "lg:grid-cols-2", // 50 / 50
+  "aside-main": "lg:grid-cols-[9fr_10fr]", // ~47 / 53 (e.g. 698:740)
+  "main-aside": "lg:grid-cols-[10fr_9fr]", // ~53 / 47
 };
 
 // ── SplitPanelLayout ────────────────────────────────────────────────
@@ -31,7 +31,9 @@ export const SplitPanelLayout = ({
   return (
     <div className="flex flex-col h-screen bg-white">
       {header}
-      <div className={`flex-1 grid grid-cols-1 ${SPLIT_GRID_CLASSES[split]} overflow-hidden border border-[#C4C4C4]`}>
+      <div
+        className={`flex-1 grid grid-cols-1 ${SPLIT_GRID_CLASSES[split]} overflow-hidden border border-[#C4C4C4]`}
+      >
         {children}
       </div>
       {footer}

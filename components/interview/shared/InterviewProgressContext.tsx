@@ -3,11 +3,19 @@ import { useRouter } from "next/router";
 import { InterviewStep, INTERVIEW_NAV_ITEMS } from "./constants";
 import { InterviewProgressState, StepStatus } from "./types";
 
-const InterviewProgressContext = createContext<InterviewProgressState | null>(null);
+// NOTE: Same Context + Provider + hook pattern as ReviewContext (review/shared/ReviewContext.tsx)
+// but combines step tracking + status into a single context (ReviewContext splits stage and scores
+// into separate contexts). Duplicated to keep the two flows decoupled.
+const InterviewProgressContext = createContext<InterviewProgressState | null>(
+  null,
+);
 
 const PATH_TO_STEP = INTERVIEW_NAV_ITEMS.reduce<Record<string, InterviewStep>>(
-  (acc, item) => { acc[item.path] = item.step; return acc; },
-  {}
+  (acc, item) => {
+    acc[item.path] = item.step;
+    return acc;
+  },
+  {},
 );
 
 const INITIAL_STATUSES: Record<InterviewStep, StepStatus> = {
@@ -21,7 +29,9 @@ interface InterviewProgressProviderProps {
   children: ReactNode;
 }
 
-export const InterviewProgressProvider = ({ children }: InterviewProgressProviderProps) => {
+export const InterviewProgressProvider = ({
+  children,
+}: InterviewProgressProviderProps) => {
   const router = useRouter();
   const [stepStatuses, setStepStatuses] = useState(INITIAL_STATUSES);
 
@@ -32,7 +42,9 @@ export const InterviewProgressProvider = ({ children }: InterviewProgressProvide
   };
 
   return (
-    <InterviewProgressContext.Provider value={{ currentStep, stepStatuses, updateStepStatus }}>
+    <InterviewProgressContext.Provider
+      value={{ currentStep, stepStatuses, updateStepStatus }}
+    >
       {children}
     </InterviewProgressContext.Provider>
   );
@@ -41,7 +53,9 @@ export const InterviewProgressProvider = ({ children }: InterviewProgressProvide
 export const useInterviewProgress = (): InterviewProgressState => {
   const context = useContext(InterviewProgressContext);
   if (!context) {
-    throw new Error("useInterviewProgress must be used within an InterviewProgressProvider");
+    throw new Error(
+      "useInterviewProgress must be used within an InterviewProgressProvider",
+    );
   }
   return context;
 };

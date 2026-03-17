@@ -14,17 +14,20 @@ export const InterviewNav = ({ candidateName }: InterviewNavProps) => {
   const isActive = (path: string) => router.pathname === path;
 
   return (
-    <nav className="flex flex-col h-full p-6">
+    <nav className="flex flex-col">
       <Link href="/admin">
-        <span
-          className="text-sm cursor-pointer hover:underline"
+        <a
+          className="text-sm hover:underline"
           style={{ color: theme.palette.primary.main }}
         >
           &larr; Back to home
-        </span>
+        </a>
       </Link>
 
-      <h2 className="text-[22px] font-semibold text-[#252525] mt-6">
+      <h2
+        className="text-[22px] font-semibold mt-6"
+        style={{ color: theme.palette.text.primary }}
+      >
         {candidateName}&apos;s Interview Review
       </h2>
 
@@ -36,16 +39,18 @@ export const InterviewNav = ({ candidateName }: InterviewNavProps) => {
           return (
             <li key={item.step}>
               <Link href={item.path}>
-                <div
-                  className="flex items-center justify-between px-3 py-3 rounded cursor-pointer"
+                <a
+                  className="flex items-center justify-between px-3 py-3 rounded"
                   style={{
-                    color: active ? theme.palette.primary.main : theme.palette.text.primary,
+                    color: active
+                      ? theme.palette.primary.main
+                      : theme.palette.text.primary,
                     fontWeight: active ? 600 : 400,
                   }}
                 >
                   <span className="text-sm">{item.label}</span>
                   <span className="text-lg">&rarr;</span>
-                </div>
+                </a>
               </Link>
             </li>
           );
