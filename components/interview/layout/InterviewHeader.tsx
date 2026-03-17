@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 import { useTheme } from "@mui/material/styles";
 import { PROFILE_HEADER_STEPS } from "../shared/constants";
+import { InterviewProgressContext } from "../shared/InterviewProgressContext";
 
 interface HeaderStep {
   step: string;
@@ -23,6 +25,10 @@ export const InterviewHeader = ({
   currentStep = steps[0]?.step,
 }: InterviewHeaderProps) => {
   const theme = useTheme();
+  // Read sub-step from context if available — allows pages to drive the active bubble
+  // via setCurrentSubStep without needing to re-render the layout. Falls back to the prop.
+  const progressContext = useContext(InterviewProgressContext);
+  const activeStep = progressContext?.currentSubStep ?? currentStep;
 
   return (
     <header
@@ -43,7 +49,7 @@ export const InterviewHeader = ({
 
         <div className="flex items-center gap-9">
           {steps.map(({ step, label, index }) => {
-            const active = step === currentStep;
+            const active = step === activeStep;
             return (
               <div key={step} className="flex flex-col items-center gap-1">
                 <div

@@ -1,5 +1,8 @@
 import { PanelLayout } from "@components/common/SplitPageLayout";
-import { getInterviewLayout } from "@components/interview/layout";
+import {
+  getInterviewLayout,
+  InterviewHeader,
+} from "@components/interview/layout";
 import { NextPageWithLayout } from "../_app";
 
 const InterviewSchedulePage: NextPageWithLayout = () => {
@@ -10,6 +13,10 @@ const InterviewSchedulePage: NextPageWithLayout = () => {
   );
 };
 
-InterviewSchedulePage.getLayout = getInterviewLayout();
+// Schedule has no footer bar — submit action is inline in the page content.
+InterviewSchedulePage.getLayout = getInterviewLayout(
+  <InterviewHeader steps={[]} />,
+  null,
+);
 
 export default InterviewSchedulePage;
