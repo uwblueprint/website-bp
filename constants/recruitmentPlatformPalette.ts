@@ -1,11 +1,12 @@
 import { PaletteOptions } from "@mui/material/styles";
 
 // COLOR SCALES (for reference)
-const neutral = {
+export const neutral = {
   50: "#FFFFFF",
   100: "#EEEEEE",
   200: "#C4C4C4",
   500: "#737373",
+  600: "#2D3748",
   700: "#444444",
   800: "#252525",
   900: "#000000",
