@@ -1,11 +1,11 @@
-import { ReactChild, ReactElement, useEffect, useState } from "react";
+import { ReactNode, ReactElement, useEffect, useState } from "react";
 import Loading from "@components/common/Loading";
 import { useRouter } from "next/router";
 import AuthAPIClient from "APIClients/AuthAPIClient";
 import { AuthStatus } from "types";
 
 type Props = {
-  children: ReactChild;
+  children: ReactNode;
   allowedRoles: Role[];
 };
 
