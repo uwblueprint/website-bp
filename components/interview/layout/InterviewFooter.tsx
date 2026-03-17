@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import { useTheme } from "@mui/material/styles";
 import Button from "@components/common/Button";
 import { INTERVIEW_NAV_ITEMS } from "../shared/constants";
 
@@ -9,11 +8,10 @@ interface InterviewFooterProps {
 
 // NOTE: Follows the same button layout pattern as ReviewStepper (review/shared/ReviewStepper.tsx) —
 // flex justify-end with sm secondary/primary button pair — but with interview-specific behavior:
-// route-based navigation (instead of context-based stage switching) and a striped background.
+// route-based navigation (instead of context-based stage switching).
 // Duplicated to keep the two flows decoupled.
 export const InterviewFooter = ({ onContinue }: InterviewFooterProps) => {
   const router = useRouter();
-  const theme = useTheme();
 
   const currentIndex = INTERVIEW_NAV_ITEMS.findIndex(
     (item) => item.path === router.pathname,
@@ -29,18 +27,7 @@ export const InterviewFooter = ({ onContinue }: InterviewFooterProps) => {
   };
 
   return (
-    <div
-      className="w-full px-6 py-3"
-      style={{
-        background: `repeating-linear-gradient(
-          -45deg,
-          ${theme.palette.primary.light} 0px,
-          ${theme.palette.primary.light} 5px,
-          #ffffff 5px,
-          #ffffff 15px
-        )`,
-      }}
-    >
+    <div className="w-full bg-white px-6 py-3">
       <div className="flex items-center justify-end gap-3">
         <Button
           size="sm"
