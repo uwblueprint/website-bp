@@ -13,7 +13,6 @@ export const mutations = {
       lastName
       email
       role
-      position
       accessToken
       refreshToken
     }
