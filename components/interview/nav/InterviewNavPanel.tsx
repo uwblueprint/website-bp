@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import { useTheme } from "@mui/material/styles";
 import { INTERVIEW_NAV_ITEMS } from "../shared/constants";
 
-interface InterviewNavProps {
+interface InterviewNavPanelProps {
   candidateName: string;
 }
 
-export const InterviewNav = ({ candidateName }: InterviewNavProps) => {
+export const InterviewNavPanel = ({ candidateName }: InterviewNavPanelProps) => {
   const router = useRouter();
   const theme = useTheme();
 

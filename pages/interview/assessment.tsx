@@ -6,62 +6,83 @@ import {
   InterviewHeader,
   InterviewFooter,
 } from "@components/interview/layout";
+import Button from "@components/common/Button";
 import { NextPageWithLayout } from "../_app";
 
-// ─── Sub-step constants ────────────────────────────────────────────────────────
-// Define the sub-steps for this page as plain string constants.
-// These drive the header bubble (via context) and footer button state.
+// Sub-step constants: drive the header bubble (via context) and footer button state.
 const SCORES = "SCORES";
 const NOTES = "NOTES";
+const SUBMITTED = "SUBMITTED";
 
-// ─── Footer ───────────────────────────────────────────────────────────────────
+// TODO:  remove the comment after PR review
 // AssessmentFooter reads currentSubStep from context so it can update its buttons
 // dynamically without the layout needing to re-render. This is the pattern future
 // devs should follow for any page with sub-step navigation.
 const AssessmentFooter = () => {
   const { currentSubStep, setCurrentSubStep } = useInterviewProgress();
 
-  if (currentSubStep === NOTES) {
-    return (
-      <InterviewFooter
-        onBack={() => setCurrentSubStep(SCORES)}
-        backLabel="Previous Page"
-        // TODO: wire final submit action
-        onContinue={() => {}}
-        continueLabel="Submit & Finish"
-      />
-    );
+  switch (currentSubStep) {
+    case SUBMITTED:
+      return null;
+    case NOTES:
+      return (
+        <InterviewFooter
+          onBack={() => setCurrentSubStep(SCORES)}
+          backLabel="Previous Page"
+          onContinue={() => setCurrentSubStep(SUBMITTED)}
+          continueLabel="Submit & Finish"
+        />
+      );
+    default:
+      return (
+        <InterviewFooter
+          onBack={() => {}}
+          onContinue={() => setCurrentSubStep(NOTES)}
+          continueLabel="Submit & Continue"
+        />
+      );
   }
+};
 
-  // Default: SCORES step (or null on first render before useEffect sets initial sub-step)
+// TODO: replace with final designed submitted UI
+const AssessmentSubmitted = () => {
+  const { setCurrentSubStep } = useInterviewProgress();
+
   return (
-    <InterviewFooter
-      onBack={() => {}}
-      onContinue={() => setCurrentSubStep(NOTES)}
-      continueLabel="Submit & Continue"
-    />
+    <div className="flex flex-col items-center justify-center h-full gap-4">
+      <p>Assessment Submitted!</p>
+      <Button size="sm" onClick={() => setCurrentSubStep(SCORES)}>
+        Edit Assessment
+      </Button>
+    </div>
   );
 };
 
-// ─── Page ─────────────────────────────────────────────────────────────────────
 const InterviewAssessmentPage: NextPageWithLayout = () => {
   const { currentSubStep, setCurrentSubStep } = useInterviewProgress();
-
-  // Set the initial sub-step on mount so the header bubble is correct.
-  // Each page is responsible for initialising its own sub-step.
-  if (currentSubStep === null) {
-    setCurrentSubStep(SCORES);
+  if (currentSubStep === null) setCurrentSubStep(SCORES);
+  switch (currentSubStep) {
+    case SUBMITTED:
+      return <AssessmentSubmitted />;
+    case NOTES:
+      return (
+        <PanelLayout
+          title="Interview Assessment"
+          subtitle="Score the candidate"
+        >
+          <p>Assessment Notes content goes here.</p>
+        </PanelLayout>
+      );
+    default:
+      return (
+        <PanelLayout
+          title="Interview Assessment"
+          subtitle="Score the candidate"
+        >
+          <p>Application Scores content goes here.</p>
+        </PanelLayout>
+      );
   }
-
-  return (
-    <PanelLayout title="Interview Assessment" subtitle="Score the candidate">
-      {currentSubStep === NOTES ? (
-        <p>Assessment Notes content goes here.</p>
-      ) : (
-        <p>Application Scores content goes here.</p>
-      )}
-    </PanelLayout>
-  );
 };
 
 InterviewAssessmentPage.getLayout = getInterviewLayout(

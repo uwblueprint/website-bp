@@ -3,7 +3,7 @@ import {
   SplitPanelLayout,
   PanelLayout,
 } from "@components/common/SplitPageLayout";
-import { InterviewNav } from "../nav";
+import { InterviewNavPanel } from "../nav";
 import { InterviewProgressProvider } from "../shared";
 import { InterviewHeader } from "./InterviewHeader";
 import { InterviewFooter } from "./InterviewFooter";
@@ -15,9 +15,6 @@ interface InterviewLayoutProps {
   children: ReactNode;
 }
 
-// NOTE: Follows the same structure as ReviewPageLayout (review/layout/ReviewPageLayout.tsx) —
-// wrapping SplitPanelLayout with header + footer slots — but adds the persistent left nav panel
-// and defaults to interview-specific header/footer. Duplicated to keep the two flows decoupled.
 export const InterviewLayout = ({
   header = <InterviewHeader />,
   footer = <InterviewFooter />,
@@ -28,7 +25,7 @@ export const InterviewLayout = ({
     <InterviewProgressProvider>
       <SplitPanelLayout header={header} footer={footer}>
         <PanelLayout borderRight>
-          <InterviewNav candidateName={candidateName} />
+          <InterviewNavPanel candidateName={candidateName} />
         </PanelLayout>
         {children}
       </SplitPanelLayout>

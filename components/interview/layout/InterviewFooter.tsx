@@ -9,13 +9,6 @@ interface InterviewFooterProps {
   continueLabel?: string;
 }
 
-// NOTE: Follows the same button layout pattern as ReviewStepper (review/shared/ReviewStepper.tsx) —
-// flex justify-end with sm secondary/primary button pair — but with interview-specific behavior.
-// Duplicated to keep the two flows decoupled.
-//
-// Each page controls which buttons appear and what they do by passing props via getInterviewLayout.
-// Pages with sub-step navigation (e.g. profile INFO → SCORING → COMMENTS) will need to manage
-// their own footer state and pass updated props as the user progresses.
 export const InterviewFooter = ({
   onBack,
   backLabel = "Back to home",

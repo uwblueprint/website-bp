@@ -13,7 +13,6 @@ const InterviewSchedulePage: NextPageWithLayout = () => {
   );
 };
 
-// Schedule has no footer bar — submit action is inline in the page content.
 InterviewSchedulePage.getLayout = getInterviewLayout(
   <InterviewHeader steps={[]} />,
   null,

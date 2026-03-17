@@ -1,1 +1,1 @@
-export { InterviewNav } from "./InterviewNav";
+export { InterviewNavPanel } from "./InterviewNavPanel";

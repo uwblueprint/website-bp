@@ -16,25 +16,17 @@ interface InterviewHeaderProps {
   currentStep?: string;
 }
 
-// NOTE: Follows the same structure as ReviewProgressHeader (review/shared/ReviewProgressHeader.tsx) —
-// blue bar + logo + numbered step circles — but with interview-specific steps (INFO/SCORING/COMMENTS)
-// and without the completed/future states or CheckIcon. Duplicated to keep the two flows decoupled.
-// Could be extracted into a shared header component if both flows stay visually identical.
 export const InterviewHeader = ({
   steps = PROFILE_HEADER_STEPS,
   currentStep = steps[0]?.step,
 }: InterviewHeaderProps) => {
-  const theme = useTheme();
-  // Read sub-step from context if available — allows pages to drive the active bubble
-  // via setCurrentSubStep without needing to re-render the layout. Falls back to the prop.
+  const { palette } = useTheme();
+  const { primary, background } = palette;
   const progressContext = useContext(InterviewProgressContext);
   const activeStep = progressContext?.currentSubStep ?? currentStep;
 
   return (
-    <header
-      className="w-full"
-      style={{ backgroundColor: theme.palette.primary.main }}
-    >
+    <header className="w-full" style={{ backgroundColor: primary.main }}>
       <div className="flex items-center justify-between px-9 py-4">
         <Link href="/admin">
           <a>
@@ -56,17 +48,15 @@ export const InterviewHeader = ({
                   className="w-9 h-9 rounded-full border-2 flex items-center justify-center"
                   style={{
                     backgroundColor: active
-                      ? theme.palette.background.default
+                      ? background.default
                       : "transparent",
-                    borderColor: theme.palette.primary.contrastText,
+                    borderColor: primary.contrastText,
                   }}
                 >
                   <span
                     className="text-sm font-medium"
                     style={{
-                      color: active
-                        ? theme.palette.primary.main
-                        : theme.palette.primary.contrastText,
+                      color: active ? primary.main : primary.contrastText,
                     }}
                   >
                     {index}

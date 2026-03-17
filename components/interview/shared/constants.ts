@@ -7,12 +7,14 @@ export enum InterviewStep {
   REPORT = "REPORT",
 }
 
-// NOTE: Same enum pattern as ReviewStage (review/shared/constants.ts) but with interview-specific steps.
-export enum InterviewHeaderStep {
-  INFO = "INFO",
-  SCORING = "SCORING",
-  COMMENTS = "COMMENTS",
-}
+export const InterviewHeaderStep = {
+  INFO: "INFO",
+  SCORING: "SCORING",
+  COMMENTS: "COMMENTS",
+} as const;
+
+export type InterviewHeaderStep =
+  typeof InterviewHeaderStep[keyof typeof InterviewHeaderStep];
 
 export const INTERVIEW_NAV_ITEMS: NavItem[] = [
   {
@@ -37,8 +39,6 @@ export const INTERVIEW_NAV_ITEMS: NavItem[] = [
   },
 ];
 
-// NOTE: Same shape as the `steps` array in ReviewProgressHeader (review/shared/ReviewProgressHeader.tsx)
-// but with interview-specific steps (INFO/SCORING/COMMENTS vs INFO/PFSG/TEAM/LEARN/SKILL/END).
 export const PROFILE_HEADER_STEPS: HeaderStepConfig[] = [
   { step: InterviewHeaderStep.INFO, label: "INFO", index: 1 },
   { step: InterviewHeaderStep.SCORING, label: "SCORING", index: 2 },
