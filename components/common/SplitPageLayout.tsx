@@ -3,23 +3,35 @@ import { useTheme } from "@mui/material/styles";
 import Link from "next/link";
 import { ReactElement, ReactNode } from "react";
 
+// ── Split ratio config ──────────────────────────────────────────────
+
+type SplitRatio = "equal" | "aside-main" | "main-aside";
+
+const SPLIT_GRID_CLASSES: Record<SplitRatio, string> = {
+  "equal": "lg:grid-cols-2",                // 50 / 50
+  "aside-main": "lg:grid-cols-[9fr_10fr]",  // ~47 / 53 (e.g. 698:740)
+  "main-aside": "lg:grid-cols-[10fr_9fr]",  // ~53 / 47
+};
+
 // ── SplitPanelLayout ────────────────────────────────────────────────
 
 interface SplitPanelLayoutProps {
   header?: ReactNode;
   footer?: ReactNode;
+  split?: SplitRatio;
   children: ReactNode;
 }
 
 export const SplitPanelLayout = ({
   header,
   footer,
+  split = "equal",
   children,
 }: SplitPanelLayoutProps): ReactElement => {
   return (
     <div className="flex flex-col h-screen bg-white">
       {header}
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
+      <div className={`flex-1 grid grid-cols-1 ${SPLIT_GRID_CLASSES[split]} overflow-hidden border border-[#C4C4C4]`}>
         {children}
       </div>
       {footer}

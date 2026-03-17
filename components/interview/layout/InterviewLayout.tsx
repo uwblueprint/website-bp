@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { SplitPanelLayout, PanelLayout } from "@components/common/SplitPageLayout";
 import { InterviewNav } from "../nav";
 import { InterviewProgressProvider } from "../shared";
 
@@ -17,16 +18,13 @@ export const InterviewLayout = ({
 }: InterviewLayoutProps) => {
   return (
     <InterviewProgressProvider>
-      <div className="flex flex-col h-screen">
-        {header}
-        <div className="flex flex-1 overflow-hidden border border-[#C4C4C4]">
-          <aside className="w-[480px] shrink-0 border-r border-[#C4C4C4] bg-white overflow-y-auto">
-            <InterviewNav candidateName={candidateName} />
-          </aside>
-          <div className="flex-1 overflow-y-auto">{children}</div>
-        </div>
-        {footer}
-      </div>
+      {/* TODO: Confirm split ratio with PL — Figma shows ~698:740, using "equal" for now */}
+      <SplitPanelLayout header={header} footer={footer} split="equal">
+        <PanelLayout borderRight>
+          <InterviewNav candidateName={candidateName} />
+        </PanelLayout>
+        {children}
+      </SplitPanelLayout>
     </InterviewProgressProvider>
   );
 };

@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState, useCallback, useMemo } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 import { useRouter } from "next/router";
 import { InterviewStep, INTERVIEW_NAV_ITEMS } from "./constants";
 import { InterviewProgressState, StepStatus } from "./types";
@@ -27,17 +27,12 @@ export const InterviewProgressProvider = ({ children }: InterviewProgressProvide
 
   const currentStep = PATH_TO_STEP[router.pathname] ?? InterviewStep.PROFILE;
 
-  const updateStepStatus = useCallback((step: InterviewStep, status: StepStatus) => {
+  const updateStepStatus = (step: InterviewStep, status: StepStatus) => {
     setStepStatuses((prev) => ({ ...prev, [step]: status }));
-  }, []);
-
-  const value = useMemo(
-    () => ({ currentStep, stepStatuses, updateStepStatus }),
-    [currentStep, stepStatuses, updateStepStatus]
-  );
+  };
 
   return (
-    <InterviewProgressContext.Provider value={value}>
+    <InterviewProgressContext.Provider value={{ currentStep, stepStatuses, updateStepStatus }}>
       {children}
     </InterviewProgressContext.Provider>
   );
