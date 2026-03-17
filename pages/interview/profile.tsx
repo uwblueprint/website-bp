@@ -1,6 +1,13 @@
 import { useInterviewProgress } from "@components/interview/shared";
+import {
+  PROFILE_HEADER_STEPS,
+  InterviewHeaderStep,
+} from "@components/interview/shared";
 import { PanelLayout } from "@components/common/SplitPageLayout";
-import { getInterviewLayout } from "@components/interview/layout";
+import {
+  getInterviewLayout,
+  InterviewHeader,
+} from "@components/interview/layout";
 import { NextPageWithLayout } from "../_app";
 
 const InterviewProfilePage: NextPageWithLayout = () => {
@@ -18,6 +25,11 @@ const InterviewProfilePage: NextPageWithLayout = () => {
   );
 };
 
-InterviewProfilePage.getLayout = getInterviewLayout;
+InterviewProfilePage.getLayout = getInterviewLayout(
+  <InterviewHeader
+    steps={PROFILE_HEADER_STEPS}
+    currentStep={InterviewHeaderStep.INFO}
+  />,
+);
 
 export default InterviewProfilePage;

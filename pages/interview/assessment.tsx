@@ -1,5 +1,9 @@
+import { ASSESSMENT_HEADER_STEPS } from "@components/interview/shared";
 import { PanelLayout } from "@components/common/SplitPageLayout";
-import { getInterviewLayout } from "@components/interview/layout";
+import {
+  getInterviewLayout,
+  InterviewHeader,
+} from "@components/interview/layout";
 import { NextPageWithLayout } from "../_app";
 
 const InterviewAssessmentPage: NextPageWithLayout = () => {
@@ -10,6 +14,8 @@ const InterviewAssessmentPage: NextPageWithLayout = () => {
   );
 };
 
-InterviewAssessmentPage.getLayout = getInterviewLayout;
+InterviewAssessmentPage.getLayout = getInterviewLayout(
+  <InterviewHeader steps={ASSESSMENT_HEADER_STEPS} currentStep="SCORES" />,
+);
 
 export default InterviewAssessmentPage;

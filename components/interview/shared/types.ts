@@ -1,4 +1,4 @@
-import { InterviewStep, InterviewHeaderStep } from "./constants";
+import { InterviewStep } from "./constants";
 
 type NavItem = {
   label: string;
@@ -6,10 +6,10 @@ type NavItem = {
   path: string;
 };
 
-// NOTE: Same shape as StepConfig in ReviewProgressHeader (review/shared/ReviewProgressHeader.tsx)
-// but references InterviewHeaderStep instead of ReviewStage.
+// NOTE: Same shape as StepConfig in ReviewProgressHeader (review/shared/ReviewProgressHeader.tsx).
+// step is a string so any page can define its own step values without being locked to a single enum.
 type HeaderStepConfig = {
-  step: InterviewHeaderStep;
+  step: string;
   label: string;
   index: number;
 };

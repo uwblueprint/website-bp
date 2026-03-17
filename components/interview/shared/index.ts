@@ -2,7 +2,8 @@ export {
   InterviewStep,
   InterviewHeaderStep,
   INTERVIEW_NAV_ITEMS,
-  INTERVIEW_HEADER_STEPS,
+  PROFILE_HEADER_STEPS,
+  ASSESSMENT_HEADER_STEPS,
 } from "./constants";
 export type {
   NavItem,

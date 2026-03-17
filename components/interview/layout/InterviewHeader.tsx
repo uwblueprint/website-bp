@@ -1,13 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "@mui/material/styles";
-import {
-  InterviewHeaderStep,
-  INTERVIEW_HEADER_STEPS,
-} from "../shared/constants";
+import { PROFILE_HEADER_STEPS } from "../shared/constants";
+
+interface HeaderStep {
+  step: string;
+  label: string;
+  index: number;
+}
 
 interface InterviewHeaderProps {
-  currentStep?: InterviewHeaderStep;
+  steps?: HeaderStep[];
+  currentStep?: string;
 }
 
 // NOTE: Follows the same structure as ReviewProgressHeader (review/shared/ReviewProgressHeader.tsx) —
@@ -15,7 +19,8 @@ interface InterviewHeaderProps {
 // and without the completed/future states or CheckIcon. Duplicated to keep the two flows decoupled.
 // Could be extracted into a shared header component if both flows stay visually identical.
 export const InterviewHeader = ({
-  currentStep = InterviewHeaderStep.INFO,
+  steps = PROFILE_HEADER_STEPS,
+  currentStep = steps[0]?.step,
 }: InterviewHeaderProps) => {
   const theme = useTheme();
 
@@ -37,7 +42,7 @@ export const InterviewHeader = ({
         </Link>
 
         <div className="flex items-center gap-9">
-          {INTERVIEW_HEADER_STEPS.map(({ step, label, index }) => {
+          {steps.map(({ step, label, index }) => {
             const active = step === currentStep;
             return (
               <div key={step} className="flex flex-col items-center gap-1">

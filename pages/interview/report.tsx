@@ -10,6 +10,6 @@ const InterviewReportPage: NextPageWithLayout = () => {
   );
 };
 
-InterviewReportPage.getLayout = getInterviewLayout;
+InterviewReportPage.getLayout = getInterviewLayout();
 
 export default InterviewReportPage;

@@ -10,6 +10,6 @@ const InterviewSchedulePage: NextPageWithLayout = () => {
   );
 };
 
-InterviewSchedulePage.getLayout = getInterviewLayout;
+InterviewSchedulePage.getLayout = getInterviewLayout();
 
 export default InterviewSchedulePage;
