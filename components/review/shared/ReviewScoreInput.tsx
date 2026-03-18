@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
 interface Props {
   id: string;
@@ -53,7 +53,7 @@ export function ReviewScoreInput({
   placeholder,
   ariaLabel,
   onChange,
-}: Props) {
+}: Props): ReactElement {
   const numericValue = value === "" ? NaN : value;
   const canIncrement = Number.isNaN(numericValue) || numericValue < max;
   const canDecrement = Number.isNaN(numericValue) || numericValue > min;

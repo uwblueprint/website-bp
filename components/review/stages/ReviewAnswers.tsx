@@ -1,11 +1,12 @@
 import { useTheme } from "@mui/material/styles";
+import { ReactElement } from "react";
 
 export interface Props {
   questions: string[];
   answers: string[];
 }
 
-export const ReviewAnswers = ({ questions, answers }: Props) => {
+export const ReviewAnswers = ({ questions, answers }: Props): ReactElement => {
   const theme = useTheme();
   return (
     <div className="flex flex-col gap-10 w-full">

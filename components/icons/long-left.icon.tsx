@@ -15,6 +15,7 @@ export const LongLeftIcon = ({
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden
+    role="img"
   >
     <path
       d="M5.83 11L8.41 8.41L7 7L2 12L7 17L8.41 15.59L5.83 13H22V11H5.83Z"

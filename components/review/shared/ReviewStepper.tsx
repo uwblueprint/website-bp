@@ -8,6 +8,7 @@ import { ReviewSetStageContext } from "./ReviewContext";
 import { getReviewId } from "./reviewUtils";
 import { ReviewEndData, ReviewScores } from "./types";
 import { useTheme } from "@mui/material/styles";
+import { ReactElement } from "react";
 
 const STAGE_RATING_FIELDS: [ReviewStage, string][] = [
   [ReviewStage.PFSG, "passionFSG"],
@@ -54,7 +55,7 @@ export const ReviewStepper = ({
   scores,
   endData,
   onValidate,
-}: Props) => {
+}: Props): ReactElement | null => {
   const theme = useTheme();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();

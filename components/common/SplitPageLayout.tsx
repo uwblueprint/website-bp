@@ -1,6 +1,6 @@
 import { LongLeftIcon } from "@components/icons/long-left.icon";
 import Link from "next/link";
-import { ReactNode } from "react";
+import { ReactElement, ReactNode } from "react";
 
 // ── SplitPanelLayout ────────────────────────────────────────────────
 
@@ -14,7 +14,7 @@ export const SplitPanelLayout = ({
   header,
   footer,
   children,
-}: SplitPanelLayoutProps) => {
+}: SplitPanelLayoutProps): ReactElement => {
   return (
     <div className="flex flex-col h-screen bg-white">
       {header}
@@ -78,7 +78,7 @@ export const PanelLayout = ({
   headerRightAction,
   showApplicationTitle = true,
   children,
-}: PanelLayoutProps) => {
+}: PanelLayoutProps): ReactElement => {
   const bg = variant === "sky" ? "bg-sky" : "bg-white";
   const hasHeader = !!(title || subtitle);
   const titleStyle = TITLE_STYLES[titleVariant];
@@ -97,9 +97,7 @@ export const PanelLayout = ({
           <div className="flex justify-between items-center w-full mb-8 shrink-0">
             {backToHomeHref ? (
               <Link href={backToHomeHref} passHref>
-                <a
-                  className="font-source no-underline inline-flex justify-center items-center gap-2 w-fit cursor-pointer shrink-0 hover:opacity-90 rounded-full py-2 px-4 border-2 border-blue bg-white text-blue text-base font-normal leading-[1.4]"
-                >
+                <a className="font-source no-underline inline-flex justify-center items-center gap-2 w-fit cursor-pointer shrink-0 hover:opacity-90 rounded-full py-2 px-4 border-2 border-blue bg-white text-blue text-base font-normal leading-[1.4]">
                   <LongLeftIcon />
                   Back to home
                 </a>
