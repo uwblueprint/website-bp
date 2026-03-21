@@ -1,5 +1,6 @@
 import { Children, cloneElement, isValidElement } from "react";
 import Dialog from "@mui/material/Dialog";
+import { useTheme } from "@mui/material/styles";
 
 type Props = {
   readonly open: boolean;
@@ -23,11 +24,13 @@ const Dialogue = ({
       textContainerClassName ?? ""
     }`.trim();
 
+  const theme = useTheme();
+
   const actionChildren = Children.toArray(children).filter(Boolean);
   const hasSingleAction = actionChildren.length === 1;
   const actionsContainerClasses = hasSingleAction
-    ? "flex w-full items-start justify-center"
-    : "flex w-full items-start gap-4";
+    ? "flex w-full items-center justify-center"
+    : "flex w-full items-center justify-center gap-4";
 
   const styledActionChildren = actionChildren.map((child) => {
     if (!isValidElement<{ className?: string }>(child)) {
@@ -42,8 +45,12 @@ const Dialogue = ({
       .filter(Boolean)
       .join(" ");
 
+    const buttonClass = hasSingleAction
+      ? `w-full ${actionButtonClassName}`
+      : actionButtonClassName;
+
     return cloneElement(child, {
-      className: actionButtonClassName,
+      className: buttonClass,
     });
   });
 
@@ -53,17 +60,32 @@ const Dialogue = ({
       onClose={onClose}
       maxWidth={false}
       PaperProps={{
-        className:
-          "!m-0 w-80 max-w-[calc(100vw-32px)] overflow-hidden rounded-[8px] shadow-none",
+        sx: {
+          borderRadius: 2,
+          overflow: "hidden",
+          boxShadow: "none",
+          opacity: 1,
+        },
       }}
     >
-      <div className="flex flex-col items-center gap-[36px] bg-white p-6">
+      <div
+        className="flex flex-col justify-center items-center gap-[36px] p-6"
+        style={{
+          width: "310px",
+          backgroundColor: theme.palette.background.paper,
+        }}
+      >
         <div className={textContainerClasses}>
-          <h2 className="w-full font-poppins text-[20px] font-medium leading-[1.4] text-blue">
+          <h2
+            className="w-full font-poppins text-[20px] font-medium leading-[1.4]"
+            style={{ color: theme.palette.primary.main }}
+          >
             {header}
           </h2>
-          {/* Use a non-<p> wrapper so callers can pass arbitrary ReactNode safely. */}
-          <div className="w-full font-source text-[14px] font-normal leading-[1.4] text-[#252525]">
+          <div
+            className="w-full font-source text-[14px] font-normal leading-[1.4]"
+            style={{ color: theme.palette.text.primary }}
+          >
             {text}
           </div>
         </div>

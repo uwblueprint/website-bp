@@ -10,6 +10,8 @@ import { useAuthenticatedUser } from "@components/context/AuthUserContext";
 import { useRouter } from "next/router";
 import ReviewPageAPIClient from "APIClients/ReviewPageAPIClient";
 import { tryGetApplicantRecordId } from "@utils/reviewId";
+import WarningIcon from "@components/icons/warning.icon";
+import { useTheme } from "@mui/material/styles";
 
 export interface ReviewStageProps {
   name: string;
@@ -53,7 +55,8 @@ export const ReviewInfoStage = ({
   name,
   application,
   scores,
-}: ReviewStageProps): React.ReactElement => {
+}: ReviewStageProps) => {
+  const theme = useTheme();
   const shortAnswerStr = application?.shortAnswerQuestions[0];
   const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
   const { extractedAnswers } = extractShortAnswerData(shortAnswerJSON);
@@ -82,10 +85,10 @@ export const ReviewInfoStage = ({
         applicantRecordId,
         reviewerId,
       );
+
       setConfirmDialogOpen(false);
       setSuccessDialogOpen(true);
     } catch (error) {
-      console.error("Failed to report conflict", error);
       setReportError("Couldn't report conflict. Please try again.");
     } finally {
       setIsReporting(false);
