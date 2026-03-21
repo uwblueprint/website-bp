@@ -10,17 +10,17 @@ export const extractShortAnswerData = (shortAnswerJSON: any) => {
   return { extractedQuestions, extractedAnswers };
 };
 
-export const getReviewId = (
+export const getApplicantRecordId = (
   query: Record<string, string | string[] | undefined>,
 ): number => {
   const reviewId =
-    typeof query["reviewId"] === "string"
-      ? parseInt(query["reviewId"])
+    typeof query["applicantRecordId"] === "string"
+      ? parseInt(query["applicantRecordId"])
       : (() => {
-          throw new Error("reviewId must be a String");
+          throw new Error("applicantRecordId must be a String");
         })();
   if (Number.isNaN(reviewId))
-    throw Error("reviewId must be parsable into an int");
+    throw Error("applicantRecordId must be parsable into an int");
 
   return reviewId;
 };

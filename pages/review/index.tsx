@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import ProtectedRoute from "@components/context/ProtectedRoute";
 import { ReviewStage } from "@components/review/shared/constants";
 import { ReviewEndData, ReviewScores } from "@components/review/shared/types";
-import { getReviewId } from "@components/review/shared/reviewUtils";
+import { getApplicantRecordId } from "@components/review/shared/reviewUtils";
 import {
   ReviewSetScoresContext,
   ReviewSetStageContext,
@@ -75,7 +75,9 @@ const ReviewsPages: NextPage = () => {
   });
   const [scores, setScores] = useState<ReviewScores>(initialScores);
 
-  const reviewId = router.isReady ? getReviewId(router.query) : null;
+  const applicantRecordId = router.isReady
+    ? getApplicantRecordId(router.query)
+    : null;
   const name = application?.firstName + " " + application?.lastName;
 
   const authenticatedUser = useAuthenticatedUser();
@@ -93,10 +95,10 @@ const ReviewsPages: NextPage = () => {
   };
 
   useEffect(() => {
-    if (reviewId === null) return;
+    if (applicantRecordId === null) return;
     const appInfo = sampleApplication;
     setApplication(appInfo);
-  }, [reviewId]);
+  }, [applicantRecordId]);
 
   if (!router.isReady) return null;
 

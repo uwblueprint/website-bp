@@ -11,7 +11,7 @@ export async function fetchGraphql(
 ): Promise<GraphqlResponse> {
   if (!BE_DEPLOYMENT_DOMAIN) {
     throw new Error(
-      `DEPLOYMENT_DOMAIN not defined. Please check your env file.`,
+      `NEXT_PUBLIC_BE_DEPLOYMENT_DOMAIN not defined. Please check your env file.`,
     );
   }
   const requestOptions: RequestInit = {
@@ -28,11 +28,28 @@ export async function fetchGraphql(
     );
     const responseData = await response.json();
 
-    if (response.ok) {
-      return { data: responseData.data };
-    } else {
+    // Many GraphQL servers return HTTP 200 even when resolvers error.
+    if (responseData?.errors?.length) {
       throw new Error(JSON.stringify(responseData.errors));
     }
+
+    if (!response.ok) {
+      throw new Error(
+        JSON.stringify(
+          responseData?.errors ?? [{ message: response.statusText }],
+        ),
+      );
+    }
+
+    if (
+      !responseData ||
+      typeof responseData !== "object" ||
+      !("data" in responseData)
+    ) {
+      throw new Error("Invalid GraphQL response");
+    }
+
+    return { data: responseData.data };
   } catch (error: any) {
     throw new Error(`GraphQL request failed: ${error.message}`);
   }

@@ -5,7 +5,7 @@ import { router } from "next/router";
 
 export const getReviewTableColumns = (): MUIDataTableColumn[] => {
   const handleNameClick = (appId: string) => {
-    router.push(`/review?reviewId=${appId}`);
+    router.push(`/review?applicantRecordId=${appId}`);
   };
 
   const columns: MUIDataTableColumn[] = [

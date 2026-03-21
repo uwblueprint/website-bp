@@ -1,11 +1,15 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { ApplicationDTO } from "../../../types";
 import { ReviewStage } from "../shared/constants";
 import { extractShortAnswerData } from "../shared/reviewUtils";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewPageLayout, PanelLayout } from "../layout";
+import { useAuthenticatedUser } from "@components/context/AuthUserContext";
+import { useRouter } from "next/router";
+import ReviewPageAPIClient from "APIClients/ReviewPageAPIClient";
+import { tryGetApplicantRecordId } from "@utils/reviewId";
 
 export interface ReviewStageProps {
   name: string;
@@ -53,6 +57,58 @@ export const ReviewInfoStage = ({
   const shortAnswerStr = application?.shortAnswerQuestions[0];
   const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
   const { extractedAnswers } = extractShortAnswerData(shortAnswerJSON);
+  const authenticatedUser = useAuthenticatedUser();
+
+  const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
+  const [successDialogOpen, setSuccessDialogOpen] = useState(false);
+  const [isReporting, setIsReporting] = useState(false);
+  const [reportError, setReportError] = useState<string | null>(null);
+
+  const router = useRouter();
+
+  const handleReportConflict = async () => {
+    try {
+      setIsReporting(true);
+      setReportError(null);
+      const applicantRecordId = tryGetApplicantRecordId(router.query);
+      if (applicantRecordId == null) {
+        throw new Error("Missing applicantRecordId in URL");
+      }
+      const reviewerId = Number(authenticatedUser?.id);
+      if (!Number.isInteger(reviewerId)) {
+        throw new Error("Missing authenticated reviewer ID");
+      }
+      await ReviewPageAPIClient.reportReviewConflict(
+        applicantRecordId,
+        reviewerId,
+      );
+      setConfirmDialogOpen(false);
+      setSuccessDialogOpen(true);
+    } catch (error) {
+      console.error("Failed to report conflict", error);
+      setReportError("Couldn't report conflict. Please try again.");
+    } finally {
+      setIsReporting(false);
+    }
+  };
+
+  const handleOpenConfirmDialog = () => {
+    setReportError(null);
+    setConfirmDialogOpen(true);
+  };
+
+  const handleCloseConfirmDialog = () => {
+    if (isReporting) {
+      return;
+    }
+    setReportError(null);
+    setConfirmDialogOpen(false);
+  };
+
+  const handleBackToHomepage = () => {
+    setSuccessDialogOpen(false);
+    router.push("/");
+  };
 
   const answers = [
     application?.email ?? "",
