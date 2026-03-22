@@ -45,8 +45,16 @@ export const PROFILE_HEADER_STEPS: HeaderStepConfig[] = [
   { step: InterviewHeaderStep.COMMENTS, label: "COMMENTS", index: 3 },
 ];
 
+export const AssessmentHeaderStep = {
+  SCORES: "SCORES",
+  NOTES: "NOTES",
+} as const;
+
+export type AssessmentHeaderStep =
+  typeof AssessmentHeaderStep[keyof typeof AssessmentHeaderStep];
+
 // Header steps for the Interview Assessment page
 export const ASSESSMENT_HEADER_STEPS: HeaderStepConfig[] = [
-  { step: "SCORES", label: "SCORES", index: 1 },
-  { step: "NOTES", label: "NOTES", index: 2 },
+  { step: AssessmentHeaderStep.SCORES, label: "SCORES", index: 1 },
+  { step: AssessmentHeaderStep.NOTES, label: "NOTES", index: 2 },
 ];

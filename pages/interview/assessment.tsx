@@ -1,4 +1,4 @@
-import { ASSESSMENT_HEADER_STEPS } from "@components/interview/shared";
+import { ASSESSMENT_HEADER_STEPS, AssessmentHeaderStep } from "@components/interview/shared";
 import { useInterviewProgress } from "@components/interview/shared";
 import { PanelLayout } from "@components/common/SplitPageLayout";
 import {
@@ -10,8 +10,8 @@ import Button from "@components/common/Button";
 import { NextPageWithLayout } from "../_app";
 
 // Sub-step constants: drive the header bubble (via context) and footer button state.
-const SCORES = "SCORES";
-const NOTES = "NOTES";
+const SCORES = AssessmentHeaderStep.SCORES;
+const NOTES = AssessmentHeaderStep.NOTES;
 const SUBMITTED = "SUBMITTED";
 
 // TODO:  remove the comment after PR review
