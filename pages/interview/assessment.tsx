@@ -1,5 +1,4 @@
-import { ASSESSMENT_HEADER_STEPS, AssessmentHeaderStep } from "@components/interview/shared";
-import { useInterviewProgress } from "@components/interview/shared";
+import { ASSESSMENT_HEADER_STEPS, AssessmentHeaderStep, useInterviewProgress } from "@components/interview/shared";
 import { PanelLayout } from "@components/common/SplitPageLayout";
 import {
   getInterviewLayout,
@@ -14,10 +13,6 @@ const SCORES = AssessmentHeaderStep.SCORES;
 const NOTES = AssessmentHeaderStep.NOTES;
 const SUBMITTED = "SUBMITTED";
 
-// TODO:  remove the comment after PR review
-// AssessmentFooter reads currentSubStep from context so it can update its buttons
-// dynamically without the layout needing to re-render. This is the pattern future
-// devs should follow for any page with sub-step navigation.
 const AssessmentFooter = () => {
   const { currentSubStep, setCurrentSubStep } = useInterviewProgress();
 

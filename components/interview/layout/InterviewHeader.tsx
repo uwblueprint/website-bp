@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
 import { useTheme } from "@mui/material/styles";
 import { PROFILE_HEADER_STEPS } from "../shared/constants";
 import { InterviewProgressContext } from "../shared/InterviewProgressContext";
+import { BlueprintLogo } from "@components/common/BlueprintLogo";
 
 interface HeaderStep {
   step: string;
@@ -30,12 +30,7 @@ export const InterviewHeader = ({
       <div className="flex items-center justify-between px-9 py-4">
         <Link href="/admin">
           <a>
-            <Image
-              src="/common/logo-with-text.svg"
-              alt="Blueprint Logo"
-              width={206}
-              height={41}
-            />
+            <BlueprintLogo />
           </a>
         </Link>
 
@@ -43,7 +38,12 @@ export const InterviewHeader = ({
           {steps.map(({ step, label, index }) => {
             const active = step === activeStep;
             return (
-              <div key={step} className="flex flex-col items-center gap-1">
+              <button
+                key={step}
+                onClick={() => progressContext?.setCurrentSubStep(step)}
+                className="flex flex-col items-center gap-1 hover:opacity-80 transition-opacity"
+                aria-label={`Navigate to ${label} step`}
+              >
                 <div
                   className="w-9 h-9 rounded-full border-2 flex items-center justify-center"
                   style={{
@@ -65,7 +65,7 @@ export const InterviewHeader = ({
                 <span className="text-xs font-medium uppercase tracking-wide text-white">
                   {label}
                 </span>
-              </div>
+              </button>
             );
           })}
         </div>
