@@ -29,7 +29,10 @@ export const InterviewLayout = ({
         leftWidth={698}
         rightWidth={742}
       >
-        <PanelLayout borderRight>
+        <PanelLayout
+          borderRight
+          contentClassName="flex-1 px-9 pt-[50px] pb-8 overflow-y-auto"
+        >
           <InterviewNavPanel candidateName={candidateName} />
         </PanelLayout>
         {children}

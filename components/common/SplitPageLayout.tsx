@@ -66,6 +66,7 @@ interface PanelLayoutProps {
   headerRightAction?: ReactNode;
   /** When false, hides subtitle (e.g. for INFO stage) */
   showApplicationTitle?: boolean;
+  contentClassName?: string;
   children: ReactNode;
 }
 
@@ -81,6 +82,7 @@ export const PanelLayout = ({
   backToHomeHref,
   headerRightAction,
   showApplicationTitle = true,
+  contentClassName,
   children,
 }: PanelLayoutProps): ReactElement => {
   const theme = useTheme();
