@@ -23,7 +23,12 @@ export const InterviewLayout = ({
 }: InterviewLayoutProps) => {
   return (
     <InterviewProgressProvider>
-      <SplitPanelLayout header={header} footer={footer}>
+      <SplitPanelLayout
+        header={header}
+        footer={footer}
+        leftWidth={698}
+        rightWidth={742}
+      >
         <PanelLayout borderRight>
           <InterviewNavPanel candidateName={candidateName} />
         </PanelLayout>

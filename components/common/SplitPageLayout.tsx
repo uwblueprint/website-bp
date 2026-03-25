@@ -13,6 +13,8 @@ interface SplitPanelLayoutProps {
   header?: ReactNode;
   footer?: ReactNode;
   split?: SplitRatio;
+  leftWidth?: number;
+  rightWidth?: number;
   children: ReactNode;
 }
 
@@ -20,13 +22,27 @@ export const SplitPanelLayout = ({
   header,
   footer,
   split = "equal",
+  leftWidth,
+  rightWidth,
   children,
-}: SplitPanelLayoutProps): ReactElement => {
+}: SplitPanelLayoutProps) => {
+  const hasWidthOverride = leftWidth || rightWidth;
+  const gridStyle = hasWidthOverride
+    ? {
+        gridTemplateColumns: `${leftWidth ? `${leftWidth}px` : "1fr"} ${
+          rightWidth ? `${rightWidth}px` : "1fr"
+        }`,
+      }
+    : undefined;
+
   return (
     <div className="flex flex-col h-screen bg-white">
       {header}
       <div
-        className={`flex-1 grid grid-cols-1 ${SPLIT_GRID_CLASSES[split]} overflow-hidden border border-[#C4C4C4]`}
+        className={`flex-1 grid grid-cols-1 ${
+          !hasWidthOverride ? SPLIT_GRID_CLASSES[split] : ""
+        } overflow-hidden border border-[#C4C4C4]`}
+        style={gridStyle}
       >
         {children}
       </div>

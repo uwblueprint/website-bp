@@ -11,7 +11,7 @@ export const InterviewNavPanel = ({ candidateName }: InterviewNavPanelProps) => 
   const router = useRouter();
   const theme = useTheme();
 
-  const { applicantRecordId } = router.query;
+  const { interviewedApplicantRecordId } = router.query;
   const isActive = (path: string) => router.pathname === path;
 
   return (
@@ -39,7 +39,7 @@ export const InterviewNavPanel = ({ candidateName }: InterviewNavPanelProps) => 
           const active = isActive(item.path);
           return (
             <li key={item.step}>
-              <Link href={applicantRecordId ? `${item.path}?applicantRecordId=${applicantRecordId}` : item.path}>
+              <Link href={interviewedApplicantRecordId ? `${item.path}?interviewedApplicantRecordId=${interviewedApplicantRecordId}` : item.path}>
                 <a
                   className="flex items-center justify-between px-3 py-3 rounded"
                   style={{

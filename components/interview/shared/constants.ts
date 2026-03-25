@@ -2,10 +2,9 @@ import { NavItem, HeaderStepConfig } from "./types";
 
 export const InterviewStep = {
   PROFILE : "PROFILE",
-  SCHEDULE : "SCHEDULE",
   ASSESSMENT : "ASSESSMENT",
   REPORT : "REPORT",
-} as const; 
+} as const;
 
 export const InterviewHeaderStep = {
   INFO: "INFO",
@@ -21,11 +20,6 @@ export const INTERVIEW_NAV_ITEMS: NavItem[] = [
     label: "Applicant Profile",
     step: InterviewStep.PROFILE,
     path: "/interview/profile",
-  },
-  {
-    label: "Schedule Interview",
-    step: InterviewStep.SCHEDULE,
-    path: "/interview/schedule",
   },
   {
     label: "Interview Assessment",

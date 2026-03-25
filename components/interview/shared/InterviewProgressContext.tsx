@@ -16,7 +16,6 @@ const PATH_TO_STEP = INTERVIEW_NAV_ITEMS.reduce<Record<string, InterviewStep>>(
 
 const INITIAL_STATUSES: Record<InterviewStep, StepStatus> = {
   [InterviewStep.PROFILE]: "not_started",
-  [InterviewStep.SCHEDULE]: "not_started",
   [InterviewStep.ASSESSMENT]: "not_started",
   [InterviewStep.REPORT]: "not_started",
 };
@@ -34,7 +33,6 @@ export const InterviewProgressProvider = ({
     Record<InterviewStep, string | null>
   >({
     [InterviewStep.PROFILE]: null,
-    [InterviewStep.SCHEDULE]: null,
     [InterviewStep.ASSESSMENT]: null,
     [InterviewStep.REPORT]: null,
   });
