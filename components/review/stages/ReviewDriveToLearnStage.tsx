@@ -52,9 +52,8 @@ export const ReviewDriveToLearnStage = ({
           currentStage={ReviewStage.D2L}
         />
         <div
-          className="w-full shrink-0"
+          className="w-full shrink-0 height-[1px]"
           style={{
-            height: "1px",
             background: theme.palette.background.default,
           }}
         />

@@ -1,4 +1,5 @@
 import { LongLeftIcon } from "@components/icons/long-left.icon";
+import { useTheme } from "@mui/material/styles";
 import Link from "next/link";
 import { ReactElement, ReactNode } from "react";
 
@@ -46,26 +47,7 @@ interface PanelLayoutProps {
   children: ReactNode;
 }
 
-const TITLE_STYLES = {
-  xlarge: {
-    color: "#252525",
-    fontFeatureSettings: "'liga' off, 'clig' off" as const,
-    fontSize: "28px",
-    fontStyle: "normal" as const,
-    fontWeight: 600,
-    lineHeight: "140%",
-  },
-  medium: {
-    alignSelf: "stretch" as const,
-    color: "#252525",
-    fontFeatureSettings: "'liga' off, 'clig' off" as const,
-    fontSize: "20px",
-    fontStyle: "normal" as const,
-    fontWeight: 500,
-    lineHeight: "140%",
-  },
-};
-
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const PanelLayout = ({
   title,
   subtitle,
@@ -79,6 +61,25 @@ export const PanelLayout = ({
   showApplicationTitle = true,
   children,
 }: PanelLayoutProps): ReactElement => {
+  const theme = useTheme();
+
+  const TITLE_STYLES = {
+    xlarge: {
+      color: theme.palette.text.primary,
+      fontSize: "28px",
+      fontStyle: "normal",
+      fontWeight: 600,
+      lineHeight: "140%",
+    },
+    medium: {
+      alignSelf: "stretch",
+      color: theme.palette.text.primary,
+      fontSize: "20px",
+      fontStyle: "normal",
+      fontWeight: 500,
+      lineHeight: "140%",
+    },
+  };
   const bg = variant === "sky" ? "bg-sky" : "bg-white";
   const hasHeader = !!(title || subtitle);
   const titleStyle = TITLE_STYLES[titleVariant];
@@ -86,18 +87,20 @@ export const PanelLayout = ({
   return (
     <div
       className={`flex flex-col h-full overflow-hidden relative ${bg} ${
-        borderRight ? "lg:border-r border-[#C4C4C4]" : ""
-      } ${borderLeft ? "lg:border-l border-[#C4C4C4]" : ""}`}
+        borderRight ? "lg:border-r" : ""
+      } ${borderLeft ? "lg:border-l" : ""}`}
+      style={{
+        borderColor: `${
+          borderRight || borderLeft ? theme.palette.semantics.border.light : ""
+        }`,
+      }}
     >
-      <div
-        className="flex flex-col h-full overflow-hidden"
-        style={{ padding: "32px 36px 32px 36px" }}
-      >
+      <div className="flex flex-col h-full overflow-hidden px-9 py-8">
         {(backToHomeHref || headerRightAction) && (
-          <div className="flex justify-between items-center w-full mb-8 shrink-0">
+          <div className="flex justify-between items-center w-full mb-8 shrink-0 gap-2">
             {backToHomeHref ? (
               <Link href={backToHomeHref} passHref>
-                <a className="font-source no-underline inline-flex justify-center items-center gap-2 w-fit cursor-pointer shrink-0 hover:opacity-90 rounded-full py-2 px-4 border-2 border-blue bg-white text-blue text-base font-normal leading-[1.4]">
+                <a className="font-source no-underline inline-flex justify-center items-center gap-2 w-fit cursor-pointer shrink-0 hover:opacity-90 rounded-full py-2 px-4 border-2 border-blue bg-white text-blue text-base font-normal leading-[1.4] hover:bg-sky-100 hover:border-blue hover:text-blue">
                   <LongLeftIcon />
                   Back to home
                 </a>
@@ -114,8 +117,8 @@ export const PanelLayout = ({
         )}
         {showApplicationTitle && subtitle && (
           <p
-            className="font-poppins text-charcoal-500 mb-4 shrink-0"
-            style={{ fontSize: "15px", lineHeight: "140%" }}
+            className="font-poppins text-charcoal-500 mb-4 shrink-0 text-[15px]"
+            style={{ lineHeight: "140%" }}
           >
             {subtitle}
           </p>
@@ -145,8 +148,8 @@ export const PanelLayout = ({
             ) : null}
             {titleVariant === "xlarge" && (
               <div
-                className="my-6 w-full shrink-0"
-                style={{ height: "1px", background: "#C4C4C4" }}
+                className="my-6 w-full shrink-0 height-[1px]"
+                style={{ background: theme.palette.semantics.border.light }}
               />
             )}
           </>
