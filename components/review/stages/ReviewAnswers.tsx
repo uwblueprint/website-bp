@@ -9,21 +9,16 @@ export interface Props {
 export const ReviewAnswers = ({ questions, answers }: Props): ReactElement => {
   const theme = useTheme();
   return (
-    <div className="flex flex-col gap-10 w-full">
+    <div className="flex flex-col gap-10 w-ful">
       {questions.map((question, idx) => (
         <div
           key={`${question}-${idx}`}
-          className="flex flex-col gap-4"
-          style={{ alignItems: "flex-start" }}
+          className="flex flex-col gap-4 items-start"
         >
           <h5
-            className="font-poppins"
+            className="font-poppins font-normal text-base font-medium"
             style={{
               color: theme.palette.text.primary,
-              fontSize: "16px",
-              fontWeight: 500,
-              lineHeight: "140%",
-              fontFeatureSettings: "'liga' off, 'clig' off",
             }}
           >
             {question}
@@ -36,12 +31,10 @@ export const ReviewAnswers = ({ questions, answers }: Props): ReactElement => {
               }}
             >
               <p
+                className="text-base font-normal"
                 style={{
                   color: theme.palette.text.primary,
-                  fontSize: "16px",
-                  fontWeight: 400,
                   lineHeight: "140%",
-                  fontFeatureSettings: "'liga' off, 'clig' off",
                 }}
               >
                 {answers[idx]}

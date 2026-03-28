@@ -5,7 +5,6 @@ interface DownCaretProps {
   colour?: string;
 }
 
-/** Down caret - mirrored up caret */
 export const DownCaret = ({
   colour = neutral[600],
 }: DownCaretProps): ReactElement => (
