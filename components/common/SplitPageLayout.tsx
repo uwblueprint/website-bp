@@ -97,7 +97,7 @@ export const PanelLayout = ({
     >
       <div className="flex flex-col h-full overflow-hidden px-9 py-8">
         {(backToHomeHref || headerRightAction) && (
-          <div className="flex justify-between items-center w-full mb-8 shrink-0 gap-2">
+          <div className="flex justify-between items-center w-full mb-8 shrink-0 gap-4">
             {backToHomeHref ? (
               <Link href={backToHomeHref} passHref>
                 <a className="font-source no-underline inline-flex justify-center items-center gap-2 w-fit cursor-pointer shrink-0 hover:opacity-90 rounded-full py-2 px-4 border-2 border-blue bg-white text-blue text-base font-normal leading-[1.4] hover:bg-sky-100 hover:border-blue hover:text-blue">

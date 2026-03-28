@@ -111,7 +111,7 @@ export const ReviewStepper = ({
             size="sm"
             variant="secondary"
             onClick={() => setStage?.(previousStage)}
-            className="shrink-0 whitespace-nowrap !px-4 !py-2 !rounded-[20px] !border-blue !bg-white !text-blue hover:!bg-sky-100 hover:!border-blue hover:!text-blue"
+            className="shrink-0 whitespace-nowrap !px-4 !py-2 hover:bg-sky-100 hover:border-blue hover:text-blue"
           >
             Previous section
           </Button>
@@ -120,7 +120,7 @@ export const ReviewStepper = ({
           <Button
             size="sm"
             disabled={isSubmitting || !endData?.skillsCategory}
-            className="shrink-0 whitespace-nowrap !px-4 !py-2 !rounded-[20px] !bg-blue !border-blue !text-white hover:!bg-sky-400 hover:!border-transparent disabled:!opacity-60"
+            className="shrink-0 whitespace-nowrap !px-4 !py-2 hover:bg-sky-400 hover:border-transparent disabled:opacity-60"
             onClick={async () => {
               if (onValidate && !onValidate()) {
                 return;
@@ -145,7 +145,7 @@ export const ReviewStepper = ({
             size="sm"
             disabled={isButtonDisabled}
             onClick={() => setStage?.(nextStage)}
-            className="shrink-0 whitespace-nowrap !px-4 !py-2 !rounded-[20px] !bg-blue !border-blue !text-white hover:!bg-sky-400 hover:!border-transparent disabled:!opacity-60"
+            className="shrink-0 whitespace-nowrap !px-4 !py-2 hover:bg-sky-400 hover:border-transparent disabled:opacity-60"
           >
             Save & Continue
           </Button>
