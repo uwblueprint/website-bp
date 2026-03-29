@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ApplicationDTO } from "../../../types";
-import { ReviewStage } from "../shared/constants";
+import { BACK_TO_HOME_HREF, ReviewStage } from "../shared/constants";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
 import { ReviewScoreInput } from "../shared/ReviewScoreInput";
 import { REVIEW_TP_SCORING_CRITERIA } from "../shared/rubricConstants";
@@ -9,9 +9,8 @@ import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewRubric } from "./ReviewRubric";
 import { ReviewPageLayout, PanelLayout } from "../layout";
 import { ReportConflictButton } from "../shared/ReportConflictButton";
-import { useTheme } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
-const BACK_TO_HOME_HREF = "/admin";
 
 interface Props {
   name: string;
@@ -32,7 +31,7 @@ export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
       <PanelLayout
         backToHomeHref={BACK_TO_HOME_HREF}
         headerRightAction={
-          <ReportConflictButton name={name} showQuestion={true} />
+          <ReportConflictButton name={name} showQuestion />
         }
         title="Team Player"
         subtitle={`${name}'s Application`}

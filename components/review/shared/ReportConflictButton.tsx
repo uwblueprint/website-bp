@@ -10,7 +10,6 @@ interface ReportConflictButtonProps {
   onClick?: () => void;
 }
 
-/** Report conflict button. Renders button (and optional question). Pass onClick to open conflict modal. */
 export const ReportConflictButton = ({
   name, // eslint-disable-line @typescript-eslint/no-unused-vars -- reserved for API
   showQuestion = false,

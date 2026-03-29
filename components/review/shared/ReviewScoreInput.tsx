@@ -1,4 +1,3 @@
-import { DownCaret } from "@components/icons/down-caret.icon";
 import { UpCaret } from "@components/icons/up-caret.icon";
 import { useTheme } from "@mui/material/styles";
 import React, { ReactElement } from "react";
@@ -69,7 +68,7 @@ export function ReviewScoreInput({
         max={max}
         placeholder={placeholder}
         aria-label={ariaLabel}
-        value={value === "" ? "" : value}
+        value={value}
         onChange={handleInputChange}
         className="h-full flex-1 min-w-0 border-0 focus:outline-none [&::-webkit-inner-spin-button]:appearance-none self-stretch px-5 font-normal text-base"
         style={{
@@ -114,7 +113,7 @@ export function ReviewScoreInput({
             background: theme.palette.background.default,
           }}
         >
-          <DownCaret />
+          <UpCaret direction="down" />
         </button>
       </div>
     </div>

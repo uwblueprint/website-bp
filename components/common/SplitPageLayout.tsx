@@ -90,9 +90,10 @@ export const PanelLayout = ({
         borderRight ? "lg:border-r" : ""
       } ${borderLeft ? "lg:border-l" : ""}`}
       style={{
-        borderColor: `${
-          borderRight || borderLeft ? theme.palette.semantics.border.light : ""
-        }`,
+        borderColor:
+          borderRight || borderLeft
+            ? theme.palette.semantics.border.light
+            : undefined,
       }}
     >
       <div className="flex flex-col h-full overflow-hidden px-9 py-8">
@@ -148,7 +149,7 @@ export const PanelLayout = ({
             ) : null}
             {titleVariant === "xlarge" && (
               <div
-                className="my-6 w-full shrink-0 height-[1px]"
+                className="my-6 w-full shrink-0 h-[1px]"
                 style={{ background: theme.palette.semantics.border.light }}
               />
             )}

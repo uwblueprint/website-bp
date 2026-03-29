@@ -1,6 +1,6 @@
 import Button from "@components/common/Button";
 import { useContext } from "react";
-import { ReviewStage } from "../shared/constants";
+import { BACK_TO_HOME_HREF, ReviewStage } from "../shared/constants";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
 import { ReviewScoreInput } from "../shared/ReviewScoreInput";
 import { REVIEW_SKL_SCORING_CRITERIA } from "../shared/rubricConstants";
@@ -11,7 +11,6 @@ import { ReviewPageLayout, PanelLayout } from "../layout";
 import { ReportConflictButton } from "../shared/ReportConflictButton";
 import { useTheme } from "@mui/material/styles";
 
-const BACK_TO_HOME_HREF = "/admin";
 
 const ResumeLink = ({ resumeLink }: { resumeLink: string }) => {
   return (

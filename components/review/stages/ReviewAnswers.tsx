@@ -9,14 +9,14 @@ export interface Props {
 export const ReviewAnswers = ({ questions, answers }: Props): ReactElement => {
   const theme = useTheme();
   return (
-    <div className="flex flex-col gap-10 w-ful">
+    <div className="flex flex-col gap-10 w-full">
       {questions.map((question, idx) => (
         <div
           key={`${question}-${idx}`}
           className="flex flex-col gap-4 items-start"
         >
           <h5
-            className="font-poppins font-normal text-base font-medium"
+            className="font-poppins text-base font-medium"
             style={{
               color: theme.palette.text.primary,
             }}
