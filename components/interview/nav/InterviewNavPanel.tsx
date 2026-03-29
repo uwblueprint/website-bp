@@ -41,7 +41,7 @@ export const InterviewNavPanel = ({ candidateName }: InterviewNavPanelProps) => 
               <Link href={interviewedApplicantRecordId ? `${item.path}?interviewedApplicantRecordId=${interviewedApplicantRecordId}` : item.path}>
                 <a
                   className={`flex items-center justify-between self-stretch rounded-lg px-5 py-2.5 hover:bg-[#F1F1F1] ${
-                    active ? "font-semibold" : "font-normal"
+                    active ? "bg-[#F1F1F1] font-semibold" : "font-normal"
                   }`}
                   style={{
                     color: active
