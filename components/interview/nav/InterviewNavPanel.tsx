@@ -33,7 +33,7 @@ export const InterviewNavPanel = ({ candidateName }: InterviewNavPanelProps) => 
 
       <hr className="mt-8 mb-8 border-[#C4C4C4]" />
 
-      <ul className="flex flex-col gap-2.5">
+      <ul className="flex flex-col gap-[36px]">
         {INTERVIEW_NAV_ITEMS.map((item) => {
           const active = isActive(item.path);
           return (

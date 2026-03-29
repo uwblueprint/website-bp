@@ -41,7 +41,7 @@ export const InterviewHeader = ({
               <button
                 key={step}
                 onClick={() => progressContext?.setCurrentSubStep(step)}
-                className="flex flex-col items-center gap-1 hover:opacity-80 transition-opacity"
+                className="flex flex-col items-center gap-1 w-[80px] hover:opacity-80 transition-opacity"
                 aria-label={`Navigate to ${label} step`}
               >
                 <div
