@@ -3,31 +3,53 @@ import { useTheme } from "@mui/material/styles";
 import Link from "next/link";
 import { ReactElement, ReactNode } from "react";
 
-// ── SplitPanelLayout ────────────────────────────────────────────────
+type SplitRatio = "equal";
+
+const SPLIT_GRID_CLASSES: Record<SplitRatio, string> = {
+  equal: "lg:grid-cols-2",
+};
 
 interface SplitPanelLayoutProps {
   header?: ReactNode;
   footer?: ReactNode;
+  split?: SplitRatio;
+  leftWidth?: number;
+  rightWidth?: number;
   children: ReactNode;
 }
 
 export const SplitPanelLayout = ({
   header,
   footer,
+  split = "equal",
+  leftWidth,
+  rightWidth,
   children,
-}: SplitPanelLayoutProps): ReactElement => {
+}: SplitPanelLayoutProps) => {
+  const hasWidthOverride = leftWidth || rightWidth;
+  const gridStyle = hasWidthOverride
+    ? {
+        gridTemplateColumns: `${leftWidth ? `${leftWidth}px` : "1fr"} ${
+          rightWidth ? `${rightWidth}px` : "1fr"
+        }`,
+      }
+    : undefined;
+
   return (
     <div className="flex flex-col h-screen bg-white">
       {header}
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
+      <div
+        className={`flex-1 grid grid-cols-1 ${
+          !hasWidthOverride ? SPLIT_GRID_CLASSES[split] : ""
+        } overflow-hidden border border-[#C4C4C4]`}
+        style={gridStyle}
+      >
         {children}
       </div>
       {footer}
     </div>
   );
 };
-
-// ── PanelLayout ─────────────────────────────────────────────────────
 
 interface PanelLayoutProps {
   title?: string;
@@ -44,6 +66,7 @@ interface PanelLayoutProps {
   headerRightAction?: ReactNode;
   /** When false, hides subtitle (e.g. for INFO stage) */
   showApplicationTitle?: boolean;
+  contentClassName?: string;
   children: ReactNode;
 }
 
@@ -59,6 +82,7 @@ export const PanelLayout = ({
   backToHomeHref,
   headerRightAction,
   showApplicationTitle = true,
+  contentClassName,
   children,
 }: PanelLayoutProps): ReactElement => {
   const theme = useTheme();
@@ -156,10 +180,13 @@ export const PanelLayout = ({
           </>
         )}
         <div
-          className={`flex-1 overflow-y-auto min-h-0 flex flex-col w-full gap-8 ${
-            titleVariant === "medium" ? "antialiased" : ""
-          }`}
-          style={{ alignItems: "flex-start" }}
+          className={
+            contentClassName ??
+            `flex-1 overflow-y-auto min-h-0 flex flex-col w-full gap-8 ${
+              titleVariant === "medium" ? "antialiased" : ""
+            }`
+          }
+          style={contentClassName ? undefined : { alignItems: "flex-start" }}
         >
           {children}
         </div>

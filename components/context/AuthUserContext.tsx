@@ -1,6 +1,6 @@
 import React, {
   createContext,
-  ReactChild,
+  ReactNode,
   ReactElement,
   useContext,
   useEffect,
@@ -14,7 +14,7 @@ const AUTHENTICATED_USER_KEY = "authenticatedUser";
 const HOUR_MS = 3300000;
 
 type Props = {
-  children: ReactChild;
+  children: ReactNode;
 };
 
 type AuthContextType = {
