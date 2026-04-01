@@ -180,10 +180,13 @@ export const PanelLayout = ({
           </>
         )}
         <div
-          className={`flex-1 overflow-y-auto min-h-0 flex flex-col w-full gap-8 ${
-            titleVariant === "medium" ? "antialiased" : ""
-          }`}
-          style={{ alignItems: "flex-start" }}
+          className={
+            contentClassName ??
+            `flex-1 overflow-y-auto min-h-0 flex flex-col w-full gap-8 ${
+              titleVariant === "medium" ? "antialiased" : ""
+            }`
+          }
+          style={contentClassName ? undefined : { alignItems: "flex-start" }}
         >
           {children}
         </div>
