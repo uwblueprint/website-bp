@@ -6,7 +6,7 @@ import {
   InterviewFooter,
 } from "@components/interview/layout";
 import Button from "@components/common/Button";
-import { NextPageWithLayout } from "../_app";
+import { NextPageWithLayout } from "../../_app";
 
 // Sub-step constants: drive the header bubble (via context) and footer button state.
 const SCORES = AssessmentHeaderStep.SCORES;

@@ -9,7 +9,7 @@ import {
   InterviewHeader,
   InterviewFooter,
 } from "@components/interview/layout";
-import { NextPageWithLayout } from "../_app";
+import { NextPageWithLayout } from "../../_app";
 
 const InterviewProfilePage: NextPageWithLayout = () => {
   const { currentStep, stepStatuses } = useInterviewProgress();
