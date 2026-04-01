@@ -3,10 +3,12 @@ import { LinkIcon } from "@components/icons/link.icon";
 import { Status, SecondChoiceStatus } from "@utils/muidatatable";
 import router from "next/router";
 
+const REVIEW_PAGE_PATH = "/review";
+
 export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
   const handleNameClick = (appId: string, applicantRecordId?: string) => {
     router.push({
-      pathname: "/review",
+      pathname: REVIEW_PAGE_PATH,
       query: applicantRecordId
         ? { reviewId: appId, applicantRecordId }
         : { reviewId: appId },
@@ -40,13 +42,8 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
         // sortCompare: (order: "asc" | "desc") => createSortFunction(order),
         searchable: true,
         customBodyRender(value, tableMeta) {
-          const appId = String(tableMeta.rowData[0]);
-          const applicantRecordIdRaw = tableMeta.rowData[1];
-          const applicantRecordId =
-            typeof applicantRecordIdRaw === "string" &&
-            applicantRecordIdRaw.length > 0
-              ? applicantRecordIdRaw
-              : undefined;
+          const appId = tableMeta.rowData[0] as string;
+          const applicantRecordId = tableMeta.rowData[1] as string;
           return (
             <div
               onClick={() => handleNameClick(appId, applicantRecordId)}

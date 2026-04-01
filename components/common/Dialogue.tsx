@@ -1,4 +1,4 @@
-import { Children, cloneElement, isValidElement } from "react";
+import React from "react";
 import Dialog from "@mui/material/Dialog";
 import { useTheme } from "@mui/material/styles";
 
@@ -26,14 +26,14 @@ const Dialogue = ({
 
   const theme = useTheme();
 
-  const actionChildren = Children.toArray(children).filter(Boolean);
+  const actionChildren = React.Children.toArray(children).filter(Boolean);
   const hasSingleAction = actionChildren.length === 1;
   const actionsContainerClasses = hasSingleAction
     ? "flex w-full items-center justify-center"
     : "flex w-full items-center justify-center gap-4";
 
   const styledActionChildren = actionChildren.map((child) => {
-    if (!isValidElement<{ className?: string }>(child)) {
+    if (!React.isValidElement<{ className?: string }>(child)) {
       return child;
     }
 
@@ -49,7 +49,7 @@ const Dialogue = ({
       ? `w-full ${actionButtonClassName}`
       : actionButtonClassName;
 
-    return cloneElement(child, {
+    return React.cloneElement(child, {
       className: buttonClass,
     });
   });

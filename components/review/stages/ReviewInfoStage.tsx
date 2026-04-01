@@ -10,8 +10,7 @@ import { useAuthenticatedUser } from "@components/context/AuthUserContext";
 import { useRouter } from "next/router";
 import ReviewPageAPIClient from "APIClients/ReviewPageAPIClient";
 import { tryGetApplicantRecordId } from "@utils/reviewId";
-import WarningIcon from "@components/icons/warning.icon";
-import { useTheme } from "@mui/material/styles";
+import ConflictDialogue from "../shared/ConflictDialogue";
 
 export interface ReviewStageProps {
   name: string;
@@ -56,62 +55,16 @@ export const ReviewInfoStage = ({
   application,
   scores,
 }: ReviewStageProps) => {
-  const theme = useTheme();
   const shortAnswerStr = application?.shortAnswerQuestions[0];
   const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
   const { extractedAnswers } = extractShortAnswerData(shortAnswerJSON);
   const authenticatedUser = useAuthenticatedUser();
 
-  const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
-  const [successDialogOpen, setSuccessDialogOpen] = useState(false);
-  const [isReporting, setIsReporting] = useState(false);
-  const [reportError, setReportError] = useState<string | null>(null);
-
   const router = useRouter();
-
-  const handleReportConflict = async () => {
-    try {
-      setIsReporting(true);
-      setReportError(null);
-      const applicantRecordId = tryGetApplicantRecordId(router.query);
-      if (applicantRecordId == null) {
-        throw new Error("Missing applicantRecordId in URL");
-      }
-      const reviewerId = Number(authenticatedUser?.id);
-      if (!Number.isInteger(reviewerId)) {
-        throw new Error("Missing authenticated reviewer ID");
-      }
-      await ReviewPageAPIClient.reportReviewConflict(
-        applicantRecordId,
-        reviewerId,
-      );
-
-      setConfirmDialogOpen(false);
-      setSuccessDialogOpen(true);
-    } catch (error) {
-      setReportError("Couldn't report conflict. Please try again.");
-    } finally {
-      setIsReporting(false);
-    }
-  };
-
-  const handleOpenConfirmDialog = () => {
-    setReportError(null);
-    setConfirmDialogOpen(true);
-  };
-
-  const handleCloseConfirmDialog = () => {
-    if (isReporting) {
-      return;
-    }
-    setReportError(null);
-    setConfirmDialogOpen(false);
-  };
-
-  const handleBackToHomepage = () => {
-    setSuccessDialogOpen(false);
-    router.push("/");
-  };
+  const applicantRecordId = tryGetApplicantRecordId(router.query);
+  const reviewerId = Number.isInteger(Number(authenticatedUser?.id))
+    ? Number(authenticatedUser?.id)
+    : null;
 
   const answers = [
     application?.email ?? "",

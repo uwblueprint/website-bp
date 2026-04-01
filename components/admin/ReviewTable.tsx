@@ -16,6 +16,13 @@ interface TableProps {
   numSecondChoiceEntries?: number;
 }
 
+const TIMES_APPLIED_LABELS: Record<string, string> = {
+  "This is my first time!": "0",
+  Once: "1",
+  Twice: "2",
+  "3 or more": "3+",
+};
+
 const ReviewTable: React.FC<TableProps> = ({
   activeRole,
   whichChoiceTab,
@@ -58,13 +65,8 @@ const ReviewTable: React.FC<TableProps> = ({
     const applicantRecordId = applicantRecordIdCandidates.find(
       (value) => typeof value === "string" && value.trim().length > 0,
     );
-    const mapToNumericalValue: Record<string, string> = {
-      "This is my first time!": "0",
-      Once: "1",
-      Twice: "2",
-      "3 or more": "3+",
-    };
-    const timesAppliedKey = String(app.timesApplied ?? "");
+    const timesAppliedKey =
+      typeof app.timesApplied === "string" ? app.timesApplied : "";
 
     return {
       id: app.id,
@@ -79,7 +81,7 @@ const ReviewTable: React.FC<TableProps> = ({
       term: app.academicYear,
       program: app.program,
       timesApplied:
-        mapToNumericalValue[timesAppliedKey] ??
+        TIMES_APPLIED_LABELS[timesAppliedKey] ??
         (timesAppliedKey.length > 0 ? timesAppliedKey : "-"),
       status: app.status,
       secondChoice: app.secondChoiceRole,
