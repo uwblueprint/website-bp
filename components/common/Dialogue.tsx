@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement, ReactNode } from "react";
 import Dialog from "@mui/material/Dialog";
 import { useTheme } from "@mui/material/styles";
 
@@ -6,8 +6,8 @@ type Props = {
   readonly open: boolean;
   readonly onClose: () => void;
   readonly header: string;
-  readonly text: React.ReactNode;
-  readonly children?: React.ReactNode;
+  readonly text: ReactNode;
+  readonly children?: ReactNode;
   readonly textContainerClassName?: string;
 };
 
@@ -18,7 +18,7 @@ const Dialogue = ({
   text,
   children,
   textContainerClassName,
-}: Props): React.ReactElement => {
+}: Props): ReactElement => {
   const textContainerClasses =
     `flex w-full flex-col items-center gap-2 text-center ${
       textContainerClassName ?? ""

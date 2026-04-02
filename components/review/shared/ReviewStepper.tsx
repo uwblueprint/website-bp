@@ -18,25 +18,25 @@ const STAGE_RATING_FIELDS: [ReviewStage, string][] = [
 ];
 
 const sendRatingData = (
-  id: number,
+  applicantRecordId: string,
   ratingToBeChanged: string,
   newValue: number | undefined,
 ) => {
   return fetchGraphql(mutations.changeRating, {
-    id,
+    applicantRecordId,
     ratingToBeChanged,
     newValue,
   });
 };
 
 const sendFinalComments = (
-  id: number,
+  applicantRecordId: string,
   newComments: string,
   newSkillCategory: string,
   newRecommendedSecondChoice: string,
 ) => {
   return fetchGraphql(mutations.modifyFinalComments, {
-    id,
+    applicantRecordId,
     newComments,
     newSkillCategory,
     newRecommendedSecondChoice,

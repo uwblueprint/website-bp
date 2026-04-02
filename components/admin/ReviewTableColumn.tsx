@@ -4,13 +4,26 @@ import { Status, SecondChoiceStatus, SkillCategory } from "@utils/muidatatable";
 import Router from "next/router";
 
 export const getReviewTableColumns = (): MUIDataTableColumn[] => {
-  const handleNameClick = (appId: string) => {
-    Router.push(`/review?applicantRecordId=${appId}`);
+  const handleNameClick = (applicantRecordId?: string) => {
+    if (!applicantRecordId) {
+      return;
+    }
+
+    Router.push(`/review?applicantRecordId=${applicantRecordId}`);
   };
 
   const columns: MUIDataTableColumn[] = [
     {
       name: "id",
+      options: {
+        display: "excluded",
+        filter: false,
+        searchable: false,
+        sort: false,
+      },
+    },
+    {
+      name: "applicantRecordId",
       options: {
         display: "excluded",
         filter: false,
@@ -26,10 +39,10 @@ export const getReviewTableColumns = (): MUIDataTableColumn[] => {
         // sortCompare: (order: "asc" | "desc") => createSortFunction(order),
         searchable: true,
         customBodyRender(value, tableMeta, updateValue) {
-          const appId = tableMeta.rowData[0];
+          const applicantRecordId = tableMeta.rowData[1] as string;
           return (
             <div
-              onClick={() => handleNameClick(appId)}
+              onClick={() => handleNameClick(applicantRecordId)}
               className="flex items-center cursor-pointer"
             >
               <LinkIcon />

@@ -41,15 +41,15 @@ export const mutations = {
   }
 `,
   changeRating: `
-    mutation changeRating($id: Int!, $ratingToBeChanged: String!, $newValue: Int!) {
-      changeRating(id: $id, ratingToBeChanged: $ratingToBeChanged, newValue: $newValue) {
+    mutation changeRating($applicantRecordId: String!, $ratingToBeChanged: String!, $newValue: Int!) {
+      changeRating(applicantRecordId: $applicantRecordId, ratingToBeChanged: $ratingToBeChanged, newValue: $newValue) {
         id
       }
     }
   `,
   modifyFinalComments: `
-    mutation modifyFinalComments($id: Int!, $newComments: String!, $newSkillCategory: String!, $newRecommendedSecondChoice: String!) {
-      modifyFinalComments(id: $id, newComments: $newComments, newSkillCategory: $newSkillCategory, newRecommendedSecondChoice: $newRecommendedSecondChoice) {
+    mutation modifyFinalComments($applicantRecordId: String!, $newComments: String!, $newSkillCategory: String!, $newRecommendedSecondChoice: String!) {
+      modifyFinalComments(applicantRecordId: $applicantRecordId, newComments: $newComments, newSkillCategory: $newSkillCategory, newRecommendedSecondChoice: $newRecommendedSecondChoice) {
         id
       }
     }

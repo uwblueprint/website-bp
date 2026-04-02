@@ -6,12 +6,14 @@ import router from "next/router";
 const REVIEW_PAGE_PATH = "/review";
 
 export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
-  const handleNameClick = (appId: string, applicantRecordId?: string) => {
+  const handleNameClick = (applicantRecordId?: string) => {
+    if (!applicantRecordId) {
+      return;
+    }
+
     router.push({
       pathname: REVIEW_PAGE_PATH,
-      query: applicantRecordId
-        ? { reviewId: appId, applicantRecordId }
-        : { reviewId: appId },
+      query: { applicantRecordId },
     });
   };
 
@@ -42,11 +44,10 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
         // sortCompare: (order: "asc" | "desc") => createSortFunction(order),
         searchable: true,
         customBodyRender(value, tableMeta) {
-          const appId = tableMeta.rowData[0] as string;
           const applicantRecordId = tableMeta.rowData[1] as string;
           return (
             <div
-              onClick={() => handleNameClick(appId, applicantRecordId)}
+              onClick={() => handleNameClick(applicantRecordId)}
               className="flex items-center cursor-pointer"
             >
               <LinkIcon />
