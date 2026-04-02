@@ -10,7 +10,9 @@ export async function fetchGraphql(
   variables?: any,
 ): Promise<GraphqlResponse> {
   if (!BE_DEPLOYMENT_DOMAIN) {
-    throw new Error("NEXT_PUBLIC_BE_DEPLOYMENT_DOMAIN not defined.");
+    throw new Error(
+      `DEPLOYMENT_DOMAIN not defined. Please check your env file.`,
+    );
   }
   const requestOptions: RequestInit = {
     method: "POST",
@@ -28,11 +30,9 @@ export async function fetchGraphql(
 
     if (response.ok) {
       return { data: responseData.data };
+    } else {
+      throw new Error(JSON.stringify(responseData.errors));
     }
-
-    throw new Error(
-      responseData?.errors?.[0]?.message ?? response.statusText ?? "GraphQL request failed",
-    );
   } catch (error: any) {
     throw new Error(`GraphQL request failed: ${error.message}`);
   }

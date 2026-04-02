@@ -33,7 +33,6 @@ const loginWithGoogle = async (idToken: string): Promise<AuthResult> => {
         firstName: loginData.firstName,
         lastName: loginData.lastName,
         email: loginData.email,
-        position: loginData.position,
         role: loginData.role,
         accessToken: loginData.accessToken,
         refreshToken: loginData.refreshToken,
