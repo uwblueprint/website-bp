@@ -76,6 +76,7 @@ const ReviewsPages: NextPage = () => {
   const [scores, setScores] = useState<ReviewScores>(initialScores);
 
   const reviewId = router.isReady ? getReviewId(router.query) : null;
+  const viewOnly = router.query.mode === "view";
   const name = application?.firstName + " " + application?.lastName;
 
   const authenticatedUser = useAuthenticatedUser();
@@ -108,6 +109,7 @@ const ReviewsPages: NextPage = () => {
             name={name}
             application={application}
             scores={scores}
+            viewOnly={viewOnly}
           />
         );
       case ReviewStage.PFSG:
@@ -116,6 +118,7 @@ const ReviewsPages: NextPage = () => {
             name={name}
             application={application}
             scores={scores}
+            viewOnly={viewOnly}
           />
         );
       case ReviewStage.TP:
@@ -124,6 +127,7 @@ const ReviewsPages: NextPage = () => {
             name={name}
             application={application}
             scores={scores}
+            viewOnly={viewOnly}
           />
         );
       case ReviewStage.D2L:
@@ -132,6 +136,7 @@ const ReviewsPages: NextPage = () => {
             name={name}
             application={application}
             scores={scores}
+            viewOnly={viewOnly}
           />
         );
       case ReviewStage.SKL:
@@ -140,6 +145,7 @@ const ReviewsPages: NextPage = () => {
             name={name}
             application={application}
             scores={scores}
+            viewOnly={viewOnly}
           />
         );
       case ReviewStage.END:
@@ -150,11 +156,12 @@ const ReviewsPages: NextPage = () => {
             scores={scores}
             endData={endData}
             setEndData={setEndData}
+            viewOnly={viewOnly}
           />
         );
       case ReviewStage.END_SUCCESS:
       default:
-        return <ReviewEndSuccessStage name={name} />;
+        return <ReviewEndSuccessStage name={name} viewOnly={viewOnly} />;
     }
   };
 

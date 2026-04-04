@@ -12,6 +12,7 @@ interface Props {
   scores: ReviewScores;
   endData: ReviewEndData;
   setEndData: Dispatch<SetStateAction<ReviewEndData>>;
+  viewOnly?: boolean;
 }
 
 const LeftPanelContent = ({
@@ -164,6 +165,7 @@ export const ReviewEndStage = ({
   scores,
   endData,
   setEndData,
+  viewOnly = false,
 }: Props) => {
   const [validationError, setValidationError] = useState(false);
 

@@ -5,9 +5,13 @@ import { ReviewSetStageContext } from "../shared/ReviewContext";
 
 export type Props = {
   name: string;
+  viewOnly?: boolean;
 };
 
-export const ReviewEndSuccessStage = ({ name }: Props) => {
+export const ReviewEndSuccessStage = ({
+  name,
+  viewOnly = false,
+}: Props) => {
   const setStage = useContext(ReviewSetStageContext);
 
   return (

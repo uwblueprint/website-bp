@@ -34,6 +34,7 @@ export const ReviewSkillStage = ({
   name,
   application,
   scores,
+  viewOnly = false,
 }: ReviewStageProps) => {
   const theme = useTheme();
   const updateScore = useContext(ReviewSetScoresContext);
