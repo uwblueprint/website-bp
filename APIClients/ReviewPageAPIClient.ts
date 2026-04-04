@@ -45,8 +45,8 @@ function mapApplicationFromApi(raw: Record<string, unknown>): ApplicationDTO {
     typeof idRaw === "string"
       ? parseInt(idRaw, 10)
       : typeof idRaw === "number"
-        ? idRaw
-        : NaN;
+      ? idRaw
+      : NaN;
 
   return {
     id: Number.isFinite(idNum) ? idNum : 0,
@@ -70,7 +70,9 @@ function mapApplicationFromApi(raw: Record<string, unknown>): ApplicationDTO {
     term: String(raw.term ?? ""),
     timesApplied: String(raw.timesApplied ?? ""),
     timestamp: BigInt(
-      typeof raw.timestamp === "number" ? raw.timestamp : Number(raw.timestamp) || 0,
+      typeof raw.timestamp === "number"
+        ? raw.timestamp
+        : Number(raw.timestamp) || 0,
     ),
   };
 }
@@ -97,7 +99,9 @@ export function reviewFragmentToEndData(
 ): Pick<ReviewEndData, "comments" | "skillsCategory"> {
   const gqlSkill = review?.skillCategory;
   const skillsCategory =
-    gqlSkill && SKILL_GRAPHQL_TO_UI[gqlSkill] ? SKILL_GRAPHQL_TO_UI[gqlSkill] : "";
+    gqlSkill && SKILL_GRAPHQL_TO_UI[gqlSkill]
+      ? SKILL_GRAPHQL_TO_UI[gqlSkill]
+      : "";
 
   return {
     comments: review?.comments ?? "",
@@ -106,7 +110,9 @@ export function reviewFragmentToEndData(
 }
 
 /** Build review input: only include scores in 1–5 (backend validation). */
-export function buildReviewInputFromScores(scores: ReviewScores): Record<string, number> {
+export function buildReviewInputFromScores(
+  scores: ReviewScores,
+): Record<string, number> {
   const out: Record<string, number> = {};
   const pairs: [ReviewStage, string][] = [
     [ReviewStage.PFSG, "passionFSG"],
@@ -127,7 +133,9 @@ export function buildReviewInputForSubmit(
   scores: ReviewScores,
   endData: ReviewEndData,
 ): Record<string, unknown> {
-  const review: Record<string, unknown> = { ...buildReviewInputFromScores(scores) };
+  const review: Record<string, unknown> = {
+    ...buildReviewInputFromScores(scores),
+  };
   const mapped = SKILL_UI_TO_GRAPHQL[endData.skillsCategory];
   if (mapped) {
     review.skillCategory = mapped;
@@ -138,7 +146,10 @@ export function buildReviewInputForSubmit(
 async function loadReviewPage(
   applicantRecordId: string,
   reviewerId: number,
-): Promise<{ application: ApplicationDTO; record: ReviewedApplicantRecordPayload }> {
+): Promise<{
+  application: ApplicationDTO;
+  record: ReviewedApplicantRecordPayload;
+}> {
   BaseAPIClient.handleAuthRefresh();
 
   const [appRes, recordRes] = await Promise.all([
@@ -152,7 +163,8 @@ async function loadReviewPage(
   const application = mapApplicationFromApi(
     appRes.data.reviewApplicantPage as Record<string, unknown>,
   );
-  const record = recordRes.data.getReviewedApplicantRecord as ReviewedApplicantRecordPayload;
+  const record = recordRes.data
+    .getReviewedApplicantRecord as ReviewedApplicantRecordPayload;
 
   return { application, record };
 }
@@ -174,7 +186,8 @@ async function updateReviewedApplicantRecord(input: {
       status: input.status,
     },
   });
-  return result.data.updateReviewedApplicantRecord as ReviewedApplicantRecordPayload;
+  return result.data
+    .updateReviewedApplicantRecord as ReviewedApplicantRecordPayload;
 }
 
 export default {

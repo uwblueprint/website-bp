@@ -58,7 +58,8 @@ const ReviewsPages: NextPage = () => {
     ? getApplicantRecordId(router.query)
     : null;
 
-  const name = (application?.firstName ?? "") + " " + (application?.lastName ?? "");
+  const name =
+    (application?.firstName ?? "") + " " + (application?.lastName ?? "");
 
   const authenticatedUser = useAuthenticatedUser();
   const reviewerName = authenticatedUser

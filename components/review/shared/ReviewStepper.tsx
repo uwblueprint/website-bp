@@ -1,11 +1,7 @@
 import Button from "@components/common/Button";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
-import {
-  REVIEW_RECORD_STATUS,
-  REVIEW_STAGES,
-  ReviewStage,
-} from "./constants";
+import { REVIEW_RECORD_STATUS, REVIEW_STAGES, ReviewStage } from "./constants";
 import { ReviewSetStageContext } from "./ReviewContext";
 import { getApplicantRecordId } from "./reviewUtils";
 import { ReviewEndData, ReviewScores } from "./types";
