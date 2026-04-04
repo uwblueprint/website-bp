@@ -26,7 +26,6 @@ const Login = (): ReactElement => {
             lastName: result.lastName,
             email: result.email,
             role: result.role,
-            position: result.position,
           });
           router.push("/admin");
         })
