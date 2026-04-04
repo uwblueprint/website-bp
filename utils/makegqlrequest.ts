@@ -14,11 +14,18 @@ export async function fetchGraphql(
       `DEPLOYMENT_DOMAIN not defined. Please check your env file.`,
     );
   }
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+  };
+  if (typeof window !== "undefined") {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      headers.Authorization = `Bearer ${accessToken}`;
+    }
+  }
   const requestOptions: RequestInit = {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers,
     body: JSON.stringify({ query, variables }),
   };
   try {
@@ -28,11 +35,14 @@ export async function fetchGraphql(
     );
     const responseData = await response.json();
 
-    if (response.ok) {
-      return { data: responseData.data };
-    } else {
+    if (responseData.errors?.length) {
       throw new Error(JSON.stringify(responseData.errors));
     }
+
+    if (response.ok) {
+      return { data: responseData.data };
+    }
+    throw new Error(JSON.stringify(responseData.errors));
   } catch (error: any) {
     throw new Error(`GraphQL request failed: ${error.message}`);
   }
