@@ -10,17 +10,15 @@ export const extractShortAnswerData = (shortAnswerJSON: any) => {
   return { extractedQuestions, extractedAnswers };
 };
 
-export const getReviewId = (
+/**
+ * `reviewId` query param holds the applicant record id (string / UUID) for review APIs.
+ */
+export const getApplicantRecordId = (
   query: Record<string, string | string[] | undefined>,
-): number => {
-  const reviewId =
-    typeof query["reviewId"] === "string"
-      ? parseInt(query["reviewId"])
-      : (() => {
-          throw new Error("reviewId must be a String");
-        })();
-  if (Number.isNaN(reviewId))
-    throw Error("reviewId must be parsable into an int");
-
-  return reviewId;
+): string => {
+  const raw = query["reviewId"];
+  if (typeof raw !== "string" || raw.trim() === "") {
+    throw new Error("reviewId must be a non-empty string");
+  }
+  return raw.trim();
 };

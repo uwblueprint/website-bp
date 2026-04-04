@@ -16,3 +16,11 @@ export const REVIEW_STAGES = [
   ReviewStage.SKL,
   ReviewStage.END,
 ];
+
+/** Matches backend `ReviewStatusEnum` in website-bp-be. */
+export const REVIEW_RECORD_STATUS = {
+  TODO: "Todo",
+  IN_PROGRESS: "In Progress",
+  DONE: "Done",
+  CONFLICT: "Conflict",
+} as const;
