@@ -11,6 +11,8 @@ export interface ReviewStageProps {
   name: string;
   application: ApplicationDTO | undefined;
   scores: ReviewScores;
+  /** When true, review UI is read-only (e.g. admin audit). */
+  viewOnly?: boolean;
 }
 
 const InfoBanner = () => (
@@ -49,6 +51,7 @@ export const ReviewInfoStage = ({
   name,
   application,
   scores,
+  viewOnly = false,
 }: ReviewStageProps): React.ReactElement => {
   const shortAnswerStr = application?.shortAnswerQuestions[0];
   const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];

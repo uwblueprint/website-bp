@@ -16,12 +16,14 @@ export interface Props {
   name: string;
   application: ApplicationDTO | undefined;
   scores: ReviewScores;
+  viewOnly?: boolean;
 }
 
 export const ReviewPassionForSocialGoodStage = ({
   name,
   application,
   scores,
+  viewOnly = false,
 }: Props) => {
   const updateScore = useContext(ReviewSetScoresContext);
   const shortAnswerStr = application?.shortAnswerQuestions[0];

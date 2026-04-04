@@ -16,9 +16,15 @@ interface Props {
   name: string;
   application: ApplicationDTO | undefined;
   scores: ReviewScores;
+  viewOnly?: boolean;
 }
 
-export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
+export const ReviewTeamPlayerStage = ({
+  name,
+  application,
+  scores,
+  viewOnly = false,
+}: Props) => {
   const theme = useTheme();
   const updateScore = useContext(ReviewSetScoresContext);
   const shortAnswerStr = application?.shortAnswerQuestions[0];
