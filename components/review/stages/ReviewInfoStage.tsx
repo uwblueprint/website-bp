@@ -1,15 +1,11 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import { ApplicationDTO } from "../../../types";
 import { ReviewStage } from "../shared/constants";
 import { extractShortAnswerData } from "../shared/reviewUtils";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewPageLayout, PanelLayout } from "../layout";
-import { useAuthenticatedUser } from "@components/context/AuthUserContext";
-import { useRouter } from "next/router";
-import { tryGetApplicantRecordId } from "@utils/reviewId";
-import { ReviewStageHeader } from "../shared/ReviewStageHeader";
 
 export interface ReviewStageProps {
   name: string;
@@ -57,13 +53,6 @@ export const ReviewInfoStage = ({
   const shortAnswerStr = application?.shortAnswerQuestions[0];
   const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
   const { extractedAnswers } = extractShortAnswerData(shortAnswerJSON);
-  const authenticatedUser = useAuthenticatedUser();
-
-  const router = useRouter();
-  const applicantRecordId = tryGetApplicantRecordId(router.query);
-  const reviewerId = Number.isInteger(Number(authenticatedUser?.id))
-    ? Number(authenticatedUser?.id)
-    : null;
 
   const answers = [
     application?.email ?? "",
@@ -79,12 +68,7 @@ export const ReviewInfoStage = ({
 
   return (
     <ReviewPageLayout currentStage={ReviewStage.INFO} scores={scores}>
-      <PanelLayout
-        variant="sky"
-        borderRight
-        header={<ReviewStageHeader backHref="/admin" />}
-        showApplicationTitle={false}
-      >
+      <PanelLayout variant="sky" borderRight showApplicationTitle={false}>
         <InfoBanner />
       </PanelLayout>
       <PanelLayout title="Basic Information" subtitle={`${name}'s Application`}>

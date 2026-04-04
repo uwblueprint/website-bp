@@ -33,6 +33,7 @@ InterviewProfilePage.getLayout = getInterviewLayout(
     steps={PROFILE_HEADER_STEPS}
     currentStep={InterviewHeaderStep.INFO}
   />,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function -- placeholder until footer is wired
   <InterviewFooter onBack={() => {}} onContinue={() => {}} />,
 );
 

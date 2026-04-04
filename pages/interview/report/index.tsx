@@ -18,6 +18,7 @@ const InterviewReportPage: NextPageWithLayout = () => {
 // After submission the footer disappears (see Figma — submitted state has no footer).
 InterviewReportPage.getLayout = getInterviewLayout(
   <InterviewHeader steps={[]} />,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function -- placeholder until submit is wired
   <InterviewFooter onContinue={() => {}} continueLabel="Submit Issue" />,
 );
 

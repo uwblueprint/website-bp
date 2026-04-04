@@ -10,7 +10,6 @@ import { ReviewRubric } from "./ReviewRubric";
 import { ReviewPageLayout, PanelLayout } from "../layout";
 import { useTheme } from "@mui/material/styles";
 
-
 const ResumeLink = ({ resumeLink }: { resumeLink: string }) => {
   return (
     <div className="flex flex-col gap-8">

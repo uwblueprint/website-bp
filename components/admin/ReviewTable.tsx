@@ -64,7 +64,8 @@ const ReviewTable: React.FC<TableProps> = ({
     const applicantRecordId = applicantRecordIdCandidates.find(
       (value) => typeof value === "string" && value.trim().length > 0,
     );
-    const timesAppliedKey = app.timesApplied as keyof typeof mapToNumericalValue;
+    const timesAppliedKey =
+      app.timesApplied as keyof typeof mapToNumericalValue;
 
     return {
       id: app.id,

@@ -10,7 +10,6 @@ import { ReviewRubric } from "./ReviewRubric";
 import { ReviewPageLayout, PanelLayout } from "../layout";
 import { useTheme } from "@mui/material/styles";
 
-
 export interface Props {
   name: string;
   application: ApplicationDTO | undefined;

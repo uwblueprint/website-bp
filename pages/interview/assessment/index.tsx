@@ -1,4 +1,8 @@
-import { ASSESSMENT_HEADER_STEPS, AssessmentHeaderStep, useInterviewProgress } from "@components/interview/shared";
+import {
+  ASSESSMENT_HEADER_STEPS,
+  AssessmentHeaderStep,
+  useInterviewProgress,
+} from "@components/interview/shared";
 import { PanelLayout } from "@components/common/SplitPageLayout";
 import {
   getInterviewLayout,
@@ -31,6 +35,7 @@ const AssessmentFooter = () => {
     default:
       return (
         <InterviewFooter
+          // eslint-disable-next-line @typescript-eslint/no-empty-function -- first sub-step: no back target yet
           onBack={() => {}}
           onContinue={() => setCurrentSubStep(NOTES)}
           continueLabel="Submit & Continue"

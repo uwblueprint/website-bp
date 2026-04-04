@@ -116,7 +116,7 @@ export const PanelLayout = ({
       }}
     >
       <div className="flex flex-col h-full overflow-hidden px-9 py-8">
-        {!!header ? (
+        {header ? (
           <div className="flex justify-between items-center w-full mb-8 shrink-0 gap-4">
             {header}
           </div>
