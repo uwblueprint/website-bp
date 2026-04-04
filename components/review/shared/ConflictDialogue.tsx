@@ -1,6 +1,5 @@
 import Button from "@components/common/Button";
 import Dialogue from "@components/common/Dialogue";
-import WarningIcon from "@components/icons/warning.icon";
 import ReviewPageAPIClient from "APIClients/ReviewPageAPIClient";
 import { useTheme } from "@mui/material/styles";
 import { useRouter } from "next/router";
@@ -9,31 +8,29 @@ import { useState } from "react";
 type Props = {
   readonly applicantRecordId: string | null;
   readonly reviewerId: number | null;
+  readonly confirmOpen: boolean;
+  readonly onConfirmOpenChange: (open: boolean) => void;
 };
 
 const ConflictDialogue = ({
   applicantRecordId,
   reviewerId,
+  confirmOpen,
+  onConfirmOpenChange,
 }: Props): React.ReactElement => {
   const theme = useTheme();
   const router = useRouter();
 
-  const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
   const [successDialogOpen, setSuccessDialogOpen] = useState(false);
   const [isReporting, setIsReporting] = useState(false);
   const [reportError, setReportError] = useState<string | null>(null);
-
-  const handleOpenConfirmDialog = () => {
-    setReportError(null);
-    setConfirmDialogOpen(true);
-  };
 
   const handleCloseConfirmDialog = () => {
     if (isReporting) {
       return;
     }
     setReportError(null);
-    setConfirmDialogOpen(false);
+    onConfirmOpenChange(false);
   };
 
   const handleBackToHomepage = () => {
@@ -59,7 +56,7 @@ const ConflictDialogue = ({
         reviewerId,
       );
 
-      setConfirmDialogOpen(false);
+      onConfirmOpenChange(false);
       setSuccessDialogOpen(true);
     } catch (error) {
       setReportError("Couldn't report conflict. Please try again.");
@@ -70,28 +67,8 @@ const ConflictDialogue = ({
 
   return (
     <>
-      <div className="flex items-center gap-3">
-        <span
-          className="italic font-source text-[16px] font-normal leading-normal"
-          style={{ color: theme.palette.primary.main }}
-        >
-          Is the applicant a conflict of interest?
-        </span>
-        <Button
-          variant="secondary"
-          onClick={handleOpenConfirmDialog}
-          className="whitespace-nowrap !px-4 !py-2"
-          size="sm"
-        >
-          <div className="flex place-items-center space-x-2 text-[16px]">
-            <WarningIcon />
-            <p>Report</p>
-          </div>
-        </Button>
-      </div>
-
       <Dialogue
-        open={confirmDialogOpen}
+        open={confirmOpen}
         onClose={handleCloseConfirmDialog}
         header="Report as conflict of interest?"
         text={

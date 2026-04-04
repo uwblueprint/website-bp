@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import ProtectedRoute from "@components/context/ProtectedRoute";
-import { ReviewStage } from "@components/review/shared/constants";
+import {
+  BACK_TO_HOME_HREF,
+  ReviewStage,
+} from "@components/review/shared/constants";
 import { ReviewEndData, ReviewScores } from "@components/review/shared/types";
 import { getApplicantRecordId } from "@components/review/shared/reviewUtils";
 import {
@@ -20,6 +23,9 @@ import { ApplicationDTO, AuthStatus } from "../../types";
 import ProtectedApplication from "./protectedApplication";
 import RecruitmentPlatformThemeProvider from "@components/recruitmentPlatformCommon/RecruitmentPlatformThemeProvider";
 import { useAuthenticatedUser } from "@components/context/AuthUserContext";
+import ConflictDialogue from "@components/review/shared/ConflictDialogue";
+import { ReviewStageHeader } from "@components/review/shared/ReviewStageHeader";
+import { ReportConflictButton } from "@components/review/shared/ReportConflictButton";
 
 const sampleApplication: ApplicationDTO = {
   id: 1,
@@ -74,6 +80,7 @@ const ReviewsPages: NextPage = () => {
     secondChoiceRole: "",
   });
   const [scores, setScores] = useState<ReviewScores>(initialScores);
+  const [conflictConfirmOpen, setConflictConfirmOpen] = useState(false);
 
   const applicantRecordId = router.isReady
     ? getApplicantRecordId(router.query)
@@ -84,6 +91,29 @@ const ReviewsPages: NextPage = () => {
   const reviewerName = authenticatedUser
     ? authenticatedUser.firstName
     : "Reviewer";
+  const reviewerId = Number.isInteger(Number(authenticatedUser?.id))
+    ? Number(authenticatedUser?.id)
+    : null;
+
+  const onOpenConflictReport = useCallback(() => {
+    setConflictConfirmOpen(true);
+  }, []);
+
+  const reviewScoringPanelHeader = useMemo(
+    () => (
+      <ReviewStageHeader
+        backHref={BACK_TO_HOME_HREF}
+        right={
+          <ReportConflictButton
+            name={name}
+            showQuestion
+            onClick={onOpenConflictReport}
+          />
+        }
+      />
+    ),
+    [name, onOpenConflictReport],
+  );
 
   const updateScores = (key: ReviewStage, value: number) => {
     setScores((prev) => {
@@ -118,6 +148,7 @@ const ReviewsPages: NextPage = () => {
             name={name}
             application={application}
             scores={scores}
+            header={reviewScoringPanelHeader}
           />
         );
       case ReviewStage.TP:
@@ -126,6 +157,7 @@ const ReviewsPages: NextPage = () => {
             name={name}
             application={application}
             scores={scores}
+            header={reviewScoringPanelHeader}
           />
         );
       case ReviewStage.D2L:
@@ -134,6 +166,7 @@ const ReviewsPages: NextPage = () => {
             name={name}
             application={application}
             scores={scores}
+            header={reviewScoringPanelHeader}
           />
         );
       case ReviewStage.SKL:
@@ -142,6 +175,7 @@ const ReviewsPages: NextPage = () => {
             name={name}
             application={application}
             scores={scores}
+            header={reviewScoringPanelHeader}
           />
         );
       case ReviewStage.END:
@@ -152,6 +186,7 @@ const ReviewsPages: NextPage = () => {
             scores={scores}
             endData={endData}
             setEndData={setEndData}
+            header={reviewScoringPanelHeader}
           />
         );
       case ReviewStage.END_SUCCESS:
@@ -164,6 +199,12 @@ const ReviewsPages: NextPage = () => {
     <ReviewSetScoresContext.Provider value={updateScores}>
       <ReviewSetStageContext.Provider value={setStage}>
         {getReviewStage()}
+        <ConflictDialogue
+          applicantRecordId={applicantRecordId}
+          reviewerId={reviewerId}
+          confirmOpen={conflictConfirmOpen}
+          onConfirmOpenChange={setConflictConfirmOpen}
+        />
       </ReviewSetStageContext.Provider>
     </ReviewSetScoresContext.Provider>
   );

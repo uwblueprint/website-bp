@@ -1,6 +1,4 @@
-import { LongLeftIcon } from "@components/icons/long-left.icon";
 import { useTheme } from "@mui/material/styles";
-import Link from "next/link";
 import { ReactElement, ReactNode } from "react";
 
 type SplitRatio = "equal";
@@ -60,10 +58,8 @@ interface PanelLayoutProps {
   borderLeft?: boolean;
   /** "xlarge" = left panel (28px, 600), "medium" = right panel (20px, 500) */
   titleVariant?: "xlarge" | "medium";
-  /** Renders pill-shaped "Back to home" link with arrow icon */
-  backToHomeHref?: string;
-  /** Optional action (e.g. Report button) shown on the right of the Back to home row on the left panel */
-  headerRightAction?: ReactNode;
+  /** Optional top row above title (e.g. back link + actions) */
+  header?: ReactNode;
   /** When false, hides subtitle (e.g. for INFO stage) */
   showApplicationTitle?: boolean;
   contentClassName?: string;
@@ -79,8 +75,7 @@ export const PanelLayout = ({
   borderRight = false,
   borderLeft = false,
   titleVariant = "xlarge",
-  backToHomeHref,
-  headerRightAction,
+  header,
   showApplicationTitle = true,
   contentClassName,
   children,
@@ -121,25 +116,11 @@ export const PanelLayout = ({
       }}
     >
       <div className="flex flex-col h-full overflow-hidden px-9 py-8">
-        {(backToHomeHref || headerRightAction) && (
+        {!!header ? (
           <div className="flex justify-between items-center w-full mb-8 shrink-0 gap-4">
-            {backToHomeHref ? (
-              <Link href={backToHomeHref} passHref>
-                <a className="font-source no-underline inline-flex justify-center items-center gap-2 w-fit cursor-pointer shrink-0 hover:opacity-90 rounded-full py-2 px-4 border-2 border-blue bg-white text-blue text-base font-normal leading-[1.4] hover:bg-sky-100 hover:border-blue hover:text-blue">
-                  <LongLeftIcon />
-                  Back to home
-                </a>
-              </Link>
-            ) : (
-              <span />
-            )}
-            {headerRightAction != null ? (
-              <div className="shrink-0 flex items-center">
-                {headerRightAction}
-              </div>
-            ) : null}
+            {header}
           </div>
-        )}
+        ) : null}
         {showApplicationTitle && subtitle && (
           <p
             className="font-poppins text-charcoal-500 mb-4 shrink-0 text-[15px]"

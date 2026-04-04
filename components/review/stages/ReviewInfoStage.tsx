@@ -8,9 +8,8 @@ import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewPageLayout, PanelLayout } from "../layout";
 import { useAuthenticatedUser } from "@components/context/AuthUserContext";
 import { useRouter } from "next/router";
-import ReviewPageAPIClient from "APIClients/ReviewPageAPIClient";
 import { tryGetApplicantRecordId } from "@utils/reviewId";
-import ConflictDialogue from "../shared/ConflictDialogue";
+import { ReviewStageHeader } from "../shared/ReviewStageHeader";
 
 export interface ReviewStageProps {
   name: string;
@@ -83,7 +82,7 @@ export const ReviewInfoStage = ({
       <PanelLayout
         variant="sky"
         borderRight
-        backToHomeHref="/admin"
+        header={<ReviewStageHeader backHref="/admin" />}
         showApplicationTitle={false}
       >
         <InfoBanner />
