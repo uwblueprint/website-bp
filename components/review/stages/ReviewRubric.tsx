@@ -1,31 +1,25 @@
 import { ReactElement } from "react";
-import { ReviewStage } from "../shared/constants";
-import { ReviewScores } from "../shared/types";
 
 export interface Props {
   scoringCriteria: string[];
-  scores: ReviewScores;
-  currentStage: ReviewStage;
 }
 
 export const ReviewRubric = ({ scoringCriteria }: Props): ReactElement => {
   return (
-    <div className="shrink gap-8">
-      <div className="inline-flex gap-6 flex-col items-start">
-        {scoringCriteria.map((criteria, idx) => (
-          <div
-            key={`rubric-level-${idx + 1}`}
-            className="flex items-center shrink-0 self-stretch p-4 gap-6"
-          >
-            <h5 className="flex flex-col w-5 text-[28px]" aria-hidden>
-              {idx + 1}
-            </h5>
-            <p className="flex-1 font-source text-base font-normal leading-[1.4] text-charcoal-900/80">
-              {criteria}
-            </p>
-          </div>
-        ))}
-      </div>
+    <div className="flex w-full flex-col gap-3">
+      {scoringCriteria.map((criteria, index) => (
+        <div
+          key={`${index}-${criteria}`}
+          className="rounded-[4px] bg-white p-4"
+        >
+          <p className="font-poppins text-base font-medium leading-[1.4] text-[#135FC5]">
+            Level {index + 1}
+          </p>
+          <p className="mt-3 font-source text-base leading-[1.4] text-black/80">
+            {criteria}
+          </p>
+        </div>
+      ))}
     </div>
   );
 };

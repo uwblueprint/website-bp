@@ -18,3 +18,10 @@ export const REVIEW_STAGES = [
   ReviewStage.SKL,
   ReviewStage.END,
 ];
+
+export const REVIEW_SCORE_STAGES = [
+  ReviewStage.PFSG,
+  ReviewStage.TP,
+  ReviewStage.D2L,
+  ReviewStage.SKL,
+];

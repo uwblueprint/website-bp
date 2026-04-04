@@ -1,13 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import ProtectedRoute from "@components/context/ProtectedRoute";
-import {
-  BACK_TO_HOME_HREF,
-  ReviewStage,
-} from "@components/review/shared/constants";
+import { ReviewStage } from "@components/review/shared/constants";
 import { ReviewEndData, ReviewScores } from "@components/review/shared/types";
-import { getApplicantRecordId } from "@components/review/shared/reviewUtils";
+import { getReviewIdOrNull } from "@components/review/shared/reviewUtils";
 import {
   ReviewSetScoresContext,
   ReviewSetStageContext,
@@ -19,16 +16,10 @@ import { ReviewInfoStage } from "@components/review/stages/ReviewInfoStage";
 import { ReviewPassionForSocialGoodStage } from "@components/review/stages/ReviewPassionForSocialGoodStage";
 import { ReviewSkillStage } from "@components/review/stages/ReviewSkillStage";
 import { ReviewTeamPlayerStage } from "@components/review/stages/ReviewTeamPlayerStage";
-import { ApplicationDTO, AuthStatus } from "../../types";
-import { ProtectedApplication } from "./protectedApplication";
+import { ApplicationDTO } from "../../types";
+import ProtectedApplication from "./protectedApplication";
 import RecruitmentPlatformThemeProvider from "@components/recruitmentPlatformCommon/RecruitmentPlatformThemeProvider";
 import { useAuthenticatedUser } from "@components/context/AuthUserContext";
-import { ReportConflictDialogue } from "@components/review/dialogues/ReportConflictDialogue";
-import { ReviewStageHeader } from "@components/review/shared/ReviewStageHeader";
-import { ReportConflictButton } from "@components/review/shared/ReportConflictButton";
-import { ReportConflictSuccessDialogue } from "@components/review/dialogues/ReportConflictSuccessDialogue";
-import { reportReviewConflict } from "APIClients/ReviewPageAPIClient";
-import { auth } from "@utils/firebase";
 
 const sampleApplication: ApplicationDTO = {
   id: 1,
@@ -72,44 +63,23 @@ const initialScores: ReviewScores = {
 const ReviewsPages: NextPage = () => {
   const router = useRouter();
   const [stage, setStage] = useState<ReviewStage>(ReviewStage.INFO);
-  const [application] = useState<ApplicationDTO>(sampleApplication);
-  const [authStatus, setAuthStatus] = useState<AuthStatus>({
-    loading: true,
-    isAuthorized: false,
-  });
+  const [application, setApplication] = useState<ApplicationDTO>();
   const [endData, setEndData] = useState<ReviewEndData>({
     comments: "",
     skillsCategory: "",
     secondChoiceRole: "",
   });
   const [scores, setScores] = useState<ReviewScores>(initialScores);
-  const [reportConflictDialogueOpen, setReportConflictDialogueOpen] =
-    useState(false);
-  const [
-    reportConflictSuccessDialogueOpen,
-    setReportConflictSuccessDialogueOpen,
-  ] = useState(false);
-  const [reportConflictHasErrored, setReportConflictHasErrored] =
-    useState(false);
 
-  const applicantRecordId = getApplicantRecordId(router.query);
+  const reviewId = router.isReady ? getReviewIdOrNull(router.query) : null;
+  const name = [application?.firstName, application?.lastName]
+    .filter(Boolean)
+    .join(" ");
 
   const authenticatedUser = useAuthenticatedUser();
-
-  const applicantName = `${application.firstName} ${application.lastName}`;
-
-  const reviewScoringPanelHeader = (
-    <ReviewStageHeader
-      backHref={BACK_TO_HOME_HREF}
-      right={
-        <ReportConflictButton
-          name={applicantName}
-          showQuestion
-          onClick={() => setReportConflictDialogueOpen(true)}
-        />
-      }
-    />
-  );
+  const reviewerName = authenticatedUser
+    ? authenticatedUser.firstName
+    : "Reviewer";
 
   const updateScores = (key: ReviewStage, value: number) => {
     setScores((prev) => {
@@ -120,12 +90,21 @@ const ReviewsPages: NextPage = () => {
     });
   };
 
+  useEffect(() => {
+    if (reviewId === null) return;
+    const appInfo = sampleApplication;
+    setApplication(appInfo);
+  }, [reviewId]);
+
+  if (!router.isReady) return null;
+  if (reviewId === null) return <div>Invalid review link</div>;
+
   const getReviewStage = () => {
     switch (stage) {
       case ReviewStage.INFO:
         return (
           <ReviewInfoStage
-            name={applicantName}
+            name={name}
             application={application}
             scores={scores}
           />
@@ -133,110 +112,66 @@ const ReviewsPages: NextPage = () => {
       case ReviewStage.PFSG:
         return (
           <ReviewPassionForSocialGoodStage
-            name={applicantName}
+            name={name}
             application={application}
             scores={scores}
-            header={reviewScoringPanelHeader}
           />
         );
       case ReviewStage.TP:
         return (
           <ReviewTeamPlayerStage
-            name={applicantName}
+            name={name}
             application={application}
             scores={scores}
-            header={reviewScoringPanelHeader}
           />
         );
       case ReviewStage.D2L:
         return (
           <ReviewDriveToLearnStage
-            name={applicantName}
+            name={name}
             application={application}
             scores={scores}
-            header={reviewScoringPanelHeader}
           />
         );
       case ReviewStage.SKL:
         return (
           <ReviewSkillStage
-            name={applicantName}
+            name={name}
             application={application}
             scores={scores}
-            header={reviewScoringPanelHeader}
           />
         );
       case ReviewStage.END:
         return (
           <ReviewEndStage
-            name={applicantName}
-            reviewerName={
-              authenticatedUser ? authenticatedUser.firstName : "Reviewer"
-            }
+            name={name}
+            reviewerName={reviewerName}
             scores={scores}
             endData={endData}
             setEndData={setEndData}
-            header={reviewScoringPanelHeader}
           />
         );
       case ReviewStage.END_SUCCESS:
       default:
-        return <ReviewEndSuccessStage name={applicantName} />;
+        return <ReviewEndSuccessStage name={name} />;
     }
-  };
-
-  const reportConflict = async () => {
-    try {
-      setReportConflictHasErrored(false);
-
-      if (applicantRecordId == null) {
-        throw new Error("Missing applicantRecordId in URL");
-      }
-
-      if (authenticatedUser == null) {
-        throw new Error("Missing authenticated reviewer ID");
-      }
-
-      await reportReviewConflict(
-        applicantRecordId,
-        Number(authenticatedUser.id),
-      );
-      setReportConflictDialogueOpen(false);
-      setReportConflictSuccessDialogueOpen(true);
-    } catch (error) {
-      setReportConflictHasErrored(true);
-    }
-  };
-
-  const onReportConflictSuccessClose = () => {
-    setReportConflictSuccessDialogueOpen(false);
-    router.push(BACK_TO_HOME_HREF);
   };
 
   return (
     <ReviewSetScoresContext.Provider value={updateScores}>
       <ReviewSetStageContext.Provider value={setStage}>
         {getReviewStage()}
-        <ReportConflictDialogue
-          open={reportConflictDialogueOpen}
-          hasError={reportConflictHasErrored}
-          onClose={() => setReportConflictDialogueOpen(false)}
-          onConfirm={reportConflict}
-        />
-        <ReportConflictSuccessDialogue
-          open={reportConflictSuccessDialogueOpen}
-          onClose={onReportConflictSuccessClose}
-        />
       </ReviewSetStageContext.Provider>
     </ReviewSetScoresContext.Provider>
   );
 };
 
 const Reviews: NextPage = () => {
+  const router = useRouter();
   return (
     <RecruitmentPlatformThemeProvider>
       <ProtectedRoute allowedRoles={["Admin", "User"]}>
-        <ProtectedApplication>
+        <ProtectedApplication headerInformation={router.query}>
           <ReviewsPages />
         </ProtectedApplication>
       </ProtectedRoute>

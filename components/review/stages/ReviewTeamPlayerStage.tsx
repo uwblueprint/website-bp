@@ -1,80 +1,42 @@
-import { ReactNode, useContext } from "react";
+import { ReactElement, useContext } from "react";
 import { ApplicationDTO } from "../../../types";
 import { ReviewStage } from "../shared/constants";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
-import { ReviewScoreInput } from "../shared/ReviewScoreInput";
+import { getShortAnswerAtIndex } from "../shared/reviewUtils";
 import { REVIEW_TP_SCORING_CRITERIA } from "../shared/rubricConstants";
 import { ReviewScores } from "../shared/types";
-import { ReviewAnswers } from "./ReviewAnswers";
-import { ReviewRubric } from "./ReviewRubric";
-import { ReviewPageLayout, PanelLayout } from "../layout";
-import { useTheme } from "@mui/material/styles";
+import { ReviewScoredStageLayout } from "../layout";
 
 interface Props {
   name: string;
   application: ApplicationDTO | undefined;
   scores: ReviewScores;
-  header: ReactNode;
 }
 
 export const ReviewTeamPlayerStage = ({
   name,
   application,
   scores,
-  header,
-}: Props) => {
-  const theme = useTheme();
+}: Props): ReactElement => {
   const updateScore = useContext(ReviewSetScoresContext);
-  const shortAnswerStr = application?.shortAnswerQuestions[0];
-  const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
-  const questions = [shortAnswerJSON[2]?.question];
-  const answers = [shortAnswerJSON[2]?.response];
+  const teamPlayerAnswer = getShortAnswerAtIndex(
+    application?.shortAnswerQuestions[0],
+    2,
+  );
   const { TP } = ReviewStage;
+
   return (
-    <ReviewPageLayout currentStage={TP} scores={scores}>
-      <PanelLayout
-        header={header}
-        title="Team Player"
-        subtitle={`${name}'s Application`}
-      >
-        <ReviewAnswers questions={questions} answers={answers} />
-      </PanelLayout>
-      <PanelLayout
-        borderLeft
-        title="Scoring for Team Player (TEAM)"
-        titleVariant="medium"
-        variant="white"
-      >
-        <ReviewRubric
-          scoringCriteria={REVIEW_TP_SCORING_CRITERIA}
-          scores={scores}
-          currentStage={TP}
-        />
-        <div
-          className="w-full shrink-0"
-          style={{
-            height: "1px",
-            background: theme.palette.background.default,
-          }}
-        />
-        <div className="flex items-center gap-3">
-          <ReviewScoreInput
-            id="tp-score"
-            value={scores[TP] || ""}
-            min={1}
-            max={5}
-            placeholder={`Enter ${name}'s score`}
-            ariaLabel="Team player score"
-            onChange={(v) => updateScore?.(TP, v)}
-          />
-          <span
-            className="text-xl leading-none"
-            style={{ color: theme.palette.error.main }}
-          >
-            *
-          </span>
-        </div>
-      </PanelLayout>
-    </ReviewPageLayout>
+    <ReviewScoredStageLayout
+      applicantName={name}
+      currentStage={TP}
+      onScoreChange={(value) => updateScore?.(TP, value)}
+      questions={[teamPlayerAnswer.question]}
+      answers={[teamPlayerAnswer.response ?? ""]}
+      score={scores[TP]}
+      scoreLabel="Scoring for Team Player (TEAM)"
+      scoringCriteria={REVIEW_TP_SCORING_CRITERIA}
+      scores={scores}
+      title="Team player"
+    />
   );
 };

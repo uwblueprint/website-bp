@@ -1,111 +1,64 @@
 import Button from "@components/common/Button";
-import { ReactNode, useContext } from "react";
+import { ResumeIcon } from "@components/icons/resume.icon";
+import { ReactElement, useContext } from "react";
 import { ReviewStage } from "../shared/constants";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
-import { ReviewScoreInput } from "../shared/ReviewScoreInput";
+import { getRoleSpecificQuestions } from "../shared/reviewUtils";
 import { REVIEW_SKL_SCORING_CRITERIA } from "../shared/rubricConstants";
-import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewStageProps } from "./ReviewInfoStage";
-import { ReviewRubric } from "./ReviewRubric";
-import { ReviewPageLayout, PanelLayout } from "../layout";
-import { useTheme } from "@mui/material/styles";
+import { ReviewScoredStageLayout } from "../layout";
 
 const ResumeLink = ({ resumeLink }: { resumeLink: string }) => {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex w-full justify-start">
       <Button
-        className="mr-2 justify-self-end"
+        className="flex items-center gap-2 px-4 py-2 font-source text-base leading-[1.4]"
         size="sm"
         variant="secondary"
         href={resumeLink}
       >
-        <div className="flex justify-center items-center gap-2">
-          <img className="stroke-3" src={"common/resume.svg"} alt="" /> View
-          Candidate Resume
-        </div>
+        <ResumeIcon />
+        View Candidate Resume
       </Button>
     </div>
   );
 };
 
-type Props = ReviewStageProps & { header: ReactNode };
-
 export const ReviewSkillStage = ({
   name,
   application,
   scores,
-  header,
-}: Props) => {
-  const theme = useTheme();
+}: ReviewStageProps): ReactElement => {
   const updateScore = useContext(ReviewSetScoresContext);
   const resumeLink = application?.resumeUrl;
-
-  const roleSpecificStr = application?.roleSpecificQuestions[0];
-  const roleSpecificStrJSON = roleSpecificStr
-    ? JSON.parse(roleSpecificStr)
-    : [];
-  const questionsData = roleSpecificStrJSON[0]?.questions || [];
-
-  const questions = questionsData.map(
-    (item: { question?: string; response?: string | string[] }) =>
-      item.question || "",
+  const questionsData = getRoleSpecificQuestions(
+    application?.roleSpecificQuestions[0],
   );
-  const answers = questionsData.flatMap(
-    (item: { question?: string; response?: string | string[] }) => {
-      if (Array.isArray(item.response)) {
-        return [item.response.join(", ")];
-      } else {
-        return item.response;
-      }
-    },
-  );
+
+  const questions = questionsData.map((item) => item.question || "");
+  const answers = questionsData.flatMap((item) => {
+    if (Array.isArray(item.response)) {
+      return [item.response.join(", ")];
+    }
+
+    return item.response ?? "";
+  });
 
   return (
-    <ReviewPageLayout currentStage={ReviewStage.SKL} scores={scores}>
-      <PanelLayout
-        header={header}
-        title="Skill"
-        subtitle={`${name}'s Application`}
-      >
-        {resumeLink ? <ResumeLink resumeLink={resumeLink} /> : null}
-        <ReviewAnswers questions={questions} answers={answers} />
-      </PanelLayout>
-      <PanelLayout
-        borderLeft
-        title="Scoring for Skill (SKILL)"
-        titleVariant="medium"
-        variant="white"
-      >
-        <ReviewRubric
-          scoringCriteria={REVIEW_SKL_SCORING_CRITERIA}
-          scores={scores}
-          currentStage={ReviewStage.SKL}
-        />
-        <div
-          className="w-full shrink-0"
-          style={{
-            height: "1px",
-            background: theme.palette.background.default,
-          }}
-        />
-        <div className="flex items-center gap-3">
-          <ReviewScoreInput
-            id="skl-score"
-            value={scores[ReviewStage.SKL] || ""}
-            min={1}
-            max={5}
-            placeholder={`Enter ${name}'s score`}
-            ariaLabel="Skill score"
-            onChange={(v) => updateScore?.(ReviewStage.SKL, v)}
-          />
-          <span
-            className="text-xl leading-none"
-            style={{ color: theme.palette.error.main }}
-          >
-            *
-          </span>
-        </div>
-      </PanelLayout>
-    </ReviewPageLayout>
+    <ReviewScoredStageLayout
+      applicantName={name}
+      beforeQuestions={
+        resumeLink ? <ResumeLink resumeLink={resumeLink} /> : undefined
+      }
+      currentStage={ReviewStage.SKL}
+      onScoreChange={(value) => updateScore?.(ReviewStage.SKL, value)}
+      questions={questions}
+      answers={answers}
+      score={scores[ReviewStage.SKL]}
+      scoreLabel="Scoring for Skill (SKILL)"
+      scoringCriteria={REVIEW_SKL_SCORING_CRITERIA}
+      scores={scores}
+      title="Skill"
+    />
   );
 };

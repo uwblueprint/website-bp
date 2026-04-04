@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactElement, ReactNode } from "react";
 import { ReviewStage } from "../shared/constants";
 import { ReviewProgressHeader } from "../shared/ReviewProgressHeader";
 import { ReviewStepper } from "../shared/ReviewStepper";
@@ -19,10 +19,12 @@ export const ReviewPageLayout = ({
   endData,
   onValidate,
   children,
-}: ReviewPageLayoutProps) => {
+}: ReviewPageLayoutProps): ReactElement => {
   return (
     <SplitPanelLayout
-      header={<ReviewProgressHeader currentStage={currentStage} />}
+      header={
+        <ReviewProgressHeader currentStage={currentStage} scores={scores} />
+      }
       footer={
         <ReviewStepper
           currentStage={currentStage}
