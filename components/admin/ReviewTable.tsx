@@ -53,23 +53,9 @@ const ReviewTable: React.FC<TableProps> = ({
       Twice: "2",
       "3 or more": "3+",
     };
-    const applicantRecordIdCandidates = [
-      application?.applicantRecordId,
-      application?.applicant_record_id,
-      application?.reviewedApplicantRecord?.applicantRecordId,
-      application?.reviewedApplicantRecord?.id,
-      app?.applicantRecordId,
-      app?.applicant_record_id,
-    ];
-    const applicantRecordId = applicantRecordIdCandidates.find(
-      (value) => typeof value === "string" && value.trim().length > 0,
-    );
-    const timesAppliedKey =
-      app.timesApplied as keyof typeof mapToNumericalValue;
 
     return {
       id: app.id,
-      applicantRecordId: applicantRecordId ?? "",
       name: app.firstName + " " + app.lastName,
       resume: (
         <a target="_blank" href={app.resumeUrl} className="flex items-center">
@@ -79,7 +65,7 @@ const ReviewTable: React.FC<TableProps> = ({
       ),
       term: app.academicYear,
       program: app.program,
-      timesApplied: mapToNumericalValue[timesAppliedKey],
+      timesApplied: mapToNumericalValue[app.timesApplied],
       status: app.status,
       secondChoice: app.secondChoiceRole,
       secondChoiceStatus: app.secondChoiceStatus,

@@ -3,32 +3,14 @@ import { LinkIcon } from "@components/icons/link.icon";
 import { Status, SecondChoiceStatus } from "@utils/muidatatable";
 import router from "next/router";
 
-const REVIEW_PAGE_PATH = "/review";
-
 export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
-  const handleNameClick = (applicantRecordId?: string) => {
-    if (!applicantRecordId) {
-      return;
-    }
-
-    router.push({
-      pathname: REVIEW_PAGE_PATH,
-      query: { applicantRecordId },
-    });
+  const handleNameClick = (appId: string) => {
+    router.push(`/review?reviewId=${appId}`);
   };
 
   const columns: MUIDataTableColumn[] = [
     {
       name: "id",
-      options: {
-        display: "excluded",
-        filter: false,
-        searchable: false,
-        sort: false,
-      },
-    },
-    {
-      name: "applicantRecordId",
       options: {
         display: "excluded",
         filter: false,
@@ -44,10 +26,10 @@ export const getApplicationTableColumns = (): MUIDataTableColumn[] => {
         // sortCompare: (order: "asc" | "desc") => createSortFunction(order),
         searchable: true,
         customBodyRender(value, tableMeta) {
-          const applicantRecordId = tableMeta.rowData[1] as string;
+          const appId = tableMeta.rowData[0];
           return (
             <div
-              onClick={() => handleNameClick(applicantRecordId)}
+              onClick={() => handleNameClick(appId)}
               className="flex items-center cursor-pointer"
             >
               <LinkIcon />

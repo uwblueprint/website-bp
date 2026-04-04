@@ -4,6 +4,7 @@ import ReviewPageAPIClient from "APIClients/ReviewPageAPIClient";
 import { useTheme } from "@mui/material/styles";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { BACK_TO_HOME_HREF } from "./constants";
 
 type Props = {
   readonly applicantRecordId: string | null;
@@ -35,7 +36,7 @@ const ConflictDialogue = ({
 
   const handleBackToHomepage = () => {
     setSuccessDialogOpen(false);
-    router.push("/");
+    router.push(`/${BACK_TO_HOME_HREF}`);
   };
 
   const handleReportConflict = async () => {
