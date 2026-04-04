@@ -13,11 +13,29 @@ export const mutations = {
       lastName
       email
       role
-      position
       accessToken
       refreshToken
     }
   }`,
+  updateReviewedApplicantRecord: `
+    mutation updateReviewedApplicantRecord($input: UpdateReviewedApplicantRecordInput!) {
+      updateReviewedApplicantRecord(input: $input) {
+        applicantRecordId
+        reviewerId
+        status
+        score
+        reviewerHasConflict
+        review {
+          passionFSG
+          teamPlayer
+          desireToLearn
+          skill
+          skillCategory
+          comments
+        }
+      }
+    }
+  `,
   refresh: `
   mutation refresh($refreshToken: String!) {
     refresh(refreshToken: $refreshToken)
@@ -46,5 +64,54 @@ export const queries = {
   query isAuthorizedByRole($accessToken: String!, $roles: [Role!]!) {
       isAuthorizedByRole(accessToken: $accessToken, roles: $roles)
   }
+  `,
+  reviewApplicantPage: `
+    query reviewApplicantPage($applicantRecordId: String!) {
+      reviewApplicantPage(applicantRecordId: $applicantRecordId) {
+        id
+        academicOrCoop
+        academicYear
+        email
+        firstChoiceRole
+        firstName
+        heardFrom
+        lastName
+        locationPreference
+        program
+        pronouns
+        pronounsSpecified
+        resumeUrl
+        roleSpecificQuestions
+        secondChoiceRole
+        shortAnswerQuestions
+        status
+        secondChoiceStatus
+        term
+        timesApplied
+        timestamp
+      }
+    }
+  `,
+  getReviewedApplicantRecord: `
+    query getReviewedApplicantRecord($applicantRecordId: ID!, $reviewerId: Int!) {
+      getReviewedApplicantRecord(
+        applicantRecordId: $applicantRecordId
+        reviewerId: $reviewerId
+      ) {
+        applicantRecordId
+        reviewerId
+        status
+        score
+        reviewerHasConflict
+        review {
+          passionFSG
+          teamPlayer
+          desireToLearn
+          skill
+          skillCategory
+          comments
+        }
+      }
+    }
   `,
 };
