@@ -1,47 +1,21 @@
 import Button from "@components/common/Button";
-import { fetchGraphql } from "@utils/makegqlrequest";
-import { mutations } from "graphql/queries";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
-import { REVIEW_STAGES, ReviewStage } from "./constants";
+import {
+  REVIEW_RECORD_STATUS,
+  REVIEW_STAGES,
+  ReviewStage,
+} from "./constants";
 import { ReviewSetStageContext } from "./ReviewContext";
-import { getReviewId } from "./reviewUtils";
+import { getApplicantRecordId } from "./reviewUtils";
 import { ReviewEndData, ReviewScores } from "./types";
 import { useTheme } from "@mui/material/styles";
 import { ReactElement } from "react";
-
-const STAGE_RATING_FIELDS: [ReviewStage, string][] = [
-  [ReviewStage.PFSG, "passionFSG"],
-  [ReviewStage.TP, "teamPlayer"],
-  [ReviewStage.D2L, "desireToLearn"],
-  [ReviewStage.SKL, "skill"],
-];
-
-const sendRatingData = (
-  id: number,
-  ratingToBeChanged: string,
-  newValue: number | undefined,
-) => {
-  return fetchGraphql(mutations.changeRating, {
-    id,
-    ratingToBeChanged,
-    newValue,
-  });
-};
-
-const sendFinalComments = (
-  id: number,
-  newComments: string,
-  newSkillCategory: string,
-  newRecommendedSecondChoice: string,
-) => {
-  return fetchGraphql(mutations.modifyFinalComments, {
-    id,
-    newComments,
-    newSkillCategory,
-    newRecommendedSecondChoice,
-  });
-};
+import ReviewPageAPIClient, {
+  buildReviewInputForSubmit,
+  buildReviewInputFromScores,
+} from "APIClients/ReviewPageAPIClient";
+import { useAuthenticatedUser } from "@components/context/AuthUserContext";
 
 interface Props {
   currentStage: ReviewStage;
@@ -58,8 +32,10 @@ export const ReviewStepper = ({
 }: Props): ReactElement | null => {
   const theme = useTheme();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const router = useRouter();
   const setStage = useContext(ReviewSetStageContext);
+  const authenticatedUser = useAuthenticatedUser();
 
   const currentStageIndex = REVIEW_STAGES.indexOf(currentStage);
 
@@ -78,23 +54,44 @@ export const ReviewStepper = ({
   if (!router.isReady) return null;
   if (currentStage === ReviewStage.END_SUCCESS) return null;
 
-  const reviewId = getReviewId(router.query);
+  const applicantRecordId = getApplicantRecordId(router.query);
+  const reviewerId = authenticatedUser
+    ? Number.parseInt(authenticatedUser.id, 10)
+    : NaN;
 
-  const updateAllData = () => {
-    const ratingPromises = STAGE_RATING_FIELDS.map(([stage, field]) =>
-      sendRatingData(reviewId, field, scores[stage]),
+  const persistInProgress = async () => {
+    if (!Number.isFinite(reviewerId)) {
+      alert("Session error. Please refresh and log in again.");
+      return;
+    }
+    const review = buildReviewInputFromScores(scores);
+    await ReviewPageAPIClient.updateReviewedApplicantRecord({
+      applicantRecordId,
+      reviewerId,
+      review,
+      status: REVIEW_RECORD_STATUS.IN_PROGRESS,
+    });
+  };
+
+  const persistCompleted = async () => {
+    if (!Number.isFinite(reviewerId)) {
+      alert("Session error. Please refresh and log in again.");
+      return;
+    }
+    const review = buildReviewInputForSubmit(
+      scores,
+      endData ?? {
+        comments: "",
+        skillsCategory: "",
+        secondChoiceRole: "",
+      },
     );
-
-    const {
-      comments = "",
-      skillsCategory = "",
-      secondChoiceRole = "",
-    } = endData ?? {};
-
-    return Promise.all([
-      ...ratingPromises,
-      sendFinalComments(reviewId, comments, skillsCategory, secondChoiceRole),
-    ]);
+    await ReviewPageAPIClient.updateReviewedApplicantRecord({
+      applicantRecordId,
+      reviewerId,
+      review,
+      status: REVIEW_RECORD_STATUS.DONE,
+    });
   };
 
   return (
@@ -119,7 +116,12 @@ export const ReviewStepper = ({
         {currentStage === ReviewStage.END ? (
           <Button
             size="sm"
-            disabled={isSubmitting || !endData?.skillsCategory}
+            disabled={
+              isSubmitting ||
+              isSaving ||
+              !endData?.skillsCategory ||
+              !Number.isFinite(reviewerId)
+            }
             className="shrink-0 whitespace-nowrap !px-4 !py-2 !rounded-[20px] !bg-blue !border-blue !text-white hover:!bg-sky-400 hover:!border-transparent disabled:!opacity-60"
             onClick={async () => {
               if (onValidate && !onValidate()) {
@@ -128,7 +130,7 @@ export const ReviewStepper = ({
 
               setIsSubmitting(true);
               try {
-                await updateAllData();
+                await persistCompleted();
                 setStage?.(ReviewStage.END_SUCCESS);
               } catch (error) {
                 console.error("Failed to submit review data:", error);
@@ -143,11 +145,27 @@ export const ReviewStepper = ({
         ) : (
           <Button
             size="sm"
-            disabled={isButtonDisabled}
-            onClick={() => setStage?.(nextStage)}
+            disabled={
+              isButtonDisabled ||
+              isSaving ||
+              isSubmitting ||
+              !Number.isFinite(reviewerId)
+            }
+            onClick={async () => {
+              setIsSaving(true);
+              try {
+                await persistInProgress();
+                setStage?.(nextStage);
+              } catch (error) {
+                console.error("Failed to save review progress:", error);
+                alert("Could not save progress. Please try again.");
+              } finally {
+                setIsSaving(false);
+              }
+            }}
             className="shrink-0 whitespace-nowrap !px-4 !py-2 !rounded-[20px] !bg-blue !border-blue !text-white hover:!bg-sky-400 hover:!border-transparent disabled:!opacity-60"
           >
-            Save & Continue
+            {isSaving ? "Saving…" : "Save & Continue"}
           </Button>
         )}
       </div>
