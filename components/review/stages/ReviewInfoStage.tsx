@@ -4,10 +4,7 @@ import Image from "next/image";
 import { ReactElement } from "react";
 import { ApplicationDTO } from "../../../types";
 import { ReviewStage } from "../shared/constants";
-import {
-  extractShortAnswerData,
-  getParsedShortAnswers,
-} from "../shared/reviewUtils";
+import { getParsedShortAnswers } from "../shared/reviewUtils";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { PanelLayout, ReviewPageLayout } from "../layout";
@@ -51,6 +48,7 @@ const INFO_QUESTIONS = [
   "What are your preferred pronouns?",
   "Will you be in an academic (school) term or a co-op term?",
   "Position",
+  "What timezone will you be based out of?",
 ];
 
 const InfoHeaderActions = ({ onReport }: { onReport: () => void }) => {
@@ -76,12 +74,10 @@ export const ReviewInfoStage = ({
   application,
   scores,
 }: ReviewStageProps): ReactElement => {
-  const shortAnswerJSON = getParsedShortAnswers(
+  const shortAnswers = getParsedShortAnswers(
     application?.shortAnswerQuestions[0],
   );
-  const { extractedQuestions, extractedAnswers } =
-    extractShortAnswerData(shortAnswerJSON);
-  const questions = [...INFO_QUESTIONS, ...extractedQuestions];
+  const timezoneAnswer = shortAnswers[0]?.response ?? "";
 
   const answers = [
     application?.email ?? "",
@@ -92,14 +88,13 @@ export const ReviewInfoStage = ({
     application?.pronouns ?? "",
     application?.academicOrCoop ?? "",
     application?.firstChoiceRole ?? "",
-    ...extractedAnswers,
+    timezoneAnswer,
   ];
 
   return (
     <ReviewPageLayout currentStage={ReviewStage.INFO} scores={scores}>
       <PanelLayout
         variant="subtle"
-        borderRight
         scrollable={false}
         contentClassName="flex items-center justify-center px-0 pb-0"
       >
@@ -108,9 +103,10 @@ export const ReviewInfoStage = ({
       <PanelLayout
         title="Basic Information"
         titleButton={<InfoHeaderActions onReport={() => undefined} />}
+        showTitleDivider={false}
       >
-        <div className="mt-11 flex flex-col">
-          <ReviewAnswers questions={questions} answers={answers} />
+        <div className="mt-12 flex flex-col">
+          <ReviewAnswers questions={INFO_QUESTIONS} answers={answers} />
         </div>
       </PanelLayout>
     </ReviewPageLayout>

@@ -53,6 +53,7 @@ interface PanelLayoutProps {
   title?: string;
   subtitle?: string;
   titleButton?: ReactNode;
+  showTitleDivider?: boolean;
   variant?: "sky" | "white" | "subtle";
   borderRight?: boolean;
   borderLeft?: boolean;
@@ -72,6 +73,7 @@ export const PanelLayout = ({
   title,
   subtitle,
   titleButton,
+  showTitleDivider = true,
   variant = "white",
   borderRight = false,
   borderLeft = false,
@@ -159,7 +161,7 @@ export const PanelLayout = ({
                 {title}
               </h2>
             ) : null}
-            {titleVariant === "xlarge" && (
+            {titleVariant === "xlarge" && showTitleDivider && (
               <div
                 className="my-6 w-full shrink-0 h-[1px]"
                 style={{ background: theme.palette.semantics.border.light }}

@@ -6,7 +6,7 @@ export interface Props {
 
 export const ReviewRubric = ({ scoringCriteria }: Props): ReactElement => {
   return (
-    <div className="flex w-full flex-col gap-3">
+    <div className="flex w-full flex-col gap-2">
       {scoringCriteria.map((criteria, index) => (
         <div
           key={`${index}-${criteria}`}
