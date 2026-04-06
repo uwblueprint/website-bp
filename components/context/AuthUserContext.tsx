@@ -2,7 +2,7 @@
 import { User } from "firebase/auth";
 import React, {
   createContext,
-  ReactChild,
+  ReactNode,
   ReactElement,
   useContext,
   useEffect,
@@ -11,7 +11,7 @@ import React, {
 import { auth } from "@utils/firebase";
 
 type Props = {
-  children: ReactChild;
+  children: ReactNode;
 };
 
 type AuthContext = {

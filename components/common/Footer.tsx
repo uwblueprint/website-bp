@@ -22,7 +22,7 @@ const LINKS = [
   },
   {
     name: "Join Our Team",
-    link: "/join",
+    link: "/join-us",
   },
   {
     name: "For Nonprofits",
@@ -31,25 +31,25 @@ const LINKS = [
 ];
 
 /** Footer */
-const Footer: FC = () => {
+const Footer: FC<{ minimal?: boolean }> = ({ minimal = false }) => {
   return (
     <footer className="w-full bg-blue-100 md:bg-gradient-to-r md:from-blue md:to-sky-500">
       <div className="content relative z-10 flex flex-col items-center space-y-20 mx-auto pt-14 pb-6">
         <div className="w-full flex flex-col md:flex-row justify-between items-stretch space-y-24 md:space-y-0 md:space-x-20 mt-4">
           {/* Links */}
-          <div className="flex flex-col space-y-5">
-            {LINKS.map((linkGroup) => (
-              <div key={linkGroup.name}>
-                <Link href={linkGroup.link}>
-                  <a>
+          {!minimal && (
+            <div className="flex flex-col space-y-5">
+              {LINKS.map((linkGroup) => (
+                <div key={linkGroup.name}>
+                  <Link href={linkGroup.link}>
                     <h5 className="text-white cursor-pointer">
                       {linkGroup.name}
                     </h5>
-                  </a>
-                </Link>
-              </div>
-            ))}
-          </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          )}
           {/* Logo, social media links */}
           <div className="relative flex flex-col justify-between items-start space-y-10">
             <img

@@ -2,20 +2,6 @@
     "root": true,
     "parser": "@typescript-eslint/parser",
     "plugins": ["@typescript-eslint"],
-    "overrides": [
-        {
-            "files": ["*.js"],
-            "rules": {
-                "@typescript-eslint/no-var-requires": "off",
-                "prettier/prettier": [
-                    "error",
-                    {
-                      "endOfLine": "auto"
-                    }
-                  ]
-            }
-        }
-    ],
     "env": {
         "node": true,
         "browser": true,
@@ -25,7 +11,14 @@
         "eslint:recommended",
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
-        "prettier/@typescript-eslint",
-        "plugin:prettier/recommended"
-    ]
+        "next/core-web-vitals"
+    ],
+    "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+        "@typescript-eslint/no-extra-semi": "off",
+        "@next/next/no-html-link-for-pages": "off"
+    },
+    "ignorePatterns": [".next/", "node_modules/", "out/", "components/", "constants/", "utils/", "styles/"]
 }

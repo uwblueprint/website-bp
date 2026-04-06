@@ -1,60 +1,178 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/*
+ * Legacy styles for Pages Router routes (apply, admin, headshots).
+ * These pages still rely on the old typography, color, and layout conventions.
+ */
+
+/* ─── Old color palette (from removed tailwind.config.js) ─────────────── */
+@theme inline {
+  /* Primary */
+  --color-charcoal-0: #FFFFFF;
+  --color-charcoal-100: #FAFAFA;
+  --color-charcoal-200: #EAEAEA;
+  --color-charcoal-300: #CECECE;
+  --color-charcoal-400: #9F9F9F;
+  --color-charcoal-500: #707070;
+  --color-charcoal-600: #333333;
+  --color-charcoal-700: #000000;
+
+  --color-blue: #0573E8;
+  --color-blue-100: #0573E8;
+  --color-blue-200: #135FC5;
+  --color-blue-300: #003884;
+  --color-blue-400: #1F3C5F;
+
+  --color-sky: #E0F0FF;
+  --color-sky-100: #E0F0FF;
+  --color-sky-200: #BDDEFF;
+  --color-sky-300: #99CEFF;
+  --color-sky-400: #7EB9F0;
+  --color-sky-500: #4498ED;
+
+  /* Secondary */
+  --color-pink: #FFC6C6;
+  --color-pink-100: #FFC6C6;
+  --color-pink-200: #FAB5B5;
+  --color-pink-300: #F0A4A4;
+  --color-pink-500: #BA7070;
+
+  --color-orange: #FFBD6F;
+  --color-orange-100: #FFBD6F;
+  --color-orange-200: #FFAC4B;
+  --color-orange-300: #F5980C;
+  --color-orange-500: #BD7433;
+
+  --color-yellow: #FCD858;
+  --color-yellow-100: #FCD858;
+  --color-yellow-200: #F8CB2C;
+  --color-yellow-300: #E9BA16;
+  --color-yellow-500: #AB8E28;
+
+  --color-green: #A6D669;
+  --color-green-100: #A6D669;
+  --color-green-200: #93C94F;
+  --color-green-300: #81B241;
+  --color-green-500: #689332;
+
+  --color-violet: #BDAEF8;
+  --color-violet-100: #BDAEF8;
+  --color-violet-200: #AF9DF2;
+  --color-violet-300: #9E8BE8;
+  --color-violet-500: #796DC3;
+
+  /* Response */
+  --color-success: #A6D669;
+  --color-error: #EF5D5D;
+
+  /* Fonts */
+  --font-poppins: "Poppins", sans-serif;
+  --font-source: "Source Sans Pro", sans-serif;
+}
 
 @layer base {
-  /* Typography */
   h1 {
-    @apply text-[24px] leading-[28px] md:text-[58px] md:leading-[87px] font-medium font-poppins;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+  }
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 58px;
+      line-height: 87px;
+    }
   }
 
   h2 {
-    @apply text-[22px] leading-[33px] md:text-[44px] md:leading-[66px] font-semibold font-poppins;
+    font-size: 22px;
+    line-height: 33px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+  }
+  @media (min-width: 768px) {
+    h2 {
+      font-size: 44px;
+      line-height: 66px;
+    }
   }
 
   h3 {
-    @apply text-[22px] leading-[28px] md:text-[30px] md:leading-[45px] font-medium font-poppins;
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+  }
+  @media (min-width: 768px) {
+    h3 {
+      font-size: 30px;
+      line-height: 45px;
+    }
   }
 
   h4 {
-    @apply text-[22px] leading-[33px] font-source md:font-semibold md:font-poppins;
+    font-size: 22px;
+    line-height: 33px;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+  @media (min-width: 768px) {
+    h4 {
+      font-weight: 600;
+      font-family: "Poppins", sans-serif;
+    }
   }
 
   h5 {
-    @apply text-[16px] leading-[20px] font-source md:text-[18px] md:leading-[27px] font-medium md:font-poppins;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+  @media (min-width: 768px) {
+    h5 {
+      font-size: 18px;
+      line-height: 27px;
+      font-family: "Poppins", sans-serif;
+    }
   }
 
   h6 {
-    @apply text-[16px] leading-[24px] font-semibold uppercase font-poppins;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
   }
 
   p {
-    @apply text-[16px] leading-[20px] font-normal font-source;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    font-family: "Source Sans Pro", sans-serif;
   }
 
   a:hover {
-    @apply opacity-80;
+    opacity: 0.8;
   }
 
-  /* TODO: Add Caption typography? */
-
-  /* Layout */
   body {
-    /*
-      Use position: relative so that width: 100% on
-      absolutely positioned elements causes them to
-      span the viewport width
-    */
-    @apply relative;
+    position: relative;
   }
 }
 
 @layer components {
   .content {
-    /*
-      Set a max-width with automatic centering on the page for sections
-      and content that do not have a background that spans the screen width
-    */
-    @apply w-full max-w-6xl mx-auto px-4 md:px-6;
+    width: 100%;
+    max-width: 72rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  @media (min-width: 768px) {
+    .content {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
   }
 }

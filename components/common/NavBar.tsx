@@ -15,18 +15,35 @@ const ROUTES = [
 ];
 
 /** Navbar */
-const Navbar: FC = () => {
+const Navbar: FC<{ minimal?: boolean }> = ({ minimal = false }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  if (minimal) {
+    return (
+      <div className="w-full fixed z-30">
+        <div className="bg-blue">
+          <nav className="content flex flex-wrap pt-5 md:pt-6 pb-2 md:pb-6 box-border">
+            <Logo />
+          </nav>
+        </div>
+        <img
+          className="w-full -mt-0.5 md:hidden"
+          src="common/navbar-wave-sm.svg"
+        />
+      </div>
+    );
+  }
 
   return (
     <>
       <div className="w-full fixed z-30">
         {APPLICATION_IS_LIVE && (
-          <Link href={APPLICATION_LINK}>
-            <a className="block w-full text-center px-4 py-1 bg-charcoal-0 font-poppins hover:opacity-100">
-              Applications to join the {APPLICATION_TERM} team are now open,{" "}
-              <span className="underline hover:opacity-60">apply here</span>! 🎉
-            </a>
+          <Link
+            href={APPLICATION_LINK}
+            className="block w-full text-center px-4 py-1 bg-charcoal-0 font-poppins hover:opacity-100"
+          >
+            Applications to join the {APPLICATION_TERM} team are now open,{" "}
+            <span className="underline hover:opacity-60">apply here</span>! 🎉
           </Link>
         )}
         <div className="bg-blue">
@@ -80,9 +97,7 @@ const Logo = () => {
   return (
     <div className="flex flex-col justify-center">
       <Link href="/">
-        <a>
-          <img src="/common/logo-with-text.svg" alt="UW Blueprint logo" />
-        </a>
+        <img src="/common/logo-with-text.svg" alt="UW Blueprint logo" />
       </Link>
     </div>
   );
@@ -92,10 +107,12 @@ const Links = () => {
   return (
     <>
       {ROUTES.map((route) => (
-        <Link key={route.name} href={route.link}>
-          <a className="font-poppins font-normal text-white text-base">
-            {route.name}
-          </a>
+        <Link
+          key={route.name}
+          href={route.link}
+          className="font-poppins font-normal text-white text-base"
+        >
+          {route.name}
         </Link>
       ))}
     </>
@@ -110,7 +127,7 @@ const Buttons: FC<{ extraClasses?: string }> = ({ extraClasses }) => {
         size="md"
         variant="secondary"
         invert
-        href="/join"
+        href="/join-us"
       >
         Join Our Team!
       </Button>
