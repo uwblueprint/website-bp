@@ -60,9 +60,7 @@ function FAQItemRow({ item }: { item: FAQItem }) {
 
       {open ? (
         <div id={id} className="md:px-6 pb-6">
-          <p className="text-md text-[var(--secondary-dark)]">
-            {item.answer}
-          </p>
+          <p className="text-md text-[var(--secondary-dark)]">{item.answer}</p>
         </div>
       ) : null}
     </div>

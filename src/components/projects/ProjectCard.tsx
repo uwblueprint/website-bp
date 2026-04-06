@@ -23,7 +23,7 @@ export default function ProjectCard({
       className={cn(
         "col-span-12 grid h-full grid-cols-12 gap-0 overflow-hidden rounded-none border border-gray-200",
         "md:col-span-6 lg:col-span-3",
-        className
+        className,
       )}
     >
       <div className="relative col-span-4 h-40 w-full bg-gray-100 sm:h-44 md:h-48 ">

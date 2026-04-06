@@ -8,7 +8,12 @@ interface StudentCardProps {
   priority?: boolean;
 }
 
-export function StudentCard({ name, role, headshotSrc, priority = false }: StudentCardProps) {
+export function StudentCard({
+  name,
+  role,
+  headshotSrc,
+  priority = false,
+}: StudentCardProps) {
   return (
     <div className="group col-span-6 p-4 transition-colors duration-200 ease-out hover:bg-[var(--off-white)] md:col-span-3 lg:col-span-2">
       <div className="aspect-square overflow-hidden">

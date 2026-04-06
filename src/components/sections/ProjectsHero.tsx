@@ -7,13 +7,7 @@ export type ProjectsHeroFeatured = {
   label: string;
 };
 
-function ProjectLink({
-  id,
-  label,
-}: {
-  id: string;
-  label: string;
-}) {
+function ProjectLink({ id, label }: { id: string; label: string }) {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const target = document.getElementById(id);
@@ -84,7 +78,9 @@ export function ProjectsHero({
                 <span key={project.id}>
                   <ProjectLink id={project.id} label={project.label} />
                   {i < featuredProjects.length - 1 && (
-                    <span className="text-[var(--secondary-light)]">{", "}</span>
+                    <span className="text-[var(--secondary-light)]">
+                      {", "}
+                    </span>
                   )}
                 </span>
               ))}

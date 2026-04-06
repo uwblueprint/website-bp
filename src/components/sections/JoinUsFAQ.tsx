@@ -75,22 +75,14 @@ function FAQItemRow({ item }: { item: FAQItem }) {
 
       {open ? (
         <div id={id} className="pt-6 md:pt-0 md:px-6 pb-6">
-          <p className="text-md text-[var(--secondary-dark)]">
-            {item.answer}
-          </p>
+          <p className="text-md text-[var(--secondary-dark)]">{item.answer}</p>
         </div>
       ) : null}
     </div>
   );
 }
 
-function FAQGroup({
-  label,
-  items,
-}: {
-  label: string;
-  items: FAQItem[];
-}) {
+function FAQGroup({ label, items }: { label: string; items: FAQItem[] }) {
   return (
     <div className="pb-16">
       <h3 className="text-md text-[var(--secondary-dark)] md:pb-6 md:px-6">
@@ -110,7 +102,10 @@ export function JoinUsFAQ({ className }: { className?: string }) {
     <section
       id="join-us-faq"
       aria-label="Frequently asked questions"
-      className={cn("bg-[var(--background)] -mb-8 md:mb-0 px-8 pt-24 md:pb-24", className)}
+      className={cn(
+        "bg-[var(--background)] -mb-8 md:mb-0 px-8 pt-24 md:pb-24",
+        className,
+      )}
     >
       <div className="grid w-full grid-cols-12 gap-0">
         <h2 className="col-span-12 text-xxl lowercase text-[var(--bp-blue)] pb-12">

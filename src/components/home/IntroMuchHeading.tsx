@@ -1,11 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import {
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
 /**
  * xxl header line: primary megaphone on “much”, corner megaphone bottom-right;
@@ -41,7 +37,14 @@ export default function IntroMuchHeading() {
             className="inline-block"
             variants={{
               hidden: { opacity: 0, y: reduceMotion ? 0 : 16 },
-              visible: { opacity: 1, y: 0, transition: { duration: reduceMotion ? 0 : 0.25, ease: [0.22, 1, 0.36, 1] } },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: reduceMotion ? 0 : 0.25,
+                  ease: [0.22, 1, 0.36, 1],
+                },
+              },
             }}
           >
             {word}&nbsp;
@@ -52,23 +55,37 @@ export default function IntroMuchHeading() {
             className="inline-block"
             variants={{
               hidden: { opacity: 0, y: reduceMotion ? 0 : 16 },
-              visible: { opacity: 1, y: 0, transition: { duration: reduceMotion ? 0 : 0.25, ease: [0.22, 1, 0.36, 1] } },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: reduceMotion ? 0 : 0.25,
+                  ease: [0.22, 1, 0.36, 1],
+                },
+              },
             }}
           >
             much
           </motion.span>
-        </span>
-        {" "}
+        </span>{" "}
         {["more", "than", "a", "design", "team."].map((word, i) => (
           <motion.span
             key={i}
             className="inline-block"
             variants={{
               hidden: { opacity: 0, y: reduceMotion ? 0 : 16 },
-              visible: { opacity: 1, y: 0, transition: { duration: reduceMotion ? 0 : 0.25, ease: [0.22, 1, 0.36, 1] } },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: reduceMotion ? 0 : 0.25,
+                  ease: [0.22, 1, 0.36, 1],
+                },
+              },
             }}
           >
-            {word}{i < 4 ? " " : ""}
+            {word}
+            {i < 4 ? " " : ""}
           </motion.span>
         ))}
       </motion.p>

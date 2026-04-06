@@ -28,7 +28,10 @@ export interface ScrollCollageProps {
  * Renders a 760×760 design-frame collage that scales proportionally
  * to fill the available width of its parent without distortion.
  */
-export default function ScrollCollage({ cards, activeKeys }: ScrollCollageProps) {
+export default function ScrollCollage({
+  cards,
+  activeKeys,
+}: ScrollCollageProps) {
   return (
     <div
       className="relative w-full max-w-[760px] mx-auto"

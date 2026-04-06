@@ -12,7 +12,8 @@ export function HeroBottomContent() {
       {/* Columns 1–6 */}
       <FadeUp index={0} className="col-span-12 lg:col-span-6">
         <p className="min-w-0 text-lg text-[var(--primary-light)]">
-          A design team that builds bespoke tech for local and global nonprofits.
+          A design team that builds bespoke tech for local and global
+          nonprofits.
         </p>
       </FadeUp>
       {/* Columns 11–12 */}
@@ -23,7 +24,7 @@ export function HeroBottomContent() {
         <Link
           href="/nonprofits"
           className={cn(
-            buttonVariants({ variant: "filled-light", size: "default" })
+            buttonVariants({ variant: "filled-light", size: "default" }),
           )}
         >
           nonprofits

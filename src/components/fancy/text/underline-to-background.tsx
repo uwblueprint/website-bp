@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   type ComponentPropsWithoutRef,
@@ -6,51 +6,51 @@ import {
   useEffect,
   useMemo,
   useRef,
-} from "react"
-import { motion, type ValueAnimationTransition } from "motion/react"
+} from "react";
+import { motion, type ValueAnimationTransition } from "motion/react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 export type UnderlineToBackgroundProps<T extends ElementType = "span"> = {
   /**
    * The content to be displayed and animated
    */
-  children: React.ReactNode
+  children: React.ReactNode;
 
   /**
    * HTML Tag to render the component as
    * @default span
    */
-  as?: T
+  as?: T;
 
   /**
    * Optional class name for styling
    */
-  className?: string
+  className?: string;
 
   /**
    * Animation transition configuration
    * @default { type: "spring", damping: 30, stiffness: 300 }
    */
-  transition?: ValueAnimationTransition
+  transition?: ValueAnimationTransition;
 
   /**
    * The color that the text will animate to on hover
    */
-  targetTextColor?: string
+  targetTextColor?: string;
 
   /**
    * Height of the underline as a ratio of font size
    * @default 0.1
    */
-  underlineHeightRatio?: number
+  underlineHeightRatio?: number;
 
   /**
    * Padding of the underline as a ratio of font size
    * @default 0.01
    */
-  underlinePaddingRatio?: number
-} & Omit<ComponentPropsWithoutRef<T>, "as" | "children" | "className">
+  underlinePaddingRatio?: number;
+} & Omit<ComponentPropsWithoutRef<T>, "as" | "children" | "className">;
 
 function UnderlineToBackground<T extends ElementType = "span">({
   children,
@@ -62,32 +62,32 @@ function UnderlineToBackground<T extends ElementType = "span">({
   targetTextColor = "#fef",
   ...rest
 }: UnderlineToBackgroundProps<T>) {
-  const textRef = useRef<HTMLElement | null>(null)
+  const textRef = useRef<HTMLElement | null>(null);
 
-  const MotionComponent = useMemo(() => motion.create(as ?? "span"), [as])
+  const MotionComponent = useMemo(() => motion.create(as ?? "span"), [as]);
 
   useEffect(() => {
     const updateUnderlineStyles = () => {
       if (textRef.current) {
-        const fontSize = parseFloat(getComputedStyle(textRef.current).fontSize)
-        const underlineHeight = fontSize * underlineHeightRatio
-        const underlinePadding = fontSize * underlinePaddingRatio
+        const fontSize = parseFloat(getComputedStyle(textRef.current).fontSize);
+        const underlineHeight = fontSize * underlineHeightRatio;
+        const underlinePadding = fontSize * underlinePaddingRatio;
         textRef.current.style.setProperty(
           "--underline-height",
-          `${underlineHeight}px`
-        )
+          `${underlineHeight}px`,
+        );
         textRef.current.style.setProperty(
           "--underline-padding",
-          `${underlinePadding}px`
-        )
+          `${underlinePadding}px`,
+        );
       }
-    }
+    };
 
-    updateUnderlineStyles()
-    window.addEventListener("resize", updateUnderlineStyles)
+    updateUnderlineStyles();
+    window.addEventListener("resize", updateUnderlineStyles);
 
-    return () => window.removeEventListener("resize", updateUnderlineStyles)
-  }, [underlineHeightRatio, underlinePaddingRatio])
+    return () => window.removeEventListener("resize", updateUnderlineStyles);
+  }, [underlineHeightRatio, underlinePaddingRatio]);
 
   const underlineVariants = {
     initial: {
@@ -97,7 +97,7 @@ function UnderlineToBackground<T extends ElementType = "span">({
       height: "100%",
       transition: transition,
     },
-  }
+  };
 
   const textVariants = {
     initial: {
@@ -107,7 +107,7 @@ function UnderlineToBackground<T extends ElementType = "span">({
       color: targetTextColor,
       transition: transition,
     },
-  }
+  };
 
   return (
     <MotionComponent
@@ -129,9 +129,9 @@ function UnderlineToBackground<T extends ElementType = "span">({
         {children}
       </motion.span>
     </MotionComponent>
-  )
+  );
 }
 
-UnderlineToBackground.displayName = "UnderlineToBackground"
+UnderlineToBackground.displayName = "UnderlineToBackground";
 
-export default UnderlineToBackground
+export default UnderlineToBackground;

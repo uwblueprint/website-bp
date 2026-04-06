@@ -99,8 +99,7 @@ export default function ScrollReader({
       const els = wordRefs.current;
       const meta = wordMeta.current;
       const reduce = reduceRef.current;
-      const vpCenter =
-        window.scrollY + window.innerHeight * READ_LINE_FROM_TOP;
+      const vpCenter = window.scrollY + window.innerHeight * READ_LINE_FROM_TOP;
 
       for (let i = 0; i < els.length; i++) {
         const el = els[i];
@@ -109,9 +108,7 @@ export default function ScrollReader({
         const rect = el.getBoundingClientRect();
         const elCenter = window.scrollY + rect.top + rect.height / 2;
         const dist = vpCenter - elCenter;
-        const readT = reduce
-          ? 1
-          : Math.max(0, Math.min(1, dist / READ_WINDOW));
+        const readT = reduce ? 1 : Math.max(0, Math.min(1, dist / READ_WINDOW));
 
         el.style.color = colorAt(readT);
 

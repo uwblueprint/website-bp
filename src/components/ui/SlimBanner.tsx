@@ -30,7 +30,9 @@ export function SlimBanner({
       aria-label="Banner"
       className={cn(
         "px-8 py-8",
-        isLight ? "bg-white text-[var(--secondary-dark)]" : "bg-[var(--bp-blue)] text-white",
+        isLight
+          ? "bg-white text-[var(--secondary-dark)]"
+          : "bg-[var(--bp-blue)] text-white",
         className,
       )}
     >
@@ -55,4 +57,3 @@ export function SlimBanner({
     </section>
   );
 }
-

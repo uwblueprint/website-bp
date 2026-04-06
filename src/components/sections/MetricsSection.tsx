@@ -14,16 +14,26 @@ type Stat = {
 };
 
 const STATS: Stat[] = [
-  { value: "40+",       label: "Projects completed for nonprofits", href: "/projects" },
-  { value: "700+",      label: "Past & present student volunteers",           href: "/students" },
-  { value: "100,000+",  label: "Accumulated volunteer hours",                 href: "/join-us"  },
+  {
+    value: "40+",
+    label: "Projects completed for nonprofits",
+    href: "/projects",
+  },
+  {
+    value: "700+",
+    label: "Past & present student volunteers",
+    href: "/students",
+  },
+  { value: "100,000+", label: "Accumulated volunteer hours", href: "/join-us" },
 ];
 
 export function MetricsSection({ className }: { className?: string }) {
   return (
     <section
       aria-label="Our metrics"
-      className={`relative overflow-hidden bg-[var(--bp-blue)] px-8 pt-12 pb-8 min-h-[100vh] grid grid-cols-12 gap-0 content-between${className ? ` ${className}` : ""}`}
+      className={`relative overflow-hidden bg-[var(--bp-blue)] px-8 pt-12 pb-8 min-h-[100vh] grid grid-cols-12 gap-0 content-between${
+        className ? ` ${className}` : ""
+      }`}
     >
       <div className="relative z-[1] col-span-12">
         <h2 className="text-xxl lowercase text-[var(--primary-light)]">

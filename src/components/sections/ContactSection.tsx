@@ -18,12 +18,7 @@ const INITIAL_STATE: ContactFormState = {
   comment: "",
 };
 
-function buildMailto({
-  name,
-  email,
-  npoName,
-  comment,
-}: ContactFormState) {
+function buildMailto({ name, email, npoName, comment }: ContactFormState) {
   const to = "info@uwblueprint.org";
   const subject = `Contact — ${npoName || "NPO"} (${name || "Anonymous"})`;
 
@@ -35,7 +30,9 @@ function buildMailto({
     comment || "-",
   ].join("\n");
 
-  return `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  return `mailto:${to}?subject=${encodeURIComponent(
+    subject,
+  )}&body=${encodeURIComponent(body)}`;
 }
 
 export default function ContactSection() {
@@ -83,9 +80,8 @@ export default function ContactSection() {
 
       {/* Intro copy */}
       <p className="col-span-12 text-lg text-white w-full md:w-8/12 pb-24">
-        Send us a short message with your mission and the
-        challenges you face. We'll promptly reach out and schedule a call to
-        chat further :)
+        Send us a short message with your mission and the challenges you face.
+        We'll promptly reach out and schedule a call to chat further :)
       </p>
 
       {/* Form — primary fields use flex + gap; section outer grid stays 12-col */}
@@ -150,9 +146,7 @@ export default function ContactSection() {
 
           {/* Footer row */}
           <div className="flex items-center justify-between gap-4 pt-2">
-            <p className="text-sm text-white">
-              info@uwblueprint.org
-            </p>
+            <p className="text-sm text-white">info@uwblueprint.org</p>
 
             <button
               type="submit"
@@ -170,4 +164,3 @@ export default function ContactSection() {
     </section>
   );
 }
-

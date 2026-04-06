@@ -11,9 +11,5 @@ export default function Section({
   className,
   as: Tag = "section",
 }: SectionProps) {
-  return (
-    <Tag className={cn("w-full px-8 py-12", className)}>
-      {children}
-    </Tag>
-  );
+  return <Tag className={cn("w-full px-8 py-12", className)}>{children}</Tag>;
 }

@@ -98,7 +98,7 @@ export function ProjectsAdditionalCards() {
 
                     <p className="pt-4 text-sm font-roobert text-[var(--primary-dark)]">
                       {card.solution}
-                    </p> 
+                    </p>
                   </div>
 
                   <div className="inline-flex items-center rounded-none bg-[var(--bp-blue)] w-fit px-2 py-1 font-roobert text-sm text-[var(--primary-light)] shadow-none whitespace-nowrap mt-auto">
@@ -113,4 +113,3 @@ export function ProjectsAdditionalCards() {
     </section>
   );
 }
-

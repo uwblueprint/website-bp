@@ -23,7 +23,7 @@ export default function LoadingSpinner() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const SHOW_DELAY = 200;  // ms before the spinner fades in
+    const SHOW_DELAY = 200; // ms before the spinner fades in
     const MIN_VISIBLE = 300; // ms minimum display time once visible
 
     let showTime: number | null = null;

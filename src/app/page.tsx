@@ -18,10 +18,7 @@ export default function Home() {
           bottom fade (z-[3]): bp-blue → transparent over artwork. Main UI z-[10].
           Navbar is fixed z-[100] outside this section and stays on top for clicks.
         */}
-        <div
-          className="pointer-events-none absolute inset-0 z-0"
-          aria-hidden
-        />
+        <div className="pointer-events-none absolute inset-0 z-0" aria-hidden />
 
         <div style={{ opacity: 0.15 }}>
           <HeroWordmark />
@@ -75,18 +72,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        aria-label="Story"
-        className="w-full bg-[var(--background)]"
-      >
+      <section aria-label="Story" className="w-full bg-[var(--background)]">
         <div className="p-8">
           <ScrollExperience />
         </div>
       </section>
 
       <MetricsSection />
-      
-      <div className="flex flex-col pt-2 pb-2">  
+
+      <div className="flex flex-col pt-2 pb-2">
         <InterestedSection />
         <HomeVideoSection />
       </div>

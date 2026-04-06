@@ -31,7 +31,7 @@ export default function GridContainer({
         "w-full",
         /* Site-wide 12-column grid with no gutter */
         grid && "grid grid-cols-12 gap-0",
-        className
+        className,
       )}
     >
       {children}

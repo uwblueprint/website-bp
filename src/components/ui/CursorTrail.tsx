@@ -76,14 +76,11 @@ export function CursorTrailProvider({
     return () => ro.disconnect();
   }, [label, labelClassName]);
 
-  const enter = useCallback(
-    (incoming: React.ReactNode) => {
-      depth.current += 1;
-      setLabel(incoming);
-      setVisible(true);
-    },
-    [],
-  );
+  const enter = useCallback((incoming: React.ReactNode) => {
+    depth.current += 1;
+    setLabel(incoming);
+    setVisible(true);
+  }, []);
 
   const leave = useCallback(() => {
     depth.current = Math.max(0, depth.current - 1);

@@ -65,9 +65,7 @@ export function ProjectShowcase({
         <div className="flex flex-col bg-[var(--off-white)]">
           {/* Timeline + buttons strip */}
           <div className="flex flex-wrap items-center justify-between gap-4 px-8 pt-8">
-            <p className="text-md text-[var(--secondary-dark)]">
-              {timeline}
-            </p>
+            <p className="text-md text-[var(--secondary-dark)]">{timeline}</p>
 
             {hasButtons && (
               <div className="flex gap-4">

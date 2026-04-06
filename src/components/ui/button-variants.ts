@@ -35,7 +35,7 @@ export const buttonVariants = cva(
       variant: "filled-blue",
       size: "default",
     },
-  }
+  },
 );
 
 export type ButtonVariants = VariantProps<typeof buttonVariants>;

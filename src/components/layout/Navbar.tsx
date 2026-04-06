@@ -21,8 +21,7 @@ import { useNavHideProgress } from "@/lib/useNavHideProgress";
 import { cn } from "@/lib/utils";
 import { contactLinks, navbarNavLinks } from "@/lib/site-links";
 
-const NAV_TAGLINE =
-  "tech for social good @ Waterloo, ON";
+const NAV_TAGLINE = "tech for social good @ Waterloo, ON";
 
 /** Shown below `md` where the social/tagline column is fixed 100px wide. */
 const NAV_TAGLINE_SHORT = "tech for social good";
@@ -98,7 +97,7 @@ export default function Navbar() {
       logoCenterBoostRef.current =
         1 + LOGO_CENTER_PROXIMITY_BOOST * (1 - edgeT);
     },
-    []
+    [],
   );
 
   const onLogoFrame = useCallback(() => {
@@ -113,8 +112,8 @@ export default function Navbar() {
     const targetVel = reduce
       ? 0
       : wantsHoverSpinRef.current
-        ? LOGO_HOVER_SPIN_DEG_PER_S * logoCenterBoostRef.current
-        : 0;
+      ? LOGO_HOVER_SPIN_DEG_PER_S * logoCenterBoostRef.current
+      : 0;
     const v = hoverSpinVelRef.current;
     hoverSpinVelRef.current =
       v + (targetVel - v) * Math.min(1, LOGO_HOVER_SPIN_RAMP * dt);
@@ -263,7 +262,7 @@ export default function Navbar() {
           className={cn(
             "grid w-full transition-[grid-template-rows]",
             panelTransitionClass,
-            open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+            open ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
           )}
         >
           <div className="min-h-0 overflow-hidden">
@@ -276,7 +275,7 @@ export default function Navbar() {
               className={cn(
                 "flex w-full min-w-0 flex-row flex-nowrap items-stretch justify-between gap-2 px-8 pb-8 pt-8 md:gap-8 md:pt-24",
                 open && "border-b border-white",
-                !open && "pointer-events-none"
+                !open && "pointer-events-none",
               )}
             >
               <nav
@@ -304,7 +303,9 @@ export default function Navbar() {
                 )}
                 style={{
                   maxHeight:
-                    navColumnHeight != null ? `${navColumnHeight}px` : undefined,
+                    navColumnHeight != null
+                      ? `${navColumnHeight}px`
+                      : undefined,
                   overflowY: navColumnHeight != null ? "auto" : undefined,
                 }}
               >

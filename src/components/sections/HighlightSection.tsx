@@ -72,7 +72,7 @@ export function HighlightSection({
       const clamped = Math.max(0, Math.min(tabs.length - 1, next));
       setActive(clamped);
     },
-    [tabs.length]
+    [tabs.length],
   );
 
   const onTabKeyDown = useCallback(
@@ -114,7 +114,7 @@ export function HighlightSection({
           break;
       }
     },
-    [baseId, tabs.length]
+    [baseId, tabs.length],
   );
 
   const current = tabs[active];
@@ -131,7 +131,7 @@ export function HighlightSection({
       id={id}
       className={cn(
         "relative flex min-h-dvh flex-col overflow-hidden bg-[var(--bp-blue)] px-8 py-12",
-        className
+        className,
       )}
       aria-labelledby={`${baseId}-heading`}
     >
@@ -173,7 +173,7 @@ export function HighlightSection({
                     "min-[800px]:h-[200px] min-[800px]:justify-between min-[800px]:px-[24px] min-[800px]:py-6",
                     selected
                       ? "bg-[var(--primary-light)] text-[var(--primary-dark)] min-[800px]:text-[var(--primary-dark)]"
-                      : "bg-transparent text-[var(--primary-light)] hover:bg-[var(--primary-light)]/10"
+                      : "bg-transparent text-[var(--primary-light)] hover:bg-[var(--primary-light)]/10",
                   )}
                 >
                   <span className="w-full text-md min-[800px]:text-[32px] min-[800px]:leading-none">

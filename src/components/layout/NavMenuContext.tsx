@@ -19,10 +19,7 @@ const NavMenuContext = createContext<NavMenuContextValue | null>(null);
 
 export function NavMenuProvider({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const value = useMemo(
-    () => ({ menuOpen, setMenuOpen }),
-    [menuOpen]
-  );
+  const value = useMemo(() => ({ menuOpen, setMenuOpen }), [menuOpen]);
   return (
     <NavMenuContext.Provider value={value}>{children}</NavMenuContext.Provider>
   );

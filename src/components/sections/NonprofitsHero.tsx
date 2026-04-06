@@ -47,7 +47,8 @@ export function NonprofitsHero() {
 
           <div className="flex flex-col gap-1.5 text-lg">
             <p className="text-[var(--primary-light)]">
-              We build free, high-quality software for nonprofits that need it most.
+              We build free, high-quality software for nonprofits that need it
+              most.
             </p>
             <p className="text-[var(--secondary-light)]">
               <SectionLink {...SECTION_LINKS[0]} />

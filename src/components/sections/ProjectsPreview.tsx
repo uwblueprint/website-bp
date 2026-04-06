@@ -29,7 +29,8 @@ export function ProjectsPreview({
   const [hasScrolledIn, setHasScrolledIn] = useState(false);
 
   useEffect(() => {
-    const target = triggerRef?.current ?? document.getElementById(projects[0]?.id ?? "");
+    const target =
+      triggerRef?.current ?? document.getElementById(projects[0]?.id ?? "");
     if (!target) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -39,7 +40,7 @@ export function ProjectsPreview({
         }
       },
       // Match FadeUp's viewport: { amount: 0.35 }
-      { threshold: 0.35 }
+      { threshold: 0.35 },
     );
     observer.observe(target);
     return () => observer.disconnect();
@@ -67,7 +68,7 @@ export function ProjectsPreview({
         });
         if (best) setActiveId(best);
       },
-      { threshold: [0, 0.1, 0.2, 0.3, 0.5, 0.75, 1] }
+      { threshold: [0, 0.1, 0.2, 0.3, 0.5, 0.75, 1] },
     );
 
     sections.forEach((el) => observer.observe(el));

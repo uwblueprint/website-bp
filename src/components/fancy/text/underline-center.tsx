@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   type ComponentPropsWithoutRef,
@@ -6,45 +6,45 @@ import {
   useEffect,
   useMemo,
   useRef,
-} from "react"
-import { motion, type ValueAnimationTransition } from "motion/react"
-import { cn } from "@/lib/utils"
+} from "react";
+import { motion, type ValueAnimationTransition } from "motion/react";
+import { cn } from "@/lib/utils";
 
 export type CenterUnderlineProps<T extends ElementType = "span"> = {
   /**
    * The content to be displayed and animated
    */
-  children: React.ReactNode
+  children: React.ReactNode;
 
   /**
    * HTML Tag to render the component as
    * @default span
    */
-  as?: T
+  as?: T;
 
   /**
    * Optional class name for styling
    */
-  className?: string
+  className?: string;
 
   /**
    * Animation transition configuration
    * @default { duration: 0.25, ease: "easeInOut" }
    */
-  transition?: ValueAnimationTransition
+  transition?: ValueAnimationTransition;
 
   /**
    * Height of the underline as a ratio of font size
    * @default 0.1
    */
-  underlineHeightRatio?: number
+  underlineHeightRatio?: number;
 
   /**
    * Padding of the underline as a ratio of font size
    * @default 0.01
    */
-  underlinePaddingRatio?: number
-} & Omit<ComponentPropsWithoutRef<T>, "as" | "children" | "className">
+  underlinePaddingRatio?: number;
+} & Omit<ComponentPropsWithoutRef<T>, "as" | "children" | "className">;
 
 function CenterUnderline<T extends ElementType = "span">({
   children,
@@ -55,33 +55,33 @@ function CenterUnderline<T extends ElementType = "span">({
   underlinePaddingRatio = 0.01,
   ...props
 }: CenterUnderlineProps<T>) {
-  const textRef = useRef<HTMLElement | null>(null)
-  const contentRef = useRef<HTMLSpanElement | null>(null)
-  const MotionComponent = useMemo(() => motion.create(as ?? "span"), [as])
+  const textRef = useRef<HTMLElement | null>(null);
+  const contentRef = useRef<HTMLSpanElement | null>(null);
+  const MotionComponent = useMemo(() => motion.create(as ?? "span"), [as]);
 
   useEffect(() => {
     const updateUnderlineStyles = () => {
-      const el = contentRef.current ?? textRef.current
+      const el = contentRef.current ?? textRef.current;
       if (el) {
-        const fontSize = parseFloat(getComputedStyle(el).fontSize)
-        const underlineHeight = fontSize * underlineHeightRatio
-        const underlinePadding = fontSize * underlinePaddingRatio
+        const fontSize = parseFloat(getComputedStyle(el).fontSize);
+        const underlineHeight = fontSize * underlineHeightRatio;
+        const underlinePadding = fontSize * underlinePaddingRatio;
         textRef.current?.style.setProperty(
           "--underline-height",
-          `${underlineHeight}px`
-        )
+          `${underlineHeight}px`,
+        );
         textRef.current?.style.setProperty(
           "--underline-padding",
-          `${underlinePadding}px`
-        )
+          `${underlinePadding}px`,
+        );
       }
-    }
+    };
 
-    updateUnderlineStyles()
-    window.addEventListener("resize", updateUnderlineStyles)
+    updateUnderlineStyles();
+    window.addEventListener("resize", updateUnderlineStyles);
 
-    return () => window.removeEventListener("resize", updateUnderlineStyles)
-  }, [underlineHeightRatio, underlinePaddingRatio])
+    return () => window.removeEventListener("resize", updateUnderlineStyles);
+  }, [underlineHeightRatio, underlinePaddingRatio]);
 
   const underlineVariants = {
     hidden: {
@@ -92,7 +92,7 @@ function CenterUnderline<T extends ElementType = "span">({
       width: "100%",
       transition: transition,
     },
-  }
+  };
 
   return (
     <MotionComponent
@@ -118,9 +118,9 @@ function CenterUnderline<T extends ElementType = "span">({
         />
       </span>
     </MotionComponent>
-  )
+  );
 }
 
-CenterUnderline.displayName = "CenterUnderline"
+CenterUnderline.displayName = "CenterUnderline";
 
-export default CenterUnderline
+export default CenterUnderline;

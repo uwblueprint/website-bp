@@ -42,9 +42,9 @@ const Footer: FC<{ minimal?: boolean }> = ({ minimal = false }) => {
               {LINKS.map((linkGroup) => (
                 <div key={linkGroup.name}>
                   <Link href={linkGroup.link}>
-                      <h5 className="text-white cursor-pointer">
-                        {linkGroup.name}
-                      </h5>
+                    <h5 className="text-white cursor-pointer">
+                      {linkGroup.name}
+                    </h5>
                   </Link>
                 </div>
               ))}

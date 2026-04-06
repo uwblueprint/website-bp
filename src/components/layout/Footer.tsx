@@ -6,10 +6,7 @@ import { contactLinks, footerNavLinks } from "@/lib/site-links";
 /* Column heading shared style */
 function ColHeading({ children }: { children: React.ReactNode }) {
   return (
-    <p
-      className="text-md mb-4"
-      style={{ color: "var(--secondary-light)" }}
-    >
+    <p className="text-md mb-4" style={{ color: "var(--secondary-light)" }}>
       {children}
     </p>
   );
@@ -21,7 +18,6 @@ export default function Footer() {
       {/* Top section — flex row, each column explicitly 1/2 → 1/4 → 1/6 of the parent */}
       <div className="w-full px-8 pt-10 pb-0 mg-48">
         <div className="flex flex-row items-start gap-2">
-
           {/* Col 1 — NAVIGATE */}
           <div className="w-1/2 sm:w-1/4 lg:w-1/6 shrink-0">
             <ColHeading>Navigate</ColHeading>
@@ -66,14 +62,18 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-
         </div>
       </div>
 
       {/* Wordmark */}
-      <div className="mt-10 w-full" aria-hidden="true" style={{ minHeight: "clamp(60px, 10vw, 160px)" }}>
+      <div
+        className="mt-10 w-full"
+        aria-hidden="true"
+        style={{ minHeight: "clamp(60px, 10vw, 160px)" }}
+      >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="mt-32"
+        <img
+          className="mt-32"
           src="/footer-bp-type.svg"
           alt=""
           style={{ width: "100%", height: "auto", display: "block" }}

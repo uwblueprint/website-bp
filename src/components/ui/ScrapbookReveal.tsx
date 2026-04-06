@@ -77,20 +77,17 @@ export default function ScrapbookReveal({
           animation: `scrapbook-slap ${slapDuration}ms ease-out forwards`,
         }
       : phase === "lifting"
-        ? {
-            animation: `scrapbook-lift ${slapDuration}ms ease-in forwards`,
-          }
-        : {
-            // Resting: hold the end-state transform without re-animating
-            transform: `scale(1) rotate(${rotateDeg}deg)`,
-            opacity: 1,
-          };
+      ? {
+          animation: `scrapbook-lift ${slapDuration}ms ease-in forwards`,
+        }
+      : {
+          // Resting: hold the end-state transform without re-animating
+          transform: `scale(1) rotate(${rotateDeg}deg)`,
+          opacity: 1,
+        };
 
   return (
-    <div
-      className={className}
-      style={{ ...cssVars, ...animationStyle }}
-    >
+    <div className={className} style={{ ...cssVars, ...animationStyle }}>
       {children}
     </div>
   );

@@ -32,7 +32,7 @@ export default function ScrollToTopButton() {
             type="button"
             className={cn(
               buttonVariants({ variant: "filled-blue", size: "default" }),
-              "gap-2"
+              "gap-2",
             )}
             onClick={scrollToTop}
             aria-label="Scroll to the top"

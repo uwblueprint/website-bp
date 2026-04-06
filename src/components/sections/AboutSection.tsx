@@ -43,7 +43,8 @@ export function AboutSection({ className }: { className?: string }) {
     const sectionTop = rect.top + window.scrollY;
     const scrollable = el.offsetHeight - window.innerHeight;
     // Land slightly past the index threshold so Math.floor resolves to it.
-    const targetScroll = sectionTop + (index / SECTIONS.length + 0.01) * scrollable;
+    const targetScroll =
+      sectionTop + (index / SECTIONS.length + 0.01) * scrollable;
 
     window.scrollTo({ top: targetScroll, behavior: "smooth" });
   }, []);
@@ -81,7 +82,6 @@ export function AboutSection({ className }: { className?: string }) {
       {/* Sticky inner — stays fixed to the viewport while the outer div scrolls past. */}
       <div className="sticky top-0 h-screen overflow-hidden">
         <div className="grid h-full w-full grid-cols-12 gap-0 px-8 py-8 content-between">
-
           {/* ── Stacked XXL headers — top left ─────────────────────────────── */}
           <div
             className="col-span-12 flex flex-col gap-0 -space-y-1 sm:-space-y-3"
@@ -116,7 +116,6 @@ export function AboutSection({ className }: { className?: string }) {
           >
             {SECTIONS[activeIndex].text}
           </p>
-
         </div>
       </div>
     </div>

@@ -10,7 +10,10 @@ export function NonprofitsCTA({ className }: { className?: string }) {
   return (
     <section
       aria-label="Learn more"
-      className={cn("bg-[var(--background)] px-8 pb-8 pt-24 md:pb-24", className)}
+      className={cn(
+        "bg-[var(--background)] px-8 pb-8 pt-24 md:pb-24",
+        className,
+      )}
     >
       <div className="grid w-full grid-cols-12 gap-0">
         <h2 className="col-span-12 text-xxl lowercase text-[var(--bp-blue)] pb-8 md:pb-12">
@@ -19,8 +22,8 @@ export function NonprofitsCTA({ className }: { className?: string }) {
 
         <p className="col-span-12 text-lg text-[var(--primary-dark)] pb-12 md:pb-16 md:w-8/12">
           Curious about the kind of work we do? Check out the projects
-          we&apos;ve shipped, or read our in-depth guide on how we evaluate
-          and select nonprofit partners.
+          we&apos;ve shipped, or read our in-depth guide on how we evaluate and
+          select nonprofit partners.
         </p>
 
         <div className="col-span-12 flex flex-col gap-4 min-[800px]:flex-row">

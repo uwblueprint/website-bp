@@ -37,8 +37,8 @@ export function WhyBlueprint({ className }: { className?: string }) {
           <p>
             UW Blueprint is a student-run organization at the University of
             Waterloo that builds technology solutions for nonprofits — for free.
-            We pair passionate students with organizations doing meaningful work,
-            delivering custom software that drives real community impact.
+            We pair passionate students with organizations doing meaningful
+            work, delivering custom software that drives real community impact.
           </p>
         </div>
 

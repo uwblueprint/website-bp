@@ -82,7 +82,9 @@ export function ProjectHighlight({
             <div className="flex flex-col items-start gap-1 md:col-span-2 md:items-end md:gap-[4px]">
               {website && (
                 <TextLinkButton
-                  href={website.startsWith("http") ? website : `https://${website}`}
+                  href={
+                    website.startsWith("http") ? website : `https://${website}`
+                  }
                   variant="dark"
                   size="sm"
                 >
@@ -135,7 +137,6 @@ export function ProjectHighlight({
                 </blockquote>
               </div>
             )}
-
           </div>
         </div>
       </FadeUp>
