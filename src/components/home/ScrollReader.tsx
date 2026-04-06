@@ -34,7 +34,7 @@ const TRIGGER_ON = 0.6;
 const TRIGGER_OFF = 0.4;
 
 export interface ScrollReaderProps {
-  /** Text with optional `{key:word}` markers for trigger words. */
+  /** Text with optional `{triggerKey:display}` markers; punctuation after a word belongs in both parts (e.g. `{2015,:2015,}`). */
   paragraphs: string[];
   onTrigger: (key: string, dir: "on" | "off") => void;
   reduceMotion?: boolean | null;
@@ -48,7 +48,8 @@ interface WordMeta {
 function parseParagraphs(paragraphs: string[]): WordMeta[][] {
   return paragraphs.map((p) => {
     const words: WordMeta[] = [];
-    const re = /\{(\w+):([^}]+)\}|(\S+)/g;
+    /** Key may include trailing punctuation (e.g. `{2015,:2015,}`) so no stray space before `,`. */
+    const re = /\{([^:]+):([^}]+)\}|(\S+)/g;
     let m: RegExpExecArray | null;
     while ((m = re.exec(p)) !== null) {
       if (m[1] && m[2]) {

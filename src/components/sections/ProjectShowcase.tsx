@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
+import { TestimonialQuoteBody } from "@/lib/testimonial-quote";
 import { buttonVariants } from "@/components/ui/button-variants";
 
 interface ProjectShowcaseProps {
@@ -124,7 +125,7 @@ export function ProjectShowcase({
               <div className="flex flex-col">
                 <p className="text-[var(--primary-dark)]">Testimonial</p>
                 <div className="text-[var(--secondary-dark)]">
-                  {testimonial}
+                  <TestimonialQuoteBody>{testimonial}</TestimonialQuoteBody>
                 </div>
               </div>
             )}

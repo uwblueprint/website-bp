@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import { FadeUp } from "@/components/ui/FadeUp";
 import TextLinkButton from "@/components/ui/TextLinkButton";
+import { TestimonialQuoteBody } from "@/lib/testimonial-quote";
 interface ProjectHighlightProps {
   id: string;
   highlightImage: string;
@@ -130,7 +131,7 @@ export function ProjectHighlight({
                   Testimonial
                 </p>
                 <blockquote className="text-sm text-[var(--primary-dark)]">
-                  {testimonial}
+                  <TestimonialQuoteBody>{testimonial}</TestimonialQuoteBody>
                 </blockquote>
               </div>
             )}

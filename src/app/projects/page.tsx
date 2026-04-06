@@ -131,7 +131,12 @@ export default function ProjectsPage() {
 
   return (
     <main>
-      <ProjectsHero />
+      <ProjectsHero
+        featuredProjects={PROJECTS.map(({ id, projectName }) => ({
+          id,
+          label: projectName,
+        }))}
+      />
 
       <div className="relative grid w-full grid-cols-12 gap-0 px-8">
         {/* Preview sidebar: 2 col sticky */}

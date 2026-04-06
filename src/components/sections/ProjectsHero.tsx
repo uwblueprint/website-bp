@@ -2,27 +2,10 @@
 
 import UnderlineToBackground from "@/components/fancy/text/underline-to-background";
 
-/**
- * Project data for the featured five.
- *
- * `id` must match the `id` attribute on the corresponding project section
- * further down the page so the anchor-scroll works.
- *
- * `description` and `image` are intentionally empty stubs — they are the
- * hook for the hover-preview feature that will be added later. Each link
- * already receives `data-project-id` so the future preview handler can
- * identify which project is hovered without changing the link structure.
- */
-const FEATURED_PROJECTS: {
+export type ProjectsHeroFeatured = {
   id: string;
   label: string;
-  description?: string;
-  image?: string;
-}[] = [
-  { id: "sistema", label: "Sistema" },
-  { id: "feeding-canadian-kids", label: "Feeding Canadian Kids" },
-  { id: "a-better-tent-city", label: "A Better Tent City" },
-];
+};
 
 function ProjectLink({
   id,
@@ -67,8 +50,15 @@ function ProjectLink({
  * - Subtext uses `text-lg` (32px Roobert) matching Figma's body-lg scale.
  * - Project links use `UnderlineToBackground` in `secondary-light` colour with
  *   a `data-project-id` attribute ready for future hover-preview wiring.
+ *
+ * `featuredProjects` should match the project sections on the page (`id` +
+ * display names) so anchors and labels stay in sync.
  */
-export function ProjectsHero() {
+export function ProjectsHero({
+  featuredProjects,
+}: {
+  featuredProjects: ProjectsHeroFeatured[];
+}) {
   return (
     <section
       aria-label="Projects hero"
@@ -85,14 +75,15 @@ export function ProjectsHero() {
 
           <div className="flex flex-col gap-1.5 text-lg">
             <p className="text-[var(--primary-light)]">
-              32+ projects shipped. Here are 5 of our favourites:
+              32+ projects shipped. Here are {featuredProjects.length} of our
+              favourites:
             </p>
 
             <p className="text-[var(--secondary-light)]">
-              {FEATURED_PROJECTS.map((project, i) => (
+              {featuredProjects.map((project, i) => (
                 <span key={project.id}>
                   <ProjectLink id={project.id} label={project.label} />
-                  {i < FEATURED_PROJECTS.length - 1 && (
+                  {i < featuredProjects.length - 1 && (
                     <span className="text-[var(--secondary-light)]">{", "}</span>
                   )}
                 </span>
