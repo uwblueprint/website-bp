@@ -18,7 +18,7 @@ const FAQ_ITEMS: FAQItem[] = [
   {
     question: "What does the nonprofit-project team interaction look like?",
     answer:
-      "Each project team is led by a project lead who serves as the main point of contact between the nonprofit and Blueprint. Regular check-ins include progress updates, design reviews, and feedback sessions to ensure we're building exactly what you need.",
+      "Each project team is led by a pairing of project lead(s) and product manager(s) who serve as the main point of contact between the nonprofit and Blueprint. Regular check-ins include progress updates, design reviews, and feedback sessions to ensure we're building exactly what you need.",
   },
   {
     question: "How does UW Blueprint ensure success?",
@@ -28,7 +28,7 @@ const FAQ_ITEMS: FAQItem[] = [
   {
     question: "What type of services does UW Blueprint provide?",
     answer:
-      "We primarily build custom web and mobile applications tailored to your nonprofit's needs. This includes full-stack development, UI/UX design, database architecture, and deployment. We focus on creating tools that streamline your operations and amplify your impact.",
+      "We primarily build custom web and mobile applications tailored to your nonprofit's needs. This includes full-stack development, UI/UX design, and deployment. We focus on creating tools that streamline your operations and amplify your impact.",
   },
   {
     question: "Do you need a project idea to work with Blueprint?",

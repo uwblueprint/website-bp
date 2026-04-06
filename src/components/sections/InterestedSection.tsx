@@ -49,7 +49,7 @@ const PANELS = [
     label: "Students",
     body: (
       <>
-        We have a wide variety of roles and encourage applicants of all ages and technical abilities to apply. Whether you&apos;re applying for developer, graphic designer or VP finance, we assess all candidates on their desire to learn, cultural fit and passion for social good — not just skill or seniority. We work year-round and our applications open ~2 months before the term begins, with hiring decisions released 4–5 weeks later.
+        We have a wide variety of roles and encourage applicants of all years and technical abilities to apply. Whether you&apos;re applying for developer, graphic designer or VP finance, we assess all candidates on their desire to learn, cultural fit and passion for social good — not just skill or seniority. We work year-round and our applications open ~2 months before the term begins, with hiring decisions released 4–5 weeks later.
       </>
     ),
     buttons: (
