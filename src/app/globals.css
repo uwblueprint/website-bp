@@ -1,0 +1,388 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ─── Font Declarations ──────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: "Roobert";
+  src: url("./fonts/Roobert-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── Tailwind v4 Theme ──────────────────────────────────────────────────── */
+
+@theme inline {
+  /* Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  --color-secondary-light: var(--secondary-light);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-bp-blue: var(--bp-blue);
+  --color-off-white: var(--off-white);
+
+  /* Fonts */
+  --font-roobert: "Roobert", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-body: var(--font-roobert);
+  --font-header: var(--font-poppins);
+
+  /* Type line-heights — sizes live on :root (Pattern A; breakpoints update vars, not classes). */
+  --text-sm--line-height: 1.4;
+  --text-md--line-height: 1.5;
+  --text-lg--line-height: 1.4;
+  --text-xl--line-height: 1;
+  --text-xxl--line-height: 1;
+
+  /* Header letter-spacing (-8%) */
+  --tracking-header: -0.08em;
+
+  /* Grid columns */
+  --grid-cols-desktop: 4;
+  --grid-cols-tablet: 6;
+  --grid-cols-mobile: 12;
+
+  /* Gutter */
+  --grid-gutter: 0px;
+
+  /* Margins */
+  --grid-margin-desktop: 32px;
+  --grid-margin-tablet: 32px;
+  --grid-margin-mobile: 32px;
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* ─── CSS Custom Properties ──────────────────────────────────────────────── */
+
+:root {
+
+  /* Blueprint brand colors — update hex values once final brand assets arrive */
+  --primary-light: #FFFFFF;
+  --primary-dark: #282F3A;
+  --secondary-light: #96BDEF;
+  --secondary-dark: #90959D;
+  --bp-blue: #2D7BDF;
+  --off-white: #F7F7F7;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /*
+   * Type scale — mobile-first. Utilities text-sm … text-xxl read only these vars;
+   * all responsive behaviour lives here, not in component classes.
+   */
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: 20px;
+  --text-xl: 48px;
+  --text-xxl: 64px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --text-lg: 32px;
+    --text-xl: 64px;
+    --text-xxl: 96px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --text-xxl: 200px;
+    --text-xl: 128px
+  }
+}
+
+/* Body sm/md scale up at xl (Tailwind xl = 1280px). */
+@media (min-width: 1280px) {
+  :root {
+    --text-sm: 20px;
+    --text-md: 24px;
+  }
+}
+
+/* ─── Base Styles ────────────────────────────────────────────────────────── */
+
+body {
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+  font-size: var(--text-md);
+  line-height: var(--text-md--line-height);
+}
+
+/* ─── Typography Utilities ───────────────────────────────────────────────── */
+
+@layer utilities {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Body scale — Roobert. Sizes respond via :root vars, no per-class media queries. */
+  .text-sm {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    line-height: var(--text-sm--line-height);
+  }
+  .text-md {
+    font-family: var(--font-body);
+    font-size: var(--text-md);
+    line-height: var(--text-md--line-height);
+  }
+  .text-lg {
+    font-family: var(--font-body);
+    font-size: var(--text-lg);
+    line-height: var(--text-lg--line-height);
+  }
+
+  /* Display scale — Poppins SemiBold + header tracking. Sizes respond via :root vars. */
+  .text-xl {
+    font-family: var(--font-header);
+    font-weight: 600;
+    font-size: var(--text-xl);
+    line-height: var(--text-xl--line-height);
+    letter-spacing: var(--tracking-header);
+  }
+  .text-xxl {
+    font-family: var(--font-header);
+    font-weight: 600;
+    font-size: var(--text-xxl);
+    line-height: var(--text-xxl--line-height);
+    letter-spacing: var(--tracking-header);
+  }
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    /* background-color: var(--bp-blue);
+    min-height: 100%; */
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Prevent accidental white showing when sections/gradients reveal the page background. */
+    /* background-color: var(--bp-blue);
+    min-height: 100%; */
+  }
+
+  /* Cursors for interactive / hoverable elements */
+  a[href]:not([aria-disabled="true"]) {
+    @apply cursor-pointer;
+  }
+  a[href][aria-disabled="true"] {
+    @apply cursor-not-allowed;
+  }
+  button:not(:disabled) {
+    @apply cursor-pointer;
+  }
+  button:disabled {
+    @apply cursor-not-allowed;
+  }
+  [role="button"]:not([aria-disabled="true"]):not(:disabled) {
+    @apply cursor-pointer;
+  }
+  [role="button"][aria-disabled="true"],
+  [role="button"]:disabled {
+    @apply cursor-not-allowed;
+  }
+  [role="link"] {
+    @apply cursor-pointer;
+  }
+  input[type="submit"]:not(:disabled),
+  input[type="button"]:not(:disabled),
+  input[type="reset"]:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled),
+  input[type="file"]:not(:disabled),
+  input[type="color"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+  input:disabled,
+  select:disabled,
+  textarea:disabled {
+    @apply cursor-not-allowed;
+  }
+  select:not(:disabled) {
+    @apply cursor-pointer;
+  }
+  summary {
+    @apply cursor-pointer;
+  }
+  label[for] {
+    @apply cursor-pointer;
+  }
+}
+
+/* ── Scrapbook slap-down animation ────────────────────────────────────────────
+   Stage 1 → 2: element snaps in at 120% scale (handled by delay in JS/CSS).
+   Stage 2 → 3: eases down to resting scale over 200ms.
+   `--sb-rotate` is set as an inline custom property on each element.
+   `--sb-rotate-slap` is 1.5× the resting angle for the "overshoot" moment.
+   ──────────────────────────────────────────────────────────────────────────── */
+/* ── About section description slide-in ───────────────────────────────────── */
+@keyframes about-text-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  .about-text-in {
+    animation: about-text-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .about-text-in {
+      animation: none;
+    }
+  }
+}
+
+@keyframes scrapbook-slap {
+  0% {
+    transform: scale(1.2) rotate(var(--sb-rotate-slap, 0deg));
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(var(--sb-rotate, 0deg));
+    opacity: 1;
+  }
+}
+
+@keyframes scrapbook-lift {
+  0% {
+    transform: scale(1) rotate(var(--sb-rotate, 0deg));
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.85) rotate(var(--sb-rotate, 0deg));
+    opacity: 0;
+  }
+}

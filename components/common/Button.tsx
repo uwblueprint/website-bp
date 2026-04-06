@@ -70,12 +70,10 @@ const Button: FC<Props> = ({
         </button>
       </a>
     ) : (
-      <Link href={href}>
-        <a className="hover:opacity-100">
-          <button className={buttonClasses} tabIndex={-1} {...props}>
-            {children}
-          </button>
-        </a>
+      <Link href={href} className="hover:opacity-100">
+        <button className={buttonClasses} tabIndex={-1} {...props}>
+          {children}
+        </button>
       </Link>
     )
   ) : (
