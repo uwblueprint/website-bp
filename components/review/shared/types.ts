@@ -7,3 +7,8 @@ export type ReviewEndData = {
   skillsCategory: string;
   secondChoiceRole: string;
 };
+
+export type ReviewShortAnswer = {
+  question: string;
+  response?: string;
+};

@@ -1,11 +1,29 @@
-export const extractShortAnswerData = (shortAnswerJSON: any) => {
-  const extractedQuestions = shortAnswerJSON.map(
-    (dict: { [key: string]: string }) => dict.question,
-  );
+import { ReviewShortAnswer } from "./types";
 
-  const extractedAnswers = shortAnswerJSON.map(
-    (dict: { [key: string]: string }) => dict.response,
-  );
+const parseJsonArray = <T>(value?: string): T[] => {
+  if (!value) {
+    return [];
+  }
+
+  try {
+    const parsedValue = JSON.parse(value);
+    return Array.isArray(parsedValue) ? (parsedValue as T[]) : [];
+  } catch {
+    return [];
+  }
+};
+
+export const getParsedShortAnswers = (
+  serializedShortAnswers?: string,
+): ReviewShortAnswer[] =>
+  parseJsonArray<ReviewShortAnswer>(serializedShortAnswers);
+
+export const extractShortAnswerData = (
+  shortAnswerJSON: ReviewShortAnswer[],
+): { extractedQuestions: string[]; extractedAnswers: string[] } => {
+  const extractedQuestions = shortAnswerJSON.map((dict) => dict.question);
+
+  const extractedAnswers = shortAnswerJSON.map((dict) => dict.response ?? "");
 
   return { extractedQuestions, extractedAnswers };
 };
@@ -15,7 +33,7 @@ export const getReviewId = (
 ): number => {
   const reviewId =
     typeof query["reviewId"] === "string"
-      ? parseInt(query["reviewId"])
+      ? parseInt(query["reviewId"], 10)
       : (() => {
           throw new Error("reviewId must be a String");
         })();
