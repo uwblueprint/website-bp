@@ -1,17 +1,13 @@
 import CheckIcon from "@components/icons/check.icon";
 import Image from "next/image";
 import Link from "next/link";
-import { ReactElement, useContext } from "react";
-import { useTheme } from "@mui/material/styles";
 import { ReviewStage } from "./constants";
 import { ReviewSetStageContext } from "./ReviewContext";
-import { ReviewScores } from "./types";
-import { getMaxAccessibleStageIndex } from "./reviewUtils";
+import { useContext } from "react";
+import { useTheme } from "@mui/material/styles";
 
 interface Props {
   currentStage: ReviewStage;
-  scores?: ReviewScores;
-  allCompleted?: boolean;
 }
 
 type StepState = "current" | "completed" | "future";
@@ -41,14 +37,9 @@ const getStepState = (step: StepConfig, currentIndex: number): StepState => {
 interface StepIndicatorProps {
   step: StepConfig;
   state: StepState;
-  canNavigate: boolean;
 }
 
-const StepIndicator = ({
-  step,
-  state,
-  canNavigate,
-}: StepIndicatorProps): ReactElement => {
+const StepIndicator = ({ step, state }: StepIndicatorProps) => {
   const setStage = useContext(ReviewSetStageContext);
   const theme = useTheme();
 
@@ -59,73 +50,50 @@ const StepIndicator = ({
     },
     current: {
       backgroundColor: theme.palette.background.default,
-      borderColor: theme.palette.background.default,
+      borderColor: theme.palette.primary.contrastText,
     },
     future: {
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: "transparent",
       borderColor: theme.palette.primary.contrastText,
     },
   };
 
   const numberStyleObjects: Record<StepState, React.CSSProperties> = {
-    completed: { color: theme.palette.primary.contrastText, fontWeight: 700 },
+    completed: { color: theme.palette.primary.contrastText },
     current: { color: theme.palette.primary.main, fontWeight: 700 },
-    future: { color: theme.palette.primary.contrastText, fontWeight: 700 },
+    future: { color: theme.palette.primary.contrastText },
   };
 
   return (
     <button
-      type="button"
-      disabled={!canNavigate}
-      onClick={() => {
-        if (!canNavigate) {
-          return;
-        }
-
-        setStage?.(step.stage);
-      }}
-      className={`flex flex-col items-center gap-1 transition-opacity ${
-        canNavigate ? "hover:opacity-80" : "cursor-default"
-      }`}
+      onClick={() => setStage?.(step.stage)}
+      className="flex flex-col items-center gap-1 hover:opacity-80 transition-opacity"
       aria-label={`Navigate to ${step.label} step`}
     >
       <div
-        className="flex h-8 w-8 items-center justify-center rounded-full border-2"
+        className="w-9 h-9 rounded-full border-2 flex items-center justify-center"
         style={circleStyleObjects[state]}
       >
         {state === "completed" ? (
-          <CheckIcon className="h-4 w-4 text-white" />
+          <CheckIcon
+            className="w-5 h-5"
+            style={{ color: theme.palette.primary.contrastText }}
+          />
         ) : (
-          <span
-            className="text-[11px] font-poppins"
-            style={numberStyleObjects[state]}
-          >
+          <span className={`text-sm`} style={numberStyleObjects[state]}>
             {step.index}
           </span>
         )}
       </div>
-      <span className="font-poppins text-[15px] font-medium uppercase leading-[1.4] text-white">
+      <span className="text-white text-xs font-medium uppercase tracking-wide">
         {step.label}
       </span>
     </button>
   );
 };
 
-export const ReviewProgressHeader = ({
-  currentStage,
-  scores,
-  allCompleted = false,
-}: Props): ReactElement => {
-  const currentIndex = allCompleted
-    ? steps.length
-    : Math.max(
-        steps.findIndex((step) => step.stage === currentStage),
-        0,
-      );
-  const maxAccessibleIndex =
-    allCompleted || !scores
-      ? steps.length - 1
-      : getMaxAccessibleStageIndex(scores);
+export const ReviewProgressHeader = ({ currentStage }: Props) => {
+  const currentIndex = steps.findIndex((s) => s.stage === currentStage);
   const theme = useTheme();
 
   return (
@@ -133,26 +101,25 @@ export const ReviewProgressHeader = ({
       className="w-full"
       style={{ backgroundColor: theme.palette.primary.main }}
     >
-      <div className="flex min-h-[94px] w-full items-center justify-between px-6 py-4 md:px-9">
+      <div className="flex items-center justify-between px-9 py-4 w-full">
+        {/* Left side - Logo */}
         <Link href="/admin">
-          <a className="flex">
-            <Image
-              src="/common/logo-with-text.svg"
-              alt="Blueprint Logo"
-              width={206}
-              height={41}
-              className="cursor-pointer"
-            />
-          </a>
+          <Image
+            src="/common/logo-with-text.svg"
+            alt="Blueprint Logo"
+            width={206}
+            height={41}
+            className="cursor-pointer"
+          />
         </Link>
 
-        <div className="hidden items-center gap-9 md:flex">
+        {/* Right side - Progress Stepper */}
+        <div className="hidden md:flex items-center gap-9">
           {steps.map((step) => (
             <StepIndicator
               key={step.index}
               step={step}
               state={getStepState(step, currentIndex)}
-              canNavigate={steps.indexOf(step) <= maxAccessibleIndex}
             />
           ))}
         </div>

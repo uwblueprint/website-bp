@@ -23,7 +23,7 @@ export const SplitPanelLayout = ({
   leftWidth,
   rightWidth,
   children,
-}: SplitPanelLayoutProps): ReactElement => {
+}: SplitPanelLayoutProps) => {
   const hasWidthOverride = leftWidth || rightWidth;
   const gridStyle = hasWidthOverride
     ? {
@@ -53,10 +53,9 @@ interface PanelLayoutProps {
   title?: string;
   subtitle?: string;
   titleButton?: ReactNode;
-  variant?: "sky" | "white" | "subtle";
+  variant?: "sky" | "white";
   borderRight?: boolean;
   borderLeft?: boolean;
-  scrollable?: boolean;
   /** "xlarge" = left panel (28px, 600), "medium" = right panel (20px, 500) */
   titleVariant?: "xlarge" | "medium";
   /** Optional top row above title (e.g. back link + actions) */
@@ -75,7 +74,6 @@ export const PanelLayout = ({
   variant = "white",
   borderRight = false,
   borderLeft = false,
-  scrollable = true,
   titleVariant = "xlarge",
   header,
   showApplicationTitle = true,
@@ -101,12 +99,7 @@ export const PanelLayout = ({
       lineHeight: "140%",
     },
   };
-  const bg =
-    variant === "sky"
-      ? "bg-sky"
-      : variant === "subtle"
-      ? "bg-charcoal-100"
-      : "bg-white";
+  const bg = variant === "sky" ? "bg-sky" : "bg-white";
   const hasHeader = !!(title || subtitle);
   const titleStyle = TITLE_STYLES[titleVariant];
 
@@ -170,9 +163,7 @@ export const PanelLayout = ({
         <div
           className={
             contentClassName ??
-            `flex-1 ${
-              scrollable ? "overflow-y-auto" : "overflow-hidden"
-            } min-h-0 flex flex-col w-full gap-8 ${
+            `flex-1 overflow-y-auto min-h-0 flex flex-col w-full gap-8 ${
               titleVariant === "medium" ? "antialiased" : ""
             }`
           }

@@ -2,15 +2,13 @@ import Button from "@components/common/Button";
 import { fetchGraphql } from "@utils/makegqlrequest";
 import { mutations } from "graphql/queries";
 import { useRouter } from "next/router";
-import { ReactElement, useContext, useState } from "react";
-import { REVIEW_SCORE_STAGES, REVIEW_STAGES, ReviewStage } from "./constants";
+import { useContext, useState } from "react";
+import { REVIEW_STAGES, ReviewStage } from "./constants";
 import { ReviewSetStageContext } from "./ReviewContext";
-import {
-  getFirstIncompleteScoreStage,
-  getReviewIdOrNull,
-  hasScore,
-} from "./reviewUtils";
+import { getReviewId } from "./reviewUtils";
 import { ReviewEndData, ReviewScores } from "./types";
+import { useTheme } from "@mui/material/styles";
+import { ReactElement } from "react";
 
 const STAGE_RATING_FIELDS: [ReviewStage, string][] = [
   [ReviewStage.PFSG, "passionFSG"],
@@ -58,6 +56,7 @@ export const ReviewStepper = ({
   endData,
   onValidate,
 }: Props): ReactElement | null => {
+  const theme = useTheme();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const setStage = useContext(ReviewSetStageContext);
@@ -71,15 +70,15 @@ export const ReviewStepper = ({
 
   const previousStage = REVIEW_STAGES[Math.max(currentStageIndex - 1, 0)];
 
+  const isButtonDisabled =
+    currentStage !== ReviewStage.INFO &&
+    currentStage !== ReviewStage.END_SUCCESS &&
+    !(scores[currentStage] > 0 && scores[currentStage] <= 5);
+
   if (!router.isReady) return null;
   if (currentStage === ReviewStage.END_SUCCESS) return null;
 
-  const reviewId = getReviewIdOrNull(router.query);
-  if (reviewId === null) return null;
-
-  const requiresScore = REVIEW_SCORE_STAGES.includes(currentStage);
-  const canContinue = !requiresScore || hasScore(scores[currentStage]);
-  const canSubmit = !isSubmitting && !!endData?.skillsCategory;
+  const reviewId = getReviewId(router.query);
 
   const updateAllData = () => {
     const ratingPromises = STAGE_RATING_FIELDS.map(([stage, field]) =>
@@ -99,24 +98,20 @@ export const ReviewStepper = ({
   };
 
   return (
-    <div className="border-t border-[#C4C4C4] bg-white px-6 py-4 md:px-9">
-      <div className="flex items-center justify-end gap-3">
-        {currentStage === ReviewStage.INFO && (
-          <Button
-            size="sm"
-            variant="secondary"
-            onClick={() => router.push("/admin")}
-            className="px-4 py-2 font-source text-base leading-[1.4]"
-          >
-            Back home
-          </Button>
-        )}
+    <div
+      className="px-6 py-4"
+      style={{
+        borderTop: `1px solid ${theme.palette.semantics.border.light}`,
+        backgroundColor: theme.palette.background.default,
+      }}
+    >
+      <div className="flex justify-end items-center gap-3 flex-nowrap">
         {currentStageIndex > 0 && (
           <Button
             size="sm"
             variant="secondary"
             onClick={() => setStage?.(previousStage)}
-            className="px-4 py-2 font-source text-base leading-[1.4]"
+            className="shrink-0 whitespace-nowrap !px-4 !py-2 hover:bg-sky-100 hover:border-blue hover:text-blue"
           >
             Previous section
           </Button>
@@ -124,14 +119,9 @@ export const ReviewStepper = ({
         {currentStage === ReviewStage.END ? (
           <Button
             size="sm"
-            disabled={!canSubmit}
+            disabled={isSubmitting || !endData?.skillsCategory}
+            className="shrink-0 whitespace-nowrap !px-4 !py-2 hover:bg-sky-400 hover:border-transparent disabled:opacity-60"
             onClick={async () => {
-              const firstIncompleteStage = getFirstIncompleteScoreStage(scores);
-              if (firstIncompleteStage) {
-                setStage?.(firstIncompleteStage);
-                return;
-              }
-
               if (onValidate && !onValidate()) {
                 return;
               }
@@ -147,24 +137,17 @@ export const ReviewStepper = ({
                 setIsSubmitting(false);
               }
             }}
-            className="px-4 py-2 font-source text-base leading-[1.4]"
           >
             {isSubmitting ? "Submitting..." : "Finish"}
           </Button>
         ) : (
           <Button
             size="sm"
-            disabled={!canContinue}
-            onClick={() => {
-              if (!canContinue) {
-                return;
-              }
-
-              setStage?.(nextStage);
-            }}
-            className="px-4 py-2 font-source text-base leading-[1.4]"
+            disabled={isButtonDisabled}
+            onClick={() => setStage?.(nextStage)}
+            className="shrink-0 whitespace-nowrap !px-4 !py-2 hover:bg-sky-400 hover:border-transparent disabled:opacity-60"
           >
-            {currentStage === ReviewStage.INFO ? "Save & Continue" : "Continue"}
+            Save & Continue
           </Button>
         )}
       </div>

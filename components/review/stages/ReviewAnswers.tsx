@@ -1,3 +1,4 @@
+import { useTheme } from "@mui/material/styles";
 import { ReactElement } from "react";
 
 export interface Props {
@@ -5,38 +6,43 @@ export interface Props {
   answers: string[];
 }
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 export const ReviewAnswers = ({ questions, answers }: Props): ReactElement => {
+  const theme = useTheme();
   return (
-    <div className="flex flex-col gap-6">
-      {questions.map((question, index) => {
-        const answer = answers[index] ?? "";
-        const isEmail = EMAIL_PATTERN.test(answer);
-
-        return (
-          <div
-            key={`${question}-${index}`}
-            className="flex flex-col items-start gap-1.5"
+    <div className="flex flex-col gap-10 w-full">
+      {questions.map((question, idx) => (
+        <div
+          key={`${question}-${idx}`}
+          className="flex flex-col gap-4 items-start"
+        >
+          <h5
+            className="font-poppins text-base font-medium"
+            style={{
+              color: theme.palette.text.primary,
+            }}
           >
-            <h5 className="text-base font-medium leading-[1.4] text-black">
-              {question}
-            </h5>
-            {isEmail ? (
-              <a
-                href={`mailto:${answer}`}
-                className="break-all font-source text-base leading-6 text-[#3279B7] underline underline-offset-2"
+            {question}
+          </h5>
+          <div className="flex w-full">
+            <div
+              className="rounded-r px-4 py-3 w-full font-source"
+              style={{
+                borderLeft: `4px solid ${theme.palette.semantics.border.light}`,
+              }}
+            >
+              <p
+                className="text-base font-normal"
+                style={{
+                  color: theme.palette.text.primary,
+                  lineHeight: "140%",
+                }}
               >
-                {answer}
-              </a>
-            ) : (
-              <p className="break-words whitespace-pre-wrap font-source text-base leading-6 text-charcoal-500">
-                {answer}
+                {answers[idx]}
               </p>
-            )}
+            </div>
           </div>
-        );
-      })}
+        </div>
+      ))}
     </div>
   );
 };

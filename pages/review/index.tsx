@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import ProtectedRoute from "@components/context/ProtectedRoute";
 import { ReviewStage } from "@components/review/shared/constants";
 import { ReviewEndData, ReviewScores } from "@components/review/shared/types";
-import { getReviewIdOrNull } from "@components/review/shared/reviewUtils";
+import { getReviewId } from "@components/review/shared/reviewUtils";
 import {
   ReviewSetScoresContext,
   ReviewSetStageContext,
@@ -16,7 +16,7 @@ import { ReviewInfoStage } from "@components/review/stages/ReviewInfoStage";
 import { ReviewPassionForSocialGoodStage } from "@components/review/stages/ReviewPassionForSocialGoodStage";
 import { ReviewSkillStage } from "@components/review/stages/ReviewSkillStage";
 import { ReviewTeamPlayerStage } from "@components/review/stages/ReviewTeamPlayerStage";
-import { ApplicationDTO } from "../../types";
+import { ApplicationDTO, AuthStatus } from "../../types";
 import ProtectedApplication from "./protectedApplication";
 import RecruitmentPlatformThemeProvider from "@components/recruitmentPlatformCommon/RecruitmentPlatformThemeProvider";
 import { useAuthenticatedUser } from "@components/context/AuthUserContext";
@@ -64,6 +64,10 @@ const ReviewsPages: NextPage = () => {
   const router = useRouter();
   const [stage, setStage] = useState<ReviewStage>(ReviewStage.INFO);
   const [application, setApplication] = useState<ApplicationDTO>();
+  const [authStatus, setAuthStatus] = useState<AuthStatus>({
+    loading: true,
+    isAuthorized: false,
+  });
   const [endData, setEndData] = useState<ReviewEndData>({
     comments: "",
     skillsCategory: "",
@@ -71,10 +75,8 @@ const ReviewsPages: NextPage = () => {
   });
   const [scores, setScores] = useState<ReviewScores>(initialScores);
 
-  const reviewId = router.isReady ? getReviewIdOrNull(router.query) : null;
-  const name = [application?.firstName, application?.lastName]
-    .filter(Boolean)
-    .join(" ");
+  const reviewId = router.isReady ? getReviewId(router.query) : null;
+  const name = application?.firstName + " " + application?.lastName;
 
   const authenticatedUser = useAuthenticatedUser();
   const reviewerName = authenticatedUser
@@ -97,7 +99,6 @@ const ReviewsPages: NextPage = () => {
   }, [reviewId]);
 
   if (!router.isReady) return null;
-  if (reviewId === null) return <div>Invalid review link</div>;
 
   const getReviewStage = () => {
     switch (stage) {

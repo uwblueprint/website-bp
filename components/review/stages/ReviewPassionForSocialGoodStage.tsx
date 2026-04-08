@@ -1,11 +1,16 @@
-import { ReactElement, useContext } from "react";
+import { useContext } from "react";
 import { ApplicationDTO } from "../../../types";
-import { ReviewStage } from "../shared/constants";
+import { BACK_TO_HOME_HREF, ReviewStage } from "../shared/constants";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
-import { getShortAnswerAtIndex } from "../shared/reviewUtils";
+import { ReviewScoreInput } from "../shared/ReviewScoreInput";
 import { REVIEW_PFSG_SCORING_CRITERIA } from "../shared/rubricConstants";
 import { ReviewScores } from "../shared/types";
-import { ReviewScoredStageLayout } from "../layout";
+import { ReviewAnswers } from "./ReviewAnswers";
+import { ReviewRubric } from "./ReviewRubric";
+import { ReviewPageLayout, PanelLayout } from "../layout";
+import { ReportConflictButton } from "../shared/ReportConflictButton";
+import { useTheme } from "@mui/material/styles";
+
 
 export interface Props {
   name: string;
@@ -17,25 +22,59 @@ export const ReviewPassionForSocialGoodStage = ({
   name,
   application,
   scores,
-}: Props): ReactElement => {
+}: Props) => {
   const updateScore = useContext(ReviewSetScoresContext);
-  const passionForSocialGoodAnswer = getShortAnswerAtIndex(
-    application?.shortAnswerQuestions[0],
-    1,
-  );
-
+  const shortAnswerStr = application?.shortAnswerQuestions[0];
+  const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
+  const questions = [shortAnswerJSON[1]?.question];
+  const answers = [shortAnswerJSON[1]?.response];
+  const theme = useTheme();
   return (
-    <ReviewScoredStageLayout
-      applicantName={name}
-      currentStage={ReviewStage.PFSG}
-      onScoreChange={(value) => updateScore?.(ReviewStage.PFSG, value)}
-      questions={[passionForSocialGoodAnswer.question]}
-      answers={[passionForSocialGoodAnswer.response ?? ""]}
-      score={scores[ReviewStage.PFSG]}
-      scoreLabel="Scoring for Passion for Social Good (PFSG)"
-      scoringCriteria={REVIEW_PFSG_SCORING_CRITERIA}
-      scores={scores}
-      title="Passion for social good"
-    />
+    <ReviewPageLayout currentStage={ReviewStage.PFSG} scores={scores}>
+      <PanelLayout
+        backToHomeHref={BACK_TO_HOME_HREF}
+        headerRightAction={<ReportConflictButton name={name} showQuestion />}
+        title="Passion for Social Good"
+        subtitle={`${name}'s Application`}
+      >
+        <ReviewAnswers questions={questions} answers={answers} />
+      </PanelLayout>
+      <PanelLayout
+        borderLeft
+        title="Scoring for Passion for Social Good (PFSG)"
+        titleVariant="medium"
+        variant="white"
+      >
+        <ReviewRubric
+          scoringCriteria={REVIEW_PFSG_SCORING_CRITERIA}
+          scores={scores}
+          currentStage={ReviewStage.PFSG}
+        />
+        <div
+          className="w-full shrink-0"
+          style={{
+            height: "1px",
+            background: theme.palette.background.default,
+          }}
+        />
+        <div className="flex items-center gap-3">
+          <ReviewScoreInput
+            id="pfsg-score"
+            value={scores[ReviewStage.PFSG] || ""}
+            min={1}
+            max={5}
+            placeholder={`Enter ${name}'s score`}
+            ariaLabel="Passion for social good score"
+            onChange={(v) => updateScore?.(ReviewStage.PFSG, v)}
+          />
+          <span
+            className="text-xl leading-none"
+            style={{ color: theme.palette.error.main }}
+          >
+            *
+          </span>
+        </div>
+      </PanelLayout>
+    </ReviewPageLayout>
   );
 };

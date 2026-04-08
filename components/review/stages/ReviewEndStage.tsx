@@ -1,15 +1,10 @@
-import Button from "@components/common/Button";
-import WarningOutlineIcon from "@components/icons/warning-outline.icon";
-import {
-  ChangeEvent,
-  Dispatch,
-  ReactElement,
-  SetStateAction,
-  useState,
-} from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import { ReviewStage } from "../shared/constants";
 import { ReviewEndData, ReviewScores } from "../shared/types";
-import { ReviewPageLayout } from "../layout";
+import { ReportConflictButton } from "../shared/ReportConflictButton";
+import ArrowLeftIcon from "@components/icons/arrow-left.icon";
+import Link from "next/link";
+import { ReviewPageLayout, PanelLayout } from "../layout";
 
 interface Props {
   name: string;
@@ -41,83 +36,67 @@ const LeftPanelContent = ({
   );
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
-        <Button
-          size="sm"
-          variant="secondary"
-          href="/admin"
-          className="w-fit px-4 py-2 font-source text-base leading-[1.4]"
-        >
-          Back to home
-        </Button>
-
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-          <p className="font-source text-base italic leading-[1.4] text-blue">
-            Is the applicant a conflict of interest?
-          </p>
-          <Button
-            size="sm"
-            variant="secondary"
-            onClick={() => undefined}
-            className="flex items-center gap-2 px-4 py-2 font-source text-base leading-[1.4]"
-          >
-            <WarningOutlineIcon className="h-5 w-5" />
-            Report
-          </Button>
-        </div>
+    <div className="flex flex-col gap-6 p-3 w-full">
+      {/* Back to home (left) + Report question + button (right-justified) */}
+      <div className="flex justify-between items-center w-full gap-4 shrink-0">
+        <Link href="/admin" passHref>
+          <a className="w-fit shrink-0 flex items-center gap-2 py-2 px-4 rounded-full border-2 border-blue bg-white hover:bg-gray-50 transition-colors text-blue text-base font-normal leading-snug no-underline">
+            <ArrowLeftIcon className="w-6 h-6 text-blue" />
+            Back to home
+          </a>
+        </Link>
+        <ReportConflictButton name={name} showQuestion />
       </div>
 
+      {/* Scoring section */}
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-3">
-          <p className="font-source text-base leading-[1.4] text-black/75">
+          <p className="text-[#252525]/75 font-normal text-base leading-snug">
             Scoring
           </p>
-          <h2 className="text-[28px] font-semibold leading-[1.4] text-[#252525]">
+          <h2 className="text-[#252525] text-3xl leading-snug">
             {name}&apos;s final scores
           </h2>
         </div>
 
-        <div className="flex flex-col gap-8 rounded-[8px] border border-[#C4C4C4] bg-white p-6">
-          <div className="flex items-start justify-between gap-8">
-            <div className="flex w-[235px] flex-col gap-6">
-              <p className="font-poppins text-[20px] font-medium leading-[1.4] text-[#0573E8]">
+        {/* Score card */}
+        <div className="rounded-lg border border-[#C4C4C4] bg-white p-6 flex flex-col gap-8">
+          <div className="flex justify-between items-center">
+            <div className="flex flex-col gap-6 w-[235px]">
+              <span className="text-blue font-medium text-xl leading-7 font-poppins">
                 Topic
-              </p>
+              </span>
               {SCORE_ROWS.map(({ label }) => (
-                <p
+                <span
                   key={label}
-                  className="font-source text-base leading-[1.4] text-black"
+                  className="text-black font-normal text-base leading-snug"
                 >
                   {label}
-                </p>
+                </span>
               ))}
             </div>
-
-            <div className="flex max-w-[165px] flex-col items-end gap-6">
-              <p className="font-poppins text-[20px] leading-[1.4] whitespace-nowrap text-[#0573E8]">
+            <div className="flex flex-col gap-6 items-end">
+              <span className="text-blue font-normal text-xl leading-7 font-poppins">
                 {reviewerName}&apos;s rating
-              </p>
+              </span>
               {SCORE_ROWS.map(({ label, stage }) => (
-                <p
+                <span
                   key={label}
-                  className="min-w-full text-right font-source text-base leading-[1.4] text-black"
+                  className="text-black font-normal text-base leading-snug"
                 >
                   {scores[stage]}/5
-                </p>
+                </span>
               ))}
             </div>
           </div>
-
-          <div className="border-t border-[#C4C4C4]" />
-
-          <div className="flex items-center justify-between">
-            <p className="font-poppins text-[20px] font-medium leading-[1.4] text-black">
+          <hr className="border-[#C4C4C4]" />
+          <div className="flex justify-between items-center">
+            <span className="text-black font-medium text-xl leading-7 font-poppins">
               Total Score
-            </p>
-            <p className="font-poppins text-[20px] font-bold leading-[1.4] text-[#0573E8]">
+            </span>
+            <span className="text-blue font-normal text-xl leading-7 font-poppins">
               {totalScore}/20
-            </p>
+            </span>
           </div>
         </div>
       </div>
@@ -145,21 +124,20 @@ const EndForm = ({
   };
 
   return (
-    <div className="flex w-full max-w-[541px] flex-col gap-[31px]">
+    <div className="flex flex-col gap-8 w-full lg:max-w-[541px] lg:mx-auto">
       <div className="flex flex-col gap-6">
-        <h3 className="font-poppins text-[20px] font-medium leading-[1.4] text-[#252525]">
-          Skill Category
-        </h3>
+        <h3 className="text-[#252525] text-xl leading-7">Skill Category</h3>
         <select
           value={skillsCategory}
           onChange={handleOptionChange}
           required
-          className={`h-[55px] w-full rounded-[6px] border bg-white px-[15px] text-base leading-6 ${
-            validationError && skillsCategory === ""
-              ? "border-red-500"
-              : "border-[#C4C4C4]"
-          } ${skillsCategory === "" ? "text-[#C4C4C4]" : "text-[#252525]"}`}
-          style={{ fontFamily: "Inter, sans-serif" }}
+          className={`h-14 w-full rounded-md border bg-white px-4 py-4 text-base font-normal leading-6
+            ${
+              validationError && skillsCategory === ""
+                ? "border-red-500"
+                : "border-[#C4C4C4]"
+            }
+            ${skillsCategory === "" ? "text-[#C4C4C4]" : "text-black"}`}
         >
           <option value="">Skill Category</option>
           <option value="junior">Junior</option>
@@ -167,17 +145,13 @@ const EndForm = ({
           <option value="senior">Senior</option>
         </select>
       </div>
-
       <div className="flex flex-col gap-6">
-        <h3 className="font-poppins text-[20px] font-medium leading-[1.4] text-[#252525]">
-          Comments
-        </h3>
+        <h3 className="text-[#252525] text-xl leading-7">Comments</h3>
         <textarea
           value={comments}
           onChange={handleCommentChange}
           placeholder="Leave Comments here"
-          className="h-[250px] w-full resize-none rounded-[6px] border border-[#C4C4C4] bg-white px-3 py-[11px] text-base leading-6 text-[#252525] placeholder:text-[14px] placeholder:leading-5 placeholder:text-black/[0.36]"
-          style={{ fontFamily: "Inter, sans-serif" }}
+          className="w-full h-[250px] rounded-md border border-[#C4C4C4] bg-white px-3 py-4 text-base font-normal leading-6 placeholder:text-sm placeholder:font-normal placeholder:leading-5 placeholder:text-black/[0.36]"
         />
       </div>
     </div>
@@ -190,7 +164,7 @@ export const ReviewEndStage = ({
   scores,
   endData,
   setEndData,
-}: Props): ReactElement => {
+}: Props) => {
   const [validationError, setValidationError] = useState(false);
 
   return (
@@ -204,20 +178,20 @@ export const ReviewEndStage = ({
         return isValid;
       }}
     >
-      <div className="flex h-full flex-col overflow-y-auto border-r border-[#C4C4C4] bg-white px-6 py-8 md:px-9">
+      <PanelLayout borderRight>
         <LeftPanelContent
           name={name}
           reviewerName={reviewerName}
           scores={scores}
         />
-      </div>
-      <div className="flex h-full flex-col items-center overflow-y-auto bg-white px-6 py-8">
+      </PanelLayout>
+      <PanelLayout>
         <EndForm
           endData={endData}
           setEndData={setEndData}
           validationError={validationError}
         />
-      </div>
+      </PanelLayout>
     </ReviewPageLayout>
   );
 };
