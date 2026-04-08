@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+
 import HeadshotCard from "@components/headshots/HeadshotCard";
 import {
   get_current_members,
@@ -208,7 +208,7 @@ const Headshots: React.FC = () => {
             (as given above).
           </p>
           <p className="text-xs text-charcoal-500">
-            Don&apos;t worry, a backup is generated in the code!
+            Don't worry, a backup is generated in the code!
           </p>
         </div>
       </section>
