@@ -208,7 +208,7 @@ const Headshots: React.FC = () => {
             (as given above).
           </p>
           <p className="text-xs text-charcoal-500">
-            Don't worry, a backup is generated in the code!
+            Don&apos;t worry, a backup is generated in the code!
           </p>
         </div>
       </section>

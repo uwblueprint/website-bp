@@ -210,8 +210,7 @@ const SimpleMarquee = ({
   const lastPointerPosition = useRef({ x: 0, y: 0 });
 
   const handlePointerDown = (e: React.PointerEvent) => {
-    if (!draggable)
-      return; // Capture the pointer to receive events even when pointer moves outside
+    if (!draggable) return; // Capture the pointer to receive events even when pointer moves outside
     (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
 
     if (grabCursor) {
