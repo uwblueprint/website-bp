@@ -207,8 +207,10 @@ const Headshots: React.FC = () => {
             updates the member list with these members, set to the current term
             (as given above).
           </p>
+
+          {/* Using ' to &apos in string below to satisfy JSX linter */}
           <p className="text-xs text-charcoal-500">
-            Don't worry, a backup is generated in the code!
+            Don&apos;t worry, a backup is generated in the code!
           </p>
         </div>
       </section>
