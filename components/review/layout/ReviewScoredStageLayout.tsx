@@ -25,12 +25,12 @@ const QuestionResponses = ({
   answers,
 }: Pick<ReviewScoredStageLayoutProps, "questions" | "answers">) => {
   return (
-    <div className="flex w-full flex-col gap-4">
+    <div className="flex w-full flex-col gap-8">
       {questions.map((question, index) => {
         const answer = answers[index] ?? "";
 
         return (
-          <div key={question} className="flex flex-col gap-4">
+          <div key={`${question}-${index}`} className="flex flex-col gap-5">
             <p className="font-poppins text-base font-medium leading-[1.4] text-[#252525]">
               {index + 1}. {question}
             </p>

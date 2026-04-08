@@ -133,7 +133,7 @@ export const ReviewProgressHeader = ({
       className="w-full"
       style={{ backgroundColor: theme.palette.primary.main }}
     >
-      <div className="flex min-h-[78px] w-full items-center justify-between px-6 py-3 md:px-9">
+      <div className="flex min-h-[94px] w-full items-center justify-between px-6 py-4 md:px-9">
         <Link href="/admin">
           <a className="flex">
             <Image

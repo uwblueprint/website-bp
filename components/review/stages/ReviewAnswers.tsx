@@ -9,13 +9,16 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export const ReviewAnswers = ({ questions, answers }: Props): ReactElement => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-6">
       {questions.map((question, index) => {
         const answer = answers[index] ?? "";
         const isEmail = EMAIL_PATTERN.test(answer);
 
         return (
-          <div key={question} className="flex flex-col items-start gap-1.5">
+          <div
+            key={`${question}-${index}`}
+            className="flex flex-col items-start gap-1.5"
+          >
             <h5 className="text-base font-medium leading-[1.4] text-black">
               {question}
             </h5>
