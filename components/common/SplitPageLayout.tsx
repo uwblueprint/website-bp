@@ -27,8 +27,8 @@ export const SplitPanelLayout = ({
   const hasWidthOverride = leftWidth || rightWidth;
   const gridStyle = hasWidthOverride
     ? {
-        gridTemplateColumns: `${leftWidth ? `${leftWidth}px` : "1fr"} ${
-          rightWidth ? `${rightWidth}px` : "1fr"
+        gridTemplateColumns: `${leftWidth ? `${leftWidth}fr` : "1fr"} ${
+          rightWidth ? `${rightWidth}fr` : "1fr"
         }`,
       }
     : undefined;

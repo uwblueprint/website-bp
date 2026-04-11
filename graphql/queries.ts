@@ -40,6 +40,14 @@ export const mutations = {
     refresh(refreshToken: $refreshToken)
   }
 `,
+  updateInterviewGroup: `
+    mutation UpdateInterviewGroup($id: ID!, $status: String!, $schedulingLink: String!) {
+      updateInterviewGroup(id: $id, status: $status, schedulingLink: $schedulingLink) {
+        schedulingLink
+        status
+      }
+    }
+  `,
   changeRating: `
     mutation changeRating($id: String!, $ratingToBeChanged: String!, $newValue: Int!) {
       changeRating(id: $id, ratingToBeChanged: $ratingToBeChanged, newValue: $newValue) {
@@ -63,5 +71,32 @@ export const queries = {
   query isAuthorizedByRole($accessToken: String!, $roles: [Role!]!) {
       isAuthorizedByRole(accessToken: $accessToken, roles: $roles)
   }
+  `,
+  getInterviewGroup: `
+    query GetInterviewGroup($id: ID!) {
+      getInterviewGroup(id: $id) {
+        schedulingLink
+        status
+      }
+    }
+  `,
+  getInterviewersByGroupId: `
+    query GetInterviewersByGroupId($groupId: ID!) {
+      getInterviewersByGroupId(groupId: $groupId) {
+        id
+        firstName
+        lastName
+        email
+        profilePictureFileId
+      }
+    }
+  `,
+  getInterviewedApplicantsByGroupId: `
+    query GetInterviewedApplicantsByGroupId($groupId: ID!) {
+      getInterviewedApplicantsByGroupId(groupId: $groupId) {
+        firstName
+        lastName
+      }
+    }
   `,
 };
