@@ -5,14 +5,11 @@ export interface Props {
   answers: string[];
 }
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 export const ReviewAnswers = ({ questions, answers }: Props): ReactElement => {
   return (
     <div className="flex w-full flex-col gap-6">
       {questions.map((question, index) => {
         const answer = answers[index] ?? "";
-        const isEmail = EMAIL_PATTERN.test(answer);
 
         return (
           <div
@@ -22,18 +19,9 @@ export const ReviewAnswers = ({ questions, answers }: Props): ReactElement => {
             <h5 className="font-poppins text-base font-medium leading-[1.4] text-black">
               {question}
             </h5>
-            {isEmail ? (
-              <a
-                href={`mailto:${answer}`}
-                className="break-all font-source text-base leading-6 text-[#3279B7] underline underline-offset-2"
-              >
-                {answer}
-              </a>
-            ) : (
-              <p className="break-words whitespace-pre-wrap font-source text-base leading-6 text-charcoal-500">
-                {answer}
-              </p>
-            )}
+            <p className="break-words whitespace-pre-wrap font-source text-base leading-6 text-charcoal-500">
+              {answer}
+            </p>
           </div>
         );
       })}

@@ -8,6 +8,7 @@ import { useTheme } from "@mui/material/styles";
 
 interface Props {
   currentStage: ReviewStage;
+  disableNavigation?: boolean;
 }
 
 type StepState = "current" | "completed" | "future";
@@ -37,9 +38,14 @@ const getStepState = (step: StepConfig, currentIndex: number): StepState => {
 interface StepIndicatorProps {
   step: StepConfig;
   state: StepState;
+  disabled?: boolean;
 }
 
-const StepIndicator = ({ step, state }: StepIndicatorProps) => {
+const StepIndicator = ({
+  step,
+  state,
+  disabled = false,
+}: StepIndicatorProps) => {
   const setStage = useContext(ReviewSetStageContext);
   const theme = useTheme();
 
@@ -64,12 +70,8 @@ const StepIndicator = ({ step, state }: StepIndicatorProps) => {
     future: { color: theme.palette.primary.contrastText },
   };
 
-  return (
-    <button
-      onClick={() => setStage?.(step.stage)}
-      className="flex flex-col items-center gap-1 hover:opacity-80 transition-opacity"
-      aria-label={`Navigate to ${step.label} step`}
-    >
+  const content = (
+    <>
       <div
         className="w-9 h-9 rounded-full border-2 flex items-center justify-center"
         style={circleStyleObjects[state]}
@@ -88,11 +90,27 @@ const StepIndicator = ({ step, state }: StepIndicatorProps) => {
       <span className="text-white text-xs font-medium uppercase tracking-wide">
         {step.label}
       </span>
+    </>
+  );
+
+  return disabled ? (
+    <div className="flex flex-col items-center gap-1">{content}</div>
+  ) : (
+    <button
+      type="button"
+      onClick={() => setStage?.(step.stage)}
+      className="flex flex-col items-center gap-1 hover:opacity-80 transition-opacity"
+      aria-label={`Navigate to ${step.label} step`}
+    >
+      {content}
     </button>
   );
 };
 
-export const ReviewProgressHeader = ({ currentStage }: Props) => {
+export const ReviewProgressHeader = ({
+  currentStage,
+  disableNavigation = false,
+}: Props) => {
   const currentIndex = steps.findIndex((s) => s.stage === currentStage);
   const theme = useTheme();
 
@@ -120,6 +138,7 @@ export const ReviewProgressHeader = ({ currentStage }: Props) => {
               key={step.index}
               step={step}
               state={getStepState(step, currentIndex)}
+              disabled={disableNavigation}
             />
           ))}
         </div>
