@@ -3,7 +3,7 @@ import Dialogue from "@components/common/Dialogue";
 import ReviewPageAPIClient from "APIClients/ReviewPageAPIClient";
 import { useTheme } from "@mui/material/styles";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 import { BACK_TO_HOME_HREF } from "./constants";
 
 type Props = {
@@ -18,7 +18,7 @@ const ConflictDialogue = ({
   reviewerId,
   confirmOpen,
   onConfirmOpenChange,
-}: Props): React.ReactElement => {
+}: Props): ReactElement => {
   const theme = useTheme();
   const router = useRouter();
 

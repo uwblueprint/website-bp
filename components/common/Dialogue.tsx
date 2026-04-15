@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode } from "react";
+import React, { ReactElement, ReactNode, Children } from "react";
 import Dialog from "@mui/material/Dialog";
 import { useTheme } from "@mui/material/styles";
 
@@ -26,33 +26,13 @@ const Dialogue = ({
 
   const theme = useTheme();
 
-  const actionChildren = React.Children.toArray(children).filter(Boolean);
+  const actionChildren = Children.toArray(children).filter(Boolean);
   const hasSingleAction = actionChildren.length === 1;
   const actionsContainerClasses = hasSingleAction
     ? "flex w-full items-center justify-center"
     : "flex w-full items-center justify-center gap-4";
 
-  const styledActionChildren = actionChildren.map((child) => {
-    if (!React.isValidElement<{ className?: string }>(child)) {
-      return child;
-    }
-
-    const existingClassName = child.props.className ?? "";
-    const actionButtonClassName = [
-      hasSingleAction ? "w-full" : "flex-1",
-      existingClassName,
-    ]
-      .filter(Boolean)
-      .join(" ");
-
-    const buttonClass = hasSingleAction
-      ? `w-full ${actionButtonClassName}`
-      : actionButtonClassName;
-
-    return React.cloneElement(child, {
-      className: buttonClass,
-    });
-  });
+  const actionWrapperClass = hasSingleAction ? "w-full" : "flex-1";
 
   return (
     <Dialog
@@ -89,8 +69,14 @@ const Dialogue = ({
             {text}
           </div>
         </div>
-        {styledActionChildren.length > 0 ? (
-          <div className={actionsContainerClasses}>{styledActionChildren}</div>
+        {actionChildren.length > 0 ? (
+          <div className={actionsContainerClasses}>
+            {actionChildren.map((child, idx) => (
+              <div className={actionWrapperClass} key={idx}>
+                {child}
+              </div>
+            ))}
+          </div>
         ) : null}
       </div>
     </Dialog>
