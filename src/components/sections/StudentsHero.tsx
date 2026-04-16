@@ -22,7 +22,7 @@ export function StudentsHero() {
 
           <div className="flex flex-col text-lg">
             <p className="text-[var(--primary-light)]">
-              A team is only as good as it&apos;s members. We have great ones.
+              A team is only as good as its members. We have great ones.
             </p>
           </div>
         </div>
