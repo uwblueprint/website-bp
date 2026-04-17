@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import ProtectedRoute from "@components/context/ProtectedRoute";
@@ -66,6 +66,16 @@ const initialScores: ReviewScores = {
   [ReviewStage.END_SUCCESS]: 0,
 };
 
+const tryParseReviewerId = (reviewerId: string | undefined): number | null => {
+  const trimmedReviewerId = reviewerId?.trim();
+  if (trimmedReviewerId == null || trimmedReviewerId === "") {
+    return null;
+  }
+
+  const parsedReviewerId = Number(trimmedReviewerId);
+  return Number.isInteger(parsedReviewerId) ? parsedReviewerId : null;
+};
+
 const ReviewsPages: NextPage = () => {
   const router = useRouter();
   const [stage, setStage] = useState<ReviewStage>(ReviewStage.INFO);
@@ -85,34 +95,26 @@ const ReviewsPages: NextPage = () => {
   const applicantRecordId = router.isReady
     ? getApplicantRecordId(router.query)
     : null;
-  const name = application?.firstName + " " + application?.lastName;
+  const name = application
+    ? `${application.firstName} ${application.lastName}`
+    : "Applicant";
 
   const authenticatedUser = useAuthenticatedUser();
   const reviewerName = authenticatedUser
     ? authenticatedUser.firstName
     : "Reviewer";
-  const reviewerId = Number.isInteger(Number(authenticatedUser?.id))
-    ? Number(authenticatedUser?.id)
-    : null;
-
-  const onOpenConflictReport = useCallback(() => {
-    setConflictConfirmOpen(true);
-  }, []);
-
-  const reviewScoringPanelHeader = useMemo(
-    () => (
-      <ReviewStageHeader
-        backHref={BACK_TO_HOME_HREF}
-        right={
-          <ReportConflictButton
-            name={name}
-            showQuestion
-            onClick={onOpenConflictReport}
-          />
-        }
-      />
-    ),
-    [name, onOpenConflictReport],
+  const reviewerId = tryParseReviewerId(authenticatedUser?.id);
+  const reviewScoringPanelHeader = (
+    <ReviewStageHeader
+      backHref={BACK_TO_HOME_HREF}
+      right={
+        <ReportConflictButton
+          name={name}
+          showQuestion
+          onClick={() => setConflictConfirmOpen(true)}
+        />
+      }
+    />
   );
 
   const updateScores = (key: ReviewStage, value: number) => {

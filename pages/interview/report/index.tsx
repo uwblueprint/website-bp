@@ -2,7 +2,6 @@ import { PanelLayout } from "@components/common/SplitPageLayout";
 import {
   getInterviewLayout,
   InterviewHeader,
-  InterviewFooter,
 } from "@components/interview/layout";
 import { NextPageWithLayout } from "../../_app";
 
@@ -14,12 +13,10 @@ const InterviewReportPage: NextPageWithLayout = () => {
   );
 };
 
-// TODO: onContinue will trigger the submit issue action once wired up.
-// After submission the footer disappears (see Figma — submitted state has no footer).
+// TODO: add the submit footer once the report action is wired up.
 InterviewReportPage.getLayout = getInterviewLayout(
   <InterviewHeader steps={[]} />,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function -- placeholder until submit is wired
-  <InterviewFooter onContinue={() => {}} continueLabel="Submit Issue" />,
+  null,
 );
 
 export default InterviewReportPage;

@@ -3,7 +3,7 @@ import Dialogue from "@components/common/Dialogue";
 import ReviewPageAPIClient from "APIClients/ReviewPageAPIClient";
 import { useTheme } from "@mui/material/styles";
 import { useRouter } from "next/router";
-import { ReactElement, useState } from "react";
+import { FC, useState } from "react";
 import { BACK_TO_HOME_HREF } from "./constants";
 
 type Props = {
@@ -13,13 +13,31 @@ type Props = {
   readonly onConfirmOpenChange: (open: boolean) => void;
 };
 
-const ConflictDialogue = ({
+const ConflictDialogueText = ({
+  reportError,
+}: {
+  reportError: string | null;
+}) => {
+  const theme = useTheme();
+
+  return (
+    <div className="flex flex-col gap-2">
+      <span>Clicking yes will notify admins and cannot be undone.</span>
+      {reportError ? (
+        <span style={{ color: theme.palette.error.main }} role="alert">
+          {reportError}
+        </span>
+      ) : null}
+    </div>
+  );
+};
+
+const ConflictDialogue: FC<Props> = ({
   applicantRecordId,
   reviewerId,
   confirmOpen,
   onConfirmOpenChange,
-}: Props): ReactElement => {
-  const theme = useTheme();
+}: Props) => {
   const router = useRouter();
 
   const [successDialogOpen, setSuccessDialogOpen] = useState(false);
@@ -72,16 +90,7 @@ const ConflictDialogue = ({
         open={confirmOpen}
         onClose={handleCloseConfirmDialog}
         header="Report as conflict of interest?"
-        text={
-          <div className="flex flex-col gap-2">
-            <span>Clicking yes will notify admins and cannot be undone.</span>
-            {reportError ? (
-              <span style={{ color: theme.palette.error.main }} role="alert">
-                {reportError}
-              </span>
-            ) : null}
-          </div>
-        }
+        text={<ConflictDialogueText reportError={reportError} />}
       >
         <Button
           variant="secondary"

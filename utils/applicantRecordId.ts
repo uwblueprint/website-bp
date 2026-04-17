@@ -4,20 +4,36 @@ const getQueryValue = (
   query: ParsedUrlQuery,
   key: string,
 ): string | undefined => {
-  const raw = query?.[key];
-  return typeof raw === "string"
-    ? raw
-    : Array.isArray(raw)
-    ? raw[0]
-    : undefined;
+  const raw = query[key];
+  if (typeof raw === "string") {
+    return raw;
+  }
+
+  if (Array.isArray(raw)) {
+    return raw[0];
+  }
+
+  return undefined;
 };
 
-export function tryGetApplicantRecordId(query: ParsedUrlQuery): string | null {
-  const value = getQueryValue(query, "applicantRecordId");
+export const tryGetApplicantRecordId = (
+  query: ParsedUrlQuery,
+): string | null => {
+  const applicantRecordId = getQueryValue(query, "applicantRecordId")?.trim();
 
-  if (typeof value !== "string" || value.length === 0) {
+  if (applicantRecordId == null || applicantRecordId.length === 0) {
     return null;
   }
 
-  return value;
-}
+  return applicantRecordId;
+};
+
+export const getApplicantRecordId = (query: ParsedUrlQuery): string => {
+  const applicantRecordId = tryGetApplicantRecordId(query);
+
+  if (applicantRecordId == null) {
+    throw new Error("applicantRecordId must be a non-empty string");
+  }
+
+  return applicantRecordId;
+};
