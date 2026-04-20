@@ -19,7 +19,7 @@ const JOIN_PROCESS_STEPS: ProcessStep[] = [
     description:
       "Check out our projects, come to events, talk with the team and view our open ",
     descriptionLink: {
-      href: "https://example.com/open-roles",
+      href: "https://uwblueprintexecs.notion.site/Role-Responsibilities-9494c8311ce0471f997c7473e0bfea1c",
       label: "roles",
       suffix: ".",
     },
