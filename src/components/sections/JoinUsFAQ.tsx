@@ -103,7 +103,7 @@ export function JoinUsFAQ({ className }: { className?: string }) {
       id="join-us-faq"
       aria-label="Frequently asked questions"
       className={cn(
-        "bg-[var(--background)] -mb-8 md:mb-0 px-8 pt-24 md:pb-24",
+        "bg-[var(--primary-light)] -mb-8 md:mb-0 px-8 pt-24 md:pb-24",
         className,
       )}
     >

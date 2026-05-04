@@ -83,7 +83,10 @@ export function InterestedSection({ className }: { className?: string }) {
   return (
     <section
       aria-label="Nonprofits and students"
-      className={cn(`bg-[var(--background)] pb-8 pt-12 text-left`, className)}
+      className={cn(
+        "bg-[var(--primary-light)] pb-8 pt-12 text-left",
+        className,
+      )}
     >
       <div className="grid w-full grid-cols-12 gap-0 px-8">
         <h2 className="col-span-12 text-xxl pb-4 md:pb-8 text-[var(--bp-blue)]">

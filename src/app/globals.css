@@ -277,14 +277,9 @@ body {
   }
   html {
     @apply font-sans;
-    /* background-color: var(--bp-blue);
-    min-height: 100%; */
   }
   body {
-    @apply bg-background text-foreground;
-    /* Prevent accidental white showing when sections/gradients reveal the page background. */
-    /* background-color: var(--bp-blue);
-    min-height: 100%; */
+    @apply bg-[var(--bp-blue)] text-foreground;
   }
 
   /* Cursors for interactive / hoverable elements */

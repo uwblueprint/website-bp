@@ -102,7 +102,7 @@ const TEAMS = buildTeams();
 
 export default function StudentsPage() {
   return (
-    <main>
+    <main className="bg-primary-light">
       <StudentsHero />
 
       {TEAMS.map((team, idx) => (
@@ -115,7 +115,8 @@ export default function StudentsPage() {
         />
       ))}
 
-      <div className="pt-12 md:py-32">
+      <div className="pt-12 md:py-12 bg-primary-light">
+ 
         <div className="grid w-full grid-cols-12 gap-0 px-8">
           <div className="col-span-12 text-xl lowercase text-[var(--bp-blue)] pb-8">
             <Link href="/students/alumni" className="inline-block">

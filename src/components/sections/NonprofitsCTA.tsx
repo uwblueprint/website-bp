@@ -11,7 +11,7 @@ export function NonprofitsCTA({ className }: { className?: string }) {
     <section
       aria-label="Learn more"
       className={cn(
-        "bg-[var(--background)] px-8 pb-8 pt-24 md:pb-24",
+        "bg-[var(--primary-light)] px-8 pb-8 pt-24 md:pb-24",
         className,
       )}
     >

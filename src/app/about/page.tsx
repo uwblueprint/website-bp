@@ -32,7 +32,7 @@ const VALUES_TABS = [
 
 export default function AboutPage() {
   return (
-    <main>
+    <main className="bg-primary-light">
       <AboutHero />
 
       <AboutSection />
