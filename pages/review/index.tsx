@@ -23,9 +23,12 @@ import { ApplicationDTO, AuthStatus } from "../../types";
 import ProtectedApplication from "./protectedApplication";
 import RecruitmentPlatformThemeProvider from "@components/recruitmentPlatformCommon/RecruitmentPlatformThemeProvider";
 import { useAuthenticatedUser } from "@components/context/AuthUserContext";
-import ConflictDialogue from "@components/review/shared/ConflictDialogue";
+import { ReportConflictDialogue } from "@components/review/dialogues/ReportConflictDialogue";
 import { ReviewStageHeader } from "@components/review/shared/ReviewStageHeader";
 import { ReportConflictButton } from "@components/review/shared/ReportConflictButton";
+import { ReportConflictSuccessDialogue } from "@components/review/dialogues/ReportConflictSuccessDialogue";
+import { reportReviewConflict } from "APIClients/ReviewPageAPIClient";
+import { auth } from "@utils/firebase";
 
 const sampleApplication: ApplicationDTO = {
   id: 1,
@@ -66,16 +69,6 @@ const initialScores: ReviewScores = {
   [ReviewStage.END_SUCCESS]: 0,
 };
 
-const tryParseReviewerId = (reviewerId: string | undefined): number | null => {
-  const trimmedReviewerId = reviewerId?.trim();
-  if (trimmedReviewerId == null || trimmedReviewerId === "") {
-    return null;
-  }
-
-  const parsedReviewerId = Number(trimmedReviewerId);
-  return Number.isInteger(parsedReviewerId) ? parsedReviewerId : null;
-};
-
 const ReviewsPages: NextPage = () => {
   const router = useRouter();
   const [stage, setStage] = useState<ReviewStage>(ReviewStage.INFO);
@@ -90,20 +83,28 @@ const ReviewsPages: NextPage = () => {
     secondChoiceRole: "",
   });
   const [scores, setScores] = useState<ReviewScores>(initialScores);
-  const [conflictConfirmOpen, setConflictConfirmOpen] = useState(false);
+  const [reportConflictDialogueOpen, setReportConflictDialogueOpen] =
+    useState(false);
+  const [
+    reportConflictSuccessDialogueOpen,
+    setReportConflictSuccessDialogueOpen,
+  ] = useState(false);
+  const [reportConflictHasErrored, setReportConflictHasErrored] =
+    useState(false);
 
   const applicantRecordId = router.isReady
     ? getApplicantRecordId(router.query)
     : null;
+
+  const authenticatedUser = useAuthenticatedUser();
+
   const name = application
     ? `${application.firstName} ${application.lastName}`
     : "Applicant";
 
-  const authenticatedUser = useAuthenticatedUser();
   const reviewerName = authenticatedUser
     ? authenticatedUser.firstName
     : "Reviewer";
-  const reviewerId = tryParseReviewerId(authenticatedUser?.id);
   const reviewScoringPanelHeader = (
     <ReviewStageHeader
       backHref={BACK_TO_HOME_HREF}
@@ -111,7 +112,7 @@ const ReviewsPages: NextPage = () => {
         <ReportConflictButton
           name={name}
           showQuestion
-          onClick={() => setConflictConfirmOpen(true)}
+          onClick={() => setReportConflictDialogueOpen(true)}
         />
       }
     />
@@ -197,15 +198,44 @@ const ReviewsPages: NextPage = () => {
     }
   };
 
+  const reportConflict = async () => {
+    try {
+      setReportConflictHasErrored(false);
+
+      if (applicantRecordId == null) {
+        throw new Error("Missing applicantRecordId in URL");
+      }
+
+      if (authenticatedUser == null) {
+        throw new Error("Missing authenticated reviewer ID");
+      }
+
+      await reportReviewConflict(applicantRecordId, authenticatedUser.id);
+      setReportConflictDialogueOpen(false);
+      setReportConflictSuccessDialogueOpen(true);
+    } catch (error) {
+      setReportConflictHasErrored(true);
+    }
+  };
+
+  const onReportConflictSuccessClose = () => {
+    setReportConflictSuccessDialogueOpen(false);
+    router.push(BACK_TO_HOME_HREF);
+  };
+
   return (
     <ReviewSetScoresContext.Provider value={updateScores}>
       <ReviewSetStageContext.Provider value={setStage}>
         {getReviewStage()}
-        <ConflictDialogue
-          applicantRecordId={applicantRecordId}
-          reviewerId={reviewerId}
-          confirmOpen={conflictConfirmOpen}
-          onConfirmOpenChange={setConflictConfirmOpen}
+        <ReportConflictDialogue
+          open={reportConflictDialogueOpen}
+          hasError={reportConflictHasErrored}
+          onClose={() => setReportConflictDialogueOpen(false)}
+          onConfirm={reportConflict}
+        />
+        <ReportConflictSuccessDialogue
+          open={reportConflictSuccessDialogueOpen}
+          onClose={onReportConflictSuccessClose}
         />
       </ReviewSetStageContext.Provider>
     </ReviewSetScoresContext.Provider>

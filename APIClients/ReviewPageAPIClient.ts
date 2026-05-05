@@ -1,37 +1,22 @@
 import { fetchGraphql } from "@utils/makegqlrequest";
 import { mutations } from "graphql/queries";
 import BaseAPIClient from "./BaseAPIClient";
+import { ReviewedApplicantRecordDTO } from "types/review";
 
-export type ReportReviewConflictResult = {
-  readonly applicantRecordId: string;
-  readonly reviewerId: number;
-  readonly status: string;
-  readonly score: number;
-  readonly reviewerHasConflict: boolean;
-};
-
-const reportReviewConflict = async (
+export const reportReviewConflict = async (
   applicantRecordId: string,
   reviewerId: number,
-): Promise<ReportReviewConflictResult> => {
+): Promise<ReviewedApplicantRecordDTO> => {
   BaseAPIClient.handleAuthRefresh();
-  if (!Number.isInteger(reviewerId)) {
-    throw new Error("Reviewer ID is invalid");
-  }
-
-  const result = await fetchGraphql(mutations.reportReviewConflict, {
+  const rawResponse = await fetchGraphql(mutations.reportReviewConflict, {
     applicantRecordId,
     reviewerId,
   });
-  const conflictResult = result?.data?.reportReviewConflict;
+  const response = rawResponse?.data?.reportReviewConflict;
 
-  if (!conflictResult) {
+  if (!response) {
     throw new Error("Conflict report request returned no data");
   }
 
-  return conflictResult;
-};
-
-export default {
-  reportReviewConflict,
+  return response;
 };
