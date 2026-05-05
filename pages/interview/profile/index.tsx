@@ -7,6 +7,7 @@ import { PanelLayout } from "@components/common/SplitPageLayout";
 import {
   getInterviewLayout,
   InterviewHeader,
+  InterviewFooter,
 } from "@components/interview/layout";
 import { NextPageWithLayout } from "../../_app";
 
@@ -25,13 +26,14 @@ const InterviewProfilePage: NextPageWithLayout = () => {
   );
 };
 
-// TODO: add the footer back once the profile step actions are wired up.
+// TODO: footer buttons and currentStep will update as the user moves through
+// INFO → SCORING → COMMENTS sub-steps once sub-step state is wired up.
 InterviewProfilePage.getLayout = getInterviewLayout(
   <InterviewHeader
     steps={PROFILE_HEADER_STEPS}
     currentStep={InterviewHeaderStep.INFO}
   />,
-  null,
+  <InterviewFooter onBack={() => {}} onContinue={() => {}} />,
 );
 
 export default InterviewProfilePage;
