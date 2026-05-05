@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import ProtectedRoute from "@components/context/ProtectedRoute";
@@ -72,7 +72,7 @@ const initialScores: ReviewScores = {
 const ReviewsPages: NextPage = () => {
   const router = useRouter();
   const [stage, setStage] = useState<ReviewStage>(ReviewStage.INFO);
-  const [application, setApplication] = useState<ApplicationDTO>();
+  const [application] = useState<ApplicationDTO>(sampleApplication);
   const [authStatus, setAuthStatus] = useState<AuthStatus>({
     loading: true,
     isAuthorized: false,
@@ -92,25 +92,18 @@ const ReviewsPages: NextPage = () => {
   const [reportConflictHasErrored, setReportConflictHasErrored] =
     useState(false);
 
-  const applicantRecordId = router.isReady
-    ? getApplicantRecordId(router.query)
-    : null;
+  const applicantRecordId = getApplicantRecordId(router.query);
 
   const authenticatedUser = useAuthenticatedUser();
 
-  const name = application
-    ? `${application.firstName} ${application.lastName}`
-    : "Applicant";
+  const applicantName = `${application.firstName} ${application.lastName}`;
 
-  const reviewerName = authenticatedUser
-    ? authenticatedUser.firstName
-    : "Reviewer";
   const reviewScoringPanelHeader = (
     <ReviewStageHeader
       backHref={BACK_TO_HOME_HREF}
       right={
         <ReportConflictButton
-          name={name}
+          name={applicantName}
           showQuestion
           onClick={() => setReportConflictDialogueOpen(true)}
         />
@@ -127,20 +120,12 @@ const ReviewsPages: NextPage = () => {
     });
   };
 
-  useEffect(() => {
-    if (applicantRecordId === null) return;
-    const appInfo = sampleApplication;
-    setApplication(appInfo);
-  }, [applicantRecordId]);
-
-  if (!router.isReady) return null;
-
   const getReviewStage = () => {
     switch (stage) {
       case ReviewStage.INFO:
         return (
           <ReviewInfoStage
-            name={name}
+            name={applicantName}
             application={application}
             scores={scores}
           />
@@ -148,7 +133,7 @@ const ReviewsPages: NextPage = () => {
       case ReviewStage.PFSG:
         return (
           <ReviewPassionForSocialGoodStage
-            name={name}
+            name={applicantName}
             application={application}
             scores={scores}
             header={reviewScoringPanelHeader}
@@ -157,7 +142,7 @@ const ReviewsPages: NextPage = () => {
       case ReviewStage.TP:
         return (
           <ReviewTeamPlayerStage
-            name={name}
+            name={applicantName}
             application={application}
             scores={scores}
             header={reviewScoringPanelHeader}
@@ -166,7 +151,7 @@ const ReviewsPages: NextPage = () => {
       case ReviewStage.D2L:
         return (
           <ReviewDriveToLearnStage
-            name={name}
+            name={applicantName}
             application={application}
             scores={scores}
             header={reviewScoringPanelHeader}
@@ -175,7 +160,7 @@ const ReviewsPages: NextPage = () => {
       case ReviewStage.SKL:
         return (
           <ReviewSkillStage
-            name={name}
+            name={applicantName}
             application={application}
             scores={scores}
             header={reviewScoringPanelHeader}
@@ -184,8 +169,10 @@ const ReviewsPages: NextPage = () => {
       case ReviewStage.END:
         return (
           <ReviewEndStage
-            name={name}
-            reviewerName={reviewerName}
+            name={applicantName}
+            reviewerName={
+              authenticatedUser ? authenticatedUser.firstName : "Reviewer"
+            }
             scores={scores}
             endData={endData}
             setEndData={setEndData}
@@ -194,7 +181,7 @@ const ReviewsPages: NextPage = () => {
         );
       case ReviewStage.END_SUCCESS:
       default:
-        return <ReviewEndSuccessStage name={name} />;
+        return <ReviewEndSuccessStage name={applicantName} />;
     }
   };
 
@@ -242,7 +229,7 @@ const ReviewsPages: NextPage = () => {
   );
 };
 
-const Reviews: NextPage = () => {
+export const Reviews: NextPage = () => {
   const router = useRouter();
   return (
     <RecruitmentPlatformThemeProvider>
@@ -254,5 +241,3 @@ const Reviews: NextPage = () => {
     </RecruitmentPlatformThemeProvider>
   );
 };
-
-export default Reviews;

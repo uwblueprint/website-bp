@@ -1,3 +1,5 @@
+import { ParsedUrlQuery } from "node:querystring";
+
 type ShortAnswerEntry = {
   question: string;
   response: string;
@@ -13,19 +15,17 @@ export const extractShortAnswerData = (
   extractedAnswers: shortAnswerJSON.map(({ response }) => response),
 });
 
-export const getApplicantRecordId = (
-  query: Record<string, string | string[] | undefined>,
-): string => {
-  const applicantRecordId =
-    typeof query["applicantRecordId"] === "string"
-      ? query["applicantRecordId"]
-      : (() => {
-          throw new Error("applicantRecordId must be a String");
-        })();
-
-  if (applicantRecordId.trim().length === 0) {
-    throw Error("applicantRecordId must be a non-empty string");
+export const getApplicantRecordId = (query: ParsedUrlQuery): string => {
+  const parsedQuery = query.applicantRecordId;
+  if (!parsedQuery) {
+    throw new Error("Applicant record ID is required to access review page.");
   }
 
-  return applicantRecordId;
+  if (Array.isArray(parsedQuery)) {
+    throw new Error(
+      "Multiple applicant record IDs provided. Only one is expected.",
+    );
+  }
+
+  return parsedQuery;
 };
