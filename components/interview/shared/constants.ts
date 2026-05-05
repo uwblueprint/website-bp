@@ -1,9 +1,9 @@
 import { NavItem, HeaderStepConfig } from "./types";
 
 export const InterviewStep = {
-  PROFILE : "PROFILE",
-  ASSESSMENT : "ASSESSMENT",
-  REPORT : "REPORT",
+  PROFILE: "PROFILE",
+  ASSESSMENT: "ASSESSMENT",
+  REPORT: "REPORT",
 } as const;
 
 export const InterviewHeaderStep = {

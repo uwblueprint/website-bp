@@ -1,19 +1,16 @@
 import { ParsedUrlQuery } from "node:querystring";
 
-type ShortAnswerEntry = {
-  question: string;
-  response: string;
-};
+export const extractShortAnswerData = (shortAnswerJSON: any) => {
+  const extractedQuestions = shortAnswerJSON.map(
+    (dict: { [key: string]: string }) => dict.question,
+  );
 
-export const extractShortAnswerData = (
-  shortAnswerJSON: ShortAnswerEntry[],
-): {
-  extractedQuestions: string[];
-  extractedAnswers: string[];
-} => ({
-  extractedQuestions: shortAnswerJSON.map(({ question }) => question),
-  extractedAnswers: shortAnswerJSON.map(({ response }) => response),
-});
+  const extractedAnswers = shortAnswerJSON.map(
+    (dict: { [key: string]: string }) => dict.response,
+  );
+
+  return { extractedQuestions, extractedAnswers };
+};
 
 export const getApplicantRecordId = (query: ParsedUrlQuery): string => {
   const parsedQuery = query.applicantRecordId;

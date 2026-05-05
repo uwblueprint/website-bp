@@ -1,17 +1,12 @@
-import { ParsedUrlQuery } from "querystring";
 import { ReactChild, ReactElement, useEffect, useState } from "react";
 import Loading from "@components/common/Loading";
 import { AuthStatus } from "types";
 
 export type Props = {
   children: ReactChild;
-  headerInformation: ParsedUrlQuery;
 };
 
-const ProtectedApplication = ({
-  children,
-  headerInformation: _headerInformation,
-}: Props): ReactElement => {
+export const ProtectedApplication = ({ children }: Props): ReactElement => {
   const [authStatus, setAuthStatus] = useState<AuthStatus>({
     loading: true,
     isAuthorized: false,
@@ -41,5 +36,3 @@ const ProtectedApplication = ({
     <div>Unauthorized</div>
   );
 };
-
-export default ProtectedApplication;

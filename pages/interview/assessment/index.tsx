@@ -1,4 +1,8 @@
-import { ASSESSMENT_HEADER_STEPS, AssessmentHeaderStep, useInterviewProgress } from "@components/interview/shared";
+import {
+  ASSESSMENT_HEADER_STEPS,
+  AssessmentHeaderStep,
+  useInterviewProgress,
+} from "@components/interview/shared";
 import { PanelLayout } from "@components/common/SplitPageLayout";
 import {
   getInterviewLayout,

@@ -20,7 +20,7 @@ import { ReviewPassionForSocialGoodStage } from "@components/review/stages/Revie
 import { ReviewSkillStage } from "@components/review/stages/ReviewSkillStage";
 import { ReviewTeamPlayerStage } from "@components/review/stages/ReviewTeamPlayerStage";
 import { ApplicationDTO, AuthStatus } from "../../types";
-import ProtectedApplication from "./protectedApplication";
+import { ProtectedApplication } from "./protectedApplication";
 import RecruitmentPlatformThemeProvider from "@components/recruitmentPlatformCommon/RecruitmentPlatformThemeProvider";
 import { useAuthenticatedUser } from "@components/context/AuthUserContext";
 import { ReportConflictDialogue } from "@components/review/dialogues/ReportConflictDialogue";
@@ -197,7 +197,10 @@ const ReviewsPages: NextPage = () => {
         throw new Error("Missing authenticated reviewer ID");
       }
 
-      await reportReviewConflict(applicantRecordId, authenticatedUser.id);
+      await reportReviewConflict(
+        applicantRecordId,
+        Number(authenticatedUser.id),
+      );
       setReportConflictDialogueOpen(false);
       setReportConflictSuccessDialogueOpen(true);
     } catch (error) {
@@ -229,15 +232,16 @@ const ReviewsPages: NextPage = () => {
   );
 };
 
-export const Reviews: NextPage = () => {
-  const router = useRouter();
+const Reviews: NextPage = () => {
   return (
     <RecruitmentPlatformThemeProvider>
       <ProtectedRoute allowedRoles={["Admin", "User"]}>
-        <ProtectedApplication headerInformation={router.query}>
+        <ProtectedApplication>
           <ReviewsPages />
         </ProtectedApplication>
       </ProtectedRoute>
     </RecruitmentPlatformThemeProvider>
   );
 };
+
+export default Reviews;
