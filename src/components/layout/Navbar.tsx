@@ -274,7 +274,7 @@ export default function Navbar() {
               inert={!open}
               className={cn(
                 "flex w-full min-w-0 flex-row flex-nowrap items-stretch justify-between gap-2 px-8 pb-8 pt-8 md:gap-8 md:pt-24",
-                open && "border-b border-white",
+                open,
                 !open && "pointer-events-none",
               )}
             >
@@ -310,15 +310,18 @@ export default function Navbar() {
                 }}
               >
                 <ul className="flex w-full min-w-0 shrink-0 flex-col items-end gap-4">
-                  {contactLinks.map(({ label, href }) => (
-                    <li key={label} className="min-w-0 text-right">
+                  {contactLinks.map((link) => (
+                    <li key={link.label} className="min-w-0 text-right">
                       <TextLinkButton
-                        href={href}
+                        href={link.href}
                         variant="light"
                         size="md"
                         className="w-fit min-w-0 text-right"
+                        copyValue={
+                          "copyValue" in link ? link.copyValue : undefined
+                        }
                       >
-                        {label}
+                        {link.label}
                       </TextLinkButton>
                     </li>
                   ))}

@@ -36,10 +36,15 @@ export default function Footer() {
           <div className="w-1/2 sm:w-1/4 lg:w-1/6 shrink-0">
             <ColHeading>Get in Touch</ColHeading>
             <ul className="flex flex-col gap-2">
-              {contactLinks.map(({ label, href }) => (
-                <li key={label}>
-                  <TextLinkButton href={href} variant="light" size="md">
-                    {label}
+              {contactLinks.map((link) => (
+                <li key={link.label}>
+                  <TextLinkButton
+                    href={link.href}
+                    variant="light"
+                    size="md"
+                    copyValue={"copyValue" in link ? link.copyValue : undefined}
+                  >
+                    {link.label}
                   </TextLinkButton>
                 </li>
               ))}
@@ -50,14 +55,19 @@ export default function Footer() {
           <div className="hidden sm:block sm:w-1/4 lg:w-1/6 shrink-0">
             <ColHeading>&nbsp;</ColHeading>
             <ul className="flex flex-col gap-2">
-              {contactLinks.map(({ value, label }) => (
-                <li key={label}>
-                  <span
-                    className="text-md whitespace-nowrap cursor-default"
-                    style={{ color: "var(--secondary-light)" }}
+              {contactLinks.map((link) => (
+                <li key={link.label}>
+                  <TextLinkButton
+                    href={link.href}
+                    variant="secondary-light"
+                    size="md"
+                    className="whitespace-nowrap"
+                    copyValue={
+                      link.href.startsWith("http") ? link.href : link.value
+                    }
                   >
-                    {value}
-                  </span>
+                    {link.value}
+                  </TextLinkButton>
                 </li>
               ))}
             </ul>

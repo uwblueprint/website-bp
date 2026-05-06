@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 
 import { buttonVariants } from "@/components/ui/button-variants";
+import TextLinkButton from "@/components/ui/TextLinkButton";
+import { contactEmail } from "@/lib/site-links";
 
 type ContactFormState = {
   name: string;
@@ -19,7 +21,7 @@ const INITIAL_STATE: ContactFormState = {
 };
 
 function buildMailto({ name, email, npoName, comment }: ContactFormState) {
-  const to = "info@uwblueprint.org";
+  const to = contactEmail;
   const subject = `Contact — ${npoName || "NPO"} (${name || "Anonymous"})`;
 
   const body = [
@@ -146,7 +148,13 @@ export default function ContactSection() {
 
           {/* Footer row */}
           <div className="flex items-center justify-between gap-4 pt-2">
-            <p className="text-sm text-white">info@uwblueprint.org</p>
+            <TextLinkButton
+              href={`mailto:${contactEmail}`}
+              variant="light"
+              size="sm"
+            >
+              {contactEmail}
+            </TextLinkButton>
 
             <button
               type="submit"

@@ -1,10 +1,14 @@
 /** Shared URLs and labels for Footer + Navbar (single source of truth). */
 
+export const contactEmail = "info@uwblueprint.org";
+
 export const contactLinks = [
   {
     label: "Email",
-    value: "info@uwblueprint.org",
-    href: "mailto:info@uwblueprint.org",
+    value: contactEmail,
+    href: `mailto:${contactEmail}`,
+    /** Clicking copies this value to clipboard instead of navigating. */
+    copyValue: contactEmail,
   },
   {
     label: "Instagram",
