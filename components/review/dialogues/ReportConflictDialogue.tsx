@@ -26,22 +26,26 @@ export const ReportConflictDialogue = ({
           : undefined
       }
     >
-      <Button
-        variant="secondary"
-        size="md"
-        onClick={onClose}
-        className="whitespace-nowrap"
-      >
-        Cancel
-      </Button>
-      <Button
-        variant="primary"
-        size="md"
-        onClick={onConfirm}
-        className="whitespace-nowrap"
-      >
-        Yes, report
-      </Button>
+      <div className="flex gap-4 w-full">
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={onClose}
+          className="flex-1 min-w-0 flex justify-center items-center whitespace-nowrap !m-0"
+        >
+          <span className="text-[16px] font-normal font-source">Cancel</span>
+        </Button>
+        <Button
+          variant="primary"
+          size="sm"
+          onClick={onConfirm}
+          className="flex-1 min-w-0 flex justify-center items-center whitespace-nowrap !m-0"
+        >
+          <span className="text-[16px] font-normal font-source">
+            Yes, report
+          </span>
+        </Button>
+      </div>
     </Dialogue>
   );
 };

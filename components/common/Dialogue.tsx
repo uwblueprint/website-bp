@@ -34,26 +34,28 @@ export const Dialogue = ({
       }}
     >
       <div
-        className="flex flex-col justify-center items-center gap-[36px] p-6 w-[310px] w-full"
+        className="flex flex-col justify-center items-center p-6 w-[310px] w-full"
         style={{
           backgroundColor: theme.palette.background.paper,
         }}
       >
-        <h2
-          className="font-poppins text-[20px] font-medium leading-[1.4] text-center"
-          style={{ color: theme.palette.primary.main }}
-        >
-          {header}
-        </h2>
-        <div className="font-source text-[14px] font-normal leading-[1.4] text-center">
-          <div style={{ color: theme.palette.text.primary }}> {text} </div>
-          {errorText && (
-            <div style={{ color: theme.palette.error.main }} role="alert">
-              {errorText}
-            </div>
-          )}
+        <div className="flex flex-col justify-center items-center gap-2">
+          <h2
+            className="font-poppins text-[20px] font-medium leading-[1.4] text-center"
+            style={{ color: theme.palette.primary.main }}
+          >
+            {header}
+          </h2>
+          <div className="font-source text-[14px] font-normal leading-[140%] text-center">
+            <div style={{ color: theme.palette.text.primary }}> {text} </div>
+            {errorText && (
+              <div style={{ color: theme.palette.error.main }}>{errorText}</div>
+            )}
+          </div>
         </div>
-        <DialogActions>{children}</DialogActions>
+        <DialogActions className="w-full h-[36px] !p-0 mt-9">
+          {children}
+        </DialogActions>
       </div>
     </Dialog>
   );
