@@ -1,11 +1,10 @@
 import Image from "next/image";
-import { ReactElement } from "react";
 import { ApplicationDTO } from "../../../types";
 import { BACK_TO_HOME_HREF, ReviewStage } from "../shared/constants";
 import { ReportConflictButton } from "../shared/ReportConflictButton";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
-import { ReviewPageLayout, PanelLayout } from "../layout";
+import { ReviewPageLayout, PanelLayout} from "../layout";
 
 export interface ReviewStageProps {
   name: string;
