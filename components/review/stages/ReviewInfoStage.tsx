@@ -76,7 +76,7 @@ export const ReviewInfoStage = ({
   name,
   application,
   scores,
-}: ReviewStageProps): ReactElement => {
+}: ReviewStageProps) => {
   const firstShortAnswer = getFirstShortAnswer(
     application?.shortAnswerQuestions[0],
   );
