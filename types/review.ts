@@ -1,3 +1,5 @@
+import { ValueOf } from "next/dist/shared/lib/constants";
+
 export type ApplicationDTO = {
   id: number;
   academicOrCoop: string;
@@ -22,4 +24,39 @@ export type ApplicationDTO = {
   timestamp: bigint;
   comments?: string;
   skillsCategory?: string;
+};
+
+export type ReviewedApplicantRecordDTO = {
+  applicantRecordId: string;
+  reviewerId: number;
+  review: Review;
+  status: ReviewStatus;
+  score?: number | null;
+  reviewerHasConflict: boolean;
+};
+
+export const ReviewStatusEnum = {
+  TODO: "Todo",
+  IN_PROGRESS: "In Progress",
+  DONE: "Done",
+  CONFLICT: "Conflict",
+} as const;
+
+export const SkillCategoryEnum = {
+  JUNIOR: "Junior",
+  INTERMEDIATE: "Intermediate",
+  SENIOR: "Senior",
+} as const;
+
+export type SkillCategory = ValueOf<typeof SkillCategoryEnum>;
+
+export type ReviewStatus = ValueOf<typeof ReviewStatusEnum>;
+
+export type Review = {
+  passionFSG?: number;
+  teamPlayer?: number;
+  desireToLearn?: number;
+  skill?: number;
+  skillCategory?: SkillCategory;
+  comments?: string;
 };

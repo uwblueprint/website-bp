@@ -1,6 +1,6 @@
-import { useContext } from "react";
+import { ReactNode, useContext } from "react";
 import { ApplicationDTO } from "../../../types";
-import { BACK_TO_HOME_HREF, ReviewStage } from "../shared/constants";
+import { ReviewStage } from "../shared/constants";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
 import { ReviewScoreInput } from "../shared/ReviewScoreInput";
 import { REVIEW_TP_SCORING_CRITERIA } from "../shared/rubricConstants";
@@ -8,17 +8,21 @@ import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewRubric } from "./ReviewRubric";
 import { ReviewPageLayout, PanelLayout } from "../layout";
-import { ReportConflictButton } from "../shared/ReportConflictButton";
 import { useTheme } from "@mui/material/styles";
-
 
 interface Props {
   name: string;
   application: ApplicationDTO | undefined;
   scores: ReviewScores;
+  header: ReactNode;
 }
 
-export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
+export const ReviewTeamPlayerStage = ({
+  name,
+  application,
+  scores,
+  header,
+}: Props) => {
   const theme = useTheme();
   const updateScore = useContext(ReviewSetScoresContext);
   const shortAnswerStr = application?.shortAnswerQuestions[0];
@@ -29,10 +33,7 @@ export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
   return (
     <ReviewPageLayout currentStage={TP} scores={scores}>
       <PanelLayout
-        backToHomeHref={BACK_TO_HOME_HREF}
-        headerRightAction={
-          <ReportConflictButton name={name} showQuestion />
-        }
+        header={header}
         title="Team Player"
         subtitle={`${name}'s Application`}
       >

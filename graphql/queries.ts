@@ -18,20 +18,37 @@ export const mutations = {
       refreshToken
     }
   }`,
+  reportReviewConflict: `
+    mutation reportReviewConflict(
+      $applicantRecordId: String!
+      $reviewerId: Int!
+    ) {
+      reportReviewConflict(
+        applicantRecordId: $applicantRecordId
+        reviewerId: $reviewerId
+      ) {
+        applicantRecordId
+        reviewerId
+        status
+        score
+        reviewerHasConflict
+      }
+    }
+  `,
   refresh: `
   mutation refresh($refreshToken: String!) {
     refresh(refreshToken: $refreshToken)
   }
 `,
   changeRating: `
-    mutation changeRating($id: Int!, $ratingToBeChanged: String!, $newValue: Int!) {
+    mutation changeRating($id: String!, $ratingToBeChanged: String!, $newValue: Int!) {
       changeRating(id: $id, ratingToBeChanged: $ratingToBeChanged, newValue: $newValue) {
         id
       }
     }
   `,
   modifyFinalComments: `
-    mutation modifyFinalComments($id: Int!, $newComments: String!, $newSkillCategory: String!, $newRecommendedSecondChoice: String!) {
+    mutation modifyFinalComments($id: String!, $newComments: String!, $newSkillCategory: String!, $newRecommendedSecondChoice: String!) {
       modifyFinalComments(id: $id, newComments: $newComments, newSkillCategory: $newSkillCategory, newRecommendedSecondChoice: $newRecommendedSecondChoice) {
         id
       }

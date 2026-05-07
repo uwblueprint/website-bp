@@ -49,7 +49,7 @@ export const ReviewInfoStage = ({
   name,
   application,
   scores,
-}: ReviewStageProps): React.ReactElement => {
+}: ReviewStageProps) => {
   const shortAnswerStr = application?.shortAnswerQuestions[0];
   const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
   const { extractedAnswers } = extractShortAnswerData(shortAnswerJSON);
@@ -68,12 +68,7 @@ export const ReviewInfoStage = ({
 
   return (
     <ReviewPageLayout currentStage={ReviewStage.INFO} scores={scores}>
-      <PanelLayout
-        variant="sky"
-        borderRight
-        backToHomeHref="/admin"
-        showApplicationTitle={false}
-      >
+      <PanelLayout variant="sky" borderRight showApplicationTitle={false}>
         <InfoBanner />
       </PanelLayout>
       <PanelLayout title="Basic Information" subtitle={`${name}'s Application`}>

@@ -1,6 +1,6 @@
 import Button from "@components/common/Button";
-import { useContext } from "react";
-import { BACK_TO_HOME_HREF, ReviewStage } from "../shared/constants";
+import { ReactNode, useContext } from "react";
+import { ReviewStage } from "../shared/constants";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
 import { ReviewScoreInput } from "../shared/ReviewScoreInput";
 import { REVIEW_SKL_SCORING_CRITERIA } from "../shared/rubricConstants";
@@ -8,9 +8,7 @@ import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewStageProps } from "./ReviewInfoStage";
 import { ReviewRubric } from "./ReviewRubric";
 import { ReviewPageLayout, PanelLayout } from "../layout";
-import { ReportConflictButton } from "../shared/ReportConflictButton";
 import { useTheme } from "@mui/material/styles";
-
 
 const ResumeLink = ({ resumeLink }: { resumeLink: string }) => {
   return (
@@ -30,11 +28,14 @@ const ResumeLink = ({ resumeLink }: { resumeLink: string }) => {
   );
 };
 
+type Props = ReviewStageProps & { header: ReactNode };
+
 export const ReviewSkillStage = ({
   name,
   application,
   scores,
-}: ReviewStageProps) => {
+  header,
+}: Props) => {
   const theme = useTheme();
   const updateScore = useContext(ReviewSetScoresContext);
   const resumeLink = application?.resumeUrl;
@@ -62,8 +63,7 @@ export const ReviewSkillStage = ({
   return (
     <ReviewPageLayout currentStage={ReviewStage.SKL} scores={scores}>
       <PanelLayout
-        backToHomeHref={BACK_TO_HOME_HREF}
-        headerRightAction={<ReportConflictButton name={name} showQuestion />}
+        header={header}
         title="Skill"
         subtitle={`${name}'s Application`}
       >

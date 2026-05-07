@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import { REVIEW_STAGES, ReviewStage } from "./constants";
 import { ReviewSetStageContext } from "./ReviewContext";
-import { getReviewId } from "./reviewUtils";
+import { getApplicantRecordId } from "./reviewUtils";
 import { ReviewEndData, ReviewScores } from "./types";
 import { useTheme } from "@mui/material/styles";
 import { ReactElement } from "react";
@@ -18,7 +18,7 @@ const STAGE_RATING_FIELDS: [ReviewStage, string][] = [
 ];
 
 const sendRatingData = (
-  id: number,
+  id: string,
   ratingToBeChanged: string,
   newValue: number | undefined,
 ) => {
@@ -30,7 +30,7 @@ const sendRatingData = (
 };
 
 const sendFinalComments = (
-  id: number,
+  id: string,
   newComments: string,
   newSkillCategory: string,
   newRecommendedSecondChoice: string,
@@ -78,11 +78,11 @@ export const ReviewStepper = ({
   if (!router.isReady) return null;
   if (currentStage === ReviewStage.END_SUCCESS) return null;
 
-  const reviewId = getReviewId(router.query);
+  const applicantRecordId = getApplicantRecordId(router.query);
 
   const updateAllData = () => {
     const ratingPromises = STAGE_RATING_FIELDS.map(([stage, field]) =>
-      sendRatingData(reviewId, field, scores[stage]),
+      sendRatingData(applicantRecordId, field, scores[stage]),
     );
 
     const {
@@ -93,7 +93,12 @@ export const ReviewStepper = ({
 
     return Promise.all([
       ...ratingPromises,
-      sendFinalComments(reviewId, comments, skillsCategory, secondChoiceRole),
+      sendFinalComments(
+        applicantRecordId,
+        comments,
+        skillsCategory,
+        secondChoiceRole,
+      ),
     ]);
   };
 
