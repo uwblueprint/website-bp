@@ -10,7 +10,6 @@ interface ReviewPageLayoutProps {
   scores: ReviewScores;
   endData?: ReviewEndData;
   onValidate?: () => boolean;
-  disableNavigation?: boolean;
   children: ReactNode;
 }
 
@@ -19,24 +18,17 @@ export const ReviewPageLayout = ({
   scores,
   endData,
   onValidate,
-  disableNavigation = false,
   children,
 }: ReviewPageLayoutProps) => {
   return (
     <SplitPanelLayout
-      header={
-        <ReviewProgressHeader
-          currentStage={currentStage}
-          disableNavigation={disableNavigation}
-        />
-      }
+      header={<ReviewProgressHeader currentStage={currentStage} />}
       footer={
         <ReviewStepper
           currentStage={currentStage}
           scores={scores}
           endData={endData}
           onValidate={onValidate}
-          disabled={disableNavigation}
         />
       }
     >

@@ -50,7 +50,6 @@ interface Props {
   scores: ReviewScores;
   endData?: ReviewEndData;
   onValidate?: () => boolean;
-  disabled?: boolean;
 }
 
 export const ReviewStepper = ({
@@ -58,7 +57,6 @@ export const ReviewStepper = ({
   scores,
   endData,
   onValidate,
-  disabled = false,
 }: Props): ReactElement | null => {
   const theme = useTheme();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -127,8 +125,7 @@ export const ReviewStepper = ({
           <Button
             size="sm"
             variant="secondary"
-            disabled={disabled}
-            onClick={disabled ? undefined : () => setStage?.(previousStage)}
+            onClick={() => setStage?.(previousStage)}
             className="shrink-0 whitespace-nowrap !px-4 !py-2 hover:bg-sky-100 hover:border-blue hover:text-blue"
           >
             Previous section
@@ -137,36 +134,32 @@ export const ReviewStepper = ({
         {currentStage === ReviewStage.END ? (
           <Button
             size="sm"
-            disabled={disabled || isSubmitting || !endData?.skillsCategory}
+            disabled={isSubmitting || !endData?.skillsCategory}
             className="shrink-0 whitespace-nowrap !px-4 !py-2 hover:bg-sky-400 hover:border-transparent disabled:opacity-60"
-            onClick={
-              disabled
-                ? undefined
-                : async () => {
-                    if (onValidate && !onValidate()) {
-                      return;
-                    }
+            onClick={async () => {
+              if (onValidate && !onValidate()) {
+                return;
+              }
 
-                    setIsSubmitting(true);
-                    try {
-                      await updateAllData();
-                      setStage?.(ReviewStage.END_SUCCESS);
-                    } catch (error) {
-                      console.error("Failed to submit review data:", error);
-                      alert("Failed to submit review. Please try again.");
-                    } finally {
-                      setIsSubmitting(false);
-                    }
-                  }
-            }
+              setIsSubmitting(true);
+              try {
+                await updateAllData();
+                setStage?.(ReviewStage.END_SUCCESS);
+              } catch (error) {
+                console.error("Failed to submit review data:", error);
+                alert("Failed to submit review. Please try again.");
+              } finally {
+                setIsSubmitting(false);
+              }
+            }}
           >
             {isSubmitting ? "Submitting..." : "Finish"}
           </Button>
         ) : (
           <Button
             size="sm"
-            disabled={disabled || isButtonDisabled}
-            onClick={disabled ? undefined : () => setStage?.(nextStage)}
+            disabled={isButtonDisabled}
+            onClick={() => setStage?.(nextStage)}
             className="shrink-0 whitespace-nowrap !px-4 !py-2 hover:bg-sky-400 hover:border-transparent disabled:opacity-60"
           >
             Save & Continue

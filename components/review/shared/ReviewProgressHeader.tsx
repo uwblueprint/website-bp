@@ -8,7 +8,6 @@ import { useTheme } from "@mui/material/styles";
 
 interface Props {
   currentStage: ReviewStage;
-  disableNavigation?: boolean;
 }
 
 type StepState = "current" | "completed" | "future";
@@ -38,14 +37,9 @@ const getStepState = (step: StepConfig, currentIndex: number): StepState => {
 interface StepIndicatorProps {
   step: StepConfig;
   state: StepState;
-  disabled?: boolean;
 }
 
-const StepIndicator = ({
-  step,
-  state,
-  disabled = false,
-}: StepIndicatorProps) => {
+const StepIndicator = ({ step, state }: StepIndicatorProps) => {
   const setStage = useContext(ReviewSetStageContext);
   const theme = useTheme();
 
@@ -93,9 +87,7 @@ const StepIndicator = ({
     </>
   );
 
-  return disabled ? (
-    <div className="flex flex-col items-center gap-1">{content}</div>
-  ) : (
+  return (
     <button
       type="button"
       onClick={() => setStage?.(step.stage)}
@@ -107,10 +99,7 @@ const StepIndicator = ({
   );
 };
 
-export const ReviewProgressHeader = ({
-  currentStage,
-  disableNavigation = false,
-}: Props) => {
+export const ReviewProgressHeader = ({ currentStage }: Props) => {
   const currentIndex = steps.findIndex((s) => s.stage === currentStage);
   const theme = useTheme();
 
@@ -138,7 +127,6 @@ export const ReviewProgressHeader = ({
               key={step.index}
               step={step}
               state={getStepState(step, currentIndex)}
-              disabled={disableNavigation}
             />
           ))}
         </div>
