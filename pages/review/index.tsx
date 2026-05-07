@@ -19,6 +19,8 @@ import { ReviewInfoStage } from "@components/review/stages/ReviewInfoStage";
 import { ReviewPassionForSocialGoodStage } from "@components/review/stages/ReviewPassionForSocialGoodStage";
 import { ReviewSkillStage } from "@components/review/stages/ReviewSkillStage";
 import { ReviewTeamPlayerStage } from "@components/review/stages/ReviewTeamPlayerStage";
+import { ReviewStageHeader } from "@components/review/shared/ReviewStageHeader";
+import { ReportConflictButton } from "@components/review/shared/ReportConflictButton";
 import { ApplicationDTO, AuthStatus } from "../../types";
 import { ProtectedApplication } from "./protectedApplication";
 import RecruitmentPlatformThemeProvider from "@components/recruitmentPlatformCommon/RecruitmentPlatformThemeProvider";
@@ -181,7 +183,18 @@ const ReviewsPages: NextPage = () => {
             name={name}
             application={application}
             scores={scores}
-            onReportConflict={() => setReportConflictDialogueOpen(true)}
+            header={
+              <ReviewStageHeader
+                backHref={BACK_TO_HOME_HREF}
+                right={
+                  <ReportConflictButton
+                    name={name}
+                    showQuestion
+                    onClick={() => setReportConflictDialogueOpen(true)}
+                  />
+                }
+              />
+            }
           />
         );
       case ReviewStage.END:
