@@ -16,12 +16,14 @@ interface Props {
   name: string;
   application: ApplicationDTO | undefined;
   scores: ReviewScores;
+  onReportConflict?: () => void;
 }
 
 export const ReviewDriveToLearnStage = ({
   name,
   application,
   scores,
+  onReportConflict,
 }: Props) => {
   const updateScore = useContext(ReviewSetScoresContext);
   const shortAnswers = application?.shortQuestionAnswers ?? [];
@@ -35,7 +37,13 @@ export const ReviewDriveToLearnStage = ({
         header={
           <ReviewStageHeader
             backHref={BACK_TO_HOME_HREF}
-            right={<ReportConflictButton name={name} showQuestion />}
+            right={
+              <ReportConflictButton
+                name={name}
+                showQuestion
+                onClick={onReportConflict}
+              />
+            }
           />
         }
         title="Drive to Learn"

@@ -1,10 +1,12 @@
 import { ParsedUrlQuery } from "node:querystring";
 
 export const getApplicantRecordId = (query: ParsedUrlQuery): string => {
-  const parsedQuery = query.applicantRecordId;
+  const parsedQuery = query.applicantRecordId ?? query.reviewId;
 
   if (!parsedQuery) {
-    throw new Error("Applicant record ID is required to access review page.");
+    throw new Error(
+      "Applicant record ID is required to access review page (missing applicantRecordId/reviewId query param).",
+    );
   }
 
   if (Array.isArray(parsedQuery)) {

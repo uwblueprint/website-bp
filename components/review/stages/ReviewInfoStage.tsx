@@ -11,6 +11,7 @@ export interface ReviewStageProps {
   name: string;
   application: ApplicationDTO | undefined;
   scores: ReviewScores;
+  onReportConflict?: () => void;
 }
 
 const InfoBanner = () => (
@@ -52,6 +53,7 @@ export const ReviewInfoStage = ({
   name,
   application,
   scores,
+  onReportConflict,
 }: ReviewStageProps) => {
   const firstShortAnswer = application?.shortQuestionAnswers[0];
   const questions = [
@@ -84,7 +86,13 @@ export const ReviewInfoStage = ({
         header={
           <ReviewStageHeader
             backHref={BACK_TO_HOME_HREF}
-            right={<ReportConflictButton name={name} showQuestion />}
+            right={
+              <ReportConflictButton
+                name={name}
+                showQuestion
+                onClick={onReportConflict}
+              />
+            }
           />
         }
         showApplicationTitle={false}

@@ -12,16 +12,19 @@ interface Props {
   scores: ReviewScores;
   endData: ReviewEndData;
   setEndData: Dispatch<SetStateAction<ReviewEndData>>;
+  onReportConflict?: () => void;
 }
 
 const LeftPanelContent = ({
   name,
   reviewerName,
   scores,
+  onReportConflict,
 }: {
   name: string;
   reviewerName: string;
   scores: ReviewScores;
+  onReportConflict?: () => void;
 }) => {
   const SCORE_ROWS: { label: string; stage: ReviewStage }[] = [
     { label: "Passion for Social Good", stage: ReviewStage.PFSG },
@@ -45,7 +48,11 @@ const LeftPanelContent = ({
             Back to home
           </a>
         </Link>
-        <ReportConflictButton name={name} showQuestion />
+        <ReportConflictButton
+          name={name}
+          showQuestion
+          onClick={onReportConflict}
+        />
       </div>
 
       {/* Scoring section */}
@@ -164,6 +171,7 @@ export const ReviewEndStage = ({
   scores,
   endData,
   setEndData,
+  onReportConflict,
 }: Props) => {
   const [validationError, setValidationError] = useState(false);
 
@@ -183,6 +191,7 @@ export const ReviewEndStage = ({
           name={name}
           reviewerName={reviewerName}
           scores={scores}
+          onReportConflict={onReportConflict}
         />
       </PanelLayout>
       <PanelLayout>

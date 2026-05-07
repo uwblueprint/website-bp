@@ -34,6 +34,7 @@ export const ReviewSkillStage = ({
   name,
   application,
   scores,
+  onReportConflict,
 }: ReviewStageProps) => {
   const theme = useTheme();
   const updateScore = useContext(ReviewSetScoresContext);
@@ -65,7 +66,13 @@ export const ReviewSkillStage = ({
         header={
           <ReviewStageHeader
             backHref={BACK_TO_HOME_HREF}
-            right={<ReportConflictButton name={name} showQuestion />}
+            right={
+              <ReportConflictButton
+                name={name}
+                showQuestion
+                onClick={onReportConflict}
+              />
+            }
           />
         }
         title="Skill"

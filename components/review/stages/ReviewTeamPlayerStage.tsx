@@ -16,9 +16,15 @@ interface Props {
   name: string;
   application: ApplicationDTO | undefined;
   scores: ReviewScores;
+  onReportConflict?: () => void;
 }
 
-export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
+export const ReviewTeamPlayerStage = ({
+  name,
+  application,
+  scores,
+  onReportConflict,
+}: Props) => {
   const theme = useTheme();
   const updateScore = useContext(ReviewSetScoresContext);
   const shortAnswers = application?.shortQuestionAnswers ?? [];
@@ -32,7 +38,13 @@ export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
         header={
           <ReviewStageHeader
             backHref={BACK_TO_HOME_HREF}
-            right={<ReportConflictButton name={name} showQuestion />}
+            right={
+              <ReportConflictButton
+                name={name}
+                showQuestion
+                onClick={onReportConflict}
+              />
+            }
           />
         }
         title="Team Player"
