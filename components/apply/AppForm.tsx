@@ -65,9 +65,9 @@ export type AppFormValues = {
   locationPreference: string;
   firstChoiceRole: string;
   secondChoiceRole: string;
-  shortQuestionAnswers: {
+  shortAnswerQuestions: {
     question: string;
-    response: string;
+    response?: string;
   }[];
   roleSpecificQuestions: (Omit<RoleSpecificQuestion, "questions"> & {
     questions: (RoleSpecificQuestion["questions"][0] & { response?: string })[];
@@ -80,7 +80,7 @@ export type AppFormValues = {
   timestamp: number;
 };
 
-const shortQuestionAnswers: ShortAnswerQuestion[] = JSON.parse(
+const shortAnswerQuestions: ShortAnswerQuestion[] = JSON.parse(
   JSON.stringify(shortAnswerJson),
 );
 
@@ -105,9 +105,9 @@ const appFormInitialValues: AppFormValues = {
   locationPreference: "",
   firstChoiceRole: "",
   secondChoiceRole: "",
-  shortQuestionAnswers: shortQuestionAnswers.map(({ question }) => ({
+  shortAnswerQuestions: shortAnswerQuestions.map(({ question }) => ({
     question,
-    response: "",
+    response: undefined,
   })),
   roleSpecificQuestions: roleSpecificQuestions.map(
     ({ id, role, questions }) => ({
@@ -190,7 +190,7 @@ const AppForm: FC<Props> = ({
           locationPreference: values.locationPreference,
           firstChoiceRole: values.firstChoiceRole,
           secondChoiceRole: values.secondChoiceRole || "",
-          shortQuestionAnswers: values.shortQuestionAnswers,
+          shortAnswerQuestions: values.shortAnswerQuestions,
           roleSpecificQuestions,
           timestamp: serverTimestamp(),
           status: "pending",
@@ -247,7 +247,7 @@ const AppForm: FC<Props> = ({
             />
             <ShortAnswers
               values={values}
-              questions={shortQuestionAnswers}
+              questions={shortAnswerQuestions}
               readOnly={readOnly}
             />
             <RoleSpecificQuestions

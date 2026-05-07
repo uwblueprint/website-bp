@@ -8,7 +8,7 @@ type Props = {
   readOnly: boolean;
 };
 
-const ShortAnswers = ({ values, questions, readOnly }: Props) => {
+const ShortAnswers: FC<Props> = ({ values, questions, readOnly }: Props) => {
   return (
     <section className="grid gap-3 mb-12">
       <h4 className="text-blue-100">Short Answers</h4>
@@ -21,10 +21,10 @@ const ShortAnswers = ({ values, questions, readOnly }: Props) => {
       <div className="grid gap-6">
         {questions.map((question, i) => (
           <TextAreaInput
-            id={`shortQuestionAnswers[${i}].response`}
-            key={`shortQuestionAnswers${i}`}
+            id={`shortAnswerQuestions[${i}].response`}
+            key={`shortAnswerQuestions${i}`}
             labelText={question.question}
-            value={values.shortQuestionAnswers[i].response}
+            value={values.shortAnswerQuestions[i].response}
             maxLength={question.maxLength}
             required
             readOnly={readOnly}
