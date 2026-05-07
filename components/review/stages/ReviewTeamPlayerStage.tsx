@@ -11,7 +11,6 @@ import { ReviewPageLayout, PanelLayout } from "../layout";
 import { ReportConflictButton } from "../shared/ReportConflictButton";
 import { useTheme } from "@mui/material/styles";
 
-
 interface Props {
   name: string;
   application: ApplicationDTO | undefined;
@@ -21,10 +20,9 @@ interface Props {
 export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
   const theme = useTheme();
   const updateScore = useContext(ReviewSetScoresContext);
-  const shortAnswerStr = application?.shortAnswerQuestions[0];
-  const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
-  const questions = [shortAnswerJSON[2]?.question];
-  const answers = [shortAnswerJSON[2]?.response];
+  const shortAnswers = application?.shortQuestionAnswers ?? [];
+  const questions = [shortAnswers[2]?.question ?? ""];
+  const answers = [shortAnswers[2]?.response ?? ""];
   const { TP } = ReviewStage;
   return (
     <ReviewPageLayout currentStage={TP} scores={scores}>

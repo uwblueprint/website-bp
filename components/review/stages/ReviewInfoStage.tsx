@@ -1,21 +1,16 @@
 import Image from "next/image";
 import { ApplicationDTO } from "../../../types";
+import { PanelLayout, ReviewPageLayout } from "../layout";
 import { BACK_TO_HOME_HREF, ReviewStage } from "../shared/constants";
 import { ReportConflictButton } from "../shared/ReportConflictButton";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
-import { ReviewPageLayout, PanelLayout} from "../layout";
 
 export interface ReviewStageProps {
   name: string;
   application: ApplicationDTO | undefined;
   scores: ReviewScores;
 }
-
-type ShortAnswer = {
-  question?: string;
-  response?: string;
-};
 
 const InfoBanner = () => (
   <div className="flex h-full min-h-[420px] flex-col items-center justify-center px-8 py-12">
@@ -52,36 +47,16 @@ const INFO_QUESTIONS = [
   "Position",
 ];
 
-const getFirstShortAnswer = (
-  serializedShortAnswers?: string,
-): ShortAnswer | null => {
-  if (!serializedShortAnswers) {
-    return null;
-  }
-
-  try {
-    const parsedValue = JSON.parse(serializedShortAnswers) as ShortAnswer[];
-    if (!Array.isArray(parsedValue) || !parsedValue[0]?.question) {
-      return null;
-    }
-
-    return parsedValue[0];
-  } catch {
-    return null;
-  }
-};
-
 export const ReviewInfoStage = ({
   name,
   application,
   scores,
 }: ReviewStageProps) => {
-  const firstShortAnswer = getFirstShortAnswer(
-    application?.shortAnswerQuestions[0],
-  );
-  const questions = firstShortAnswer?.question
-    ? [...INFO_QUESTIONS, firstShortAnswer.question]
-    : INFO_QUESTIONS;
+  const firstShortAnswer = application?.shortQuestionAnswers[0];
+  const questions = [
+    ...INFO_QUESTIONS,
+    ...(firstShortAnswer ? [firstShortAnswer.question] : []),
+  ];
   const subtitle = name ? `${name}'s Application` : "Application";
 
   const answers = [

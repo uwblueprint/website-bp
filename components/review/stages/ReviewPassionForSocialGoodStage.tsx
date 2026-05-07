@@ -1,16 +1,15 @@
+import { useTheme } from "@mui/material/styles";
 import { useContext } from "react";
 import { ApplicationDTO } from "../../../types";
+import { PanelLayout, ReviewPageLayout } from "../layout";
 import { BACK_TO_HOME_HREF, ReviewStage } from "../shared/constants";
+import { ReportConflictButton } from "../shared/ReportConflictButton";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
 import { ReviewScoreInput } from "../shared/ReviewScoreInput";
 import { REVIEW_PFSG_SCORING_CRITERIA } from "../shared/rubricConstants";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewRubric } from "./ReviewRubric";
-import { ReviewPageLayout, PanelLayout } from "../layout";
-import { ReportConflictButton } from "../shared/ReportConflictButton";
-import { useTheme } from "@mui/material/styles";
-
 
 export interface Props {
   name: string;
@@ -24,10 +23,9 @@ export const ReviewPassionForSocialGoodStage = ({
   scores,
 }: Props) => {
   const updateScore = useContext(ReviewSetScoresContext);
-  const shortAnswerStr = application?.shortAnswerQuestions[0];
-  const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
-  const questions = [shortAnswerJSON[1]?.question];
-  const answers = [shortAnswerJSON[1]?.response];
+  const shortAnswers = application?.shortQuestionAnswers ?? [];
+  const questions = [shortAnswers[1]?.question ?? ""];
+  const answers = [shortAnswers[1]?.response ?? ""];
   const theme = useTheme();
   return (
     <ReviewPageLayout currentStage={ReviewStage.PFSG} scores={scores}>
