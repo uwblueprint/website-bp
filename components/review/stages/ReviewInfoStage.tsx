@@ -3,6 +3,7 @@ import { ApplicationDTO } from "../../../types";
 import { PanelLayout, ReviewPageLayout } from "../layout";
 import { BACK_TO_HOME_HREF, ReviewStage } from "../shared/constants";
 import { ReportConflictButton } from "../shared/ReportConflictButton";
+import { ReviewStageHeader } from "../shared/ReviewStageHeader";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 
@@ -80,9 +81,12 @@ export const ReviewInfoStage = ({
       <PanelLayout
         variant="sky"
         borderRight
-        backToHomeHref={BACK_TO_HOME_HREF}
-        disableBackToHome
-        headerRightAction={<ReportConflictButton name={name} showQuestion />}
+        header={
+          <ReviewStageHeader
+            backHref={BACK_TO_HOME_HREF}
+            right={<ReportConflictButton name={name} showQuestion />}
+          />
+        }
         showApplicationTitle={false}
         contentClassName="flex min-h-0 flex-1 items-center justify-center"
       >

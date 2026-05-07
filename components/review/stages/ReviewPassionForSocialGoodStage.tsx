@@ -6,6 +6,7 @@ import { BACK_TO_HOME_HREF, ReviewStage } from "../shared/constants";
 import { ReportConflictButton } from "../shared/ReportConflictButton";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
 import { ReviewScoreInput } from "../shared/ReviewScoreInput";
+import { ReviewStageHeader } from "../shared/ReviewStageHeader";
 import { REVIEW_PFSG_SCORING_CRITERIA } from "../shared/rubricConstants";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
@@ -31,8 +32,12 @@ export const ReviewPassionForSocialGoodStage = ({
   return (
     <ReviewPageLayout currentStage={ReviewStage.PFSG} scores={scores}>
       <PanelLayout
-        backToHomeHref={BACK_TO_HOME_HREF}
-        headerRightAction={<ReportConflictButton name={name} showQuestion />}
+        header={
+          <ReviewStageHeader
+            backHref={BACK_TO_HOME_HREF}
+            right={<ReportConflictButton name={name} showQuestion />}
+          />
+        }
         title="Passion for Social Good"
         subtitle={`${name}'s Application`}
       >

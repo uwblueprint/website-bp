@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import ProtectedRoute from "@components/context/ProtectedRoute";
 import { ReviewStage } from "@components/review/shared/constants";
 import { ReviewEndData, ReviewScores } from "@components/review/shared/types";
-import { getReviewId } from "@components/review/shared/reviewUtils";
+import { getApplicantRecordId } from "@components/review/shared/reviewUtils";
 import {
   ReviewSetScoresContext,
   ReviewSetStageContext,
@@ -17,7 +17,7 @@ import { ReviewPassionForSocialGoodStage } from "@components/review/stages/Revie
 import { ReviewSkillStage } from "@components/review/stages/ReviewSkillStage";
 import { ReviewTeamPlayerStage } from "@components/review/stages/ReviewTeamPlayerStage";
 import { ApplicationDTO, AuthStatus } from "../../types";
-import ProtectedApplication from "./protectedApplication";
+import { ProtectedApplication } from "./protectedApplication";
 import RecruitmentPlatformThemeProvider from "@components/recruitmentPlatformCommon/RecruitmentPlatformThemeProvider";
 import { useAuthenticatedUser } from "@components/context/AuthUserContext";
 
@@ -96,7 +96,9 @@ const ReviewsPages: NextPage = () => {
   });
   const [scores, setScores] = useState<ReviewScores>(initialScores);
 
-  const reviewId = router.isReady ? getReviewId(router.query) : null;
+  const applicantRecordId = router.isReady
+    ? getApplicantRecordId(router.query)
+    : null;
   const name = application?.firstName + " " + application?.lastName;
 
   const authenticatedUser = useAuthenticatedUser();
@@ -114,10 +116,10 @@ const ReviewsPages: NextPage = () => {
   };
 
   useEffect(() => {
-    if (reviewId === null) return;
+    if (applicantRecordId === null) return;
     const appInfo = sampleApplication;
     setApplication(appInfo);
-  }, [reviewId]);
+  }, [applicantRecordId]);
 
   if (!router.isReady) return null;
 
@@ -189,11 +191,10 @@ const ReviewsPages: NextPage = () => {
 };
 
 const Reviews: NextPage = () => {
-  const router = useRouter();
   return (
     <RecruitmentPlatformThemeProvider>
       <ProtectedRoute allowedRoles={["Admin", "User"]}>
-        <ProtectedApplication headerInformation={router.query}>
+        <ProtectedApplication>
           <ReviewsPages />
         </ProtectedApplication>
       </ProtectedRoute>

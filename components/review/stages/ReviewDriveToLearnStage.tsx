@@ -3,6 +3,7 @@ import { ApplicationDTO } from "../../../types";
 import { BACK_TO_HOME_HREF, ReviewStage } from "../shared/constants";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
 import { ReviewScoreInput } from "../shared/ReviewScoreInput";
+import { ReviewStageHeader } from "../shared/ReviewStageHeader";
 import { REVIEW_D2L_SCORING_CRITERIA } from "../shared/rubricConstants";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
@@ -31,8 +32,12 @@ export const ReviewDriveToLearnStage = ({
   return (
     <ReviewPageLayout currentStage={ReviewStage.D2L} scores={scores}>
       <PanelLayout
-        backToHomeHref={BACK_TO_HOME_HREF}
-        headerRightAction={<ReportConflictButton name={name} showQuestion />}
+        header={
+          <ReviewStageHeader
+            backHref={BACK_TO_HOME_HREF}
+            right={<ReportConflictButton name={name} showQuestion />}
+          />
+        }
         title="Drive to Learn"
         subtitle={`${name}'s Application`}
       >

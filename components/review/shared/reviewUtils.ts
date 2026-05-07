@@ -1,26 +1,17 @@
-export const extractShortAnswerData = (shortAnswerJSON: any) => {
-  const extractedQuestions = shortAnswerJSON.map(
-    (dict: { [key: string]: string }) => dict.question,
-  );
+import { ParsedUrlQuery } from "node:querystring";
 
-  const extractedAnswers = shortAnswerJSON.map(
-    (dict: { [key: string]: string }) => dict.response,
-  );
+export const getApplicantRecordId = (query: ParsedUrlQuery): string => {
+  const parsedQuery = query.applicantRecordId;
 
-  return { extractedQuestions, extractedAnswers };
-};
+  if (!parsedQuery) {
+    throw new Error("Applicant record ID is required to access review page.");
+  }
 
-export const getReviewId = (
-  query: Record<string, string | string[] | undefined>,
-): number => {
-  const reviewId =
-    typeof query["reviewId"] === "string"
-      ? parseInt(query["reviewId"])
-      : (() => {
-          throw new Error("reviewId must be a String");
-        })();
-  if (Number.isNaN(reviewId))
-    throw Error("reviewId must be parsable into an int");
+  if (Array.isArray(parsedQuery)) {
+    throw new Error(
+      "Multiple applicant record IDs provided. Only one is expected.",
+    );
+  }
 
-  return reviewId;
+  return parsedQuery;
 };

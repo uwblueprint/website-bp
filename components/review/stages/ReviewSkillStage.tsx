@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { BACK_TO_HOME_HREF, ReviewStage } from "../shared/constants";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
 import { ReviewScoreInput } from "../shared/ReviewScoreInput";
+import { ReviewStageHeader } from "../shared/ReviewStageHeader";
 import { REVIEW_SKL_SCORING_CRITERIA } from "../shared/rubricConstants";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewStageProps } from "./ReviewInfoStage";
@@ -10,7 +11,6 @@ import { ReviewRubric } from "./ReviewRubric";
 import { ReviewPageLayout, PanelLayout } from "../layout";
 import { ReportConflictButton } from "../shared/ReportConflictButton";
 import { useTheme } from "@mui/material/styles";
-
 
 const ResumeLink = ({ resumeLink }: { resumeLink: string }) => {
   return (
@@ -62,8 +62,12 @@ export const ReviewSkillStage = ({
   return (
     <ReviewPageLayout currentStage={ReviewStage.SKL} scores={scores}>
       <PanelLayout
-        backToHomeHref={BACK_TO_HOME_HREF}
-        headerRightAction={<ReportConflictButton name={name} showQuestion />}
+        header={
+          <ReviewStageHeader
+            backHref={BACK_TO_HOME_HREF}
+            right={<ReportConflictButton name={name} showQuestion />}
+          />
+        }
         title="Skill"
         subtitle={`${name}'s Application`}
       >
