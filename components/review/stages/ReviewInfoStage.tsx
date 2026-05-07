@@ -60,7 +60,6 @@ export const ReviewInfoStage = ({
     ...INFO_QUESTIONS,
     ...(firstShortAnswer ? [firstShortAnswer.question] : []),
   ];
-  const subtitle = name ? `${name}'s Application` : "Application";
 
   const answers = [
     application?.email ?? "",
@@ -77,26 +76,23 @@ export const ReviewInfoStage = ({
   return (
     <ReviewPageLayout currentStage={ReviewStage.INFO} scores={scores}>
       <PanelLayout
-        variant="sky"
+        variant="grey"
         borderRight
-        header={
-          <ReviewStageHeader
-            backHref={BACK_TO_HOME_HREF}
-            right={
-              <ReportConflictButton
-                name={name}
-                showQuestion
-                onClick={onReportConflict}
-              />
-            }
-          />
-        }
         showApplicationTitle={false}
         contentClassName="flex min-h-0 flex-1 items-center justify-center"
       >
         <InfoBanner />
       </PanelLayout>
-      <PanelLayout title="Basic Information" subtitle={subtitle}>
+      <PanelLayout
+        title="Basic Information"
+        titleButton={
+          <ReportConflictButton
+            name={name}
+            showQuestion
+            onClick={onReportConflict}
+          />
+        }
+      >
         <div className="mt-2 flex w-full flex-col">
           <ReviewAnswers questions={questions} answers={answers} />
         </div>

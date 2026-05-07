@@ -53,7 +53,7 @@ interface PanelLayoutProps {
   title?: string;
   subtitle?: string;
   titleButton?: ReactNode;
-  variant?: "sky" | "white";
+  variant?: "sky" | "white" | "grey";
   borderRight?: boolean;
   borderLeft?: boolean;
   /** "xlarge" = left panel (28px, 600), "medium" = right panel (20px, 500) */
@@ -79,7 +79,7 @@ export const PanelLayout = ({
   showApplicationTitle = true,
   contentClassName,
   children,
-}: PanelLayoutProps): ReactElement => {
+}: PanelLayoutProps) => {
   const theme = useTheme();
 
   const TITLE_STYLES = {
@@ -99,8 +99,13 @@ export const PanelLayout = ({
       lineHeight: "140%",
     },
   };
-  const bg = variant === "sky" ? "bg-sky" : "bg-white";
-  const hasHeader = !!(title || subtitle);
+  const bg =
+    variant === "sky"
+      ? "bg-sky"
+      : variant === "grey"
+      ? "bg-[#F3F4F6]"
+      : "bg-white";
+  const hasHeader = !!(title || subtitle || header);
   const titleStyle = TITLE_STYLES[titleVariant];
 
   return (

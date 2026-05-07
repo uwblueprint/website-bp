@@ -3,12 +3,14 @@ import { fetchGraphql } from "@utils/makegqlrequest";
 import { mutations } from "graphql/queries";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
-import { REVIEW_STAGES, ReviewStage } from "./constants";
+import { BACK_TO_HOME_HREF, REVIEW_STAGES, ReviewStage } from "./constants";
 import { ReviewSetStageContext } from "./ReviewContext";
 import { getApplicantRecordId } from "./reviewUtils";
 import { ReviewEndData, ReviewScores } from "./types";
 import { useTheme } from "@mui/material/styles";
 import { ReactElement } from "react";
+import Link from "next/link";
+import { LongLeftIcon } from "@components/icons/long-left.icon";
 
 const STAGE_RATING_FIELDS: [ReviewStage, string][] = [
   [ReviewStage.PFSG, "passionFSG"],
@@ -113,6 +115,14 @@ export const ReviewStepper = ({
       }}
     >
       <div className="flex justify-end items-center gap-3 flex-nowrap">
+        {currentStageIndex === 0 && (
+          <Link href={BACK_TO_HOME_HREF} passHref>
+            <a className="font-source no-underline inline-flex justify-center items-center gap-2 w-fit cursor-pointer shrink-0 hover:opacity-90 rounded-full py-2 px-4 border-2 border-blue bg-white text-blue text-base font-normal leading-[1.4] hover:bg-sky-100 hover:border-blue hover:text-blue">
+              <LongLeftIcon />
+              Back to home
+            </a>
+          </Link>
+        )}
         {currentStageIndex > 0 && (
           <Button
             size="sm"
