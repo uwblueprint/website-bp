@@ -75,11 +75,7 @@ export const ReviewInfoStage = ({
   ];
 
   return (
-    <ReviewPageLayout
-      currentStage={ReviewStage.INFO}
-      scores={scores}
-      disableNavigation
-    >
+    <ReviewPageLayout currentStage={ReviewStage.INFO} scores={scores}>
       <PanelLayout
         variant="sky"
         borderRight
