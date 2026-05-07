@@ -24,8 +24,9 @@ export const ReviewDriveToLearnStage = ({
 }: Props) => {
   const updateScore = useContext(ReviewSetScoresContext);
   const shortAnswers = application?.shortQuestionAnswers ?? [];
-  const questions = [shortAnswers[3]?.question ?? ""];
-  const answers = [shortAnswers[3]?.response ?? ""];
+  const fourthShortAnswer = shortAnswers[3];
+  const questions = fourthShortAnswer ? [fourthShortAnswer.question] : [];
+  const answers = fourthShortAnswer ? [fourthShortAnswer.response] : [];
   const theme = useTheme();
   return (
     <ReviewPageLayout currentStage={ReviewStage.D2L} scores={scores}>

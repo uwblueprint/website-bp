@@ -24,8 +24,9 @@ export const ReviewPassionForSocialGoodStage = ({
 }: Props) => {
   const updateScore = useContext(ReviewSetScoresContext);
   const shortAnswers = application?.shortQuestionAnswers ?? [];
-  const questions = [shortAnswers[1]?.question ?? ""];
-  const answers = [shortAnswers[1]?.response ?? ""];
+  const secondShortAnswer = shortAnswers[1];
+  const questions = secondShortAnswer ? [secondShortAnswer.question] : [];
+  const answers = secondShortAnswer ? [secondShortAnswer.response] : [];
   const theme = useTheme();
   return (
     <ReviewPageLayout currentStage={ReviewStage.PFSG} scores={scores}>

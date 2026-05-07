@@ -68,7 +68,7 @@ export const ReviewInfoStage = ({
     application?.pronouns ?? "",
     application?.academicOrCoop ?? "",
     application?.firstChoiceRole ?? "",
-    ...(firstShortAnswer?.question ? [firstShortAnswer.response ?? ""] : []),
+    ...(firstShortAnswer?.question ? [firstShortAnswer.response] : []),
   ];
 
   return (

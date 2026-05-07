@@ -67,7 +67,7 @@ export type AppFormValues = {
   secondChoiceRole: string;
   shortQuestionAnswers: {
     question: string;
-    response?: string;
+    response: string;
   }[];
   roleSpecificQuestions: (Omit<RoleSpecificQuestion, "questions"> & {
     questions: (RoleSpecificQuestion["questions"][0] & { response?: string })[];
@@ -107,7 +107,7 @@ const appFormInitialValues: AppFormValues = {
   secondChoiceRole: "",
   shortQuestionAnswers: shortQuestionAnswers.map(({ question }) => ({
     question,
-    response: undefined,
+    response: "",
   })),
   roleSpecificQuestions: roleSpecificQuestions.map(
     ({ id, role, questions }) => ({
@@ -160,13 +160,10 @@ const AppForm: FC<Props> = ({
               ({ role }) => role === values.secondChoiceRole,
             ),
           )
-          // For aggregated questions, only the first response is filled in.
-          // Firebase doesn't like that we default responses to undefined,
-          // so we need to convert them to null here.
           .map(({ questions, ...rest }) => ({
             questions: questions.map(({ response, ...question }) => ({
               ...question,
-              response: response ?? null,
+              response,
             })),
             ...rest,
           }));

@@ -21,8 +21,9 @@ export const ReviewTeamPlayerStage = ({ name, application, scores }: Props) => {
   const theme = useTheme();
   const updateScore = useContext(ReviewSetScoresContext);
   const shortAnswers = application?.shortQuestionAnswers ?? [];
-  const questions = [shortAnswers[2]?.question ?? ""];
-  const answers = [shortAnswers[2]?.response ?? ""];
+  const thirdShortAnswer = shortAnswers[2];
+  const questions = thirdShortAnswer ? [thirdShortAnswer.question] : [];
+  const answers = thirdShortAnswer ? [thirdShortAnswer.response] : [];
   const { TP } = ReviewStage;
   return (
     <ReviewPageLayout currentStage={TP} scores={scores}>

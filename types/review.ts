@@ -2,7 +2,7 @@ import { ValueOf } from "next/dist/shared/lib/constants";
 
 export type ShortQuestionAnswer = {
   question: string;
-  response?: string | null;
+  response: string;
 };
 
 export type ApplicationDTO = {
