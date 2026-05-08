@@ -1,6 +1,9 @@
+import { useTheme } from "@mui/material/styles";
 import { useContext } from "react";
 import { ApplicationDTO } from "../../../types";
+import { PanelLayout, ReviewPageLayout } from "../layout";
 import { BACK_TO_HOME_HREF, ReviewStage } from "../shared/constants";
+import { ReportConflictButton } from "../shared/ReportConflictButton";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
 import { ReviewScoreInput } from "../shared/ReviewScoreInput";
 import { ReviewStageHeader } from "../shared/ReviewStageHeader";
@@ -8,9 +11,6 @@ import { REVIEW_TP_SCORING_CRITERIA } from "../shared/rubricConstants";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewRubric } from "./ReviewRubric";
-import { ReviewPageLayout, PanelLayout } from "../layout";
-import { ReportConflictButton } from "../shared/ReportConflictButton";
-import { useTheme } from "@mui/material/styles";
 
 interface Props {
   name: string;

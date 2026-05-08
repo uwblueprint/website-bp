@@ -1,9 +1,8 @@
 import Image from "next/image";
 import { ApplicationDTO } from "../../../types";
 import { PanelLayout, ReviewPageLayout } from "../layout";
-import { BACK_TO_HOME_HREF, ReviewStage } from "../shared/constants";
+import { ReviewStage } from "../shared/constants";
 import { ReportConflictButton } from "../shared/ReportConflictButton";
-import { ReviewStageHeader } from "../shared/ReviewStageHeader";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 
@@ -93,9 +92,7 @@ export const ReviewInfoStage = ({
           />
         }
       >
-        <div className="mt-2 flex w-full flex-col">
-          <ReviewAnswers questions={questions} answers={answers} />
-        </div>
+        <ReviewAnswers questions={questions} answers={answers} />
       </PanelLayout>
     </ReviewPageLayout>
   );
