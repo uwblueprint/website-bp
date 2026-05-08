@@ -213,7 +213,7 @@ export function HighlightSection({
 
       {/* Megaphone — one angle per tab */}
       <div
-        className="pointer-events-none absolute top-6 right-8 z-0 w-[min(56vw,280px)] max-w-[90%] sm:w-[min(48vw,360px)] md:top-8 lg:top-[60px] lg:w-[min(42vw,424px)]"
+        className="pointer-events-none absolute top-6 right-8 z-0 hidden xl:block w-[min(56vw,336px)] max-w-[90%] sm:w-[min(48vw,432px)] md:top-8 lg:top-[60px] lg:w-[min(42vw,510px)]"
         aria-hidden
       >
         <div className="relative aspect-[424/330] w-full">

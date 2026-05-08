@@ -72,7 +72,7 @@ export function NonprofitsFAQ({ className }: { className?: string }) {
     <section
       id="nonprofits-faq"
       aria-label="Frequently asked questions"
-      className={cn("bg-[var(--background)] px-8 pt-24 md:pb-24", className)}
+      className={cn("bg-[var(--primary-light)] px-8 pt-24 md:pb-24", className)}
     >
       <div className="grid w-full grid-cols-12 gap-0">
         <h2 className="col-span-12 text-xxl lowercase text-[var(--bp-blue)] pb-8 md:pb-12">

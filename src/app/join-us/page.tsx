@@ -62,7 +62,7 @@ export default function JoinUsPage() {
         ariaLabel="Our application process"
         heading="our process"
         topRightDecoration={
-          <div className="w-[min(44vw,200px)] sm:w-[min(40vw,240px)] md:w-[min(34vw,220px)] lg:w-[min(46vw,420px)] max-w-[90%] translate-y-[72px]">
+          <div className="hidden xl:block w-[min(46vw,504px)] max-w-[90%]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/img/illos/book.svg"

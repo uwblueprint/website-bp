@@ -65,20 +65,20 @@ export function OurProcess({
         className,
       )}
     >
-      <h2 className="text-xxl lowercase text-[var(--primary-light)] pb-8 md:pb-48">
+      <h2 className="relative z-[1] text-xxl lowercase text-[var(--primary-light)] pb-8 md:pb-48">
         {heading}
       </h2>
 
       {topRightDecoration ? (
         <div
-          className="pointer-events-none absolute right-8 top-6 z-0 translate-y-[72px] md:translate-y-[0px]"
+          className="pointer-events-none absolute right-0 top-0 z-0 hidden xl:block translate-x-[10%]"
           aria-hidden
         >
           {topRightDecoration}
         </div>
       ) : null}
 
-      <div className="grid grid-cols-1 min-[800px]:grid-cols-4 min-[800px]:auto-rows-fr gap-0">
+      <div className="relative z-[1] grid grid-cols-1 min-[800px]:grid-cols-4 min-[800px]:auto-rows-fr gap-0">
         {steps.map((step, i) => (
           <FadeUp key={step.index} index={i} inView>
             <div className="h-full">

@@ -38,7 +38,7 @@ export function TeamPhotos({ className }: { className?: string }) {
   return (
     <section
       aria-label="Team photos"
-      className={cn("bg-[var(--background)] px-8 pt-8 pb-8", className)}
+      className={cn("bg-[var(--primary-light)] px-8 pt-8 pb-8", className)}
     >
       <div className="grid grid-cols-12 gap-4">
         {ROWS.map((row, rowIndex) => (

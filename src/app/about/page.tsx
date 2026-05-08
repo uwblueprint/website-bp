@@ -32,7 +32,7 @@ const VALUES_TABS = [
 
 export default function AboutPage() {
   return (
-    <main>
+    <main className="bg-primary-light">
       <AboutHero />
 
       <AboutSection />
@@ -42,7 +42,7 @@ export default function AboutPage() {
         ariaLabel="Our values"
         heading="our values"
         topRightDecoration={
-          <div className="w-[min(44vw,300px)] sm:w-[min(40vw,360px)] md:w-[min(34vw,400px)] lg:w-[min(46vw,500px)] max-w-[90%]">
+          <div className="hidden xl:block w-[min(40vw,600px)] max-w-[90%] -translate-x-[10%] translate-y-[10%]">
             <div className="relative aspect-[812/490] w-full">
               <img
                 src="/img/illos/puzzle.svg"
