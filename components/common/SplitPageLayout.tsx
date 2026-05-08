@@ -157,12 +157,6 @@ export const PanelLayout = ({
                 {title}
               </h2>
             ) : null}
-            {titleVariant === "xlarge" && (
-              <div
-                className="my-6 w-full shrink-0 h-[1px]"
-                style={{ background: theme.palette.semantics.border.light }}
-              />
-            )}
           </>
         )}
         <div

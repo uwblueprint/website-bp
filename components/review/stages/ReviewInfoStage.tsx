@@ -92,7 +92,9 @@ export const ReviewInfoStage = ({
           />
         }
       >
-        <ReviewAnswers questions={questions} answers={answers} />
+        <div className="my-12 flex w-full flex-col">
+          <ReviewAnswers questions={questions} answers={answers} />
+        </div>
       </PanelLayout>
     </ReviewPageLayout>
   );
