@@ -14,6 +14,7 @@ type UseInterviewGroupDataResult = {
   error: string | null;
 };
 
+// we can clean this up after we migrate to react query
 const useInterviewGroupData = (
   interviewGroupId: string | null,
 ): UseInterviewGroupDataResult => {

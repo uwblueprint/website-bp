@@ -10,7 +10,7 @@ import InterviewGroupAPIClient, {
   InterviewGroupStatus,
 } from "APIClients/InterviewGroupAPIClient";
 import { useRouter } from "next/router";
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useState } from "react";
 import useInterviewGroupData from "../../hooks/useInterviewGroupData";
 import { NextPageWithLayout } from "../_app";
 import CalendlyLinkForm from "./components/CalendlyLinkForm";
@@ -20,34 +20,22 @@ import InterviewGroupIllustrationPanel from "./components/InterviewGroupIllustra
 import InterviewPageHeader from "./components/InterviewPageHeader";
 import PartnerSection from "./components/PartnerSection";
 
-const InterviewGroupContent = () => {
-  const router = useRouter();
+const InterviewGroupContent = ({
+  interviewGroupId,
+}: {
+  interviewGroupId: string;
+}) => {
   const currentUser = useAuthenticatedUser();
-  const [linkInput, setLinkInput] = useState("");
-  const [interviewGroupStatus, setInterviewGroupStatus] =
+  const [linkDraft, setLinkDraft] = useState<string | null>(null);
+  const [statusOverride, setStatusOverride] =
     useState<InterviewGroupStatus | null>(null);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmittedOverride, setIsSubmittedOverride] = useState<
+    boolean | null
+  >(null);
   const [isEditing, setIsEditing] = useState(false);
 
-  const rawInterviewGroupId = router.query.interviewGroupId;
-  const interviewGroupId =
-    typeof rawInterviewGroupId === "string" ? rawInterviewGroupId : null;
   const { group, applicants, interviewers, isLoading, error } =
     useInterviewGroupData(interviewGroupId);
-
-  useEffect(() => {
-    if (!group) {
-      return;
-    }
-    const link = group.schedulingLink ?? "";
-    setLinkInput(link);
-    setInterviewGroupStatus(group.status);
-    setIsSubmitted(!!link);
-  }, [group]);
-
-  if (!router.isReady) {
-    return null;
-  }
 
   const partner =
     interviewers.find((i) => i.id !== String(currentUser?.id)) ?? null;
@@ -55,6 +43,10 @@ const InterviewGroupContent = () => {
   const applicantNames = applicants
     .map((a) => `${a.firstName} ${a.lastName}`)
     .join(", ");
+
+  const linkInput = linkDraft ?? group?.schedulingLink ?? "";
+  const interviewGroupStatus = statusOverride ?? group?.status ?? null;
+  const isSubmitted = isSubmittedOverride ?? !!group?.schedulingLink;
 
   const updateSchedulingLink = async (
     nextLink: string,
@@ -70,8 +62,9 @@ const InterviewGroupContent = () => {
       interviewGroupStatus,
     );
 
-    setLinkInput(updatedGroup.schedulingLink ?? "");
-    setInterviewGroupStatus(updatedGroup.status);
+    setLinkDraft(updatedGroup.schedulingLink ?? "");
+    setStatusOverride(updatedGroup.status);
+    setIsSubmittedOverride(!!updatedGroup.schedulingLink);
     afterUpdate();
   };
 
@@ -115,7 +108,7 @@ const InterviewGroupContent = () => {
           {isSubmitted ? (
             <CalendlyLinkSubmitted
               linkInput={linkInput}
-              onLinkChange={setLinkInput}
+              onLinkChange={setLinkDraft}
               isEditing={isEditing}
               onEdit={() => setIsEditing(true)}
               onResubmit={() => {
@@ -127,10 +120,10 @@ const InterviewGroupContent = () => {
           ) : (
             <CalendlyLinkForm
               linkInput={linkInput}
-              onLinkChange={setLinkInput}
+              onLinkChange={setLinkDraft}
               onSubmit={() => {
                 void updateSchedulingLink(linkInput, () => {
-                  setIsSubmitted(true);
+                  setIsSubmittedOverride(true);
                 });
               }}
             />
@@ -142,7 +135,21 @@ const InterviewGroupContent = () => {
 };
 
 const InterviewGroupPage: NextPageWithLayout = () => {
-  return <InterviewGroupContent />;
+  const router = useRouter();
+  const rawInterviewGroupId = router.query.interviewGroupId;
+  const interviewGroupId =
+    typeof rawInterviewGroupId === "string" ? rawInterviewGroupId : null;
+
+  if (!router.isReady || !interviewGroupId) {
+    return null;
+  }
+
+  return (
+    <InterviewGroupContent
+      key={interviewGroupId}
+      interviewGroupId={interviewGroupId}
+    />
+  );
 };
 
 InterviewGroupPage.getLayout = (page: ReactElement) => (
