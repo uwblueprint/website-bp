@@ -3,6 +3,9 @@
 import { useMemo, useState } from "react";
 
 import { buttonVariants } from "@/components/ui/button-variants";
+import TextLinkButton from "@/components/ui/TextLinkButton";
+
+const CONTACT_EMAIL = "info@uwblueprint.org";
 
 type ContactFormState = {
   name: string;
@@ -19,7 +22,7 @@ const INITIAL_STATE: ContactFormState = {
 };
 
 function buildMailto({ name, email, npoName, comment }: ContactFormState) {
-  const to = "info@uwblueprint.org";
+  const to = CONTACT_EMAIL;
   const subject = `Contact — ${npoName || "NPO"} (${name || "Anonymous"})`;
 
   const body = [
@@ -37,6 +40,7 @@ function buildMailto({ name, email, npoName, comment }: ContactFormState) {
 
 export default function ContactSection() {
   const [form, setForm] = useState<ContactFormState>(INITIAL_STATE);
+  const contactEmail = CONTACT_EMAIL;
   const canSubmit = useMemo(() => {
     // Keep it simple/forgiving: only block if all main fields are blank.
     return form.name.trim() && form.email.trim() && form.npoName.trim();
@@ -81,7 +85,10 @@ export default function ContactSection() {
       {/* Intro copy */}
       <p className="col-span-12 text-lg text-white w-full md:w-8/12 pb-24">
         Send us a short message with your mission and the challenges you face.
-        We'll promptly reach out and schedule a call to chat further :)
+        We'll promptly reach out and schedule a call to chat further.  
+        <span className="text-[var(--secondary-light)]">
+          &nbsp;We're still getting the embedded email running - please use our info email below.
+        </span>
       </p>
 
       {/* Form — primary fields use flex + gap; section outer grid stays 12-col */}
@@ -146,7 +153,13 @@ export default function ContactSection() {
 
           {/* Footer row */}
           <div className="flex items-center justify-between gap-4 pt-2">
-            <p className="text-sm text-white">info@uwblueprint.org</p>
+            <TextLinkButton
+              href={`mailto:${contactEmail}`}
+              variant="light"
+              size="sm"
+            >
+              {contactEmail}
+            </TextLinkButton>
 
             <button
               type="submit"
