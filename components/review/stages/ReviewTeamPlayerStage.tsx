@@ -1,39 +1,52 @@
-import { ReactNode, useContext } from "react";
+import { useTheme } from "@mui/material/styles";
+import { useContext } from "react";
 import { ApplicationDTO } from "../../../types";
-import { ReviewStage } from "../shared/constants";
+import { PanelLayout, ReviewPageLayout } from "../layout";
+import { BACK_TO_HOME_HREF, ReviewStage } from "../shared/constants";
+import { ReportConflictButton } from "../shared/ReportConflictButton";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
 import { ReviewScoreInput } from "../shared/ReviewScoreInput";
+import { ReviewStageHeader } from "../shared/ReviewStageHeader";
 import { REVIEW_TP_SCORING_CRITERIA } from "../shared/rubricConstants";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewRubric } from "./ReviewRubric";
-import { ReviewPageLayout, PanelLayout } from "../layout";
-import { useTheme } from "@mui/material/styles";
 
 interface Props {
   name: string;
   application: ApplicationDTO | undefined;
   scores: ReviewScores;
-  header: ReactNode;
+  onReportConflict?: () => void;
 }
 
 export const ReviewTeamPlayerStage = ({
   name,
   application,
   scores,
-  header,
+  onReportConflict,
 }: Props) => {
   const theme = useTheme();
   const updateScore = useContext(ReviewSetScoresContext);
-  const shortAnswerStr = application?.shortAnswerQuestions[0];
-  const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
-  const questions = [shortAnswerJSON[2]?.question];
-  const answers = [shortAnswerJSON[2]?.response];
+  const shortAnswers = application?.shortQuestionAnswers ?? [];
+  const thirdShortAnswer = shortAnswers[2];
+  const questions = thirdShortAnswer ? [thirdShortAnswer.question] : [];
+  const answers = thirdShortAnswer ? [thirdShortAnswer.response] : [];
   const { TP } = ReviewStage;
   return (
     <ReviewPageLayout currentStage={TP} scores={scores}>
       <PanelLayout
-        header={header}
+        header={
+          <ReviewStageHeader
+            backHref={BACK_TO_HOME_HREF}
+            right={
+              <ReportConflictButton
+                name={name}
+                showQuestion
+                onClick={onReportConflict}
+              />
+            }
+          />
+        }
         title="Team Player"
         subtitle={`${name}'s Application`}
       >

@@ -1,29 +1,32 @@
 import Image from "next/image";
-import React from "react";
 import { ApplicationDTO } from "../../../types";
+import { PanelLayout, ReviewPageLayout } from "../layout";
 import { ReviewStage } from "../shared/constants";
-import { extractShortAnswerData } from "../shared/reviewUtils";
+import { ReportConflictButton } from "../shared/ReportConflictButton";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
-import { ReviewPageLayout, PanelLayout } from "../layout";
 
 export interface ReviewStageProps {
   name: string;
   application: ApplicationDTO | undefined;
   scores: ReviewScores;
+  onReportConflict?: () => void;
 }
 
 const InfoBanner = () => (
-  <div className="flex flex-col place-items-center justify-center absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 space-y-8 place-content-center h-full m-auto w-full">
-    <div>
+  <div className="flex h-full min-h-[420px] flex-col items-center justify-center px-8 py-12">
+    <div className="flex w-full max-w-[440px] flex-col items-start">
       <Image
         height={87}
         width={440}
         alt=""
         src="/common/review-page-banner.svg"
       />
+      <p className="self-end pr-[3px] pt-[10px] text-right font-poppins text-[20px] font-medium leading-[1.4] text-black">
+        Application Review
+      </p>
     </div>
-    <div>
+    <div className="mt-[6.5rem] flex w-full justify-center">
       <Image
         height={300}
         width={330}
@@ -40,7 +43,7 @@ const INFO_QUESTIONS = [
   "Academic Term",
   "Where did you hear about us?",
   "How many times have you applied to Blueprint in the past?",
-  "Pronouns",
+  "What are your preferred pronouns?",
   "Will you be in an academic (school) term or a co-op term?",
   "Position",
 ];
@@ -49,10 +52,13 @@ export const ReviewInfoStage = ({
   name,
   application,
   scores,
+  onReportConflict,
 }: ReviewStageProps) => {
-  const shortAnswerStr = application?.shortAnswerQuestions[0];
-  const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
-  const { extractedAnswers } = extractShortAnswerData(shortAnswerJSON);
+  const firstShortAnswer = application?.shortQuestionAnswers[0];
+  const questions = [
+    ...INFO_QUESTIONS,
+    ...(firstShortAnswer ? [firstShortAnswer.question] : []),
+  ];
 
   const answers = [
     application?.email ?? "",
@@ -63,17 +69,31 @@ export const ReviewInfoStage = ({
     application?.pronouns ?? "",
     application?.academicOrCoop ?? "",
     application?.firstChoiceRole ?? "",
-    ...extractedAnswers,
+    ...(firstShortAnswer?.question ? [firstShortAnswer.response] : []),
   ];
 
   return (
     <ReviewPageLayout currentStage={ReviewStage.INFO} scores={scores}>
-      <PanelLayout variant="sky" borderRight showApplicationTitle={false}>
+      <PanelLayout
+        variant="grey"
+        borderRight
+        showApplicationTitle={false}
+        contentClassName="flex min-h-0 flex-1 items-center justify-center"
+      >
         <InfoBanner />
       </PanelLayout>
-      <PanelLayout title="Basic Information" subtitle={`${name}'s Application`}>
-        <div className="flex flex-col gap-4">
-          <ReviewAnswers questions={INFO_QUESTIONS} answers={answers} />
+      <PanelLayout
+        title="Basic Information"
+        titleButton={
+          <ReportConflictButton
+            name={name}
+            showQuestion
+            onClick={onReportConflict}
+          />
+        }
+      >
+        <div className="my-12 flex w-full flex-col">
+          <ReviewAnswers questions={questions} answers={answers} />
         </div>
       </PanelLayout>
     </ReviewPageLayout>

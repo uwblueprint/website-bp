@@ -1,4 +1,3 @@
-import { useTheme } from "@mui/material/styles";
 import { ReactElement } from "react";
 
 export interface Props {
@@ -7,42 +6,25 @@ export interface Props {
 }
 
 export const ReviewAnswers = ({ questions, answers }: Props): ReactElement => {
-  const theme = useTheme();
   return (
-    <div className="flex flex-col gap-10 w-full">
-      {questions.map((question, idx) => (
-        <div
-          key={`${question}-${idx}`}
-          className="flex flex-col gap-4 items-start"
-        >
-          <h5
-            className="font-poppins text-base font-medium"
-            style={{
-              color: theme.palette.text.primary,
-            }}
+    <div className="flex w-full flex-col gap-6">
+      {questions.map((question, index) => {
+        const answer = answers[index] ?? "";
+
+        return (
+          <div
+            key={`${question}-${index}`}
+            className="flex flex-col items-start gap-1.5"
           >
-            {question}
-          </h5>
-          <div className="flex w-full">
-            <div
-              className="rounded-r px-4 py-3 w-full font-source"
-              style={{
-                borderLeft: `4px solid ${theme.palette.semantics.border.light}`,
-              }}
-            >
-              <p
-                className="text-base font-normal"
-                style={{
-                  color: theme.palette.text.primary,
-                  lineHeight: "140%",
-                }}
-              >
-                {answers[idx]}
-              </p>
-            </div>
+            <h5 className="font-poppins text-base font-medium leading-[1.4] text-black">
+              {question}
+            </h5>
+            <p className="break-words whitespace-pre-wrap font-source text-base leading-6 text-charcoal-500">
+              {answer}
+            </p>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };

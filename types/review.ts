@@ -1,5 +1,10 @@
 import { ValueOf } from "next/dist/shared/lib/constants";
 
+export type ShortQuestionAnswer = {
+  question: string;
+  response: string;
+};
+
 export type ApplicationDTO = {
   id: number;
   academicOrCoop: string;
@@ -16,7 +21,7 @@ export type ApplicationDTO = {
   resumeUrl: string;
   roleSpecificQuestions: string[];
   secondChoiceRole: string;
-  shortAnswerQuestions: string[];
+  shortQuestionAnswers: ShortQuestionAnswer[];
   status: string;
   secondChoiceStatus: string;
   term: string;

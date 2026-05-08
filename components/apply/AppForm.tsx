@@ -65,7 +65,7 @@ export type AppFormValues = {
   locationPreference: string;
   firstChoiceRole: string;
   secondChoiceRole: string;
-  shortAnswerQuestions: {
+  shortQuestionAnswers: {
     question: string;
     response?: string;
   }[];
@@ -80,7 +80,7 @@ export type AppFormValues = {
   timestamp: number;
 };
 
-const shortAnswerQuestions: ShortAnswerQuestion[] = JSON.parse(
+const shortQuestionAnswers: ShortAnswerQuestion[] = JSON.parse(
   JSON.stringify(shortAnswerJson),
 );
 
@@ -105,7 +105,7 @@ const appFormInitialValues: AppFormValues = {
   locationPreference: "",
   firstChoiceRole: "",
   secondChoiceRole: "",
-  shortAnswerQuestions: shortAnswerQuestions.map(({ question }) => ({
+  shortQuestionAnswers: shortQuestionAnswers.map(({ question }) => ({
     question,
     response: undefined,
   })),
@@ -160,13 +160,10 @@ const AppForm: FC<Props> = ({
               ({ role }) => role === values.secondChoiceRole,
             ),
           )
-          // For aggregated questions, only the first response is filled in.
-          // Firebase doesn't like that we default responses to undefined,
-          // so we need to convert them to null here.
           .map(({ questions, ...rest }) => ({
             questions: questions.map(({ response, ...question }) => ({
               ...question,
-              response: response ?? null,
+              response,
             })),
             ...rest,
           }));
@@ -193,7 +190,7 @@ const AppForm: FC<Props> = ({
           locationPreference: values.locationPreference,
           firstChoiceRole: values.firstChoiceRole,
           secondChoiceRole: values.secondChoiceRole || "",
-          shortAnswerQuestions: values.shortAnswerQuestions,
+          shortQuestionAnswers: values.shortQuestionAnswers,
           roleSpecificQuestions,
           timestamp: serverTimestamp(),
           status: "pending",
@@ -250,7 +247,7 @@ const AppForm: FC<Props> = ({
             />
             <ShortAnswers
               values={values}
-              questions={shortAnswerQuestions}
+              questions={shortQuestionAnswers}
               readOnly={readOnly}
             />
             <RoleSpecificQuestions

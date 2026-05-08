@@ -1,12 +1,9 @@
-import {
-  ChangeEvent,
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useState,
-} from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import { ReviewStage } from "../shared/constants";
 import { ReviewEndData, ReviewScores } from "../shared/types";
+import { ReportConflictButton } from "../shared/ReportConflictButton";
+import ArrowLeftIcon from "@components/icons/arrow-left.icon";
+import Link from "next/link";
 import { ReviewPageLayout, PanelLayout } from "../layout";
 
 interface Props {
@@ -15,19 +12,19 @@ interface Props {
   scores: ReviewScores;
   endData: ReviewEndData;
   setEndData: Dispatch<SetStateAction<ReviewEndData>>;
-  header: ReactNode;
+  onReportConflict?: () => void;
 }
 
 const LeftPanelContent = ({
   name,
   reviewerName,
   scores,
-  header,
+  onReportConflict,
 }: {
   name: string;
   reviewerName: string;
   scores: ReviewScores;
-  header: ReactNode;
+  onReportConflict?: () => void;
 }) => {
   const SCORE_ROWS: { label: string; stage: ReviewStage }[] = [
     { label: "Passion for Social Good", stage: ReviewStage.PFSG },
@@ -44,7 +41,17 @@ const LeftPanelContent = ({
   return (
     <div className="flex flex-col gap-6 p-3 w-full">
       <div className="flex justify-between items-center w-full gap-4 shrink-0">
-        {header}
+        <Link href="/admin" passHref>
+          <a className="w-fit shrink-0 flex items-center gap-2 py-2 px-4 rounded-full border-2 border-blue bg-white hover:bg-gray-50 transition-colors text-blue text-base font-normal leading-snug no-underline">
+            <ArrowLeftIcon className="w-6 h-6 text-blue" />
+            Back to home
+          </a>
+        </Link>
+        <ReportConflictButton
+          name={name}
+          showQuestion
+          onClick={onReportConflict}
+        />
       </div>
 
       {/* Scoring section */}
@@ -163,7 +170,7 @@ export const ReviewEndStage = ({
   scores,
   endData,
   setEndData,
-  header,
+  onReportConflict,
 }: Props) => {
   const [validationError, setValidationError] = useState(false);
 
@@ -183,7 +190,7 @@ export const ReviewEndStage = ({
           name={name}
           reviewerName={reviewerName}
           scores={scores}
-          header={header}
+          onReportConflict={onReportConflict}
         />
       </PanelLayout>
       <PanelLayout>

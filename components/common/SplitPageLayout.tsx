@@ -53,7 +53,7 @@ interface PanelLayoutProps {
   title?: string;
   subtitle?: string;
   titleButton?: ReactNode;
-  variant?: "sky" | "white";
+  variant?: "sky" | "white" | "grey";
   borderRight?: boolean;
   borderLeft?: boolean;
   /** "xlarge" = left panel (28px, 600), "medium" = right panel (20px, 500) */
@@ -79,7 +79,7 @@ export const PanelLayout = ({
   showApplicationTitle = true,
   contentClassName,
   children,
-}: PanelLayoutProps): ReactElement => {
+}: PanelLayoutProps) => {
   const theme = useTheme();
 
   const TITLE_STYLES = {
@@ -99,8 +99,13 @@ export const PanelLayout = ({
       lineHeight: "140%",
     },
   };
-  const bg = variant === "sky" ? "bg-sky" : "bg-white";
-  const hasHeader = !!(title || subtitle);
+  const bg =
+    variant === "sky"
+      ? "bg-sky"
+      : variant === "grey"
+      ? "bg-[#F3F4F6]"
+      : "bg-white";
+  const hasHeader = !!(title || subtitle || header);
   const titleStyle = TITLE_STYLES[titleVariant];
 
   return (
@@ -117,7 +122,7 @@ export const PanelLayout = ({
     >
       <div className="flex flex-col h-full overflow-hidden px-9 py-8">
         {header ? (
-          <div className="flex justify-between items-center w-full mb-8 shrink-0 gap-4">
+          <div className="mb-8 flex w-full shrink-0 items-center justify-between gap-4">
             {header}
           </div>
         ) : null}
@@ -152,12 +157,6 @@ export const PanelLayout = ({
                 {title}
               </h2>
             ) : null}
-            {titleVariant === "xlarge" && (
-              <div
-                className="my-6 w-full shrink-0 h-[1px]"
-                style={{ background: theme.palette.semantics.border.light }}
-              />
-            )}
           </>
         )}
         <div

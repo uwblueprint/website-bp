@@ -1,10 +1,14 @@
 import { NavItem, HeaderStepConfig } from "./types";
 
+type ValueOf<T> = T[keyof T];
+
 export const InterviewStep = {
   PROFILE: "PROFILE",
   ASSESSMENT: "ASSESSMENT",
   REPORT: "REPORT",
 } as const;
+
+export type InterviewStep = ValueOf<typeof InterviewStep>;
 
 export const InterviewHeaderStep = {
   INFO: "INFO",
@@ -12,8 +16,7 @@ export const InterviewHeaderStep = {
   COMMENTS: "COMMENTS",
 } as const;
 
-export type InterviewHeaderStep =
-  typeof InterviewHeaderStep[keyof typeof InterviewHeaderStep];
+export type InterviewHeaderStep = ValueOf<typeof InterviewHeaderStep>;
 
 export const INTERVIEW_NAV_ITEMS: NavItem[] = [
   {
@@ -44,8 +47,7 @@ export const AssessmentHeaderStep = {
   NOTES: "NOTES",
 } as const;
 
-export type AssessmentHeaderStep =
-  typeof AssessmentHeaderStep[keyof typeof AssessmentHeaderStep];
+export type AssessmentHeaderStep = ValueOf<typeof AssessmentHeaderStep>;
 
 // Header steps for the Interview Assessment page
 export const ASSESSMENT_HEADER_STEPS: HeaderStepConfig[] = [

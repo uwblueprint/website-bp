@@ -1,38 +1,51 @@
-import { ReactNode, useContext } from "react";
+import { useTheme } from "@mui/material/styles";
+import { useContext } from "react";
 import { ApplicationDTO } from "../../../types";
-import { ReviewStage } from "../shared/constants";
+import { PanelLayout, ReviewPageLayout } from "../layout";
+import { BACK_TO_HOME_HREF, ReviewStage } from "../shared/constants";
+import { ReportConflictButton } from "../shared/ReportConflictButton";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
 import { ReviewScoreInput } from "../shared/ReviewScoreInput";
+import { ReviewStageHeader } from "../shared/ReviewStageHeader";
 import { REVIEW_PFSG_SCORING_CRITERIA } from "../shared/rubricConstants";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { ReviewRubric } from "./ReviewRubric";
-import { ReviewPageLayout, PanelLayout } from "../layout";
-import { useTheme } from "@mui/material/styles";
 
 export interface Props {
   name: string;
   application: ApplicationDTO | undefined;
   scores: ReviewScores;
-  header: ReactNode;
+  onReportConflict?: () => void;
 }
 
 export const ReviewPassionForSocialGoodStage = ({
   name,
   application,
   scores,
-  header,
+  onReportConflict,
 }: Props) => {
   const updateScore = useContext(ReviewSetScoresContext);
-  const shortAnswerStr = application?.shortAnswerQuestions[0];
-  const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
-  const questions = [shortAnswerJSON[1]?.question];
-  const answers = [shortAnswerJSON[1]?.response];
+  const shortAnswers = application?.shortQuestionAnswers ?? [];
+  const secondShortAnswer = shortAnswers[1];
+  const questions = secondShortAnswer ? [secondShortAnswer.question] : [];
+  const answers = secondShortAnswer ? [secondShortAnswer.response] : [];
   const theme = useTheme();
   return (
     <ReviewPageLayout currentStage={ReviewStage.PFSG} scores={scores}>
       <PanelLayout
-        header={header}
+        header={
+          <ReviewStageHeader
+            backHref={BACK_TO_HOME_HREF}
+            right={
+              <ReportConflictButton
+                name={name}
+                showQuestion
+                onClick={onReportConflict}
+              />
+            }
+          />
+        }
         title="Passion for Social Good"
         subtitle={`${name}'s Application`}
       >

@@ -1,8 +1,10 @@
-import { ReactNode, useContext } from "react";
+import { useContext } from "react";
 import { ApplicationDTO } from "../../../types";
-import { ReviewStage } from "../shared/constants";
+import { BACK_TO_HOME_HREF, ReviewStage } from "../shared/constants";
+import { ReportConflictButton } from "../shared/ReportConflictButton";
 import { ReviewSetScoresContext } from "../shared/ReviewContext";
 import { ReviewScoreInput } from "../shared/ReviewScoreInput";
+import { ReviewStageHeader } from "../shared/ReviewStageHeader";
 import { REVIEW_D2L_SCORING_CRITERIA } from "../shared/rubricConstants";
 import { ReviewScores } from "../shared/types";
 import { ReviewAnswers } from "./ReviewAnswers";
@@ -14,25 +16,36 @@ interface Props {
   name: string;
   application: ApplicationDTO | undefined;
   scores: ReviewScores;
-  header: ReactNode;
+  onReportConflict?: () => void;
 }
 
 export const ReviewDriveToLearnStage = ({
   name,
   application,
   scores,
-  header,
+  onReportConflict,
 }: Props) => {
   const updateScore = useContext(ReviewSetScoresContext);
-  const shortAnswerStr = application?.shortAnswerQuestions[0];
-  const shortAnswerJSON = shortAnswerStr ? JSON.parse(shortAnswerStr) : [];
-  const questions = [shortAnswerJSON[3]?.question];
-  const answers = [shortAnswerJSON[3]?.response];
+  const shortAnswers = application?.shortQuestionAnswers ?? [];
+  const fourthShortAnswer = shortAnswers[3];
+  const questions = fourthShortAnswer ? [fourthShortAnswer.question] : [];
+  const answers = fourthShortAnswer ? [fourthShortAnswer.response] : [];
   const theme = useTheme();
   return (
     <ReviewPageLayout currentStage={ReviewStage.D2L} scores={scores}>
       <PanelLayout
-        header={header}
+        header={
+          <ReviewStageHeader
+            backHref={BACK_TO_HOME_HREF}
+            right={
+              <ReportConflictButton
+                name={name}
+                showQuestion
+                onClick={onReportConflict}
+              />
+            }
+          />
+        }
         title="Drive to Learn"
         subtitle={`${name}'s Application`}
       >

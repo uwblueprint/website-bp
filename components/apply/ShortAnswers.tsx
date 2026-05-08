@@ -21,10 +21,10 @@ const ShortAnswers: FC<Props> = ({ values, questions, readOnly }: Props) => {
       <div className="grid gap-6">
         {questions.map((question, i) => (
           <TextAreaInput
-            id={`shortAnswerQuestions[${i}].response`}
-            key={`shortAnswerQuestions${i}`}
+            id={`shortQuestionAnswers[${i}].response`}
+            key={`shortQuestionAnswers${i}`}
             labelText={question.question}
-            value={values.shortAnswerQuestions[i].response}
+            value={values.shortQuestionAnswers[i].response}
             maxLength={question.maxLength}
             required
             readOnly={readOnly}

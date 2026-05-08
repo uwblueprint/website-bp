@@ -1,17 +1,20 @@
-import { useState } from "react";
-import { NextPage } from "next";
-import { useRouter } from "next/router";
+import { useAuthenticatedUser } from "@components/context/AuthUserContext";
 import ProtectedRoute from "@components/context/ProtectedRoute";
+import RecruitmentPlatformThemeProvider from "@components/recruitmentPlatformCommon/RecruitmentPlatformThemeProvider";
+import { ReportConflictDialogue } from "@components/review/dialogues/ReportConflictDialogue";
+import { ReportConflictSuccessDialogue } from "@components/review/dialogues/ReportConflictSuccessDialogue";
 import {
   BACK_TO_HOME_HREF,
   ReviewStage,
 } from "@components/review/shared/constants";
-import { ReviewEndData, ReviewScores } from "@components/review/shared/types";
-import { getApplicantRecordId } from "@components/review/shared/reviewUtils";
+import { ReportConflictButton } from "@components/review/shared/ReportConflictButton";
 import {
   ReviewSetScoresContext,
   ReviewSetStageContext,
 } from "@components/review/shared/ReviewContext";
+import { ReviewStageHeader } from "@components/review/shared/ReviewStageHeader";
+import { getApplicantRecordId } from "@components/review/shared/reviewUtils";
+import { ReviewEndData, ReviewScores } from "@components/review/shared/types";
 import { ReviewDriveToLearnStage } from "@components/review/stages/ReviewDriveToLearnStage";
 import { ReviewEndStage } from "@components/review/stages/ReviewEndStage";
 import { ReviewEndSuccessStage } from "@components/review/stages/ReviewEndSuccessStage";
@@ -19,16 +22,12 @@ import { ReviewInfoStage } from "@components/review/stages/ReviewInfoStage";
 import { ReviewPassionForSocialGoodStage } from "@components/review/stages/ReviewPassionForSocialGoodStage";
 import { ReviewSkillStage } from "@components/review/stages/ReviewSkillStage";
 import { ReviewTeamPlayerStage } from "@components/review/stages/ReviewTeamPlayerStage";
+import { reportReviewConflict } from "APIClients/ReviewPageAPIClient";
+import { NextPage } from "next";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { ApplicationDTO, AuthStatus } from "../../types";
 import { ProtectedApplication } from "./protectedApplication";
-import RecruitmentPlatformThemeProvider from "@components/recruitmentPlatformCommon/RecruitmentPlatformThemeProvider";
-import { useAuthenticatedUser } from "@components/context/AuthUserContext";
-import { ReportConflictDialogue } from "@components/review/dialogues/ReportConflictDialogue";
-import { ReviewStageHeader } from "@components/review/shared/ReviewStageHeader";
-import { ReportConflictButton } from "@components/review/shared/ReportConflictButton";
-import { ReportConflictSuccessDialogue } from "@components/review/dialogues/ReportConflictSuccessDialogue";
-import { reportReviewConflict } from "APIClients/ReviewPageAPIClient";
-import { auth } from "@utils/firebase";
 
 const sampleApplication: ApplicationDTO = {
   id: 1,
@@ -50,8 +49,29 @@ const sampleApplication: ApplicationDTO = {
     '[{"id":"1","questions":[{"options":["Frontend","Backend","Fullstack","Mobile"],"other":true,"question":"Which areas of a project are you interested in working in?","response":["Frontend","Backend","Fullstack","Mobile"],"type":"multi-select"},{"maxLength":1000,"question":"Tell us about a challenging technical problem that you\'ve worked on in the past and how you solved it.","response":"In the face of limited data availability for mutual fund investing, I tackled the challenge by developing a project that leveraged Net Asset Values (NAVs) to calculate crucial performance metrics. Using Python and data analysis tools, I created an algorithm to process NAV data and derive metrics like historical performance, return on investment, volatility, etc. These metrics enabled me to assess fund performance, risk levels, and cost-effectiveness, aiding informed investment decisions. Additionally, I incorporated data visualization techniques to present the metrics visually, facilitating easy comparison and identification of investment opportunities. Overall, this project effectively addressed the challenge, providing valuable insights within the constraints of limited data, and empowering me to make informed investment choices.","uniqueId":1}],"role":"Project Developer"}]',
   ],
   secondChoiceRole: "",
-  shortAnswerQuestions: [
-    '[{"question":"What timezone will you be based out of next term?","response":"I will be based in Waterloo only, which means Eastern Time (ET)"},{"question":"Tell us about a cause that resonates with you.","response":"I am passionate about spreading financial knowledge, specifically in the area of personal finance. Financial literacy is crucial for individuals to lead secure and empowered lives. I believe that by promoting financial education, we can empower people to make informed decisions about budgeting, saving, investing, and debt management. This knowledge helps individuals build emergency funds, avoid predatory loans, and plan for their future. "},{"question":"Tell us about a community you\'re proud to be a part of and how you contributed to it.","response":"I am proud to be a part of the FlutterFever community, which I initiated. Through this community, I taught app development to over 200 students, providing workshops, curriculum, and ongoing support. The inclusive and supportive environment encouraged collaboration and learning. Students were able to apply their skills through coding challenges, receiving personalized feedback and mentorship. It has been incredibly rewarding to witness their progress and enthusiasm as they built their own apps."},{"question":"Tell us about a time you learned a new skill. What was your motivation to learn it and what was your approach?","response":"I learned personal budget management and finance. My motivation was to take control of my financial well-being. I approached it by watching YouTube tutorials and talking to knowledgeable people. Applying the concepts to my own finances helped solidify my understanding. It has empowered me to make informed decisions and work towards my financial goals."}]',
+  shortQuestionAnswers: [
+    {
+      question: "What timezone will you be based out of next term?",
+      response:
+        "I will be based in Waterloo only, which means Eastern Time (ET)",
+    },
+    {
+      question: "Tell us about a cause that resonates with you.",
+      response:
+        "I am passionate about spreading financial knowledge, specifically in the area of personal finance. Financial literacy is crucial for individuals to lead secure and empowered lives. I believe that by promoting financial education, we can empower people to make informed decisions about budgeting, saving, investing, and debt management. This knowledge helps individuals build emergency funds, avoid predatory loans, and plan for their future. ",
+    },
+    {
+      question:
+        "Tell us about a community you're proud to be a part of and how you contributed to it.",
+      response:
+        "I am proud to be a part of the FlutterFever community, which I initiated. Through this community, I taught app development to over 200 students, providing workshops, curriculum, and ongoing support. The inclusive and supportive environment encouraged collaboration and learning. Students were able to apply their skills through coding challenges, receiving personalized feedback and mentorship. It has been incredibly rewarding to witness their progress and enthusiasm as they built their own apps.",
+    },
+    {
+      question:
+        "Tell us about a time you learned a new skill. What was your motivation to learn it and what was your approach?",
+      response:
+        "I learned personal budget management and finance. My motivation was to take control of my financial well-being. I approached it by watching YouTube tutorials and talking to knowledgeable people. Applying the concepts to my own finances helped solidify my understanding. It has empowered me to make informed decisions and work towards my financial goals.",
+    },
   ],
   status: "pending",
   term: "Fall 2023",
@@ -72,7 +92,7 @@ const initialScores: ReviewScores = {
 const ReviewsPages: NextPage = () => {
   const router = useRouter();
   const [stage, setStage] = useState<ReviewStage>(ReviewStage.INFO);
-  const [application] = useState<ApplicationDTO>(sampleApplication);
+  const [application, setApplication] = useState<ApplicationDTO>();
   const [authStatus, setAuthStatus] = useState<AuthStatus>({
     loading: true,
     isAuthorized: false,
@@ -92,24 +112,17 @@ const ReviewsPages: NextPage = () => {
   const [reportConflictHasErrored, setReportConflictHasErrored] =
     useState(false);
 
-  const applicantRecordId = getApplicantRecordId(router.query);
+  const applicantRecordId = router.isReady
+    ? getApplicantRecordId(router.query)
+    : null;
+  const applicantName = application
+    ? `${application.firstName} ${application.lastName}`
+    : "Applicant";
 
   const authenticatedUser = useAuthenticatedUser();
-
-  const applicantName = `${application.firstName} ${application.lastName}`;
-
-  const reviewScoringPanelHeader = (
-    <ReviewStageHeader
-      backHref={BACK_TO_HOME_HREF}
-      right={
-        <ReportConflictButton
-          name={applicantName}
-          showQuestion
-          onClick={() => setReportConflictDialogueOpen(true)}
-        />
-      }
-    />
-  );
+  const reviewerName = authenticatedUser
+    ? authenticatedUser.firstName
+    : "Reviewer";
 
   const updateScores = (key: ReviewStage, value: number) => {
     setScores((prev) => {
@@ -120,6 +133,14 @@ const ReviewsPages: NextPage = () => {
     });
   };
 
+  useEffect(() => {
+    if (applicantRecordId === null) return;
+    const appInfo = sampleApplication;
+    setApplication(appInfo);
+  }, [applicantRecordId]);
+
+  if (!router.isReady) return null;
+
   const getReviewStage = () => {
     switch (stage) {
       case ReviewStage.INFO:
@@ -128,6 +149,7 @@ const ReviewsPages: NextPage = () => {
             name={applicantName}
             application={application}
             scores={scores}
+            onReportConflict={() => setReportConflictDialogueOpen(true)}
           />
         );
       case ReviewStage.PFSG:
@@ -136,7 +158,7 @@ const ReviewsPages: NextPage = () => {
             name={applicantName}
             application={application}
             scores={scores}
-            header={reviewScoringPanelHeader}
+            onReportConflict={() => setReportConflictDialogueOpen(true)}
           />
         );
       case ReviewStage.TP:
@@ -145,7 +167,7 @@ const ReviewsPages: NextPage = () => {
             name={applicantName}
             application={application}
             scores={scores}
-            header={reviewScoringPanelHeader}
+            onReportConflict={() => setReportConflictDialogueOpen(true)}
           />
         );
       case ReviewStage.D2L:
@@ -154,7 +176,7 @@ const ReviewsPages: NextPage = () => {
             name={applicantName}
             application={application}
             scores={scores}
-            header={reviewScoringPanelHeader}
+            onReportConflict={() => setReportConflictDialogueOpen(true)}
           />
         );
       case ReviewStage.SKL:
@@ -163,20 +185,29 @@ const ReviewsPages: NextPage = () => {
             name={applicantName}
             application={application}
             scores={scores}
-            header={reviewScoringPanelHeader}
+            header={
+              <ReviewStageHeader
+                backHref={BACK_TO_HOME_HREF}
+                right={
+                  <ReportConflictButton
+                    name={applicantName}
+                    showQuestion
+                    onClick={() => setReportConflictDialogueOpen(true)}
+                  />
+                }
+              />
+            }
           />
         );
       case ReviewStage.END:
         return (
           <ReviewEndStage
             name={applicantName}
-            reviewerName={
-              authenticatedUser ? authenticatedUser.firstName : "Reviewer"
-            }
+            reviewerName={reviewerName}
             scores={scores}
             endData={endData}
             setEndData={setEndData}
-            header={reviewScoringPanelHeader}
+            onReportConflict={() => setReportConflictDialogueOpen(true)}
           />
         );
       case ReviewStage.END_SUCCESS:
@@ -188,18 +219,15 @@ const ReviewsPages: NextPage = () => {
   const reportConflict = async () => {
     try {
       setReportConflictHasErrored(false);
-
       if (applicantRecordId == null) {
         throw new Error("Missing applicantRecordId in URL");
       }
-
       if (authenticatedUser == null) {
         throw new Error("Missing authenticated reviewer ID");
       }
-
       await reportReviewConflict(
         applicantRecordId,
-        Number(authenticatedUser.id),
+        Number(authenticatedUser.id)
       );
       setReportConflictDialogueOpen(false);
       setReportConflictSuccessDialogueOpen(true);

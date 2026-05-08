@@ -1,4 +1,4 @@
-import { InterviewStep } from "./constants";
+import type { InterviewStep } from "./constants";
 
 type NavItem = {
   label: string;
