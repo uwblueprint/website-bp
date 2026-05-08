@@ -17,6 +17,7 @@ const variantColorStyle = {
   blue: { color: "var(--bp-blue)" },
   dark: { color: "var(--primary-dark)" },
   "secondary-light": { color: "var(--secondary-light)" },
+  white: { color: "#fff" },
 } as const;
 
 const sizeMap = {

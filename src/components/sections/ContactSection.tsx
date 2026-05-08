@@ -83,7 +83,10 @@ export default function ContactSection() {
       {/* Intro copy */}
       <p className="col-span-12 text-lg text-white w-full md:w-8/12 pb-24">
         Send us a short message with your mission and the challenges you face.
-        We'll promptly reach out and schedule a call to chat further :)
+        We'll promptly reach out and schedule a call to chat further.  
+        <span className="text-[var(--secondary-light)]">
+          &nbsp;We're still getting the embedded email running - please use our info email below.
+        </span>
       </p>
 
       {/* Form — primary fields use flex + gap; section outer grid stays 12-col */}
@@ -150,8 +153,9 @@ export default function ContactSection() {
           <div className="flex items-center justify-between gap-4 pt-2">
             <TextLinkButton
               href={`mailto:${contactEmail}`}
-              variant="light"
+              variant="white"
               size="sm"
+              copyValue={contactEmail}
             >
               {contactEmail}
             </TextLinkButton>
