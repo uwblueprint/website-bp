@@ -12,7 +12,7 @@ export default function NonprofitsPage() {
       <WhyBlueprint />
       <OurProcess
         topRightDecoration={
-          <div className="w-[min(44vw,200px)] sm:w-[min(40vw,240px)] md:w-[min(34vw,220px)] lg:w-[min(46vw,420px)] max-w-[90%]">
+          <div className="hidden xl:block w-[min(42vw,504px)] max-w-[90%] -translate-x-[10%] translate-y-[10%]">
             <div className="relative aspect-[812/741] w-full">
               <img
                 src="/img/illos/blocks.svg"

@@ -194,7 +194,7 @@ export default function Navbar() {
     >
       <nav aria-label="Primary" className="flex w-full flex-col">
         {/* Top strip: always visible */}
-        <div className="relative h-16 w-full shrink-0">
+        <div className="relative h-24 w-full shrink-0">
           <button
             type="button"
             className="absolute right-8 top-1/2 z-10 inline-flex -translate-y-1/2 cursor-pointer items-center justify-center rounded-none border-0 bg-transparent p-0 text-[var(--primary-light)] transition-[transform,opacity] duration-200 ease-out hover:scale-[0.95] hover:opacity-95"
@@ -274,7 +274,7 @@ export default function Navbar() {
               inert={!open}
               className={cn(
                 "flex w-full min-w-0 flex-row flex-nowrap items-stretch justify-between gap-2 px-8 pb-8 pt-8 md:gap-8 md:pt-24",
-                open && "border-b border-white",
+                open,
                 !open && "pointer-events-none",
               )}
             >
@@ -289,7 +289,7 @@ export default function Navbar() {
                     href={href}
                     variant="light"
                     size="nav"
-                    className={cn(NAV_PRIMARY_LINK_CLASS, "w-fit md:pb-8")}
+                    className={cn(NAV_PRIMARY_LINK_CLASS, "w-fit md:pb-4")}
                   >
                     {label}
                   </TextLinkButton>
@@ -310,15 +310,18 @@ export default function Navbar() {
                 }}
               >
                 <ul className="flex w-full min-w-0 shrink-0 flex-col items-end gap-4">
-                  {contactLinks.map(({ label, href }) => (
-                    <li key={label} className="min-w-0 text-right">
+                  {contactLinks.map((link) => (
+                    <li key={link.label} className="min-w-0 text-right">
                       <TextLinkButton
-                        href={href}
+                        href={link.href}
                         variant="light"
                         size="md"
                         className="w-fit min-w-0 text-right"
+                        copyValue={
+                          "copyValue" in link ? link.copyValue : undefined
+                        }
                       >
-                        {label}
+                        {link.label}
                       </TextLinkButton>
                     </li>
                   ))}

@@ -26,7 +26,7 @@ export function WhyJoin({ className }: { className?: string }) {
     <section
       id="why-join"
       aria-label="Why join Blueprint"
-      className={cn("bg-[var(--background)] px-8 pt-24 pb-8", className)}
+      className={cn("bg-[var(--primary-light)] px-8 pt-24 pb-8", className)}
     >
       <div className="grid w-full grid-cols-12 gap-0">
         <h2 className="col-span-12 text-xxl lowercase text-[var(--bp-blue)] pb-16">

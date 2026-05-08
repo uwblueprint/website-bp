@@ -72,7 +72,7 @@ export function MetricsSection({ className }: { className?: string }) {
 
       {/* Megaphone decoration */}
       <div
-        className="pointer-events-none absolute top-6 right-8 z-0 max-w-[90%] translate-y-[72px] w-[min(44vw,200px)] sm:w-[min(40vw,260px)] md:w-[min(34vw,240px)] lg:w-[min(46vw,520px)]"
+        className="pointer-events-none absolute top-6 right-8 z-0 hidden xl:block max-w-[90%] translate-y-[72px] w-[min(44vw,240px)] sm:w-[min(40vw,312px)] md:w-[min(34vw,288px)] lg:w-[min(46vw,624px)]"
         aria-hidden
       >
         <div className="relative aspect-[424/330] w-full">

@@ -56,7 +56,7 @@ export function ProjectsAdditionalCards() {
   return (
     <section
       aria-label="Other projects"
-      className="bg-[var(--background)] md:pb-24 pt-12 text-left"
+      className="bg-[var(--primary-light)] md:pb-24 pt-12 text-left"
     >
       <div className="grid w-full grid-cols-12 gap-0 px-8">
         <h2 className="col-span-12 text-xxl text-[var(--bp-blue)]">

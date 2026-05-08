@@ -160,6 +160,13 @@ export default function ContactSection() {
             >
               {contactEmail}
             </TextLinkButton>
+            <TextLinkButton
+              href={`mailto:${contactEmail}`}
+              variant="light"
+              size="sm"
+            >
+              {contactEmail}
+            </TextLinkButton>
 
             <button
               type="submit"

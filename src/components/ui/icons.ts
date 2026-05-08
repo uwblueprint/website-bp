@@ -24,4 +24,6 @@ export {
   ArrowDownCircle,
   ArrowLeftCircle,
   ArrowRightCircle,
+  Copy,
+  Check,
 } from "react-feather";

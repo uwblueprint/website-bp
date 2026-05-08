@@ -36,7 +36,7 @@ const ALUMNI = buildAlumni();
 
 export default function AlumniPage() {
   return (
-    <main>
+    <main className="bg-primary-light mb-12">
       <AlumniHero />
       <TeamSection
         teamName="Previous Blueprint Members"

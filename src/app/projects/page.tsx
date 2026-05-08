@@ -138,7 +138,7 @@ export default function ProjectsPage() {
         }))}
       />
 
-      <div className="relative grid w-full grid-cols-12 gap-0 px-8">
+      <div className="relative grid w-full grid-cols-12 gap-0 px-8 bg-primary-light">
         {/* Preview sidebar: 2 col sticky */}
         <ProjectsPreview
           projects={PROJECTS}

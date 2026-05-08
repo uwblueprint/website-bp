@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { cn } from "@/lib/utils";
+
 const SECTIONS = [
   {
     heading: "who we are",
@@ -76,7 +78,7 @@ export function AboutSection({ className }: { className?: string }) {
     <div
       id="about-history"
       ref={sectionRef}
-      className={`relative${className ? ` ${className}` : ""}`}
+      className={cn("relative bg-[var(--primary-light)]", className)}
       style={{ height: `${SECTIONS.length * 100}vh` }}
     >
       {/* Sticky inner — stays fixed to the viewport while the outer div scrolls past. */}

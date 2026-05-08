@@ -6,7 +6,7 @@ export function HomeVideoSection() {
   return (
     <section
       aria-label="Featured video"
-      className="w-full bg-[var(--background)] px-8 pb-8"
+      className="w-full bg-[var(--primary-light)] px-8 pb-8"
     >
       <div className="grid grid-cols-12 gap-0">
         <a
