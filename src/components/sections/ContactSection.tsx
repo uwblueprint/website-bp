@@ -4,8 +4,7 @@ import { useMemo, useState } from "react";
 
 import { buttonVariants } from "@/components/ui/button-variants";
 import TextLinkButton from "@/components/ui/TextLinkButton";
-
-const CONTACT_EMAIL = "info@uwblueprint.org";
+import { contactEmail } from "@/lib/site-links";
 
 type ContactFormState = {
   name: string;
@@ -22,7 +21,7 @@ const INITIAL_STATE: ContactFormState = {
 };
 
 function buildMailto({ name, email, npoName, comment }: ContactFormState) {
-  const to = CONTACT_EMAIL;
+  const to = contactEmail;
   const subject = `Contact — ${npoName || "NPO"} (${name || "Anonymous"})`;
 
   const body = [
@@ -40,7 +39,6 @@ function buildMailto({ name, email, npoName, comment }: ContactFormState) {
 
 export default function ContactSection() {
   const [form, setForm] = useState<ContactFormState>(INITIAL_STATE);
-  const contactEmail = CONTACT_EMAIL;
   const canSubmit = useMemo(() => {
     // Keep it simple/forgiving: only block if all main fields are blank.
     return form.name.trim() && form.email.trim() && form.npoName.trim();
@@ -155,15 +153,9 @@ export default function ContactSection() {
           <div className="flex items-center justify-between gap-4 pt-2">
             <TextLinkButton
               href={`mailto:${contactEmail}`}
-              variant="light"
+              variant="white"
               size="sm"
-            >
-              {contactEmail}
-            </TextLinkButton>
-            <TextLinkButton
-              href={`mailto:${contactEmail}`}
-              variant="light"
-              size="sm"
+              copyValue={contactEmail}
             >
               {contactEmail}
             </TextLinkButton>
