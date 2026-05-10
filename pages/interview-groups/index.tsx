@@ -1,4 +1,7 @@
-import { PanelLayout, SplitPanelLayout } from "@components/common/SplitPageLayout";
+import {
+  PanelLayout,
+  SplitPanelLayout,
+} from "@components/common/SplitPageLayout";
 import ProtectedRoute from "@components/context/ProtectedRoute";
 import { InterviewHeader } from "@components/interview/layout";
 import RecruitmentPlatformThemeProvider from "@components/recruitmentPlatformCommon/RecruitmentPlatformThemeProvider";

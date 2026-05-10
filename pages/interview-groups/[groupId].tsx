@@ -34,14 +34,13 @@ const InterviewGroupContent = ({
   >(null);
   const [isEditing, setIsEditing] = useState(false);
 
-  const { group, applicants, interviewers, isLoading, error } =
-    useInterviewGroupData(interviewGroupId);
+  const { group, interviewedApplicants, interviewers, isLoading, error } =
+    useInterviewGroupData(interviewGroupId, Number(currentUser?.id ?? null));
 
-  const currUser = String(currentUser?.id);
-  const partner = interviewers.find((i) => i.id !== currUser) ?? null;
+  const partner = interviewers.find((i) => i.id !== currentUser?.id) ?? null;
 
-  const applicantNames = applicants
-    .map((a) => `${a.firstName} ${a.lastName}`)
+  const applicantNames = interviewedApplicants
+    .map((a) => `${a.applicantFirstName} ${a.applicantLastName}`)
     .join(", ");
 
   const linkInput = linkDraft ?? group?.schedulingLink ?? "";
@@ -56,13 +55,15 @@ const InterviewGroupContent = ({
       return;
     }
 
-    const updatedGroup = await InterviewGroupAPIClient.updateSchedulingLink(
+    const updatedGroup = await InterviewGroupAPIClient.updateInterviewGroup(
       interviewGroupId,
-      nextLink,
-      interviewGroupStatus,
+      {
+        schedulingLink: nextLink,
+        status: interviewGroupStatus,
+      },
     );
 
-    setLinkDraft(updatedGroup.schedulingLink);
+    setLinkDraft(updatedGroup.schedulingLink ?? null);
     setStatusOverride(updatedGroup.status);
     setIsSubmittedOverride(Boolean(updatedGroup.schedulingLink));
     afterUpdate();

@@ -1,39 +1,39 @@
 import { useEffect, useState } from "react";
 import InterviewGroupAPIClient from "APIClients/InterviewGroupAPIClient";
-import type {
-  Applicant,
-  InterviewGroup,
-  Interviewer,
-} from "types/interviewGroup";
+import InterviewPageAPIClient from "APIClients/InterviewPageAPIClient";
+import type { InterviewedApplicantsDTO } from "types/interviewPage";
+import { InterviewGroupDTO } from "types/interviewGroup";
+import { UserDTO } from "types/auth";
 
 type UseInterviewGroupDataResult = {
-  group: InterviewGroup | null;
-  applicants: Applicant[];
-  interviewers: Interviewer[];
+  group: InterviewGroupDTO | null;
+  interviewedApplicants: InterviewedApplicantsDTO[];
+  interviewers: UserDTO[];
   isLoading: boolean;
-  error: string | null;
+  error: boolean;
 };
 
 // we can clean this up after we migrate to react query
 const useInterviewGroupData = (
   interviewGroupId: string | null,
+  userId: number | null,
 ): UseInterviewGroupDataResult => {
   const [state, setState] = useState<UseInterviewGroupDataResult>({
     group: null,
-    applicants: [],
+    interviewedApplicants: [],
     interviewers: [],
     isLoading: false,
-    error: null,
+    error: false,
   });
 
   useEffect(() => {
-    if (!interviewGroupId) {
+    if (!interviewGroupId || !userId) {
       setState({
         group: null,
-        applicants: [],
+        interviewedApplicants: [],
         interviewers: [],
         isLoading: false,
-        error: null,
+        error: false,
       });
       return;
     }
@@ -41,30 +41,38 @@ const useInterviewGroupData = (
     setState((prev) => ({
       ...prev,
       isLoading: true,
-      error: null,
+      error: false,
     }));
 
     Promise.all([
-      InterviewGroupAPIClient.getInterviewGroup(interviewGroupId),
-      InterviewGroupAPIClient.getInterviewedApplicantsByGroupId(
-        interviewGroupId,
-      ),
-      InterviewGroupAPIClient.getInterviewersByGroupId(interviewGroupId),
+      InterviewGroupAPIClient.getInterviewGroupById(interviewGroupId),
+      InterviewPageAPIClient.getInterviewedApplicantsByUserId(userId),
+      InterviewPageAPIClient.getInterviewersByGroupId(interviewGroupId),
     ])
-      .then(([group, applicants, interviewers]) => {
+      .then(([group, interviewedApplicants, interviewers]) => {
+        if (!interviewers.find((i) => String(i.id) === String(userId))) {
+          setState({
+            group: null,
+            interviewedApplicants: [],
+            interviewers: [],
+            isLoading: false,
+            error: true,
+          });
+          return;
+        }
         setState({
           group,
-          applicants,
+          interviewedApplicants,
           interviewers,
           isLoading: false,
-          error: null,
+          error: false,
         });
       })
       .catch((e: Error) => {
         setState((prev) => ({
           ...prev,
           isLoading: false,
-          error: e.message,
+          error: true,
         }));
       });
   }, [interviewGroupId]);

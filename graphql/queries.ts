@@ -41,8 +41,8 @@ export const mutations = {
   }
 `,
   updateInterviewGroup: `
-    mutation UpdateInterviewGroup($id: ID!, $status: String!, $schedulingLink: String!) {
-      updateInterviewGroup(id: $id, status: $status, schedulingLink: $schedulingLink) {
+    mutation UpdateInterviewGroup($id: ID!, $interviewGroup: UpdateInterviewGroupDTO!) {
+      updateInterviewGroup(id: $id, interviewGroup: $interviewGroup) {
         schedulingLink
         status
       }
@@ -72,11 +72,21 @@ export const queries = {
       isAuthorizedByRole(accessToken: $accessToken, roles: $roles)
   }
   `,
-  getInterviewGroup: `
-    query GetInterviewGroup($id: ID!) {
-      getInterviewGroup(id: $id) {
+  getInterviewGroupById: `
+    query GetInterviewGroupById($id: ID!) {
+      getInterviewGroupById(id: $id) {
         schedulingLink
         status
+      }
+    }
+  `,
+  getInterviewedApplicantsByUserId: `
+    query GetInterviewedApplicantsByUserId($userId: Int!) {
+      getInterviewedApplicantsByUserId(userId: $userId) {
+        applicantRecordId
+        interviewStatus
+        applicantFirstName
+        applicantLastName
       }
     }
   `,
@@ -88,14 +98,6 @@ export const queries = {
         lastName
         email
         profilePictureFileId
-      }
-    }
-  `,
-  getInterviewedApplicantsByGroupId: `
-    query GetInterviewedApplicantsByGroupId($groupId: ID!) {
-      getInterviewedApplicantsByGroupId(groupId: $groupId) {
-        firstName
-        lastName
       }
     }
   `,
