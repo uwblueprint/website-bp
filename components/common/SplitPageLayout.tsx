@@ -18,9 +18,7 @@ interface SplitPanelLayoutProps {
   header?: ReactNode;
   footer?: ReactNode;
   split?: SplitRatio;
-  /** Fixed column width in pixels for the left panel. */
   leftWidth?: number;
-  /** Fixed column width in pixels for the right panel. */
   rightWidth?: number;
   children: ReactNode;
 }
