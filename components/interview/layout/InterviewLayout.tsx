@@ -28,11 +28,10 @@ export const InterviewLayout = ({
         header={header}
         footer={footer}
         leftWidth={SPLIT_PANEL_WIDTHS.interview.left}
-        rightWidth={SPLIT_PANEL_WIDTHS.interview.right}
       >
         <PanelLayout
           borderRight
-          contentClassName="flex-1 px-9 pt-[50px] pb-8 overflow-y-auto"
+          contentClassName="overflow-y-auto pt-[50px] pb-8"
         >
           <InterviewNavPanel candidateName={candidateName} />
         </PanelLayout>

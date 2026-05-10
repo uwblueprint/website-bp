@@ -158,7 +158,6 @@ InterviewGroupPage.getLayout = (page: ReactElement) => (
     <ProtectedRoute allowedRoles={["Admin", "User"]}>
       <SplitPanelLayout
         leftWidth={SPLIT_PANEL_WIDTHS.interview.left}
-        rightWidth={SPLIT_PANEL_WIDTHS.interview.right}
         header={<InterviewHeader steps={[]} />}
       >
         <InterviewGroupIllustrationPanel />
