@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import {
+  SPLIT_PANEL_WIDTHS,
   SplitPanelLayout,
   PanelLayout,
 } from "@components/common/SplitPageLayout";
@@ -26,12 +27,11 @@ export const InterviewLayout = ({
       <SplitPanelLayout
         header={header}
         footer={footer}
-        leftWidth={698}
-        rightWidth={742}
+        leftWidth={SPLIT_PANEL_WIDTHS.interview.left}
       >
         <PanelLayout
           borderRight
-          contentClassName="flex-1 px-9 pt-[50px] pb-8 overflow-y-auto"
+          contentClassName="overflow-y-auto pt-[50px] pb-8"
         >
           <InterviewNavPanel candidateName={candidateName} />
         </PanelLayout>

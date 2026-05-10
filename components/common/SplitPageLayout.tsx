@@ -1,11 +1,39 @@
 import { useTheme } from "@mui/material/styles";
-import { ReactElement, ReactNode } from "react";
+import { ReactNode } from "react";
 
 type SplitRatio = "equal";
 
 const SPLIT_GRID_CLASSES: Record<SplitRatio, string> = {
   equal: "lg:grid-cols-2",
 };
+
+/** Flexible grid track so the sibling column can shrink inside overflow layouts. */
+const SPLIT_FLEX_TRACK = "minmax(0, 1fr)";
+
+function splitGridTemplateColumns(
+  leftWidth?: number,
+  rightWidth?: number,
+): string | undefined {
+  const hasLeft = !!leftWidth;
+  const hasRight = !!rightWidth
+  if (!hasLeft && !hasRight) {
+    return undefined;
+  }
+  if (hasLeft && hasRight) {
+    return `${leftWidth}px ${rightWidth}px`;
+  }
+  if (hasLeft) {
+    return `${leftWidth}px ${SPLIT_FLEX_TRACK}`;
+  }
+  return `${SPLIT_FLEX_TRACK} ${rightWidth}px`;
+}
+
+/** Preset fixed widths; pass only `leftWidth` or `rightWidth` on `SplitPanelLayout` so the other column fills the rest. */
+export const SPLIT_PANEL_WIDTHS = {
+  interview: {
+    left: 698,
+  },
+} as const;
 
 interface SplitPanelLayoutProps {
   header?: ReactNode;
@@ -24,20 +52,15 @@ export const SplitPanelLayout = ({
   rightWidth,
   children,
 }: SplitPanelLayoutProps) => {
-  const hasWidthOverride = leftWidth || rightWidth;
-  const gridStyle = hasWidthOverride
-    ? {
-        gridTemplateColumns: `${leftWidth ? `${leftWidth}px` : "1fr"} ${
-          rightWidth ? `${rightWidth}px` : "1fr"
-        }`,
-      }
-    : undefined;
+  const gridTemplateColumns = splitGridTemplateColumns(leftWidth, rightWidth);
+  const hasWidthOverride = !!gridTemplateColumns;
+  const gridStyle = hasWidthOverride ? { gridTemplateColumns } : undefined;
 
   return (
     <div className="flex flex-col h-screen bg-white">
       {header}
       <div
-        className={`flex-1 grid grid-cols-1 ${
+        className={`flex-1 grid min-h-0 grid-cols-1 [&>*]:min-h-0 ${
           !hasWidthOverride ? SPLIT_GRID_CLASSES[split] : ""
         } overflow-hidden border border-[#C4C4C4]`}
         style={gridStyle}
@@ -108,6 +131,58 @@ export const PanelLayout = ({
   const hasHeader = !!(title || subtitle || header);
   const titleStyle = TITLE_STYLES[titleVariant];
 
+  const headerBlock = (
+    <>
+      {header ? (
+        <div className="mb-8 flex w-full shrink-0 items-center justify-between gap-4">
+          {header}
+        </div>
+      ) : null}
+      {showApplicationTitle && subtitle && (
+        <p
+          className="font-poppins text-charcoal-500 mb-4 shrink-0 text-[15px]"
+          style={{ lineHeight: "140%" }}
+        >
+          {subtitle}
+        </p>
+      )}
+      {hasHeader && (
+        <>
+          {title && titleButton ? (
+            <div
+              className={`flex justify-between items-center shrink-0 ${
+                titleVariant === "medium" ? "mb-4" : ""
+              }`}
+            >
+              <h2 className="font-poppins font-medium" style={titleStyle}>
+                {title}
+              </h2>
+              {titleButton}
+            </div>
+          ) : title ? (
+            <h2
+              className={`font-poppins ${
+                titleVariant === "xlarge" ? "shrink-0" : ""
+              } ${titleVariant === "medium" ? "mb-4 font-medium" : ""}`}
+              style={titleStyle}
+            >
+              {title}
+            </h2>
+          ) : null}
+        </>
+      )}
+    </>
+  );
+
+  const showHeaderStack = hasHeader;
+
+  const scrollBase = "min-h-0 w-full flex-1";
+  const scrollClassName = contentClassName
+    ? `${scrollBase} ${contentClassName}`
+    : `${scrollBase} flex flex-col gap-8 overflow-y-auto ${
+        titleVariant === "medium" ? "antialiased" : ""
+      }`;
+
   return (
     <div
       className={`flex flex-col h-full overflow-hidden relative ${bg} ${
@@ -120,55 +195,21 @@ export const PanelLayout = ({
             : undefined,
       }}
     >
-      <div className="flex flex-col h-full overflow-hidden px-9 py-8">
-        {header ? (
-          <div className="mb-8 flex w-full shrink-0 items-center justify-between gap-4">
-            {header}
-          </div>
+      <div className="flex h-full flex-col overflow-hidden pt-8 pb-8">
+        {showHeaderStack ? (
+          <div className="shrink-0 px-9">{headerBlock}</div>
         ) : null}
-        {showApplicationTitle && subtitle && (
-          <p
-            className="font-poppins text-charcoal-500 mb-4 shrink-0 text-[15px]"
-            style={{ lineHeight: "140%" }}
+        <div className={scrollClassName}>
+          <div
+            className={
+              contentClassName
+                ? "box-border w-full px-9"
+                : "box-border flex min-h-full w-full flex-col gap-8 px-9"
+            }
+            style={contentClassName ? undefined : { alignItems: "flex-start" }}
           >
-            {subtitle}
-          </p>
-        )}
-        {hasHeader && (
-          <>
-            {title && titleButton ? (
-              <div
-                className={`flex justify-between items-center shrink-0 ${
-                  titleVariant === "medium" ? "mb-4" : ""
-                }`}
-              >
-                <h2 className="font-poppins font-medium" style={titleStyle}>
-                  {title}
-                </h2>
-                {titleButton}
-              </div>
-            ) : title ? (
-              <h2
-                className={`font-poppins ${
-                  titleVariant === "xlarge" ? "shrink-0" : ""
-                } ${titleVariant === "medium" ? "mb-4 font-medium" : ""}`}
-                style={titleStyle}
-              >
-                {title}
-              </h2>
-            ) : null}
-          </>
-        )}
-        <div
-          className={
-            contentClassName ??
-            `flex-1 overflow-y-auto min-h-0 flex flex-col w-full gap-8 ${
-              titleVariant === "medium" ? "antialiased" : ""
-            }`
-          }
-          style={contentClassName ? undefined : { alignItems: "flex-start" }}
-        >
-          {children}
+            {children}
+          </div>
         </div>
       </div>
     </div>

@@ -1,5 +1,7 @@
-import type { InterviewStep } from "./constants";
+import { InterviewStep as InterviewStepValues } from "./constants";
 
+type InterviewStep =
+  typeof InterviewStepValues[keyof typeof InterviewStepValues];
 type NavItem = {
   label: string;
   step: InterviewStep;
@@ -22,4 +24,10 @@ type InterviewProgressState = {
   setCurrentSubStep: (subStep: string | null) => void;
 };
 
-export type { NavItem, HeaderStepConfig, StepStatus, InterviewProgressState };
+export type {
+  NavItem,
+  HeaderStepConfig,
+  InterviewStep,
+  StepStatus,
+  InterviewProgressState,
+};

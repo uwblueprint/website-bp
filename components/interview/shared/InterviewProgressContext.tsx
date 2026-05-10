@@ -1,12 +1,14 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { useRouter } from "next/router";
 import { InterviewStep, INTERVIEW_NAV_ITEMS } from "./constants";
-import { InterviewProgressState, StepStatus } from "./types";
+import { InterviewProgressState, InterviewStep as InterviewStepType, StepStatus } from "./types";
 
 export const InterviewProgressContext =
   createContext<InterviewProgressState | null>(null);
 
-const PATH_TO_STEP = INTERVIEW_NAV_ITEMS.reduce<Record<string, InterviewStep>>(
+const PATH_TO_STEP = INTERVIEW_NAV_ITEMS.reduce<
+  Record<string, InterviewStepType>
+>(
   (acc, item) => {
     acc[item.path] = item.step;
     return acc;
@@ -14,7 +16,7 @@ const PATH_TO_STEP = INTERVIEW_NAV_ITEMS.reduce<Record<string, InterviewStep>>(
   {},
 );
 
-const INITIAL_STATUSES: Record<InterviewStep, StepStatus> = {
+const INITIAL_STATUSES: Record<InterviewStepType, StepStatus> = {
   [InterviewStep.PROFILE]: "not_started",
   [InterviewStep.ASSESSMENT]: "not_started",
   [InterviewStep.REPORT]: "not_started",
@@ -30,7 +32,7 @@ export const InterviewProgressProvider = ({
   const router = useRouter();
   const [stepStatuses, setStepStatuses] = useState(INITIAL_STATUSES);
   const [subStepsBySection, setSubStepsBySection] = useState<
-    Record<InterviewStep, string | null>
+    Record<InterviewStepType, string | null>
   >({
     [InterviewStep.PROFILE]: null,
     [InterviewStep.ASSESSMENT]: null,
@@ -47,7 +49,7 @@ export const InterviewProgressProvider = ({
     setSubStepsBySection((prev) => ({ ...prev, [currentStep]: subStep }));
   };
 
-  const updateStepStatus = (step: InterviewStep, status: StepStatus) => {
+  const updateStepStatus = (step: InterviewStepType, status: StepStatus) => {
     setStepStatuses((prev) => ({ ...prev, [step]: status }));
   };
 
