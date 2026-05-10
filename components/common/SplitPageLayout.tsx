@@ -7,6 +7,13 @@ const SPLIT_GRID_CLASSES: Record<SplitRatio, string> = {
   equal: "lg:grid-cols-2",
 };
 
+export const SPLIT_PANEL_WIDTHS = {
+  interview: {
+    left: 698,
+    right: 742,
+  },
+} as const;
+
 interface SplitPanelLayoutProps {
   header?: ReactNode;
   footer?: ReactNode;
@@ -24,11 +31,11 @@ export const SplitPanelLayout = ({
   rightWidth,
   children,
 }: SplitPanelLayoutProps) => {
-  const hasWidthOverride = leftWidth || rightWidth;
+  const hasWidthOverride = leftWidth != null || rightWidth != null;
   const gridStyle = hasWidthOverride
     ? {
-        gridTemplateColumns: `${leftWidth ? `${leftWidth}fr` : "1fr"} ${
-          rightWidth ? `${rightWidth}fr` : "1fr"
+        gridTemplateColumns: `${leftWidth != null ? `${leftWidth}px` : "1fr"} ${
+          rightWidth != null ? `${rightWidth}px` : "1fr"
         }`,
       }
     : undefined;

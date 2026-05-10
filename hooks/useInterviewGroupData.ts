@@ -4,7 +4,7 @@ import type {
   Applicant,
   InterviewGroup,
   Interviewer,
-} from "APIClients/InterviewGroupAPIClient";
+} from "types/interviewGroup";
 
 type UseInterviewGroupDataResult = {
   group: InterviewGroup | null;

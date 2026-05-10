@@ -1,4 +1,5 @@
 import { EditIcon } from "@components/icons/edit.icon";
+import CheckCircleIcon from "@components/icons/check-circle.icon";
 
 type CalendlyLinkSubmittedProps = {
   linkInput: string;
@@ -16,22 +17,8 @@ const CalendlyLinkSubmitted = ({
   onResubmit,
 }: CalendlyLinkSubmittedProps) => (
   <div className="flex gap-4 border border-[#C4C4C4] rounded-lg py-6 pr-6 pl-4">
-    <div className="flex items-center justify-center w-9 h-9 rounded-full bg-[#00A403] shrink-0">
-      <svg
-        width="22"
-        height="17"
-        viewBox="0 0 22 17"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M20 2L8 14L2 8"
-          stroke="white"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+    <div className="flex items-center justify-center w-9 h-9 rounded-full bg-[#00A403] text-white shrink-0">
+      <CheckCircleIcon />
     </div>
     <div className="flex flex-col gap-8 flex-1">
       <div className="flex flex-col gap-6">

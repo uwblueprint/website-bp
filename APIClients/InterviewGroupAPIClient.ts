@@ -1,32 +1,11 @@
 import { fetchGraphql } from "@utils/makegqlrequest";
 import { queries, mutations } from "graphql/queries";
-
-const InterviewGroupStatus = {
-  READY_TO_INTERVIEW: "Ready to Interview",
-  INVITES_SENT: "Invites Sent",
-  AVAILABILITY_PENDING: "Availability Pending",
-} as const;
-
-export type InterviewGroupStatus =
-  typeof InterviewGroupStatus[keyof typeof InterviewGroupStatus];
-
-export type InterviewGroup = {
-  schedulingLink: string | null;
-  status: InterviewGroupStatus;
-};
-
-export type Applicant = {
-  firstName: string;
-  lastName: string;
-};
-
-export type Interviewer = {
-  id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  profilePictureFileId: string | null;
-};
+import type {
+  Applicant,
+  InterviewGroup,
+  InterviewGroupStatus,
+  Interviewer,
+} from "types/interviewGroup";
 
 const InterviewGroupAPIClient = {
   updateSchedulingLink: async (

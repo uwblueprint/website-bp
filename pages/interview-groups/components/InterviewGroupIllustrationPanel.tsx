@@ -14,7 +14,7 @@ const InterviewGroupIllustrationPanel = () => (
         className="absolute font-poppins font-medium text-black leading-[1.4] whitespace-nowrap"
         style={{ left: "56.46%", top: "18.07%", fontSize: "4.535cqi" }}
       >
-        Application Review
+        Interview Scheduling
       </p>
       <img
         src="/common/review-page-people.svg"
