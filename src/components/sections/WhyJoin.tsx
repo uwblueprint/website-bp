@@ -26,14 +26,17 @@ export function WhyJoin({ className }: { className?: string }) {
     <section
       id="why-join"
       aria-label="Why join Blueprint"
-      className={cn("bg-[var(--primary-light)] px-8 pt-24 pb-8", className)}
+      className={cn(
+        "bg-[var(--primary-light)] px-8 pt-8 pb-8 md:pt-24",
+        className,
+      )}
     >
       <div className="grid w-full grid-cols-12 gap-0">
-        <h2 className="col-span-12 text-xxl lowercase text-[var(--bp-blue)] pb-16">
+        <h2 className="col-span-12 text-xxl lowercase text-[var(--bp-blue)] leading-[1.1] md:leading-none pb-8 md:pb-16">
           why join?
         </h2>
 
-        <div className="col-span-12 grid grid-cols-12 gap-0 min-[800px]:auto-rows-fr">
+        <div className="col-span-12 grid grid-cols-12 gap-y-8 min-[800px]:gap-0 min-[800px]:auto-rows-fr">
           {VALUE_PROPS.map((prop, i) => (
             <FadeUp
               key={prop.title}
@@ -42,7 +45,7 @@ export function WhyJoin({ className }: { className?: string }) {
               className="col-span-12 min-[800px]:col-span-4"
             >
               <div className="h-full">
-                <div className="flex h-full flex-col p-6 transition-colors duration-200 hover:bg-black/5">
+                <div className="flex h-full flex-col p-0 transition-colors duration-200 min-[800px]:p-6 min-[800px]:hover:bg-black/5">
                   <h3 className="pb-4 text-lg text-[var(--primary-dark)]">
                     {prop.title}
                   </h3>
