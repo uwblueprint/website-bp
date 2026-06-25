@@ -6,8 +6,7 @@ import { FadeUp } from "@/components/ui/FadeUp";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
 
-const ROLES_NOTION_LINK =
-  "https://uwblueprintexecs.notion.site/Role-Responsibilities-9494c8311ce0471f997c7473e0bfea1c";
+const ROLES_LINK = "/roles";
 
 export function RolesCTA({ className }: { className?: string }) {
   return (
@@ -33,9 +32,7 @@ export function RolesCTA({ className }: { className?: string }) {
 
           <div className="col-span-12">
             <Link
-              href={ROLES_NOTION_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={ROLES_LINK}
               className={buttonVariants({ variant: "filled-blue", size: "md" })}
             >
               learn more about the roles
