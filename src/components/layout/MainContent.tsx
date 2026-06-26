@@ -22,7 +22,8 @@ export default function MainContent({
     pathname === "/join-us" ||
     pathname === "/nonprofits" ||
     pathname === "/students" ||
-    pathname === "/students/alumni";
+    pathname === "/students/alumni" ||
+    pathname === "/roles";
 
   return (
     <div className={cn("flex-1", !isFullBleed && "pt-16")}>{children}</div>

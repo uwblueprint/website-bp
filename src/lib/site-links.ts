@@ -38,5 +38,9 @@ export const mainNavLinks = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
-export const footerNavLinks = mainNavLinks;
+export const footerNavLinks = [
+  ...mainNavLinks,
+  { href: "/roles", label: "Roles" },
+] as const;
+
 export const navbarNavLinks = mainNavLinks;
