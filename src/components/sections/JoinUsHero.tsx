@@ -32,11 +32,10 @@ function SectionLink({ id, label }: { id: string; label: string }) {
 
 export function JoinUsHero() {
   return (
-    <ApplyNowBanner/>
     <section
       aria-label="Join our team hero"
       className="flex min-h-dvh flex-col justify-end overflow-hidden bg-[var(--bp-blue)]"
-    >
+    > 
       <div className="grid w-full grid-cols-12 gap-0 px-8 pb-8">
         <div className="col-span-12 flex flex-col gap-4 md:gap-16">
           <h1
