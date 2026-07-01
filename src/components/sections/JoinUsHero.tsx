@@ -32,6 +32,7 @@ function SectionLink({ id, label }: { id: string; label: string }) {
 
 export function JoinUsHero() {
   return (
+    <ApplyNowBanner/>
     <section
       aria-label="Join our team hero"
       className="flex min-h-dvh flex-col justify-end overflow-hidden bg-[var(--bp-blue)]"
@@ -44,8 +45,6 @@ export function JoinUsHero() {
           >
             join our team
           </h1>
-          <ApplyNowBanner/>
-
           <div className="flex flex-col gap-1.5 text-lg">
             <p className="text-[var(--primary-light)]">
               We&apos;re a diverse group of students dedicated to doing social
