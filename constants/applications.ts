@@ -5,7 +5,7 @@ import dayjs from "@utils/dayjs";
  * Format: YYYY-MM-DD HH:MM:SS
  */
 export const APPLICATION_OPEN_DATETIME = dayjs.tz(
-  "2026-07-01 6:00:00",
+  "2026-07-01 18:00:00",
   "America/Toronto",
 );
 

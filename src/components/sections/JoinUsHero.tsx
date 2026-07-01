@@ -2,6 +2,7 @@
 
 import UnderlineToBackground from "@/components/fancy/text/underline-to-background";
 import { scrollToElement } from "@/lib/utils";
+import { ApplyNowBanner } from "../ui/ApplyNowBanner";
 
 const SECTION_LINKS: { id: string; label: string }[] = [
   { id: "why-join", label: "why join" },
@@ -34,16 +35,17 @@ export function JoinUsHero() {
     <section
       aria-label="Join our team hero"
       className="flex min-h-dvh flex-col justify-end overflow-hidden bg-[var(--bp-blue)]"
-    >
+    > 
       <div className="grid w-full grid-cols-12 gap-0 px-8 pb-8">
         <div className="col-span-12 flex flex-col gap-4 md:gap-16">
+
+          <ApplyNowBanner />
           <h1
             className="text-xxl lowercase text-[var(--primary-light)]"
             style={{ lineHeight: 0.8 }}
           >
             join our team
           </h1>
-
           <div className="flex flex-col gap-1.5 text-lg">
             <p className="text-[var(--primary-light)]">
               We&apos;re a diverse group of students dedicated to doing social
