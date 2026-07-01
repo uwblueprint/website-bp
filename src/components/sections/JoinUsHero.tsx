@@ -2,6 +2,7 @@
 
 import UnderlineToBackground from "@/components/fancy/text/underline-to-background";
 import { scrollToElement } from "@/lib/utils";
+import { ApplyNowBanner } from "../ui/ApplyNowBanner";
 
 const SECTION_LINKS: { id: string; label: string }[] = [
   { id: "why-join", label: "why join" },
@@ -43,6 +44,7 @@ export function JoinUsHero() {
           >
             join our team
           </h1>
+          <ApplyNowBanner/>
 
           <div className="flex flex-col gap-1.5 text-lg">
             <p className="text-[var(--primary-light)]">
