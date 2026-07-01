@@ -8,7 +8,6 @@ import { WhatWeLookFor } from "@/components/sections/WhatWeLookFor";
 import { WhyJoin } from "@/components/sections/WhyJoin";
 import { SlimBanner } from "@/components/ui/SlimBanner";
 import { APPLICATION_CLOSE_DATETIME, APPLICATION_OPEN_DATETIME, APPLICATION_TERM, FINAL_DECISION_DATE, INVITE_DATE } from "@constants/applications";
-import { ApplyNowBanner } from "@/components/ui/ApplyNowBanner";
 
 export const metadata: Metadata = {
   title: "Join our team",
@@ -49,7 +48,6 @@ const JOIN_PROCESS_STEPS: ProcessStep[] = [
 export default function JoinUsPage() {
   return (
     <main>
-      <ApplyNowBanner />
       <JoinUsHero />
       <WhyJoin />
       <TeamPhotos />
