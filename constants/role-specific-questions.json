@@ -126,6 +126,18 @@
       {
         "question": "Tell us about your graphic design experience. Attach a link to your portfolio, if you have one.",
         "maxLength": 1000
+      },
+      {
+        "question": "Tell us about a project where you have to balance creativity and technical constraints (e.g. branding guidelines). How did you approach this situation and how did it turn out?",
+        "maxLength": 1000
+      },
+      {
+        "question": "A graphic designer at Blueprint doesn't only work with social media posts. Tell us about your experience or interest in designing beyond the screen (e.g. posters, signage, etc.). ",
+        "maxLength": 1000
+      },
+      {
+        "question": "Tell us about a piece of design (could be yours or someone else's, not limited to social media posts) that you think is particularly effective, and explain why it works.",
+        "maxLength": 1000
       }
     ]
   },
@@ -179,9 +191,25 @@
   {
     "id": "13",
     "role": "VP Finance",
-    "questions": [
+    "questions": [ 
       {
-        "question": "How would you pitch to external organizations for sponsorship?",
+        "question": "What might you say to convince the university and related bodies to award the club with the entirety of its requested funds as opposed to only a portion of it?",
+        "maxLength": 1000
+      },
+      {
+        "question": "How would you pitch UW Blueprint to external organizations for sponsorships? Provide at least one example of an organization that you can imagine UW Blueprint partnering with in your response.",
+        "maxLength": 1000
+      },
+      {
+        "question": "What would you do if a prospective external sponsor stopped responding to your attempts to reach them?",
+        "maxLength": 1000
+      },
+      {
+        "question": "How might you respond if a club member requests a reimbursement for an unauthorized expense?",
+        "maxLength": 1000
+      },
+      {
+        "question": "How would you go about allocating expenses for Blueprint events? Include both your planning process (i.e. before any events happen) and your response to overspending/underfunding.",
         "maxLength": 1000
       }
     ]
