@@ -193,19 +193,11 @@
     "role": "VP Finance",
     "questions": [ 
       {
-        "question": "What might you say to convince the university and related bodies to award the club with the entirety of its requested funds as opposed to only a portion of it?",
-        "maxLength": 1000
-      },
-      {
         "question": "How would you pitch UW Blueprint to external organizations for sponsorships? Provide at least one example of an organization that you can imagine UW Blueprint partnering with in your response.",
         "maxLength": 1000
       },
       {
         "question": "What would you do if a prospective external sponsor stopped responding to your attempts to reach them?",
-        "maxLength": 1000
-      },
-      {
-        "question": "How might you respond if a club member requests a reimbursement for an unauthorized expense?",
         "maxLength": 1000
       },
       {
