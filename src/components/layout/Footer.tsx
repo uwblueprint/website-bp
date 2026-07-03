@@ -1,5 +1,7 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+
 import TextLinkButton from "@/components/ui/TextLinkButton";
 import { contactLinks, footerNavLinks } from "@/lib/site-links";
 
@@ -13,6 +15,11 @@ function ColHeading({ children }: { children: React.ReactNode }) {
 }
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  // Standalone landing pages render without the site footer.
+  if (pathname === "/links") return null;
+
   return (
     <footer style={{ backgroundColor: "var(--bp-blue)" }}>
       {/* Top section — flex row, each column explicitly 1/2 → 1/4 → 1/6 of the parent */}
