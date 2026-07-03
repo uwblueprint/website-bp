@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 export function BuildHero() {
   return (
     <section
@@ -14,10 +16,15 @@ export function BuildHero() {
             fake things?
           </h1>
 
-          <div className="flex max-w-3xl flex-col gap-1.5 text-lg">
+          <div className="flex max-w-5xl flex-col gap-1.5 text-lg">
             <p className="text-[var(--primary-light)]">
-              Come build real things with us at Blueprint. Applications open
-              July 1st.
+              Come build real things with us at Blueprint.{" "}
+              <Link
+                href="https://uwblueprint.org/apply"
+                className="underline underline-offset-4 transition-opacity duration-200 hover:opacity-80"
+              >
+                Apply now
+              </Link>
             </p>
           </div>
         </div>
