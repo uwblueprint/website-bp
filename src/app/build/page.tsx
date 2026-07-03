@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { ApplicationsCountdown } from "@/components/sections/ApplicationsCountdown";
+import { ApplicationsCTA } from "@/components/sections/ApplicationsCTA";
 import { BuildHero } from "@/components/sections/BuildHero";
 import { ImpactStatement } from "@/components/sections/ImpactStatement";
 import { RolesCTA } from "@/components/sections/RolesCTA";
@@ -23,7 +23,7 @@ export default function BuildPage() {
       <TeamPhotos />
       <WhatWeLookFor />
       <RolesCTA />
-      <ApplicationsCountdown />
+      <ApplicationsCTA />
     </main>
   );
 }
