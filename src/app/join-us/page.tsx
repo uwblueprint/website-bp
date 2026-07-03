@@ -7,6 +7,7 @@ import { TeamPhotos } from "@/components/sections/TeamPhotos";
 import { WhatWeLookFor } from "@/components/sections/WhatWeLookFor";
 import { WhyJoin } from "@/components/sections/WhyJoin";
 import { SlimBanner } from "@/components/ui/SlimBanner";
+import { APPLICATION_CLOSE_DATETIME, APPLICATION_OPEN_DATETIME, APPLICATION_TERM, FINAL_DECISION_DATE, INVITE_DATE } from "@constants/applications";
 
 export const metadata: Metadata = {
   title: "Join our team",
@@ -19,7 +20,7 @@ const JOIN_PROCESS_STEPS: ProcessStep[] = [
     description:
       "Check out our projects, come to events, talk with the team and view our open ",
     descriptionLink: {
-      href: "https://uwblueprintexecs.notion.site/Role-Responsibilities-9494c8311ce0471f997c7473e0bfea1c",
+      href: "/roles",
       label: "roles",
       suffix: ".",
     },
@@ -28,19 +29,19 @@ const JOIN_PROCESS_STEPS: ProcessStep[] = [
     index: "02",
     title: "Submit your application",
     description:
-      "Tell us about yourself and why you're interested in joining Blueprint. We take a great amount of care to review every application, so please be as detailed as possible. If we think you might be a good fit, we will send you an invite to have a coffee chat with us! Applications open Mar 5, 2026 12:00 PM and close Mar 15, 2026 11:59 PM.",
+      `Tell us about yourself and why you're interested in joining Blueprint. We take a great amount of care to review every application, so please be as detailed as possible. If we think you might be a good fit, we will send you an invite to have a coffee chat with us! Applications open ${APPLICATION_OPEN_DATETIME.format("MMM D, YYYY h:mm A")} and close ${APPLICATION_CLOSE_DATETIME.format("MMM D, YYYY h:mm A")}.`,
   },
   {
     index: "03",
     title: "Interview with us",
     description:
-      "Let's talk! Invites will be sent out by the middle of March to schedule a time in the following week for us to connect. During these chats, you'll have a casual conversation with a couple of our members. You can use this time to ask us any questions you might have, and we can get to know each other better! We'll also use some of this time for role-specific technical questions.",
+      `Let's talk! Invites will be sent out by ${INVITE_DATE} to schedule a time in the following week for us to connect. During these chats, you'll have a casual conversation with a couple of our members. You can use this time to ask us any questions you might have, and we can get to know each other better! We'll also use some of this time for role-specific technical questions.`,
   },
   {
     index: "04",
     title: "Final decision",
     description:
-      "We'll let you know our final decision around the end of March. If you get an offer to join us for Summer 2026, we'd appreciate it if you replied as soon as possible to let us know if you'd like to accept! Once you've confirmed, we'll get you started with onboarding just before the term officially begins.",
+      `We'll let you know our final decision around ${FINAL_DECISION_DATE}. If you get an offer to join us for ${APPLICATION_TERM}, we'd appreciate it if you replied as soon as possible to let us know if you'd like to accept! Once you've confirmed, we'll get you started with onboarding just before the term officially begins.`,
   },
 ];
 

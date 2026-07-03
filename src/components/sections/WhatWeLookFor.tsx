@@ -31,17 +31,17 @@ export function WhatWeLookFor({ className }: { className?: string }) {
     <section
       id="what-we-look-for"
       aria-label="What we look for"
-      className={cn("bg-[var(--bp-blue)] px-8 pt-24 pb-8", className)}
+      className={cn("bg-[var(--bp-blue)] px-8 pt-8 pb-8 md:pt-24", className)}
     >
-      <h2 className="text-xxl lowercase text-[var(--primary-light)] pb-8 md:pb-48">
+      <h2 className="text-xxl lowercase text-[var(--primary-light)] leading-[1.1] md:leading-none pb-8 md:pb-48">
         what we look for
       </h2>
 
-      <div className="grid grid-cols-1 min-[800px]:grid-cols-4 min-[800px]:auto-rows-fr gap-0">
+      <div className="grid grid-cols-1 gap-y-8 min-[800px]:grid-cols-4 min-[800px]:auto-rows-fr min-[800px]:gap-0">
         {TRAITS.map((trait, i) => (
           <FadeUp key={trait.title} index={i} inView>
             <div className="h-full">
-              <div className="flex h-full flex-col  md:p-6 transition-colors duration-200 hover:bg-white/5">
+              <div className="flex h-full flex-col p-0 transition-colors duration-200 min-[800px]:p-6 min-[800px]:hover:bg-white/5">
                 <h3 className="pb-4 text-lg text-[var(--primary-light)]">
                   {trait.title}
                 </h3>
