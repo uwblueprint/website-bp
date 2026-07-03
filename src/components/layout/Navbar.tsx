@@ -183,6 +183,9 @@ export default function Navbar() {
 
   const effectiveHideProgress = open ? 0 : navHideProgress;
 
+  // Standalone landing pages render without the site navbar.
+  if (pathname === "/links") return null;
+
   return (
     <header
       ref={headerRef}
