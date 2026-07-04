@@ -7,7 +7,6 @@ import {
   APPLICATION_IS_LIVE,
   APPLICATION_LINK,
 } from "@constants/applications";
-import { buttonVariants } from "@/components/ui/button-variants";
 
 /** Height of the bar. Kept in sync with `--apply-banner-h` set in the layout. */
 export const APPLY_BAR_HEIGHT = "3.5rem";
@@ -37,10 +36,7 @@ export function ApplyBar() {
 
       <Link
         href={APPLICATION_LINK}
-        className={`${buttonVariants({
-          variant: "filled-blue",
-          size: "sm",
-        })} shrink-0`}
+        className="shrink-0 text-sm text-[var(--bp-blue)] underline underline-offset-4 transition-opacity duration-200 hover:opacity-80 md:text-md"
       >
         Apply now
       </Link>
