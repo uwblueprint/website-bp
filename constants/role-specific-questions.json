@@ -191,7 +191,7 @@
   {
     "id": "13",
     "role": "VP Finance",
-    "questions": [ 
+    "questions": [
       {
         "question": "How would you pitch UW Blueprint to external organizations for sponsorships? Provide at least one example of an organization that you can imagine UW Blueprint partnering with in your response.",
         "maxLength": 1000
@@ -222,16 +222,6 @@
     "questions": [
       {
         "question": "What's a cool new event you think Blueprint should do and how does it align with Blueprint's mission?",
-        "maxLength": 1000
-      }
-    ]
-  },
-  {
-    "id": "16",
-    "role": "Internal Director",
-    "questions": [
-      {
-        "question": "What would an ideal member experience look like to you?",
         "maxLength": 1000
       }
     ]
