@@ -35,12 +35,9 @@ export const mainNavLinks = [
   { href: "/nonprofits", label: "Nonprofits" },
   { href: "/students", label: "Students" },
   { href: "/join-us", label: "Join our team" },
+  { href: "/roles", label: "Roles" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
-export const footerNavLinks = [
-  ...mainNavLinks,
-  { href: "/roles", label: "Roles" },
-] as const;
-
+export const footerNavLinks = mainNavLinks;
 export const navbarNavLinks = mainNavLinks;
