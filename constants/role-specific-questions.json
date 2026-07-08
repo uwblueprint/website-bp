@@ -225,5 +225,29 @@
         "maxLength": 1000
       }
     ]
+  },
+  {
+    "id": "16",
+    "role": "Internal Director",
+    "questions": [
+      {
+        "question": "What would an ideal member experience look like to you?",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "16",
+    "role": "Sponsorships Director",
+    "questions": [
+      {
+        "question": "Selling Blueprint means getting a company to say yes to something they didn't plan on. Walk us through a time you convinced someone to buy in on an idea. What was your approach and how did it land?",
+        "maxLength": 1000
+      },
+      {
+        "question": "A sponsor signs, then goes quiet and stops responding as their deliverables come due. What do you do?",
+        "maxLength": 1000
+      }
+    ]
   }
 ]
