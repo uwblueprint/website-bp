@@ -228,16 +228,6 @@
   },
   {
     "id": "16",
-    "role": "Internal Director",
-    "questions": [
-      {
-        "question": "What would an ideal member experience look like to you?",
-        "maxLength": 1000
-      }
-    ]
-  },
-  {
-    "id": "16",
     "role": "Sponsorships Director",
     "questions": [
       {
