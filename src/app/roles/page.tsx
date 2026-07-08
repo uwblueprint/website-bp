@@ -180,9 +180,9 @@ const PROJECT_TEAM: RoleItem[] = [
     responsibilities: [
       "Write, test, and maintain code in line with the team's best practices and technical standards.",
       "Participate in code reviews, both giving and receiving feedback to improve code quality and personal growth.",
-      "Collaborate with the Project Lead and other developers to break down tasks, estimate work, and meet project milestones.",
+      "Collaborate with the Technical Lead and other developers to break down tasks, estimate work, and meet project milestones.",
       "Communicate progress, blockers, and questions proactively during team meetings and check-ins.",
-      "Continuously learn and develop technical skills, taking advantage of mentorship from the Project Lead and other senior members.",
+      "Continuously learn and develop technical skills, taking advantage of mentorship from the Technical Lead and other senior members.",
     ],
     note: "Open to all experience levels; a great opportunity to gain hands-on experience in a team setting.",
   },
@@ -227,9 +227,9 @@ const PROJECT_TEAM: RoleItem[] = [
     note: "Generally a senior, internal-hire preferred role.",
   },
   {
-    title: "Project Lead",
+    title: "Technical Lead",
     description:
-      "The Project Lead (or Technical Lead) is responsible for leading the team and driving the technical direction of the project, providing support and mentorship to developers on the team and working with the product manager to run the team effectively.",
+      "The Technical Lead is responsible for leading the team and driving the technical direction of the project, providing support and mentorship to developers on the team and working with the product manager to run the team effectively.",
     responsibilities: [
       "Organizing best code practices, performing code reviews, mentoring developers, planning tasks, making key technical decisions and software architecture design.",
       "Provide leadership, mentorship, and project execution skills as the overall success of the team is largely self guided.",
@@ -239,7 +239,7 @@ const PROJECT_TEAM: RoleItem[] = [
     ],
     link: {
       href: "https://medium.com/uw-blueprint/member-spotlight-project-lead-anne-chung-1ca9f22c9db3",
-      label: "Member Spotlight — Project Lead",
+      label: "Member Spotlight — Technical Lead",
     },
     note: "Generally a senior, internal-hire preferred role.",
   },
