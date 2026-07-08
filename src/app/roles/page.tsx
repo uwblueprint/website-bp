@@ -145,7 +145,7 @@ const EXECUTIVE_TEAM: RoleItem[] = [
     description:
       "The Graphic Designer will support External Directors and the design team to create visual assets for marketing and project teams.",
     responsibilities: [
-      "Work closely with Content Strategists to create effective cross-platform marketing for Blueprint.",
+      "Work closely with Marketing Directors to create effective cross-platform marketing for Blueprint.",
       "Build and support UW Blueprint's brand through brand assets, graphics, and polished collateral (banners, website design, slideshows, etc.).",
       "Use Figma and/or other design tools to produce graphic designs, illustrations, and motion design materials.",
     ],
@@ -156,9 +156,9 @@ const EXECUTIVE_TEAM: RoleItem[] = [
     ],
   },
   {
-    title: "Content Strategist",
+    title: "Marketing Director",
     description:
-      "Collaborate with Graphic Designers and marketing team members to develop cohesive cross platform content for Blueprint.",
+      "The Marketing Director is in charge of Blueprint's brand image across the community, whether that's through our social channels, in-person events, or marketing to students, non-profits, and companies.",
     responsibilities: [
       "Plan, write, and manage content across social platforms, newsletters, and marketing materials.",
       "Develop content calendars and campaign ideas that highlight Blueprint's projects, events, and community impact.",
