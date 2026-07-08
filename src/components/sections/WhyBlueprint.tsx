@@ -12,7 +12,7 @@ const VALUE_PROPS = [
   {
     title: "Dedicated teams",
     description:
-      "Each nonprofit is paired with a cross-functional team of designers, developers, and a project lead who are fully invested in your success from day one.",
+      "Each nonprofit is paired with a cross-functional team of designers, developers, and a technical lead who are fully invested in your success from day one.",
   },
   {
     title: "Built to last",

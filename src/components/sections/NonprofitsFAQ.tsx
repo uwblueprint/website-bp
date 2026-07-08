@@ -18,12 +18,12 @@ const FAQ_ITEMS: FAQItem[] = [
   {
     question: "What does the nonprofit-project team interaction look like?",
     answer:
-      "Each project team is led by a pairing of project lead(s) and product manager(s) who serve as the main point of contact between the nonprofit and Blueprint. Regular check-ins include progress updates, design reviews, and feedback sessions to ensure we're building exactly what you need.",
+      "Each project team is led by a pairing of technical lead(s) and product manager(s) who serve as the main point of contact between the nonprofit and Blueprint. Regular check-ins include progress updates, design reviews, and feedback sessions to ensure we're building exactly what you need.",
   },
   {
     question: "How does UW Blueprint ensure success?",
     answer:
-      "We follow a structured development process with clearly defined milestones, regular stakeholder check-ins, and thorough quality assurance. Our scoping process helps us set realistic goals, and our experienced project leads keep teams on track throughout the term.",
+      "We follow a structured development process with clearly defined milestones, regular stakeholder check-ins, and thorough quality assurance. Our scoping process helps us set realistic goals, and our experienced technical leads keep teams on track throughout the term.",
   },
   {
     question: "What type of services does UW Blueprint provide?",
