@@ -116,7 +116,7 @@ const Admin: NextPage = () => {
           <select
             id="roles"
             name="roles"
-            className="border-l-charcoal-300 text-charcoal-600 border border-charcoal-300 rounded-md px-4 py-3 border-l-4 focus:outline-none focus:ring-1 focus:ring-blue-100 focus:border-blue-100"
+            className="text-charcoal-600 border border-charcoal-300 rounded-md px-4 py-3 focus:outline-none focus:ring-1 focus:ring-blue-100 focus:border-blue-100"
             style={{ minHeight: "25px" }}
             onChange={(e) => setRoleSelected(e.target.value)}
           >

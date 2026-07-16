@@ -1,13 +1,26 @@
+import { useEffect, useState } from "react";
 import AppForm from "@components/apply/AppForm";
 import Layout from "@components/common/Layout";
-import { APPLICATION_IS_LIVE, APPLICATION_TERM } from "@constants/applications";
+import Loading from "@components/common/Loading";
+import { APPLICATION_TERM } from "@constants/applications";
+import { ApplyAccess, resolveApplyAccess } from "@utils/applicationAccess";
 import { NextPage } from "next";
 
 /** Apply to Blueprint! */
 const Apply: NextPage = () => {
+  const [access, setAccess] = useState<ApplyAccess | null>(null);
+
+  useEffect(() => {
+    setAccess(resolveApplyAccess(Date.now()));
+  }, []);
+
   return (
     <Layout minimal>
-      {APPLICATION_IS_LIVE ? (
+      {access === null ? (
+        <div className="container max-w-4xl px-4 mx-auto mt-44 mb-12 md:mt-40 md:mb-16">
+          <Loading />
+        </div>
+      ) : access === "granted" ? (
         <AppForm />
       ) : (
         <div className="container max-w-4xl px-4 mx-auto mt-44 mb-12 md:mt-40 md:mb-16">
