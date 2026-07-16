@@ -116,7 +116,6 @@ export default function StudentsPage() {
       ))}
 
       <div className="pt-12 md:py-12 bg-primary-light">
- 
         <div className="grid w-full grid-cols-12 gap-0 px-8">
           <div className="col-span-12 text-xl lowercase text-[var(--bp-blue)] pb-8">
             <Link href="/students/alumni" className="inline-block">

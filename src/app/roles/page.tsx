@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 
 import { RolesHero } from "@/components/sections/RolesHero";
-import { RolesSection, type RoleItem } from "@/components/sections/RolesSection";
+import {
+  RolesSection,
+  type RoleItem,
+} from "@/components/sections/RolesSection";
 
 export const metadata: Metadata = {
   title: "Roles | UW Blueprint",
-  description:
-    "Learn more about how we work as a team at Blueprint.",
+  description: "Learn more about how we work as a team at Blueprint.",
 };
 
 const EXECUTIVE_TEAM: RoleItem[] = [
@@ -265,10 +267,7 @@ export default function RolesPage() {
     <main className="bg-[var(--primary-light)]">
       <RolesHero />
 
-      <section
-        aria-label="Introduction"
-        className="px-8 pt-16 pb-0"
-      >
+      <section aria-label="Introduction" className="px-8 pt-16 pb-0">
         <div className="grid w-full grid-cols-12 gap-0">
           <div className="col-span-12 md:col-span-8 flex flex-col gap-4">
             <p className="text-md text-[var(--secondary-dark)]">
@@ -286,7 +285,8 @@ export default function RolesPage() {
               of the next recruitment cycle for their role.
             </p>
             <p className="text-md text-[var(--secondary-dark)]">
-              Roles only define responsibilities. Blueprint has a flat hierarchy.
+              Roles only define responsibilities. Blueprint has a flat
+              hierarchy.
             </p>
           </div>
         </div>

@@ -29,9 +29,7 @@ const TextAreaInput: FC<Props> = ({
         </label>
       )}
       {readOnly ? (
-        <div className="pl-3 ml-1 text-charcoal-500">
-          {value}
-        </div>
+        <div className="pl-3 ml-1 text-charcoal-500">{value}</div>
       ) : (
         <Field
           as="textarea"

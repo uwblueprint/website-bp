@@ -185,7 +185,6 @@ const AppForm: FC<Props> = ({
     return url;
   };
 
-
   const submitApplication = async (values: AppFormValues) => {
     setSaving(true);
     setSubmitError(null);
