@@ -15,7 +15,7 @@ export const APPLICATION_OPEN_DATETIME = dayjs.tz(
  */
 export const APPLICATION_CLOSE_DATETIME = dayjs.tz(
   // normally should be 23:59:59, but i felt nice and let someone apply 
-  "2026-07-16 00:35:00",
+  "2026-07-16 16:50:00",
   "America/Toronto",
 );
 
