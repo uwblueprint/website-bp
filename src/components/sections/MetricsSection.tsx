@@ -20,11 +20,11 @@ const STATS: Stat[] = [
     href: "/projects",
   },
   {
-    value: "700+",
+    value: "800+",
     label: "Past & present student volunteers",
     href: "/students",
   },
-  { value: "100,000+", label: "Accumulated volunteer hours", href: "/join-us" },
+  { value: "280,000+", label: "Accumulated volunteer hours", href: "/join-us" },
 ];
 
 export function MetricsSection({ className }: { className?: string }) {
