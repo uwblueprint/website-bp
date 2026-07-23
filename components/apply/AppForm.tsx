@@ -1,6 +1,6 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { Formik, Form } from "formik";
+import { Formik, Form, useFormikContext } from "formik";
 import { getDownloadURL, ref as storeRef, uploadBytes } from "firebase/storage";
 import { set, ref as dbRef, serverTimestamp } from "firebase/database";
 
@@ -14,11 +14,17 @@ import Button from "@components/common/Button";
 import {
   APPLICATION_CLOSE_DATETIME,
   APPLICATION_TERM,
+  getApplicationPhase,
 } from "@constants/applications";
 import shortAnswerJson from "@constants/short-answer-questions.json";
 import roleSpecificJson from "@constants/role-specific-questions.json";
 import ApplyConfirmation from "./ApplyConfirmation";
+import DeadlineToolbar from "./DeadlineToolbar";
+import DeadlinePassedModal from "./DeadlinePassedModal";
+import ConfirmSubmitModal from "./ConfirmSubmitModal";
 import { firebaseDb, firebaseStore } from "@utils/firebase";
+import useApplicationPhase from "@utils/useApplicationPhase";
+import { clearDraft, loadDraft, saveDraft } from "@utils/applicationDraft";
 
 export type ShortAnswerQuestion = {
   question: string;
@@ -140,6 +146,18 @@ const appFormInitialValues: AppFormValues = {
   timestamp: 0,
 };
 
+// persist the user's current session
+const DraftSaver: FC = () => {
+  const { values } = useFormikContext<AppFormValues>();
+
+  useEffect(() => {
+    const id = setTimeout(() => saveDraft(values), 500);
+    return () => clearTimeout(id);
+  }, [values]);
+
+  return null;
+};
+
 type Props = {
   readOnly?: boolean;
   values?: AppFormValues | null;
@@ -150,6 +168,16 @@ const AppForm: FC<Props> = ({
   values = appFormInitialValues,
 }) => {
   const [submitted, setSubmitted] = useState(false);
+  const [deadlinePassed, setDeadlinePassed] = useState(false);
+  const [pending, setPending] = useState<AppFormValues | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const countdown = useApplicationPhase();
+
+  const [draft] = useState(() =>
+    readOnly || typeof window === "undefined" ? null : loadDraft(),
+  );
+
   const uploadResume = async (file: File, uuid: string) => {
     const storageRef = storeRef(firebaseStore, `resumes/${uuid}`);
     const snapshot = await uploadBytes(storageRef, file);
@@ -157,85 +185,131 @@ const AppForm: FC<Props> = ({
     return url;
   };
 
+  const submitApplication = async (values: AppFormValues) => {
+    setSaving(true);
+    setSubmitError(null);
+
+    try {
+      const uuid = uuidv4();
+
+      const roleSpecificQuestions = values.roleSpecificQuestions
+        .filter(({ role }) => role === values.firstChoiceRole)
+        .concat(
+          values.roleSpecificQuestions.filter(
+            ({ role }) => role === values.secondChoiceRole,
+          ),
+        )
+        // For aggregated questions, only the first response is filled in.
+        // Firebase doesn't like that we default responses to undefined,
+        // so we need to convert them to null here.
+        .map(({ questions, ...rest }) => ({
+          questions: questions.map(({ response, ...question }) => ({
+            ...question,
+            response: response ?? null,
+          })),
+          ...rest,
+        }));
+
+      // Upload resume to Firebase storage.
+      if (values.resume) {
+        const url = await uploadResume(values.resume, uuid);
+        values.resumeUrl = url;
+      }
+
+      const application = {
+        term: values.term,
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        program: values.program,
+        academicYear: values.academicYear,
+        resumeUrl: values.resumeUrl,
+        heardFrom: values.heardFrom,
+        timesApplied: values.timesApplied,
+        pronouns: values.pronouns,
+        pronounsSpecified: values.pronounsSpecified || "",
+        academicOrCoop: values.academicOrCoop,
+        locationPreference: values.locationPreference,
+        firstChoiceRole: values.firstChoiceRole,
+        secondChoiceRole: values.secondChoiceRole || "",
+        shortAnswerQuestions: values.shortAnswerQuestions,
+        roleSpecificQuestions,
+        timestamp: serverTimestamp(),
+        status: "pending",
+      };
+
+      const identification = {
+        term: values.term,
+        gender: values.gender || "",
+        genderSpecified: values.genderSpecified || "",
+        ethnicity: values.ethnicity || "",
+        ethnicitySpecified: values.ethnicitySpecified || "",
+        identities: values.identities || [],
+      };
+
+      // Submit form data.
+      await set(dbRef(firebaseDb, "studentApplications/" + uuid), application);
+      await set(
+        dbRef(firebaseDb, "selfIdentification/" + uuidv4()),
+        identification,
+      );
+
+      clearDraft();
+      setPending(null);
+      setSubmitted(true);
+      window.scrollTo(0, 0);
+    } catch (error) {
+      console.error("Application submission failed", error);
+      setSubmitError(
+        values.resume && !values.resumeUrl
+          ? "We couldn't upload your resume. Check your connection and try again."
+          : "Something went wrong submitting your application. Please try again.",
+      );
+      setPending(null);
+    } finally {
+      setSaving(false);
+    }
+  };
+
   return submitted ? (
     <ApplyConfirmation />
   ) : (
     <Formik
       enableReinitialize
-      initialValues={values || appFormInitialValues}
-      onSubmit={async (values) => {
-        const uuid = uuidv4();
+      initialValues={
+        draft
+          ? { ...appFormInitialValues, ...draft, resume: null }
+          : values || appFormInitialValues
+      }
+      onSubmit={(values, { setSubmitting }) => {
+        setSubmitting(false);
 
-        const roleSpecificQuestions = values.roleSpecificQuestions
-          .filter(({ role }) => role === values.firstChoiceRole)
-          .concat(
-            values.roleSpecificQuestions.filter(
-              ({ role }) => role === values.secondChoiceRole,
-            ),
-          )
-          // For aggregated questions, only the first response is filled in.
-          // Firebase doesn't like that we default responses to undefined,
-          // so we need to convert them to null here.
-          .map(({ questions, ...rest }) => ({
-            questions: questions.map(({ response, ...question }) => ({
-              ...question,
-              response: response ?? null,
-            })),
-            ...rest,
-          }));
-
-        // Upload resume to Firebase storage.
-        if (values.resume) {
-          const url = await uploadResume(values.resume, uuid);
-          values.resumeUrl = url;
+        if (getApplicationPhase(Date.now()) === "closed") {
+          setDeadlinePassed(true);
+          return;
         }
-
-        const application = {
-          term: values.term,
-          firstName: values.firstName,
-          lastName: values.lastName,
-          email: values.email,
-          program: values.program,
-          academicYear: values.academicYear,
-          resumeUrl: values.resumeUrl,
-          heardFrom: values.heardFrom,
-          timesApplied: values.timesApplied,
-          pronouns: values.pronouns,
-          pronounsSpecified: values.pronounsSpecified || "",
-          academicOrCoop: values.academicOrCoop,
-          locationPreference: values.locationPreference,
-          firstChoiceRole: values.firstChoiceRole,
-          secondChoiceRole: values.secondChoiceRole || "",
-          shortAnswerQuestions: values.shortAnswerQuestions,
-          roleSpecificQuestions,
-          timestamp: serverTimestamp(),
-          status: "pending",
-        };
-
-        const identification = {
-          term: values.term,
-          gender: values.gender || "",
-          genderSpecified: values.genderSpecified || "",
-          ethnicity: values.ethnicity || "",
-          ethnicitySpecified: values.ethnicitySpecified || "",
-          identities: values.identities || [],
-        };
-
-        // Submit form data.
-        await set(
-          dbRef(firebaseDb, "studentApplications/" + uuid),
-          application,
-        );
-        await set(
-          dbRef(firebaseDb, "selfIdentification/" + uuidv4()),
-          identification,
-        );
-        setSubmitted(true);
-        window.scrollTo(0, 0);
+        setPending(values);
       }}
     >
       {({ values, handleSubmit, isSubmitting }) => (
         <Form onSubmit={handleSubmit}>
+          {!readOnly && <DraftSaver />}
+          {!readOnly && countdown && (
+            <DeadlineToolbar
+              phase={countdown.phase}
+              msRemaining={countdown.msRemaining}
+            />
+          )}
+          {deadlinePassed && (
+            <DeadlinePassedModal onClose={() => setDeadlinePassed(false)} />
+          )}
+          {pending && (
+            <ConfirmSubmitModal
+              submitting={saving}
+              onConfirm={() => submitApplication(pending)}
+              onCancel={() => setPending(null)}
+            />
+          )}
           <section
             className={
               readOnly
@@ -272,8 +346,23 @@ const AppForm: FC<Props> = ({
               readOnly={readOnly}
             />
             {!readOnly && <SelfIdentificationForm values={values} />}
+            {!readOnly && submitError && (
+              <p role="alert" className="text-pink-500 text-sm mb-3">
+                * {submitError}
+              </p>
+            )}
             {!readOnly && (
-              <Button type="submit" variant="primary" disabled={isSubmitting}>
+              <Button
+                type="submit"
+                variant="primary"
+                disabled={isSubmitting || saving}
+                onClick={(e) => {
+                  if (getApplicationPhase(Date.now()) === "closed") {
+                    e.preventDefault();
+                    setDeadlinePassed(true);
+                  }
+                }}
+              >
                 Submit
               </Button>
             )}

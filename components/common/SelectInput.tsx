@@ -39,8 +39,13 @@ const SelectInput: FC<Props> = ({
           id={id}
           value={value ?? ""}
           name={id}
-          className="border-l-charcoal-300 text-charcoal-600 border border-charcoal-300 rounded-md px-4 py-3 border-l-4 focus:outline-none focus:ring-1 focus:ring-blue-100 focus:border-blue-100"
-          style={{ minHeight: "50px" }}
+          className="appearance-none bg-no-repeat text-charcoal-600 border border-charcoal-300 rounded-md pl-4 pr-12 py-3 focus:outline-none focus:ring-1 focus:ring-blue-100 focus:border-blue-100"
+          style={{
+            minHeight: "50px",
+            backgroundImage: "url('/common/down-carat-blue.svg')",
+            backgroundPosition: "right 1rem center",
+            backgroundSize: "12px 8px",
+          }}
           required={required}
         >
           <option value="" disabled={required}>

@@ -158,6 +158,49 @@
   body {
     position: relative;
   }
+
+  a[href]:not([aria-disabled="true"]) {
+    @apply cursor-pointer;
+  }
+  a[href][aria-disabled="true"] {
+    @apply cursor-not-allowed;
+  }
+  button:not(:disabled) {
+    @apply cursor-pointer;
+  }
+  button:disabled {
+    @apply cursor-not-allowed;
+  }
+  [role="button"]:not([aria-disabled="true"]):not(:disabled) {
+    @apply cursor-pointer;
+  }
+  [role="button"][aria-disabled="true"],
+  [role="button"]:disabled {
+    @apply cursor-not-allowed;
+  }
+  [role="link"] {
+    @apply cursor-pointer;
+  }
+  input[type="submit"]:not(:disabled),
+  input[type="button"]:not(:disabled),
+  input[type="reset"]:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled),
+  input[type="file"]:not(:disabled),
+  input[type="color"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+  input:disabled,
+  select:disabled,
+  textarea:disabled {
+    @apply cursor-not-allowed;
+  }
+  select:not(:disabled) {
+    @apply cursor-pointer;
+  }
+  summary {
+    @apply cursor-pointer;
+  }
 }
 
 @layer components {

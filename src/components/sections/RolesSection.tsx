@@ -111,10 +111,7 @@ export function RolesSection({
     <section
       id={id}
       aria-label={groupName}
-      className={cn(
-        "bg-[var(--primary-light)] px-8 pt-24 pb-16",
-        className,
-      )}
+      className={cn("bg-[var(--primary-light)] px-8 pt-24 pb-16", className)}
     >
       <div className="grid w-full grid-cols-12 gap-0">
         <h2 className="col-span-12 text-xxl lowercase text-[var(--bp-blue)] pb-12">

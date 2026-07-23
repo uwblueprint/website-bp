@@ -89,7 +89,7 @@ const BasicInfo: FC<Props> = ({ values, readOnly }: Props) => {
         {!readOnly && (
           <>
             <div>
-              <label id="resume">
+              <label htmlFor="resume">
                 Resume (PDF) <span className="text-pink-500">*</span>
               </label>
               <br className="md:block hidden" />
@@ -99,7 +99,7 @@ const BasicInfo: FC<Props> = ({ values, readOnly }: Props) => {
                 accept="application/pdf"
                 name="resume"
                 required
-                className="mt-2"
+                className="mt-2 block w-full text-sm text-charcoal-500 file:mr-4 file:cursor-pointer file:rounded-md file:border-2 file:border-solid file:border-blue file:bg-white file:px-6 file:py-2.5 file:font-poppins file:text-sm file:font-semibold file:text-blue hover:file:border-sky-500 hover:file:bg-sky-100 hover:file:text-sky-500"
                 onChange={(e) => {
                   if (e.currentTarget.files) {
                     formikProps.setFieldValue(
