@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 import { FadeUp } from "@/components/ui/FadeUp";
 import { buttonVariants } from "@/components/ui/button-variants";
+import Link from "next/link";
 
 /**
  * A single Luma event. `eventId` is the `evt-...` id from the event page and
@@ -347,6 +348,15 @@ export function LinkHub() {
                 </a>
                 .
               </p>
+              <Link
+  href="/"
+  className={`${buttonVariants({
+    variant: "outline-blue",
+    size: "md",
+  })} mt-5`}
+>
+  Explore uwblueprint.org
+</Link>
             </div>
           </FadeUp>
         )}
