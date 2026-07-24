@@ -44,6 +44,7 @@ export const teamsMap = {
   "product manager": ["pm", "product manager"],
   "project mentor": ["mentor", "project mentor"],
   designer: ["designer", "design"],
+  "design engineer": ["de", "design engineer"],
   "design mentor": ["dm", "design mentor"],
   developer: ["dev", "developer"],
   "developer mentor": ["dev mentor", "developer mentor"],
