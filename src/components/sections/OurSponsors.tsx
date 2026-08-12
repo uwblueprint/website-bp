@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 
 const VALUE_PROPS = [
   {
-    title: "Placeholder",
-    image: "bp-logo-blue.svg"
+    title: "Nomad Futurist Foundation",
+    image: "img/sponsors/nomad-futurist-foundation.png"
   },
 ];
 
