@@ -35,6 +35,7 @@ export const mainNavLinks = [
   { href: "/nonprofits", label: "Nonprofits" },
   { href: "/students", label: "Students" },
   { href: "/join-us", label: "Join our team" },
+    { href: "/partnerships", label: "Partnerships" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
