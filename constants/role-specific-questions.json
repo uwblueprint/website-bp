@@ -82,7 +82,7 @@
   },
   {
     "id": "4",
-    "role": "Project Lead",
+    "role": "Technical Lead",
     "questions": [
       {
         "question": "Tell us about a challenging technical problem that you've worked on in the past and how you solved it.",
@@ -222,16 +222,6 @@
     "questions": [
       {
         "question": "What's a cool new event you think Blueprint should do and how does it align with Blueprint's mission?",
-        "maxLength": 1000
-      }
-    ]
-  },
-  {
-    "id": "16",
-    "role": "Internal Director",
-    "questions": [
-      {
-        "question": "What would an ideal member experience look like to you?",
         "maxLength": 1000
       }
     ]
