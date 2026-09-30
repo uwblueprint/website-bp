@@ -58,7 +58,7 @@ export const InfoText: FC<{
               </li>
               <li>
                 Applications close on{" "}
-                <span className="text-blue">{deadline}</span>
+                <span className="text-blue">{deadline} EST</span>
               </li>
               <li>
                 <span className="text-blue">

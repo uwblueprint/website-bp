@@ -21,7 +21,7 @@ const ApplicationsTable: FC<PageProps> = ({ students }) => {
     <div className="flex flex-col space-y-2">
       <table className="table-fixed text-left border-collapse">
         <thead className="pt-4">
-          <tr className="border-b-[2px]">
+          <tr className="border-b-2">
             <th className="py-2">#</th>
             <th>Name</th>
             <th>Email</th>
@@ -31,7 +31,7 @@ const ApplicationsTable: FC<PageProps> = ({ students }) => {
         </thead>
         <tbody>
           {students.map((app: Student, i: number) => (
-            <tr className="border-b-[1px] border-charcoal-400" key={i}>
+            <tr className="border-b border-charcoal-400" key={i}>
               <td className="pr-4 py-4 w-4">{`${i + 1}`}</td>
               <td className="pr-4 w-32">{`${
                 app.firstName + " " + app.lastName

@@ -50,9 +50,9 @@ const TextInput: FC<Props> = ({
           name={id}
           className={
             ((required && value == "") || error
-              ? "border-l-pink-500 "
-              : "border-l-charcoal-300 ") +
-            "text-charcoal-600 border border-charcoal-300 rounded-md px-4 py-3 border-l-4 focus:outline-none focus:ring-1 focus:ring-blue-100 focus:border-blue-100"
+              ? "border-pink-500 "
+              : "border-charcoal-300 ") +
+            "text-charcoal-600 border border-charcoal-300 rounded-md px-4 py-3 focus:outline-none focus:ring-1 focus:ring-blue-100 focus:border-blue-100"
           }
           value={value || ""}
           placeholder={placeholder}
