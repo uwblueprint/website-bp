@@ -1,9 +1,11 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
 
 import { ArrowUpRight } from "@/components/ui/icons";
 import { CornerMarks } from "@/components/ui/CornerMarks";
+import { DraggableSticker } from "@/components/ui/DraggableSticker";
 import { FadeUp } from "@/components/ui/FadeUp";
 
 const MEGAPHONE_SRC = "/illos/megaphone.svg";
@@ -29,10 +31,13 @@ const STATS: Stat[] = [
 ];
 
 export function MetricsSection({ className }: { className?: string }) {
+  const sectionRef = useRef<HTMLElement>(null);
+
   return (
     <section
+      ref={sectionRef}
       aria-label="Our metrics"
-      className={`relative overflow-hidden bg-[var(--bp-blue)] px-8 pt-12 pb-8 min-h-[100vh] grid grid-cols-12 gap-0 content-between${
+      className={`relative overflow-x-clip bg-[var(--bp-blue)] px-8 pt-12 pb-8 min-h-[100vh] grid grid-cols-12 gap-0 content-between${
         className ? ` ${className}` : ""
       }`}
     >
@@ -73,9 +78,9 @@ export function MetricsSection({ className }: { className?: string }) {
       </div>
 
       {/* Megaphone decoration */}
-      <div
-        className="pointer-events-none absolute top-6 right-8 z-0 hidden xl:block max-w-[90%] translate-y-[72px] w-[min(44vw,240px)] sm:w-[min(40vw,312px)] md:w-[min(34vw,288px)] lg:w-[min(46vw,624px)]"
-        aria-hidden
+      <DraggableSticker
+        containerRef={sectionRef}
+        className="absolute top-6 right-8 hidden xl:block max-w-[90%] translate-y-[72px] w-[min(44vw,240px)] sm:w-[min(40vw,312px)] md:w-[min(34vw,288px)] lg:w-[min(46vw,624px)]"
       >
         <div className="relative aspect-[424/330] w-full">
           <img
@@ -88,7 +93,7 @@ export function MetricsSection({ className }: { className?: string }) {
             decoding="async"
           />
         </div>
-      </div>
+      </DraggableSticker>
     </section>
   );
 }

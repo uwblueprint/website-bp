@@ -1,7 +1,10 @@
 "use client";
 
-import { FadeUp } from "@/components/ui/FadeUp";
+import { useRef } from "react";
+
 import { CornerMarks } from "@/components/ui/CornerMarks";
+import { DraggableSticker } from "@/components/ui/DraggableSticker";
+import { FadeUp } from "@/components/ui/FadeUp";
 import { cn } from "@/lib/utils";
 
 export type ProcessStep = {
@@ -57,12 +60,15 @@ export function OurProcess({
   steps?: ProcessStep[];
   topRightDecoration?: React.ReactNode;
 }) {
+  const sectionRef = useRef<HTMLElement>(null);
+
   return (
     <section
+      ref={sectionRef}
       id={id}
       aria-label={ariaLabel}
       className={cn(
-        "relative overflow-hidden bg-[var(--bp-blue)] px-8 pt-24 pb-4 md:pb-8",
+        "relative overflow-x-clip bg-[var(--bp-blue)] px-8 pt-24 pb-4 md:pb-8",
         className,
       )}
     >
@@ -71,12 +77,12 @@ export function OurProcess({
       </h2>
 
       {topRightDecoration ? (
-        <div
-          className="pointer-events-none absolute right-0 top-0 z-0 hidden xl:block translate-x-[10%]"
-          aria-hidden
+        <DraggableSticker
+          containerRef={sectionRef}
+          className="absolute right-0 top-0 hidden xl:block translate-x-[10%]"
         >
           {topRightDecoration}
-        </div>
+        </DraggableSticker>
       ) : null}
 
       <div className="relative z-[1] grid grid-cols-1 min-[800px]:grid-cols-4 min-[800px]:auto-rows-fr gap-0">

@@ -10,6 +10,7 @@ import {
 } from "react";
 import { flushSync } from "react-dom";
 
+import { DraggableSticker } from "@/components/ui/DraggableSticker";
 import { cn } from "@/lib/utils";
 
 const MEGAPHONE_SRC = "/illos/megaphone.svg";
@@ -51,6 +52,7 @@ export function HighlightSection({
   const tabId = (i: number) => `${baseId}-tab-${i}`;
 
   const [active, setActive] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
   const tabListRef = useRef<HTMLDivElement>(null);
   const [tabRowHeightPx, setTabRowHeightPx] = useState<number | null>(null);
 
@@ -128,9 +130,10 @@ export function HighlightSection({
 
   return (
     <section
+      ref={sectionRef}
       id={id}
       className={cn(
-        "relative flex min-h-dvh flex-col overflow-hidden bg-[var(--bp-blue)] px-8 py-12",
+        "relative flex min-h-dvh flex-col overflow-x-clip bg-[var(--bp-blue)] px-8 py-12",
         className,
       )}
       aria-labelledby={`${baseId}-heading`}
@@ -212,9 +215,9 @@ export function HighlightSection({
       </div>
 
       {/* Megaphone — one angle per tab */}
-      <div
-        className="pointer-events-none absolute top-6 right-8 z-0 hidden xl:block w-[min(56vw,336px)] max-w-[90%] sm:w-[min(48vw,432px)] md:top-8 lg:top-[60px] lg:w-[min(42vw,510px)]"
-        aria-hidden
+      <DraggableSticker
+        containerRef={sectionRef}
+        className="absolute top-6 right-8 hidden xl:block w-[min(56vw,336px)] max-w-[90%] sm:w-[min(48vw,432px)] md:top-8 lg:top-[60px] lg:w-[min(42vw,510px)]"
       >
         <div className="relative aspect-[424/330] w-full">
           <img
@@ -227,7 +230,7 @@ export function HighlightSection({
             decoding="async"
           />
         </div>
-      </div>
+      </DraggableSticker>
     </section>
   );
 }
