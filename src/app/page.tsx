@@ -14,13 +14,13 @@ export default function Home() {
         className="relative min-h-dvh w-full overflow-hidden bg-[var(--bp-blue)]"
       >
         {/*
-          Stacking (back → front): optional decorative slots, wordmark (z-[1]), cutout SVG (z-[2]),
+          Stacking (back → front): optional decorative slots, wordmark (z-[1]), cutout image (z-[2]),
           bottom fade (z-[3]): bp-blue → transparent over artwork. Main UI z-[10].
           Navbar is fixed z-[100] outside this section and stays on top for clicks.
         */}
         <div className="pointer-events-none absolute inset-0 z-0" aria-hidden />
 
-        {/* Wordmark + cutout fade in together after both SVGs load. */}
+        {/* Wordmark + cutout fade in together after both images load. */}
         <HomeHeroSyncedVisuals wordmarkTintOpacity={0.15} />
 
         <div
