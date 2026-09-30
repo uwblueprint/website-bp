@@ -177,7 +177,7 @@ export default function ScrollExperience() {
       </div>
 
       {/* Columns 5–12: sticky collage */}
-      <div className="relative col-span-12 min-h-0 lg:col-span-8">
+      <div className="relative col-span-12 min-h-0 md:pb-48 lg:col-span-8">
         <div className="sticky top-[5dvh]">
           <ScrollCollage cards={CARDS} activeKeys={activeKeys} />
         </div>

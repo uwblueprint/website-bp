@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import UnderlineToBackground from "@/components/fancy/text/underline-to-background";
+import { CornerMarks } from "@/components/ui/CornerMarks";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
@@ -101,7 +102,8 @@ export function InterestedSection({ className }: { className?: string }) {
               inView
               className="col-span-12 h-full min-[800px]:col-span-6"
             >
-              <div className="relative block h-full rounded-none bg-white py-4 md:p-8 text-left shadow-none transition-colors duration-200 hover:bg-[var(--off-white)]">
+              <div className="group/card relative block h-full rounded-none bg-white py-4 md:p-8 text-left shadow-none transition-colors duration-200 hover:bg-[var(--off-white)]">
+                <CornerMarks on="white" />
                 <div className="relative flex h-full flex-col text-left">
                   <div className="pb-8">
                     <h3 className="pt-4 text-md font-roobert text-[var(--primary-dark)]">

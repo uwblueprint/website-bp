@@ -1,5 +1,6 @@
 "use client";
 
+import { CornerMarks } from "@/components/ui/CornerMarks";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { cn } from "@/lib/utils";
 
@@ -51,7 +52,8 @@ export function WhyBlueprint({ className }: { className?: string }) {
               className="col-span-12 min-[800px]:col-span-4"
             >
               <div className="h-full">
-                <div className="flex h-full flex-col py-6 md:px-6 transition-colors duration-200 hover:bg-black/5">
+                <div className="group/card relative flex h-full flex-col py-6 md:px-6 transition-colors duration-200 hover:bg-black/5">
+                  <CornerMarks on="white" />
                   <h3 className="pb-4 text-lg text-[var(--primary-dark)]">
                     {prop.title}
                   </h3>

@@ -1,5 +1,6 @@
 "use client";
 
+import { CornerMarks } from "@/components/ui/CornerMarks";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { cn } from "@/lib/utils";
 
@@ -41,7 +42,8 @@ export function WhatWeLookFor({ className }: { className?: string }) {
         {TRAITS.map((trait, i) => (
           <FadeUp key={trait.title} index={i} inView>
             <div className="h-full">
-              <div className="flex h-full flex-col p-0 transition-colors duration-200 min-[800px]:p-6 min-[800px]:hover:bg-white/5">
+              <div className="group/card relative flex h-full flex-col p-0 transition-colors duration-200 min-[800px]:p-6 min-[800px]:hover:bg-white/5">
+                <CornerMarks on="blue" className="hidden min-[800px]:block" />
                 <h3 className="pb-4 text-lg text-[var(--primary-light)]">
                   {trait.title}
                 </h3>

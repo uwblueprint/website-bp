@@ -19,9 +19,13 @@ interface CursorTrailContextValue {
   enter: (label: React.ReactNode) => void;
   leave: () => void;
   move: (x: number, y: number) => void;
+  register: (el: Element, label: React.ReactNode) => void;
 }
 
 const CursorTrailContext = createContext<CursorTrailContextValue | null>(null);
+
+/** How long the page must stop scrolling before the label can reappear. */
+const SCROLL_SETTLE_MS = 150;
 
 // ─── Provider ─────────────────────────────────────────────────────────────────
 
@@ -57,6 +61,18 @@ export function CursorTrailProvider({
   // (e.g. moving between adjacent images) don't flicker the label.
   const depth = useRef(0);
 
+  // The label is hidden while the page is scrolling and restored once it
+  // settles, if the pointer is still over an item. Content can move under a
+  // stationary pointer without hover events firing, so the item is looked up
+  // by position rather than trusted from enter/leave.
+  const scrolling = useRef(false);
+  const lastPointer = useRef({ x: NaN, y: NaN });
+  const labels = useRef(new WeakMap<Element, React.ReactNode>());
+
+  const register = useCallback((el: Element, itemLabel: React.ReactNode) => {
+    labels.current.set(el, itemLabel);
+  }, []);
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -79,7 +95,7 @@ export function CursorTrailProvider({
   const enter = useCallback((incoming: React.ReactNode) => {
     depth.current += 1;
     setLabel(incoming);
-    setVisible(true);
+    if (!scrolling.current) setVisible(true);
   }, []);
 
   const leave = useCallback(() => {
@@ -112,8 +128,44 @@ export function CursorTrailProvider({
     [x, y, offset.x, offset.y],
   );
 
+  useEffect(() => {
+    let settleTimer: ReturnType<typeof setTimeout> | undefined;
+    const onScroll = () => {
+      scrolling.current = true;
+      setVisible(false);
+      clearTimeout(settleTimer);
+      settleTimer = setTimeout(() => {
+        scrolling.current = false;
+        const { x: px, y: py } = lastPointer.current;
+        if (Number.isNaN(px)) return;
+        const item = document
+          .elementFromPoint(px, py)
+          ?.closest("[data-cursor-trail]");
+        const itemLabel = item ? labels.current.get(item) : undefined;
+        if (itemLabel === undefined) {
+          depth.current = 0;
+          return;
+        }
+        depth.current = 1;
+        setLabel(itemLabel);
+        move(px, py);
+        setVisible(true);
+      }, SCROLL_SETTLE_MS);
+    };
+    const onPointerMove = (e: MouseEvent) => {
+      lastPointer.current = { x: e.clientX, y: e.clientY };
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("mousemove", onPointerMove, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("mousemove", onPointerMove);
+      clearTimeout(settleTimer);
+    };
+  }, [move]);
+
   return (
-    <CursorTrailContext.Provider value={{ enter, leave, move }}>
+    <CursorTrailContext.Provider value={{ enter, leave, move, register }}>
       {children}
       {mounted &&
         createPortal(
@@ -150,9 +202,16 @@ interface CursorTrailProps {
  */
 export function CursorTrail({ label, children, className }: CursorTrailProps) {
   const ctx = useContext(CursorTrailContext);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (ref.current) ctx?.register(ref.current, label);
+  }, [ctx, label]);
 
   return (
     <div
+      ref={ref}
+      data-cursor-trail
       className={cn(className)}
       onMouseEnter={() => ctx?.enter(label)}
       onMouseLeave={() => ctx?.leave()}

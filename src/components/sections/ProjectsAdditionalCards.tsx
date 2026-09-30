@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 
+import { CornerMarks } from "@/components/ui/CornerMarks";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { ArrowUpRight } from "@/components/ui/icons";
 
@@ -74,8 +75,9 @@ export function ProjectsAdditionalCards() {
               <Link
                 href={card.href}
                 aria-label={`Open ${card.title}`}
-                className="group relative block h-full rounded-none bg-white py-8 md:px-8 text-left shadow-none transition-colors duration-200 hover:bg-[var(--off-white)]"
+                className="group group/card relative block h-full rounded-none bg-white py-8 md:px-8 text-left shadow-none transition-colors duration-200 hover:bg-[var(--off-white)]"
               >
+                <CornerMarks on="white" />
                 <ArrowUpRight
                   className="absolute right-4 top-4 size-5 text-[var(--primary-dark)] opacity-0 transition-opacity duration-200 group-hover:opacity-100"
                   aria-hidden
