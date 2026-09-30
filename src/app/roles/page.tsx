@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 
 import { RolesHero } from "@/components/sections/RolesHero";
-import { RolesSection, type RoleItem } from "@/components/sections/RolesSection";
+import {
+  RolesSection,
+  type RoleItem,
+} from "@/components/sections/RolesSection";
 
 export const metadata: Metadata = {
   title: "Roles | UW Blueprint",
-  description:
-    "Learn more about how we work as a team at Blueprint.",
+  description: "Learn more about how we work as a team at Blueprint.",
 };
 
 const EXECUTIVE_TEAM: RoleItem[] = [
@@ -23,11 +25,11 @@ const EXECUTIVE_TEAM: RoleItem[] = [
   {
     title: "VP Engineering",
     description:
-      "The VP Engineering is responsible for the technical success of current and future projects. They drive initiatives that improve org-wide engineering processes and foster mentorship. They lead all project leads on Blueprint.",
+      "The VP Engineering is responsible for the technical success of current and future projects. They drive initiatives that improve org-wide engineering processes and foster mentorship. They lead all technical leads on Blueprint.",
     responsibilities: [
       "Conduct architecture design reviews, provide code standards, write technical documentation.",
       "Lead engineering recruitment, and organize developer bootcamp.",
-      "Help evaluate the technical feasibility of potential NPO projects, and regularly provide advice and guidance to the project leads through 1-1s and meetings.",
+      "Help evaluate the technical feasibility of potential NPO projects, and regularly provide advice and guidance to the technical leads through 1-1s and meetings.",
     ],
     note: "Generally a senior, internal-hire preferred role.",
   },
@@ -180,9 +182,9 @@ const PROJECT_TEAM: RoleItem[] = [
     responsibilities: [
       "Write, test, and maintain code in line with the team's best practices and technical standards.",
       "Participate in code reviews, both giving and receiving feedback to improve code quality and personal growth.",
-      "Collaborate with the Project Lead and other developers to break down tasks, estimate work, and meet project milestones.",
+      "Collaborate with the Technical Lead and other developers to break down tasks, estimate work, and meet project milestones.",
       "Communicate progress, blockers, and questions proactively during team meetings and check-ins.",
-      "Continuously learn and develop technical skills, taking advantage of mentorship from the Project Lead and other senior members.",
+      "Continuously learn and develop technical skills, taking advantage of mentorship from the Technical Lead and other senior members.",
     ],
     note: "Open to all experience levels; a great opportunity to gain hands-on experience in a team setting.",
   },
@@ -227,9 +229,9 @@ const PROJECT_TEAM: RoleItem[] = [
     note: "Generally a senior, internal-hire preferred role.",
   },
   {
-    title: "Project Lead",
+    title: "Technical Lead",
     description:
-      "The Project Lead (or Technical Lead) is responsible for leading the team and driving the technical direction of the project, providing support and mentorship to developers on the team and working with the product manager to run the team effectively.",
+      "The Technical Lead is responsible for leading the team and driving the technical direction of the project, providing support and mentorship to developers on the team and working with the product manager to run the team effectively.",
     responsibilities: [
       "Organizing best code practices, performing code reviews, mentoring developers, planning tasks, making key technical decisions and software architecture design.",
       "Provide leadership, mentorship, and project execution skills as the overall success of the team is largely self guided.",
@@ -239,7 +241,7 @@ const PROJECT_TEAM: RoleItem[] = [
     ],
     link: {
       href: "https://medium.com/uw-blueprint/member-spotlight-project-lead-anne-chung-1ca9f22c9db3",
-      label: "Member Spotlight — Project Lead",
+      label: "Member Spotlight — Technical Lead",
     },
     note: "Generally a senior, internal-hire preferred role.",
   },
@@ -248,7 +250,7 @@ const PROJECT_TEAM: RoleItem[] = [
     description:
       "The Product Manager will be responsible for managing the delivery of a digital product to the NPO partner. This involves scoping features, iterating on feedback, and maintaining communications with the NPO.",
     responsibilities: [
-      "Own product definition and design execution: own feature definition from idea to delivery. Partner with designers to scope features, shape core flows, and prototype solutions. Work with the project lead (engineering manager) to evaluate trade-offs, answer product questions, and make final build decisions.",
+      "Own product definition and design execution: own feature definition from idea to delivery. Partner with designers to scope features, shape core flows, and prototype solutions. Work with the technical lead (engineering manager) to evaluate trade-offs, answer product questions, and make final build decisions.",
       "Build the client relationship and project direction: serve as the primary client lead. Run bi-weekly demos, present work, and gather feedback. Set clear expectations and guide product direction in partnership with the client.",
       "Build team culture: help create a positive and connected team environment. Build strong relationships with teammates. Host socials, bring energy to meetings, and promote a fun team culture.",
     ],
@@ -256,7 +258,7 @@ const PROJECT_TEAM: RoleItem[] = [
       href: "https://uwblueprint.medium.com/member-spotlight-sophia-zhu-pm-omhs-a-deep-dive-into-managing-tradeoffs-c56a14840ef3",
       label: "Member Spotlight — Product Manager",
     },
-    note: "PMs at Blueprint primarily work with designers and project leads (engineering managers). If you have a more eng heavy background, also consider checking out the project lead role as well.",
+    note: "PMs at Blueprint primarily work with designers and technical leads (engineering managers). If you have a more eng heavy background, also consider checking out the technical lead role as well.",
   },
 ];
 
@@ -265,10 +267,7 @@ export default function RolesPage() {
     <main className="bg-[var(--primary-light)]">
       <RolesHero />
 
-      <section
-        aria-label="Introduction"
-        className="px-8 pt-16 pb-0"
-      >
+      <section aria-label="Introduction" className="px-8 pt-16 pb-0">
         <div className="grid w-full grid-cols-12 gap-0">
           <div className="col-span-12 md:col-span-8 flex flex-col gap-4">
             <p className="text-md text-[var(--secondary-dark)]">
@@ -286,7 +285,8 @@ export default function RolesPage() {
               of the next recruitment cycle for their role.
             </p>
             <p className="text-md text-[var(--secondary-dark)]">
-              Roles only define responsibilities. Blueprint has a flat hierarchy.
+              Roles only define responsibilities. Blueprint has a flat
+              hierarchy.
             </p>
           </div>
         </div>

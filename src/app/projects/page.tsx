@@ -88,7 +88,7 @@ const PROJECTS = [
     ourSolution:
       "Our team built a web and iPad solution for mass-casualty incidents. The iPad component is used by paramedics in the field for patient tracking and triaging while the web component is used to view patient statuses from the command centre.",
     testimonial:
-      '"We are extremely extremely proud of the project the team has made and super happy to have the team as a part of the project." — Stephen Yang, Project Lead and Howard Yu, Project Manager',
+      '"We are extremely extremely proud of the project the team has made and super happy to have the team as a part of the project." — Stephen Yang, Technical Lead and Howard Yu, Project Manager',
   },
   {
     id: "dancefest",
