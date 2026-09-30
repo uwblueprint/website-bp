@@ -21,7 +21,9 @@ const CARDS: CollageCard[] = [
   {
     key: "c-2015",
     triggerKey: "2015,",
-    src: "/img/collage/team.svg",
+    src: "/img/collage/team.png",
+    imgWidth: 525,
+    imgHeight: 223,
     top: "70.79%",
     left: "17.50%",
     width: "69.08%",
@@ -30,7 +32,9 @@ const CARDS: CollageCard[] = [
   {
     key: "c-waterloo",
     triggerKey: "waterloo",
-    src: "/img/collage/waterloo.svg",
+    src: "/img/collage/waterloo.png",
+    imgWidth: 218,
+    imgHeight: 215,
     top: "46.71%",
     left: "9.08%",
     width: "28.68%",
@@ -39,7 +43,9 @@ const CARDS: CollageCard[] = [
   {
     key: "c-developers",
     triggerKey: "developers,",
-    src: "/img/collage/dev.svg",
+    src: "/img/collage/dev.png",
+    imgWidth: 334,
+    imgHeight: 156,
     top: "59.21%",
     left: "21.05%",
     width: "43.95%",
@@ -48,7 +54,9 @@ const CARDS: CollageCard[] = [
   {
     key: "c-designers",
     triggerKey: "designers,",
-    src: "/img/collage/design.svg",
+    src: "/img/collage/design.png",
+    imgWidth: 317,
+    imgHeight: 348,
     top: "0%",
     left: "43.03%",
     width: "41.71%",
@@ -57,7 +65,9 @@ const CARDS: CollageCard[] = [
   {
     key: "c-product",
     triggerKey: "product",
-    src: "/img/collage/product.svg",
+    src: "/img/collage/product.png",
+    imgWidth: 123,
+    imgHeight: 135,
     top: "62.24%",
     left: "11.97%",
     width: "16.18%",
@@ -66,7 +76,9 @@ const CARDS: CollageCard[] = [
   {
     key: "c-social",
     triggerKey: "social",
-    src: "/img/collage/marillac.svg",
+    src: "/img/collage/marillac.png",
+    imgWidth: 290,
+    imgHeight: 332,
     top: "34.21%",
     left: "54.08%",
     width: "39.61%",
@@ -75,7 +87,9 @@ const CARDS: CollageCard[] = [
   {
     key: "c-everyone",
     triggerKey: "everyone;",
-    src: "/img/collage/sistema.svg",
+    src: "/img/collage/sistema.png",
+    imgWidth: 258,
+    imgHeight: 348,
     top: "29.08%",
     left: "34.74%",
     width: "33.95%",
@@ -84,7 +98,9 @@ const CARDS: CollageCard[] = [
   {
     key: "c-afford",
     triggerKey: "afford",
-    src: "/img/collage/fck.svg",
+    src: "/img/collage/fck.png",
+    imgWidth: 320,
+    imgHeight: 352,
     top: "37.89%",
     left: "24.61%",
     width: "42.11%",
@@ -94,6 +110,8 @@ const CARDS: CollageCard[] = [
     key: "c-deliver",
     triggerKey: "deliver",
     src: "/img/collage/plane.svg",
+    imgWidth: 174,
+    imgHeight: 120,
     top: "84.21%",
     left: "11.84%",
     width: "22.89%",
@@ -102,7 +120,9 @@ const CARDS: CollageCard[] = [
   {
     key: "c-growth",
     triggerKey: "growth,",
-    src: "/img/collage/growth.svg",
+    src: "/img/collage/growth.png",
+    imgWidth: 222,
+    imgHeight: 195,
     top: "53.42%",
     left: "51.97%",
     width: "29.21%",
@@ -111,7 +131,9 @@ const CARDS: CollageCard[] = [
   {
     key: "c-together",
     triggerKey: "together.",
-    src: "/img/collage/hands.svg",
+    src: "/img/collage/hands.png",
+    imgWidth: 205,
+    imgHeight: 199,
     top: "58.03%",
     left: "72.11%",
     width: "26.97%",
@@ -120,7 +142,9 @@ const CARDS: CollageCard[] = [
   {
     key: "c-life",
     triggerKey: "life",
-    src: "/img/collage/bp.svg",
+    src: "/img/collage/bp.png",
+    imgWidth: 511,
+    imgHeight: 435,
     top: "0%",
     left: "0.92%",
     width: "67.24%",
@@ -153,7 +177,7 @@ export default function ScrollExperience() {
       </div>
 
       {/* Columns 5–12: sticky collage */}
-      <div className="relative col-span-12 min-h-0 lg:col-span-8">
+      <div className="relative col-span-12 min-h-0 md:pb-48 lg:col-span-8">
         <div className="sticky top-[5dvh]">
           <ScrollCollage cards={CARDS} activeKeys={activeKeys} />
         </div>

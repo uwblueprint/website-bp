@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import ScrapbookReveal from "@/components/ui/ScrapbookReveal";
 
 export interface CollageCard {
@@ -7,6 +9,10 @@ export interface CollageCard {
   triggerKey: string;
   src: string;
   alt?: string;
+  /** Intrinsic pixel width of the image file. */
+  imgWidth: number;
+  /** Intrinsic pixel height of the image file. */
+  imgHeight: number;
   /** Percentage-based `top` within the 760×760 design frame. */
   top: string;
   /** Percentage-based `left` within the 760×760 design frame. */
@@ -52,12 +58,13 @@ export default function ScrollCollage({
             active={activeKeys.has(card.triggerKey)}
             rotateDeg={card.rotate ?? 0}
           >
-            <img
+            <Image
               src={card.src}
               alt={card.alt ?? ""}
+              width={card.imgWidth}
+              height={card.imgHeight}
               className="block h-auto w-full"
               aria-hidden
-              decoding="async"
             />
           </ScrapbookReveal>
         </div>

@@ -1,5 +1,9 @@
 "use client";
 
+import { useRef } from "react";
+
+import { CornerMarks } from "@/components/ui/CornerMarks";
+import { DraggableSticker } from "@/components/ui/DraggableSticker";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { cn } from "@/lib/utils";
 
@@ -56,12 +60,15 @@ export function OurProcess({
   steps?: ProcessStep[];
   topRightDecoration?: React.ReactNode;
 }) {
+  const sectionRef = useRef<HTMLElement>(null);
+
   return (
     <section
+      ref={sectionRef}
       id={id}
       aria-label={ariaLabel}
       className={cn(
-        "relative overflow-hidden bg-[var(--bp-blue)] px-8 pt-24 pb-4 md:pb-8",
+        "relative overflow-x-clip bg-[var(--bp-blue)] px-8 pt-24 pb-4 md:pb-8",
         className,
       )}
     >
@@ -70,19 +77,20 @@ export function OurProcess({
       </h2>
 
       {topRightDecoration ? (
-        <div
-          className="pointer-events-none absolute right-0 top-0 z-0 hidden xl:block translate-x-[10%]"
-          aria-hidden
+        <DraggableSticker
+          containerRef={sectionRef}
+          className="absolute right-0 top-0 hidden xl:block translate-x-[10%]"
         >
           {topRightDecoration}
-        </div>
+        </DraggableSticker>
       ) : null}
 
       <div className="relative z-[1] grid grid-cols-1 min-[800px]:grid-cols-4 min-[800px]:auto-rows-fr gap-0">
         {steps.map((step, i) => (
           <FadeUp key={step.index} index={i} inView>
             <div className="h-full">
-              <div className="flex h-full flex-col py-6 md:px-6 transition-colors duration-200 hover:bg-white/5">
+              <div className="group/card relative flex h-full flex-col py-6 md:px-6 transition-colors duration-200 hover:bg-white/5">
+                <CornerMarks on="blue" />
                 <span className="pb-2 text-lg text-[var(--primary-light)]">
                   {step.index}
                 </span>

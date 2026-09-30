@@ -1,12 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import HeroWordmark from "@/components/home/HeroWordmark";
 import { cn } from "@/lib/utils";
 
 /**
- * Fade in hero artwork only after the wordmark and cutout SVGs have loaded,
+ * Fade in hero artwork only after the wordmark and cutout images have loaded,
  * so they appear together (cached images handled via img.complete checks).
  */
 export function HomeHeroSyncedVisuals({
@@ -65,15 +66,14 @@ export function HomeHeroSyncedVisuals({
         }}
         aria-hidden
       >
-        <img
+        <Image
           ref={cutoutImgRef}
-          src="/img/f25-cutout-w-gradient.svg"
+          src="/img/hero.webp"
           alt=""
-          width={1500}
-          height={650}
+          width={3000}
+          height={1300}
+          priority
           className="block h-auto shrink-0 transition-[width] duration-500 ease-out motion-reduce:transition-none max-[949px]:w-[950px] max-[949px]:max-w-none min-[950px]:w-full min-[950px]:max-w-none"
-          decoding="async"
-          fetchPriority="high"
           onLoad={markCutout}
         />
       </div>
