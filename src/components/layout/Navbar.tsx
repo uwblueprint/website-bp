@@ -189,7 +189,7 @@ export default function Navbar() {
   return (
     <header
       ref={headerRef}
-      className="fixed top-0 left-0 right-0 z-[100] w-full bg-[var(--bp-blue)] will-change-transform"
+      className="fixed top-[var(--apply-banner-h,0px)] left-0 right-0 z-[100] w-full bg-[var(--bp-blue)] will-change-transform"
       style={{
         transform: `translateY(calc(-100% * ${effectiveHideProgress}))`,
         pointerEvents: effectiveHideProgress >= 1 ? "none" : "auto",
