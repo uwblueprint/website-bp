@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { buttonVariants } from "@/components/ui/button-variants";
 import Link from "next/link";
-import { APPLICATION_CLOSE_DATETIME } from "@constants/applications";
 
 /**
  * A single Luma event. `eventId` is the `evt-...` id from the event page and
@@ -67,11 +66,8 @@ const MERCH_FORM = "https://forms.gle/JZTY9X249hNTTX3N9";
 const CONTACT_EMAIL = "info@uwblueprint.org";
 
 // Applications close July 13 at 11:59pm ET; the card hides right after.
-// const JOIN_CLOSE_ISO = "2026-07-13";
-// const JOIN_CUTOFF = "2026-07-13T23:59:00-04:00";
-// The join card hides right after applications close.
-const JOIN_CLOSE_ISO = APPLICATION_CLOSE_DATETIME.format("YYYY-MM-DD");
-const JOIN_CUTOFF = APPLICATION_CLOSE_DATETIME.toISOString();
+const JOIN_CLOSE_ISO = "2026-07-13";
+const JOIN_CUTOFF = "2026-07-13T23:59:00-04:00";
 /** Last day merch is available. Passed dates are hidden from the page. */
 const MERCH_CLOSE_ISO = "2026-07-03";
 
@@ -232,8 +228,7 @@ export function LinkHub() {
           <FadeUp index={0} inView>
             <div className="flex flex-col items-start rounded-none bg-white px-6 py-6 shadow-[inset_0_0_0_1px_rgba(15,23,70,0.14)]">
               <span className={TAG_CLASS}>
-                {/* {joinToday ? "Closes today" : "Ends July 13"} */}
-                {joinToday ? "Closes today" : `Ends ${APPLICATION_CLOSE_DATETIME.format("MMMM D")}`}
+                {joinToday ? "Closes today" : "Ends July 13"}
               </span>
               <h2 className="pt-4 text-lg text-[var(--primary-dark)]">
                 Join the Fall 2026 team
@@ -354,14 +349,14 @@ export function LinkHub() {
                 .
               </p>
               <Link
-                href="/"
-                className={`${buttonVariants({
-                  variant: "outline-blue",
-                  size: "md",
-                })} mt-5`}
-              >
-                Explore uwblueprint.org
-              </Link>
+  href="/"
+  className={`${buttonVariants({
+    variant: "outline-blue",
+    size: "md",
+  })} mt-5`}
+>
+  Explore uwblueprint.org
+</Link>
             </div>
           </FadeUp>
         )}

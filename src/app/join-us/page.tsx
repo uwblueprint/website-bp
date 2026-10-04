@@ -7,7 +7,7 @@ import { TeamPhotos } from "@/components/sections/TeamPhotos";
 import { WhatWeLookFor } from "@/components/sections/WhatWeLookFor";
 import { WhyJoin } from "@/components/sections/WhyJoin";
 import { SlimBanner } from "@/components/ui/SlimBanner";
-import { APPLICATION_CLOSE_DATETIME, APPLICATION_OPEN_DATETIME, APPLICATION_TERM, FINAL_DECISION_DATE, INVITE_DATE } from "@constants/applications";
+import { APPLICATION_TERM, FINAL_DECISION_DATE, INVITE_DATE } from "@constants/applications";
 
 export const metadata: Metadata = {
   title: "Join our team",
@@ -28,8 +28,11 @@ const JOIN_PROCESS_STEPS: ProcessStep[] = [
   {
     index: "02",
     title: "Submit your application",
+    // Hardcoded to the main recruitment cycle dates so the mini cycle (new roles only) doesn't show here.
+    // Restore for the next main cycle:
+    // `...Applications open ${APPLICATION_OPEN_DATETIME.format("MMM D, YYYY h:mm A")} and close ${APPLICATION_CLOSE_DATETIME.format("MMM D, YYYY h:mm A")}.`
     description:
-      `Tell us about yourself and why you're interested in joining Blueprint. We take a great amount of care to review every application, so please be as detailed as possible. If we think you might be a good fit, we will send you an invite to have a coffee chat with us! Applications open ${APPLICATION_OPEN_DATETIME.format("MMM D, YYYY h:mm A")} and close ${APPLICATION_CLOSE_DATETIME.format("MMM D, YYYY h:mm A")}.`,
+      `Tell us about yourself and why you're interested in joining Blueprint. We take a great amount of care to review every application, so please be as detailed as possible. If we think you might be a good fit, we will send you an invite to have a coffee chat with us! Applications open Jul 1, 2026 6:00 PM and close Jul 16, 2026 4:50 PM.`,
   },
   {
     index: "03",

@@ -28,15 +28,13 @@ export const APPLICATION_CLOSE_DATETIME_WITH_GRACE_PERIOD =
  * Date that invites are sent out for interviews
  * Format: MMM DD
  */
-// export const INVITE_DATE = "the end of July";
-export const INVITE_DATE = "October 11";
+export const INVITE_DATE = "the end of July";
 
 /**
  * Final decision date
  * Format: MMM DD
  */
-// export const FINAL_DECISION_DATE = "the start of August";
-export const FINAL_DECISION_DATE = "late October";
+export const FINAL_DECISION_DATE = "the start of August";
 
 // Term Blueprint is currently recruiting for (1 term after the current term)
 export const APPLICATION_TERM = "Fall 2026";
