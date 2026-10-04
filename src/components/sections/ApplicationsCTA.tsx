@@ -2,6 +2,10 @@
 
 import Link from "next/link";
 
+import {
+  APPLICATION_CLOSE_DATETIME,
+  OPEN_ROLES,
+} from "@constants/applications";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
@@ -20,8 +24,11 @@ export function ApplicationsCTA({ className }: { className?: string }) {
             Applications are open
           </h2>
           <p className="col-span-12 max-w-3xl text-md text-[var(--secondary-light)] pb-10">
-            Applications close July 13th at 11:59pm. Come build real things with
-            us.
+            {/* Applications close July 13th at 11:59pm. Come build real things with
+            us. */}
+            Now hiring: {OPEN_ROLES.join(" & ")}. Applications close{" "}
+            {APPLICATION_CLOSE_DATETIME.format("MMMM D [at] h:mma")}. Come build
+            real things with us.
           </p>
 
           <div className="col-span-12">

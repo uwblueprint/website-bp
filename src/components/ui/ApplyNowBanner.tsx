@@ -6,6 +6,7 @@ import {
   APPLICATION_CLOSE_DATETIME,
   APPLICATION_IS_LIVE,
   APPLICATION_LINK,
+  OPEN_ROLES,
 } from "@constants/applications";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
@@ -29,8 +30,9 @@ export function ApplyNowBanner({ className }: ApplyNowBannerProps) {
     >
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <p className="text-md">
-          Applications to join Blueprint next term are open, and close{" "}
-          {closeDate}.
+          {/* Applications to join Blueprint next term are open, and close{" "}
+          {closeDate}. */}
+          Now hiring: {OPEN_ROLES.join(" & ")}. Applications close {closeDate}.
         </p>
 
         <div className="flex shrink-0 justify-end">
