@@ -240,7 +240,7 @@ export function LinkHub() {
               </h2>
               <p className="pt-2 text-sm text-[var(--secondary-dark)]">
                 We&apos;re hiring technical and community roles to build
-                software for non profits.you
+                software for non profits.
               </p>
               <a
                 href="https://uwblueprint.org/apply"
