@@ -81,6 +81,35 @@ const EXECUTIVE_TEAM: RoleItem[] = [
     },
   },
   {
+    title: "VP Strategic Operations (New)",
+    description:
+      "The VP Strategic Operations makes it easier for Blueprint's teams to execute. They own operational work that falls between functions, turning recurring coordination problems into clear processes with accountable owners.",
+    responsibilities: [
+      "Improve how shared requests and inboxes are routed, owned, and followed through.",
+      "Coordinate cross-team operational initiatives and keep decisions moving.",
+      "Identify manual or confusing workflows that could be simplified.",
+      "Potentially help prioritize and oversee work for Builders in Residence.",
+    ],
+    keyTraits: [
+      "Organized and proactive, and comfortable working across teams.",
+      "Able to take an ambiguous problem from \"someone should handle this\" to a working solution.",
+    ],
+  },
+  {
+    title: "Builder in Residence (New)",
+    description:
+      "The Builder in Residence helps Blueprint turn recurring pain points into useful tools. They identify opportunities to simplify how the organization works, then design, build, and ship lightweight internal tools for areas like recruitment workflows, member management, and reimbursements. They use AI tools where they help move quickly, while applying engineering judgment to make sure what they ship works reliably.",
+    responsibilities: [
+      "Work with Blueprint teams to understand a specific problem and define a small, useful solution.",
+      "Build and iterate on internal tools, aiming for short turnaround times.",
+      "Test tools with the people who will use them and improve them based on feedback.",
+    ],
+    keyTraits: [
+      "Enjoys building end-to-end, from scoping a practical first version to shipping it.",
+      "Cares about making other people's work easier.",
+    ],
+  },
+  {
     title: "Internal Director",
     description:
       "The Internal Director is primarily responsible for cultivating Blueprint culture. They are someone that is organized, proactive and passionate about bringing people together.",
