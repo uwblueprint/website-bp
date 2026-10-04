@@ -1,11 +1,13 @@
 import dayjs from "@utils/dayjs";
+import roleSpecificJson from "@constants/role-specific-questions.json";
 
 /**
  * Application open datetime
  * Format: YYYY-MM-DD HH:MM:SS
  */
 export const APPLICATION_OPEN_DATETIME = dayjs.tz(
-  "2026-07-01 18:00:00",
+  // "2026-07-01 18:00:00",
+  "2026-10-04 12:00:00",
   "America/Toronto",
 );
 
@@ -14,8 +16,8 @@ export const APPLICATION_OPEN_DATETIME = dayjs.tz(
  * Format: YYYY-MM-DD HH:MM:SS
  */
 export const APPLICATION_CLOSE_DATETIME = dayjs.tz(
-  // normally should be 23:59:59, but i felt nice and let someone apply 
-  "2026-07-16 16:50:00",
+  // "2026-07-16 16:50:00",
+  "2026-10-10 23:59:59",
   "America/Toronto",
 );
 
@@ -26,16 +28,23 @@ export const APPLICATION_CLOSE_DATETIME_WITH_GRACE_PERIOD =
  * Date that invites are sent out for interviews
  * Format: MMM DD
  */
-export const INVITE_DATE = "the end of July";
+// export const INVITE_DATE = "the end of July";
+export const INVITE_DATE = "October 11";
 
 /**
  * Final decision date
  * Format: MMM DD
  */
-export const FINAL_DECISION_DATE = "the start of August";
+// export const FINAL_DECISION_DATE = "the start of August";
+export const FINAL_DECISION_DATE = "late October";
 
 // Term Blueprint is currently recruiting for (1 term after the current term)
 export const APPLICATION_TERM = "Fall 2026";
+
+// Roles currently accepting applications (roles without `"open": false`)
+export const OPEN_ROLES = roleSpecificJson
+  .filter((role) => !("open" in role) || role.open !== false)
+  .map(({ role }) => role);
 
 // URL of application page
 export const APPLICATION_LINK = "/apply";

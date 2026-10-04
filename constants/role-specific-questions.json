@@ -2,6 +2,7 @@
   {
     "id": "1",
     "role": "Project Developer",
+    "open": false,
     "questions": [
       {
         "question": "Which areas of a project are you interested in working in?",
@@ -33,6 +34,7 @@
   {
     "id": "2",
     "role": "Product Designer",
+    "open": false,
     "questions": [
       {
         "question": "Tell us about your design journey - how did you get into design?",
@@ -62,6 +64,7 @@
   {
     "id": "3",
     "role": "Product Manager",
+    "open": false,
     "questions": [
       {
         "question": "What is your favourite product?",
@@ -83,6 +86,7 @@
   {
     "id": "4",
     "role": "Project Lead",
+    "open": false,
     "questions": [
       {
         "question": "Tell us about a challenging technical problem that you've worked on in the past and how you solved it.",
@@ -108,6 +112,7 @@
   {
     "id": "6",
     "role": "Content Strategist",
+    "open": false,
     "questions": [
       {
         "question": "What do you see as the purposes of content within the user experience of an app?",
@@ -122,6 +127,7 @@
   {
     "id": "8",
     "role": "Graphic Designer",
+    "open": false,
     "questions": [
       {
         "question": "Tell us about your graphic design experience. Attach a link to your portfolio, if you have one.",
@@ -144,6 +150,7 @@
   {
     "id": "9",
     "role": "Design Ops",
+    "open": false,
     "questions": [
       {
         "question": "Tell us about your product design experience. Attach a link to your portfolio, if you have one.",
@@ -154,6 +161,7 @@
   {
     "id": "10",
     "role": "VP Product",
+    "open": false,
     "questions": [
       {
         "uniqueid": 1,
@@ -167,6 +175,7 @@
   {
     "id": "11",
     "role": "VP Talent",
+    "open": false,
     "questions": [
       {
         "question": "What skills and attributes should the ideal Blueprint candidate possess?",
@@ -177,6 +186,7 @@
   {
     "id": "12",
     "role": "VP Design",
+    "open": false,
     "questions": [
       {
         "question": "Tell us about your product design experience. Attach a link to your portfolio.",
@@ -191,6 +201,7 @@
   {
     "id": "13",
     "role": "VP Finance",
+    "open": false,
     "questions": [
       {
         "question": "How would you pitch UW Blueprint to external organizations for sponsorships? Provide at least one example of an organization that you can imagine UW Blueprint partnering with in your response.",
@@ -209,6 +220,7 @@
   {
     "id": "14",
     "role": "VP Project Scoping",
+    "open": false,
     "questions": [
       {
         "question": "How do you know whether a non-profit has a goal that resonates with Blueprint?",
@@ -217,8 +229,19 @@
     ]
   },
   {
+    "id": "19",
+    "role": "VP Strategic Operations",
+    "questions": [
+      {
+        "question": "Tell us about a time you identified an inefficient, unclear, or manual process. What was the problem, and what did you do to improve it?",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
     "id": "15",
     "role": "External Director",
+    "open": false,
     "questions": [
       {
         "question": "What's a cool new event you think Blueprint should do and how does it align with Blueprint's mission?",
@@ -229,6 +252,7 @@
   {
     "id": "16",
     "role": "Internal Director",
+    "open": false,
     "questions": [
       {
         "question": "What would an ideal member experience look like to you?",
@@ -237,8 +261,9 @@
     ]
   },
   {
-    "id": "16",
+    "id": "17",
     "role": "Sponsorships Director",
+    "open": false,
     "questions": [
       {
         "question": "Selling Blueprint means getting a company to say yes to something they didn't plan on. Walk us through a time you convinced someone to buy in on an idea. What was your approach and how did it land?",
@@ -246,6 +271,28 @@
       },
       {
         "question": "A sponsor signs, then goes quiet and stops responding as their deliverables come due. What do you do?",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "18",
+    "role": "Builders in Residence",
+    "questions": [
+      {
+        "question": "Tell us about something you’ve built to improve or automate a process. What problem were you trying to solve, how did you approach building it, and what did you learn?",
+        "maxLength": 1000
+      },
+      {
+        "question": "How do you use AI in your development workflow, and what role do you think it should play in building?",
+        "maxLength": 1000
+      },
+      {
+        "question": "List your skills in full stack development and years of experience for each of them. Example: Python - 2 years, React - 1 year...",
+        "maxLength": 1000
+      },
+      {
+        "question": "Link your GitHub:",
         "maxLength": 1000
       }
     ]
