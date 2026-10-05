@@ -2,8 +2,10 @@ import { auth } from "@utils/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { ReactElement } from "react";
 import Button from "./Button";
+import { useAuth } from "@components/context/AuthUserContext";
 
 const Login = (): ReactElement => {
+  const { deniedEmail } = useAuth();
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider);
@@ -22,6 +24,11 @@ const Login = (): ReactElement => {
                 <div>Continue with Google</div>
               </div>
             </Button>
+            {deniedEmail && (
+              <p className="mt-6 text-center text-pink-500">
+                {deniedEmail} doesn&apos;t have access to the admin dashboard.
+              </p>
+            )}
           </div>
         </div>
       </div>

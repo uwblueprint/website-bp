@@ -9,6 +9,7 @@ import React, {
   useState,
 } from "react";
 import { auth } from "@utils/firebase";
+import { isAdminEmail } from "@constants/admins";
 
 type Props = {
   children: ReactNode;
@@ -17,26 +18,31 @@ type Props = {
 type AuthContext = {
   user: User | null;
   isLoading: boolean;
+  // Email of the last sign-in attempt that was rejected, if any.
+  deniedEmail: string | null;
 };
 
 const AuthContext = createContext<AuthContext>({
   user: null,
   isLoading: true,
+  deniedEmail: null,
 });
 
 export const AuthProvider = ({ children }: Props): ReactElement => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [deniedEmail, setDeniedEmail] = useState<string | null>(null);
 
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
-        if (user.email && user.email.endsWith("@uwblueprint.org")) {
+        if (isAdminEmail(user.email)) {
           setUser(user);
+          setDeniedEmail(null);
           const token = await user.getIdToken();
           localStorage.setItem("token", token);
         } else {
-          // TODO: Handle non-UW Blueprint emails
+          setDeniedEmail(user.email);
           await auth.signOut();
         }
       } else {
@@ -60,11 +66,10 @@ export const AuthProvider = ({ children }: Props): ReactElement => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, isLoading }}>
+    <AuthContext.Provider value={{ user, isLoading, deniedEmail }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-export const useAuth = (): { user: User | null; isLoading: boolean } =>
-  useContext(AuthContext);
+export const useAuth = (): AuthContext => useContext(AuthContext);
