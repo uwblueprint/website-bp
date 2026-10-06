@@ -249,7 +249,9 @@ const AppForm: FC<Props> = ({
                 : "Student Application"}
             </h2>
             <InfoText
-              deadline={APPLICATION_CLOSE_DATETIME.format("lll")}
+              deadline={APPLICATION_CLOSE_DATETIME.format(
+                "MMMM D, YYYY [at] h:mm A",
+              )}
               readOnly={readOnly}
               timestamp={values.timestamp}
             />
