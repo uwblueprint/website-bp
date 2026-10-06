@@ -6,12 +6,22 @@ import * as React from "react";
 
 export type RoleItem = {
   title: string;
-  description: string;
+  // Short line shown above the description in dark text.
+  tagline?: string;
+  // A single paragraph, or several paragraphs as an array.
+  description: string | string[];
   responsibilities?: string[];
+  // Defaults to "Responsibilities:".
+  responsibilitiesHeading?: string;
+  // Paragraphs shown after the responsibilities list.
+  closing?: string[];
   keyTraits?: string[];
   link?: { href: string; label: string };
   note?: string;
 };
+
+// Highlighted in dark text at the start of closing paragraphs.
+const FIT_PREFIX = "You might be a fit if";
 
 function RoleRow({ role }: { role: RoleItem }) {
   const id = React.useId();
@@ -34,14 +44,23 @@ function RoleRow({ role }: { role: RoleItem }) {
 
       {open ? (
         <div id={id} className="pt-2 md:pt-0 md:px-6 pb-6 flex flex-col gap-4">
-          <p className="text-md text-[var(--secondary-dark)]">
-            {role.description}
-          </p>
+          {role.tagline ? (
+            <p className="text-md text-[var(--primary-dark)]">{role.tagline}</p>
+          ) : null}
+
+          {(Array.isArray(role.description)
+            ? role.description
+            : [role.description]
+          ).map((paragraph) => (
+            <p key={paragraph} className="text-md text-[var(--secondary-dark)]">
+              {paragraph}
+            </p>
+          ))}
 
           {role.responsibilities && role.responsibilities.length > 0 ? (
             <div>
               <p className="text-md text-[var(--primary-dark)] pb-2">
-                Responsibilities:
+                {role.responsibilitiesHeading ?? "Responsibilities:"}
               </p>
               <ul className="flex flex-col gap-1 list-disc list-outside ml-5">
                 {role.responsibilities.map((item) => (
@@ -55,6 +74,21 @@ function RoleRow({ role }: { role: RoleItem }) {
               </ul>
             </div>
           ) : null}
+
+          {role.closing?.map((paragraph) => (
+            <p key={paragraph} className="text-md text-[var(--secondary-dark)]">
+              {paragraph.startsWith(FIT_PREFIX) ? (
+                <>
+                  <span className="text-[var(--primary-dark)]">
+                    {FIT_PREFIX}
+                  </span>
+                  {paragraph.slice(FIT_PREFIX.length)}
+                </>
+              ) : (
+                paragraph
+              )}
+            </p>
+          ))}
 
           {role.keyTraits && role.keyTraits.length > 0 ? (
             <div>
@@ -111,10 +145,7 @@ export function RolesSection({
     <section
       id={id}
       aria-label={groupName}
-      className={cn(
-        "bg-[var(--primary-light)] px-8 pt-24 pb-16",
-        className,
-      )}
+      className={cn("bg-[var(--primary-light)] px-8 pt-24 pb-16", className)}
     >
       <div className="grid w-full grid-cols-12 gap-0">
         <h2 className="col-span-12 text-xxl lowercase text-[var(--bp-blue)] pb-12">

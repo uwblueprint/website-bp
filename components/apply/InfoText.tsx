@@ -25,15 +25,15 @@ export const InfoText: FC<{
       ) : (
         <section className="mb-12">
           <p className="text-lg text-charcoal-500">
-            Thanks for your interest in UW Blueprint! We are always looking for
-            UW students to take part in our club activities and join our
-            talented team.
+            Thanks for your interest in UW Blueprint! We’re looking for Waterloo
+            students who are excited to build, contribute, and help shape what
+            Blueprint becomes next.
           </p>
           <p
             className="text-lg text-charcoal-500"
             style={{ marginTop: "10px" }}
           >
-            Important notes:
+            A few things to know before you apply:
           </p>
           <div
             style={{ paddingLeft: "20px" }}
@@ -41,36 +41,37 @@ export const InfoText: FC<{
           >
             <u style={{ textDecoration: "none" }}>
               <li>
-                For descriptions of our available roles, please visit our&nbsp;
+                Explore the available roles on our{" "}
                 <a
-                  href="https://www.notion.so/uwblueprintexecs/Role-Responsibilities-9494c8311ce0471f997c7473e0bfea1c"
+                  href="/roles"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex space-x-1 items-center text-blue"
                 >
-                  <span>roles page</span>
+                  <span>roles responsibilities page</span>
                   <img
                     className="relative top-[1px]"
                     src="/common/external-link.svg"
                     alt="Link"
                   />
-                </a>
-                .
+                </a>{" "}
+                to learn more about each position and what you’ll be working on.
               </li>
               <li>
-                Applications close on{" "}
-                <span className="text-blue">{deadline}</span>
-              </li>
-              <li>
-                <span className="text-blue">
-                  Both students on co-op and in school&nbsp;
-                </span>
+                Students on both{" "}
+                <span className="text-blue">study terms and co-op terms</span>{" "}
                 are encouraged to apply!
+              </li>
+              <li>
+                Applications close{" "}
+                <span className="text-blue">{deadline} ET</span>.
               </li>
               <li>
                 Please review our{" "}
                 <a
-                  href="/join#join-faq"
+                  href="/join-us#join-us-faq"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex space-x-1 items-center text-blue"
                 >
                   <span>application process FAQ</span>
@@ -80,10 +81,17 @@ export const InfoText: FC<{
                     alt="Link"
                   />
                 </a>{" "}
-                before completing your application.
+                before submitting your application.
               </li>
             </u>
           </div>
+          <p
+            className="text-lg text-charcoal-500"
+            style={{ marginTop: "10px" }}
+          >
+            We’re excited to learn more about you and what you’d bring to
+            Blueprint!
+          </p>
         </section>
       )}
     </>
