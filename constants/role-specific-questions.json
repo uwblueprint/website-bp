@@ -296,5 +296,29 @@
         "maxLength": 1000
       }
     ]
+  },
+  {
+    "id": "20",
+    "role": "VP Culture",
+    "questions": [
+      {
+        "question": "Tell us about a time you helped foster an unusually strong culture on a team or organization. How did you do it, and what would you bring from that experience to Blueprint?",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "21",
+    "role": "VP Growth",
+    "questions": [
+      {
+        "question": "If you had one term to make significantly more students know about and care about Blueprint, what would you try?",
+        "maxLength": 1000
+      },
+      {
+        "question": "If you had one term to make significantly more companies aware of Blueprint and interested in sponsoring us, what would you try?",
+        "maxLength": 1000
+      }
+    ]
   }
 ]

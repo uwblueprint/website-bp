@@ -32,8 +32,9 @@ export function ApplyNowBanner({ className }: ApplyNowBannerProps) {
           {/* Applications to join Blueprint next term are open, and close{" "}
           {closeDate}. */}
           <strong className="text-[var(--bp-blue)]">Now hiring:</strong> VP
-          Strategic Operations, Builder in Residence, VP Culture, VP Growth.
-          Applications close on {closeDate}.
+          Strategic Operations, Builder in Residence, VP Culture, and VP Growth.
+          Applications close on{" "}
+          <strong className="text-[var(--bp-blue)]">{closeDate}</strong>.
         </p>
 
         <div className="flex shrink-0 justify-end">

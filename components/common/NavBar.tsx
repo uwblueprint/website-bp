@@ -3,7 +3,7 @@ import Link from "next/link";
 import {
   APPLICATION_IS_LIVE,
   APPLICATION_LINK,
-  OPEN_ROLES,
+  OPEN_ROLES_TEXT,
 } from "@constants/applications";
 import Button from "./Button";
 
@@ -43,7 +43,7 @@ const Navbar: FC<{ minimal?: boolean }> = ({ minimal = false }) => {
             className="block w-full text-center px-4 py-1 bg-charcoal-0 font-poppins hover:opacity-100"
           >
             {/* Applications to join the {APPLICATION_TERM} team are now open,{" "} */}
-            Now hiring: {OPEN_ROLES.join(" & ")},{" "}
+            Now hiring: {OPEN_ROLES_TEXT},{" "}
             <span className="underline hover:opacity-60">apply here</span>! 🎉
           </Link>
         )}

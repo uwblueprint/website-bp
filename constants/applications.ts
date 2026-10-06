@@ -44,6 +44,12 @@ export const OPEN_ROLES = roleSpecificJson
   .filter((role) => !("open" in role) || role.open !== false)
   .map(({ role }) => role);
 
+// Open roles as readable text, e.g. "A, B, and C"
+export const OPEN_ROLES_TEXT = new Intl.ListFormat("en", {
+  style: "long",
+  type: "conjunction",
+}).format(OPEN_ROLES);
+
 // URL of application page
 export const APPLICATION_LINK = "/apply";
 
