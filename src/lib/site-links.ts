@@ -34,13 +34,11 @@ export const mainNavLinks = [
   { href: "/projects", label: "Projects" },
   { href: "/nonprofits", label: "Nonprofits" },
   { href: "/students", label: "Students" },
+  { href: "/roles", label: "Roles" },
   { href: "/join-us", label: "Join our team" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
-export const footerNavLinks = [
-  ...mainNavLinks,
-  { href: "/roles", label: "Roles" },
-] as const;
+export const footerNavLinks = mainNavLinks;
 
 export const navbarNavLinks = mainNavLinks;
