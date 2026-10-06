@@ -22,8 +22,7 @@ export function NonprofitsCTA({ className }: { className?: string }) {
 
         <p className="col-span-12 text-lg text-[var(--primary-dark)] pb-12 md:pb-16 md:w-8/12">
           Curious about the kind of work we do? Check out the projects
-          we&apos;ve shipped, or read our in-depth guide on how we evaluate and
-          select nonprofit partners.
+          we&apos;ve shipped.
         </p>
 
         <div className="col-span-12 flex flex-col gap-4 min-[800px]:flex-row">
@@ -37,20 +36,6 @@ export function NonprofitsCTA({ className }: { className?: string }) {
             >
               View our projects
             </Link>
-          </FadeUp>
-
-          <FadeUp index={1} inView>
-            <a
-              href="https://uwblueprint.notion.site"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={buttonVariants({
-                variant: "outline-blue",
-                size: "md",
-              })}
-            >
-              Read our nonprofit criteria
-            </a>
           </FadeUp>
         </div>
       </div>

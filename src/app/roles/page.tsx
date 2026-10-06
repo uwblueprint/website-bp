@@ -9,77 +9,7 @@ export const metadata: Metadata = {
     "Learn more about how we work as a team at Blueprint.",
 };
 
-const EXECUTIVE_TEAM: RoleItem[] = [
-  {
-    title: "Co-Presidents",
-    description:
-      "The Presidents are the leaders of Blueprint and its chief representatives. They are ultimately responsible for the success of all aspects of Blueprint. They set the direction for the club, uphold club values and mission, and manage the day-to-day operations of the executive team. You can't run a club without presidents, so if you really want to drive the vision and execute on new ideas, this might be the fit for you.",
-    link: {
-      href: "https://app.notion.com/p/Detailed-President-Responsibilities-92cd178a412d46e581f557d4bbd4ee07?pvs=21",
-      label: "Detailed President Responsibilities",
-    },
-    note: "Internal Only",
-  },
-  {
-    title: "VP Engineering",
-    description:
-      "The VP Engineering is responsible for the technical success of current and future projects. They drive initiatives that improve org-wide engineering processes and foster mentorship. They lead all project leads on Blueprint.",
-    responsibilities: [
-      "Conduct architecture design reviews, provide code standards, write technical documentation.",
-      "Lead engineering recruitment, and organize developer bootcamp.",
-      "Help evaluate the technical feasibility of potential NPO projects, and regularly provide advice and guidance to the project leads through 1-1s and meetings.",
-    ],
-    note: "Generally a senior, internal-hire preferred role.",
-  },
-  {
-    title: "VP Design",
-    description:
-      "The VP Design advocates for and supports design within the organization. They lead all designers and design adjacent roles on Blueprint.",
-    responsibilities: [
-      "Mentor the product designers on their individual projects, coordinate design feedback sessions, and weekly design team meetings with team socials, project share-outs, and critique.",
-      "Grow the design community through leading internal and external workshops, occasionally partnering with other organizations at Waterloo.",
-      "Assists with preliminary scoping of new projects providing a design perspective in collaboration with VP Scoping as necessary.",
-      "Work to improve design processes and ceremonies (i.e. run critiques more efficiently and effectively, improve cross-functional processes, creating Figma assets to speed up workflow for designers, etc.)",
-    ],
-    link: {
-      href: "https://medium.com/uw-blueprint/member-spotlight-vp-design-carmen-lee-a146ec8ae0fd",
-      label: "Member Spotlight — VP Design",
-    },
-    note: "Generally a senior, internal-hire preferred role.",
-  },
-  {
-    title: "VP Product",
-    description:
-      "The VP Product owns and shapes everything product within Blueprint. This role sets the standard for product excellence, builds the PM community, and ensures every project meets a high bar for quality and impact.",
-    responsibilities: [
-      "Build and scale the Blueprint product community. Define product management standards, artifacts, and operating rhythms. Mentor and elevate every PM on the team.",
-      "Evaluate new opportunities, assess feasibility, and lead the project selection process to ensure focus on the highest-impact initiatives.",
-      "Provide consistent, high-quality coaching through 1:1s and working sessions. Act as a thought partner on scoping, prioritization, and execution.",
-      "Hire and develop exceptional PM talent.",
-      "Partner cross-functionally across calls and forums to ensure alignment and cohesion, holding projects together from inception to launch.",
-    ],
-  },
-  {
-    title: "VP Project Scoping",
-    description:
-      "The VP Scoping takes ownership of finding partners that align with Blueprint's mission and values. They lead collaboration with VP Engineering, VP Design, and VP Product to ensure the most suiting projects are chosen for our team.",
-    responsibilities: [
-      "Scoping potential partnerships with non-profit organizations and developing a statement of work per project.",
-      "Work with all relevant stakeholders to evaluate the project fit, organizational need, and technical feasibility of the project before project selection.",
-      "Consulting with the NPOs to assess technology needs and requirements, examine IT capabilities, identify potential challenges, and develop strategic options.",
-      "Leverage strong communication skills, be organized, and be able to manage relationships with non-profits effectively as they will be leading client meetings throughout the term.",
-    ],
-    keyTraits: [
-      "Strong interest in early-stage product ideation and shaping problem spaces before solutions are defined.",
-      "Comfortable thinking on the fly and navigating ambiguity during discovery and scoping conversations.",
-      "Clear, confident communicator who can lead client meetings and build trust with non-profit partners.",
-      "Highly organized and proactive, with the ability to manage multiple stakeholder relationships in parallel.",
-    ],
-    link: {
-      href: "https://uwblueprint.medium.com/member-spotlight-vp-scoping-rona-he-8dfe4a7b7222",
-      label: "Member Spotlight — VP Scoping",
-    },
-  },
+const NOW_HIRING: RoleItem[] = [
   {
     title: "VP Culture (New)",
     tagline: "Make Blueprint feel like Blueprint.",
@@ -160,6 +90,75 @@ const EXECUTIVE_TEAM: RoleItem[] = [
     closing: [
       "You might be a fit if you love building end-to-end, can turn a vague idea into something real, and would rather get a useful first version into users’ hands this week than spend a month planning the perfect version.",
     ],
+  },
+];
+
+const EXECUTIVE_TEAM: RoleItem[] = [
+  {
+    title: "Co-Presidents",
+    description:
+      "The Presidents are the leaders of Blueprint and its chief representatives. They are ultimately responsible for the success of all aspects of Blueprint. They set the direction for the club, uphold club values and mission, and manage the day-to-day operations of the executive team. You can't run a club without presidents, so if you really want to drive the vision and execute on new ideas, this might be the fit for you.",
+    note: "Internal Only",
+  },
+  {
+    title: "VP Engineering",
+    description:
+      "The VP Engineering is responsible for the technical success of current and future projects. They drive initiatives that improve org-wide engineering processes and foster mentorship. They lead all project leads on Blueprint.",
+    responsibilities: [
+      "Conduct architecture design reviews, provide code standards, write technical documentation.",
+      "Lead engineering recruitment, and organize developer bootcamp.",
+      "Help evaluate the technical feasibility of potential NPO projects, and regularly provide advice and guidance to the project leads through 1-1s and meetings.",
+    ],
+    note: "Generally a senior, internal-hire preferred role.",
+  },
+  {
+    title: "VP Design",
+    description:
+      "The VP Design advocates for and supports design within the organization. They lead all designers and design adjacent roles on Blueprint.",
+    responsibilities: [
+      "Mentor the product designers on their individual projects, coordinate design feedback sessions, and weekly design team meetings with team socials, project share-outs, and critique.",
+      "Grow the design community through leading internal and external workshops, occasionally partnering with other organizations at Waterloo.",
+      "Assists with preliminary scoping of new projects providing a design perspective in collaboration with VP Scoping as necessary.",
+      "Work to improve design processes and ceremonies (i.e. run critiques more efficiently and effectively, improve cross-functional processes, creating Figma assets to speed up workflow for designers, etc.)",
+    ],
+    link: {
+      href: "https://medium.com/uw-blueprint/member-spotlight-vp-design-carmen-lee-a146ec8ae0fd",
+      label: "Member Spotlight — VP Design",
+    },
+    note: "Generally a senior, internal-hire preferred role.",
+  },
+  {
+    title: "VP Product",
+    description:
+      "The VP Product owns and shapes everything product within Blueprint. This role sets the standard for product excellence, builds the PM community, and ensures every project meets a high bar for quality and impact.",
+    responsibilities: [
+      "Build and scale the Blueprint product community. Define product management standards, artifacts, and operating rhythms. Mentor and elevate every PM on the team.",
+      "Evaluate new opportunities, assess feasibility, and lead the project selection process to ensure focus on the highest-impact initiatives.",
+      "Provide consistent, high-quality coaching through 1:1s and working sessions. Act as a thought partner on scoping, prioritization, and execution.",
+      "Hire and develop exceptional PM talent.",
+      "Partner cross-functionally across calls and forums to ensure alignment and cohesion, holding projects together from inception to launch.",
+    ],
+  },
+  {
+    title: "VP Project Scoping",
+    description:
+      "The VP Scoping takes ownership of finding partners that align with Blueprint's mission and values. They lead collaboration with VP Engineering, VP Design, and VP Product to ensure the most suiting projects are chosen for our team.",
+    responsibilities: [
+      "Scoping potential partnerships with non-profit organizations and developing a statement of work per project.",
+      "Work with all relevant stakeholders to evaluate the project fit, organizational need, and technical feasibility of the project before project selection.",
+      "Consulting with the NPOs to assess technology needs and requirements, examine IT capabilities, identify potential challenges, and develop strategic options.",
+      "Leverage strong communication skills, be organized, and be able to manage relationships with non-profits effectively as they will be leading client meetings throughout the term.",
+    ],
+    keyTraits: [
+      "Strong interest in early-stage product ideation and shaping problem spaces before solutions are defined.",
+      "Comfortable thinking on the fly and navigating ambiguity during discovery and scoping conversations.",
+      "Clear, confident communicator who can lead client meetings and build trust with non-profit partners.",
+      "Highly organized and proactive, with the ability to manage multiple stakeholder relationships in parallel.",
+    ],
+    link: {
+      href: "https://uwblueprint.medium.com/member-spotlight-vp-scoping-rona-he-8dfe4a7b7222",
+      label: "Member Spotlight — VP Scoping",
+    },
   },
   {
     title: "Internal Director",
@@ -288,7 +287,7 @@ const PROJECT_TEAM: RoleItem[] = [
     note: "Having a portfolio or examples of previous design work is strongly encouraged to help showcase your experience and/or interests.",
   },
   {
-    title: "DesignOps (New)",
+    title: "DesignOps",
     description:
       "The DesignOps role focuses on maintaining design quality, consistency, and scalability across all Blueprint projects. They act as a bridge between design, product, and development by supporting teams after design handoff. This is done by addressing small UX/UI issues, refining design systems, and ensuring best practices are upheld through implementation.",
     responsibilities: [
@@ -301,10 +300,6 @@ const PROJECT_TEAM: RoleItem[] = [
       "Comfortable working asynchronously across multiple projects and communicating clearly with PMs and developers.",
       "Adaptable in terms of understanding when to polish, when to unblock and when to ship the designated adjustment(s).",
     ],
-    link: {
-      href: "https://app.notion.com/p/More-info-about-DesignOps-31b10f3fb1dc80e08c67fb5c2c2b08d4?pvs=21",
-      label: "More info about DesignOps",
-    },
     note: "Generally a senior, internal-hire preferred role.",
   },
   {
@@ -374,9 +369,16 @@ export default function RolesPage() {
       </section>
 
       <RolesSection
+        id="now-hiring"
+        groupName="now hiring"
+        roles={NOW_HIRING}
+      />
+
+      <RolesSection
         id="executive-team"
         groupName="executive team"
         roles={EXECUTIVE_TEAM}
+        className="pt-0"
       />
 
       <RolesSection
