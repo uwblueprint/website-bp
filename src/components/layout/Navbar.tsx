@@ -189,13 +189,13 @@ export default function Navbar() {
   return (
     <header
       ref={headerRef}
-      className="fixed top-0 left-0 right-0 z-[100] w-full bg-[var(--bp-blue)] will-change-transform"
+      className="fixed top-0 left-0 right-0 z-[100] flex max-h-[100dvh] w-full flex-col bg-[var(--bp-blue)] will-change-transform"
       style={{
         transform: `translateY(calc(-100% * ${effectiveHideProgress}))`,
         pointerEvents: effectiveHideProgress >= 1 ? "none" : "auto",
       }}
     >
-      <nav aria-label="Primary" className="flex w-full flex-col">
+      <nav aria-label="Primary" className="flex min-h-0 w-full flex-col">
         {/* Top strip: always visible */}
         <div className="relative h-24 w-full shrink-0">
           <button
@@ -263,12 +263,18 @@ export default function Navbar() {
         */}
         <div
           className={cn(
-            "grid w-full transition-[grid-template-rows]",
+            "grid min-h-0 w-full transition-[grid-template-rows]",
             panelTransitionClass,
             open ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
           )}
         >
-          <div className="min-h-0 overflow-hidden">
+          {/* Scrolls when the open menu is taller than the viewport; contain keeps the page behind from scrolling. */}
+          <div
+            className={cn(
+              "min-h-0",
+              open ? "overflow-y-auto overscroll-contain" : "overflow-hidden",
+            )}
+          >
             <div
               id={panelId}
               role="region"
