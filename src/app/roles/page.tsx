@@ -11,6 +11,45 @@ export const metadata: Metadata = {
 
 const NOW_HIRING: RoleItem[] = [
   {
+    title: "VP Strategic Operations (New)",
+    tagline: "Keep Blueprint moving.",
+    description: [
+      "You’ll own the systems and workflows that help Blueprint operate at its best, working across teams to streamline how we work, clarify ownership, and turn good ideas into action.",
+      "This is a new role with room to shape what Strategic Operations looks like at Blueprint. You’ll take ownership of the work that falls between teams and build better ways of working as the organization grows.",
+    ],
+    responsibilitiesHeading: "What you’ll do",
+    responsibilities: [
+      "Streamline workflows that span multiple teams and make it easier for people to work together.",
+      "Take ownership of cross-team initiatives and keep decisions, owners, and next steps moving.",
+      "Improve how shared requests, inboxes, approvals, and other recurring workflows are managed.",
+      "Create lightweight processes and systems that give teams clarity without adding unnecessary overhead.",
+      "Identify opportunities to simplify or automate how Blueprint operates, prioritize the highest-impact projects, and guide the Builders in Residence who bring them to life.",
+    ],
+    closing: [
+      "You might be a fit if you’re highly organized, proactive, and good at bringing structure to ambiguity. You naturally notice how things could work more smoothly, and you’re excited to take ownership and make it happen.",
+    ],
+  },
+  {
+    title: "Builder in Residence (New)",
+    tagline: "Build what Blueprint needs.",
+    description: [
+      "You’ll find opportunities to help Blueprint work better, then design, build, and ship the tools to make it happen.",
+      "There’s a lot of freedom in how you build. Use AI tools, APIs, no-code platforms, or write the software yourself. What matters is understanding what people actually need, moving quickly, and getting something useful into their hands.",
+    ],
+    responsibilitiesHeading: "What you’ll do",
+    responsibilities: [
+      "Work with teams across Blueprint to understand how they work and identify opportunities for better tooling.",
+      "Scope small, useful solutions and take them from idea to something people can actually use.",
+      "Build and iterate on internal tools with short turnaround times.",
+      "Use AI and other modern development tools to prototype and ship faster where they make sense.",
+      "Test what you build with the people who use it and improve it based on real feedback.",
+      "Explore new ways technology can streamline how Blueprint works internally.",
+    ],
+    closing: [
+      "You might be a fit if you love building end-to-end, can turn a vague idea into something real, and would rather get a useful first version into users’ hands this week than spend a month planning the perfect version.",
+    ],
+  },
+  {
     title: "VP Culture (New)",
     tagline: "Make Blueprint feel like Blueprint.",
     description: [
@@ -50,45 +89,6 @@ const NOW_HIRING: RoleItem[] = [
     closing: [
       "You might be a fit if you’re equal parts creative and analytical, obsessed with why some ideas spread while others don’t, and have a million ideas for how more people could discover Blueprint.",
       "We’re already building things worth talking about. Your job is to make sure people hear about them.",
-    ],
-  },
-  {
-    title: "VP Strategic Operations (New)",
-    tagline: "Keep Blueprint moving.",
-    description: [
-      "You’ll own the systems and workflows that help Blueprint operate at its best, working across teams to streamline how we work, clarify ownership, and turn good ideas into action.",
-      "This is a new role with room to shape what Strategic Operations looks like at Blueprint. You’ll take ownership of the work that falls between teams and build better ways of working as the organization grows.",
-    ],
-    responsibilitiesHeading: "What you’ll do",
-    responsibilities: [
-      "Streamline workflows that span multiple teams and make it easier for people to work together.",
-      "Take ownership of cross-team initiatives and keep decisions, owners, and next steps moving.",
-      "Improve how shared requests, inboxes, approvals, and other recurring workflows are managed.",
-      "Create lightweight processes and systems that give teams clarity without adding unnecessary overhead.",
-      "Identify opportunities to simplify or automate how Blueprint operates, prioritize the highest-impact projects, and guide the Builders in Residence who bring them to life.",
-    ],
-    closing: [
-      "You might be a fit if you’re highly organized, proactive, and good at bringing structure to ambiguity. You naturally notice how things could work more smoothly, and you’re excited to take ownership and make it happen.",
-    ],
-  },
-  {
-    title: "Builder in Residence (New)",
-    tagline: "Build what Blueprint needs.",
-    description: [
-      "You’ll find opportunities to help Blueprint work better, then design, build, and ship the tools to make it happen.",
-      "There’s a lot of freedom in how you build. Use AI tools, APIs, no-code platforms, or write the software yourself. What matters is understanding what people actually need, moving quickly, and getting something useful into their hands.",
-    ],
-    responsibilitiesHeading: "What you’ll do",
-    responsibilities: [
-      "Work with teams across Blueprint to understand how they work and identify opportunities for better tooling.",
-      "Scope small, useful solutions and take them from idea to something people can actually use.",
-      "Build and iterate on internal tools with short turnaround times.",
-      "Use AI and other modern development tools to prototype and ship faster where they make sense.",
-      "Test what you build with the people who use it and improve it based on real feedback.",
-      "Explore new ways technology can streamline how Blueprint works internally.",
-    ],
-    closing: [
-      "You might be a fit if you love building end-to-end, can turn a vague idea into something real, and would rather get a useful first version into users’ hands this week than spend a month planning the perfect version.",
     ],
   },
 ];
