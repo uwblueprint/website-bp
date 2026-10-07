@@ -26,6 +26,12 @@ import { useAuth } from "@components/context/AuthUserContext";
 
 const memberRoles = roleSpecificJson.map(({ role }) => role);
 
+// Roles that were renamed after applications were submitted under the old name.
+const RENAMED_ROLES: Record<string, string> = {
+  "Builders in Residence": "Builder in Residence",
+};
+const normalizeRole = (role: string) => RENAMED_ROLES[role] ?? role;
+
 const headers = [
   { label: "First Name", key: "firstName" },
   { label: "Last Name", key: "lastName" },
@@ -74,8 +80,8 @@ const Admin: NextPage = () => {
                 academicYear: allApps[id].academicYear,
                 program: allApps[id].program,
                 resumeLink: allApps[id].resumeUrl,
-                firstChoiceRole: allApps[id].firstChoiceRole,
-                secondChoiceRole: allApps[id].secondChoiceRole,
+                firstChoiceRole: normalizeRole(allApps[id].firstChoiceRole),
+                secondChoiceRole: normalizeRole(allApps[id].secondChoiceRole),
               });
             }
           });
