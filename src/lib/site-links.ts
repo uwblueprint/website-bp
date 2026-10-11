@@ -17,8 +17,8 @@ export const contactLinks = [
   },
   {
     label: "LinkedIn",
-    value: "/company/uw-blueprint",
-    href: "https://linkedin.com/company/uw-blueprint",
+    value: "/company/uwblueprint",
+    href: "https://linkedin.com/company/uwblueprint",
   },
   {
     label: "Medium",
