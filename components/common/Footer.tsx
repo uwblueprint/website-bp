@@ -75,11 +75,11 @@ const Footer: FC<{ minimal?: boolean }> = ({ minimal = false }) => {
                       alt="Instagram logo"
                     />
                   </a>
-                  <a href={MEDIUM_URL} target="_blank">
+                  <a href={LINKEDIN_URL} target="_blank">
                     <img
                       className="h-6"
-                      src="/common/medium-logo.svg"
-                      alt="Medium logo"
+                      src="/common/linkedin-logo.svg"
+                      alt="LinkedIn logo"
                     />
                   </a>
                   <a href={FACEBOOK_URL} target="_blank">
@@ -89,11 +89,11 @@ const Footer: FC<{ minimal?: boolean }> = ({ minimal = false }) => {
                       alt="Facebook logo"
                     />
                   </a>
-                  <a href={LINKEDIN_URL} target="_blank">
+                  <a href={MEDIUM_URL} target="_blank">
                     <img
                       className="h-6"
-                      src="/common/linkedin-logo.svg"
-                      alt="LinkedIn logo"
+                      src="/common/medium-logo.svg"
+                      alt="Medium logo"
                     />
                   </a>
                 </div>
