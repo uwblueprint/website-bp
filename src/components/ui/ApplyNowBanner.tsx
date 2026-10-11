@@ -17,7 +17,12 @@ export interface ApplyNowBannerProps {
 export function ApplyNowBanner({ className }: ApplyNowBannerProps) {
   if (!APPLICATION_IS_LIVE) return null;
 
-  const closeDate = APPLICATION_CLOSE_DATETIME.format("MMMM D, YYYY");
+  const closePt = APPLICATION_CLOSE_DATETIME.tz("America/Los_Angeles").format(
+    "MMMM D, YYYY [at] h:mm A",
+  );
+  const closeEt = APPLICATION_CLOSE_DATETIME.tz("America/Toronto").format(
+    "MMMM D, YYYY [at] h:mm A",
+  );
 
   return (
     <section
@@ -34,7 +39,9 @@ export function ApplyNowBanner({ className }: ApplyNowBannerProps) {
           <strong className="text-[var(--bp-blue)]">Now hiring:</strong> VP
           Strategic Operations, Builder in Residence, VP Culture, and VP Growth.
           Applications close on{" "}
-          <strong className="text-[var(--bp-blue)]">{closeDate}</strong>.
+          <strong className="text-[var(--bp-blue)]">
+            {closePt} PT / {closeEt} ET.
+          </strong>
         </p>
 
         <div className="flex shrink-0 justify-end">
