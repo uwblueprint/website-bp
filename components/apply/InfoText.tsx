@@ -63,8 +63,8 @@ export const InfoText: FC<{
                 are encouraged to apply!
               </li>
               <li>
-                Applications close{" "}
-                <span className="text-blue">{deadline} ET</span>.
+                Applications close <span className="text-blue">{deadline}</span>
+                .
               </li>
               <li>
                 Please review our{" "}

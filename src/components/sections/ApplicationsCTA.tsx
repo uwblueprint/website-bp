@@ -27,8 +27,17 @@ export function ApplicationsCTA({ className }: { className?: string }) {
             {/* Applications close July 13th at 11:59pm. Come build real things with
             us. */}
             Now hiring: {OPEN_ROLES_TEXT}. Applications close{" "}
-            {APPLICATION_CLOSE_DATETIME.format("MMMM D [at] h:mma")}. Come build
-            real things with us.
+            <strong className="font-bold">
+              {APPLICATION_CLOSE_DATETIME.tz("America/Los_Angeles").format(
+                "MMMM D [at] h:mm A",
+              )}{" "}
+              PT /{" "}
+              {APPLICATION_CLOSE_DATETIME.tz("America/Toronto").format(
+                "MMMM D [at] h:mm A",
+              )}{" "}
+              ET.
+            </strong>{" "}
+            Come build real things with us.
           </p>
 
           <div className="col-span-12">

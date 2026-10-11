@@ -11,6 +11,8 @@ export type ProcessStep = {
   index: string;
   title: string;
   description: string;
+  /** Rendered in bold immediately after `description`. */
+  descriptionBold?: string;
   /**
    * External link rendered immediately after `description` (include trailing space in
    * `description` if needed). Keeps step data serializable for server → client props.
@@ -99,6 +101,11 @@ export function OurProcess({
                 </h3>
                 <p className="text-md md:pb-8 text-[var(--secondary-light)]">
                   {step.description}
+                  {step.descriptionBold ? (
+                    <strong className="font-bold">
+                      {step.descriptionBold}
+                    </strong>
+                  ) : null}
                   {step.descriptionLink ? (
                     <>
                       <a

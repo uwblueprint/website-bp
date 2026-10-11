@@ -249,9 +249,13 @@ const AppForm: FC<Props> = ({
                 : "Student Application"}
             </h2>
             <InfoText
-              deadline={APPLICATION_CLOSE_DATETIME.format(
+              deadline={`${APPLICATION_CLOSE_DATETIME.tz(
+                "America/Los_Angeles",
+              ).format(
                 "MMMM D, YYYY [at] h:mm A",
-              )}
+              )} PT / ${APPLICATION_CLOSE_DATETIME.tz("America/Toronto").format(
+                "MMMM D, YYYY [at] h:mm A",
+              )} ET`}
               readOnly={readOnly}
               timestamp={values.timestamp}
             />
