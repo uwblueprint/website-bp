@@ -50,10 +50,6 @@
       "id": "beach-metro"
     },
     {
-      "name": "Humane Society",
-      "id": "humane-society"
-    },
-    {
       "name": "Better Angels",
       "id": "better-angels"
     }
@@ -443,13 +439,6 @@
       "term": 1245,
       "teams": ["beach-metro"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FS26HEADSHOTS%2FBM_Abeer%20Das.png?alt=media&token=6989fe9a-a48c-444e-a727-415ea0782b9e"
-    },
-    {
-      "name": "Sehshasayi Thuray",
-      "role": "technical lead",
-      "term": 1245,
-      "teams": ["humane-society"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FS26HEADSHOTS%2FCRAFT_Sehshasayi%20Thuray.png?alt=media&token=dcb832b3-dd39-40bd-9c27-9a915099a462"
     },
     {
       "name": "Carolyn Zhang",
