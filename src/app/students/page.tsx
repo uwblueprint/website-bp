@@ -36,11 +36,14 @@ const ROLE_PRIORITY = new Map<string, number>([
   // Project teams
   ["technical lead", 16],
   ["product manager", 17],
-  ["project mentor", 18],
   ["designer", 19],
   ["design mentor", 20],
   ["developer", 21],
   ["developer mentor", 22],
+  // Support — kept above the unknown-role fallback (100) so it always sorts last
+  ["technical mentor", 200],
+  ["product mentor", 201],
+  ["graphic design mentor", 202],
 ]);
 
 function rolePriority(role: string): number {
