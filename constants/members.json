@@ -10,6 +10,10 @@
       "id": "community"
     },
     {
+      "name": "Executive Team (Operations)",
+      "id": "operations"
+    },
+    {
       "name": "EnRoute 2 Success",
       "id": "e2s"
     },
@@ -99,14 +103,14 @@
     },
     {
       "name": "Nicole Tang",
-      "role": "vp external",
+      "role": "vp events",
       "term": 1245,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FNicole_Tang_VPExternal.png?alt=media&token=c9e707eb-f44d-46c6-b169-20cd5b6a6917"
     },
     {
       "name": "Ashvin Ramgoolam",
-      "role": "vp internal",
+      "role": "vp internal logistics",
       "term": 1245,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FAshvin_Ramgoolam_Internal.png?alt=media&token=b08788bf-72ff-427a-b04b-bb9c4fb0c59c"
@@ -183,14 +187,14 @@
     },
     {
       "name": "Meenakshi Satkuneswaran",
-      "role": "external director",
+      "role": "events director",
       "term": 1245,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FMeena_Satkuneswaran_ExternalDirector.png?alt=media&token=143a15f8-d61b-43ab-ab4f-edf599c5fc0b"
     },
     {
       "name": "Sean Yao",
-      "role": "internal director",
+      "role": "culture director",
       "term": 1245,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FS26HEADSHOTS%2FETEAM_Sean%20Y.png?alt=media&token=776ef333-87e7-4ad2-82e3-d5c3df2c46b6"
@@ -218,14 +222,14 @@
     },
     {
       "name": "Anushka Yadav",
-      "role": "external director",
+      "role": "events director",
       "term": 1245,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2Fanushka_yadav_external.png?alt=media&token=37fc6319-2d56-464c-b480-8659d89ba608"
     },
     {
       "name": "Gloria Wang",
-      "role": "internal director",
+      "role": "culture director",
       "term": 1245,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FGloria_Wang_Internal.png?alt=media&token=fea4f50b-3675-4d06-bdae-b47b16ab443e"
@@ -253,14 +257,14 @@
     },
     {
       "name": "Jeffrey Wai",
-      "role": "external director",
+      "role": "events director",
       "term": 1245,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FJeffrey_Wai_External%20Director.png?alt=media&token=711c7bb0-ef17-4466-9571-33f0cd8fd06e"
     },
     {
       "name": "Aydan Nardi",
-      "role": "internal director",
+      "role": "culture director",
       "term": 1245,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FAydan_Nardi_InternalDirector.png?alt=media&token=8016d6bc-e1d7-481d-a666-f8d4a71190d3"
@@ -274,7 +278,7 @@
     },
     {
       "name": "Ellie Chan",
-      "role": "external director",
+      "role": "events director",
       "term": 1245,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FEllie_Chan_ExternalDirector.png?alt=media&token=15ee250f-1174-4c52-bd7d-95bfdfa3fd84"
@@ -796,6 +800,104 @@
       "term": 1245,
       "teams": ["hafb"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FS26HEADSHOTS%2FOMHS_Angela%20Li.png?alt=media&token=da079908-17fb-44d7-8ba9-160511509496"
+    },
+    {
+      "name": "Chung He",
+      "role": "vp culture",
+      "term": 1245,
+      "teams": ["community"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FChung_He_VPCulture.png?alt=media&token=64bed7e1-0cb3-4c6c-bbff-5a1f6a872446"
+    },
+    {
+      "name": "Krishna Nigam",
+      "role": "culture director",
+      "term": 1245,
+      "teams": ["community"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FKrishna_Nigam_CultureDirector.png?alt=media&token=36cc4e3a-962c-44ba-897d-f28a119e86b9"
+    },
+    {
+      "name": "Mrunal Kankarej",
+      "role": "culture director",
+      "term": 1245,
+      "teams": ["community"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FMrunal_Kankarej_CultureDirector.png?alt=media&token=e37c81b6-fd51-4550-a03f-ef20969bbd3f"
+    },
+    {
+      "name": "Nicole Wong",
+      "role": "partnerships director",
+      "term": 1245,
+      "teams": ["community"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FNicole_Wong_PartnershipsDirector.png?alt=media&token=18940151-27c2-4163-a65e-d492b92707df"
+    },
+    {
+      "name": "Harmony Chen",
+      "role": "vp growth",
+      "term": 1245,
+      "teams": ["community"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FHarmony_Chen_VPGrowth.png?alt=media&token=8d6f165b-b0be-4b16-b37a-81725d99190a"
+    },
+    {
+      "name": "Charles Huang",
+      "role": "growth director",
+      "term": 1245,
+      "teams": ["community"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FCharles_Huang_GrowthDirector.png?alt=media&token=71df8931-a260-48ca-8f8e-5608ff2084ed"
+    },
+    {
+      "name": "Alexandra Ang",
+      "role": "growth director",
+      "term": 1245,
+      "teams": ["community"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FAlexandra_Ang_GrowthDirector.png?alt=media&token=47c80373-1807-4da9-bd7c-f5da206466a6"
+    },
+    {
+      "name": "Sarah Khandoker",
+      "role": "photographer",
+      "term": 1245,
+      "teams": ["community"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FSarah_Khandoker_Photographer.png?alt=media&token=baf804ac-772f-4a35-a120-a12a635e4357"
+    },
+    {
+      "name": "Jeffrey Chiu",
+      "role": "vp strategic operations",
+      "term": 1245,
+      "teams": ["operations"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FJeffrey_Chiu_VPStrategicOps.png?alt=media&token=75a9ea7d-5bb4-4119-89a3-51dc858659e0"
+    },
+    {
+      "name": "Danny Hu",
+      "role": "builder in residence",
+      "term": 1245,
+      "teams": ["operations"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FDanny_Hu_BuilderInResidence.png?alt=media&token=3792aac8-05cc-47ea-bd94-32d22fbe0009"
+    },
+    {
+      "name": "Additi Mehta",
+      "role": "builder in residence",
+      "term": 1245,
+      "teams": ["operations"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FAdditi_Mehta_BuilderInResidence.png?alt=media&token=76b20686-5fed-47e6-8683-ad2f3d484ad7"
+    },
+    {
+      "name": "Umayeer Ahsan",
+      "role": "builder in residence",
+      "term": 1245,
+      "teams": ["operations"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FUmayeer_Ahsan_BuilderInResidence.png?alt=media&token=8632b7af-c0ed-401b-aad6-c3108c7b921c"
+    },
+    {
+      "name": "Harini Srinivasan",
+      "role": "builder in residence",
+      "term": 1245,
+      "teams": ["operations"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FHarini_Srinivasan_BuilderInResidence.png?alt=media&token=2a946d51-7a5b-4c48-a14e-ce2f8d9e72a7"
+    },
+    {
+      "name": "Jiwon Kim",
+      "role": "builder in residence",
+      "term": 1245,
+      "teams": ["operations"],
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FJiwon_Kim_BuilderInResidence.png?alt=media&token=64ddd4d8-f00e-492f-b180-2c5c888a2b86"
     },
     {
       "name": "Gaurav Shah",
