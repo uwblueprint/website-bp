@@ -25,7 +25,7 @@ export const teamsMap = {
   "vp design": ["vpd", "vp design"],
   "vp product": ["vpp", "vp product"],
   "vp scoping": ["vps", "vp scoping"],
-  "vp internal": ["vpi", "vp internal"],
+  "vp internals": ["vpi", "vp internals"],
   "vp external": ["vpx", "vp external"],
   "vp communications": ["vpc", "vp communications"],
   "vp finance": ["vpf", "vp finance"],
