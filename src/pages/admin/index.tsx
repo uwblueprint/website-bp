@@ -29,6 +29,10 @@ const memberRoles = roleSpecificJson.map(({ role }) => role);
 // Roles that were renamed after applications were submitted under the old name.
 const RENAMED_ROLES: Record<string, string> = {
   "Builders in Residence": "Builder in Residence",
+  "Project Lead": "Technical Lead",
+  "External Director": "Events Director",
+  "Content Strategist": "Marketing Director",
+  "Sponsorships Director": "Partnerships Director",
 };
 const normalizeRole = (role: string) => RENAMED_ROLES[role] ?? role;
 

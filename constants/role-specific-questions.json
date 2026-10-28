@@ -1,20 +1,59 @@
 [
   {
-    "id": "1",
-    "role": "Project Developer",
+    "id": "12",
+    "role": "VP Design",
     "questions": [
       {
-        "question": "Which areas of a project are you interested in working in?",
-        "type": "multi-select",
-        "options": ["Frontend", "Backend", "Fullstack", "Mobile"],
-        "other": true
-      },
-      {
-        "question": "Tell us why you want to be a Project Developer on Blueprint!",
+        "question": "Tell us about your product design experience. Attach a link to your portfolio.",
         "maxLength": 1000
       },
       {
-        "question": "Tell us about a challenging technical problem you’ve solved.",
+        "question": "Tell us about a time you led or influenced a team decision. How did you align people toward a shared goal?",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "14",
+    "role": "VP Project Scoping",
+    "questions": [
+      {
+        "question": "How do you know whether a non-profit has a goal that resonates with Blueprint?",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "role": "Product Manager",
+    "questions": [
+      {
+        "question": "What is your favourite product?",
+        "maxLength": 1000
+      },
+      {
+        "question": "Tell us about a time you noticed a problem. What did you learn, and how did you go about solving it?",
+        "maxLength": 1000
+      },
+      {
+        "uniqueid": 1,
+        "question": "Would you be interested in joining a scoping pod?",
+        "description": "Scoping pods include a designer, developer, and PM to join VP Scoping for meetings with NPO’s to provide their opinion and expertise! This will be in addition to the existing responsibilities of your role.",
+        "type": "select",
+        "options": ["Yes", "No"]
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "role": "Technical Lead",
+    "questions": [
+      {
+        "question": "Tell us about a challenging technical problem that you've worked on in the past and how you solved it.",
+        "maxLength": 1000
+      },
+      {
+        "question": "Tell us about a past experience working with other people where you demonstrated leadership.",
         "maxLength": 1000
       },
       {
@@ -60,36 +99,21 @@
     ]
   },
   {
-    "id": "3",
-    "role": "Product Manager",
+    "id": "1",
+    "role": "Project Developer",
     "questions": [
       {
-        "question": "What is your favourite product?",
+        "question": "Which areas of a project are you interested in working in?",
+        "type": "multi-select",
+        "options": ["Frontend", "Backend", "Fullstack", "Mobile"],
+        "other": true
+      },
+      {
+        "question": "Tell us why you want to be a Project Developer on Blueprint!",
         "maxLength": 1000
       },
       {
-        "question": "Tell us about a time you noticed a problem. What did you learn, and how did you go about solving it?",
-        "maxLength": 1000
-      },
-      {
-        "uniqueid": 1,
-        "question": "Would you be interested in joining a scoping pod?",
-        "description": "Scoping pods include a designer, developer, and PM to join VP Scoping for meetings with NPO’s to provide their opinion and expertise! This will be in addition to the existing responsibilities of your role.",
-        "type": "select",
-        "options": ["Yes", "No"]
-      }
-    ]
-  },
-  {
-    "id": "4",
-    "role": "Project Lead",
-    "questions": [
-      {
-        "question": "Tell us about a challenging technical problem that you've worked on in the past and how you solved it.",
-        "maxLength": 1000
-      },
-      {
-        "question": "Tell us about a past experience working with other people where you demonstrated leadership.",
+        "question": "Tell us about a challenging technical problem you’ve solved.",
         "maxLength": 1000
       },
       {
@@ -106,16 +130,91 @@
     ]
   },
   {
-    "id": "6",
-    "role": "Content Strategist",
-    "open": false,
+    "id": "22",
+    "role": "Forward Deployed Engineer",
     "questions": [
       {
-        "question": "What do you see as the purposes of content within the user experience of an app?",
+        "question": "What interests you about forward deployed engineering, and how do you think it differs from a traditional software engineering role?",
         "maxLength": 1000
       },
       {
-        "question": "How comfortable are you using CapCut? Please share an example of a time you used it and what you created with it?",
+        "question": "Imagine a nonprofit approaches Blueprint saying, “We spend too much time managing spreadsheets and want to automate everything,” but they have no clear product or technical requirements. How would you approach understanding their needs, determining what to build, and prioritizing features if you had just two weeks to deliver an initial prototype?",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "role": "Design Ops",
+    "questions": [
+      {
+        "question": "Tell us about your product design experience. Attach a link to your portfolio, if you have one.",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "13",
+    "role": "VP Finance",
+    "questions": [
+      {
+        "question": "How would you pitch UW Blueprint to external organizations for sponsorships? Provide at least one example of an organization that you can imagine UW Blueprint partnering with in your response.",
+        "maxLength": 1000
+      },
+      {
+        "question": "What would you do if a prospective external sponsor stopped responding to your attempts to reach them?",
+        "maxLength": 1000
+      },
+      {
+        "question": "How would you go about allocating expenses for Blueprint events? Include both your planning process (i.e. before any events happen) and your response to overspending/underfunding.",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "15",
+    "role": "Events Director",
+    "questions": [
+      {
+        "question": "What's a cool new event you think Blueprint should do and how does it align with Blueprint's mission?",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "17",
+    "role": "Partnerships Director",
+    "questions": [
+      {
+        "question": "Selling Blueprint means getting a company to say yes to something they didn't plan on. Walk us through a time you convinced someone to buy in on an idea. What was your approach and how did it land?",
+        "maxLength": 1000
+      },
+      {
+        "question": "A sponsor signs, then goes quiet and stops responding as their deliverables come due. What do you do?",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "23",
+    "role": "Culture Director",
+    "questions": [
+      {
+        "question": "Tell us about a time you helped foster an unusually strong culture on a team or organization. How did you do it, and what would you bring from that experience to Blueprint?",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "24",
+    "role": "Growth Director",
+    "questions": [
+      {
+        "question": "If you had one term to make significantly more students know about and care about Blueprint, what would you try?",
+        "maxLength": 1000
+      },
+      {
+        "question": "If you had one term to make significantly more companies aware of Blueprint and interested in sponsoring us, what would you try?",
         "maxLength": 1000
       }
     ]
@@ -123,7 +222,6 @@
   {
     "id": "8",
     "role": "Graphic Designer",
-    "open": false,
     "questions": [
       {
         "question": "Tell us about your graphic design experience. Attach a link to your portfolio, if you have one.",
@@ -144,11 +242,44 @@
     ]
   },
   {
-    "id": "9",
-    "role": "Design Ops",
+    "id": "25",
+    "role": "Photographer",
     "questions": [
       {
-        "question": "Tell us about your product design experience. Attach a link to your portfolio, if you have one.",
+        "question": "How would you describe your photography style, and how would you adapt it to Blueprint's visual identity?",
+        "maxLength": 1000
+      },
+      {
+        "question": "Please share links to your photography portfolio or any previous work you’d like us to see. Feel free to include multiple links! (e.g., personal website, Instagram, Flickr, Pixieset, Google Drive, etc.)",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "26",
+    "role": "Videographer",
+    "questions": [
+      {
+        "question": "Looking at Blueprint's existing content, what types of videos would you want to introduce or improve?",
+        "maxLength": 1000
+      },
+      {
+        "question": "Please share links to your videography portfolio or any previous work you’d like us to see. Feel free to include multiple links! (e.g., personal website, YouTube, Instagram, TikTok, Vimeo, Google Drive, etc.)",
+        "maxLength": 1000
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "role": "Marketing Director",
+    "open": false,
+    "questions": [
+      {
+        "question": "What do you see as the purposes of content within the user experience of an app?",
+        "maxLength": 1000
+      },
+      {
+        "question": "How comfortable are you using CapCut? Please share an example of a time you used it and what you created with it?",
         "maxLength": 1000
       }
     ]
@@ -179,51 +310,6 @@
     ]
   },
   {
-    "id": "12",
-    "role": "VP Design",
-    "open": false,
-    "questions": [
-      {
-        "question": "Tell us about your product design experience. Attach a link to your portfolio.",
-        "maxLength": 1000
-      },
-      {
-        "question": "Tell us about a time you led or influenced a team decision. How did you align people toward a shared goal?",
-        "maxLength": 1000
-      }
-    ]
-  },
-  {
-    "id": "13",
-    "role": "VP Finance",
-    "open": false,
-    "questions": [
-      {
-        "question": "How would you pitch UW Blueprint to external organizations for sponsorships? Provide at least one example of an organization that you can imagine UW Blueprint partnering with in your response.",
-        "maxLength": 1000
-      },
-      {
-        "question": "What would you do if a prospective external sponsor stopped responding to your attempts to reach them?",
-        "maxLength": 1000
-      },
-      {
-        "question": "How would you go about allocating expenses for Blueprint events? Include both your planning process (i.e. before any events happen) and your response to overspending/underfunding.",
-        "maxLength": 1000
-      }
-    ]
-  },
-  {
-    "id": "14",
-    "role": "VP Project Scoping",
-    "open": false,
-    "questions": [
-      {
-        "question": "How do you know whether a non-profit has a goal that resonates with Blueprint?",
-        "maxLength": 1000
-      }
-    ]
-  },
-  {
     "id": "19",
     "role": "VP Strategic Operations",
     "open": false,
@@ -235,37 +321,12 @@
     ]
   },
   {
-    "id": "15",
-    "role": "External Director",
-    "open": false,
-    "questions": [
-      {
-        "question": "What's a cool new event you think Blueprint should do and how does it align with Blueprint's mission?",
-        "maxLength": 1000
-      }
-    ]
-  },
-  {
     "id": "16",
     "role": "Internal Director",
+    "open": false,
     "questions": [
       {
         "question": "What would an ideal member experience look like to you?",
-        "maxLength": 1000
-      }
-    ]
-  },
-  {
-    "id": "17",
-    "role": "Sponsorships Director",
-    "open": false,
-    "questions": [
-      {
-        "question": "Selling Blueprint means getting a company to say yes to something they didn't plan on. Walk us through a time you convinced someone to buy in on an idea. What was your approach and how did it land?",
-        "maxLength": 1000
-      },
-      {
-        "question": "A sponsor signs, then goes quiet and stops responding as their deliverables come due. What do you do?",
         "maxLength": 1000
       }
     ]

@@ -19,11 +19,11 @@ const EXECUTIVE_TEAM: RoleItem[] = [
   {
     title: "VP Engineering",
     description:
-      "The VP Engineering is responsible for the technical success of current and future projects. They drive initiatives that improve org-wide engineering processes and foster mentorship. They lead all project leads on Blueprint.",
+      "The VP Engineering is responsible for the technical success of current and future projects. They drive initiatives that improve org-wide engineering processes and foster mentorship. They lead all technical leads on Blueprint.",
     responsibilities: [
       "Conduct architecture design reviews, provide code standards, write technical documentation.",
       "Lead engineering recruitment, and organize developer bootcamp.",
-      "Help evaluate the technical feasibility of potential NPO projects, and regularly provide advice and guidance to the project leads through 1-1s and meetings.",
+      "Help evaluate the technical feasibility of potential NPO projects, and regularly provide advice and guidance to the technical leads through 1-1s and meetings.",
     ],
     note: "Generally a senior, internal-hire preferred role.",
   },
@@ -143,7 +143,7 @@ const EXECUTIVE_TEAM: RoleItem[] = [
     responsibilities: [
       "Organizing internal socials, events and managing swag.",
       "Use creativity to ideate and execute engaging initiatives, especially in a remote setting.",
-      "Collaborate with other Internal Directors and External Directors to ideate articles for our Medium and bring about member engagement.",
+      "Collaborate with other Internal Directors and Events Directors to ideate articles for our Medium and bring about member engagement.",
     ],
     keyTraits: [
       "Can hold a room and make meetings, socials, and group hangouts feel alive.",
@@ -152,13 +152,13 @@ const EXECUTIVE_TEAM: RoleItem[] = [
     ],
   },
   {
-    title: "External Director",
+    title: "Events Director",
     description:
-      "The External Director shapes and controls Blueprint's perception through events.",
+      "The Events Director shapes and controls Blueprint's perception through events.",
     responsibilities: [
       "Exploring, establishing, and maintaining partnerships with third-parties (other clubs, sponsors, etc). Note: non-profits are not included in this list — for that, see VP Scoping.",
       "Turn these partnerships into potential project and member pipelines or as avenues for interfacing with the community.",
-      "Collaborate with other External Directors and Internal Directors to run events and organize initiatives to improve our brand.",
+      "Collaborate with other Events Directors and Internal Directors to run events and organize initiatives to improve our brand.",
       "Liaise with other Blueprint chapters.",
     ],
     keyTraits: [
@@ -220,9 +220,9 @@ const EXECUTIVE_TEAM: RoleItem[] = [
   {
     title: "Graphic Designer",
     description:
-      "The Graphic Designer will support External Directors and the design team to create visual assets for marketing and project teams.",
+      "The Graphic Designer will support Events Directors and the design team to create visual assets for marketing and project teams.",
     responsibilities: [
-      "Work closely with Content Strategists to create effective cross-platform marketing for Blueprint.",
+      "Work closely with Marketing Directors to create effective cross-platform marketing for Blueprint.",
       "Build and support UW Blueprint's brand through brand assets, graphics, and polished collateral (banners, website design, slideshows, etc.).",
       "Use Figma and/or other design tools to produce graphic designs, illustrations, and motion design materials.",
     ],
@@ -233,7 +233,7 @@ const EXECUTIVE_TEAM: RoleItem[] = [
     ],
   },
   {
-    title: "Content Strategist",
+    title: "Marketing Director",
     description:
       "Collaborate with Graphic Designers and marketing team members to develop cohesive cross platform content for Blueprint.",
     responsibilities: [
@@ -257,9 +257,9 @@ const PROJECT_TEAM: RoleItem[] = [
     responsibilities: [
       "Write, test, and maintain code in line with the team's best practices and technical standards.",
       "Participate in code reviews, both giving and receiving feedback to improve code quality and personal growth.",
-      "Collaborate with the Project Lead and other developers to break down tasks, estimate work, and meet project milestones.",
+      "Collaborate with the Technical Lead and other developers to break down tasks, estimate work, and meet project milestones.",
       "Communicate progress, blockers, and questions proactively during team meetings and check-ins.",
-      "Continuously learn and develop technical skills, taking advantage of mentorship from the Project Lead and other senior members.",
+      "Continuously learn and develop technical skills, taking advantage of mentorship from the Technical Lead and other senior members.",
     ],
     note: "Open to all experience levels; a great opportunity to gain hands-on experience in a team setting.",
   },
@@ -300,15 +300,15 @@ const PROJECT_TEAM: RoleItem[] = [
     note: "Generally a senior, internal-hire preferred role.",
   },
   {
-    title: "Project Lead",
+    title: "Technical Lead",
     description:
-      "The Project Lead (or Technical Lead) is responsible for leading the team and driving the technical direction of the project, providing support and mentorship to developers on the team and working with the product manager to run the team effectively.",
+      "The Technical Lead is responsible for leading the team and driving the technical direction of the project, providing support and mentorship to developers on the team and working with the product manager to run the team effectively.",
     responsibilities: [
       "Organizing best code practices, performing code reviews, mentoring developers, planning tasks, making key technical decisions and software architecture design.",
       "Provide leadership, mentorship, and project execution skills as the overall success of the team is largely self guided.",
       "May write code as part of their responsibilities, but the focus of the role is on providing technical guidance and supporting the team.",
       "Work closely with the Product Manager around planning and non-profit requirements as well as participate in non-profit meetings.",
-      "Regularly meet with the VP Engineering for check-ins, assistance in any of their responsibilities and to answer any PL related questions.",
+      "Regularly meet with the VP Engineering for check-ins, assistance in any of their responsibilities and to answer any TL related questions.",
     ],
     link: {
       href: "https://medium.com/uw-blueprint/member-spotlight-project-lead-anne-chung-1ca9f22c9db3",
@@ -321,7 +321,7 @@ const PROJECT_TEAM: RoleItem[] = [
     description:
       "The Product Manager will be responsible for managing the delivery of a digital product to the NPO partner. This involves scoping features, iterating on feedback, and maintaining communications with the NPO.",
     responsibilities: [
-      "Own product definition and design execution: own feature definition from idea to delivery. Partner with designers to scope features, shape core flows, and prototype solutions. Work with the project lead (engineering manager) to evaluate trade-offs, answer product questions, and make final build decisions.",
+      "Own product definition and design execution: own feature definition from idea to delivery. Partner with designers to scope features, shape core flows, and prototype solutions. Work with the technical lead (engineering manager) to evaluate trade-offs, answer product questions, and make final build decisions.",
       "Build the client relationship and project direction: serve as the primary client lead. Run bi-weekly demos, present work, and gather feedback. Set clear expectations and guide product direction in partnership with the client.",
       "Build team culture: help create a positive and connected team environment. Build strong relationships with teammates. Host socials, bring energy to meetings, and promote a fun team culture.",
     ],
@@ -329,7 +329,7 @@ const PROJECT_TEAM: RoleItem[] = [
       href: "https://uwblueprint.medium.com/member-spotlight-sophia-zhu-pm-omhs-a-deep-dive-into-managing-tradeoffs-c56a14840ef3",
       label: "Member Spotlight — Product Manager",
     },
-    note: "PMs at Blueprint primarily work with designers and project leads (engineering managers). If you have a more eng heavy background, also consider checking out the project lead role as well.",
+    note: "PMs at Blueprint primarily work with designers and technical leads (engineering managers). If you have a more eng heavy background, also consider checking out the technical lead role as well.",
   },
 ];
 
