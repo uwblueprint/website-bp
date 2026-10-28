@@ -33,7 +33,7 @@ const JOIN_PROCESS_STEPS: ProcessStep[] = [
   {
     index: "02",
     title: "Submit your application",
-    description: `Tell us about yourself and why you're interested in joining Blueprint. We take a great amount of care to review every application, so please be as detailed as possible. If we think you might be a good fit, we will send you an invite to meet with us! Now hiring for our new roles! Applications close `,
+    description: `Tell us about yourself and why you're interested in joining Blueprint. We take a great amount of care to review every application, so please be as detailed as possible. If we think you might be a good fit, we will send you an invite to meet with us! Applications close `,
     descriptionBold: `${APPLICATION_CLOSE_DATETIME.tz(
       "America/Los_Angeles",
     ).format("MMMM D [at] h:mm A")} PT / ${APPLICATION_CLOSE_DATETIME.tz(
@@ -43,12 +43,12 @@ const JOIN_PROCESS_STEPS: ProcessStep[] = [
   {
     index: "03",
     title: "Interview with us",
-    description: `Let's talk! Invites will be sent out at ${INVITE_DATE} to schedule a time for us to connect. During these chats, you'll have a casual conversation with a couple of our members. You can use this time to ask us any questions you might have, and we can get to know each other better! We'll also use some of this time for role-specific technical questions.`,
+    description: `Let's talk! Invites will be sent out ${INVITE_DATE} to schedule a time for us to connect. During these chats, you'll have a casual conversation with a couple of our members. You can use this time to ask us any questions you might have, and we can get to know each other better! We'll also use some of this time for role-specific technical questions.`,
   },
   {
     index: "04",
     title: "Final decision",
-    description: `We'll let you know our final decision around ${FINAL_DECISION_DATE}. If you get an offer to join us for ${APPLICATION_TERM}, we'd appreciate it if you replied as soon as possible to let us know if you'd like to accept! Once you've confirmed, we'll get you started with onboarding on October 20.`,
+    description: `We'll let you know our final decision around ${FINAL_DECISION_DATE}. If you get an offer to join us for ${APPLICATION_TERM}, we'd appreciate it if you replied as soon as possible to let us know if you'd like to accept! Once you've confirmed, we'll get you started with onboarding on December 20.`,
   },
 ];
 
