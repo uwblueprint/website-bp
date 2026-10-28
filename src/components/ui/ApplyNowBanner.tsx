@@ -34,11 +34,7 @@ export function ApplyNowBanner({ className }: ApplyNowBannerProps) {
     >
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <p className="text-md">
-          {/* Applications to join Blueprint next term are open, and close{" "}
-          {closeDate}. */}
-          <strong className="text-[var(--bp-blue)]">Now hiring:</strong> VP
-          Strategic Operations, Builder in Residence, VP Culture, and VP Growth.
-          Applications close on{" "}
+          Applications to join Blueprint next term are open, and close on{" "}
           <strong className="text-[var(--bp-blue)]">
             {closePt} PT / {closeEt} ET.
           </strong>

@@ -9,90 +9,6 @@ export const metadata: Metadata = {
     "Learn more about how we work as a team at Blueprint.",
 };
 
-const NOW_HIRING: RoleItem[] = [
-  {
-    title: "VP Strategic Operations (New)",
-    tagline: "Keep Blueprint moving.",
-    description: [
-      "You’ll own the systems and workflows that help Blueprint operate at its best, working across teams to streamline how we work, clarify ownership, and turn good ideas into action.",
-      "This is a new role with room to shape what Strategic Operations looks like at Blueprint. You’ll take ownership of the work that falls between teams and build better ways of working as the organization grows.",
-    ],
-    responsibilitiesHeading: "What you’ll do",
-    responsibilities: [
-      "Streamline workflows that span multiple teams and make it easier for people to work together.",
-      "Take ownership of cross-team initiatives and keep decisions, owners, and next steps moving.",
-      "Improve how shared requests, inboxes, approvals, and other recurring workflows are managed.",
-      "Create lightweight processes and systems that give teams clarity without adding unnecessary overhead.",
-      "Identify opportunities to simplify or automate how Blueprint operates, prioritize the highest-impact projects, and guide the Builders in Residence who bring them to life.",
-    ],
-    closing: [
-      "You might be a fit if you’re highly organized, proactive, and good at bringing structure to ambiguity. You naturally notice how things could work more smoothly, and you’re excited to take ownership and make it happen.",
-    ],
-  },
-  {
-    title: "Builder in Residence (New)",
-    tagline: "Build what Blueprint needs.",
-    description: [
-      "You’ll find opportunities to help Blueprint work better, then design, build, and ship the tools to make it happen.",
-      "There’s a lot of freedom in how you build. Use AI tools, APIs, no-code platforms, or write the software yourself. What matters is understanding what people actually need, moving quickly, and getting something useful into their hands.",
-    ],
-    responsibilitiesHeading: "What you’ll do",
-    responsibilities: [
-      "Work with teams across Blueprint to understand how they work and identify opportunities for better tooling.",
-      "Scope small, useful solutions and take them from idea to something people can actually use.",
-      "Build and iterate on internal tools with short turnaround times.",
-      "Use AI and other modern development tools to prototype and ship faster where they make sense.",
-      "Test what you build with the people who use it and improve it based on real feedback.",
-      "Explore new ways technology can streamline how Blueprint works internally.",
-    ],
-    closing: [
-      "You might be a fit if you love building end-to-end, can turn a vague idea into something real, and would rather get a useful first version into users’ hands this week than spend a month planning the perfect version.",
-    ],
-  },
-  {
-    title: "VP Culture (New)",
-    tagline: "Make Blueprint feel like Blueprint.",
-    description: [
-      "You’ll own the culture and member experience at Blueprint. Your goal is to turn 125+ talented people into a community they love being part of and want to come back to term after term. Good news: you’re not starting from scratch. Most of our members already come back for multiple terms, and some have stuck around for eight or more of them!",
-      "The role is yours to shape. Experiment with how we bring people together, help friendships form across teams, and make Blueprint a place where people feel comfortable sharing wild ideas, starting things together, and pushing each other to be even more ambitious.",
-    ],
-    responsibilitiesHeading: "What you’ll do",
-    responsibilities: [
-      "Own and continuously improve the Blueprint member experience, from someone’s first weeks to their last term.",
-      "Dream up and ship new community experiments, from spontaneous traditions and small group experiences to socials, retreats, demo nights, and whatever else you think would make Blueprint better.",
-      "Create more opportunities for people across projects, crafts, and cohorts to get to know each other, whether that’s LeetCoding together, late night coworking sessions, cross-team mixers, random bubble tea runs, or something completely new.",
-      "Build the rituals, traditions, and shared experiences that make Blueprint distinctly Blueprint.",
-      "Stay close to members, understand what they want more of, and turn those insights into action.",
-      "Treat the member experience like a product. Try things, learn what people love, and keep making the community stronger.",
-    ],
-    closing: [
-      "You might be a fit if you naturally bring people together, have strong opinions about what makes communities special, and would have way too much fun being given the freedom to experiment with Blueprint’s culture.",
-      "People already come to Blueprint for the community. Let’s make it legendary.",
-    ],
-  },
-  {
-    title: "VP Growth (New)",
-    tagline: "Amplify Blueprint.",
-    description: [
-      "You’ll own how Blueprint grows: our reach, our brand, and how many people know about and care about what we’re building.",
-      "Think of Blueprint like an early-stage startup with a great product and a lot more room for distribution. You’ll figure out how we tell our story, where we should show up, what we should experiment with, and how we turn everything happening inside Blueprint into something people across Waterloo and beyond actually see.",
-    ],
-    responsibilitiesHeading: "What you’ll do",
-    responsibilities: [
-      "Own Blueprint’s growth strategy and constantly look for new ways to expand our reach.",
-      "Run experiments across content, social, events, partnerships, launches, and whatever other channels you think are worth trying.",
-      "Turn our projects, people, events, wins, and stories into content people actually want to see and share.",
-      "Find new audiences and communities where Blueprint should show up, both on campus and beyond Waterloo.",
-      "Experiment with ways to grow our channels and turn views into genuine interest in Blueprint.",
-      "Pay attention to what works, double down on it, and keep trying new things.",
-    ],
-    closing: [
-      "You might be a fit if you’re equal parts creative and analytical, obsessed with why some ideas spread while others don’t, and have a million ideas for how more people could discover Blueprint.",
-      "We’re already building things worth talking about. Your job is to make sure people hear about them.",
-    ],
-  },
-];
-
 const EXECUTIVE_TEAM: RoleItem[] = [
   {
     title: "Co-Presidents",
@@ -161,6 +77,66 @@ const EXECUTIVE_TEAM: RoleItem[] = [
     },
   },
   {
+    title: "VP Strategic Operations",
+    tagline: "Keep Blueprint moving.",
+    description: [
+      "You’ll own the systems and workflows that help Blueprint operate at its best, working across teams to streamline how we work, clarify ownership, and turn good ideas into action.",
+      "This is a new role with room to shape what Strategic Operations looks like at Blueprint. You’ll take ownership of the work that falls between teams and build better ways of working as the organization grows.",
+    ],
+    responsibilitiesHeading: "What you’ll do",
+    responsibilities: [
+      "Streamline workflows that span multiple teams and make it easier for people to work together.",
+      "Take ownership of cross-team initiatives and keep decisions, owners, and next steps moving.",
+      "Improve how shared requests, inboxes, approvals, and other recurring workflows are managed.",
+      "Create lightweight processes and systems that give teams clarity without adding unnecessary overhead.",
+      "Identify opportunities to simplify or automate how Blueprint operates, prioritize the highest-impact projects, and guide the Builders in Residence who bring them to life.",
+    ],
+    closing: [
+      "You might be a fit if you’re highly organized, proactive, and good at bringing structure to ambiguity. You naturally notice how things could work more smoothly, and you’re excited to take ownership and make it happen.",
+    ],
+  },
+  {
+    title: "Builder in Residence",
+    tagline: "Build what Blueprint needs.",
+    description: [
+      "You’ll find opportunities to help Blueprint work better, then design, build, and ship the tools to make it happen.",
+      "There’s a lot of freedom in how you build. Use AI tools, APIs, no-code platforms, or write the software yourself. What matters is understanding what people actually need, moving quickly, and getting something useful into their hands.",
+    ],
+    responsibilitiesHeading: "What you’ll do",
+    responsibilities: [
+      "Work with teams across Blueprint to understand how they work and identify opportunities for better tooling.",
+      "Scope small, useful solutions and take them from idea to something people can actually use.",
+      "Build and iterate on internal tools with short turnaround times.",
+      "Use AI and other modern development tools to prototype and ship faster where they make sense.",
+      "Test what you build with the people who use it and improve it based on real feedback.",
+      "Explore new ways technology can streamline how Blueprint works internally.",
+    ],
+    closing: [
+      "You might be a fit if you love building end-to-end, can turn a vague idea into something real, and would rather get a useful first version into users’ hands this week than spend a month planning the perfect version.",
+    ],
+  },
+  {
+    title: "VP Culture",
+    tagline: "Make Blueprint feel like Blueprint.",
+    description: [
+      "You’ll own the culture and member experience at Blueprint. Your goal is to turn 125+ talented people into a community they love being part of and want to come back to term after term. Good news: you’re not starting from scratch. Most of our members already come back for multiple terms, and some have stuck around for eight or more of them!",
+      "The role is yours to shape. Experiment with how we bring people together, help friendships form across teams, and make Blueprint a place where people feel comfortable sharing wild ideas, starting things together, and pushing each other to be even more ambitious.",
+    ],
+    responsibilitiesHeading: "What you’ll do",
+    responsibilities: [
+      "Own and continuously improve the Blueprint member experience, from someone’s first weeks to their last term.",
+      "Dream up and ship new community experiments, from spontaneous traditions and small group experiences to socials, retreats, demo nights, and whatever else you think would make Blueprint better.",
+      "Create more opportunities for people across projects, crafts, and cohorts to get to know each other, whether that’s LeetCoding together, late night coworking sessions, cross-team mixers, random bubble tea runs, or something completely new.",
+      "Build the rituals, traditions, and shared experiences that make Blueprint distinctly Blueprint.",
+      "Stay close to members, understand what they want more of, and turn those insights into action.",
+      "Treat the member experience like a product. Try things, learn what people love, and keep making the community stronger.",
+    ],
+    closing: [
+      "You might be a fit if you naturally bring people together, have strong opinions about what makes communities special, and would have way too much fun being given the freedom to experiment with Blueprint’s culture.",
+      "People already come to Blueprint for the community. Let’s make it legendary.",
+    ],
+  },
+  {
     title: "Internal Director",
     description:
       "The Internal Director is primarily responsible for cultivating Blueprint culture. They are someone that is organized, proactive and passionate about bringing people together.",
@@ -218,6 +194,27 @@ const EXECUTIVE_TEAM: RoleItem[] = [
     keyTraits: [
       "Friendly, professional, and easy to talk to.",
       "Takes initiative and works well with the team.",
+    ],
+  },
+  {
+    title: "VP Growth",
+    tagline: "Amplify Blueprint.",
+    description: [
+      "You’ll own how Blueprint grows: our reach, our brand, and how many people know about and care about what we’re building.",
+      "Think of Blueprint like an early-stage startup with a great product and a lot more room for distribution. You’ll figure out how we tell our story, where we should show up, what we should experiment with, and how we turn everything happening inside Blueprint into something people across Waterloo and beyond actually see.",
+    ],
+    responsibilitiesHeading: "What you’ll do",
+    responsibilities: [
+      "Own Blueprint’s growth strategy and constantly look for new ways to expand our reach.",
+      "Run experiments across content, social, events, partnerships, launches, and whatever other channels you think are worth trying.",
+      "Turn our projects, people, events, wins, and stories into content people actually want to see and share.",
+      "Find new audiences and communities where Blueprint should show up, both on campus and beyond Waterloo.",
+      "Experiment with ways to grow our channels and turn views into genuine interest in Blueprint.",
+      "Pay attention to what works, double down on it, and keep trying new things.",
+    ],
+    closing: [
+      "You might be a fit if you’re equal parts creative and analytical, obsessed with why some ideas spread while others don’t, and have a million ideas for how more people could discover Blueprint.",
+      "We’re already building things worth talking about. Your job is to make sure people hear about them.",
     ],
   },
   {
@@ -369,16 +366,9 @@ export default function RolesPage() {
       </section>
 
       <RolesSection
-        id="now-hiring"
-        groupName="now hiring"
-        roles={NOW_HIRING}
-      />
-
-      <RolesSection
         id="executive-team"
         groupName="executive team"
         roles={EXECUTIVE_TEAM}
-        className="pt-0"
       />
 
       <RolesSection

@@ -7,7 +7,7 @@ import roleSpecificJson from "@constants/role-specific-questions.json";
  */
 export const APPLICATION_OPEN_DATETIME = dayjs.tz(
   // "2026-07-01 18:00:00",
-  "2026-10-04 12:00:00",
+  "2026-10-27 12:00:00",
   "America/Toronto",
 );
 
@@ -17,7 +17,7 @@ export const APPLICATION_OPEN_DATETIME = dayjs.tz(
  */
 export const APPLICATION_CLOSE_DATETIME = dayjs.tz(
   // "2026-07-16 16:50:00",
-  "2026-10-12 23:59:59",
+  "2026-11-04 23:59:59",
   "America/Los_Angeles",
 );
 
@@ -28,16 +28,16 @@ export const APPLICATION_CLOSE_DATETIME_WITH_GRACE_PERIOD =
  * Date that invites are sent out for interviews
  * Format: MMM DD
  */
-export const INVITE_DATE = "the start of reading week";
+export const INVITE_DATE = "around a week after applications close";
 
 /**
  * Final decision date
  * Format: MMM DD
  */
-export const FINAL_DECISION_DATE = "the end of reading week";
+export const FINAL_DECISION_DATE = "late November or early December";
 
 // Term Blueprint is currently recruiting for (1 term after the current term)
-export const APPLICATION_TERM = "Fall 2026";
+export const APPLICATION_TERM = "Winter 2027";
 
 // Roles currently accepting applications (roles without `"open": false`)
 export const OPEN_ROLES = roleSpecificJson
