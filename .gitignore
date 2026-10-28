@@ -16,3 +16,5 @@ out
 **/.DS_Store
 .vscode
 **/*.cache
+# next.js generated types (rewritten by next dev/build)
+next-env.d.ts

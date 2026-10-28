@@ -134,7 +134,6 @@ const Admin: NextPage = () => {
             ))}
           </select>
           <button className="text-blue-100">
-            {/* @ts-expect-error react-csv types incompatible with React 18 */}
             <CSVLink
               data={filteredData.map((app) =>
                 Object.assign({}, app, {
