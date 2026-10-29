@@ -56,7 +56,7 @@ const EXECUTIVE_TEAM: RoleItem[] = [
     ],
   },
   {
-    title: "VP Project Scoping",
+    title: "VP Scoping",
     description:
       "The VP Scoping takes ownership of finding partners that align with Blueprint's mission and values. They lead collaboration with VP Engineering, VP Design, and VP Product to ensure the most suiting projects are chosen for our team.",
     responsibilities: [
@@ -137,18 +137,25 @@ const EXECUTIVE_TEAM: RoleItem[] = [
     ],
   },
   {
-    title: "Internal Director",
-    description:
-      "The Internal Director is primarily responsible for cultivating Blueprint culture. They are someone that is organized, proactive and passionate about bringing people together.",
-    responsibilities: [
-      "Organizing internal socials, events and managing swag.",
-      "Use creativity to ideate and execute engaging initiatives, especially in a remote setting.",
-      "Collaborate with other Internal Directors and Events Directors to ideate articles for our Medium and bring about member engagement.",
+    title: "Culture Director",
+    tagline: "Make Blueprint feel like Blueprint.",
+    description: [
+      "You’ll help shape the experiences, traditions, and little moments that make Blueprint more than just a place where people work on projects.",
+      "With 125+ members across different teams, projects, and cohorts, there’s so much potential for friendships, collaborations, and unexpected connections. Your job is to help make those happen.",
+      "Working alongside our VP Culture and the rest of the Culture team, you’ll bring ideas to life that make members feel connected, included, and genuinely excited to be part of Blueprint. Whether it’s a big social, a spontaneous bubble tea run, or a completely new tradition, you’ll help make Blueprint a community people want to keep coming back to.",
     ],
-    keyTraits: [
-      "Can hold a room and make meetings, socials, and group hangouts feel alive.",
-      "Loves bringing people together and creating a strong sense of community.",
-      "Pays attention to members and always looks for ways to make the experience better.",
+    responsibilitiesHeading: "What you’ll do",
+    responsibilities: [
+      "Plan and execute member experiences, from socials, retreats, and celebrations to smaller gatherings and spontaneous activities.",
+      "Dream up and experiment with new ways to bring members together, especially across different projects, crafts, and cohorts.",
+      "Take ownership of culture initiatives, managing everything from brainstorming and logistics to execution and feedback.",
+      "Help build and maintain the traditions, rituals, and shared experiences that make Blueprint distinctly Blueprint.",
+      "Stay connected with members, understand what they enjoy, and bring fresh ideas for improving their experience.",
+      "Collaborate with other Culture Directors and teams to make Blueprint events and initiatives welcoming, memorable, and fun.",
+    ],
+    closing: [
+      "You might be a fit if you’re the friend who gets everyone together, always have ideas for things people could do, and genuinely care about making others feel included. You’re creative, proactive, and love turning a random “what if we...” idea into something that actually happens.",
+      "Some of the best parts of Blueprint happen outside our projects. Help make more of those moments happen.",
     ],
   },
   {
@@ -158,13 +165,35 @@ const EXECUTIVE_TEAM: RoleItem[] = [
     responsibilities: [
       "Exploring, establishing, and maintaining partnerships with third-parties (other clubs, sponsors, etc). Note: non-profits are not included in this list — for that, see VP Scoping.",
       "Turn these partnerships into potential project and member pipelines or as avenues for interfacing with the community.",
-      "Collaborate with other Events Directors and Internal Directors to run events and organize initiatives to improve our brand.",
+      "Collaborate with other Events Directors to run events and organize initiatives to improve our brand.",
       "Liaise with other Blueprint chapters.",
     ],
     keyTraits: [
       "Confident, professional communicator with a keen eye for polish, able to represent UW Blueprint well in public-facing settings.",
       "Relationship-oriented and proactive, with the ability to initiate, grow, and maintain long-term partnerships with external stakeholders (tech companies, other chapters, and fellow students).",
       "Organized and dependable, with the ability to manage multiple partnerships, initiatives, and social channels in parallel.",
+    ],
+  },
+  {
+    title: "Partnerships Director",
+    tagline: "Build relationships that build impact.",
+    description: [
+      "You’ll help connect Blueprint with the people, companies, and organizations that can take our impact even further.",
+      "From industry sponsors to tech companies to community partners, you’ll help create relationships that open doors for our members, strengthen our events, and support the work we’re doing.",
+      "Partnerships aren’t just about getting logos on a slide. They’re about finding people who believe in what we’re building and creating opportunities that are truly valuable for everyone involved.",
+    ],
+    responsibilitiesHeading: "What you’ll do",
+    responsibilities: [
+      "Identify and reach out to potential sponsors and partners that align with Blueprint’s mission.",
+      "Help secure sponsorships, resources, and in-kind support for Blueprint’s events, initiatives, and operations.",
+      "Build and maintain relationships with industry professionals, companies, and community organizations.",
+      "Develop partnership/sponsorship proposals and pitches that clearly communicate Blueprint’s value and opportunities for collaboration.",
+      "Work with other Blueprint teams to bring partnerships to life through events, workshops, mentorship, and other initiatives.",
+      "Help manage partner communications, follow-ups, and deliverables to create strong, long-term relationships.",
+    ],
+    closing: [
+      "You might be a fit if you’re outgoing, resourceful, and genuinely enjoy meeting new people. You’re comfortable reaching out to someone you’ve never met, can communicate ideas persuasively, and love finding opportunities where everyone wins.",
+      "The right relationships can open doors we didn’t even know existed. Help us build them.",
     ],
   },
   {
@@ -218,11 +247,34 @@ const EXECUTIVE_TEAM: RoleItem[] = [
     ],
   },
   {
+    title: "Growth Director",
+    tagline: "Get more people talking about Blueprint.",
+    description: [
+      "There’s a lot happening at Blueprint worth sharing. Incredible people, meaningful projects, exciting events, and stories that deserve to reach far beyond the people already in our community. You’ll help make that happen.",
+      "Working alongside our VP Growth and the rest of the Growth team, you’ll help shape how Blueprint tells its story, connects with new audiences, and grows its presence on campus and beyond. From managing our social media and creating engaging content to launching creative campaigns and experimenting with unconventional growth ideas, you’ll turn everything we’re building into something people actually want to follow, share, and be part of.",
+      "Think storytelling, social media, content experiments, campus activations, creative campaigns, and whatever else you think could help more people discover Blueprint.",
+    ],
+    responsibilitiesHeading: "What you’ll do",
+    responsibilities: [
+      "Plan, write, and manage engaging content across Blueprint’s social media platforms, newsletters, and other marketing channels.",
+      "Develop content calendars and execute creative campaigns that showcase Blueprint’s projects, people, events, achievements, and community impact.",
+      "Collaborate with Graphic Design, Events, and other teams to bring campaigns to life and create cohesive, compelling content across platforms.",
+      "Help maintain Blueprint’s brand voice and ensure our messaging is consistent, authentic, and resonates with our audiences.",
+      "Brainstorm and execute growth experiments to expand Blueprint’s reach, visibility, and engagement, both on campus and beyond.",
+      "Identify new audiences, communities, and opportunities to get Blueprint in front of people who haven’t discovered us yet.",
+      "Track content and campaign performance, understand what resonates, and use those insights to improve our marketing and growth strategies.",
+    ],
+    closing: [
+      "You might be a fit if you’re a natural storyteller who’s constantly noticing clever marketing campaigns, viral content, and creative ways organizations get attention. You love turning ideas into engaging content, enjoy collaborating with others to bring campaigns to life, and are equal parts creative and analytical. You’re not afraid to experiment, and you’re always curious about what makes people stop scrolling, pay attention, and share something with their friends.",
+      "We’re already building things worth talking about. Help make sure more people hear about them.",
+    ],
+  },
+  {
     title: "Graphic Designer",
     description:
       "The Graphic Designer will support Events Directors and the design team to create visual assets for marketing and project teams.",
     responsibilities: [
-      "Work closely with Marketing Directors to create effective cross-platform marketing for Blueprint.",
+      "Work closely with Growth Directors to create effective cross-platform marketing for Blueprint.",
       "Build and support UW Blueprint's brand through brand assets, graphics, and polished collateral (banners, website design, slideshows, etc.).",
       "Use Figma and/or other design tools to produce graphic designs, illustrations, and motion design materials.",
     ],
@@ -233,35 +285,83 @@ const EXECUTIVE_TEAM: RoleItem[] = [
     ],
   },
   {
-    title: "Marketing Director",
-    description:
-      "Collaborate with Graphic Designers and marketing team members to develop cohesive cross platform content for Blueprint.",
-    responsibilities: [
-      "Plan, write, and manage content across social platforms, newsletters, and marketing materials.",
-      "Develop content calendars and campaign ideas that highlight Blueprint's projects, events, and community impact.",
-      "Ensure messaging aligns with UW Blueprint's brand voice and overall marketing goals.",
+    title: "Photographer",
+    tagline: "Capture the moments that make Blueprint, Blueprint.",
+    description: [
+      "Some of the best parts of Blueprint happen in the moments between everything else. The excitement of launching something new, the chaos of a hackathon, the friendships forming at socials, and the people behind all the work we do.",
+      "You’ll help capture those moments and bring Blueprint’s story to life through photography.",
+      "From major events to candid behind-the-scenes moments, your photos will help us document our community, showcase the people who make it special, and give others a glimpse of what being part of Blueprint actually feels like.",
     ],
-    keyTraits: [
-      "Strong storyteller who knows how to turn ideas into engaging content.",
-      "Naturally curious about what performs well on social media and always looking for creative angles.",
-      "Enjoys collaborating with designers and teammates to bring campaigns to life.",
+    responsibilitiesHeading: "What you’ll do",
+    responsibilities: [
+      "Photograph Blueprint events, socials, workshops, recruitment initiatives, and other community experiences.",
+      "Capture a mix of candid moments, portraits, group shots, and event highlights that reflect Blueprint’s energy and personality.",
+      "Edit and deliver high-quality photos for use across our website, social media, marketing materials, and internal channels.",
+      "Collaborate with Growth and Graphic Design to create visual content that supports campaigns and storytelling.",
+      "Help build and organize a collection of photos that documents Blueprint’s people, projects, and milestones.",
+      "Bring your own creative perspective to how we capture and represent the Blueprint community.",
+    ],
+    closing: [
+      "You might be a fit if you love telling stories through photos, have an eye for the moments other people might miss, and enjoy capturing people being themselves. You’re comfortable shooting in dynamic environments, know your way around a camera and editing software, and care about creating photos that feel authentic.",
+      "The best memories deserve more than a blurry group photo. Help us capture them.",
+    ],
+  },
+  {
+    title: "Videographer",
+    tagline: "Bring Blueprint’s story to life.",
+    description: [
+      "A photo can capture a moment. A great video can make someone feel like they were there.",
+      "You’ll help tell the stories behind Blueprint through video, from the energy of our events and the people who make our community special to the projects we’re building and the impact we’re creating.",
+      "Whether it’s a cinematic event recap, a quick social media reel, a member spotlight, or a completely new creative concept, you’ll help turn what’s happening at Blueprint into content that people want to watch and share.",
+    ],
+    responsibilitiesHeading: "What you’ll do",
+    responsibilities: [
+      "Film Blueprint events, socials, workshops, projects, and behind-the-scenes moments.",
+      "Edit engaging videos for social media, recruitment campaigns, event recaps, and other Blueprint initiatives.",
+      "Develop creative video concepts, from short-form reels and interviews to storytelling-driven features.",
+      "Collaborate with Growth to create videos that support Blueprint’s brand and outreach.",
+      "Take ownership of the video production process, including planning shots, capturing footage, editing, and delivering final content.",
+      "Experiment with different filming styles, editing techniques, and storytelling formats to make our content more engaging.",
+    ],
+    closing: [
+      "You might be a fit if you love turning raw footage into compelling stories, have a good eye for composition and pacing, and constantly find yourself thinking about how something could look as a video. You’re creative, detail-oriented, and excited to experiment with different ways of bringing ideas to life.",
+      "There’s so much happening at Blueprint that deserves to be seen. Help us tell those stories.",
     ],
   },
 ];
 
 const PROJECT_TEAM: RoleItem[] = [
   {
-    title: "Project Developer",
+    title: "Product Manager",
     description:
-      "The Project Developer is an individual contributor responsible for building and delivering features on the project. They collaborate with the team to write quality code, grow their technical skills, and contribute to the overall success of the project.",
+      "The Product Manager will be responsible for managing the delivery of a digital product to the NPO partner. This involves scoping features, iterating on feedback, and maintaining communications with the NPO.",
     responsibilities: [
-      "Write, test, and maintain code in line with the team's best practices and technical standards.",
-      "Participate in code reviews, both giving and receiving feedback to improve code quality and personal growth.",
-      "Collaborate with the Technical Lead and other developers to break down tasks, estimate work, and meet project milestones.",
-      "Communicate progress, blockers, and questions proactively during team meetings and check-ins.",
-      "Continuously learn and develop technical skills, taking advantage of mentorship from the Technical Lead and other senior members.",
+      "Own product definition and design execution: own feature definition from idea to delivery. Partner with designers to scope features, shape core flows, and prototype solutions. Work with the technical lead (engineering manager) to evaluate trade-offs, answer product questions, and make final build decisions.",
+      "Build the client relationship and project direction: serve as the primary client lead. Run bi-weekly demos, present work, and gather feedback. Set clear expectations and guide product direction in partnership with the client.",
+      "Build team culture: help create a positive and connected team environment. Build strong relationships with teammates. Host socials, bring energy to meetings, and promote a fun team culture.",
     ],
-    note: "Open to all experience levels; a great opportunity to gain hands-on experience in a team setting.",
+    link: {
+      href: "https://uwblueprint.medium.com/member-spotlight-sophia-zhu-pm-omhs-a-deep-dive-into-managing-tradeoffs-c56a14840ef3",
+      label: "Member Spotlight — Product Manager",
+    },
+    note: "PMs at Blueprint primarily work with designers and technical leads (engineering managers). If you have a more eng heavy background, also consider checking out the technical lead role as well.",
+  },
+  {
+    title: "Technical Lead",
+    description:
+      "The Technical Lead is responsible for leading the team and driving the technical direction of the project, providing support and mentorship to developers on the team and working with the product manager to run the team effectively.",
+    responsibilities: [
+      "Organizing best code practices, performing code reviews, mentoring developers, planning tasks, making key technical decisions and software architecture design.",
+      "Provide leadership, mentorship, and project execution skills as the overall success of the team is largely self guided.",
+      "May write code as part of their responsibilities, but the focus of the role is on providing technical guidance and supporting the team.",
+      "Work closely with the Product Manager around planning and non-profit requirements as well as participate in non-profit meetings.",
+      "Regularly meet with the VP Engineering for check-ins, assistance in any of their responsibilities and to answer any TL related questions.",
+    ],
+    link: {
+      href: "https://medium.com/uw-blueprint/member-spotlight-project-lead-anne-chung-1ca9f22c9db3",
+      label: "Member Spotlight — Project Lead",
+    },
+    note: "Generally a senior, internal-hire preferred role.",
   },
   {
     title: "Product Designer",
@@ -284,6 +384,41 @@ const PROJECT_TEAM: RoleItem[] = [
     note: "Having a portfolio or examples of previous design work is strongly encouraged to help showcase your experience and/or interests.",
   },
   {
+    title: "Developer",
+    description:
+      "The Developer is an individual contributor responsible for building and delivering features on the project. They collaborate with the team to write quality code, grow their technical skills, and contribute to the overall success of the project.",
+    responsibilities: [
+      "Write, test, and maintain code in line with the team's best practices and technical standards.",
+      "Participate in code reviews, both giving and receiving feedback to improve code quality and personal growth.",
+      "Collaborate with the Technical Lead and other developers to break down tasks, estimate work, and meet project milestones.",
+      "Communicate progress, blockers, and questions proactively during team meetings and check-ins.",
+      "Continuously learn and develop technical skills, taking advantage of mentorship from the Technical Lead and other senior members.",
+    ],
+    note: "Open to all experience levels; a great opportunity to gain hands-on experience in a team setting.",
+  },
+  {
+    title: "Forward Deployed Engineer",
+    tagline: "Build what makes an impact.",
+    description: [
+      "You’ll work at the intersection of engineering, product, and real-world problem-solving, turning messy challenges into solutions that actually work.",
+      "At Blueprint, we partner with nonprofit organizations to build technology that helps them do more of what matters, but real-world problems rarely come with a written spec. You’ll work closely with stakeholders to understand their challenges, figure out what’s worth building, and bring solutions to life.",
+      "Think of yourself as part engineer, part product thinker, and part problem-solver. You’ll move between understanding users, prototyping ideas, writing code, and getting things into people’s hands.",
+    ],
+    responsibilitiesHeading: "What you’ll do",
+    responsibilities: [
+      "Work directly with nonprofit partners to understand their workflows, challenges, and technical needs.",
+      "Translate ambiguous problems into clear requirements, practical solutions, and actionable implementation plans.",
+      "Build and deploy technical solutions, from full-stack applications to automations and AI-powered workflows.",
+      "Prototype quickly, gather feedback from real users, and iterate toward solutions that deliver meaningful impact.",
+      "Make thoughtful technical tradeoffs, balancing speed, scalability, maintainability, and the needs of the people using what you build.",
+      "Collaborate across engineering, product, and design to turn ideas into reliable, usable products.",
+    ],
+    closing: [
+      "You might be a fit if you love building things, enjoy talking to users as much as writing code, and get excited by problems where nobody knows exactly what the solution should look like yet. You’re resourceful, comfortable with ambiguity, and care more about solving the right problem than using the fanciest technology.",
+      "The best solutions don’t start with perfect requirements. They start with people who know how to figure things out.",
+    ],
+  },
+  {
     title: "DesignOps",
     description:
       "The DesignOps role focuses on maintaining design quality, consistency, and scalability across all Blueprint projects. They act as a bridge between design, product, and development by supporting teams after design handoff. This is done by addressing small UX/UI issues, refining design systems, and ensuring best practices are upheld through implementation.",
@@ -298,38 +433,6 @@ const PROJECT_TEAM: RoleItem[] = [
       "Adaptable in terms of understanding when to polish, when to unblock and when to ship the designated adjustment(s).",
     ],
     note: "Generally a senior, internal-hire preferred role.",
-  },
-  {
-    title: "Technical Lead",
-    description:
-      "The Technical Lead is responsible for leading the team and driving the technical direction of the project, providing support and mentorship to developers on the team and working with the product manager to run the team effectively.",
-    responsibilities: [
-      "Organizing best code practices, performing code reviews, mentoring developers, planning tasks, making key technical decisions and software architecture design.",
-      "Provide leadership, mentorship, and project execution skills as the overall success of the team is largely self guided.",
-      "May write code as part of their responsibilities, but the focus of the role is on providing technical guidance and supporting the team.",
-      "Work closely with the Product Manager around planning and non-profit requirements as well as participate in non-profit meetings.",
-      "Regularly meet with the VP Engineering for check-ins, assistance in any of their responsibilities and to answer any TL related questions.",
-    ],
-    link: {
-      href: "https://medium.com/uw-blueprint/member-spotlight-project-lead-anne-chung-1ca9f22c9db3",
-      label: "Member Spotlight — Project Lead",
-    },
-    note: "Generally a senior, internal-hire preferred role.",
-  },
-  {
-    title: "Product Manager",
-    description:
-      "The Product Manager will be responsible for managing the delivery of a digital product to the NPO partner. This involves scoping features, iterating on feedback, and maintaining communications with the NPO.",
-    responsibilities: [
-      "Own product definition and design execution: own feature definition from idea to delivery. Partner with designers to scope features, shape core flows, and prototype solutions. Work with the technical lead (engineering manager) to evaluate trade-offs, answer product questions, and make final build decisions.",
-      "Build the client relationship and project direction: serve as the primary client lead. Run bi-weekly demos, present work, and gather feedback. Set clear expectations and guide product direction in partnership with the client.",
-      "Build team culture: help create a positive and connected team environment. Build strong relationships with teammates. Host socials, bring energy to meetings, and promote a fun team culture.",
-    ],
-    link: {
-      href: "https://uwblueprint.medium.com/member-spotlight-sophia-zhu-pm-omhs-a-deep-dive-into-managing-tradeoffs-c56a14840ef3",
-      label: "Member Spotlight — Product Manager",
-    },
-    note: "PMs at Blueprint primarily work with designers and technical leads (engineering managers). If you have a more eng heavy background, also consider checking out the technical lead role as well.",
   },
 ];
 

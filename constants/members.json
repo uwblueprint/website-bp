@@ -110,7 +110,7 @@
     },
     {
       "name": "Ashvin Ramgoolam",
-      "role": "vp internals",
+      "role": "vp internal logistics",
       "term": 1245,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FAshvin_Ramgoolam_Internal.png?alt=media&token=b08788bf-72ff-427a-b04b-bb9c4fb0c59c"
@@ -194,7 +194,7 @@
     },
     {
       "name": "Sean Yao",
-      "role": "internal director",
+      "role": "culture director",
       "term": 1245,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FS26HEADSHOTS%2FETEAM_Sean%20Y.png?alt=media&token=776ef333-87e7-4ad2-82e3-d5c3df2c46b6"
@@ -229,7 +229,7 @@
     },
     {
       "name": "Gloria Wang",
-      "role": "internal director",
+      "role": "culture director",
       "term": 1245,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FGloria_Wang_Internal.png?alt=media&token=fea4f50b-3675-4d06-bdae-b47b16ab443e"
@@ -264,7 +264,7 @@
     },
     {
       "name": "Aydan Nardi",
-      "role": "internal director",
+      "role": "culture director",
       "term": 1245,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FAydan_Nardi_InternalDirector.png?alt=media&token=8016d6bc-e1d7-481d-a666-f8d4a71190d3"
@@ -323,7 +323,7 @@
       "role": "product manager",
       "term": 1245,
       "teams": ["hafb"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fdefault.png?alt=media&token=fe95cc90-ba2b-4c04-a808-0f903cc8b519"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FAmanda_Xu_PM.png?alt=media&token=0e7fb16c-0143-4907-ab58-bfe84d07fecc"
     },
     {
       "name": "Daphne Huang",
@@ -806,7 +806,7 @@
       "role": "vp culture",
       "term": 1245,
       "teams": ["community"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FChung_He_VPCulture.png?alt=media&token=64bed7e1-0cb3-4c6c-bbff-5a1f6a872446"
+      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FChung_He_VPCulture.png?alt=media&token=d8bc4b8d-4c24-488c-8455-89a2ed29320e"
     },
     {
       "name": "Krishna Nigam",
@@ -5730,7 +5730,7 @@
     },
     {
       "name": "Debra Chemutai",
-      "role": "vp internals",
+      "role": "vp internal",
       "term": 1219,
       "teams": ["executive"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fspring2021headshots%2FDebra%20Chemutai.jpeg?alt=media&token=46042e77-4cda-4f0b-b697-697f9a7da011"
@@ -6510,7 +6510,7 @@
     },
     {
       "name": "Yulia Li",
-      "role": "vp internals",
+      "role": "vp internal",
       "term": 1199,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Ff19headshots%2FF19_COMPRESSED-12.JPG?alt=media&token=891b037b-fbde-46fd-876d-2f4e2c12fe08",
@@ -6621,7 +6621,7 @@
     },
     {
       "name": "Joanna Chen",
-      "role": "vp internals",
+      "role": "vp internal",
       "term": 1198,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2019headshots%2Fcompressed%2FJoanna.jpg?alt=media&token=9869ad6d-c08a-4811-bb13-9099543c4fd1"
@@ -6768,7 +6768,7 @@
     },
     {
       "name": "Kasey Fu",
-      "role": "vp internals",
+      "role": "vp internal",
       "term": 1197,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fwinter2019headshots%2Fcompressed%2FKaseyFu_VPI.jpg?alt=media&token=1d3d22e7-061e-4fd6-974f-192af613c00d"
@@ -6936,7 +6936,7 @@
     },
     {
       "name": "Brianna Hugh",
-      "role": "vp internals",
+      "role": "vp internal",
       "term": 1196,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fprofiles%2Fbrianna.jpeg?alt=media&token=d5747a93-69ff-49b7-9d99-3f1613d710e7"
@@ -6964,7 +6964,7 @@
     },
     {
       "name": "Jessica Tam",
-      "role": "vp internals",
+      "role": "vp internal",
       "term": 1196,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fprofiles%2Fjessica.jpeg?alt=media&token=54c4a789-7c36-4d72-abc7-4c6a60b836d0"
@@ -7111,7 +7111,7 @@
     },
     {
       "name": "Luisa San Martin",
-      "role": "vp internals",
+      "role": "vp internal",
       "term": 1196,
       "teams": [],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2Fprofiles%2Fluisa.jpeg?alt=media&token=23c4f645-9440-409a-99bc-e5a9cc2004e3"

@@ -1,3 +1,4 @@
+import MultiSelectInput from "@components/common/MultiSelectInput";
 import SelectInput from "@components/common/SelectInput";
 import { Field, useFormikContext } from "formik";
 import { FC } from "react";
@@ -18,6 +19,8 @@ const BasicInfo: FC<Props> = ({ values, readOnly }: Props) => {
     "Word of mouth",
     "Clubs fair",
     "Events",
+    "Blueprint Panel Night",
+    "Blueprint Open House",
     "Other",
   ];
 
@@ -114,10 +117,15 @@ const BasicInfo: FC<Props> = ({ values, readOnly }: Props) => {
             <br className="md:block hidden" />
           </>
         )}
-        <SelectInput
+        <MultiSelectInput
           id="heardFrom"
-          labelText="Where did you hear about us?"
-          value={values.heardFrom}
+          labelText="Where did you hear about us? Select all that apply."
+          // Applications before W27 stored a single string.
+          value={
+            typeof values.heardFrom === "string"
+              ? [values.heardFrom]
+              : values.heardFrom
+          }
           required
           readOnly={readOnly}
           options={SELECT_SOURCES}
