@@ -33,6 +33,9 @@ const RENAMED_ROLES: Record<string, string> = {
   "External Director": "Events Director",
   "Content Strategist": "Marketing Director",
   "Sponsorships Director": "Partnerships Director",
+  "VP Project Scoping": "VP Scoping",
+  "Project Developer": "Developer",
+  "Design Ops": "DesignOps",
 };
 const normalizeRole = (role: string) => RENAMED_ROLES[role] ?? role;
 

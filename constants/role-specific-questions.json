@@ -15,7 +15,7 @@
   },
   {
     "id": "14",
-    "role": "VP Project Scoping",
+    "role": "VP Scoping",
     "questions": [
       {
         "question": "How do you know whether a non-profit has a goal that resonates with Blueprint?",
@@ -100,7 +100,7 @@
   },
   {
     "id": "1",
-    "role": "Project Developer",
+    "role": "Developer",
     "questions": [
       {
         "question": "Which areas of a project are you interested in working in?",
@@ -145,7 +145,7 @@
   },
   {
     "id": "9",
-    "role": "Design Ops",
+    "role": "DesignOps",
     "questions": [
       {
         "question": "Tell us about your product design experience. Attach a link to your portfolio, if you have one.",

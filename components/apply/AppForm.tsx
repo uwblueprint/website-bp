@@ -70,7 +70,7 @@ export type AppFormValues = {
   academicYear?: string;
   resume: File | null;
   resumeUrl: string;
-  heardFrom: string;
+  heardFrom: string[];
   timesApplied: string;
   pronouns: string;
   pronounsSpecified: string;
@@ -110,7 +110,7 @@ const appFormInitialValues: AppFormValues = {
   academicYear: undefined,
   resume: null,
   resumeUrl: "",
-  heardFrom: "",
+  heardFrom: [],
   timesApplied: "",
   pronouns: "",
   pronounsSpecified: "",
