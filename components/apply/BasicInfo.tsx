@@ -35,7 +35,8 @@ const BasicInfo: FC<Props> = ({ values, readOnly }: Props) => {
     "This is my first time!",
     "Once",
     "Twice",
-    "3 or more",
+    "Thrice",
+    "4 or more",
   ];
 
   const SELECT_PRONOUNS = [
@@ -109,7 +110,9 @@ const BasicInfo: FC<Props> = ({ values, readOnly }: Props) => {
                 accept="application/pdf"
                 name="resume"
                 required
-                className="mt-2"
+                // Tailwind v4's preflight strips the native file button, so
+                // restore it. Only the button takes clicks, not the filename text.
+                className="mt-2 pointer-events-none file:[all:revert] file:pointer-events-auto!"
                 onChange={(e) => {
                   if (e.currentTarget.files) {
                     formikProps.setFieldValue(

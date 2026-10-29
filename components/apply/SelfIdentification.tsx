@@ -46,7 +46,7 @@ const APPLICABLE_COND = [
 const SelfIdentificationForm: FC<Props> = ({ values }: Props) => {
   return (
     <section className="grid gap-3 mb-12">
-      <h4 className="text-blue-100"> Voluntary Self Identification Form</h4>
+      <h4 className="text-blue-100"> Voluntary Self-Identification Form</h4>
       <p className="text-charcoal-500 mb-4">
         {" "}
         This section is completely optional. This information will be greatly
