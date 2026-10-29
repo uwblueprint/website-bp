@@ -34,7 +34,7 @@ export const INVITE_DATE = "around a week after applications close";
  * Final decision date
  * Format: MMM DD
  */
-export const FINAL_DECISION_DATE = "late November or early December";
+export const FINAL_DECISION_DATE = "early to mid-December";
 
 // Term Blueprint is currently recruiting for (1 term after the current term)
 export const APPLICATION_TERM = "Winter 2027";
