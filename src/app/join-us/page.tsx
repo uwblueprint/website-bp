@@ -48,7 +48,7 @@ const JOIN_PROCESS_STEPS: ProcessStep[] = [
   {
     index: "04",
     title: "Final decision",
-    description: `We'll let you know our final decision around ${FINAL_DECISION_DATE}. If you get an offer to join us for ${APPLICATION_TERM}, we'd appreciate it if you replied as soon as possible to let us know if you'd like to accept! Once you've confirmed, we'll get you started with onboarding on December 20.`,
+    description: `We'll share our final decision in ${FINAL_DECISION_DATE}. If you receive an offer to join us for ${APPLICATION_TERM}, we'll ask you to confirm your acceptance as soon as you can. After you've accepted, you'll receive access to your accounts and tools in mid-December, with onboarding calls beginning on December 21.`,
   },
 ];
 
