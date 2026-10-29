@@ -14,15 +14,22 @@ const BasicInfo: FC<Props> = ({ values, readOnly }: Props) => {
   const formikProps = useFormikContext();
 
   const SELECT_SOURCES = [
-    "Facebook",
     "Instagram",
-    "Word of mouth",
-    "Clubs fair",
-    "Events",
-    "Blueprint Panel Night",
+    "LinkedIn",
+    "Medium",
+    "Word of Mouth",
     "Blueprint Open House",
+    "Blueprint Panel Night",
+    "Other Blueprint Events",
+    "Waterloo Clubs Fair",
     "Other",
   ];
+
+  // Applications before W27 stored a single string.
+  const heardFrom =
+    typeof values.heardFrom === "string"
+      ? [values.heardFrom]
+      : values.heardFrom ?? [];
 
   const SELECT_APPNUM = [
     "This is my first time!",
@@ -120,15 +127,18 @@ const BasicInfo: FC<Props> = ({ values, readOnly }: Props) => {
         <MultiSelectInput
           id="heardFrom"
           labelText="Where did you hear about us? Select all that apply."
-          // Applications before W27 stored a single string.
-          value={
-            typeof values.heardFrom === "string"
-              ? [values.heardFrom]
-              : values.heardFrom
-          }
+          value={heardFrom}
           required
           readOnly={readOnly}
-          options={SELECT_SOURCES}
+          // Keep answers from options that have since been removed visible.
+          options={
+            readOnly
+              ? [
+                  ...SELECT_SOURCES,
+                  ...heardFrom.filter((s) => !SELECT_SOURCES.includes(s)),
+                ]
+              : SELECT_SOURCES
+          }
         />
         <br className="md:block hidden" />
         <SelectInput
