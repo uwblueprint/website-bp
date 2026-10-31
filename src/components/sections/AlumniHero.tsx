@@ -22,7 +22,7 @@ export function AlumniHero() {
 
           <div className="flex flex-col gap-1.5 text-lg">
             <p className="text-[var(--primary-light)]">
-              700+ students have contributed to our mission over the years.
+              800+ students have contributed to our mission over the years.
               Here's them all{" <3"}
             </p>
           </div>
