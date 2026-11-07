@@ -229,8 +229,8 @@
     },
     {
       "name": "Gloria Wang",
-      "role": "culture director",
-      "term": 1245,
+      "role": "internal director",
+      "term": 1244,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FF26HEADSHOTS%2Fcropped%2FGloria_Wang_Internal.png?alt=media&token=fea4f50b-3675-4d06-bdae-b47b16ab443e"
     },
@@ -1017,13 +1017,6 @@
       "term": 1244,
       "teams": ["community"],
       "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FS26HEADSHOTS%2FETEAM_Enya%20Lau.png?alt=media&token=7380a8a2-d729-44a6-858f-6f185d1702c4"
-    },
-    {
-      "name": "Gloria Wang",
-      "role": "internal director",
-      "term": 1244,
-      "teams": ["community"],
-      "img": "https://firebasestorage.googleapis.com/v0/b/uw-blueprint.appspot.com/o/img%2FS26HEADSHOTS%2FETEAM_Gloria%20Wang.png?alt=media&token=829bb4f1-5da2-4c6b-920d-fb8f35013820"
     },
     {
       "name": "Ibrahim Ma",
