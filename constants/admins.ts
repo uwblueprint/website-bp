@@ -30,6 +30,7 @@ export const ADMIN_EMAILS: string[] = [
   "andrewlaw@uwblueprint.org",
   "sophiamao@uwblueprint.org",
   "prachishah@uwblueprint.org",
+  "rohan.saha027@gmail.com"
 ];
 
 export const isAdminEmail = (email: string | null | undefined): boolean =>
