@@ -41,5 +41,18 @@ export const ADMIN_EMAILS: string[] = [
   "oliviachan@uwblueprint.org",
 ];
 
-export const isAdminEmail = (email: string | null | undefined): boolean =>
-  !!email && ADMIN_EMAILS.includes(email.toLowerCase());
+/**
+ * When true, only ADMIN_EMAILS can sign in. When false, any
+ * @uwblueprint.org account can sign in (matches the Realtime Database
+ * read rule, which already allows any verified @uwblueprint.org email).
+ */
+export const ADMIN_ALLOWLIST_ENABLED = false;
+
+const BLUEPRINT_DOMAIN = "@uwblueprint.org";
+
+export const isAdminEmail = (email: string | null | undefined): boolean => {
+  if (!email) return false;
+  const normalized = email.toLowerCase();
+  if (!ADMIN_ALLOWLIST_ENABLED) return normalized.endsWith(BLUEPRINT_DOMAIN);
+  return ADMIN_EMAILS.includes(normalized);
+};
