@@ -19,8 +19,16 @@ export function HeroBottomContent() {
       {/* Columns 11–12 */}
       <FadeUp
         index={1}
-        className="col-span-12 flex lg:col-span-2 lg:col-start-11 lg:justify-end"
+        className="col-span-12 flex gap-4 lg:col-span-4 lg:col-start-9 lg:justify-end"
       >
+        <Link
+          href="/join-us"
+          className={cn(
+            buttonVariants({ variant: "outline-light", size: "default" }),
+          )}
+        >
+          join
+        </Link>
         <Link
           href="/nonprofits"
           className={cn(
