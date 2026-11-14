@@ -2,8 +2,12 @@ import React from "react";
 import Image from "next/image";
 
 import { FadeUp } from "@/components/ui/FadeUp";
+import { buttonVariants } from "@/components/ui/button-variants";
+import { ArrowUpRight } from "@/components/ui/icons";
+import { Tag } from "@/components/ui/Tag";
 import TextLinkButton from "@/components/ui/TextLinkButton";
 import { TestimonialQuoteBody } from "@/lib/testimonial-quote";
+import { cn } from "@/lib/utils";
 interface ProjectHighlightProps {
   id: string;
   highlightImage: string;
@@ -58,56 +62,45 @@ export function ProjectHighlight({
             />
           </div>
 
-          {/* Metadata row: timeline (3) | spacer (1) | location (2) | links (2) */}
+          {/* Metadata row: spacer (4) | location (2) | links (2) */}
           {/* Mobile: single column stack. md: 8-column row. */}
-          <div className="grid grid-cols-1 gap-y-2 md:grid-cols-8 md:gap-x-0 md:gap-y-0">
-            {/* timeline — 3 cols */}
-            <p className="text-sm text-[var(--secondary-dark)] md:col-span-3">
-              {timeline}
-            </p>
+          {(location || website) && (
+            <div className="grid grid-cols-1 gap-y-2 md:grid-cols-8 md:gap-x-0 md:gap-y-0">
+              {/* spacer — 4 cols (desktop only) */}
+              <div className="hidden md:col-span-4 md:block" aria-hidden />
 
-            {/* spacer — 1 col (desktop only) */}
-            <div className="hidden md:col-span-1 md:block" aria-hidden />
+              {/* location — 2 cols */}
+              <div className="md:col-span-2">
+                {location ? (
+                  <p className="text-sm text-[var(--secondary-dark)]">
+                    {location}
+                  </p>
+                ) : null}
+              </div>
 
-            {/* location — 2 cols */}
-            <div className="md:col-span-2">
-              {location ? (
-                <p className="text-sm text-[var(--secondary-dark)]">
-                  {location}
-                </p>
-              ) : null}
+              {/* links — 2 cols, right-aligned on desktop */}
+              <div className="flex flex-col items-start gap-1 md:col-span-2 md:items-end md:gap-[4px]">
+                {website && (
+                  <TextLinkButton
+                    href={
+                      website.startsWith("http")
+                        ? website
+                        : `https://${website}`
+                    }
+                    variant="dark"
+                    size="sm"
+                  >
+                    Visit Website
+                  </TextLinkButton>
+                )}
+              </div>
             </div>
-
-            {/* links — 2 cols, right-aligned on desktop */}
-            <div className="flex flex-col items-start gap-1 md:col-span-2 md:items-end md:gap-[4px]">
-              {website && (
-                <TextLinkButton
-                  href={
-                    website.startsWith("http") ? website : `https://${website}`
-                  }
-                  variant="dark"
-                  size="sm"
-                >
-                  Visit Website
-                </TextLinkButton>
-              )}
-              {repoUrl && (
-                <TextLinkButton href={repoUrl} variant="dark" size="sm">
-                  Project Repo
-                </TextLinkButton>
-              )}
-              {caseStudyUrl && (
-                <TextLinkButton href={caseStudyUrl} variant="dark" size="sm">
-                  Read Case Study
-                </TextLinkButton>
-              )}
-            </div>
-          </div>
+          )}
 
           <div className="flex flex-col gap-8 md:gap-16">
             <div className="grid w-full grid-cols-8 gap-0">
               <div className="col-span-12 md:col-span-3 flex flex-col gap-6 pb-8 md:pb-0">
-                <p className="text-md text-[var(--primary-dark)]">
+                <p className="text-md text-[var(--secondary-dark)]">
                   About the nonprofit
                 </p>
                 <div className="text-sm text-[var(--primary-dark)]">
@@ -118,7 +111,7 @@ export function ProjectHighlight({
               <div className="hidden md:block md:col-span-1" aria-hidden />
 
               <div className="col-span-12 md:col-span-4 flex flex-col gap-6">
-                <p className="text-md text-[var(--primary-dark)]">
+                <p className="text-md text-[var(--secondary-dark)]">
                   Our solution
                 </p>
                 <div className="text-sm text-[var(--primary-dark)]">
@@ -129,7 +122,7 @@ export function ProjectHighlight({
 
             {testimonial && (
               <div className="flex flex-col gap-6">
-                <p className="text-md text-[var(--primary-dark)]">
+                <p className="text-md text-[var(--secondary-dark)]">
                   Testimonial
                 </p>
                 <blockquote className="text-sm text-[var(--primary-dark)]">
@@ -137,6 +130,38 @@ export function ProjectHighlight({
                 </blockquote>
               </div>
             )}
+
+            <div className="flex flex-wrap gap-4">
+              <Tag>{timeline}</Tag>
+              {repoUrl && (
+                <a
+                  href={repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
+                    buttonVariants({ variant: "outline-dark", size: "md" }),
+                    "gap-2",
+                  )}
+                >
+                  Project repo
+                  <ArrowUpRight aria-hidden />
+                </a>
+              )}
+              {caseStudyUrl && (
+                <a
+                  href={caseStudyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
+                    buttonVariants({ variant: "outline-dark", size: "md" }),
+                    "gap-2",
+                  )}
+                >
+                  Read case study
+                  <ArrowUpRight aria-hidden />
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </FadeUp>

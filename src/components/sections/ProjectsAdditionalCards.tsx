@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { FadeUp } from "@/components/ui/FadeUp";
 import { ArrowUpRight } from "@/components/ui/icons";
+import { Tag } from "@/components/ui/Tag";
 
 type ProjectMiniCard = {
   title: string;
@@ -92,18 +93,18 @@ export function ProjectsAdditionalCards() {
                       {card.title}
                     </h3>
 
-                    <p className="pt-4 text-sm font-roobert text-[var(--primary-dark)]">
+                    <p className="pt-4 text-sm font-roobert text-[var(--secondary-dark)]">
                       {card.about}
                     </p>
 
-                    <p className="pt-4 text-sm font-roobert text-[var(--primary-dark)]">
+                    <p className="pt-4 text-sm font-roobert text-[var(--secondary-dark)]">
                       {card.solution}
                     </p>
                   </div>
 
-                  <div className="inline-flex items-center rounded-none bg-[var(--bp-blue)] w-fit px-2 py-1 font-roobert text-sm text-[var(--primary-light)] shadow-none whitespace-nowrap mt-auto">
+                  <Tag size="sm" className="mt-auto">
                     {card.category}
-                  </div>
+                  </Tag>
                 </div>
               </Link>
             </FadeUp>
