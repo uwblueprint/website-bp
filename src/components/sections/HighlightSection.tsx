@@ -13,7 +13,7 @@ import { flushSync } from "react-dom";
 import { DraggableSticker } from "@/components/ui/DraggableSticker";
 import { cn } from "@/lib/utils";
 
-const MEGAPHONE_SRC = "/illos/megaphone.svg";
+const MEGAPHONE_SRC = "/illos/megaphone.svg?v=2";
 
 /** Visual rotation for the shared megaphone asset (four distinct angles). */
 const ILLUSTRATION_TRANSFORMS = [
