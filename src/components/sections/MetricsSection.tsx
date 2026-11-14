@@ -4,7 +4,6 @@ import { useRef } from "react";
 import Link from "next/link";
 
 import { ArrowUpRight } from "@/components/ui/icons";
-import { CornerMarks } from "@/components/ui/CornerMarks";
 import { DraggableSticker } from "@/components/ui/DraggableSticker";
 import { FadeUp } from "@/components/ui/FadeUp";
 
@@ -58,9 +57,8 @@ export function MetricsSection({ className }: { className?: string }) {
             >
               <Link
                 href={stat.href}
-                className="group group/card relative flex h-full flex-col justify-between gap-4 py-8 md:px-8 md:py-8 transition-colors duration-200 hover:bg-[var(--primary-light)]/10 lg:gap-16"
+                className="group relative flex h-full flex-col justify-between gap-4 py-8 md:px-8 md:py-8 transition-colors duration-200 hover:bg-[var(--primary-light)]/10 lg:gap-16"
               >
-                <CornerMarks on="blue" />
                 <ArrowUpRight
                   className="absolute top-4 right-4 size-5 text-[var(--primary-light)] opacity-0 transition-opacity duration-200 group-hover:opacity-100"
                   aria-hidden

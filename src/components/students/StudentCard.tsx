@@ -1,7 +1,5 @@
 import Image from "next/image";
 
-import { CornerMarks } from "@/components/ui/CornerMarks";
-
 interface StudentCardProps {
   name: string;
   role: string;
@@ -17,8 +15,7 @@ export function StudentCard({
   priority = false,
 }: StudentCardProps) {
   return (
-    <div className="group group/card relative col-span-6 p-4 transition-colors duration-200 ease-out hover:bg-[var(--off-white)] md:col-span-3 lg:col-span-2">
-      <CornerMarks on="white" />
+    <div className="group col-span-6 p-4 transition-colors duration-200 ease-out hover:bg-[var(--off-white)] md:col-span-3 lg:col-span-2">
       <div className="aspect-square overflow-hidden">
         <Image
           src={headshotSrc}

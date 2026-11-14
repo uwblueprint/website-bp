@@ -1,6 +1,5 @@
 "use client";
 
-import { CornerMarks } from "@/components/ui/CornerMarks";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { cn } from "@/lib/utils";
 
@@ -46,11 +45,7 @@ export function WhyJoin({ className }: { className?: string }) {
               className="col-span-12 min-[800px]:col-span-4"
             >
               <div className="h-full">
-                <div className="group/card relative flex h-full flex-col p-0 transition-colors duration-200 min-[800px]:p-6 min-[800px]:hover:bg-black/5">
-                  <CornerMarks
-                    on="white"
-                    className="hidden min-[800px]:block"
-                  />
+                <div className="flex h-full flex-col p-0 transition-colors duration-200 min-[800px]:p-6 min-[800px]:hover:bg-black/5">
                   <h3 className="pb-4 text-lg text-[var(--primary-dark)]">
                     {prop.title}
                   </h3>
