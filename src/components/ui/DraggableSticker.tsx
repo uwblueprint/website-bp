@@ -167,6 +167,46 @@ export function DraggableSticker({
     [],
   );
 
+  const release = useCallback(() => {
+    if (phase.current !== "drag") return;
+    if (reduceMotion) {
+      velocity.current = { x: 0, y: 0 };
+    }
+    phase.current = "glide";
+    setDragging(false);
+    startLoop();
+  }, [reduceMotion, startLoop]);
+
+  /**
+   * Track the drag on the window rather than the sticker: it trails the
+   * pointer, so a release can land outside it. Any move without the primary
+   * button held also counts as a release, so a missed pointerup can't leave
+   * the sticker stuck to the cursor.
+   */
+  useEffect(() => {
+    if (!dragging) return;
+    const onMove = (e: PointerEvent) => {
+      if ((e.buttons & 1) === 0) {
+        release();
+        return;
+      }
+      target.current = {
+        x: e.clientX - grabOffset.current.x,
+        y: e.clientY - grabOffset.current.y,
+      };
+    };
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", release);
+    window.addEventListener("pointercancel", release);
+    window.addEventListener("blur", release);
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", release);
+      window.removeEventListener("pointercancel", release);
+      window.removeEventListener("blur", release);
+    };
+  }, [dragging, release]);
+
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (e.button !== 0) return;
     e.preventDefault();
@@ -176,27 +216,6 @@ export function DraggableSticker({
     target.current = { x: x.get(), y: y.get() };
     phase.current = "drag";
     setDragging(true);
-    startLoop();
-  };
-
-  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (phase.current !== "drag") return;
-    target.current = {
-      x: e.clientX - grabOffset.current.x,
-      y: e.clientY - grabOffset.current.y,
-    };
-  };
-
-  const release = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (phase.current !== "drag") return;
-    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
-      e.currentTarget.releasePointerCapture(e.pointerId);
-    }
-    if (reduceMotion) {
-      velocity.current = { x: 0, y: 0 };
-    }
-    phase.current = "glide";
-    setDragging(false);
     startLoop();
   };
 
@@ -214,9 +233,6 @@ export function DraggableSticker({
           dragging ? "cursor-grabbing" : "cursor-grab",
         )}
         onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={release}
-        onPointerCancel={release}
       >
         {children}
       </motion.div>
