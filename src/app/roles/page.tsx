@@ -441,33 +441,6 @@ export default function RolesPage() {
     <main className="bg-[var(--primary-light)]">
       <RolesHero />
 
-      <section
-        aria-label="Introduction"
-        className="px-8 pt-16 pb-0"
-      >
-        <div className="grid w-full grid-cols-12 gap-0">
-          <div className="col-span-12 md:col-span-8 flex flex-col gap-4">
-            <p className="text-md text-[var(--secondary-dark)]">
-              While this document outlines the responsibilities for each role,
-              the continued success of Blueprint has been reliant on members
-              working cross-functionally on things they care about. If there is
-              an initiative that you would like to see through, a pain point you
-              want to address, or anything else — write up a request for
-              comments (RFC) in Notion and get started by sharing it with the
-              appropriate members.
-            </p>
-            <p className="text-md text-[var(--secondary-dark)]">
-              In addition to the responsibilities defined below, every member is
-              responsible for being an advocate for their role and being a part
-              of the next recruitment cycle for their role.
-            </p>
-            <p className="text-md text-[var(--secondary-dark)]">
-              Roles only define responsibilities. Blueprint has a flat hierarchy.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <RolesSection
         id="executive-team"
         groupName="executive team"
@@ -478,8 +451,36 @@ export default function RolesPage() {
         id="project-team"
         groupName="project team"
         roles={PROJECT_TEAM}
-        className="pt-0 pb-24"
+        className="pt-0"
       />
+
+      <section aria-label="Our belief" className="px-8 pt-0 pb-24">
+        <div className="grid w-full grid-cols-12 gap-0">
+          <h2 className="col-span-12 text-xxl lowercase text-[var(--bp-blue)] pb-12">
+            our belief
+          </h2>
+
+          <div className="col-span-12 md:col-span-8 flex flex-col gap-4">
+            <p className="text-md text-[var(--primary-dark)]">
+              While this document outlines the responsibilities for each role,
+              the continued success of Blueprint has been reliant on members
+              working cross-functionally on things they care about. If there is
+              an initiative that you would like to see through, a pain point you
+              want to address, or anything else — write up a request for
+              comments (RFC) in Notion and get started by sharing it with the
+              appropriate members.
+            </p>
+            <p className="text-md text-[var(--primary-dark)]">
+              In addition to the responsibilities defined above, every member is
+              responsible for being an advocate for their role and being a part
+              of the next recruitment cycle for their role.
+            </p>
+            <p className="text-md text-[var(--primary-dark)]">
+              Roles only define responsibilities. Blueprint has a flat hierarchy.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

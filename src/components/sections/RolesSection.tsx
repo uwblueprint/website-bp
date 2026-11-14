@@ -1,17 +1,18 @@
 "use client";
 
 import { Minus, Plus } from "@/components/ui/icons";
+import { Tag } from "@/components/ui/Tag";
 import { cn } from "@/lib/utils";
 import * as React from "react";
 
 export type RoleItem = {
   title: string;
-  // Short line shown above the description in dark text.
+  // Short line shown above the description.
   tagline?: string;
   // A single paragraph, or several paragraphs as an array.
   description: string | string[];
   responsibilities?: string[];
-  // Defaults to "Responsibilities:".
+  // Defaults to "Responsibilities".
   responsibilitiesHeading?: string;
   // Paragraphs shown after the responsibilities list.
   closing?: string[];
@@ -19,9 +20,6 @@ export type RoleItem = {
   link?: { href: string; label: string };
   note?: string;
 };
-
-// Highlighted in dark text at the start of closing paragraphs.
-const FIT_PREFIX = "You might be a fit if";
 
 function RoleRow({ role }: { role: RoleItem }) {
   const id = React.useId();
@@ -44,9 +42,7 @@ function RoleRow({ role }: { role: RoleItem }) {
 
       {open ? (
         <div id={id} className="pt-2 md:pt-0 md:px-6 pb-6 flex flex-col gap-4">
-          {role.tagline ? (
-            <p className="text-md text-[var(--primary-dark)]">{role.tagline}</p>
-          ) : null}
+          {role.tagline ? <Tag size="sm">{role.tagline}</Tag> : null}
 
           {(Array.isArray(role.description)
             ? role.description
@@ -58,10 +54,10 @@ function RoleRow({ role }: { role: RoleItem }) {
           ))}
 
           {role.responsibilities && role.responsibilities.length > 0 ? (
-            <div>
-              <p className="text-md text-[var(--primary-dark)] pb-2">
-                {role.responsibilitiesHeading ?? "Responsibilities:"}
-              </p>
+            <div className="flex flex-col gap-4 pt-2">
+              <Tag size="sm">
+                {role.responsibilitiesHeading ?? "Responsibilities"}
+              </Tag>
               <ul className="flex flex-col gap-1 list-disc list-outside ml-5">
                 {role.responsibilities.map((item) => (
                   <li
@@ -77,24 +73,13 @@ function RoleRow({ role }: { role: RoleItem }) {
 
           {role.closing?.map((paragraph) => (
             <p key={paragraph} className="text-md text-[var(--secondary-dark)]">
-              {paragraph.startsWith(FIT_PREFIX) ? (
-                <>
-                  <span className="text-[var(--primary-dark)]">
-                    {FIT_PREFIX}
-                  </span>
-                  {paragraph.slice(FIT_PREFIX.length)}
-                </>
-              ) : (
-                paragraph
-              )}
+              {paragraph}
             </p>
           ))}
 
           {role.keyTraits && role.keyTraits.length > 0 ? (
-            <div>
-              <p className="text-md text-[var(--primary-dark)] pb-2">
-                Key traits:
-              </p>
+            <div className="flex flex-col gap-4 pt-2">
+              <Tag size="sm">Key traits</Tag>
               <ul className="flex flex-col gap-1 list-disc list-outside ml-5">
                 {role.keyTraits.map((trait) => (
                   <li
@@ -113,7 +98,7 @@ function RoleRow({ role }: { role: RoleItem }) {
               href={role.link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-md text-[var(--bp-blue)] underline decoration-from-font underline-offset-[0.2em] transition-colors hover:text-[var(--primary-dark)] w-fit"
+              className="text-md text-[var(--bp-blue)] underline decoration-from-font underline-offset-[0.2em] transition-opacity hover:opacity-70 w-fit"
             >
               {role.link.label}
             </a>
