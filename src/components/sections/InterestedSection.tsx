@@ -93,29 +93,25 @@ export function InterestedSection({ className }: { className?: string }) {
           interested?
         </h2>
 
-        <div className="col-span-12 grid grid-cols-12 items-stretch gap-0 md:pt-8 text-left">
+        <div className="col-span-12 md:col-span-8 md:pt-8">
           {PANELS.map((panel, index) => (
             <FadeUp
               key={panel.key}
               index={index}
               inView
-              className="col-span-12 h-full min-[800px]:col-span-6"
+              className="pb-16 last:pb-0"
             >
-              <div className="relative block h-full rounded-none bg-white py-4 md:p-8 text-left shadow-none transition-colors duration-200 hover:bg-[var(--off-white)]">
-                <div className="relative flex h-full flex-col text-left">
-                  <div className="pb-8">
-                    <h3 className="pt-4 text-md font-roobert text-[var(--primary-dark)]">
-                      {panel.label}
-                    </h3>
+              <h3 className="text-md text-[var(--secondary-dark)] md:pb-6 md:px-6">
+                {panel.label}
+              </h3>
 
-                    <div className="pt-4 text-md font-roobert text-[var(--secondary-dark)]">
-                      {panel.body}
-                    </div>
-                  </div>
+              <div className="pt-6 pb-6 md:p-6 transition-colors duration-200 hover:bg-black/5">
+                <p className="text-md text-[var(--primary-dark)]">
+                  {panel.body}
+                </p>
 
-                  <div className="mt-auto flex flex-col gap-4 min-[800px]:flex-row">
-                    {panel.buttons}
-                  </div>
+                <div className="flex flex-col gap-4 pt-6 min-[800px]:flex-row">
+                  {panel.buttons}
                 </div>
               </div>
             </FadeUp>
