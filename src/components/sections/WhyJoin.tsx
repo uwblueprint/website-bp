@@ -1,7 +1,12 @@
 "use client";
 
+import { useRef } from "react";
+
+import { DraggableSticker } from "@/components/ui/DraggableSticker";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { cn } from "@/lib/utils";
+
+const TARGET_SRC = "/illos/target.png";
 
 const VALUE_PROPS = [
   {
@@ -22,12 +27,15 @@ const VALUE_PROPS = [
 ];
 
 export function WhyJoin({ className }: { className?: string }) {
+  const sectionRef = useRef<HTMLElement>(null);
+
   return (
     <section
+      ref={sectionRef}
       id="why-join"
       aria-label="Why join Blueprint"
       className={cn(
-        "bg-[var(--primary-light)] px-8 pt-8 pb-8 md:pt-24",
+        "relative overflow-x-clip bg-[var(--primary-light)] px-8 pt-8 pb-8 md:pt-24",
         className,
       )}
     >
@@ -58,6 +66,23 @@ export function WhyJoin({ className }: { className?: string }) {
           ))}
         </div>
       </div>
+
+      <DraggableSticker
+        containerRef={sectionRef}
+        className="absolute right-8 top-8 hidden xl:block w-[min(20vw,280px)]"
+      >
+        <div className="relative aspect-[871/794] w-full">
+          <img
+            src={TARGET_SRC}
+            alt=""
+            width={871}
+            height={794}
+            className="h-full w-full object-contain"
+            style={{ transform: "rotate(8deg)" }}
+            decoding="async"
+          />
+        </div>
+      </DraggableSticker>
     </section>
   );
 }

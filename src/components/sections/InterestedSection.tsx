@@ -1,8 +1,10 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
 
 import UnderlineToBackground from "@/components/fancy/text/underline-to-background";
+import { DraggableSticker } from "@/components/ui/DraggableSticker";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
@@ -79,12 +81,17 @@ const PANELS = [
   },
 ] as const;
 
+const AIRPLANE_SRC = "/illos/airplane.png";
+
 export function InterestedSection({ className }: { className?: string }) {
+  const sectionRef = useRef<HTMLElement>(null);
+
   return (
     <section
+      ref={sectionRef}
       aria-label="Nonprofits and students"
       className={cn(
-        "bg-[var(--primary-light)] pb-8 pt-12 text-left",
+        "relative overflow-x-clip bg-[var(--primary-light)] pb-8 pt-12 text-left",
         className,
       )}
     >
@@ -118,6 +125,23 @@ export function InterestedSection({ className }: { className?: string }) {
           ))}
         </div>
       </div>
+
+      <DraggableSticker
+        containerRef={sectionRef}
+        className="absolute right-8 top-2/5 hidden xl:block w-[min(30vw,480px)]"
+      >
+        <div className="relative aspect-[878/399] w-full">
+          <img
+            src={AIRPLANE_SRC}
+            alt=""
+            width={878}
+            height={399}
+            className="h-full w-full object-contain"
+            style={{ transform: "rotate(-12deg)" }}
+            decoding="async"
+          />
+        </div>
+      </DraggableSticker>
     </section>
   );
 }

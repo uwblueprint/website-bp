@@ -7,7 +7,7 @@ import { ArrowUpRight } from "@/components/ui/icons";
 import { DraggableSticker } from "@/components/ui/DraggableSticker";
 import { FadeUp } from "@/components/ui/FadeUp";
 
-const MEGAPHONE_SRC = "/illos/megaphone.svg";
+const CONFETTI_SRC = "/illos/confetti.png";
 
 type Stat = {
   value: string;
@@ -75,19 +75,18 @@ export function MetricsSection({ className }: { className?: string }) {
         </div>
       </div>
 
-      {/* Megaphone decoration */}
       <DraggableSticker
         containerRef={sectionRef}
-        className="absolute top-6 right-8 hidden xl:block max-w-[90%] translate-y-[72px] w-[min(44vw,240px)] sm:w-[min(40vw,312px)] md:w-[min(34vw,288px)] lg:w-[min(46vw,624px)]"
+        className="absolute top-6 right-8 hidden xl:block max-w-[90%] translate-y-[72px] w-[min(44vw,240px)] sm:w-[min(40vw,312px)] md:w-[min(34vw,288px)] lg:w-[min(36vw,480px)]"
       >
-        <div className="relative aspect-[424/330] w-full">
+        <div className="relative aspect-[933/765] w-full">
           <img
-            src={MEGAPHONE_SRC}
+            src={CONFETTI_SRC}
             alt=""
-            width={774}
-            height={602}
+            width={933}
+            height={765}
             className="h-full w-full object-contain"
-            style={{ transform: "rotate(18deg)" }}
+            style={{ transform: "rotate(6deg)" }}
             decoding="async"
           />
         </div>

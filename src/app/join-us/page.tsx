@@ -77,7 +77,7 @@ export default function JoinUsPage() {
             <img
               src="/img/illos/book.svg"
               alt=""
-              className="h-auto w-full object-contain opacity-90"
+              className="h-auto w-full object-contain"
               aria-hidden
               decoding="async"
             />
