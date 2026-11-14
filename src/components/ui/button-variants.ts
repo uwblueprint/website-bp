@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
 export const buttonVariants = cva(
-  "group/button inline-flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap select-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 font-[family-name:var(--font-roobert)] rounded-none px-6 py-3 [--btn-shade:var(--btn)] hover:[--btn-shade:color-mix(in_srgb,var(--btn)_85%,var(--btn-shade-to,black))] [--btn-tint:transparent] hover:[--btn-tint:color-mix(in_srgb,var(--btn)_15%,transparent)] transition-[transform,background-color,color,box-shadow] duration-200 ease-[cubic-bezier(0.33,1,0.68,1)] active:scale-95 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap select-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 font-[family-name:var(--font-roobert)] rounded-none px-6 py-3 [--btn-shade:var(--btn)] hover:[--btn-shade:color-mix(in_srgb,var(--btn)_85%,var(--btn-shade-to,black))] [--btn-tint:transparent] hover:[--btn-tint:color-mix(in_srgb,var(--btn)_15%,transparent)] transition-[transform,background-color,color,box-shadow] duration-200 ease-[cubic-bezier(0.33,1,0.68,1)] active:scale-95 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[0.9em]",
   {
     variants: {
       variant: {

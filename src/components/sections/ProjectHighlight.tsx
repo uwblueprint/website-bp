@@ -140,7 +140,7 @@ export function ProjectHighlight({
                   rel="noopener noreferrer"
                   className={cn(
                     buttonVariants({ variant: "outline-dark", size: "md" }),
-                    "gap-2",
+                    "gap-[0.4em]",
                   )}
                 >
                   Project repo
@@ -154,7 +154,7 @@ export function ProjectHighlight({
                   rel="noopener noreferrer"
                   className={cn(
                     buttonVariants({ variant: "outline-dark", size: "md" }),
-                    "gap-2",
+                    "gap-[0.4em]",
                   )}
                 >
                   Read case study

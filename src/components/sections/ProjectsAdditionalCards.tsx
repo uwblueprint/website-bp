@@ -78,7 +78,7 @@ export function ProjectsAdditionalCards() {
                 className="group relative block h-full rounded-none bg-white py-8 md:px-8 text-left shadow-none transition-colors duration-200 hover:bg-[var(--off-white)]"
               >
                 <ArrowUpRight
-                  className="absolute right-4 top-4 size-5 text-[var(--primary-dark)] opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                  className="absolute right-4 top-4 size-[var(--text-md)] text-[var(--primary-dark)] opacity-0 transition-opacity duration-200 group-hover:opacity-100"
                   aria-hidden
                 />
 
