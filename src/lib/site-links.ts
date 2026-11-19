@@ -36,6 +36,7 @@ export const mainNavLinks = [
   { href: "/students", label: "Students" },
   { href: "/roles", label: "Roles" },
   { href: "/join-us", label: "Join our team" },
+    { href: "/partnerships", label: "Partnerships" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
