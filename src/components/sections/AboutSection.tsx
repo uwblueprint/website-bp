@@ -2,7 +2,10 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { DraggableSticker } from "@/components/ui/DraggableSticker";
 import { cn } from "@/lib/utils";
+
+const GLOBE_SRC = "/illos/globe.png";
 
 const SECTIONS = [
   {
@@ -26,6 +29,7 @@ export function AboutSection({ className }: { className?: string }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [textAnimKey, setTextAnimKey] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const stickyRef = useRef<HTMLDivElement>(null);
   const activeIndexRef = useRef(0);
 
   const updateActive = useCallback((newIndex: number) => {
@@ -82,7 +86,7 @@ export function AboutSection({ className }: { className?: string }) {
       style={{ height: `${SECTIONS.length * 100}vh` }}
     >
       {/* Sticky inner — stays fixed to the viewport while the outer div scrolls past. */}
-      <div className="sticky top-0 h-screen overflow-hidden">
+      <div ref={stickyRef} className="sticky top-0 h-screen overflow-hidden">
         <div className="grid h-full w-full grid-cols-12 gap-0 px-8 py-8 content-between">
           {/* ── Stacked XXL headers — top left ─────────────────────────────── */}
           <div
@@ -119,6 +123,23 @@ export function AboutSection({ className }: { className?: string }) {
             {SECTIONS[activeIndex].text}
           </p>
         </div>
+
+        <DraggableSticker
+          containerRef={stickyRef}
+          className="absolute bottom-12 left-8 hidden xl:block w-[min(22vw,320px)]"
+        >
+          <div className="relative aspect-[768/702] w-full">
+            <img
+              src={GLOBE_SRC}
+              alt=""
+              width={768}
+              height={702}
+              className="h-full w-full object-contain"
+              style={{ transform: "rotate(-10deg)" }}
+              decoding="async"
+            />
+          </div>
+        </DraggableSticker>
       </div>
     </div>
   );

@@ -1,20 +1,20 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
 export const buttonVariants = cva(
-  "group/button inline-flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap select-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 font-[family-name:var(--font-roobert)] rounded-none px-6 py-3 transition-[transform,filter] duration-200 ease-[cubic-bezier(0.33,1,0.68,1)] hover:scale-97 hover:brightness-[0.97] active:scale-95 active:brightness-[0.94] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap select-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 font-[family-name:var(--font-roobert)] rounded-none px-6 py-3 [--btn-shade:var(--btn)] hover:[--btn-shade:color-mix(in_srgb,var(--btn)_85%,var(--btn-shade-to,black))] [--btn-tint:transparent] hover:[--btn-tint:color-mix(in_srgb,var(--btn)_15%,transparent)] transition-[transform,background-color,color,box-shadow] duration-200 ease-[cubic-bezier(0.33,1,0.68,1)] active:scale-95 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[0.9em]",
   {
     variants: {
       variant: {
         "filled-blue":
-          "bg-[var(--bp-blue)] text-[var(--primary-light)] border-0",
+          "[--btn:var(--bp-blue)] bg-[var(--btn-shade)] text-[var(--primary-light)] border-0",
         "filled-light":
-          "bg-[var(--primary-light)] text-[var(--bp-blue)] border-0",
+          "[--btn:var(--primary-light)] [--btn-shade-to:color-mix(in_srgb,var(--bp-blue)_70%,black)] bg-[var(--btn-shade)] text-[var(--bp-blue)] border-0",
         "outline-blue":
-          "bg-transparent text-[var(--bp-blue)] border-0 shadow-[inset_0_0_0_1px_var(--bp-blue)]",
+          "[--btn:var(--bp-blue)] bg-[var(--btn-tint)] text-[var(--btn)] border-0 shadow-[inset_0_0_0_1px_var(--btn)]",
         "outline-light":
-          "bg-transparent text-[var(--primary-light)] border-0 shadow-[inset_0_0_0_1px_var(--primary-light)]",
+          "[--btn:var(--primary-light)] [--btn-shade-to:color-mix(in_srgb,var(--bp-blue)_70%,black)] bg-[var(--btn-tint)] text-[var(--btn-shade)] border-0 shadow-[inset_0_0_0_1px_var(--btn-shade)]",
         "outline-dark":
-          "bg-transparent text-[var(--primary-dark)] border-0 shadow-[inset_0_0_0_1px_var(--primary-dark)]",
+          "[--btn:var(--primary-dark)] bg-[var(--btn-tint)] text-[var(--btn)] border-0 shadow-[inset_0_0_0_1px_var(--btn)]",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
         ghost:

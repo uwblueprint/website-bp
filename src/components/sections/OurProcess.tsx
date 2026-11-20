@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 
-import { CornerMarks } from "@/components/ui/CornerMarks";
 import { DraggableSticker } from "@/components/ui/DraggableSticker";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { cn } from "@/lib/utils";
@@ -91,8 +90,7 @@ export function OurProcess({
         {steps.map((step, i) => (
           <FadeUp key={step.index} index={i} inView>
             <div className="h-full">
-              <div className="group/card relative flex h-full flex-col py-6 md:px-6 transition-colors duration-200 hover:bg-white/5">
-                <CornerMarks on="blue" />
+              <div className="flex h-full flex-col py-6 md:px-6 transition-colors duration-200 hover:bg-white/5">
                 <span className="pb-2 text-lg text-[var(--primary-light)]">
                   {step.index}
                 </span>

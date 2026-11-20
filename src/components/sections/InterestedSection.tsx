@@ -1,9 +1,10 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
 
 import UnderlineToBackground from "@/components/fancy/text/underline-to-background";
-import { CornerMarks } from "@/components/ui/CornerMarks";
+import { DraggableSticker } from "@/components/ui/DraggableSticker";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
@@ -80,12 +81,17 @@ const PANELS = [
   },
 ] as const;
 
+const AIRPLANE_SRC = "/illos/airplane.png";
+
 export function InterestedSection({ className }: { className?: string }) {
+  const sectionRef = useRef<HTMLElement>(null);
+
   return (
     <section
+      ref={sectionRef}
       aria-label="Nonprofits and students"
       className={cn(
-        "bg-[var(--primary-light)] pb-8 pt-12 text-left",
+        "relative overflow-x-clip bg-[var(--primary-light)] pb-8 pt-12 text-left",
         className,
       )}
     >
@@ -94,36 +100,48 @@ export function InterestedSection({ className }: { className?: string }) {
           interested?
         </h2>
 
-        <div className="col-span-12 grid grid-cols-12 items-stretch gap-0 md:pt-8 text-left">
+        <div className="col-span-12 md:col-span-8 md:pt-8">
           {PANELS.map((panel, index) => (
             <FadeUp
               key={panel.key}
               index={index}
               inView
-              className="col-span-12 h-full min-[800px]:col-span-6"
+              className="pb-16 last:pb-0"
             >
-              <div className="group/card relative block h-full rounded-none bg-white py-4 md:p-8 text-left shadow-none transition-colors duration-200 hover:bg-[var(--off-white)]">
-                <CornerMarks on="white" />
-                <div className="relative flex h-full flex-col text-left">
-                  <div className="pb-8">
-                    <h3 className="pt-4 text-md font-roobert text-[var(--primary-dark)]">
-                      {panel.label}
-                    </h3>
+              <h3 className="text-md text-[var(--secondary-dark)] md:pb-6 md:px-6">
+                {panel.label}
+              </h3>
 
-                    <div className="pt-4 text-md font-roobert text-[var(--secondary-dark)]">
-                      {panel.body}
-                    </div>
-                  </div>
+              <div className="pt-6 pb-6 md:p-6 transition-colors duration-200 hover:bg-black/5">
+                <p className="text-md text-[var(--primary-dark)]">
+                  {panel.body}
+                </p>
 
-                  <div className="mt-auto flex flex-col gap-4 min-[800px]:flex-row">
-                    {panel.buttons}
-                  </div>
+                <div className="flex flex-col gap-4 pt-6 min-[800px]:flex-row">
+                  {panel.buttons}
                 </div>
               </div>
             </FadeUp>
           ))}
         </div>
       </div>
+
+      <DraggableSticker
+        containerRef={sectionRef}
+        className="absolute right-8 top-2/5 hidden xl:block w-[min(30vw,480px)]"
+      >
+        <div className="relative aspect-[878/399] w-full">
+          <img
+            src={AIRPLANE_SRC}
+            alt=""
+            width={878}
+            height={399}
+            className="h-full w-full object-contain"
+            style={{ transform: "rotate(-12deg)" }}
+            decoding="async"
+          />
+        </div>
+      </DraggableSticker>
     </section>
   );
 }

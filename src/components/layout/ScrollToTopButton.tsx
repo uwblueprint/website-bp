@@ -47,7 +47,7 @@ export default function ScrollToTopButton() {
             <button
               type="button"
               className={cn(
-                buttonVariants({ variant: "filled-blue", size: "default" }),
+                buttonVariants({ variant: "filled-blue", size: "sm" }),
                 "gap-2",
               )}
               onClick={scrollToTop}

@@ -69,7 +69,7 @@ export default function ContactSection() {
             alt=""
             width={610}
             height={916}
-            className="h-full w-full object-contain opacity-90"
+            className="h-full w-full object-contain"
             decoding="async"
           />
         </div>

@@ -1,17 +1,14 @@
 "use client";
 
-import Link from "next/link";
-
-import { CornerMarks } from "@/components/ui/CornerMarks";
 import { FadeUp } from "@/components/ui/FadeUp";
-import { ArrowUpRight } from "@/components/ui/icons";
+import { Tag } from "@/components/ui/Tag";
 
 type ProjectMiniCard = {
   title: string;
   category: string;
   about: string;
   solution: string;
-  href: string;
+  id: string;
 };
 
 export function ProjectsAdditionalCards() {
@@ -23,7 +20,7 @@ export function ProjectsAdditionalCards() {
         "Project READ Literacy Network is an organization that empowers families in the Waterloo region with access to literacy and essential skills training.",
       solution:
         "Our team built a system to streamline outreach and operations for Project READ by tracking interactions with families. The product ultimately allowed staff to more efficiently make strategic decisions that would drive organizational growth.",
-      href: "#project-read-literacy-network",
+      id: "project-read-literacy-network",
     },
     {
       title: "The Shoe Project",
@@ -32,7 +29,7 @@ export function ProjectsAdditionalCards() {
         "The Shoe Project provides educational and leadership opportunities to immigrant and refugee women. They have created a platform for women to showcase their moving stories using a shoe as a metaphor.",
       solution:
         "To celebrate their 10th anniversary, our team developed an interactive visualization tool leveraging geo-mapping technology to capture the stories of women across the world, collected throughout the organization's 10-year history.",
-      href: "#the-shoe-project",
+      id: "the-shoe-project",
     },
     {
       title: "The Pregnancy Centre (TPC)",
@@ -41,7 +38,7 @@ export function ProjectsAdditionalCards() {
         "The Pregnancy Centre (TPC) supports mothers and families in Waterloo Region in making healthy and informed relationship and pregnancy decisions.",
       solution:
         "Our team built a web portal that would enable TPC to facilitate the collection and distribution of high quality, essential items between local donors and those in need.",
-      href: "#pregnancy-centre-tpc",
+      id: "pregnancy-centre-tpc",
     },
     {
       title: "Building Up",
@@ -50,7 +47,7 @@ export function ProjectsAdditionalCards() {
         "Building Up is a nonprofit construction contractor that provides long term career pathways for individuals facing employment barriers.",
       solution:
         "One of their main fundraising efforts in partnership with Raising the Roof is their Toque Campaign. Our team built an online platform to streamline toque ordering and better engage third party sellers.",
-      href: "#building-up",
+      id: "building-up",
     },
   ];
 
@@ -72,42 +69,28 @@ export function ProjectsAdditionalCards() {
               inView
               className="col-span-12 h-full md:col-span-6 lg:col-span-3"
             >
-              <Link
-                href={card.href}
-                aria-label={`Open ${card.title}`}
-                className="group group/card relative block h-full rounded-none bg-white py-8 md:px-8 text-left shadow-none transition-colors duration-200 hover:bg-[var(--off-white)]"
+              <div
+                id={card.id}
+                className="relative flex h-full flex-col rounded-none bg-white py-8 md:px-8 text-left shadow-none transition-colors duration-200 hover:bg-[var(--off-white)]"
               >
-                <CornerMarks on="white" />
-                <ArrowUpRight
-                  className="absolute right-4 top-4 size-5 text-[var(--primary-dark)] opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-                  aria-hidden
-                />
+                <div className="pb-8">
+                  <h3 className="pt-4 text-md font-roobert text-[var(--primary-dark)]">
+                    {card.title}
+                  </h3>
 
-                <div
-                  id={card.href.slice(1)}
-                  className="relative flex h-full flex-col text-left"
-                >
-                  {/* Category tag (cursortrail-like) */}
+                  <p className="pt-4 text-sm font-roobert text-[var(--secondary-dark)]">
+                    {card.about}
+                  </p>
 
-                  <div className="pb-8">
-                    <h3 className="pt-4 text-md font-roobert text-[var(--primary-dark)]">
-                      {card.title}
-                    </h3>
-
-                    <p className="pt-4 text-sm font-roobert text-[var(--primary-dark)]">
-                      {card.about}
-                    </p>
-
-                    <p className="pt-4 text-sm font-roobert text-[var(--primary-dark)]">
-                      {card.solution}
-                    </p>
-                  </div>
-
-                  <div className="inline-flex items-center rounded-none bg-[var(--bp-blue)] w-fit px-2 py-1 font-roobert text-sm text-[var(--primary-light)] shadow-none whitespace-nowrap mt-auto">
-                    {card.category}
-                  </div>
+                  <p className="pt-4 text-sm font-roobert text-[var(--secondary-dark)]">
+                    {card.solution}
+                  </p>
                 </div>
-              </Link>
+
+                <Tag size="sm" className="mt-auto">
+                  {card.category}
+                </Tag>
+              </div>
             </FadeUp>
           ))}
         </div>

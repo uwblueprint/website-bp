@@ -4,11 +4,10 @@ import { useRef } from "react";
 import Link from "next/link";
 
 import { ArrowUpRight } from "@/components/ui/icons";
-import { CornerMarks } from "@/components/ui/CornerMarks";
 import { DraggableSticker } from "@/components/ui/DraggableSticker";
 import { FadeUp } from "@/components/ui/FadeUp";
 
-const MEGAPHONE_SRC = "/illos/megaphone.svg";
+const CONFETTI_SRC = "/illos/confetti.png";
 
 type Stat = {
   value: string;
@@ -58,9 +57,8 @@ export function MetricsSection({ className }: { className?: string }) {
             >
               <Link
                 href={stat.href}
-                className="group group/card relative flex h-full flex-col justify-between gap-4 py-8 md:px-8 md:py-8 transition-colors duration-200 hover:bg-[var(--primary-light)]/10 lg:gap-16"
+                className="group relative flex h-full flex-col justify-between gap-4 py-8 md:px-8 md:py-8 transition-colors duration-200 hover:bg-[var(--primary-light)]/10 lg:gap-16"
               >
-                <CornerMarks on="blue" />
                 <ArrowUpRight
                   className="absolute top-4 right-4 size-5 text-[var(--primary-light)] opacity-0 transition-opacity duration-200 group-hover:opacity-100"
                   aria-hidden
@@ -77,19 +75,18 @@ export function MetricsSection({ className }: { className?: string }) {
         </div>
       </div>
 
-      {/* Megaphone decoration */}
       <DraggableSticker
         containerRef={sectionRef}
-        className="absolute top-6 right-8 hidden xl:block max-w-[90%] translate-y-[72px] w-[min(44vw,240px)] sm:w-[min(40vw,312px)] md:w-[min(34vw,288px)] lg:w-[min(46vw,624px)]"
+        className="absolute top-6 right-8 hidden xl:block max-w-[90%] translate-y-[72px] w-[min(44vw,240px)] sm:w-[min(40vw,312px)] md:w-[min(34vw,288px)] lg:w-[min(36vw,480px)]"
       >
-        <div className="relative aspect-[424/330] w-full">
+        <div className="relative aspect-[933/765] w-full">
           <img
-            src={MEGAPHONE_SRC}
+            src={CONFETTI_SRC}
             alt=""
-            width={774}
-            height={602}
+            width={933}
+            height={765}
             className="h-full w-full object-contain"
-            style={{ transform: "rotate(18deg)" }}
+            style={{ transform: "rotate(6deg)" }}
             decoding="async"
           />
         </div>

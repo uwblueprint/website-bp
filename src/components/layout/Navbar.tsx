@@ -30,6 +30,12 @@ const NAV_TAGLINE_SHORT = "tech for social good";
 const NAV_PRIMARY_LINK_CLASS =
   "font-[family-name:var(--font-header)] font-semibold lowercase tracking-[var(--tracking-header)] text-[32px] leading-[1.4] md:text-[64px] md:leading-none";
 
+/**
+ * Hovering opens the menu just before the user's click lands; ignore a click
+ * this soon after a hover-open so it doesn't immediately close the menu.
+ */
+const HOVER_CLICK_GRACE_MS = 600;
+
 /** Logo asset width (px). */
 const LOGO_SIZE_PX = 32;
 
@@ -57,6 +63,8 @@ export default function Navbar() {
   const headerRef = useRef<HTMLElement | null>(null);
   const skipLogoSpinOnOpenSync = useRef(true);
   const [navColumnHeight, setNavColumnHeight] = useState<number | null>(null);
+  /** Set when the menu was opened by hovering the menu button; such menus close on header leave. */
+  const hoverOpenedAtRef = useRef<number | null>(null);
   /** 0 = fully visible, 1 = fully slid up (hidden). Tied to scroll over first 1vh. */
   const navHideProgress = useNavHideProgress();
   /** Cumulative rotation (deg) for full spins on click / menu toggle. */
@@ -129,6 +137,7 @@ export default function Navbar() {
 
   useEffect(() => {
     if (!open) {
+      hoverOpenedAtRef.current = null;
       setNavColumnHeight(null);
       return;
     }
@@ -194,6 +203,13 @@ export default function Navbar() {
         transform: `translateY(calc(-100% * ${effectiveHideProgress}))`,
         pointerEvents: effectiveHideProgress >= 1 ? "none" : "auto",
       }}
+      onPointerLeave={(e) => {
+        if (e.pointerType !== "mouse" || hoverOpenedAtRef.current == null) {
+          return;
+        }
+        hoverOpenedAtRef.current = null;
+        setOpen(false);
+      }}
     >
       <nav aria-label="Primary" className="flex min-h-0 w-full flex-col">
         {/* Top strip: always visible */}
@@ -204,7 +220,23 @@ export default function Navbar() {
             aria-expanded={open}
             aria-controls={panelId}
             aria-label={open ? "Close menu" : "Open menu"}
-            onClick={() => setOpen((o) => !o)}
+            onPointerEnter={(e) => {
+              if (e.pointerType !== "mouse" || open) return;
+              hoverOpenedAtRef.current = Date.now();
+              setOpen(true);
+            }}
+            onClick={() => {
+              const hoverOpenedAt = hoverOpenedAtRef.current;
+              if (
+                open &&
+                hoverOpenedAt != null &&
+                Date.now() - hoverOpenedAt < HOVER_CLICK_GRACE_MS
+              ) {
+                return;
+              }
+              hoverOpenedAtRef.current = null;
+              setOpen((o) => !o);
+            }}
           >
             <Menu className="size-6" aria-hidden strokeWidth={2} />
           </button>

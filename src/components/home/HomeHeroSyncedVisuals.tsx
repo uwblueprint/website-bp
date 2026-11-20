@@ -68,7 +68,7 @@ export function HomeHeroSyncedVisuals({
       >
         <Image
           ref={cutoutImgRef}
-          src="/img/hero.webp"
+          src="/img/hero.webp?v=2"
           alt=""
           width={3000}
           height={1300}

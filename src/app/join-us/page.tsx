@@ -6,7 +6,6 @@ import { OurProcess, type ProcessStep } from "@/components/sections/OurProcess";
 import { TeamPhotos } from "@/components/sections/TeamPhotos";
 import { WhatWeLookFor } from "@/components/sections/WhatWeLookFor";
 import { WhyJoin } from "@/components/sections/WhyJoin";
-import { SlimBanner } from "@/components/ui/SlimBanner";
 import {
   APPLICATION_CLOSE_DATETIME,
   APPLICATION_TERM,
@@ -17,6 +16,13 @@ import {
 export const metadata: Metadata = {
   title: "Join our team",
 };
+
+const APPLICATION_TIPS = [
+  "pssst... we receive A LOT of applications",
+  "Tip #1: Be authentic",
+  "Tip #2: Be engaging",
+  "Tip #3: Show commitment!",
+];
 
 const JOIN_PROCESS_STEPS: ProcessStep[] = [
   {
@@ -57,13 +63,9 @@ export default function JoinUsPage() {
     <main>
       <JoinUsHero />
       <WhyJoin />
-      <TeamPhotos />
       <WhatWeLookFor />
 
-      <SlimBanner
-        mode="light"
-        text="psst... we receive a lot of applications. Being authentic, engaging and showing a history of commitment is a great way to stand out."
-      />
+      <TeamPhotos hoverLabels={APPLICATION_TIPS} />
 
       <OurProcess
         id="join-us-process"
@@ -75,7 +77,7 @@ export default function JoinUsPage() {
             <img
               src="/img/illos/book.svg"
               alt=""
-              className="h-auto w-full object-contain opacity-90"
+              className="h-auto w-full object-contain"
               aria-hidden
               decoding="async"
             />
